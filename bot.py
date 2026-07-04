@@ -37,8 +37,13 @@ BUDGET_USD = float(os.environ.get("BUDGET_USD", "100"))   # total capital to dep
 MAX_POSITIONS = 5                                          # hold at most 5 names
 SLOT_USD = BUDGET_USD / MAX_POSITIONS                      # ~$20 per name
 
-# Aggressive, liquid, high-beta NASDAQ names (all confirmed on the price feed).
-WATCHLIST = ["NVDA", "TSLA", "AMD", "MSTR", "COIN", "PLTR", "SMCI", "MARA"]
+# Curated for the week of 2026-07-06.  Rationale in reports/PICKS.md.
+# 1. AMD  - ai4trade buy signal 3.5, Meta 6GW MI300 deal, +10%/5d
+# 2. PLTR - Army NGC2 win + NVDA sovereign-AI deal (Jul 1), +7.77% Jul 1
+# 3. MSTR - new capital plan, Citi $260 target, leveraged BTC proxy
+# 4. AVGO - constructive trend, hold signal 1.0, steady AI-infra ballast
+# 5. COIN - crypto beta without MSTR single-name concentration
+WATCHLIST = ["AMD", "PLTR", "MSTR", "AVGO", "COIN"]
 
 ROOT = Path(__file__).resolve().parent
 STATE_FILE = ROOT / "state.json"
@@ -284,7 +289,11 @@ def main():
             else:
                 actions.append(f"SELL {sym} FAILED: {resp.get('detail')}")
 
-    # --- open new positions (entries) ---
+    # --- open new positions ---
+    # First market-open run of the mandate: seed equal-weight across the whole
+    # watchlist so the week starts with real exposure instead of waiting several
+    # runs to accumulate enough history for a momentum signal.
+    seeding = (state["run_count"] == 1 and not state["positions"])
     for sym in WATCHLIST:
         if len(state["positions"]) >= MAX_POSITIONS:
             break
@@ -293,16 +302,20 @@ def main():
         px = prices.get(sym)
         if px is None:
             continue
-        mom = momentum(hist, sym, params["momentum_lookback"])
-        if mom is None or mom < params["entry_momentum"]:
-            continue
+        if seeding:
+            reason_note = "seed"
+        else:
+            mom = momentum(hist, sym, params["momentum_lookback"])
+            if mom is None or mom < params["entry_momentum"]:
+                continue
+            reason_note = f"mom {mom:+.2%}"
         if deployed_cost(state) + SLOT_USD > BUDGET_USD + 1e-6:
             continue
         qty = SLOT_USD / px
-        ok, resp = place_trade("buy", sym, px, qty, f"entry: mom {mom:+.2%}")
+        ok, resp = place_trade("buy", sym, px, qty, f"entry: {reason_note}")
         if ok:
             state["positions"][sym] = {"qty": qty, "entry": px, "entry_at": utcnow_iso()}
-            actions.append(f"BUY {sym} {qty:.4f}@{px:.2f} (mom {mom:+.2%})")
+            actions.append(f"BUY {sym} {qty:.4f}@{px:.2f} ({reason_note})")
         else:
             actions.append(f"BUY {sym} FAILED: {resp.get('detail')}")
 
