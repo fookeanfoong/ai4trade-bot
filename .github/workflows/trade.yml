@@ -6,7 +6,7 @@ name: ai4trade-bot
 on:
   schedule:
     - cron: "30 12 * * 1-5"      # ~08:30 ET  PRE-MARKET research digest
-    - cron: "*/15 13-19 * * 1-5" # every 15 min from 09:00-15:59 ET (news + trade)
+    - cron: "*/10 13-19 * * 1-5" # every 10 min from 09:00-15:59 ET (news + trade)
     - cron: "50 19 * * 1-5"      # ~15:50 ET  near close (daily reflection)
     - cron: "0 20 * * 6"         # 16:00 ET Sat  WEEKLY summary
   workflow_dispatch:
