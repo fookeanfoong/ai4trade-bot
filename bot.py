@@ -58,9 +58,17 @@ DEFAULT_PARAMS = {
     "exit_momentum": -0.004,   # trend-break exit at <= -0.4% momentum
     "stop_loss": -0.05,        # HARD -5% stop (user rule, never loosened)
     "take_profit": 0.06,       # lock gains at +6%
+    "trailing_arm_gain": 0.03, # arm trailing stop once up +3%
+    "trailing_giveback": 0.015,# ..then exit if we give back 1.5% from peak
     "momentum_lookback": 2,    # samples back for momentum calc
     "cooldown_runs": 3,        # runs to wait before re-buying a stopped name
+    "streak_throttle": 3,      # after N consecutive losses, halve position size
+    "no_new_entries_min": 30,  # no new buys in last N min of trading day
 }
+
+# Names that all move with BTC — cap combined exposure to avoid concentration.
+CRYPTO_GROUP = {"MSTR", "COIN", "MARA", "RIOT"}
+MAX_CRYPTO_POSITIONS = 2
 
 # ----------------------------------------------------------------------------
 # HTTP helpers
@@ -246,15 +254,18 @@ def save_json(path, obj):
 
 
 def load_state():
-    return load_json(STATE_FILE, {
-        "positions": {},        # symbol -> {qty, entry, entry_at}
+    st = load_json(STATE_FILE, {
+        "positions": {},        # symbol -> {qty, entry, entry_at, peak}
         "cooldown": {},         # symbol -> runs remaining
         "realized_pnl": 0.0,    # cumulative realized $
         "run_count": 0,
         "last_reflection_date": "",
         "trade_log": [],        # recent closed trades for reflection
+        "consec_losses": 0,     # for size-throttle
         "position_schema_seen": None,
     })
+    st.setdefault("consec_losses", 0)
+    return st
 
 # ----------------------------------------------------------------------------
 # Strategy
@@ -481,6 +492,10 @@ def main():
         if px is None:
             continue
         pnl_pct = (px - pos["entry"]) / pos["entry"]
+        # Track peak price since entry (used for trailing stop).
+        pos["peak"] = max(pos.get("peak", pos["entry"]), px)
+        peak_pnl = (pos["peak"] - pos["entry"]) / pos["entry"]
+        giveback = (pos["peak"] - px) / pos["peak"] if pos["peak"] > 0 else 0
         mom = momentum(hist, sym, params["momentum_lookback"])
         news = news_fresh.get(sym, {})
         reason = None
@@ -488,6 +503,8 @@ def main():
             reason = f"STOP {pnl_pct:+.2%}"
         elif pnl_pct >= params["take_profit"]:
             reason = f"TAKE-PROFIT {pnl_pct:+.2%}"
+        elif peak_pnl >= params["trailing_arm_gain"] and giveback >= params["trailing_giveback"]:
+            reason = f"TRAIL from peak +{peak_pnl:.2%} -> +{pnl_pct:.2%} (giveback {giveback:.2%})"
         elif news.get("score", 0) <= -2 and news.get("new_count", 0) > 0:
             reason = f"NEWS-RISK {news['score']} :: {(news.get('worst') or '')[:60]}"
         elif mom is not None and mom <= params["exit_momentum"]:
@@ -502,7 +519,10 @@ def main():
                     "reason": reason.split()[0], "closed_at": utcnow_iso(),
                 })
                 state["trade_log"] = state["trade_log"][-50:]
-                # stop-outs get a cooldown before re-entry
+                if realized > 0:
+                    state["consec_losses"] = 0
+                else:
+                    state["consec_losses"] += 1
                 if reason.startswith("STOP"):
                     state["cooldown"][sym] = params["cooldown_runs"]
                 del state["positions"][sym]
@@ -511,15 +531,23 @@ def main():
                 actions.append(f"SELL {sym} FAILED: {resp.get('detail')}")
 
     # --- open new positions ---
-    # First market-open run of the mandate: seed equal-weight across the whole
-    # watchlist so the week starts with real exposure instead of waiting several
-    # runs to accumulate enough history for a momentum signal.
     seeding = (state["run_count"] == 1 and not state["positions"])
+    mins_of_day = n.hour * 60 + n.minute
+    late_day = (mins_of_day > 960 - params["no_new_entries_min"])
+    slot = SLOT_USD / 2 if state["consec_losses"] >= params["streak_throttle"] else SLOT_USD
+    if slot < SLOT_USD:
+        actions.append(f"SIZE-THROTTLE consec_losses={state['consec_losses']} slot=${slot:.2f}")
     for sym in WATCHLIST:
         if len(state["positions"]) >= MAX_POSITIONS:
             break
         if sym in state["positions"] or sym in state["cooldown"]:
             continue
+        if sym in CRYPTO_GROUP:
+            crypto_held = sum(1 for h in state["positions"] if h in CRYPTO_GROUP)
+            if crypto_held >= MAX_CRYPTO_POSITIONS:
+                if not seeding:
+                    actions.append(f"SKIP {sym}: crypto-exposure cap")
+                continue
         px = prices.get(sym)
         if px is None:
             continue
@@ -530,16 +558,20 @@ def main():
         if seeding:
             reason_note = "seed"
         else:
+            if late_day:
+                continue
             mom = momentum(hist, sym, params["momentum_lookback"])
             if mom is None or mom < params["entry_momentum"]:
                 continue
             reason_note = f"mom {mom:+.2%}"
-        if deployed_cost(state) + SLOT_USD > BUDGET_USD + 1e-6:
+        if deployed_cost(state) + slot > BUDGET_USD + 1e-6:
             continue
-        qty = SLOT_USD / px
+        qty = slot / px
         ok, resp = place_trade("buy", sym, px, qty, f"entry: {reason_note}")
         if ok:
-            state["positions"][sym] = {"qty": qty, "entry": px, "entry_at": utcnow_iso()}
+            state["positions"][sym] = {
+                "qty": qty, "entry": px, "peak": px, "entry_at": utcnow_iso(),
+            }
             actions.append(f"BUY {sym} {qty:.4f}@{px:.2f} ({reason_note})")
         else:
             actions.append(f"BUY {sym} FAILED: {resp.get('detail')}")
@@ -598,37 +630,62 @@ def write_report(state, params, prices, actions, n):
 
 
 def reflect_and_learn(state, params, today):
-    """Daily learning: inspect recent closed trades, nudge parameters."""
+    """Daily learning: inspect recent closed trades, tune params.
+       stop_loss is a HARD user rule — never modified."""
     recent = [t for t in state["trade_log"] if t["closed_at"][:10] == today]
     wins = [t for t in recent if t["pnl_usd"] > 0]
     losses = [t for t in recent if t["pnl_usd"] <= 0]
     stops = [t for t in recent if t["reason"] == "STOP"]
+    trails = [t for t in recent if t["reason"] == "TRAIL"]
+    takes = [t for t in recent if t["reason"] == "TAKE-PROFIT"]
+    news_exits = [t for t in recent if t["reason"] == "NEWS-RISK"]
     net = sum(t["pnl_usd"] for t in recent)
+    avg_win = (sum(t["pnl_usd"] for t in wins) / len(wins)) if wins else 0
+    avg_loss = (sum(t["pnl_usd"] for t in losses) / len(losses)) if losses else 0
+    win_rate = (len(wins) / len(recent)) if recent else 0
 
     notes = []
-    # Rule 1: too many stop-outs => entries too loose, be more selective.
+
+    # --- Rule A: too many stops => entries too loose, tighten momentum bar.
     if len(stops) >= 2 and net < 0:
         params["entry_momentum"] = round(min(params["entry_momentum"] + 0.001, 0.02), 4)
         params["cooldown_runs"] = min(params["cooldown_runs"] + 1, 8)
-        notes.append(f"{len(stops)} stop-outs, net {net:+.2f}$ -> raise entry_momentum "
-                     f"to {params['entry_momentum']:.3f}, cooldown to {params['cooldown_runs']}")
-    # Rule 2: profitable day with wins => allow slightly earlier entries.
-    elif net > 0 and len(wins) >= max(1, len(losses)):
+        notes.append(f"{len(stops)} stops, net {net:+.2f}$ -> entry_momentum "
+                     f"->{params['entry_momentum']:.3f}, cooldown ->{params['cooldown_runs']}")
+    # --- Rule B: strong green day => ease entries slightly to catch more.
+    elif net > 0 and win_rate >= 0.6:
         params["entry_momentum"] = round(max(params["entry_momentum"] - 0.0005, 0.001), 4)
-        notes.append(f"green day net {net:+.2f}$ -> ease entry_momentum to {params['entry_momentum']:.3f}")
+        notes.append(f"green day (WR {win_rate:.0%}, net {net:+.2f}$) -> "
+                     f"entry_momentum ->{params['entry_momentum']:.3f}")
     else:
-        notes.append(f"net {net:+.2f}$, {len(wins)}W/{len(losses)}L -> params held")
+        notes.append(f"net {net:+.2f}$, {len(wins)}W/{len(losses)}L, WR {win_rate:.0%} -> params held")
 
-    # stop_loss is a user hard rule: never touch it.
-    entry = [
+    # --- Rule C: trails firing early? loosen giveback so winners run.
+    if trails and avg_win < abs(avg_loss) and avg_win > 0:
+        params["trailing_giveback"] = round(min(params["trailing_giveback"] + 0.002, 0.03), 4)
+        notes.append(f"trails cut winners short (avg_win {avg_win:.2f} < |avg_loss|) -> "
+                     f"trailing_giveback ->{params['trailing_giveback']:.3f}")
+    # --- Rule D: no take-profits + wins run big => let profits run further.
+    if wins and not takes and avg_win > 1.0:
+        params["take_profit"] = round(min(params["take_profit"] + 0.005, 0.12), 4)
+        notes.append(f"no TPs hit, winners ran (avg_win ${avg_win:.2f}) -> "
+                     f"take_profit ->{params['take_profit']:.3f}")
+    # --- Rule E: news-exits worked (net positive after) => keep threshold; else soften.
+    if news_exits:
+        notes.append(f"{len(news_exits)} news-driven exits — keep monitoring headline signal")
+
+    entry_lines = [
         f"## {today}",
-        f"- Trades: {len(recent)} ({len(wins)}W / {len(losses)}L), stop-outs: {len(stops)}",
+        f"- Trades: {len(recent)} ({len(wins)}W / {len(losses)}L, WR {win_rate:.0%})",
+        f"- Exits: {len(stops)} STOP, {len(trails)} TRAIL, {len(takes)} TP, {len(news_exits)} NEWS",
+        f"- Avg win: ${avg_win:+.2f}, avg loss: ${avg_loss:+.2f}, "
+        f"payoff {abs(avg_win/avg_loss):.2f}x" if avg_loss else f"- Avg win: ${avg_win:+.2f}",
         f"- Realized today: ${net:+.2f} | cumulative: ${state['realized_pnl']:+.2f}",
-        f"- Lesson: {notes[0]}",
-        "",
-    ]
+        f"- Consec losses now: {state['consec_losses']}",
+        "- Lessons:",
+    ] + [f"  - {n}" for n in notes] + [""]
     prev = LEARN_FILE.read_text(encoding="utf-8") if LEARN_FILE.exists() else "# Learning journal\n\n"
-    LEARN_FILE.write_text(prev + "\n".join(entry) + "\n", encoding="utf-8")
+    LEARN_FILE.write_text(prev + "\n".join(entry_lines) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
