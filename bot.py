@@ -117,6 +117,86 @@ def place_trade(action, symbol, price, quantity, content):
     return False, resp
 
 # ----------------------------------------------------------------------------
+# News feed (free Yahoo Finance RSS, no key)
+# ----------------------------------------------------------------------------
+NEG_KEYWORDS = [
+    "downgrade", "cut price target", "sec probe", "sec investigation",
+    "recall", "lawsuit", "guidance cut", "misses", "shortfall", "warns",
+    "layoffs", "resigns", "resignation", "halts", "halted", "fraud",
+    "delisting", "restated", "restatement", "bankruptcy", "default",
+    "subpoena", "settlement", "fired", "class action",
+]
+POS_KEYWORDS = [
+    "beats", "beat estimates", "raises guidance", "upgrade", "raises target",
+    "record revenue", "partnership", "deal", "wins contract", "approval",
+    "buyback", "dividend hike", "surge", "acquires", "acquisition",
+    "outperform", "expands", "milestone",
+]
+
+
+def _rss_items(sym):
+    url = f"https://feeds.finance.yahoo.com/rss/2.0/headline?s={sym}&region=US&lang=en-US"
+    req = urlrequest.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    try:
+        with urlrequest.urlopen(req, timeout=15) as r:
+            xml = r.read().decode("utf-8", errors="ignore")
+    except Exception:
+        return []
+    items = []
+    for chunk in xml.split("<item>")[1:]:
+        chunk = chunk.split("</item>")[0]
+        def _tag(name):
+            start = chunk.find(f"<{name}>")
+            if start < 0:
+                return ""
+            start += len(name) + 2
+            end = chunk.find(f"</{name}>", start)
+            return chunk[start:end] if end > 0 else ""
+        items.append({
+            "title": _tag("title").replace("<![CDATA[", "").replace("]]>", "").strip(),
+            "pubDate": _tag("pubDate").strip(),
+            "link": _tag("link").strip(),
+        })
+    return items[:8]
+
+
+def score_headlines(items):
+    """Return (score, top_negative_headline_or_None). Score: negative bad."""
+    score = 0
+    worst = None
+    for it in items:
+        t = it["title"].lower()
+        neg = sum(1 for k in NEG_KEYWORDS if k in t)
+        pos = sum(1 for k in POS_KEYWORDS if k in t)
+        s = pos - neg
+        score += s
+        if neg > 0 and (worst is None or s < 0):
+            worst = it["title"]
+    return score, worst
+
+
+def refresh_news(state, symbols):
+    """Poll RSS for each symbol; store latest snapshot in state['news'][sym]."""
+    state.setdefault("news", {})
+    fresh = {}
+    for sym in symbols:
+        items = _rss_items(sym)
+        if not items:
+            continue
+        score, worst = score_headlines(items)
+        prev_titles = {i["title"] for i in state["news"].get(sym, {}).get("items", [])}
+        new_items = [i for i in items if i["title"] not in prev_titles]
+        state["news"][sym] = {
+            "at": utcnow_iso(),
+            "score": score,
+            "worst": worst,
+            "items": items,
+        }
+        fresh[sym] = {"score": score, "worst": worst, "new_count": len(new_items)}
+        time.sleep(0.3)  # be gentle to Yahoo
+    return fresh
+
+# ----------------------------------------------------------------------------
 # Time helpers
 # ----------------------------------------------------------------------------
 def utcnow():
@@ -387,6 +467,13 @@ def main():
         if state["cooldown"][s] <= 0:
             del state["cooldown"][s]
 
+    # --- refresh news for held names + watchlist ---
+    news_fresh = refresh_news(state,
+        list(dict.fromkeys(list(state["positions"].keys()) + WATCHLIST)))
+    for sym, info in news_fresh.items():
+        if info["worst"] and info["score"] < 0:
+            actions.append(f"NEWS {sym} score={info['score']} :: {info['worst'][:80]}")
+
     # --- manage open positions (exits) ---
     for sym in list(state["positions"].keys()):
         pos = state["positions"][sym]
@@ -395,11 +482,14 @@ def main():
             continue
         pnl_pct = (px - pos["entry"]) / pos["entry"]
         mom = momentum(hist, sym, params["momentum_lookback"])
+        news = news_fresh.get(sym, {})
         reason = None
         if pnl_pct <= params["stop_loss"]:
             reason = f"STOP {pnl_pct:+.2%}"
         elif pnl_pct >= params["take_profit"]:
             reason = f"TAKE-PROFIT {pnl_pct:+.2%}"
+        elif news.get("score", 0) <= -2 and news.get("new_count", 0) > 0:
+            reason = f"NEWS-RISK {news['score']} :: {(news.get('worst') or '')[:60]}"
         elif mom is not None and mom <= params["exit_momentum"]:
             reason = f"TREND-BREAK mom {mom:+.2%} (pnl {pnl_pct:+.2%})"
         if reason:
@@ -432,6 +522,10 @@ def main():
             continue
         px = prices.get(sym)
         if px is None:
+            continue
+        news = news_fresh.get(sym, {})
+        if news.get("score", 0) <= -2:
+            actions.append(f"SKIP {sym}: news score {news.get('score')}")
             continue
         if seeding:
             reason_note = "seed"
