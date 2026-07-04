@@ -155,14 +155,14 @@ def market_open_now():
 def load_json(path, default):
     if path.exists():
         try:
-            return json.loads(path.read_text())
+            return json.loads(path.read_text(encoding="utf-8"))
         except Exception:
             pass
     return json.loads(json.dumps(default))
 
 
 def save_json(path, obj):
-    path.write_text(json.dumps(obj, indent=2))
+    path.write_text(json.dumps(obj, indent=2), encoding="utf-8")
 
 
 def load_state():
@@ -206,6 +206,119 @@ def deployed_cost(state):
 # ----------------------------------------------------------------------------
 # Main
 # ----------------------------------------------------------------------------
+def write_premarket(state, params, prices, n):
+    """Pre-open research digest: ai4trade macro + per-stock signals + news."""
+    today = n.strftime("%Y-%m-%d")
+    path = REPORTS_DIR / f"{today}-premarket.md"
+
+    overview = _safe_get("/api/market-intel/overview")
+    macro = _safe_get("/api/market-intel/macro-signals")
+    per_stock = {}
+    for sym in WATCHLIST:
+        per_stock[sym] = _safe_get(f"/api/market-intel/stocks/{sym}/latest")
+        time.sleep(1.1)
+
+    lines = [
+        f"# Pre-market digest {today}",
+        f"_Generated {n:%H:%M} ET_",
+        "",
+        "## Macro",
+    ]
+    if overview:
+        lines += [
+            f"- Verdict: **{overview.get('macro_verdict')}** "
+            f"({overview.get('macro_bullish_count')}/{overview.get('macro_total_count')} risk-on)",
+            f"- {overview.get('macro_summary', '')}",
+            f"- BTC ETF flow: {overview.get('etf_direction')} — {overview.get('etf_summary', '')}",
+            f"- Headlines tracked: {overview.get('headline_count')} "
+            f"({overview.get('news_status')}), latest: _{overview.get('latest_headline')}_",
+        ]
+    else:
+        lines.append("_intel unavailable_")
+
+    lines += ["", "## Per-name snapshot"]
+    for sym in WATCHLIST:
+        d = per_stock.get(sym) or {}
+        px = prices.get(sym)
+        px_txt = f"${px:.2f}" if px else "n/a"
+        sig = d.get("signal", "?")
+        score = d.get("signal_score", "?")
+        trend = d.get("trend_status", "?")
+        summary = d.get("summary", "").strip()
+        lines.append(f"- **{sym}** {px_txt} | {sig} ({score}) | {trend}")
+        if summary:
+            lines.append(f"  - {summary}")
+        for f in (d.get("bullish_factors") or [])[:2]:
+            lines.append(f"  - + {f}")
+        for f in (d.get("risk_factors") or [])[:2]:
+            lines.append(f"  - − {f}")
+
+    lines += ["", "## Plan for the session",
+              f"- Budget $ {BUDGET_USD:.0f}, up to {MAX_POSITIONS} names, ~${SLOT_USD:.2f} each.",
+              f"- Hard stop {params['stop_loss']:.0%}, take profit {params['take_profit']:.0%}.",
+              f"- Entry threshold: momentum >= {params['entry_momentum']:.3f}."]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"pre-market digest -> {path.name}")
+
+
+def _safe_get(path):
+    try:
+        return _get(path)
+    except Exception:
+        return None
+
+
+def write_weekly_summary(state, prices, n):
+    """Saturday summary of the last 7 days for the human reader."""
+    today = n.strftime("%Y-%m-%d")
+    week_start = (n - dt.timedelta(days=6)).strftime("%Y-%m-%d")
+    trades = [t for t in state["trade_log"]
+              if t["closed_at"][:10] >= week_start]
+    wins = [t for t in trades if t["pnl_usd"] > 0]
+    losses = [t for t in trades if t["pnl_usd"] <= 0]
+    realized = sum(t["pnl_usd"] for t in trades)
+    unreal = unrealized(state, prices)
+
+    lines = [
+        f"# Weekly summary {week_start} — {today}",
+        "",
+        f"- Trades closed: **{len(trades)}** ({len(wins)}W / {len(losses)}L)",
+        f"- Realized P&L this week: **${realized:+.2f}**",
+        f"- Open unrealized P&L: **${unreal:+.2f}**",
+        f"- Net week: **${realized + unreal:+.2f}** on ${BUDGET_USD:.0f} budget "
+        f"(**{(realized + unreal) / BUDGET_USD * 100:+.2f}%**)",
+        f"- Cumulative realized since start: ${state['realized_pnl']:+.2f}",
+        "",
+        "## Open positions right now",
+    ]
+    if state["positions"]:
+        lines.append("| Symbol | Qty | Entry | Now | P&L% |")
+        lines.append("|--------|-----|-------|-----|------|")
+        for sym, pos in state["positions"].items():
+            px = prices.get(sym) or pos["entry"]
+            pnl = (px - pos["entry"]) / pos["entry"]
+            lines.append(f"| {sym} | {pos['qty']:.4f} | {pos['entry']:.2f} | {px:.2f} | {pnl:+.2%} |")
+    else:
+        lines.append("_none_")
+
+    lines += ["", "## Wins this week"]
+    lines += [f"- {t['sym']}: {t['pnl_pct']:+.2%} (${t['pnl_usd']:+.2f}) via {t['reason']}"
+              for t in sorted(wins, key=lambda t: -t["pnl_usd"])] or ["_none_"]
+    lines += ["", "## Losses this week"]
+    lines += [f"- {t['sym']}: {t['pnl_pct']:+.2%} (${t['pnl_usd']:+.2f}) via {t['reason']}"
+              for t in sorted(losses, key=lambda t: t["pnl_usd"])] or ["_none_"]
+    lines += ["", "## What the bot learned",
+              "See `learnings.md` for the day-by-day reflections and parameter changes.",
+              "Current parameters (`params.json`):"]
+    lines.append("```json")
+    lines.append(json.dumps(load_json(PARAMS_FILE, DEFAULT_PARAMS), indent=2))
+    lines.append("```")
+
+    path = REPORTS_DIR / f"WEEKLY-{today}.md"
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"weekly summary -> {path.name}")
+
+
 def main():
     if not TOKEN:
         print("ERROR: AI4TRADE_TOKEN not set")
@@ -218,29 +331,47 @@ def main():
         params.setdefault(k, v)
     hist = load_json(HIST_FILE, {})
 
+    mode = os.environ.get("MODE", "auto").lower()  # auto | premarket | weekly
+
     n = ny_now()
-    print(f"NY time: {n:%Y-%m-%d %H:%M} ET | open={market_open_now()}")
+    print(f"NY time: {n:%Y-%m-%d %H:%M} ET | open={market_open_now()} | mode={mode}")
+
+    # --- always sample prices (cheap, respects 1 req/sec) ---
+    prices = {}
+    for s in WATCHLIST:
+        prices[s] = get_price(s)
+        time.sleep(1.1)
+    hist = append_history(hist, prices)
+    save_json(HIST_FILE, hist)
+
+    # --- weekly summary mode ---
+    if mode == "weekly" or (n.weekday() == 5 and mode == "auto"):
+        write_weekly_summary(state, prices, n)
+        save_json(STATE_FILE, state)
+        if mode == "weekly":
+            return
+
+    # --- pre-market research pass ---
+    if mode == "premarket" or (n.weekday() < 5 and not market_open_now() and n.hour < 9):
+        write_premarket(state, params, prices, n)
+        save_json(STATE_FILE, state)
+        return
 
     if not market_open_now():
-        print("Market closed. Recording prices only, no trades.")
-        prices = {}
-        for s in WATCHLIST:
-            prices[s] = get_price(s)
-            time.sleep(1.1)  # respect 1 req/sec price limit
-        hist = append_history(hist, prices)
-        save_json(HIST_FILE, hist)
+        print("Market closed. Prices recorded, no trades.")
         return
 
     state["run_count"] += 1
     actions = []
 
-    # --- fetch prices (watchlist + held) ---
-    symbols = list(dict.fromkeys(WATCHLIST + list(state["positions"].keys())))
-    prices = {}
-    for s in symbols:
+    # --- also fetch prices for any held names not in the current watchlist ---
+    held_extras = [s for s in state["positions"] if s not in prices]
+    for s in held_extras:
         prices[s] = get_price(s)
         time.sleep(1.1)
-    hist = append_history(hist, prices)
+    if held_extras:
+        hist = append_history(hist, {k: prices[k] for k in held_extras})
+        save_json(HIST_FILE, hist)
 
     # --- log platform position schema once (for debugging/reconciliation) ---
     try:
@@ -369,7 +500,7 @@ def write_report(state, params, prices, actions, n):
         lines.append("_none_")
     lines += ["", "## Actions this run"]
     lines += [f"- {a}" for a in actions] or ["- none"]
-    path.write_text("\n".join(lines) + "\n")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def reflect_and_learn(state, params, today):
@@ -402,8 +533,8 @@ def reflect_and_learn(state, params, today):
         f"- Lesson: {notes[0]}",
         "",
     ]
-    prev = LEARN_FILE.read_text() if LEARN_FILE.exists() else "# Learning journal\n\n"
-    LEARN_FILE.write_text(prev + "\n".join(entry) + "\n")
+    prev = LEARN_FILE.read_text(encoding="utf-8") if LEARN_FILE.exists() else "# Learning journal\n\n"
+    LEARN_FILE.write_text(prev + "\n".join(entry) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

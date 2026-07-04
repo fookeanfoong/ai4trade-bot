@@ -1,16 +1,23 @@
 name: ai4trade-bot
 
-# Times are UTC (GitHub cron is always UTC). Mappings below are for EDT (UTC-4,
-# summer). The bot self-gates on real US market hours, so extra fires are safe.
+# Cron is UTC. Times below map for EDT (UTC-4, summer). The bot self-gates on
+# US market hours so extra fires are safe. In winter (EST) shift +1h if you
+# want exact alignment, or just leave it.
 on:
   schedule:
-    - cron: "35 13 * * 1-5"   # ~09:35 ET  market open
-    - cron: "30 15 * * 1-5"   # ~11:30 ET
-    - cron: "30 17 * * 1-5"   # ~13:30 ET
-    - cron: "50 19 * * 1-5"   # ~15:50 ET  near close -> daily reflection
-  workflow_dispatch: {}        # lets you run it manually from the Actions tab
+    - cron: "30 12 * * 1-5"   # ~08:30 ET  PRE-MARKET research digest
+    - cron: "35 13 * * 1-5"   # ~09:35 ET  open  (seed positions day 1)
+    - cron: "30 15 * * 1-5"   # ~11:30 ET  midday
+    - cron: "30 17 * * 1-5"   # ~13:30 ET  afternoon
+    - cron: "50 19 * * 1-5"   # ~15:50 ET  near close (daily reflection)
+    - cron: "0 20 * * 6"      # 16:00 ET Sat  WEEKLY summary
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "auto | premarket | weekly (manual override)"
+        required: false
+        default: "auto"
 
-# Never let two runs commit at once.
 concurrency:
   group: ai4trade-bot
   cancel-in-progress: false
@@ -28,10 +35,24 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Resolve mode
+        id: mode
+        run: |
+          if [ -n "${{ inputs.mode }}" ] && [ "${{ inputs.mode }}" != "auto" ]; then
+            echo "value=${{ inputs.mode }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.schedule }}" = "30 12 * * 1-5" ]; then
+            echo "value=premarket" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.schedule }}" = "0 20 * * 6" ]; then
+            echo "value=weekly" >> $GITHUB_OUTPUT
+          else
+            echo "value=auto" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run bot
         env:
           AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
           BUDGET_USD: "100"
+          MODE: ${{ steps.mode.outputs.value }}
         run: python bot.py
 
       - name: Commit state + reports
@@ -43,6 +64,8 @@ jobs:
             echo "no changes"
           else
             git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
-            git commit -m "bot run $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "bot ${MODE} $(date -u +%Y-%m-%dT%H:%MZ)"
             git push
           fi
+        env:
+          MODE: ${{ steps.mode.outputs.value }}
