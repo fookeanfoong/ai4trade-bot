@@ -1,0 +1,48 @@
+name: ai4trade-bot
+
+# Times are UTC (GitHub cron is always UTC). Mappings below are for EDT (UTC-4,
+# summer). The bot self-gates on real US market hours, so extra fires are safe.
+on:
+  schedule:
+    - cron: "35 13 * * 1-5"   # ~09:35 ET  market open
+    - cron: "30 15 * * 1-5"   # ~11:30 ET
+    - cron: "30 17 * * 1-5"   # ~13:30 ET
+    - cron: "50 19 * * 1-5"   # ~15:50 ET  near close -> daily reflection
+  workflow_dispatch: {}        # lets you run it manually from the Actions tab
+
+# Never let two runs commit at once.
+concurrency:
+  group: ai4trade-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run bot
+        env:
+          AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
+          BUDGET_USD: "100"
+        run: python bot.py
+
+      - name: Commit state + reports
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "bot run $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
