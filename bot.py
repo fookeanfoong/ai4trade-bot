@@ -26,6 +26,8 @@ from urllib import request as urlrequest
 from urllib import parse as urlparse
 from urllib.error import HTTPError, URLError
 
+import trading_bot_guardrails as gr
+
 # ----------------------------------------------------------------------------
 # Config
 # ----------------------------------------------------------------------------
@@ -499,7 +501,12 @@ def main():
         mom = momentum(hist, sym, params["momentum_lookback"])
         news = news_fresh.get(sym, {})
         reason = None
-        if pnl_pct <= params["stop_loss"]:
+        # Guardrails first: user-tunable SL/TP overrides internal rules when triggered.
+        if gr.should_stop_loss(sym, "buy", pos["entry"], px):
+            reason = f"GR-STOP {pnl_pct:+.2%}"
+        elif gr.should_take_profit(sym, "buy", pos["entry"], px):
+            reason = f"GR-TP {pnl_pct:+.2%}"
+        elif pnl_pct <= params["stop_loss"]:
             reason = f"STOP {pnl_pct:+.2%}"
         elif pnl_pct >= params["take_profit"]:
             reason = f"TAKE-PROFIT {pnl_pct:+.2%}"
@@ -510,6 +517,9 @@ def main():
         elif mom is not None and mom <= params["exit_momentum"]:
             reason = f"TREND-BREAK mom {mom:+.2%} (pnl {pnl_pct:+.2%})"
         if reason:
+            if not gr.validate_order(sym, "sell", pos["qty"], px, BUDGET_USD):
+                actions.append(f"SELL {sym} blocked by guardrails validate_order")
+                continue
             ok, resp = place_trade("sell", sym, px, pos["qty"], f"exit: {reason}")
             if ok:
                 realized = (px - pos["entry"]) * pos["qty"]
@@ -523,8 +533,10 @@ def main():
                     state["consec_losses"] = 0
                 else:
                     state["consec_losses"] += 1
-                if reason.startswith("STOP"):
+                if reason.startswith(("STOP", "GR-STOP")):
                     state["cooldown"][sym] = params["cooldown_runs"]
+                gr.log_trade(sym, "sell", pos["qty"], px, reason)
+                gr.log_position_closed(sym, "buy", pos["qty"], pos["entry"], px, realized, reason)
                 del state["positions"][sym]
                 actions.append(f"SELL {sym} {pos['qty']:.4f}@{px:.2f} ({reason}) => {realized:+.2f}$")
             else:
@@ -538,9 +550,10 @@ def main():
     if slot < SLOT_USD:
         actions.append(f"SIZE-THROTTLE consec_losses={state['consec_losses']} slot=${slot:.2f}")
     for sym in WATCHLIST:
-        if len(state["positions"]) >= MAX_POSITIONS:
-            break
         if sym in state["positions"] or sym in state["cooldown"]:
+            continue
+        if not gr.can_open_new_position(sym, BUDGET_USD, len(state["positions"])):
+            actions.append(f"SKIP {sym}: guardrails can_open_new_position=False")
             continue
         if sym in CRYPTO_GROUP:
             crypto_held = sum(1 for h in state["positions"] if h in CRYPTO_GROUP)
@@ -564,15 +577,26 @@ def main():
             if mom is None or mom < params["entry_momentum"]:
                 continue
             reason_note = f"mom {mom:+.2%}"
-        if deployed_cost(state) + slot > BUDGET_USD + 1e-6:
+        # Guardrails sizing replaces slot-based sizing.
+        stop_price = px * (1 - gr.CONFIG["STOP_LOSS_PCT"])
+        qty = gr.calculate_position_size(BUDGET_USD, px, stop_price)
+        if qty <= 0:
+            actions.append(f"SKIP {sym}: guardrails qty=0")
             continue
-        qty = slot / px
+        notional = qty * px
+        if deployed_cost(state) + notional > BUDGET_USD + 1e-6:
+            actions.append(f"SKIP {sym}: would exceed BUDGET_USD")
+            continue
+        if not gr.validate_order(sym, "buy", qty, px, BUDGET_USD - deployed_cost(state)):
+            actions.append(f"SKIP {sym}: guardrails validate_order=False")
+            continue
         ok, resp = place_trade("buy", sym, px, qty, f"entry: {reason_note}")
         if ok:
             state["positions"][sym] = {
                 "qty": qty, "entry": px, "peak": px, "entry_at": utcnow_iso(),
             }
-            actions.append(f"BUY {sym} {qty:.4f}@{px:.2f} ({reason_note})")
+            gr.log_trade(sym, "buy", qty, px, reason_note)
+            actions.append(f"BUY {sym} {qty:.4f}@{px:.2f} (${notional:.2f}, {reason_note})")
         else:
             actions.append(f"BUY {sym} FAILED: {resp.get('detail')}")
 
