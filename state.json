@@ -2,9 +2,246 @@
   "positions": {},
   "cooldown": {},
   "realized_pnl": 0.0,
-  "run_count": 0,
-  "last_reflection_date": "",
+  "run_count": 1,
+  "last_reflection_date": "2026-07-06",
   "trade_log": [],
   "consec_losses": 0,
-  "position_schema_seen": null
+  "position_schema_seen": null,
+  "news": {
+    "AMD": {
+      "at": "2026-07-06T19:22:49Z",
+      "score": 1,
+      "worst": null,
+      "items": [
+        {
+          "title": "MTUM Owns the Winners, but July Could Turn Into a Momentum Bloodbath",
+          "pubDate": "Mon, 06 Jul 2026 19:10:43 +0000",
+          "link": "https://247wallst.com/personal-finance/2026/07/06/mtum-owns-the-winners-but-july-could-turn-into-a-momentum-bloodbath/?.tsrc=rss"
+        },
+        {
+          "title": "Stock Market Today: Dow Up, AI Stock Tests Entry; TeraWulf Cedes Key Level Despite Anthropic Deal (Live Coverage)",
+          "pubDate": "Mon, 06 Jul 2026 18:53:49 +0000",
+          "link": "https://finance.yahoo.com/m/e4816774-35f0-3682-b37a-8d60e0419f0f/stock-market-today%3A-dow-up%2C.html?.tsrc=rss"
+        },
+        {
+          "title": "VanEck Semiconductor ETF Is Up 64% This Year and Doesn\u2019t Own a Single Share of Apple",
+          "pubDate": "Mon, 06 Jul 2026 18:48:19 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/06/vaneck-semiconductor-etf-is-up-64-this-year-and-doesnt-own-a-single-share-of-apple/?.tsrc=rss"
+        },
+        {
+          "title": "AMD, Nvidia, Micron, Intel, Dell, O\u2019Reilly, Rivian, and More Stocks That Explain Today\u2019s Market",
+          "pubDate": "Mon, 06 Jul 2026 18:38:00 +0000",
+          "link": "https://finance.yahoo.com/m/668796e0-7705-3d22-a7ea-5126ebd9dbc8/amd%2C-nvidia%2C-micron%2C-intel%2C.html?.tsrc=rss"
+        },
+        {
+          "title": "Update: Equity Markets Rise Intraday as Tech Advances",
+          "pubDate": "Mon, 06 Jul 2026 18:10:53 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/equity-markets-rise-intraday-tech-181053180.html?.tsrc=rss"
+        },
+        {
+          "title": "Forget Nvidia: AMD Might Close the Gap Faster Than Anyone on Wall Street Expects",
+          "pubDate": "Mon, 06 Jul 2026 17:55:26 +0000",
+          "link": "https://247wallst.com/investing/2026/07/06/forget-nvidia-amd-might-close-the-gap-faster-than-anyone-on-wall-street-expects/?.tsrc=rss"
+        },
+        {
+          "title": "Goldman Sach Revamps AMD Stock Price Target for 2027",
+          "pubDate": "Mon, 06 Jul 2026 17:46:52 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/goldman-sach-revamps-amd-stock-174652555.html?.tsrc=rss"
+        },
+        {
+          "title": "Nvidia underperforms peers as report sparks rack delay worries",
+          "pubDate": "Mon, 06 Jul 2026 17:46:17 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-underperforms-peers-report-sparks-174617188.html?.tsrc=rss"
+        }
+      ]
+    },
+    "PLTR": {
+      "at": "2026-07-06T19:22:49Z",
+      "score": 0,
+      "worst": null,
+      "items": [
+        {
+          "title": "Palantir Stock Is Down 27% This Year. Time To Sell?",
+          "pubDate": "Mon, 06 Jul 2026 18:05:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/06/palantir-stock-is-down-27-this-year-time-to-sell/?.tsrc=rss"
+        },
+        {
+          "title": "Veteran Bank Revamps Palantir Stock Price Target for 2027",
+          "pubDate": "Mon, 06 Jul 2026 17:49:13 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/veteran-bank-revamps-palantir-stock-174913012.html?.tsrc=rss"
+        },
+        {
+          "title": "This Dividend ETF Is Up 21% and Doesn\u2019t Own a Single Share of Palantir",
+          "pubDate": "Mon, 06 Jul 2026 16:58:22 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/06/this-dividend-etf-is-up-21-and-doesnt-own-a-single-share-of-palantir/?.tsrc=rss"
+        },
+        {
+          "title": "Transformation World 2026: The Best Data for Business AI",
+          "pubDate": "Mon, 06 Jul 2026 13:00:00 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/transformation-world-2026-best-data-130000717.html?.tsrc=rss"
+        },
+        {
+          "title": "Trump vs. Pelosi: Who Made More Money in the Stock Market Last Year?",
+          "pubDate": "Mon, 06 Jul 2026 12:09:29 +0000",
+          "link": "https://247wallst.com/investing/2026/07/06/trump-vs-pelosi-who-made-more-money-in-the-stock-market-last-year/?.tsrc=rss"
+        },
+        {
+          "title": "Palantir (PLTR) Faces Fresh UK Pressure Over NHS Contract Continuity",
+          "pubDate": "Mon, 06 Jul 2026 10:07:35 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/palantir-pltr-faces-fresh-uk-100735948.html?.tsrc=rss"
+        },
+        {
+          "title": "President Trump Sells Palantir Stock and Buys an AI Stock Up 2,100% Since 2023",
+          "pubDate": "Mon, 06 Jul 2026 08:32:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/06/president-trump-sell-palantir-buy-ai-stock-up-2100/?.tsrc=rss"
+        },
+        {
+          "title": "OpenAI, Anthropic Speed Toward IPOs Amid Growing Scrutiny of Token Payments",
+          "pubDate": "Mon, 06 Jul 2026 04:01:00 +0000",
+          "link": "https://www.thedailyupside.com/technology/artificial-intelligence/openai-and-anthropic-speed-towards-ipos-as-business-models-come-under-scrutiny/?.tsrc=rss"
+        }
+      ]
+    },
+    "MSTR": {
+      "at": "2026-07-06T19:22:49Z",
+      "score": 0,
+      "worst": null,
+      "items": [
+        {
+          "title": "Strategy Tests Bitcoin Rally With $216 Million Sale",
+          "pubDate": "Mon, 06 Jul 2026 18:20:23 +0000",
+          "link": "https://finance.yahoo.com/m/f91c4a7e-9eb4-396f-82de-93b124e17701/strategy-tests-bitcoin-rally.html?.tsrc=rss"
+        },
+        {
+          "title": "Strategy\u2019s Bitcoin Sales\u2014and Its Stock\u2014Have Picked Up Speed",
+          "pubDate": "Mon, 06 Jul 2026 17:30:33 +0000",
+          "link": "https://www.investopedia.com/strategy-s-bitcoin-sales-and-its-stock-have-picked-up-speed-mstr-12012479?.tsrc=rss"
+        },
+        {
+          "title": "Michael Saylor predicts Bitcoin's next decade",
+          "pubDate": "Mon, 06 Jul 2026 17:30:00 +0000",
+          "link": "https://www.thestreet.com/crypto/markets/michael-saylor-predicts-bitcoins-next-decade?.tsrc=rss"
+        },
+        {
+          "title": "Michael Saylor's Strategy trims Bitcoin holdings",
+          "pubDate": "Mon, 06 Jul 2026 17:16:38 +0000",
+          "link": "https://finance.yahoo.com/markets/crypto/articles/michael-saylors-strategy-trims-bitcoin-171638797.html?.tsrc=rss"
+        },
+        {
+          "title": "Strategy sells $216M in bitcoin to fund its shareholder dividends",
+          "pubDate": "Mon, 06 Jul 2026 16:32:30 +0000",
+          "link": "https://finance.yahoo.com/video/strategy-sells-216m-in-bitcoin-to-fund-its-shareholder-dividends-163230774.html?.tsrc=rss"
+        },
+        {
+          "title": "Why did Strategy sell $216 million in bitcoin?",
+          "pubDate": "Mon, 06 Jul 2026 16:30:00 +0000",
+          "link": "https://finance.yahoo.com/video/why-did-strategy-sell-216-163000857.html?.tsrc=rss"
+        },
+        {
+          "title": "Strategy sheds $216 million in Bitcoin in crypto hoarder\u2019s largest sale ever",
+          "pubDate": "Mon, 06 Jul 2026 16:14:25 +0000",
+          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-sheds-216-million-bitcoin-161425746.html?.tsrc=rss"
+        },
+        {
+          "title": "This Spread In Options Trading Bets On Further Weakness In Bitcoin Amid Downturn",
+          "pubDate": "Mon, 06 Jul 2026 16:14:01 +0000",
+          "link": "https://finance.yahoo.com/m/799d5c26-6c76-3354-b10c-8682b4cd3ba4/this-spread-in-options.html?.tsrc=rss"
+        }
+      ]
+    },
+    "AVGO": {
+      "at": "2026-07-06T19:22:50Z",
+      "score": 1,
+      "worst": null,
+      "items": [
+        {
+          "title": "MTUM Owns the Winners, but July Could Turn Into a Momentum Bloodbath",
+          "pubDate": "Mon, 06 Jul 2026 19:10:43 +0000",
+          "link": "https://247wallst.com/personal-finance/2026/07/06/mtum-owns-the-winners-but-july-could-turn-into-a-momentum-bloodbath/?.tsrc=rss"
+        },
+        {
+          "title": "The Second-Biggest Stock Sale in History Hits the Nasdaq Friday, and Chip Stocks Are Ripping",
+          "pubDate": "Mon, 06 Jul 2026 18:50:36 +0000",
+          "link": "https://247wallst.com/investing/2026/07/06/the-second-biggest-stock-sale-in-history-hits-the-nasdaq-friday-and-chip-stocks-are-ripping/?.tsrc=rss"
+        },
+        {
+          "title": "VanEck Semiconductor ETF Is Up 64% This Year and Doesn\u2019t Own a Single Share of Apple",
+          "pubDate": "Mon, 06 Jul 2026 18:48:19 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/06/vaneck-semiconductor-etf-is-up-64-this-year-and-doesnt-own-a-single-share-of-apple/?.tsrc=rss"
+        },
+        {
+          "title": "Update: Equity Markets Rise Intraday as Tech Advances",
+          "pubDate": "Mon, 06 Jul 2026 18:10:53 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/equity-markets-rise-intraday-tech-181053180.html?.tsrc=rss"
+        },
+        {
+          "title": "Zuckerberg\u2019s Insane AI Spending Could Become a Windfall, If Meta Copies SpaceX\u2019s Playbook",
+          "pubDate": "Mon, 06 Jul 2026 18:05:27 +0000",
+          "link": "https://247wallst.com/investing/2026/07/06/zuckerbergs-insane-ai-spending-could-become-a-windfall-if-meta-copies-spacexs-playbook/?.tsrc=rss"
+        },
+        {
+          "title": "Nvidia underperforms peers as report sparks rack delay worries",
+          "pubDate": "Mon, 06 Jul 2026 17:46:17 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-underperforms-peers-report-sparks-174617188.html?.tsrc=rss"
+        },
+        {
+          "title": "The AI Trade Is Off to a Hot Start This Week as Chip, Memory Stocks Surge",
+          "pubDate": "Mon, 06 Jul 2026 17:23:03 +0000",
+          "link": "https://www.investopedia.com/ai-trade-is-off-to-hot-start-this-week-as-chip-memory-stocks-surge-intc-amd-nvda-mu-12012383?.tsrc=rss"
+        },
+        {
+          "title": "Broadcom Drops 9% in a Month: Buy, Sell or Hold the AVGO Stock?",
+          "pubDate": "Mon, 06 Jul 2026 16:56:00 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-drops-9-month-buy-165600117.html?.tsrc=rss"
+        }
+      ]
+    },
+    "COIN": {
+      "at": "2026-07-06T19:22:50Z",
+      "score": -1,
+      "worst": "Binance Halts Crypto Trading in France and Parts of Europe After Missing MiCA License",
+      "items": [
+        {
+          "title": "Coinbase's AI System Hallucinated a World Cup Result Before the Match Even Started",
+          "pubDate": "Mon, 06 Jul 2026 18:49:39 +0000",
+          "link": "https://decrypt.co/372824/coinbase-ai-hallucinated-world-cup-result-before-match?.tsrc=rss"
+        },
+        {
+          "title": "Circle Internet Group Has a Brand-New Stablecoin Rival. What Does That Mean For Circle Stock?",
+          "pubDate": "Mon, 06 Jul 2026 16:46:56 +0000",
+          "link": "https://www.fool.com/investing/2026/07/06/circle-internet-group-has-a-brand-new-stablecoin-r/?.tsrc=rss"
+        },
+        {
+          "title": "Strategy Sells Bitcoin Fresh Off Announcing New Capital Playbook",
+          "pubDate": "Mon, 06 Jul 2026 13:51:00 +0000",
+          "link": "https://finance.yahoo.com/m/cd3e5f06-5c6d-3133-8058-48a37d29657c/strategy-sells-bitcoin-fresh.html?.tsrc=rss"
+        },
+        {
+          "title": "Binance Halts Crypto Trading in France and Parts of Europe After Missing MiCA License",
+          "pubDate": "Mon, 06 Jul 2026 11:42:15 +0000",
+          "link": "https://www.ccn.com/news/crypto/binance-halts-crypto-trading-france-europe-mica-license/?.tsrc=rss"
+        },
+        {
+          "title": "Standing Out From the Single-Stock ETF Crowd",
+          "pubDate": "Mon, 06 Jul 2026 04:01:00 +0000",
+          "link": "https://www.thedailyupside.com/etf/investing-strategies-etf/standing-out-from-the-single-stock-etf-crowd/?.tsrc=rss"
+        },
+        {
+          "title": "Coinbase Under Fire Over Alleged \u2018AI Hallucination\u2019 of World Cup Result Before Match Begins",
+          "pubDate": "Sun, 05 Jul 2026 20:28:37 +0000",
+          "link": "https://beincrypto.com/coinbase-ai-fake-world-cup-result/?.tsrc=rss"
+        },
+        {
+          "title": "Cathie Wood Sees Value in This Beaten-Down Growth Stock. I Do Too.",
+          "pubDate": "Sun, 05 Jul 2026 19:30:02 +0000",
+          "link": "https://www.barchart.com/story/news/3133986/cathie-wood-sees-value-in-this-beaten-down-growth-stock-i-do-too?.tsrc=rss"
+        },
+        {
+          "title": "Coinbase Bitcoin Premium Stuck In Negative Territory For 48 Days, Longest Streak On Record",
+          "pubDate": "Sun, 05 Jul 2026 16:12:07 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/coinbase-bitcoin-premium-negative-record-streak/cZmL9HzR7kL?.tsrc=rss"
+        }
+      ]
+    }
+  }
 }

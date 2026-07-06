@@ -4,5 +4,9 @@
   "stop_loss": -0.05,
   "take_profit": 0.06,
   "momentum_lookback": 2,
-  "cooldown_runs": 3
+  "cooldown_runs": 3,
+  "trailing_arm_gain": 0.03,
+  "trailing_giveback": 0.015,
+  "streak_throttle": 3,
+  "no_new_entries_min": 30
 }
