@@ -27,14 +27,27 @@
   },
   "cooldown": {},
   "realized_pnl": 0.0,
-  "run_count": 1,
+  "run_count": 2,
   "last_reflection_date": "",
   "trade_log": [],
   "consec_losses": 0,
-  "position_schema_seen": null,
+  "position_schema_seen": [
+    "id",
+    "symbol",
+    "market",
+    "token_id",
+    "outcome",
+    "side",
+    "quantity",
+    "entry_price",
+    "current_price",
+    "pnl",
+    "source",
+    "opened_at"
+  ],
   "news": {
     "AMD": {
-      "at": "2026-07-07T13:50:12Z",
+      "at": "2026-07-07T13:50:46Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -81,7 +94,7 @@
       ]
     },
     "PLTR": {
-      "at": "2026-07-07T13:50:12Z",
+      "at": "2026-07-07T13:50:47Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -128,7 +141,7 @@
       ]
     },
     "MSTR": {
-      "at": "2026-07-07T13:50:13Z",
+      "at": "2026-07-07T13:50:47Z",
       "score": 0,
       "worst": null,
       "items": [
@@ -175,7 +188,7 @@
       ]
     },
     "AVGO": {
-      "at": "2026-07-07T13:50:13Z",
+      "at": "2026-07-07T13:50:47Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -222,7 +235,7 @@
       ]
     },
     "COIN": {
-      "at": "2026-07-07T13:50:14Z",
+      "at": "2026-07-07T13:50:48Z",
       "score": 2,
       "worst": null,
       "items": [
