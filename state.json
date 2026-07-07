@@ -1,206 +1,256 @@
 {
-  "positions": {},
+  "positions": {
+    "AMD": {
+      "qty": 0.04658790205359472,
+      "entry": 536.62,
+      "peak": 536.62,
+      "entry_at": "2026-07-07T13:50:16Z"
+    },
+    "PLTR": {
+      "qty": 0.19433324264448676,
+      "entry": 128.645,
+      "peak": 128.645,
+      "entry_at": "2026-07-07T13:50:18Z"
+    },
+    "MSTR": {
+      "qty": 0.22271615716633777,
+      "entry": 112.2505,
+      "peak": 112.2505,
+      "entry_at": "2026-07-07T13:50:19Z"
+    },
+    "AVGO": {
+      "qty": 0.060782883539995135,
+      "entry": 411.3,
+      "peak": 411.3,
+      "entry_at": "2026-07-07T13:50:20Z"
+    }
+  },
   "cooldown": {},
   "realized_pnl": 0.0,
-  "run_count": 0,
+  "run_count": 1,
   "last_reflection_date": "",
   "trade_log": [],
   "consec_losses": 0,
   "position_schema_seen": null,
   "news": {
     "AMD": {
-      "at": "2026-07-07T01:10:38Z",
-      "score": 0,
-      "worst": null,
-      "items": [
-        {
-          "title": "Will AMD Be a $1 Trillion Company Before 2026 Is Over?",
-          "pubDate": "Mon, 06 Jul 2026 22:45:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/06/will-amd-be-a-1-trillion-company-before-2026-is-ov/?.tsrc=rss"
-        },
-        {
-          "title": "Update: US Equity Indexes Advance as Communication Services, Technology Top Sector Charts While Crude Oil Trades Steady",
-          "pubDate": "Mon, 06 Jul 2026 21:18:09 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-advance-communication-211809818.html?.tsrc=rss"
-        },
-        {
-          "title": "Update: Dow Crosses 53,000, Nasdaq Rebounds as Tech Advances",
-          "pubDate": "Mon, 06 Jul 2026 20:57:23 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/dow-crosses-53-000-nasdaq-205723642.html?.tsrc=rss"
-        },
-        {
-          "title": "Stock Market Today: Dow Up, AI Stock Tests Entry; SpaceX Tumbles As Elon Musk Makes This Boast (Live Coverage)",
-          "pubDate": "Mon, 06 Jul 2026 20:43:48 +0000",
-          "link": "https://finance.yahoo.com/m/e4816774-35f0-3682-b37a-8d60e0419f0f/stock-market-today%3A-dow-up%2C.html?.tsrc=rss"
-        },
-        {
-          "title": "AMD, TER Stocks Jump After Goldman Sachs Lifts Price Targets",
-          "pubDate": "Mon, 06 Jul 2026 20:39:25 +0000",
-          "link": "https://stocktwits.com/news-articles/markets/equity/amd-ter-stocks-jump-after-goldman-sachs-lifts-price-targets/cZm18P6R7lx?.tsrc=rss"
-        },
-        {
-          "title": "Nvidia\u2019s Bargain Price Already Reflects Lost Market Share, Says Goldman",
-          "pubDate": "Mon, 06 Jul 2026 20:37:00 +0000",
-          "link": "https://finance.yahoo.com/m/d618f7c3-b6e9-309b-b9f1-9420d09e3072/nvidia%E2%80%99s-bargain-price.html?.tsrc=rss"
-        },
-        {
-          "title": "Credo Leads Rebound For Semiconductor Stocks",
-          "pubDate": "Mon, 06 Jul 2026 20:31:47 +0000",
-          "link": "https://finance.yahoo.com/m/749bea74-5beb-3d5d-b634-5b3e5f576430/credo-leads-rebound-for.html?.tsrc=rss"
-        },
-        {
-          "title": "AMD, Nvidia, Micron, Intel, Dell, O\u2019Reilly, Rivian, and More Stocks That Explain Today\u2019s Market",
-          "pubDate": "Mon, 06 Jul 2026 20:28:00 +0000",
-          "link": "https://finance.yahoo.com/m/668796e0-7705-3d22-a7ea-5126ebd9dbc8/amd%2C-nvidia%2C-micron%2C-intel%2C.html?.tsrc=rss"
-        }
-      ]
-    },
-    "PLTR": {
-      "at": "2026-07-07T01:10:39Z",
-      "score": 0,
-      "worst": null,
-      "items": [
-        {
-          "title": "ZETA Stock Jumps Over 5% \u2014 CEO Alerts Shift From Marketing To AI Infrastructure",
-          "pubDate": "Mon, 06 Jul 2026 23:46:31 +0000",
-          "link": "https://stocktwits.com/news-articles/markets/equity/zeta-stock-jumps-over-5-ceo-alerts-shift-from-marketing-to-ai-infrastructure/cZm1tPJR7mb?.tsrc=rss"
-        },
-        {
-          "title": "Amazon Follows Palantir's Playbook: How Forward Deployed Engineers Target the Enterprise AI Gold Rush",
-          "pubDate": "Mon, 06 Jul 2026 23:20:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/06/amazon-follows-palantirs-playbook-how-forward-dep/?.tsrc=rss"
-        },
-        {
-          "title": "\u2018Orchestration\u2019 Is the New AI Buzzword, and Microsoft Can Benefit",
-          "pubDate": "Mon, 06 Jul 2026 20:58:00 +0000",
-          "link": "https://finance.yahoo.com/m/210d1138-e30c-3b2f-bd5d-852e64c2e764/%E2%80%98orchestration%E2%80%99-is-the-new-ai.html?.tsrc=rss"
-        },
-        {
-          "title": "Top Stock Reports for Eli Lilly, HSBC &amp; Palantir",
-          "pubDate": "Mon, 06 Jul 2026 20:26:00 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/top-stock-reports-eli-lilly-202600616.html?.tsrc=rss"
-        },
-        {
-          "title": "Was Michael Burry Right About Palantir? PLTR Is Still Down Over the Past Year",
-          "pubDate": "Mon, 06 Jul 2026 19:55:46 +0000",
-          "link": "https://247wallst.com/investing/2026/07/06/was-michael-burry-right-about-palantir-pltr-is-still-down-over-the-past-year/?.tsrc=rss"
-        },
-        {
-          "title": "Nvidia vs. Palantir: Which Artificial Intelligence (AI) Stock Is the Better Buy Right Now?",
-          "pubDate": "Mon, 06 Jul 2026 19:50:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/06/nvidia-vs-palantir-which-ai-stock-better-buy/?.tsrc=rss"
-        },
-        {
-          "title": "Palantir Stock Is Down 27% This Year. Time To Sell?",
-          "pubDate": "Mon, 06 Jul 2026 18:05:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/06/palantir-stock-is-down-27-this-year-time-to-sell/?.tsrc=rss"
-        },
-        {
-          "title": "Veteran Bank Revamps Palantir Stock Price Target for 2027",
-          "pubDate": "Mon, 06 Jul 2026 17:49:13 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/veteran-bank-revamps-palantir-stock-174913012.html?.tsrc=rss"
-        }
-      ]
-    },
-    "MSTR": {
-      "at": "2026-07-07T01:10:39Z",
+      "at": "2026-07-07T13:50:12Z",
       "score": 1,
       "worst": null,
       "items": [
         {
-          "title": "Bitcoin miners surge as Strategy makes another sale",
-          "pubDate": "Mon, 06 Jul 2026 20:57:45 +0000",
-          "link": "https://www.thestreet.com/crypto/markets/bitcoin-miners-surge-as-strategy-makes-another-sale?.tsrc=rss"
+          "title": "AMD Stock Rises as Self-Driving Startup Cuts Nvidia Dependence",
+          "pubDate": "Tue, 07 Jul 2026 13:43:11 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/amd-stock-rises-self-driving-134311222.html?.tsrc=rss"
         },
         {
-          "title": "Trump Comments Send Bitcoin Sharply Higher",
-          "pubDate": "Mon, 06 Jul 2026 19:23:00 +0000",
-          "link": "https://www.cryptoprowl.com/releases/trump-comments-send-bitcoin-sharply-higher-6074?.tsrc=rss"
+          "title": "AMD Surges on Fresh Tailwinds",
+          "pubDate": "Tue, 07 Jul 2026 13:37:29 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/amd-surges-fresh-tailwinds-133729329.html?.tsrc=rss"
         },
         {
-          "title": "Is the Saylor playbook cracking? Bitcoin's biggest buyer just became a seller",
-          "pubDate": "Mon, 06 Jul 2026 18:45:06 +0000",
-          "link": "http://videos.coindesk.com/previews/uqWWNQz6?.tsrc=rss"
+          "title": "Nvidia Lags Chip Rally on Rack Delay Worries",
+          "pubDate": "Tue, 07 Jul 2026 13:12:04 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-lags-chip-rally-rack-131204861.html?.tsrc=rss"
         },
         {
-          "title": "Strategy Tests Bitcoin Rally With $216 Million Sale",
-          "pubDate": "Mon, 06 Jul 2026 18:20:23 +0000",
-          "link": "https://finance.yahoo.com/m/f91c4a7e-9eb4-396f-82de-93b124e17701/strategy-tests-bitcoin-rally.html?.tsrc=rss"
+          "title": "Update: Tech Stock Decline, Oil Price Increase Dampen US Equity Futures Pre-Bell",
+          "pubDate": "Tue, 07 Jul 2026 12:54:24 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/tech-stock-decline-oil-price-125424299.html?.tsrc=rss"
         },
         {
-          "title": "Strategy\u2019s Bitcoin Sales\u2014and Its Stock\u2014Have Picked Up Speed",
-          "pubDate": "Mon, 06 Jul 2026 17:30:33 +0000",
-          "link": "https://www.investopedia.com/strategy-s-bitcoin-sales-and-its-stock-have-picked-up-speed-mstr-12012479?.tsrc=rss"
+          "title": "Does ARKW's History Reward Buying This Dip?",
+          "pubDate": "Tue, 07 Jul 2026 12:32:52 +0000",
+          "link": "https://www.trefis.com/articles/605940/does-arkws-history-reward-buying-this-dip/2026-07-07?.tsrc=rss"
         },
         {
-          "title": "Michael Saylor predicts Bitcoin's next decade",
-          "pubDate": "Mon, 06 Jul 2026 17:30:00 +0000",
-          "link": "https://www.thestreet.com/crypto/markets/michael-saylor-predicts-bitcoins-next-decade?.tsrc=rss"
+          "title": "What You Actually Pay To Join The AMD Run",
+          "pubDate": "Tue, 07 Jul 2026 12:26:58 +0000",
+          "link": "https://www.trefis.com/articles/605913/what-you-actually-pay-to-join-the-amd-run/2026-07-07?.tsrc=rss"
         },
         {
-          "title": "Michael Saylor's Strategy trims Bitcoin holdings",
-          "pubDate": "Mon, 06 Jul 2026 17:16:38 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/michael-saylors-strategy-trims-bitcoin-171638797.html?.tsrc=rss"
+          "title": "Equities Mostly Down Pre-Bell Amid Broad Chip Stock Sell-Off",
+          "pubDate": "Tue, 07 Jul 2026 12:03:21 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-down-pre-bell-120321035.html?.tsrc=rss"
         },
         {
-          "title": "Strategy sells $216M in bitcoin to fund its shareholder dividends",
-          "pubDate": "Mon, 06 Jul 2026 16:32:30 +0000",
-          "link": "https://finance.yahoo.com/video/strategy-sells-216m-in-bitcoin-to-fund-its-shareholder-dividends-163230774.html?.tsrc=rss"
+          "title": "Intel, Corning, Super Micro, and More Stocks That Explain Today\u2019s Market",
+          "pubDate": "Tue, 07 Jul 2026 12:02:00 +0000",
+          "link": "https://finance.yahoo.com/m/a28ab6d4-84b9-3521-a2ea-41d28b89c2ff/intel%2C-corning%2C-super-micro%2C.html?.tsrc=rss"
         }
       ]
     },
-    "AVGO": {
-      "at": "2026-07-07T01:10:39Z",
+    "PLTR": {
+      "at": "2026-07-07T13:50:12Z",
+      "score": 1,
+      "worst": null,
+      "items": [
+        {
+          "title": "Here's What Wall Street Must See Before Palantir Stock Can Rally Again",
+          "pubDate": "Tue, 07 Jul 2026 13:41:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/07/heres-what-wall-street-must-see-before-palantir-st/?.tsrc=rss"
+        },
+        {
+          "title": "This is One of The Best AI Stocks to Own In 2026",
+          "pubDate": "Tue, 07 Jul 2026 13:24:44 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/this-is-one-of-the-best-ai-stocks-to-own-in-2026/?.tsrc=rss"
+        },
+        {
+          "title": "Palantir Looks Beyond the Pentagon With a New Commercial Win in Mexico",
+          "pubDate": "Tue, 07 Jul 2026 12:51:00 +0000",
+          "link": "https://finance.yahoo.com/m/0fe6d88c-db90-32d7-9286-77fd38a8eca8/palantir-looks-beyond-the.html?.tsrc=rss"
+        },
+        {
+          "title": "Is Palantir Stock's 'N-of-One' Growth Story Worth the Steep Price of Admission?",
+          "pubDate": "Tue, 07 Jul 2026 12:32:53 +0000",
+          "link": "https://www.trefis.com/articles/605910/is-palantir-stocks-n-of-one-growth-story-worth-the-steep-price-of-admission/2026-07-07?.tsrc=rss"
+        },
+        {
+          "title": "Palantir's AI Position Wins New Support From Analysts",
+          "pubDate": "Tue, 07 Jul 2026 11:32:37 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/palantirs-ai-position-wins-support-113237950.html?.tsrc=rss"
+        },
+        {
+          "title": "Why Palantir Stock Plummeted Last Month But Is Soaring in July",
+          "pubDate": "Tue, 07 Jul 2026 11:20:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/07/why-palantir-stock-plummeted-last-month-but-is-soa/?.tsrc=rss"
+        },
+        {
+          "title": "After Plummeting 27% in 2026, Is Palantir Stock Finally a Buy? 3 Words From Palantir CEO Alex Karp May Reveal the Answer",
+          "pubDate": "Tue, 07 Jul 2026 11:05:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/07/after-plummet-2026-palantir-stock-alex-karp/?.tsrc=rss"
+        },
+        {
+          "title": "Palantir Expands Its Presence in Mexico and Strengthens Its AI Offering in the Insurance Sector with GNP Seguros",
+          "pubDate": "Tue, 07 Jul 2026 10:59:00 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-expands-presence-mexico-strengthens-105900464.html?.tsrc=rss"
+        }
+      ]
+    },
+    "MSTR": {
+      "at": "2026-07-07T13:50:13Z",
       "score": 0,
       "worst": null,
       "items": [
         {
-          "title": "Why Intel (INTC) Stock Is Up Today",
-          "pubDate": "Mon, 06 Jul 2026 23:08:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/why-intel-intc-stock-today-230801983.html?.tsrc=rss"
+          "title": "Strategy, Coinbase, Circle Stocks Rally After Bitcoin Breaks Above $63,000",
+          "pubDate": "Tue, 07 Jul 2026 13:39:54 +0000",
+          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-coinbase-circle-stocks-rally-133954327.html?.tsrc=rss"
         },
         {
-          "title": "Wall Street closes higher as Broadcom rallies",
-          "pubDate": "Mon, 06 Jul 2026 22:54:11 +0000",
-          "link": "https://finance.yahoo.com/video/wall-street-closes-higher-broadcom-225411916.html?.tsrc=rss"
+          "title": "Morning Minute: Strategy Turns Net Seller",
+          "pubDate": "Tue, 07 Jul 2026 12:27:58 +0000",
+          "link": "https://decrypt.co/372909/morning-minute-strategy-turns-net-seller?.tsrc=rss"
         },
         {
-          "title": "Lattice Semiconductor (LSCC) Stock Trades Up, Here Is Why",
-          "pubDate": "Mon, 06 Jul 2026 22:52:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-lscc-stock-trades-225201400.html?.tsrc=rss"
+          "title": "Here Are Tuesday\u2019s Best Wall Street Analyst Research Calls: Adobe, American Airlines, Broadcom, First Solar, Meta Platforms, Shopify, Space-X, Ventas, Waste Managment, and More",
+          "pubDate": "Tue, 07 Jul 2026 12:00:18 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/here-are-tuesdays-best-wall-street-analyst-research-calls-adobe-american-airlines-broadcom-first-solar-meta-platforms-shopify-space-x-ventas-waste-managment-and-more/?.tsrc=rss"
         },
         {
-          "title": "Marvell Technology and NXP Semiconductors Shares Are Soaring, What You Need To Know",
-          "pubDate": "Mon, 06 Jul 2026 22:44:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/marvell-technology-nxp-semiconductors-shares-224401386.html?.tsrc=rss"
+          "title": "Traders Sue Polymarket Over 'No' Ruling on Strategy Bitcoin Sale",
+          "pubDate": "Tue, 07 Jul 2026 11:34:51 +0000",
+          "link": "https://decrypt.co/372899/traders-sue-polymarket-over-no-ruling-on-strategy-bitcoin-sale?.tsrc=rss"
         },
         {
-          "title": "Himax, Western Digital, and onsemi Shares Skyrocket, What You Need To Know",
-          "pubDate": "Mon, 06 Jul 2026 22:36:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/himax-western-digital-onsemi-shares-223601224.html?.tsrc=rss"
+          "title": "Bitcoin Bear Sees BTC Sliding Toward $10K, Says Strategy\u2019s Saylor Must Be \u2018Stopped Out\u2019",
+          "pubDate": "Tue, 07 Jul 2026 11:32:53 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/equity/btc-bear-market-10k-saylor-stopped-out/cZmlK8mR7mt?.tsrc=rss"
         },
         {
-          "title": "Texas Instruments and Impinj Stocks Trade Up, What You Need To Know",
-          "pubDate": "Mon, 06 Jul 2026 22:28:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/texas-instruments-impinj-stocks-trade-222801652.html?.tsrc=rss"
+          "title": "Is Strategy (MSTR) A Bargain Following Its CFO Accounting Role Change?",
+          "pubDate": "Tue, 07 Jul 2026 10:18:54 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/strategy-mstr-bargain-following-cfo-101854223.html?.tsrc=rss"
         },
         {
-          "title": "Entegris and Analog Devices Shares Skyrocket, What You Need To Know",
-          "pubDate": "Mon, 06 Jul 2026 22:20:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/entegris-analog-devices-shares-skyrocket-222001249.html?.tsrc=rss"
+          "title": "Strategy $216M Bitcoin Sale May Boost Its Price, Says Grayscale \u2014 How High Could It Go?",
+          "pubDate": "Tue, 07 Jul 2026 10:17:15 +0000",
+          "link": "https://www.ccn.com/news/crypto/strategy-bitcoin-sale-boost-price-says-grayscale-how-high/?.tsrc=rss"
         },
         {
-          "title": "Sensata Technologies and IPG Photonics Stocks Trade Up, What You Need To Know",
-          "pubDate": "Mon, 06 Jul 2026 22:12:01 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/sensata-technologies-ipg-photonics-stocks-221201263.html?.tsrc=rss"
+          "title": "Is Strategy Still a Bitcoin Proxy?",
+          "pubDate": "Tue, 07 Jul 2026 07:26:38 +0000",
+          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-still-bitcoin-proxy-072638700.html?.tsrc=rss"
+        }
+      ]
+    },
+    "AVGO": {
+      "at": "2026-07-07T13:50:13Z",
+      "score": 1,
+      "worst": null,
+      "items": [
+        {
+          "title": "SpaceX initiated, Cloudflare upgraded: Wall Street's top analyst calls",
+          "pubDate": "Tue, 07 Jul 2026 13:36:36 +0000",
+          "link": "https://finance.yahoo.com/news/cloudflare-upgraded-solaredge-downgraded-wall-134728028.html?.tsrc=rss"
+        },
+        {
+          "title": "Nvidia Lags Chip Rally on Rack Delay Worries",
+          "pubDate": "Tue, 07 Jul 2026 13:12:04 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-lags-chip-rally-rack-131204861.html?.tsrc=rss"
+        },
+        {
+          "title": "Update: Tech Stock Decline, Oil Price Increase Dampen US Equity Futures Pre-Bell",
+          "pubDate": "Tue, 07 Jul 2026 12:54:24 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/tech-stock-decline-oil-price-125424299.html?.tsrc=rss"
+        },
+        {
+          "title": "What You Actually Pay To Join The AMD Run",
+          "pubDate": "Tue, 07 Jul 2026 12:26:58 +0000",
+          "link": "https://www.trefis.com/articles/605913/what-you-actually-pay-to-join-the-amd-run/2026-07-07?.tsrc=rss"
+        },
+        {
+          "title": "SpaceX Joins the Nasdaq-100. What the Fast-Track Addition Means for the Stock.",
+          "pubDate": "Tue, 07 Jul 2026 12:15:00 +0000",
+          "link": "https://finance.yahoo.com/m/3903bd54-50b0-3770-8309-92109d15f7f9/spacex-joins-the-nasdaq-100..html?.tsrc=rss"
+        },
+        {
+          "title": "Equities Mostly Down Pre-Bell Amid Broad Chip Stock Sell-Off",
+          "pubDate": "Tue, 07 Jul 2026 12:03:21 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-down-pre-bell-120321035.html?.tsrc=rss"
+        },
+        {
+          "title": "Here Are Tuesday\u2019s Best Wall Street Analyst Research Calls: Adobe, American Airlines, Broadcom, First Solar, Meta Platforms, Shopify, Space-X, Ventas, Waste Managment, and More",
+          "pubDate": "Tue, 07 Jul 2026 12:00:18 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/here-are-tuesdays-best-wall-street-analyst-research-calls-adobe-american-airlines-broadcom-first-solar-meta-platforms-shopify-space-x-ventas-waste-managment-and-more/?.tsrc=rss"
+        },
+        {
+          "title": "What A Real Crash Looks Like For Marvell Stock",
+          "pubDate": "Tue, 07 Jul 2026 11:45:43 +0000",
+          "link": "https://www.trefis.com/articles/605898/what-a-real-crash-looks-like-for-marvell-stock/2026-07-07?.tsrc=rss"
         }
       ]
     },
     "COIN": {
-      "at": "2026-07-07T01:10:40Z",
-      "score": 0,
-      "worst": "Binance Halts Crypto Trading in France and Parts of Europe After Missing MiCA License",
+      "at": "2026-07-07T13:50:14Z",
+      "score": 2,
+      "worst": null,
       "items": [
+        {
+          "title": "Strategy, Coinbase, Circle Stocks Rally After Bitcoin Breaks Above $63,000",
+          "pubDate": "Tue, 07 Jul 2026 13:39:54 +0000",
+          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-coinbase-circle-stocks-rally-133954327.html?.tsrc=rss"
+        },
+        {
+          "title": "Why Coinbase's co-founder wants you to take a financial literacy test",
+          "pubDate": "Tue, 07 Jul 2026 13:36:45 +0000",
+          "link": "https://finance.yahoo.com/markets/article/why-coinbases-co-founder-wants-you-to-take-a-financial-literacy-test-133645582.html?.tsrc=rss"
+        },
+        {
+          "title": "Analysts split on 2025's most subscribed IPO stock",
+          "pubDate": "Tue, 07 Jul 2026 13:30:00 +0000",
+          "link": "https://www.thestreet.com/crypto/markets/analysts-split-on-2025s-most-subscribed-ipo-stock?.tsrc=rss"
+        },
+        {
+          "title": "Coinbase Gets U.K. Approval To Offer Stock Trading",
+          "pubDate": "Tue, 07 Jul 2026 13:10:00 +0000",
+          "link": "https://www.cryptoprowl.com/releases/coinbase-gets-uk-approval-to-offer-stock-trading-6081?.tsrc=rss"
+        },
+        {
+          "title": "Vinod Khosla Says 'We Need to Tilt the Seesaw Toward Labor,' Urges Higher Capital Gains Taxes",
+          "pubDate": "Tue, 07 Jul 2026 00:31:07 +0000",
+          "link": "https://finance.yahoo.com/economy/policy/articles/vinod-khosla-says-tilt-seesaw-003107173.html?.tsrc=rss"
+        },
         {
           "title": "Coinbase Global, Inc. (COIN) Beats Stock Market Upswing: What Investors Need to Know",
           "pubDate": "Mon, 06 Jul 2026 21:45:04 +0000",
@@ -215,31 +265,6 @@
           "title": "Coinbase's AI System Hallucinated a World Cup Result Before the Match Even Started",
           "pubDate": "Mon, 06 Jul 2026 18:49:39 +0000",
           "link": "https://decrypt.co/372824/coinbase-ai-hallucinated-world-cup-result-before-match?.tsrc=rss"
-        },
-        {
-          "title": "Circle Internet Group Has a Brand-New Stablecoin Rival. What Does That Mean For Circle Stock?",
-          "pubDate": "Mon, 06 Jul 2026 16:46:56 +0000",
-          "link": "https://www.fool.com/investing/2026/07/06/circle-internet-group-has-a-brand-new-stablecoin-r/?.tsrc=rss"
-        },
-        {
-          "title": "Strategy Sells Bitcoin Fresh Off Announcing New Capital Playbook",
-          "pubDate": "Mon, 06 Jul 2026 13:51:00 +0000",
-          "link": "https://finance.yahoo.com/m/cd3e5f06-5c6d-3133-8058-48a37d29657c/strategy-sells-bitcoin-fresh.html?.tsrc=rss"
-        },
-        {
-          "title": "Binance Halts Crypto Trading in France and Parts of Europe After Missing MiCA License",
-          "pubDate": "Mon, 06 Jul 2026 11:42:15 +0000",
-          "link": "https://www.ccn.com/news/crypto/binance-halts-crypto-trading-france-europe-mica-license/?.tsrc=rss"
-        },
-        {
-          "title": "Standing Out From the Single-Stock ETF Crowd",
-          "pubDate": "Mon, 06 Jul 2026 04:01:00 +0000",
-          "link": "https://www.thedailyupside.com/etf/investing-strategies-etf/standing-out-from-the-single-stock-etf-crowd/?.tsrc=rss"
-        },
-        {
-          "title": "Coinbase Under Fire Over Alleged \u2018AI Hallucination\u2019 of World Cup Result Before Match Begins",
-          "pubDate": "Sun, 05 Jul 2026 20:28:37 +0000",
-          "link": "https://beincrypto.com/coinbase-ai-fake-world-cup-result/?.tsrc=rss"
         }
       ]
     }
