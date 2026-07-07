@@ -1,18 +1,18 @@
 name: ai4trade-bot
 
-# Cron is UTC. Times below map for EDT (UTC-4, summer). The bot self-gates on
-# US market hours so extra fires are safe. In winter (EST) shift +1h if you
-# want exact alignment, or just leave it.
+# Cron in UTC. Times target EDT (UTC-4). Bot self-gates on NY wall-clock so
+# late-firing crons still land in the right mode. Minutes intentionally OFF
+# :00/:30 boundaries to reduce GitHub queue drops on private repos.
 on:
   schedule:
-    - cron: "30 12 * * 1-5"      # ~08:30 ET  PRE-MARKET research digest
-    - cron: "*/10 13-19 * * 1-5" # every 10 min from 09:00-15:59 ET (news + trade)
-    - cron: "50 19 * * 1-5"      # ~15:50 ET  near close (daily reflection)
-    - cron: "0 20 * * 6"         # 16:00 ET Sat  WEEKLY summary
+    - cron: "37 12 * * 1-5"      # ~08:37 ET  pre-market
+    - cron: "3,13,23,33,43,53 13-19 * * 1-5"  # every 10 min, off-round
+    - cron: "53 19 * * 1-5"      # ~15:53 ET  close reflection
+    - cron: "7 20 * * 6"         # Sat 16:07 ET  weekly summary
   workflow_dispatch:
     inputs:
       mode:
-        description: "auto | premarket | weekly (manual override)"
+        description: "auto | premarket | weekly (manual override, default auto)"
         required: false
         default: "auto"
 
@@ -36,24 +36,13 @@ jobs:
       - name: Install deps
         run: pip install --quiet pytz
 
-      - name: Resolve mode
-        id: mode
-        run: |
-          if [ -n "${{ inputs.mode }}" ] && [ "${{ inputs.mode }}" != "auto" ]; then
-            echo "value=${{ inputs.mode }}" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event.schedule }}" = "30 12 * * 1-5" ]; then
-            echo "value=premarket" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event.schedule }}" = "0 20 * * 6" ]; then
-            echo "value=weekly" >> $GITHUB_OUTPUT
-          else
-            echo "value=auto" >> $GITHUB_OUTPUT
-          fi
-
       - name: Run bot
         env:
           AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
           BUDGET_USD: "100"
-          MODE: ${{ steps.mode.outputs.value }}
+          # Mode is decided by bot.py based on NY wall-clock, so cron delays
+          # don't waste market-hours slots on premarket digests.
+          MODE: ${{ inputs.mode || 'auto' }}
         run: python bot.py
 
       - name: Commit state + reports
@@ -65,8 +54,6 @@ jobs:
             echo "no changes"
           else
             git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
-            git commit -m "bot ${MODE} $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "bot $(date -u +%Y-%m-%dT%H:%MZ)"
             git push
           fi
-        env:
-          MODE: ${{ steps.mode.outputs.value }}

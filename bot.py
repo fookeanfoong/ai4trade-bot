@@ -102,12 +102,20 @@ def _post(path, body):
 
 
 def get_price(symbol):
-    try:
-        d = _get("/api/price", {"symbol": symbol, "market": MARKET})
-        p = d.get("price")
-        return float(p) if p is not None else None
-    except (HTTPError, URLError, ValueError):
-        return None
+    last_err = None
+    for attempt in range(3):
+        try:
+            d = _get("/api/price", {"symbol": symbol, "market": MARKET})
+            p = d.get("price")
+            if p is None:
+                last_err = f"no price field in response: {d}"
+            else:
+                return float(p)
+        except (HTTPError, URLError, ValueError) as e:
+            last_err = repr(e)
+        time.sleep(1.2 * (attempt + 1))
+    print(f"[warn] get_price({symbol}) failed after 3 tries: {last_err}")
+    return None
 
 
 def place_trade(action, symbol, price, quantity, content):
@@ -543,7 +551,9 @@ def main():
                 actions.append(f"SELL {sym} FAILED: {resp.get('detail')}")
 
     # --- open new positions ---
-    seeding = (state["run_count"] == 1 and not state["positions"])
+    # Seed anytime we've never held a position AND no trades ever logged.
+    # Survives price-fetch failures on run #1.
+    seeding = (not state["positions"] and not state["trade_log"])
     mins_of_day = n.hour * 60 + n.minute
     late_day = (mins_of_day > 960 - params["no_new_entries_min"])
     slot = SLOT_USD / 2 if state["consec_losses"] >= params["streak_throttle"] else SLOT_USD
@@ -563,6 +573,7 @@ def main():
                 continue
         px = prices.get(sym)
         if px is None:
+            actions.append(f"SKIP {sym}: no price (fetch failed)")
             continue
         news = news_fresh.get(sym, {})
         if news.get("score", 0) <= -2:
