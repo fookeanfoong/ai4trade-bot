@@ -3,3 +3,7 @@ ts_utc,kind,symbol,side,qty,price,notional,reason
 2026-07-07T13:50:18Z,FILL,PLTR,buy,0.194333,128.6450,25.0000,seed
 2026-07-07T13:50:19Z,FILL,MSTR,buy,0.222716,112.2505,25.0000,seed
 2026-07-07T13:50:20Z,FILL,AVGO,buy,0.060783,411.3000,25.0000,seed
+2026-07-07T19:24:06Z,FILL,MSTR,sell,0.222716,112.2505,25.0000,"NEWS-RISK -2 :: Peter Schiff Claims Michael Saylor Is 'Committing Fraud,' Wa"
+2026-07-07T19:24:06Z,CLOSE,MSTR,buy,0.222716,112.2505,+0.0000,"NEWS-RISK -2 :: Peter Schiff Claims Michael Saylor Is 'Committing Fraud,' Wa entry=112.2505"
+2026-07-07T19:24:08Z,FILL,AVGO,sell,0.060783,411.3000,25.0000,NEWS-RISK -2 :: Broadcom Drops 3% After Downgrade Despite 89% Revenue Growth
+2026-07-07T19:24:08Z,CLOSE,AVGO,buy,0.060783,411.3000,+0.0000,NEWS-RISK -2 :: Broadcom Drops 3% After Downgrade Despite 89% Revenue Growth entry=411.3000

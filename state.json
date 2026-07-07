@@ -11,26 +11,29 @@
       "entry": 128.645,
       "peak": 128.645,
       "entry_at": "2026-07-07T13:50:18Z"
-    },
-    "MSTR": {
-      "qty": 0.22271615716633777,
-      "entry": 112.2505,
-      "peak": 112.2505,
-      "entry_at": "2026-07-07T13:50:19Z"
-    },
-    "AVGO": {
-      "qty": 0.060782883539995135,
-      "entry": 411.3,
-      "peak": 411.3,
-      "entry_at": "2026-07-07T13:50:20Z"
     }
   },
   "cooldown": {},
   "realized_pnl": 0.0,
-  "run_count": 2,
-  "last_reflection_date": "",
-  "trade_log": [],
-  "consec_losses": 0,
+  "run_count": 3,
+  "last_reflection_date": "2026-07-07",
+  "trade_log": [
+    {
+      "sym": "MSTR",
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "reason": "NEWS-RISK",
+      "closed_at": "2026-07-07T19:24:06Z"
+    },
+    {
+      "sym": "AVGO",
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "reason": "NEWS-RISK",
+      "closed_at": "2026-07-07T19:24:08Z"
+    }
+  ],
+  "consec_losses": 2,
   "position_schema_seen": [
     "id",
     "symbol",
@@ -47,237 +50,237 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-07T13:50:46Z",
-      "score": 1,
-      "worst": null,
-      "items": [
-        {
-          "title": "AMD Stock Rises as Self-Driving Startup Cuts Nvidia Dependence",
-          "pubDate": "Tue, 07 Jul 2026 13:43:11 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/amd-stock-rises-self-driving-134311222.html?.tsrc=rss"
-        },
-        {
-          "title": "AMD Surges on Fresh Tailwinds",
-          "pubDate": "Tue, 07 Jul 2026 13:37:29 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/amd-surges-fresh-tailwinds-133729329.html?.tsrc=rss"
-        },
-        {
-          "title": "Nvidia Lags Chip Rally on Rack Delay Worries",
-          "pubDate": "Tue, 07 Jul 2026 13:12:04 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-lags-chip-rally-rack-131204861.html?.tsrc=rss"
-        },
-        {
-          "title": "Update: Tech Stock Decline, Oil Price Increase Dampen US Equity Futures Pre-Bell",
-          "pubDate": "Tue, 07 Jul 2026 12:54:24 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/tech-stock-decline-oil-price-125424299.html?.tsrc=rss"
-        },
-        {
-          "title": "Does ARKW's History Reward Buying This Dip?",
-          "pubDate": "Tue, 07 Jul 2026 12:32:52 +0000",
-          "link": "https://www.trefis.com/articles/605940/does-arkws-history-reward-buying-this-dip/2026-07-07?.tsrc=rss"
-        },
-        {
-          "title": "What You Actually Pay To Join The AMD Run",
-          "pubDate": "Tue, 07 Jul 2026 12:26:58 +0000",
-          "link": "https://www.trefis.com/articles/605913/what-you-actually-pay-to-join-the-amd-run/2026-07-07?.tsrc=rss"
-        },
-        {
-          "title": "Equities Mostly Down Pre-Bell Amid Broad Chip Stock Sell-Off",
-          "pubDate": "Tue, 07 Jul 2026 12:03:21 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-down-pre-bell-120321035.html?.tsrc=rss"
-        },
-        {
-          "title": "Intel, Corning, Super Micro, and More Stocks That Explain Today\u2019s Market",
-          "pubDate": "Tue, 07 Jul 2026 12:02:00 +0000",
-          "link": "https://finance.yahoo.com/m/a28ab6d4-84b9-3521-a2ea-41d28b89c2ff/intel%2C-corning%2C-super-micro%2C.html?.tsrc=rss"
-        }
-      ]
-    },
-    "PLTR": {
-      "at": "2026-07-07T13:50:47Z",
-      "score": 1,
-      "worst": null,
-      "items": [
-        {
-          "title": "Here's What Wall Street Must See Before Palantir Stock Can Rally Again",
-          "pubDate": "Tue, 07 Jul 2026 13:41:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/07/heres-what-wall-street-must-see-before-palantir-st/?.tsrc=rss"
-        },
-        {
-          "title": "This is One of The Best AI Stocks to Own In 2026",
-          "pubDate": "Tue, 07 Jul 2026 13:24:44 +0000",
-          "link": "https://247wallst.com/investing/2026/07/07/this-is-one-of-the-best-ai-stocks-to-own-in-2026/?.tsrc=rss"
-        },
-        {
-          "title": "Palantir Looks Beyond the Pentagon With a New Commercial Win in Mexico",
-          "pubDate": "Tue, 07 Jul 2026 12:51:00 +0000",
-          "link": "https://finance.yahoo.com/m/0fe6d88c-db90-32d7-9286-77fd38a8eca8/palantir-looks-beyond-the.html?.tsrc=rss"
-        },
-        {
-          "title": "Is Palantir Stock's 'N-of-One' Growth Story Worth the Steep Price of Admission?",
-          "pubDate": "Tue, 07 Jul 2026 12:32:53 +0000",
-          "link": "https://www.trefis.com/articles/605910/is-palantir-stocks-n-of-one-growth-story-worth-the-steep-price-of-admission/2026-07-07?.tsrc=rss"
-        },
-        {
-          "title": "Palantir's AI Position Wins New Support From Analysts",
-          "pubDate": "Tue, 07 Jul 2026 11:32:37 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/palantirs-ai-position-wins-support-113237950.html?.tsrc=rss"
-        },
-        {
-          "title": "Why Palantir Stock Plummeted Last Month But Is Soaring in July",
-          "pubDate": "Tue, 07 Jul 2026 11:20:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/07/why-palantir-stock-plummeted-last-month-but-is-soa/?.tsrc=rss"
-        },
-        {
-          "title": "After Plummeting 27% in 2026, Is Palantir Stock Finally a Buy? 3 Words From Palantir CEO Alex Karp May Reveal the Answer",
-          "pubDate": "Tue, 07 Jul 2026 11:05:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/07/after-plummet-2026-palantir-stock-alex-karp/?.tsrc=rss"
-        },
-        {
-          "title": "Palantir Expands Its Presence in Mexico and Strengthens Its AI Offering in the Insurance Sector with GNP Seguros",
-          "pubDate": "Tue, 07 Jul 2026 10:59:00 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-expands-presence-mexico-strengthens-105900464.html?.tsrc=rss"
-        }
-      ]
-    },
-    "MSTR": {
-      "at": "2026-07-07T13:50:47Z",
+      "at": "2026-07-07T19:24:02Z",
       "score": 0,
       "worst": null,
       "items": [
         {
-          "title": "Strategy, Coinbase, Circle Stocks Rally After Bitcoin Breaks Above $63,000",
-          "pubDate": "Tue, 07 Jul 2026 13:39:54 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-coinbase-circle-stocks-rally-133954327.html?.tsrc=rss"
+          "title": "Nvidia and AMD Face China Chip Pressure",
+          "pubDate": "Tue, 07 Jul 2026 19:16:36 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-amd-face-china-chip-191636641.html?.tsrc=rss"
         },
         {
-          "title": "Morning Minute: Strategy Turns Net Seller",
-          "pubDate": "Tue, 07 Jul 2026 12:27:58 +0000",
-          "link": "https://decrypt.co/372909/morning-minute-strategy-turns-net-seller?.tsrc=rss"
+          "title": "Perplexity says it plans to use Nvidia's new CPU",
+          "pubDate": "Tue, 07 Jul 2026 19:03:47 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/perplexity-says-plans-nvidias-cpu-190347648.html?.tsrc=rss"
         },
         {
-          "title": "Here Are Tuesday\u2019s Best Wall Street Analyst Research Calls: Adobe, American Airlines, Broadcom, First Solar, Meta Platforms, Shopify, Space-X, Ventas, Waste Managment, and More",
-          "pubDate": "Tue, 07 Jul 2026 12:00:18 +0000",
-          "link": "https://247wallst.com/investing/2026/07/07/here-are-tuesdays-best-wall-street-analyst-research-calls-adobe-american-airlines-broadcom-first-solar-meta-platforms-shopify-space-x-ventas-waste-managment-and-more/?.tsrc=rss"
+          "title": "Update: Chip Stocks Weigh on Equities Intraday; Oil Rises on Hormuz Tensions",
+          "pubDate": "Tue, 07 Jul 2026 18:32:33 +0000",
+          "link": "https://finance.yahoo.com/markets/articles/chip-stocks-weigh-equities-intraday-183233629.html?.tsrc=rss"
         },
         {
-          "title": "Traders Sue Polymarket Over 'No' Ruling on Strategy Bitcoin Sale",
-          "pubDate": "Tue, 07 Jul 2026 11:34:51 +0000",
-          "link": "https://decrypt.co/372899/traders-sue-polymarket-over-no-ruling-on-strategy-bitcoin-sale?.tsrc=rss"
+          "title": "Intel, Micron, SpaceX, GE Vernova, Caterpillar, and More Stocks That Explain Today\u2019s Market",
+          "pubDate": "Tue, 07 Jul 2026 18:15:00 +0000",
+          "link": "https://finance.yahoo.com/m/a28ab6d4-84b9-3521-a2ea-41d28b89c2ff/intel%2C-micron%2C-spacex%2C-ge.html?.tsrc=rss"
         },
         {
-          "title": "Bitcoin Bear Sees BTC Sliding Toward $10K, Says Strategy\u2019s Saylor Must Be \u2018Stopped Out\u2019",
-          "pubDate": "Tue, 07 Jul 2026 11:32:53 +0000",
-          "link": "https://stocktwits.com/news-articles/markets/equity/btc-bear-market-10k-saylor-stopped-out/cZmlK8mR7mt?.tsrc=rss"
+          "title": "This Semiconductor ETF Is Up 58% This Year and Doesn\u2019t Own TSMC",
+          "pubDate": "Tue, 07 Jul 2026 17:30:20 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/07/this-semiconductor-etf-is-up-58-this-year-and-doesnt-own-tsmc/?.tsrc=rss"
         },
         {
-          "title": "Is Strategy (MSTR) A Bargain Following Its CFO Accounting Role Change?",
-          "pubDate": "Tue, 07 Jul 2026 10:18:54 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/strategy-mstr-bargain-following-cfo-101854223.html?.tsrc=rss"
+          "title": "Up 102% in 2026, This Chip ETF Mysteriously Avoids Taiwan Semiconductor",
+          "pubDate": "Tue, 07 Jul 2026 17:20:57 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/07/up-102-in-2026-this-chip-etf-mysteriously-avoids-taiwan-semiconductor/?.tsrc=rss"
         },
         {
-          "title": "Strategy $216M Bitcoin Sale May Boost Its Price, Says Grayscale \u2014 How High Could It Go?",
-          "pubDate": "Tue, 07 Jul 2026 10:17:15 +0000",
-          "link": "https://www.ccn.com/news/crypto/strategy-bitcoin-sale-boost-price-says-grayscale-how-high/?.tsrc=rss"
+          "title": "Bank of America Analyst: AI Is Becoming \u201cDeeply Embedded in Enterprise Workflows\u201d as AI Spending Could Reach $1.5 Trillion",
+          "pubDate": "Tue, 07 Jul 2026 16:59:51 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/bank-of-america-analyst-ai-is-becoming-deeply-embedded-in-enterprise-workflows-as-ai-spending-could-reach-1-5-trillion/?.tsrc=rss"
         },
         {
-          "title": "Is Strategy Still a Bitcoin Proxy?",
-          "pubDate": "Tue, 07 Jul 2026 07:26:38 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-still-bitcoin-proxy-072638700.html?.tsrc=rss"
+          "title": "Nvidia and AMD Face Fresh China Threat as AI Buyers Shift to Local Chips",
+          "pubDate": "Tue, 07 Jul 2026 16:54:33 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-amd-face-fresh-china-165433145.html?.tsrc=rss"
+        }
+      ]
+    },
+    "PLTR": {
+      "at": "2026-07-07T19:24:03Z",
+      "score": 9,
+      "worst": null,
+      "items": [
+        {
+          "title": "Palantir Expands Mexico Insurance Deal",
+          "pubDate": "Tue, 07 Jul 2026 18:51:23 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-expands-mexico-insurance-deal-185123883.html?.tsrc=rss"
+        },
+        {
+          "title": "Palantir Expands AI Deal With Mexico's GNP Seguros",
+          "pubDate": "Tue, 07 Jul 2026 18:45:19 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-expands-ai-deal-mexicos-184519529.html?.tsrc=rss"
+        },
+        {
+          "title": "QQQ, Meet IQQ. BlackRock Is Launching a Cheaper Nasdaq-100 ETF.",
+          "pubDate": "Tue, 07 Jul 2026 17:51:00 +0000",
+          "link": "https://finance.yahoo.com/m/38736384-68a8-3859-ac6e-d5cd68766379/qqq%2C-meet-iqq.-blackrock-is.html?.tsrc=rss"
+        },
+        {
+          "title": "Palantir Vs. Google: Why Palantir is Surging in July and Should Investors Buy it Over Google",
+          "pubDate": "Tue, 07 Jul 2026 17:43:44 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/palantir-vs-google-why-palantir-is-surging-in-july-and-should-investors-buy-it-over-google/?.tsrc=rss"
+        },
+        {
+          "title": "Is Palantir Technologies (PLTR) Undervalued After Its Nvidia Partnership And DA Davidson Upgrade?",
+          "pubDate": "Tue, 07 Jul 2026 17:14:06 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/palantir-technologies-pltr-undervalued-nvidia-171406194.html?.tsrc=rss"
+        },
+        {
+          "title": "Palantir Stock Rises After Major AI Expansion Deal",
+          "pubDate": "Tue, 07 Jul 2026 17:10:58 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-stock-rises-major-ai-171058894.html?.tsrc=rss"
+        },
+        {
+          "title": "Meta Platforms vs. Nebius: Which Is the Better Neocloud Stock?",
+          "pubDate": "Tue, 07 Jul 2026 17:02:21 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/meta-platforms-vs-nebius-which-is-the-better-neocloud-stock/?.tsrc=rss"
+        },
+        {
+          "title": "Palantir Expands AI Deal With Mexico's Largest Insurer",
+          "pubDate": "Tue, 07 Jul 2026 16:58:56 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-expands-ai-deal-mexicos-165856855.html?.tsrc=rss"
+        }
+      ]
+    },
+    "MSTR": {
+      "at": "2026-07-07T19:24:03Z",
+      "score": -2,
+      "worst": "Peter Schiff Claims Michael Saylor Is 'Committing Fraud,' Warns Recent Strategy Sales Will Crash Bitcoin",
+      "items": [
+        {
+          "title": "Crypto analyst says MicroStrategy's latest Bitcoin sale comes at a bad time for bulls",
+          "pubDate": "Tue, 07 Jul 2026 19:06:00 +0000",
+          "link": "https://www.thestreet.com/crypto/markets/crypto-analyst-says-microstrategys-latest-bitcoin-sale-comes-at-a-bad-time-for-bulls?.tsrc=rss"
+        },
+        {
+          "title": "MSTR, BMNR Stocks Defy Stock Market Slump \u2013 COIN Drops Despite Upgrade With 20% Upside",
+          "pubDate": "Tue, 07 Jul 2026 17:49:06 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/mstr-bmnr-stocks-defy-market-slump-coinbase-drops-despite-upgrade/cZmlqYCR7Z0?.tsrc=rss"
+        },
+        {
+          "title": "Bitcoin Miners ETF Up 47.58% This Year, Completely Avoids MicroStrategy",
+          "pubDate": "Tue, 07 Jul 2026 17:33:06 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/07/bitcoin-miners-etf-up-47-58-this-year-completely-avoids-microstrategy/?.tsrc=rss"
+        },
+        {
+          "title": "Ondo Unveils Perps DEX With Tokenized Stocks as Collateral",
+          "pubDate": "Tue, 07 Jul 2026 17:24:02 +0000",
+          "link": "https://www.bankless.com/read/news/ondo-unveils-perps-dex-with-tokenized-stocks-as-collateral?.tsrc=rss"
+        },
+        {
+          "title": "Ondo Joins Perps Race Against Hyperliquid, Coinbase \u2014 Allows Tokenized Stocks As Collateral",
+          "pubDate": "Tue, 07 Jul 2026 17:05:03 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/ondo-joins-perps-race-hyperliquid-coinbase-tokenized-stocks-collateral/cZmlplzR7Zg?.tsrc=rss"
+        },
+        {
+          "title": "Michael Saylor's shocking Bitcoin sale triggers a lawsuit against Polymarket",
+          "pubDate": "Tue, 07 Jul 2026 16:50:37 +0000",
+          "link": "https://www.thestreet.com/crypto/markets/microstrategys-bitcoin-sale-dispute-triggers-lawsuit?.tsrc=rss"
+        },
+        {
+          "title": "Bitcoin starts to see some relief from renewed ETF inflows",
+          "pubDate": "Tue, 07 Jul 2026 16:30:00 +0000",
+          "link": "https://finance.yahoo.com/video/bitcoin-starts-see-relief-renewed-163000879.html?.tsrc=rss"
+        },
+        {
+          "title": "Peter Schiff Claims Michael Saylor Is 'Committing Fraud,' Warns Recent Strategy Sales Will Crash Bitcoin",
+          "pubDate": "Tue, 07 Jul 2026 15:37:15 +0000",
+          "link": "https://www.ccn.com/news/crypto/peter-schiff-michael-saylor-fraud-strategy-sales-crash-bitcoin/?.tsrc=rss"
         }
       ]
     },
     "AVGO": {
-      "at": "2026-07-07T13:50:47Z",
-      "score": 1,
-      "worst": null,
+      "at": "2026-07-07T19:24:03Z",
+      "score": -2,
+      "worst": "Broadcom Drops 3% After Downgrade Despite 89% Revenue Growth Outlook",
       "items": [
         {
-          "title": "SpaceX initiated, Cloudflare upgraded: Wall Street's top analyst calls",
-          "pubDate": "Tue, 07 Jul 2026 13:36:36 +0000",
-          "link": "https://finance.yahoo.com/news/cloudflare-upgraded-solaredge-downgraded-wall-134728028.html?.tsrc=rss"
+          "title": "DeepSeek Reportedly Develops AI Chip as Nvidia Shares Drop 2.2%",
+          "pubDate": "Tue, 07 Jul 2026 19:20:01 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/deepseek-reportedly-develops-ai-chip-192001405.html?.tsrc=rss"
         },
         {
-          "title": "Nvidia Lags Chip Rally on Rack Delay Worries",
-          "pubDate": "Tue, 07 Jul 2026 13:12:04 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-lags-chip-rally-rack-131204861.html?.tsrc=rss"
+          "title": "Broadcom Stock Drops After Bank Downgrades AI Chip Giant on Valuation",
+          "pubDate": "Tue, 07 Jul 2026 18:47:33 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-stock-drops-bank-downgrades-184733964.html?.tsrc=rss"
         },
         {
-          "title": "Update: Tech Stock Decline, Oil Price Increase Dampen US Equity Futures Pre-Bell",
-          "pubDate": "Tue, 07 Jul 2026 12:54:24 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/tech-stock-decline-oil-price-125424299.html?.tsrc=rss"
+          "title": "Bank of America Analyst: AI Is Becoming \u201cDeeply Embedded in Enterprise Workflows\u201d as AI Spending Could Reach $1.5 Trillion",
+          "pubDate": "Tue, 07 Jul 2026 16:59:51 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/bank-of-america-analyst-ai-is-becoming-deeply-embedded-in-enterprise-workflows-as-ai-spending-could-reach-1-5-trillion/?.tsrc=rss"
         },
         {
-          "title": "What You Actually Pay To Join The AMD Run",
-          "pubDate": "Tue, 07 Jul 2026 12:26:58 +0000",
-          "link": "https://www.trefis.com/articles/605913/what-you-actually-pay-to-join-the-amd-run/2026-07-07?.tsrc=rss"
+          "title": "The 2031 Apple Extension Changes Everything: Why Broadcom\u2019s Newly De-Risked Cash Machine Is a Strong Buy",
+          "pubDate": "Tue, 07 Jul 2026 16:28:50 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/the-2031-apple-extension-changes-everything-why-broadcoms-newly-de-risked-cash-machine-is-a-strong-buy/?.tsrc=rss"
         },
         {
-          "title": "SpaceX Joins the Nasdaq-100. What the Fast-Track Addition Means for the Stock.",
-          "pubDate": "Tue, 07 Jul 2026 12:15:00 +0000",
-          "link": "https://finance.yahoo.com/m/3903bd54-50b0-3770-8309-92109d15f7f9/spacex-joins-the-nasdaq-100..html?.tsrc=rss"
+          "title": "Broadcom Drops 3% After Downgrade Despite 89% Revenue Growth Outlook",
+          "pubDate": "Tue, 07 Jul 2026 15:43:05 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-drops-3-downgrade-despite-154305628.html?.tsrc=rss"
         },
         {
-          "title": "Equities Mostly Down Pre-Bell Amid Broad Chip Stock Sell-Off",
-          "pubDate": "Tue, 07 Jul 2026 12:03:21 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-down-pre-bell-120321035.html?.tsrc=rss"
+          "title": "Dow Falls 200 Points. Nasdaq Down 1.4%.",
+          "pubDate": "Tue, 07 Jul 2026 15:15:55 +0000",
+          "link": "https://finance.yahoo.com/m/54402c84-7043-375b-a149-a09979fc672c/dow-falls-200-points.-nasdaq.html?.tsrc=rss"
         },
         {
-          "title": "Here Are Tuesday\u2019s Best Wall Street Analyst Research Calls: Adobe, American Airlines, Broadcom, First Solar, Meta Platforms, Shopify, Space-X, Ventas, Waste Managment, and More",
-          "pubDate": "Tue, 07 Jul 2026 12:00:18 +0000",
-          "link": "https://247wallst.com/investing/2026/07/07/here-are-tuesdays-best-wall-street-analyst-research-calls-adobe-american-airlines-broadcom-first-solar-meta-platforms-shopify-space-x-ventas-waste-managment-and-more/?.tsrc=rss"
+          "title": "U.S. Stocks Rallied Over 15% In Q2 2026 \u2014 These 3 AI Stocks Still Have A Long Way to Run",
+          "pubDate": "Tue, 07 Jul 2026 15:12:13 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/u-s-stocks-rallied-over-15-in-q2-2026-these-3-ai-stocks-still-have-a-long-way-to-run/?.tsrc=rss"
         },
         {
-          "title": "What A Real Crash Looks Like For Marvell Stock",
-          "pubDate": "Tue, 07 Jul 2026 11:45:43 +0000",
-          "link": "https://www.trefis.com/articles/605898/what-a-real-crash-looks-like-for-marvell-stock/2026-07-07?.tsrc=rss"
+          "title": "Texas Instruments Stock: Powering AI Beyond The GPU",
+          "pubDate": "Tue, 07 Jul 2026 14:33:54 +0000",
+          "link": "https://www.trefis.com/articles/605824/texas-instruments-stock-powering-ai-beyond-the-gpu/2026-07-07?.tsrc=rss"
         }
       ]
     },
     "COIN": {
-      "at": "2026-07-07T13:50:48Z",
+      "at": "2026-07-07T19:24:04Z",
       "score": 2,
       "worst": null,
       "items": [
         {
-          "title": "Strategy, Coinbase, Circle Stocks Rally After Bitcoin Breaks Above $63,000",
-          "pubDate": "Tue, 07 Jul 2026 13:39:54 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-coinbase-circle-stocks-rally-133954327.html?.tsrc=rss"
+          "title": "Binance Expands bStocks After $193 Million Debut, but Warning Signs Emerge",
+          "pubDate": "Tue, 07 Jul 2026 18:36:41 +0000",
+          "link": "https://beincrypto.com/binance-bstocks-collateral-warning-signs/?.tsrc=rss"
         },
         {
-          "title": "Why Coinbase's co-founder wants you to take a financial literacy test",
-          "pubDate": "Tue, 07 Jul 2026 13:36:45 +0000",
-          "link": "https://finance.yahoo.com/markets/article/why-coinbases-co-founder-wants-you-to-take-a-financial-literacy-test-133645582.html?.tsrc=rss"
+          "title": "MSTR, BMNR Stocks Defy Stock Market Slump \u2013 COIN Drops Despite Upgrade With 20% Upside",
+          "pubDate": "Tue, 07 Jul 2026 17:49:06 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/mstr-bmnr-stocks-defy-market-slump-coinbase-drops-despite-upgrade/cZmlqYCR7Z0?.tsrc=rss"
         },
         {
-          "title": "Analysts split on 2025's most subscribed IPO stock",
-          "pubDate": "Tue, 07 Jul 2026 13:30:00 +0000",
-          "link": "https://www.thestreet.com/crypto/markets/analysts-split-on-2025s-most-subscribed-ipo-stock?.tsrc=rss"
+          "title": "Ondo Unveils Perps DEX With Tokenized Stocks as Collateral",
+          "pubDate": "Tue, 07 Jul 2026 17:24:02 +0000",
+          "link": "https://www.bankless.com/read/news/ondo-unveils-perps-dex-with-tokenized-stocks-as-collateral?.tsrc=rss"
         },
         {
-          "title": "Coinbase Gets U.K. Approval To Offer Stock Trading",
-          "pubDate": "Tue, 07 Jul 2026 13:10:00 +0000",
-          "link": "https://www.cryptoprowl.com/releases/coinbase-gets-uk-approval-to-offer-stock-trading-6081?.tsrc=rss"
+          "title": "Visa vs Coinbase: Two Different Economic Playbooks But One Winner",
+          "pubDate": "Tue, 07 Jul 2026 17:15:09 +0000",
+          "link": "https://247wallst.com/investing/2026/07/07/visa-vs-coinbase-two-different-economic-playbooks-but-one-winner/?.tsrc=rss"
         },
         {
-          "title": "Vinod Khosla Says 'We Need to Tilt the Seesaw Toward Labor,' Urges Higher Capital Gains Taxes",
-          "pubDate": "Tue, 07 Jul 2026 00:31:07 +0000",
-          "link": "https://finance.yahoo.com/economy/policy/articles/vinod-khosla-says-tilt-seesaw-003107173.html?.tsrc=rss"
+          "title": "Ondo Joins Perps Race Against Hyperliquid, Coinbase \u2014 Allows Tokenized Stocks As Collateral",
+          "pubDate": "Tue, 07 Jul 2026 17:05:03 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/ondo-joins-perps-race-hyperliquid-coinbase-tokenized-stocks-collateral/cZmlplzR7Zg?.tsrc=rss"
         },
         {
-          "title": "Coinbase Global, Inc. (COIN) Beats Stock Market Upswing: What Investors Need to Know",
-          "pubDate": "Mon, 06 Jul 2026 21:45:04 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/coinbase-global-inc-coin-beats-214504157.html?.tsrc=rss"
+          "title": "Gemini Launches 0% Commission Stock Trading as Shares Fall 3.9%",
+          "pubDate": "Tue, 07 Jul 2026 15:49:34 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/gemini-launches-0-commission-stock-154934801.html?.tsrc=rss"
         },
         {
-          "title": "Jamie Dimon Said JPMorgan Will Fight Stablecoin Yield Rules in the CLARITY Act Before Congress Breaks for Its August Recess.",
-          "pubDate": "Mon, 06 Jul 2026 21:07:27 +0000",
-          "link": "https://www.fool.com/investing/2026/07/06/jamie-dimon-said-jpmorgan-will-fight-stablecoin-yi/?.tsrc=rss"
+          "title": "Coinbase CEO has one-word response to sheriffs group's sudden shift",
+          "pubDate": "Tue, 07 Jul 2026 15:30:00 +0000",
+          "link": "https://www.thestreet.com/crypto/markets/coinbase-ceo-has-one-word-response-to-sheriffs-groups-sudden-shift?.tsrc=rss"
         },
         {
-          "title": "Coinbase's AI System Hallucinated a World Cup Result Before the Match Even Started",
-          "pubDate": "Mon, 06 Jul 2026 18:49:39 +0000",
-          "link": "https://decrypt.co/372824/coinbase-ai-hallucinated-world-cup-result-before-match?.tsrc=rss"
+          "title": "GEMI Stock Falls After Winklevoss\u2019 Crypto Exchange Joins Coinbase, Kraken In Stock Trading Push",
+          "pubDate": "Tue, 07 Jul 2026 15:21:09 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/gemi-stock-still-drops-after-joining-coinbase-kraken-stock-trading-push-/cZmlns9R7ZI?.tsrc=rss"
         }
       ]
     }
