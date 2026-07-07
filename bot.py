@@ -32,7 +32,9 @@ import trading_bot_guardrails as gr
 # Config
 # ----------------------------------------------------------------------------
 BASE = "https://ai4trade.ai"
-TOKEN = os.environ.get("AI4TRADE_TOKEN", "").strip()
+_raw_token = os.environ.get("AI4TRADE_TOKEN", "")
+# Strip whitespace + drop any non-ASCII (BOM, stray control bytes from shell IO).
+TOKEN = "".join(c for c in _raw_token.strip() if 32 <= ord(c) < 127)
 MARKET = "us-stock"
 
 BUDGET_USD = float(os.environ.get("BUDGET_USD", "100"))   # total capital to deploy
