@@ -2,7 +2,8 @@
 """
 SPY $200 TA-based paper trading simulation.
 
-Runs on GitHub Actions at Nasdaq open. Uses free Stooq daily bars, no API key.
+Runs on GitHub Actions (folded into ai4trade-bot workflow). Uses free public
+market-data endpoints, no API key.
 
 Strategy (from the July 2026 SPY TA report card):
   Setup A (breakout): daily close > $760.40 on volume > 60M.
@@ -51,6 +52,12 @@ PULLBACK_T2      = 760.00
 
 BEAR_FLIP_CLOSE  = 722.00
 
+BROWSER_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/122.0 Safari/537.36"
+)
+
 
 def load_state() -> dict:
     if STATE_FILE.exists():
@@ -69,10 +76,39 @@ def save_state(state: dict) -> None:
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
 
+def fetch_yahoo_daily() -> list:
+    """Fetch SPY daily OHLCV from Yahoo Finance chart JSON (no API key)."""
+    url = ("https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+           "?range=3mo&interval=1d")
+    req = urlrequest.Request(url, headers={
+        "User-Agent": BROWSER_UA,
+        "Accept": "application/json",
+    })
+    with urlrequest.urlopen(req, timeout=30) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    result = payload["chart"]["result"][0]
+    ts = result["timestamp"]
+    q = result["indicators"]["quote"][0]
+    bars = []
+    for i, t in enumerate(ts):
+        o, h, l, c, v = q["open"][i], q["high"][i], q["low"][i], q["close"][i], q["volume"][i]
+        if None in (o, h, l, c, v):
+            continue
+        bars.append({
+            "date":   dt.datetime.utcfromtimestamp(t).strftime("%Y-%m-%d"),
+            "open":   float(o),
+            "high":   float(h),
+            "low":    float(l),
+            "close":  float(c),
+            "volume": int(v),
+        })
+    return bars
+
+
 def fetch_stooq_daily() -> list:
-    """Return SPY daily bars (oldest -> newest) from Stooq, no API key."""
+    """Fallback: Stooq daily CSV. Often bot-blocked on cloud IPs."""
     url = "https://stooq.com/q/d/l/?s=spy.us&i=d"
-    req = urlrequest.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    req = urlrequest.Request(url, headers={"User-Agent": BROWSER_UA})
     with urlrequest.urlopen(req, timeout=30) as resp:
         text = resp.read().decode("utf-8", errors="ignore")
     reader = csv.DictReader(io.StringIO(text))
@@ -90,6 +126,21 @@ def fetch_stooq_daily() -> list:
         except (KeyError, ValueError):
             continue
     return bars
+
+
+def fetch_daily_bars() -> list:
+    """Try Yahoo first, fall back to Stooq. Logs which source served."""
+    errors = []
+    for name, fn in [("yahoo", fetch_yahoo_daily), ("stooq", fetch_stooq_daily)]:
+        try:
+            bars = fn()
+            if bars:
+                print(f"data source: {name} ({len(bars)} bars)")
+                return bars
+            errors.append(f"{name}: empty response")
+        except Exception as e:
+            errors.append(f"{name}: {type(e).__name__}: {e}")
+    raise RuntimeError("all data sources failed: " + "; ".join(errors))
 
 
 def is_weekday_ny() -> bool:
@@ -124,7 +175,7 @@ def check_exits(state: dict, bar: dict) -> list:
             "closed_on": bar["date"],
         })
         state["position"] = None
-        lines.append(f"EXIT: {kind} stopped at ${fill:.2f} — realized P&L ${pnl:+.2f}")
+        lines.append(f"EXIT: {kind} stopped at ${fill:.2f} - realized P&L ${pnl:+.2f}")
         return lines
 
     if not p["half_taken"] and bar["high"] >= p["t1"]:
@@ -174,7 +225,7 @@ def check_entries(state: dict, bar: dict) -> list:
     vol   = bar["volume"]
 
     if close < BEAR_FLIP_CLOSE:
-        lines.append(f"BEAR FLIP: close ${close:.2f} < ${BEAR_FLIP_CLOSE:.2f} — staying flat.")
+        lines.append(f"BEAR FLIP: close ${close:.2f} < ${BEAR_FLIP_CLOSE:.2f} - staying flat.")
         return lines
 
     if close > BREAKOUT_TRIGGER and vol > BREAKOUT_VOL_MIN:
@@ -192,7 +243,7 @@ def check_entries(state: dict, bar: dict) -> list:
         }
         lines.append(
             f"ENTRY (Setup A breakout): {shares:.6f} SPY @ ${BREAKOUT_ENTRY:.2f} "
-            f"— stop ${BREAKOUT_STOP}, T1 ${BREAKOUT_T1}, T2 ${BREAKOUT_T2}"
+            f"- stop ${BREAKOUT_STOP}, T1 ${BREAKOUT_T1}, T2 ${BREAKOUT_T2}"
         )
         return lines
 
@@ -213,7 +264,7 @@ def check_entries(state: dict, bar: dict) -> list:
         }
         lines.append(
             f"ENTRY (Setup B pullback): {shares:.6f} SPY @ ${PULLBACK_ENTRY:.2f} "
-            f"— stop ${PULLBACK_STOP}, T1 ${PULLBACK_T1}, T2 ${PULLBACK_T2}"
+            f"- stop ${PULLBACK_STOP}, T1 ${PULLBACK_T1}, T2 ${PULLBACK_T2}"
         )
     return lines
 
@@ -232,7 +283,7 @@ def write_report(state: dict, bar: dict, actions: list) -> None:
     pos = state.get("position")
 
     lines = [
-        f"# SPY $200 Sim — {today}",
+        f"# SPY $200 Sim - {today}",
         "",
         f"Bar processed: {bar['date']}  "
         f"O:{bar['open']}  H:{bar['high']}  L:{bar['low']}  C:{bar['close']}  V:{bar['volume']:,}",
@@ -245,21 +296,18 @@ def write_report(state: dict, bar: dict, actions: list) -> None:
         "## Actions this run",
         "",
     ]
-    lines += [f"- {a}" for a in actions] if actions else ["- (no trigger — waiting)"]
+    lines += [f"- {a}" for a in actions] if actions else ["- (no trigger - waiting)"]
     path.write_text("\n".join(lines) + "\n")
 
 
 def main() -> int:
     if not is_weekday_ny():
-        print("Weekend — skipping.")
+        print("Weekend - skipping.")
         return 0
     try:
-        bars = fetch_stooq_daily()
-    except (HTTPError, URLError) as e:
-        print(f"stooq fetch failed: {e}", file=sys.stderr)
-        return 1
-    if not bars:
-        print("no bars returned", file=sys.stderr)
+        bars = fetch_daily_bars()
+    except Exception as e:
+        print(f"data fetch failed: {e}", file=sys.stderr)
         return 1
     latest = bars[-1]
 
