@@ -2,7 +2,15 @@
   "cash": 200.0,
   "position": null,
   "trade_log": [],
-  "runs": [],
+  "runs": [
+    {
+      "ran_at": "2026-07-09T15:09:34Z",
+      "bar_date": "2026-07-09",
+      "close": 749.4849853515625,
+      "equity": 200.0,
+      "actions": []
+    }
+  ],
   "peak_equity": 200.0,
-  "last_bar_date": null
+  "last_bar_date": "2026-07-09"
 }
