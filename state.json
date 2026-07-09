@@ -11,14 +11,20 @@
       "entry": 160.005,
       "peak": 160.005,
       "entry_at": "2026-07-09T19:01:50Z"
+    },
+    "PLTR": {
+      "qty": 0.1944390433599067,
+      "entry": 128.575,
+      "peak": 128.575,
+      "entry_at": "2026-07-09T19:09:08Z"
     }
   },
   "cooldown": {
-    "AVGO": 2,
-    "AMD": 3
+    "AVGO": 1,
+    "AMD": 2
   },
   "realized_pnl": -2.3338545101869936,
-  "run_count": 9,
+  "run_count": 10,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -81,7 +87,7 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-09T19:01:44Z",
+      "at": "2026-07-09T19:09:05Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -128,7 +134,7 @@
       ]
     },
     "PLTR": {
-      "at": "2026-07-09T19:01:45Z",
+      "at": "2026-07-09T19:09:05Z",
       "score": 3,
       "worst": null,
       "items": [
@@ -175,7 +181,7 @@
       ]
     },
     "MSTR": {
-      "at": "2026-07-09T19:01:44Z",
+      "at": "2026-07-09T19:09:04Z",
       "score": 0,
       "worst": null,
       "items": [
@@ -222,7 +228,7 @@
       ]
     },
     "AVGO": {
-      "at": "2026-07-09T19:01:45Z",
+      "at": "2026-07-09T19:09:05Z",
       "score": 2,
       "worst": null,
       "items": [
@@ -269,7 +275,7 @@
       ]
     },
     "COIN": {
-      "at": "2026-07-09T19:01:46Z",
+      "at": "2026-07-09T19:09:04Z",
       "score": 0,
       "worst": "Bitcoin, Ethereum, XRP, Dogecoin Slide as Trump Warns Iran Strikes Could Get 'Much Worse': Analyst Flags Major 'Wall' BTC Bulls Must Break",
       "items": [
