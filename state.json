@@ -1,11 +1,5 @@
 {
   "positions": {
-    "MSTR": {
-      "qty": 0.26396395730541367,
-      "entry": 94.7099,
-      "peak": 96.2124,
-      "entry_at": "2026-07-09T15:09:34Z"
-    },
     "AMD": {
       "qty": 0.04532310844006925,
       "entry": 551.595,
@@ -15,13 +9,13 @@
     "AVGO": {
       "qty": 0.06252344629235963,
       "entry": 399.85,
-      "peak": 400.775,
+      "peak": 401.69,
       "entry_at": "2026-07-10T14:55:17Z"
     }
   },
   "cooldown": {},
-  "realized_pnl": -2.441143077261777,
-  "run_count": 14,
+  "realized_pnl": -2.517666228484617,
+  "run_count": 15,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -79,9 +73,16 @@
       "pnl_usd": -0.03437392581481811,
       "reason": "TREND-BREAK",
       "closed_at": "2026-07-10T16:04:03Z"
+    },
+    {
+      "sym": "MSTR",
+      "pnl_pct": -0.003060926048913608,
+      "pnl_usd": -0.0765231512228402,
+      "reason": "TREND-BREAK",
+      "closed_at": "2026-07-10T16:08:49Z"
     }
   ],
-  "consec_losses": 8,
+  "consec_losses": 9,
   "position_schema_seen": [
     "id",
     "symbol",
@@ -98,7 +99,7 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-10T16:03:57Z",
+      "at": "2026-07-10T16:08:46Z",
       "score": 0,
       "worst": null,
       "items": [
@@ -145,7 +146,7 @@
       ]
     },
     "PLTR": {
-      "at": "2026-07-10T16:03:58Z",
+      "at": "2026-07-10T16:08:47Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -192,7 +193,7 @@
       ]
     },
     "MSTR": {
-      "at": "2026-07-10T16:03:56Z",
+      "at": "2026-07-10T16:08:45Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -239,7 +240,7 @@
       ]
     },
     "AVGO": {
-      "at": "2026-07-10T16:03:58Z",
+      "at": "2026-07-10T16:08:46Z",
       "score": 2,
       "worst": null,
       "items": [
@@ -286,7 +287,7 @@
       ]
     },
     "COIN": {
-      "at": "2026-07-10T16:03:57Z",
+      "at": "2026-07-10T16:08:47Z",
       "score": 4,
       "worst": null,
       "items": [
