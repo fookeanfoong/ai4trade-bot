@@ -3,19 +3,19 @@
     "AMD": {
       "qty": 0.04532310844006925,
       "entry": 551.595,
-      "peak": 552.7367,
+      "peak": 558.8801,
       "entry_at": "2026-07-10T14:55:12Z"
     },
     "AVGO": {
       "qty": 0.06252344629235963,
       "entry": 399.85,
-      "peak": 401.69,
+      "peak": 401.81,
       "entry_at": "2026-07-10T14:55:17Z"
     }
   },
   "cooldown": {},
   "realized_pnl": -2.517666228484617,
-  "run_count": 15,
+  "run_count": 16,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -99,57 +99,67 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-10T16:08:46Z",
+      "at": "2026-07-10T18:11:51Z",
       "score": 0,
       "worst": null,
       "items": [
         {
-          "title": "How OpenAI\u2019s New GPT 5.6 Measures Up to SpaceX, Google, Anthropic",
-          "pubDate": "Fri, 10 Jul 2026 15:28:00 +0000",
+          "title": "Billionaire Tech CEO: Our $25 Billion Backlog Shows \u201cThe Demand Is Booked\u201d as \u201cWe\u2019ve Never Seen a Buildout Like This Since the Great Wall of China\u201d",
+          "pubDate": "Fri, 10 Jul 2026 17:56:11 +0000",
+          "link": "https://247wallst.com/investing/2026/07/10/billionaire-tech-ceo-our-25-billion-backlog-shows-the-demand-is-booked-as-weve-never-seen-a-buildout-like-this-since-the-great-wall-of-china/?.tsrc=rss"
+        },
+        {
+          "title": "How OpenAI\u2019s New GPT 5.6 Stacks Up Against SpaceX, Google, Anthropic",
+          "pubDate": "Fri, 10 Jul 2026 17:00:00 +0000",
           "link": "https://finance.yahoo.com/m/422f570c-81b4-3053-bb4c-b2acac9b3c45/how-openai%E2%80%99s-new-gpt-5.6.html?.tsrc=rss"
         },
         {
-          "title": "Cathie Wood Goes On a Selling Spree: 3 Stocks She Just Sold",
-          "pubDate": "Fri, 10 Jul 2026 15:08:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/10/cathie-wood-goes-on-a-selling-spree-3-stocks-she-j/?.tsrc=rss"
+          "title": "XSD vs. SMH: Should Your Semiconductor ETF Be Equal-Weight or Cap-Weight?",
+          "pubDate": "Fri, 10 Jul 2026 16:44:26 +0000",
+          "link": "https://247wallst.com/investing/etf/2026/07/10/xsd-vs-smh-should-your-semiconductor-etf-be-equal-weight-or-cap-weight/?.tsrc=rss"
         },
         {
-          "title": "Price Prediction: Can Intel Double by 2030?",
-          "pubDate": "Fri, 10 Jul 2026 15:00:05 +0000",
-          "link": "https://247wallst.com/investing/2026/07/10/price-prediction-can-intel-double-by-2030/?.tsrc=rss"
+          "title": "A Potential New Rival Wants to Undercut TSMC. Here's What Investors Need to Know.",
+          "pubDate": "Fri, 10 Jul 2026 16:41:58 +0000",
+          "link": "https://www.fool.com/investing/2026/07/10/a-potential-new-rival-wants-to-undercut-tsmc-heres-what-investors-need-to-know/?.tsrc=rss"
         },
         {
-          "title": "What Is The Market Really Expecting From AVGO Stock?",
-          "pubDate": "Fri, 10 Jul 2026 14:59:19 +0000",
-          "link": "https://www.trefis.com/articles/606617/what-is-the-market-really-expecting-from-avgo-stock-2/2026-07-10?.tsrc=rss"
+          "title": "US Eases Export Curbs on UAE, Opening Door for AI Chip Sales",
+          "pubDate": "Fri, 10 Jul 2026 16:21:10 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/us-eases-export-curbs-uae-162110950.html?.tsrc=rss"
         },
         {
-          "title": "Chip stocks regain some ground after whipsaw of a trading week",
-          "pubDate": "Fri, 10 Jul 2026 14:30:00 +0000",
-          "link": "https://finance.yahoo.com/video/chip-stocks-regain-ground-whipsaw-143000172.html?.tsrc=rss"
+          "title": "Cerebras Rides the Shift to Faster AI Inference: More Upside Ahead?",
+          "pubDate": "Fri, 10 Jul 2026 16:18:00 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/cerebras-rides-shift-faster-ai-161800217.html?.tsrc=rss"
         },
         {
           "title": "Nvidia Stock Rises as It Shrugs Off Meta\u2019s New AI Chip",
-          "pubDate": "Fri, 10 Jul 2026 14:29:00 +0000",
+          "pubDate": "Fri, 10 Jul 2026 16:15:00 +0000",
           "link": "https://finance.yahoo.com/m/e10adead-9fa0-332d-8395-f0806de6ca7a/nvidia-stock-rises-as-it.html?.tsrc=rss"
         },
         {
-          "title": "Rackspace Technology's Enterprise AI Buildout Could Generate Up to $600 Million in Annual Revenue, RBC Says",
-          "pubDate": "Fri, 10 Jul 2026 14:26:32 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/rackspace-technology-apos-enterprise-ai-142632211.html?.tsrc=rss"
-        },
-        {
-          "title": "Intel's Operating Margins Are Improving: Is More Upside Ahead?",
-          "pubDate": "Fri, 10 Jul 2026 14:02:00 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/intels-operating-margins-improving-more-140200079.html?.tsrc=rss"
+          "title": "Analysts Think AI Demand Has No Ceiling And Raised AMD\u2019s Price Target Again",
+          "pubDate": "Fri, 10 Jul 2026 16:01:00 +0000",
+          "link": "https://247wallst.com/investing/2026/07/10/analysts-think-ai-demand-has-no-ceiling-and-raised-amds-price-target-again/?.tsrc=rss"
         }
       ]
     },
     "PLTR": {
-      "at": "2026-07-10T16:08:47Z",
-      "score": 1,
+      "at": "2026-07-10T18:11:52Z",
+      "score": 0,
       "worst": null,
       "items": [
+        {
+          "title": "Defense AI Heats Up: BigBear.ai Lands First European Validation for AI-Powered Airport Screening",
+          "pubDate": "Fri, 10 Jul 2026 16:25:29 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/defense-ai-heats-bigbear-ai-162529616.html?.tsrc=rss"
+        },
+        {
+          "title": "PAYC vs. PLTR: Which Stock Should Value Investors Buy Now?",
+          "pubDate": "Fri, 10 Jul 2026 15:40:03 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/payc-vs-pltr-stock-value-154003916.html?.tsrc=rss"
+        },
         {
           "title": "Rackspace Technology's Enterprise AI Buildout Could Generate Up to $600 Million in Annual Revenue, RBC Says",
           "pubDate": "Fri, 10 Jul 2026 14:26:32 +0000",
@@ -179,24 +189,29 @@
           "title": "1 Cash-Heavy Stock with Impressive Fundamentals and 2 Facing Challenges",
           "pubDate": "Fri, 10 Jul 2026 09:03:16 +0000",
           "link": "https://finance.yahoo.com/markets/stocks/articles/1-cash-heavy-stock-impressive-090316087.html?.tsrc=rss"
-        },
-        {
-          "title": "Rackspace Stock Offering Overshadows AI Deal",
-          "pubDate": "Thu, 09 Jul 2026 18:57:04 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/rackspace-stock-offering-overshadows-ai-185704558.html?.tsrc=rss"
-        },
-        {
-          "title": "Here's How Much More Upside Is Left in Palantir Stock, According to Wall Street Analysts",
-          "pubDate": "Thu, 09 Jul 2026 18:37:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/09/how-much-more-upside-palantir-stock-analyst/?.tsrc=rss"
         }
       ]
     },
     "MSTR": {
-      "at": "2026-07-10T16:08:45Z",
+      "at": "2026-07-10T18:11:52Z",
       "score": 1,
       "worst": null,
       "items": [
+        {
+          "title": "Strategy (MSTR) Sells 3,588 Bitcoin And Rewrites Its Treasury Playbook",
+          "pubDate": "Fri, 10 Jul 2026 17:13:26 +0000",
+          "link": "https://finance.yahoo.com/markets/crypto/articles/strategy-mstr-sells-3-588-171326135.html?.tsrc=rss"
+        },
+        {
+          "title": "COIN Vs. MSTR: Coinbase Has the Structurally Superior Approach to Bitcoin Over MicroStrategy",
+          "pubDate": "Fri, 10 Jul 2026 16:45:04 +0000",
+          "link": "https://247wallst.com/investing/2026/07/10/coin-vs-mstr-coinbase-has-the-structurally-superior-approach-to-bitcoin-over-microstrategy/?.tsrc=rss"
+        },
+        {
+          "title": "SK Hynix, Micron, Meta, Delta, Circle Internet, and More Stocks That Explain Today\u2019s Market",
+          "pubDate": "Fri, 10 Jul 2026 16:12:00 +0000",
+          "link": "https://finance.yahoo.com/m/5e3d4e15-fbc3-3cfd-8a43-b5115c6c94e1/sk-hynix%2C-micron%2C-meta%2C.html?.tsrc=rss"
+        },
         {
           "title": "Bitcoin-MSTR Panic Is \u2018Mostly Noise\u2019 \u2013 BTC A \u2018Screaming Buy\u2019 At $64K, Says Standard Chartered",
           "pubDate": "Fri, 10 Jul 2026 14:52:51 +0000",
@@ -221,33 +236,38 @@
           "title": "Inside Strategy\u2019s Bitcoin Brain Trust: The Executives Powering a $54 Billion Treasury",
           "pubDate": "Fri, 10 Jul 2026 13:17:05 +0000",
           "link": "https://coingape.com/block-of-fame/cxo-stories/inside-strategys-bitcoin-brain-trust-the-executives-powering-a-54-billion-treasury/?.tsrc=rss"
-        },
-        {
-          "title": "Micron, Delta, Strategy, Circle Internet, and More Stocks That Explain Today\u2019s Market",
-          "pubDate": "Fri, 10 Jul 2026 12:59:00 +0000",
-          "link": "https://finance.yahoo.com/m/5e3d4e15-fbc3-3cfd-8a43-b5115c6c94e1/micron%2C-delta%2C-strategy%2C.html?.tsrc=rss"
-        },
-        {
-          "title": "Bitcoin outlook hinges on clarity around Strategy\u2019s new approach: analyst",
-          "pubDate": "Fri, 10 Jul 2026 12:53:07 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-outlook-hinges-clarity-around-125307535.html?.tsrc=rss"
-        },
-        {
-          "title": "Eric Trump Says 'Stacking Continues' as American Bitcoin Amasses 8,000 BTC: 'We Continue to Differentiate Ourselves'",
-          "pubDate": "Fri, 10 Jul 2026 12:31:07 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/eric-trump-says-stacking-continues-123107733.html?.tsrc=rss"
         }
       ]
     },
     "AVGO": {
-      "at": "2026-07-10T16:08:46Z",
+      "at": "2026-07-10T18:11:51Z",
       "score": 2,
       "worst": null,
       "items": [
         {
-          "title": "How OpenAI\u2019s New GPT 5.6 Measures Up to SpaceX, Google, Anthropic",
-          "pubDate": "Fri, 10 Jul 2026 15:28:00 +0000",
+          "title": "Meta Stock Had a Lousy First Half. Here\u2019s Why the Tech Giant\u2019s Shares Are Rising Again",
+          "pubDate": "Fri, 10 Jul 2026 17:06:54 +0000",
+          "link": "https://www.investopedia.com/meta-stock-had-a-lousy-first-half-here-s-why-the-tech-giant-s-shares-are-rising-again-12016084?.tsrc=rss"
+        },
+        {
+          "title": "How OpenAI\u2019s New GPT 5.6 Stacks Up Against SpaceX, Google, Anthropic",
+          "pubDate": "Fri, 10 Jul 2026 17:00:00 +0000",
           "link": "https://finance.yahoo.com/m/422f570c-81b4-3053-bb4c-b2acac9b3c45/how-openai%E2%80%99s-new-gpt-5.6.html?.tsrc=rss"
+        },
+        {
+          "title": "A Potential New Rival Wants to Undercut TSMC. Here's What Investors Need to Know.",
+          "pubDate": "Fri, 10 Jul 2026 16:41:58 +0000",
+          "link": "https://www.fool.com/investing/2026/07/10/a-potential-new-rival-wants-to-undercut-tsmc-heres-what-investors-need-to-know/?.tsrc=rss"
+        },
+        {
+          "title": "Defense AI Heats Up: BigBear.ai Lands First European Validation for AI-Powered Airport Screening",
+          "pubDate": "Fri, 10 Jul 2026 16:25:29 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/defense-ai-heats-bigbear-ai-162529616.html?.tsrc=rss"
+        },
+        {
+          "title": "Can MRVL's AI-Infrastructure Engines Deliver Its Promised Growth?",
+          "pubDate": "Fri, 10 Jul 2026 15:02:00 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/mrvls-ai-infrastructure-engines-deliver-150200656.html?.tsrc=rss"
         },
         {
           "title": "What Is The Market Really Expecting From AVGO Stock?",
@@ -263,34 +283,34 @@
           "title": "AAPL &amp; Broadcom's $30B Deal Boosts AI Chip Strategy: What's Ahead?",
           "pubDate": "Fri, 10 Jul 2026 14:37:00 +0000",
           "link": "https://finance.yahoo.com/technology/ai/articles/aapl-broadcoms-30b-deal-boosts-143700416.html?.tsrc=rss"
-        },
-        {
-          "title": "Chip stocks regain some ground after whipsaw of a trading week",
-          "pubDate": "Fri, 10 Jul 2026 14:30:00 +0000",
-          "link": "https://finance.yahoo.com/video/chip-stocks-regain-ground-whipsaw-143000172.html?.tsrc=rss"
-        },
-        {
-          "title": "Meta Platforms Jumps 6% on AI Cloud Ambitions: Can It Challenge Amazon and CoreWeave?",
-          "pubDate": "Fri, 10 Jul 2026 14:18:46 +0000",
-          "link": "https://247wallst.com/investing/2026/07/10/meta-platforms-jumps-6-on-ai-cloud-ambitions-can-it-challenge-amazon-and-coreweave/?.tsrc=rss"
-        },
-        {
-          "title": "Magnificent Meta Is Up Again, Leading the S&amp;P 500",
-          "pubDate": "Fri, 10 Jul 2026 14:10:39 +0000",
-          "link": "https://finance.yahoo.com/m/ffd194f3-b635-340b-b7bb-603900fe4975/magnificent-meta-is-up-again%2C.html?.tsrc=rss"
-        },
-        {
-          "title": "Intel's Operating Margins Are Improving: Is More Upside Ahead?",
-          "pubDate": "Fri, 10 Jul 2026 14:02:00 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/intels-operating-margins-improving-more-140200079.html?.tsrc=rss"
         }
       ]
     },
     "COIN": {
-      "at": "2026-07-10T16:08:47Z",
+      "at": "2026-07-10T18:11:52Z",
       "score": 4,
       "worst": null,
       "items": [
+        {
+          "title": "Cathie Wood\u2019s Perfect Timing: ARK Buys Big Into Circle Ahead of Federal Bank Approval",
+          "pubDate": "Fri, 10 Jul 2026 17:28:00 +0000",
+          "link": "https://finance.yahoo.com/m/c0ea6738-808a-3fae-a211-29f1d480942d/cathie-wood%E2%80%99s-perfect-timing%3A.html?.tsrc=rss"
+        },
+        {
+          "title": "Kraken Rebuilds App Around Embedded AI Intelligence",
+          "pubDate": "Fri, 10 Jul 2026 17:07:36 +0000",
+          "link": "https://www.bankless.com/read/news/kraken-rebuilds-app-around-embedded-ai-intelligence?.tsrc=rss"
+        },
+        {
+          "title": "COIN Vs. MSTR: Coinbase Has the Structurally Superior Approach to Bitcoin Over MicroStrategy",
+          "pubDate": "Fri, 10 Jul 2026 16:45:04 +0000",
+          "link": "https://247wallst.com/investing/2026/07/10/coin-vs-mstr-coinbase-has-the-structurally-superior-approach-to-bitcoin-over-microstrategy/?.tsrc=rss"
+        },
+        {
+          "title": "Circle stock rebounds on OCC trust bank approval, while Coinbase is kept waiting",
+          "pubDate": "Fri, 10 Jul 2026 16:30:00 +0000",
+          "link": "https://finance.yahoo.com/video/circle-stock-rebounds-occ-trust-163000195.html?.tsrc=rss"
+        },
         {
           "title": "Circle Stock Rallies On National Bank Approval. ARK Buys More Shares.",
           "pubDate": "Fri, 10 Jul 2026 15:14:51 +0000",
@@ -302,11 +322,6 @@
           "link": "https://finance.yahoo.com/markets/stocks/articles/coinbase-coin-replaces-paul-grewal-141356464.html?.tsrc=rss"
         },
         {
-          "title": "Circle Stock Soars on Crypto Bank Approval\u2014and Cathie Wood Timed It Perfectly",
-          "pubDate": "Fri, 10 Jul 2026 14:07:00 +0000",
-          "link": "https://finance.yahoo.com/m/c0ea6738-808a-3fae-a211-29f1d480942d/circle-stock-soars-on-crypto.html?.tsrc=rss"
-        },
-        {
           "title": "Circle Jumps 14% on OCC Trust Bank Approval; Coinbase and Strategy Gain 5% as Bitcoin Bounces",
           "pubDate": "Fri, 10 Jul 2026 13:32:41 +0000",
           "link": "https://247wallst.com/investing/2026/07/10/circle-jumps-13-on-occ-trust-bank-approval-coinbase-and-strategy-gain-5-as-bitcoin-bounces/?.tsrc=rss"
@@ -315,21 +330,6 @@
           "title": "Is Trending Stock Coinbase Global, Inc. (COIN) a Buy Now?",
           "pubDate": "Fri, 10 Jul 2026 13:00:07 +0000",
           "link": "https://finance.yahoo.com/markets/stocks/articles/trending-stock-coinbase-global-inc-130007874.html?.tsrc=rss"
-        },
-        {
-          "title": "Micron, Delta, Strategy, Circle Internet, and More Stocks That Explain Today\u2019s Market",
-          "pubDate": "Fri, 10 Jul 2026 12:59:00 +0000",
-          "link": "https://finance.yahoo.com/m/5e3d4e15-fbc3-3cfd-8a43-b5115c6c94e1/micron%2C-delta%2C-strategy%2C.html?.tsrc=rss"
-        },
-        {
-          "title": "CRCL Stock Rebounds From 3-Month Low After OCC National Trust Bank Approval",
-          "pubDate": "Fri, 10 Jul 2026 11:59:13 +0000",
-          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/crcl-stock-rebounds-three-month-low-occ-bank-approval/cZmrctmR7FH?.tsrc=rss"
-        },
-        {
-          "title": "Coinbase CLO and Grayscale CFO Both Exit as Crypto Regulation Era Begins",
-          "pubDate": "Fri, 10 Jul 2026 11:49:16 +0000",
-          "link": "https://99bitcoins.com/news/altcoins/coinbase-clo-grayscale-cfo-exits-crypto-regulation/?.tsrc=rss"
         }
       ]
     }
