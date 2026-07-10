@@ -12,18 +12,22 @@
       "peak": 161.545,
       "entry_at": "2026-07-09T19:01:50Z"
     },
-    "PLTR": {
-      "qty": 0.1944390433599067,
-      "entry": 128.575,
-      "peak": 128.575,
-      "entry_at": "2026-07-09T19:09:08Z"
+    "AMD": {
+      "qty": 0.04532310844006925,
+      "entry": 551.595,
+      "peak": 551.595,
+      "entry_at": "2026-07-10T14:55:12Z"
+    },
+    "AVGO": {
+      "qty": 0.06252344629235963,
+      "entry": 399.85,
+      "peak": 399.85,
+      "entry_at": "2026-07-10T14:55:17Z"
     }
   },
-  "cooldown": {
-    "AMD": 1
-  },
-  "realized_pnl": -2.3338545101869936,
-  "run_count": 11,
+  "cooldown": {},
+  "realized_pnl": -2.4067691514469587,
+  "run_count": 12,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -67,9 +71,16 @@
       "pnl_usd": -0.5157712584729045,
       "reason": "GR-STOP",
       "closed_at": "2026-07-09T19:01:47Z"
+    },
+    {
+      "sym": "PLTR",
+      "pnl_pct": -0.0029165856503986,
+      "pnl_usd": -0.07291464125996501,
+      "reason": "TREND-BREAK",
+      "closed_at": "2026-07-10T14:55:07Z"
     }
   ],
-  "consec_losses": 6,
+  "consec_losses": 7,
   "position_schema_seen": [
     "id",
     "symbol",
@@ -86,7 +97,7 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-10T14:50:10Z",
+      "at": "2026-07-10T14:55:04Z",
       "score": 0,
       "worst": null,
       "items": [
@@ -133,7 +144,7 @@
       ]
     },
     "PLTR": {
-      "at": "2026-07-10T14:50:10Z",
+      "at": "2026-07-10T14:55:03Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -180,7 +191,7 @@
       ]
     },
     "MSTR": {
-      "at": "2026-07-10T14:50:09Z",
+      "at": "2026-07-10T14:55:02Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -227,7 +238,7 @@
       ]
     },
     "AVGO": {
-      "at": "2026-07-10T14:50:11Z",
+      "at": "2026-07-10T14:55:04Z",
       "score": 0,
       "worst": null,
       "items": [
@@ -274,7 +285,7 @@
       ]
     },
     "COIN": {
-      "at": "2026-07-10T14:50:09Z",
+      "at": "2026-07-10T14:55:03Z",
       "score": 3,
       "worst": null,
       "items": [
