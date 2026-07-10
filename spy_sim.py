@@ -5,11 +5,11 @@ SPY $200 leveraged TA-based paper trading simulation.
 Runs on GitHub Actions (folded into ai4trade-bot workflow). Uses free public
 market-data endpoints, no API key.
 
-Strategy (from the July 2026 SPY TA report card):
-  Setup A (breakout): daily close > $760.40 on volume > 60M.
+Strategy (aggressive tuning based on July 2026 SPY TA report card):
+  Setup A (breakout): daily close > $760.40 on volume > 40M.
     Entry $761.00, stop $752.50, T1 $782 (sell half, stop -> BE), T2 $805.
-  Setup B (pullback): day's low tags the $739-$741 zone and close holds >= $739.
-    Entry $740.50, stop $732, T1 $752 (sell half, stop -> BE), T2 $760.
+  Setup B (pullback, WIDENED): day's low tags the $745-$749 zone and close holds >= $745.
+    Entry $747.00, stop $743.50, T1 $752 (sell half, stop -> BE), T2 $758.
   Invalidation: daily close < $722 -> stay flat, log bearish flip.
 
 Leverage: dynamic. Default BASE_LEVERAGE (10x). If drawdown from peak equity
@@ -47,18 +47,19 @@ REDUCED_LEVERAGE    = 5.0
 DRAWDOWN_CAP_USD    = 40.0   # 20% of $200
 
 BREAKOUT_TRIGGER = 760.40
-BREAKOUT_VOL_MIN = 60_000_000
+BREAKOUT_VOL_MIN = 40_000_000   # lowered from 60M for aggressive entry
 BREAKOUT_ENTRY   = 761.00
 BREAKOUT_STOP    = 752.50
 BREAKOUT_T1      = 782.00
 BREAKOUT_T2      = 805.00
 
-PULLBACK_LOW     = 739.00
-PULLBACK_HIGH    = 741.00
-PULLBACK_ENTRY   = 740.50
-PULLBACK_STOP    = 732.00
+# Widened pullback zone: covers current SPY area to catch more setups.
+PULLBACK_LOW     = 745.00
+PULLBACK_HIGH    = 749.00
+PULLBACK_ENTRY   = 747.00
+PULLBACK_STOP    = 743.50
 PULLBACK_T1      = 752.00
-PULLBACK_T2      = 760.00
+PULLBACK_T2      = 758.00
 
 BEAR_FLIP_CLOSE  = 722.00
 
@@ -331,7 +332,7 @@ def write_report(state: dict, bar: dict, actions: list) -> None:
     dd_now = state.get("peak_equity", STARTING_CASH) - (state["cash"] + (pos["shares"] * pos["entry"] if pos else 0.0))
 
     lines = [
-        f"# SPY $200 Sim (10x leverage, dynamic) - {today}",
+        f"# SPY $200 Sim (10x leverage, aggressive) - {today}",
         "",
         f"Bar processed: {bar['date']}  "
         f"O:{bar['open']}  H:{bar['high']}  L:{bar['low']}  C:{bar['close']}  V:{bar['volume']:,}",
