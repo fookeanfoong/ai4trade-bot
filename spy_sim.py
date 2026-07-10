@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SPY $200 TA-based paper trading simulation.
+SPY $200 leveraged (3x) TA-based paper trading simulation.
 
 Runs on GitHub Actions (folded into ai4trade-bot workflow). Uses free public
 market-data endpoints, no API key.
@@ -12,7 +12,11 @@ Strategy (from the July 2026 SPY TA report card):
     Entry $740.50, stop $732, T1 $752 (sell half, stop -> BE), T2 $760.
   Invalidation: daily close < $722 -> stay flat, log bearish flip.
 
-Paper account: $200 in fractional SPY. Deterministic; separate from bot.py.
+Leverage: P&L is amplified by LEVERAGE_FACTOR (SPXL/UPRO proxy). Signals
+still derived from SPY's daily bar. Real leveraged ETFs also suffer daily
+rebalance decay in choppy markets - that's not modeled here.
+
+Paper account: $200. Deterministic; separate from bot.py.
 State: spy_sim_state.json.  Reports: reports/spy_sim/YYYY-MM-DD.md.
 """
 
@@ -35,6 +39,7 @@ STATE_FILE = ROOT / "spy_sim_state.json"
 REPORTS_DIR = ROOT / "reports" / "spy_sim"
 
 STARTING_CASH = 200.0
+LEVERAGE_FACTOR = 3.0  # SPXL-equivalent 3x amplification of P&L
 
 BREAKOUT_TRIGGER = 760.40
 BREAKOUT_VOL_MIN = 60_000_000
@@ -151,6 +156,17 @@ def is_weekday_ny() -> bool:
     return now_ny.weekday() < 5
 
 
+def leveraged_proceeds(shares: float, entry: float, exit_price: float) -> float:
+    """Cash returned when selling `shares` bought at `entry`, price now `exit_price`.
+
+    Applies LEVERAGE_FACTOR to the price move. Cost basis (shares*entry)
+    always comes back; the P&L component is amplified.
+    """
+    cost = shares * entry
+    raw_pnl = shares * (exit_price - entry)
+    return cost + raw_pnl * LEVERAGE_FACTOR
+
+
 def check_exits(state: dict, bar: dict) -> list:
     """Apply intraday stop/target fills to open position based on today's OHLC."""
     lines = []
@@ -162,7 +178,7 @@ def check_exits(state: dict, bar: dict) -> list:
     # Conservative: if both stop and target hit intraday, stop fills first.
     if bar["low"] <= p["stop"]:
         fill = p["stop"]
-        proceeds = p["shares"] * fill
+        proceeds = leveraged_proceeds(p["shares"], p["entry"], fill)
         pnl = proceeds - (p["shares"] * p["entry"])
         state["cash"] += proceeds
         state["trade_log"].append({
@@ -170,18 +186,19 @@ def check_exits(state: dict, bar: dict) -> list:
             "action": "STOP_EXIT" if not p["half_taken"] else "BE_STOP_EXIT",
             "entry": p["entry"], "exit": fill,
             "shares": round(p["shares"], 8),
+            "leverage": LEVERAGE_FACTOR,
             "pnl_usd": round(pnl, 4),
             "pnl_pct": round(pnl / (p["shares"] * p["entry"]) * 100, 3),
             "closed_on": bar["date"],
         })
         state["position"] = None
-        lines.append(f"EXIT: {kind} stopped at ${fill:.2f} - realized P&L ${pnl:+.2f}")
+        lines.append(f"EXIT: {kind} stopped at ${fill:.2f} (3x-lev) - realized P&L ${pnl:+.2f}")
         return lines
 
     if not p["half_taken"] and bar["high"] >= p["t1"]:
         half = p["shares"] / 2
         fill = p["t1"]
-        proceeds = half * fill
+        proceeds = leveraged_proceeds(half, p["entry"], fill)
         pnl = proceeds - (half * p["entry"])
         state["cash"] += proceeds
         p["shares"] -= half
@@ -191,27 +208,29 @@ def check_exits(state: dict, bar: dict) -> list:
             "kind": kind, "action": "T1_HALF",
             "entry": p["entry"], "exit": fill,
             "shares": round(half, 8),
+            "leverage": LEVERAGE_FACTOR,
             "pnl_usd": round(pnl, 4),
             "pnl_pct": round(pnl / (half * p["entry"]) * 100, 3),
             "closed_on": bar["date"],
         })
-        lines.append(f"T1 HIT: sold half of {kind} at ${fill:.2f}, stop -> BE ${p['stop']:.2f}, booked ${pnl:+.2f}")
+        lines.append(f"T1 HIT: sold half of {kind} at ${fill:.2f} (3x-lev), stop -> BE ${p['stop']:.2f}, booked ${pnl:+.2f}")
 
     if p["shares"] > 1e-9 and bar["high"] >= p["t2"]:
         fill = p["t2"]
-        proceeds = p["shares"] * fill
+        proceeds = leveraged_proceeds(p["shares"], p["entry"], fill)
         pnl = proceeds - (p["shares"] * p["entry"])
         state["cash"] += proceeds
         state["trade_log"].append({
             "kind": kind, "action": "T2_EXIT",
             "entry": p["entry"], "exit": fill,
             "shares": round(p["shares"], 8),
+            "leverage": LEVERAGE_FACTOR,
             "pnl_usd": round(pnl, 4),
             "pnl_pct": round(pnl / (p["shares"] * p["entry"]) * 100, 3),
             "closed_on": bar["date"],
         })
         state["position"] = None
-        lines.append(f"T2 HIT: closed remaining {kind} at ${fill:.2f}, booked ${pnl:+.2f}")
+        lines.append(f"T2 HIT: closed remaining {kind} at ${fill:.2f} (3x-lev), booked ${pnl:+.2f}")
     return lines
 
 
@@ -242,7 +261,7 @@ def check_entries(state: dict, bar: dict) -> list:
             "opened_on": bar["date"],
         }
         lines.append(
-            f"ENTRY (Setup A breakout): {shares:.6f} SPY @ ${BREAKOUT_ENTRY:.2f} "
+            f"ENTRY (Setup A breakout, 3x-lev): {shares:.6f} SPY @ ${BREAKOUT_ENTRY:.2f} "
             f"- stop ${BREAKOUT_STOP}, T1 ${BREAKOUT_T1}, T2 ${BREAKOUT_T2}"
         )
         return lines
@@ -263,15 +282,18 @@ def check_entries(state: dict, bar: dict) -> list:
             "opened_on": bar["date"],
         }
         lines.append(
-            f"ENTRY (Setup B pullback): {shares:.6f} SPY @ ${PULLBACK_ENTRY:.2f} "
+            f"ENTRY (Setup B pullback, 3x-lev): {shares:.6f} SPY @ ${PULLBACK_ENTRY:.2f} "
             f"- stop ${PULLBACK_STOP}, T1 ${PULLBACK_T1}, T2 ${PULLBACK_T2}"
         )
     return lines
 
 
 def equity(state: dict, mark: float) -> float:
+    """Mark-to-market account value, position valued at LEVERAGE_FACTOR."""
     p = state.get("position")
-    return state["cash"] + (p["shares"] * mark if p else 0.0)
+    if not p:
+        return state["cash"]
+    return state["cash"] + leveraged_proceeds(p["shares"], p["entry"], mark)
 
 
 def write_report(state: dict, bar: dict, actions: list) -> None:
@@ -283,14 +305,15 @@ def write_report(state: dict, bar: dict, actions: list) -> None:
     pos = state.get("position")
 
     lines = [
-        f"# SPY $200 Sim - {today}",
+        f"# SPY $200 Sim (3x leverage) - {today}",
         "",
         f"Bar processed: {bar['date']}  "
         f"O:{bar['open']}  H:{bar['high']}  L:{bar['low']}  C:{bar['close']}  V:{bar['volume']:,}",
         "",
         f"- Cash: ${state['cash']:.2f}",
         f"- Position: {json.dumps(pos) if pos else 'FLAT'}",
-        f"- Mark-to-market equity: ${eq:.2f} ({pnl_pct:+.2f}% vs $200 start)",
+        f"- Mark-to-market equity (3x lev): ${eq:.2f} ({pnl_pct:+.2f}% vs $200 start)",
+        f"- Leverage factor: {LEVERAGE_FACTOR}x (SPXL/UPRO-equivalent, decay not modeled)",
         f"- Realized trades to date: {len(state['trade_log'])}",
         "",
         "## Actions this run",
@@ -335,7 +358,7 @@ def main() -> int:
     save_state(state)
     write_report(state, latest, actions)
 
-    print(f"Done. Equity ${eq:.2f} ({(eq - STARTING_CASH) / STARTING_CASH * 100:+.2f}%)")
+    print(f"Done. Equity ${eq:.2f} ({(eq - STARTING_CASH) / STARTING_CASH * 100:+.2f}%) [{LEVERAGE_FACTOR}x lev]")
     for a in actions:
         print(f"  * {a}")
     return 0
