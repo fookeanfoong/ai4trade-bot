@@ -6,28 +6,22 @@
       "peak": 96.2124,
       "entry_at": "2026-07-09T15:09:34Z"
     },
-    "COIN": {
-      "qty": 0.15624511734008312,
-      "entry": 160.005,
-      "peak": 161.545,
-      "entry_at": "2026-07-09T19:01:50Z"
-    },
     "AMD": {
       "qty": 0.04532310844006925,
       "entry": 551.595,
-      "peak": 551.595,
+      "peak": 552.7367,
       "entry_at": "2026-07-10T14:55:12Z"
     },
     "AVGO": {
       "qty": 0.06252344629235963,
       "entry": 399.85,
-      "peak": 399.85,
+      "peak": 400.775,
       "entry_at": "2026-07-10T14:55:17Z"
     }
   },
   "cooldown": {},
-  "realized_pnl": -2.4067691514469587,
-  "run_count": 13,
+  "realized_pnl": -2.441143077261777,
+  "run_count": 14,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -78,9 +72,16 @@
       "pnl_usd": -0.07291464125996501,
       "reason": "TREND-BREAK",
       "closed_at": "2026-07-10T14:55:07Z"
+    },
+    {
+      "sym": "COIN",
+      "pnl_pct": -0.0013749570325927243,
+      "pnl_usd": -0.03437392581481811,
+      "reason": "TREND-BREAK",
+      "closed_at": "2026-07-10T16:04:03Z"
     }
   ],
-  "consec_losses": 7,
+  "consec_losses": 8,
   "position_schema_seen": [
     "id",
     "symbol",
@@ -97,14 +98,39 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-10T14:56:45Z",
+      "at": "2026-07-10T16:03:57Z",
       "score": 0,
       "worst": null,
       "items": [
         {
+          "title": "How OpenAI\u2019s New GPT 5.6 Measures Up to SpaceX, Google, Anthropic",
+          "pubDate": "Fri, 10 Jul 2026 15:28:00 +0000",
+          "link": "https://finance.yahoo.com/m/422f570c-81b4-3053-bb4c-b2acac9b3c45/how-openai%E2%80%99s-new-gpt-5.6.html?.tsrc=rss"
+        },
+        {
+          "title": "Cathie Wood Goes On a Selling Spree: 3 Stocks She Just Sold",
+          "pubDate": "Fri, 10 Jul 2026 15:08:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/10/cathie-wood-goes-on-a-selling-spree-3-stocks-she-j/?.tsrc=rss"
+        },
+        {
+          "title": "Price Prediction: Can Intel Double by 2030?",
+          "pubDate": "Fri, 10 Jul 2026 15:00:05 +0000",
+          "link": "https://247wallst.com/investing/2026/07/10/price-prediction-can-intel-double-by-2030/?.tsrc=rss"
+        },
+        {
+          "title": "What Is The Market Really Expecting From AVGO Stock?",
+          "pubDate": "Fri, 10 Jul 2026 14:59:19 +0000",
+          "link": "https://www.trefis.com/articles/606617/what-is-the-market-really-expecting-from-avgo-stock-2/2026-07-10?.tsrc=rss"
+        },
+        {
           "title": "Chip stocks regain some ground after whipsaw of a trading week",
           "pubDate": "Fri, 10 Jul 2026 14:30:00 +0000",
           "link": "https://finance.yahoo.com/video/chip-stocks-regain-ground-whipsaw-143000172.html?.tsrc=rss"
+        },
+        {
+          "title": "Nvidia Stock Rises as It Shrugs Off Meta\u2019s New AI Chip",
+          "pubDate": "Fri, 10 Jul 2026 14:29:00 +0000",
+          "link": "https://finance.yahoo.com/m/e10adead-9fa0-332d-8395-f0806de6ca7a/nvidia-stock-rises-as-it.html?.tsrc=rss"
         },
         {
           "title": "Rackspace Technology's Enterprise AI Buildout Could Generate Up to $600 Million in Annual Revenue, RBC Says",
@@ -112,39 +138,14 @@
           "link": "https://finance.yahoo.com/technology/ai/articles/rackspace-technology-apos-enterprise-ai-142632211.html?.tsrc=rss"
         },
         {
-          "title": "Price Prediction: Up 144% YTD, Where Will AMD Be In 2027?",
-          "pubDate": "Fri, 10 Jul 2026 13:06:27 +0000",
-          "link": "https://247wallst.com/investing/2026/07/10/price-prediction-up-144-ytd-where-will-amd-be-in-2027/?.tsrc=rss"
-        },
-        {
-          "title": "Advanced Micro Devices, Inc. (AMD) is Attracting Investor Attention: Here is What You Should Know",
-          "pubDate": "Fri, 10 Jul 2026 13:00:03 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/advanced-micro-devices-inc-amd-130003614.html?.tsrc=rss"
-        },
-        {
-          "title": "Cathie Wood Dumps AMD, Doubles Down on Meta Stock",
-          "pubDate": "Fri, 10 Jul 2026 12:57:14 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-dumps-amd-doubles-125714691.html?.tsrc=rss"
-        },
-        {
-          "title": "Marvell Stock And The Multi-Year Bet Management Made",
-          "pubDate": "Fri, 10 Jul 2026 12:51:20 +0000",
-          "link": "https://www.trefis.com/articles/606408/marvell-stock-and-the-multi-year-bet-management-made/2026-07-10?.tsrc=rss"
-        },
-        {
-          "title": "AMD Stock Looks Strong. One Supply Chain Bottleneck Could Change That",
-          "pubDate": "Fri, 10 Jul 2026 12:43:52 +0000",
-          "link": "https://www.trefis.com/articles/603861/amd-stock-looks-strong-one-supply-chain-bottleneck-could-change-that/2026-07-10?.tsrc=rss"
-        },
-        {
-          "title": "AMD Stock Is Up 155% This Year, But Stifel Sees A Further Upside Of 16% \u2013 What\u2019s Driving The Optimism?",
-          "pubDate": "Fri, 10 Jul 2026 12:33:36 +0000",
-          "link": "https://stocktwits.com/news-articles/markets/equity/amd-stock-up-155-this-year-stifel-sees-even-more-upside-price-target/cZmrPqaR7FC?.tsrc=rss"
+          "title": "Intel's Operating Margins Are Improving: Is More Upside Ahead?",
+          "pubDate": "Fri, 10 Jul 2026 14:02:00 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/intels-operating-margins-improving-more-140200079.html?.tsrc=rss"
         }
       ]
     },
     "PLTR": {
-      "at": "2026-07-10T14:56:46Z",
+      "at": "2026-07-10T16:03:58Z",
       "score": 1,
       "worst": null,
       "items": [
@@ -191,10 +192,15 @@
       ]
     },
     "MSTR": {
-      "at": "2026-07-10T14:56:44Z",
+      "at": "2026-07-10T16:03:56Z",
       "score": 1,
       "worst": null,
       "items": [
+        {
+          "title": "Bitcoin-MSTR Panic Is \u2018Mostly Noise\u2019 \u2013 BTC A \u2018Screaming Buy\u2019 At $64K, Says Standard Chartered",
+          "pubDate": "Fri, 10 Jul 2026 14:52:51 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/bitcoin-mstr-panic-is-mostly-noise-btc-a-screaming-buy-at-64000/cZmrILrR783?.tsrc=rss"
+        },
         {
           "title": "Strategy Bitcoin Sales 'Mostly Noise,' Standard Chartered Says, Holding $100K BTC Call",
           "pubDate": "Fri, 10 Jul 2026 13:52:30 +0000",
@@ -229,19 +235,34 @@
           "title": "Eric Trump Says 'Stacking Continues' as American Bitcoin Amasses 8,000 BTC: 'We Continue to Differentiate Ourselves'",
           "pubDate": "Fri, 10 Jul 2026 12:31:07 +0000",
           "link": "https://finance.yahoo.com/markets/crypto/articles/eric-trump-says-stacking-continues-123107733.html?.tsrc=rss"
-        },
-        {
-          "title": "Michael Saylor said \u2018never sell your Bitcoin.\u2019 Now his company, Strategy, can sell up to $1.25 billion if it needs cash",
-          "pubDate": "Fri, 10 Jul 2026 12:15:00 +0000",
-          "link": "https://finance.yahoo.com/markets/crypto/articles/michael-saylor-said-never-sell-121500423.html?.tsrc=rss"
         }
       ]
     },
     "AVGO": {
-      "at": "2026-07-10T14:56:45Z",
-      "score": 0,
+      "at": "2026-07-10T16:03:58Z",
+      "score": 2,
       "worst": null,
       "items": [
+        {
+          "title": "How OpenAI\u2019s New GPT 5.6 Measures Up to SpaceX, Google, Anthropic",
+          "pubDate": "Fri, 10 Jul 2026 15:28:00 +0000",
+          "link": "https://finance.yahoo.com/m/422f570c-81b4-3053-bb4c-b2acac9b3c45/how-openai%E2%80%99s-new-gpt-5.6.html?.tsrc=rss"
+        },
+        {
+          "title": "What Is The Market Really Expecting From AVGO Stock?",
+          "pubDate": "Fri, 10 Jul 2026 14:59:19 +0000",
+          "link": "https://www.trefis.com/articles/606617/what-is-the-market-really-expecting-from-avgo-stock-2/2026-07-10?.tsrc=rss"
+        },
+        {
+          "title": "Apple Stock Soars on Broadcom Deal. Here's What You Need to Know.",
+          "pubDate": "Fri, 10 Jul 2026 14:50:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/10/apple-stock-soars-on-broadcom-deal-heres-what-you/?.tsrc=rss"
+        },
+        {
+          "title": "AAPL &amp; Broadcom's $30B Deal Boosts AI Chip Strategy: What's Ahead?",
+          "pubDate": "Fri, 10 Jul 2026 14:37:00 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/aapl-broadcoms-30b-deal-boosts-143700416.html?.tsrc=rss"
+        },
         {
           "title": "Chip stocks regain some ground after whipsaw of a trading week",
           "pubDate": "Fri, 10 Jul 2026 14:30:00 +0000",
@@ -258,37 +279,22 @@
           "link": "https://finance.yahoo.com/m/ffd194f3-b635-340b-b7bb-603900fe4975/magnificent-meta-is-up-again%2C.html?.tsrc=rss"
         },
         {
-          "title": "Marvell Stock And The Multi-Year Bet Management Made",
-          "pubDate": "Fri, 10 Jul 2026 12:51:20 +0000",
-          "link": "https://www.trefis.com/articles/606408/marvell-stock-and-the-multi-year-bet-management-made/2026-07-10?.tsrc=rss"
-        },
-        {
-          "title": "US Equity Futures Mixed Ahead of South Korean Chipmaker SK Hynix's Trading Debut",
-          "pubDate": "Fri, 10 Jul 2026 11:59:50 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/us-equity-futures-mixed-ahead-115950902.html?.tsrc=rss"
-        },
-        {
-          "title": "Latest News In AI Chips - SK Hynix's Nasdaq Debut Shakes AI Investments Market",
-          "pubDate": "Fri, 10 Jul 2026 11:37:31 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/latest-news-ai-chips-sk-113731053.html?.tsrc=rss"
-        },
-        {
-          "title": "The Real Price of NVIDIA Stock Is Three Years Away",
-          "pubDate": "Fri, 10 Jul 2026 11:35:37 +0000",
-          "link": "https://www.trefis.com/articles/606625/the-real-price-of-nvidia-stock-is-three-years-away/2026-07-10?.tsrc=rss"
-        },
-        {
-          "title": "If You Invested $10,000 in Apple When Tim Cook Took Over, Here\u2019s What It\u2019s Worth Now",
-          "pubDate": "Fri, 10 Jul 2026 11:35:04 +0000",
-          "link": "https://247wallst.com/investing/2026/07/10/if-you-invested-10000-in-apple-when-tim-cook-took-over-heres-what-its-worth-now/?.tsrc=rss"
+          "title": "Intel's Operating Margins Are Improving: Is More Upside Ahead?",
+          "pubDate": "Fri, 10 Jul 2026 14:02:00 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/intels-operating-margins-improving-more-140200079.html?.tsrc=rss"
         }
       ]
     },
     "COIN": {
-      "at": "2026-07-10T14:56:44Z",
-      "score": 3,
+      "at": "2026-07-10T16:03:57Z",
+      "score": 4,
       "worst": null,
       "items": [
+        {
+          "title": "Circle Stock Rallies On National Bank Approval. ARK Buys More Shares.",
+          "pubDate": "Fri, 10 Jul 2026 15:14:51 +0000",
+          "link": "https://finance.yahoo.com/m/53571346-1040-3234-8407-5129ce47c180/circle-stock-rallies-on.html?.tsrc=rss"
+        },
         {
           "title": "Coinbase (COIN) Replaces Paul Grewal With Molly Abraham As Top Lawyer",
           "pubDate": "Fri, 10 Jul 2026 14:13:56 +0000",
@@ -298,11 +304,6 @@
           "title": "Circle Stock Soars on Crypto Bank Approval\u2014and Cathie Wood Timed It Perfectly",
           "pubDate": "Fri, 10 Jul 2026 14:07:00 +0000",
           "link": "https://finance.yahoo.com/m/c0ea6738-808a-3fae-a211-29f1d480942d/circle-stock-soars-on-crypto.html?.tsrc=rss"
-        },
-        {
-          "title": "Circle Stock Rallies After Regulators Give The Green Light For National Bank",
-          "pubDate": "Fri, 10 Jul 2026 13:48:52 +0000",
-          "link": "https://finance.yahoo.com/m/53571346-1040-3234-8407-5129ce47c180/circle-stock-rallies-after.html?.tsrc=rss"
         },
         {
           "title": "Circle Jumps 14% on OCC Trust Bank Approval; Coinbase and Strategy Gain 5% as Bitcoin Bounces",
@@ -325,9 +326,9 @@
           "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/crcl-stock-rebounds-three-month-low-occ-bank-approval/cZmrctmR7FH?.tsrc=rss"
         },
         {
-          "title": "Coinbase and Grayscale Executives Step Down After Major Crypto Wins",
-          "pubDate": "Thu, 09 Jul 2026 22:05:41 +0000",
-          "link": "https://beincrypto.com/coinbase-grayscale-executives-step-down/?.tsrc=rss"
+          "title": "Coinbase CLO and Grayscale CFO Both Exit as Crypto Regulation Era Begins",
+          "pubDate": "Fri, 10 Jul 2026 11:49:16 +0000",
+          "link": "https://99bitcoins.com/news/altcoins/coinbase-clo-grayscale-cfo-exits-crypto-regulation/?.tsrc=rss"
         }
       ]
     }
