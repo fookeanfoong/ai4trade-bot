@@ -1,105 +1,105 @@
 {
-  "fetched_at": "2026-07-13T14:19:43Z",
+  "fetched_at": "2026-07-13T18:23:40Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
-      "last": 751.795,
+      "last": 749.26,
       "prev_close": 754.95,
       "day_high": 753.911,
-      "day_low": 750.315,
-      "change_pct": -0.42,
-      "volume": 7627502,
-      "market_time": 1783952382
+      "day_low": 748.93,
+      "change_pct": -0.75,
+      "volume": 22588739,
+      "market_time": 1783967017
     },
     "QQQ": {
       "symbol": "QQQ",
-      "last": 714.77,
+      "last": 712.26,
       "prev_close": 725.51,
-      "day_high": 718.43,
-      "day_low": 712.56,
-      "change_pct": -1.48,
-      "volume": 10611093,
-      "market_time": 1783952383
+      "day_high": 718.74,
+      "day_low": 711.7,
+      "change_pct": -1.83,
+      "volume": 24807444,
+      "market_time": 1783967010
     },
     "NVDA": {
       "symbol": "NVDA",
-      "last": 208.78,
+      "last": 203.995,
       "prev_close": 210.96,
       "day_high": 210.57,
-      "day_low": 207.02,
-      "change_pct": -1.03,
-      "volume": 25125481,
-      "market_time": 1783952383
+      "day_low": 203.47,
+      "change_pct": -3.3,
+      "volume": 74574234,
+      "market_time": 1783967018
     },
     "AMD": {
       "symbol": "AMD",
-      "last": 539.86,
+      "last": 536.725,
       "prev_close": 557.89,
-      "day_high": 541.68,
+      "day_high": 551.87,
       "day_low": 526.97,
-      "change_pct": -3.23,
-      "volume": 6372794,
-      "market_time": 1783952382
+      "change_pct": -3.79,
+      "volume": 14948616,
+      "market_time": 1783967018
     },
     "TSLA": {
       "symbol": "TSLA",
-      "last": 393.681,
+      "last": 393.295,
       "prev_close": 407.76,
       "day_high": 405.4,
-      "day_low": 392.74,
-      "change_pct": -3.45,
-      "volume": 8147277,
-      "market_time": 1783952383
+      "day_low": 392.5,
+      "change_pct": -3.55,
+      "volume": 22652095,
+      "market_time": 1783967017
     },
     "XOM": {
       "symbol": "XOM",
-      "last": 142.785,
+      "last": 144.875,
       "prev_close": 138.88,
-      "day_high": 143.56,
+      "day_high": 145.19,
       "day_low": 140.485,
-      "change_pct": 2.81,
-      "volume": 3143558,
-      "market_time": 1783952376
+      "change_pct": 4.32,
+      "volume": 8460760,
+      "market_time": 1783967017
     },
     "OXY": {
       "symbol": "OXY",
-      "last": 53.626,
+      "last": 54.88,
       "prev_close": 52.89,
-      "day_high": 54.447,
+      "day_high": 54.925,
       "day_low": 53.45,
-      "change_pct": 1.39,
-      "volume": 3605432,
-      "market_time": 1783952382
+      "change_pct": 3.76,
+      "volume": 8140697,
+      "market_time": 1783967017
     },
     "CVX": {
       "symbol": "CVX",
-      "last": 179.88,
+      "last": 181.805,
       "prev_close": 176.4,
-      "day_high": 181.24,
+      "day_high": 182.22,
       "day_low": 179.015,
-      "change_pct": 1.97,
-      "volume": 1606632,
-      "market_time": 1783952375
+      "change_pct": 3.06,
+      "volume": 4201105,
+      "market_time": 1783967011
     },
     "JPM": {
       "symbol": "JPM",
-      "last": 334.21,
+      "last": 334.385,
       "prev_close": 336.47,
       "day_high": 338.35,
-      "day_low": 333.54,
-      "change_pct": -0.67,
-      "volume": 1182934,
-      "market_time": 1783952381
+      "day_low": 332.5,
+      "change_pct": -0.62,
+      "volume": 3729887,
+      "market_time": 1783967011
     },
     "USO": {
       "symbol": "USO",
-      "last": 113.67,
+      "last": 118.8,
       "prev_close": 108.7,
-      "day_high": 113.999,
+      "day_high": 119.045,
       "day_low": 111.71,
-      "change_pct": 4.57,
-      "volume": 2552953,
-      "market_time": 1783952384
+      "change_pct": 9.29,
+      "volume": 9003906,
+      "market_time": 1783967018
     }
   },
   "errors": {}
