@@ -1,105 +1,105 @@
 {
-  "fetched_at": "2026-07-13T18:52:04Z",
+  "fetched_at": "2026-07-13T22:14:05Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
-      "last": 749.87,
+      "last": 749.17,
       "prev_close": 754.95,
       "day_high": 753.911,
-      "day_low": 748.93,
-      "change_pct": -0.67,
-      "volume": 26095170,
-      "market_time": 1783968723
+      "day_low": 748.03,
+      "change_pct": -0.77,
+      "volume": 43420412,
+      "market_time": 1783972800
     },
     "QQQ": {
       "symbol": "QQQ",
-      "last": 712.965,
+      "last": 711.74,
       "prev_close": 725.51,
       "day_high": 718.74,
-      "day_low": 711.525,
-      "change_pct": -1.73,
-      "volume": 26551824,
-      "market_time": 1783968722
+      "day_low": 710.1,
+      "change_pct": -1.9,
+      "volume": 35333498,
+      "market_time": 1783972800
     },
     "NVDA": {
       "symbol": "NVDA",
-      "last": 203.998,
+      "last": 203.53,
       "prev_close": 210.96,
       "day_high": 210.57,
       "day_low": 203.35,
-      "change_pct": -3.3,
-      "volume": 78940930,
-      "market_time": 1783968723
+      "change_pct": -3.52,
+      "volume": 113202886,
+      "market_time": 1783972801
     },
     "AMD": {
       "symbol": "AMD",
-      "last": 537.37,
+      "last": 534.39,
       "prev_close": 557.89,
       "day_high": 551.87,
       "day_low": 526.97,
-      "change_pct": -3.68,
-      "volume": 15620837,
-      "market_time": 1783968724
+      "change_pct": -4.21,
+      "volume": 22515725,
+      "market_time": 1783972801
     },
     "TSLA": {
       "symbol": "TSLA",
-      "last": 393.11,
+      "last": 394.76,
       "prev_close": 407.76,
       "day_high": 405.4,
-      "day_low": 392.17,
-      "change_pct": -3.59,
-      "volume": 23865529,
-      "market_time": 1783968723
+      "day_low": 391.37,
+      "change_pct": -3.19,
+      "volume": 32685743,
+      "market_time": 1783972800
     },
     "XOM": {
       "symbol": "XOM",
-      "last": 145.096,
+      "last": 144.51,
       "prev_close": 138.88,
       "day_high": 145.23,
       "day_low": 140.485,
-      "change_pct": 4.48,
-      "volume": 9081230,
-      "market_time": 1783968720
+      "change_pct": 4.05,
+      "volume": 18476067,
+      "market_time": 1783972969
     },
     "OXY": {
       "symbol": "OXY",
-      "last": 55.09,
+      "last": 54.81,
       "prev_close": 52.89,
       "day_high": 55.11,
       "day_low": 53.45,
-      "change_pct": 4.16,
-      "volume": 8943735,
-      "market_time": 1783968719
+      "change_pct": 3.63,
+      "volume": 12725416,
+      "market_time": 1783972802
     },
     "CVX": {
       "symbol": "CVX",
-      "last": 182.195,
+      "last": 182.2,
       "prev_close": 176.4,
       "day_high": 182.38,
       "day_low": 179.015,
       "change_pct": 3.29,
-      "volume": 4530157,
-      "market_time": 1783968715
+      "volume": 7640248,
+      "market_time": 1783973019
     },
     "JPM": {
       "symbol": "JPM",
-      "last": 334.71,
+      "last": 334.53,
       "prev_close": 336.47,
       "day_high": 338.35,
       "day_low": 332.5,
-      "change_pct": -0.52,
-      "volume": 3955526,
-      "market_time": 1783968723
+      "change_pct": -0.58,
+      "volume": 5339653,
+      "market_time": 1783972802
     },
     "USO": {
       "symbol": "USO",
-      "last": 117.82,
+      "last": 117.79,
       "prev_close": 108.7,
       "day_high": 119.045,
       "day_low": 111.71,
-      "change_pct": 8.39,
-      "volume": 10108569,
-      "market_time": 1783968719
+      "change_pct": 8.36,
+      "volume": 12150524,
+      "market_time": 1783972800
     }
   },
   "errors": {}
