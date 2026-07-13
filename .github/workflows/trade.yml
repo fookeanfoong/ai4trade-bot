@@ -32,6 +32,10 @@ jobs:
       - name: Install deps
         run: pip install --quiet pytz
 
+      - name: Fetch live quotes
+        continue-on-error: true
+        run: python quotes.py
+
       - name: Run ai4trade momentum bot
         env:
           AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
