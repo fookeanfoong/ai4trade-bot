@@ -1,5 +1,5 @@
 # Pre-market digest 2026-07-14
-_Generated 08:24 ET_
+_Generated 08:27 ET_
 
 ## Macro
 - Verdict: **neutral** (1/5 risk-on)
