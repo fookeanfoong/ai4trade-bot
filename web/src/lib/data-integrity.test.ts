@@ -47,8 +47,8 @@ describe('data integrity', () => {
     for (const r of reviews) expect(ids.has(r.provider_id)).toBe(true);
   });
 
-  it('blog: 5 posts, at least 3 in Chinese, unique slugs, valid related providers', () => {
-    expect(posts.length).toBe(5);
+  it('blog: at least 5 posts, at least 3 in Chinese, unique slugs, valid related providers', () => {
+    expect(posts.length).toBeGreaterThanOrEqual(5);
     expect(posts.filter((p) => p.locale === 'zh').length).toBeGreaterThanOrEqual(3);
     expect(new Set(posts.map((p) => p.slug)).size).toBe(posts.length);
     const slugs = new Set(providers.map((p) => p.slug));

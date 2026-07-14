@@ -98,6 +98,27 @@ export const rankings: Ranking[] = [
     },
   },
   {
+    slug: 'enterprise-ready',
+    compute: () =>
+      providers
+        .filter((p) => p.supports_invoice)
+        .map((p) => ({
+          provider: p,
+          value: p.trust_score,
+          display: `信任分 ${p.trust_score}${p.supports_dpa ? ' · DPA' : ''}`,
+        }))
+        .sort((a, b) => b.value - a.value),
+    title: { zh: '企业级 AI API 中转站排行(可开发票)', en: 'Enterprise-Ready Resellers (Invoicing)' },
+    description: {
+      zh: '筛选支持开发票的中转站,按信任分排序,适合需要报销、合同与合规的团队。',
+      en: 'Resellers that support invoicing, ranked by trust score — for teams needing reimbursement and compliance.',
+    },
+    methodology: {
+      zh: '仅收录支持开发票的中转站,按信任分降序排列;标注是否支持 DPA。',
+      en: 'Only resellers that support invoicing, sorted by trust score; DPA support is flagged.',
+    },
+  },
+  {
     slug: 'fastest',
     compute: () =>
       [...providers]

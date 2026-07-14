@@ -161,6 +161,67 @@ Shortlist 2–4 resellers and [compare them side by side](/en/compare) before to
 
 > Prices shown are demonstration data; always confirm on the provider site.`,
   },
+  {
+    slug: 'deepseek-api-china-guide',
+    locale: 'zh',
+    title: 'DeepSeek API 中转站怎么选?V3 与 R1 价格对比',
+    excerpt:
+      'DeepSeek V3 与 R1 性价比极高,是国产模型首选。本文对比各中转站的 DeepSeek 报价与线路,教你挑最划算的一家。',
+    date: '2026-07-05',
+    tags: ['DeepSeek', 'V3', 'R1'],
+    minRead: 5,
+    related: ['deepbricks', 'aihubmix', 'laozhang-ai'],
+    content: `DeepSeek V3 与 R1 以极低价格提供强推理与代码能力,是国内团队的高性价比之选。多数中转站都已接入。
+
+## V3 还是 R1
+
+- **DeepSeek V3**:通用对话与代码,价格最低,适合高频调用
+- **DeepSeek R1**:强推理(带思维链),价格略高,适合复杂任务
+
+## 怎么比价
+
+各中转站的 DeepSeek 折扣差异不小。可以在 [模型价格榜](/zh/models) 直接看每个模型在各家的报价排序,一眼挑最便宜。
+
+## 别忽略线路与付款
+
+国内调用还要看是否直连、是否支持支付宝。详情页的「覆盖地区」和「付款方式」都有标注,或直接看 [国内直连友好排行](/zh/rankings/china-friendly)。
+
+> 价格为演示数据,请以各家官网实时报价为准。`,
+  },
+  {
+    slug: 'cut-llm-api-bill-2026',
+    locale: 'en',
+    title: '5 Ways to Cut Your LLM API Bill in 2026',
+    excerpt:
+      'Practical tactics to reduce AI API spend — from picking the right reseller discount to matching the model to the task.',
+    date: '2026-07-11',
+    tags: ['cost', 'optimization', 'pricing'],
+    minRead: 5,
+    related: ['deepbricks', 'openrouter', 'aihubmix'],
+    content: `AI API costs add up fast. Five tactics that actually move the needle:
+
+## 1. Use a reseller discount
+
+Resellers routinely price **5–25% below** official rates. Start from the [GPT-4o price ranking](/en/rankings/cheapest-gpt-4o).
+
+## 2. Match the model to the task
+
+Don't run GPT-4o where GPT-4o mini or DeepSeek V3 would do. Compare per-model prices on the [models page](/en/models).
+
+## 3. Cap output tokens
+
+Output tokens are the expensive half. Set sensible \`max_tokens\`.
+
+## 4. Cache and batch
+
+Reuse results and batch low-priority jobs on cheaper, higher-latency providers — see [fastest vs. cheapest](/en/rankings/fastest).
+
+## 5. Watch reliability, not just price
+
+Retries from an unstable provider cost money too. Check the [most reliable ranking](/en/rankings/most-reliable).
+
+> Shortlist and [compare providers side by side](/en/compare) before you commit.`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {
