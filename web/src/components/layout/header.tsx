@@ -3,6 +3,7 @@ import { Link } from '@/i18n/routing';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
+import { AccountNav } from '@/components/layout/account-nav';
 
 export function Header() {
   const t = useTranslations('nav');
@@ -41,6 +42,7 @@ export function Header() {
         <div className="flex items-center gap-1">
           <LocaleSwitcher />
           <ThemeToggle />
+          <AccountNav />
           <MobileNav links={links} />
         </div>
       </div>

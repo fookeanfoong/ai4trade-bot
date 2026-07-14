@@ -13,6 +13,7 @@ import { ProviderTabs } from '@/components/provider/provider-tabs';
 import { ProviderCard } from '@/components/providers/provider-card';
 import { CopyCompare } from '@/components/provider/copy-compare';
 import { ReportButton } from '@/components/provider/report-button';
+import { FavoriteButton } from '@/components/favorite-button';
 import { StarRating } from '@/components/star-rating';
 import { Badge } from '@/components/ui/badge';
 import { regionLabel } from '@/lib/display';
@@ -116,6 +117,7 @@ export default async function ProviderDetailPage({
               {t('buyNow')}
             </OutboundLink>
             <CopyCompare text={compareText} />
+            <FavoriteButton slug={provider.slug} />
             <span className="text-center text-[10px] text-muted-foreground">{t('shareCardHint')}</span>
           </div>
         </div>
