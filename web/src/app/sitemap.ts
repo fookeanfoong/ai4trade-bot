@@ -5,7 +5,7 @@ import { rankings } from '@/lib/data/rankings';
 import { posts } from '@/lib/data/blog';
 import { LEGAL_DOCS } from '@/lib/data/legal';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aggreapi.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aicompareapi.com';
 const LM = new Date('2026-07-14');
 
 // 标准 sitemap.xml,兼容百度/Google 提交格式。每个 locale × 页面独立 URL。

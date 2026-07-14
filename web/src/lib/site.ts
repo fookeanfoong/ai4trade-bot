@@ -1,6 +1,6 @@
 import { routing, htmlLang } from '@/i18n/routing';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aggreapi.com';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aicompareapi.com';
 
 export function abs(path: string): string {
   return `${SITE_URL}${path.startsWith('/') ? '' : '/'}${path}`;

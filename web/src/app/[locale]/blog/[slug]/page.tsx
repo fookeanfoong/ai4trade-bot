@@ -13,7 +13,7 @@ import { JsonLd } from '@/components/json-ld';
 import { breadcrumbLd } from '@/lib/jsonld';
 import { hreflangAlternates } from '@/lib/site';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aggreapi.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aicompareapi.com';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) => posts.map((p) => ({ locale, slug: p.slug })));

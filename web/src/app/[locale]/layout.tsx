@@ -13,7 +13,7 @@ import { Analytics } from '@/components/analytics';
 import { cn } from '@/lib/utils';
 import '@/app/globals.css';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aggreapi.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aicompareapi.com';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
