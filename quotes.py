@@ -25,6 +25,7 @@ WATCHLIST = [
     "NVDA", "AMD", "TSLA",     # tech / chips
     "XOM", "OXY", "CVX",       # energy majors (oil catalyst)
     "VLO", "MPC", "PSX",       # refiners (crack spread + oil)
+    "XLE",                     # energy sector ETF (signal target)
     "JPM",                     # financials
     "USO",                     # oil ETF proxy
 ]
