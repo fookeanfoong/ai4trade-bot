@@ -17,11 +17,17 @@
       "entry": 160.56,
       "peak": 160.56,
       "entry_at": "2026-07-14T16:50:13Z"
+    },
+    "AMD": {
+      "qty": 0.04500045000450005,
+      "entry": 555.55,
+      "peak": 555.55,
+      "entry_at": "2026-07-14T17:38:01Z"
     }
   },
   "cooldown": {},
   "realized_pnl": -4.162622110023258,
-  "run_count": 21,
+  "run_count": 22,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -119,10 +125,15 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-14T16:50:05Z",
-      "score": 0,
+      "at": "2026-07-14T17:37:58Z",
+      "score": 1,
       "worst": "Top Midday Stories: June CPI Falls More Than Expected; IBM Shares Drop After Company Provides Update on Q2 Earnings 'Shortfall'",
       "items": [
+        {
+          "title": "AMD (AMD) Wins Approval To Sell AI Chips To Select Chinese Firms",
+          "pubDate": "Tue, 14 Jul 2026 17:12:38 +0000",
+          "link": "https://finance.yahoo.com/technology/ai/articles/amd-amd-wins-approval-sell-171238013.html?.tsrc=rss"
+        },
         {
           "title": "Zip Named a Leader for the Second Time in IDC MarketScape for Worldwide AI-Enabled Spend Orchestration 2026 Vendor Assessment",
           "pubDate": "Tue, 14 Jul 2026 16:45:00 +0000",
@@ -157,16 +168,11 @@
           "title": "Silo Pharma\u2019s QwikAgents Joins AMD AI Developer Program to Advance AI Agent Platform",
           "pubDate": "Tue, 14 Jul 2026 14:42:52 +0000",
           "link": "https://investorshub.advfn.com/market-news/article/31863/silo-pharmas-qwikagents-joins-amd-ai-developer-program-to-advance-ai-agent-platform?.tsrc=rss"
-        },
-        {
-          "title": "Exclusive-ZTE among Chinese firms licensed to purchase Nvidia's H200 chips, documents show",
-          "pubDate": "Tue, 14 Jul 2026 14:32:39 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/exclusive-zte-among-chinese-firms-143239633.html?.tsrc=rss"
         }
       ]
     },
     "PLTR": {
-      "at": "2026-07-14T16:50:04Z",
+      "at": "2026-07-14T17:37:57Z",
       "score": 0,
       "worst": null,
       "items": [
@@ -213,7 +219,7 @@
       ]
     },
     "MSTR": {
-      "at": "2026-07-14T16:50:05Z",
+      "at": "2026-07-14T17:37:57Z",
       "score": -1,
       "worst": "Top Tesla investor warns Saylor is destroying Bitcoin",
       "items": [
@@ -260,7 +266,7 @@
       ]
     },
     "AVGO": {
-      "at": "2026-07-14T16:50:06Z",
+      "at": "2026-07-14T17:37:59Z",
       "score": 2,
       "worst": null,
       "items": [
@@ -307,7 +313,7 @@
       ]
     },
     "COIN": {
-      "at": "2026-07-14T16:50:06Z",
+      "at": "2026-07-14T17:37:58Z",
       "score": 0,
       "worst": "Circle Stock Downgraded on Big Threat From New Stablecoin",
       "items": [
