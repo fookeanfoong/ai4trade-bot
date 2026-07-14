@@ -31,8 +31,13 @@
       "ran_at": "2026-07-14T17:38:02Z",
       "equity": 195.3472,
       "actions": []
+    },
+    {
+      "ran_at": "2026-07-14T21:17:41Z",
+      "equity": 207.4022,
+      "actions": []
     }
   ],
-  "peak_equity": 200.0,
+  "peak_equity": 207.40218540712021,
   "last_key": null
 }
