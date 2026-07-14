@@ -1,0 +1,28 @@
+{
+  "cash": 0.0,
+  "position": {
+    "ticker": "XLE",
+    "side": "long",
+    "shares": 3.5248501938667607,
+    "entry": 56.74,
+    "stop": 55.72,
+    "t1": 58.44,
+    "t2": 60.14,
+    "half_taken": false,
+    "leverage": 10.0,
+    "confidence": 0.6,
+    "opened_at": 1783972800
+  },
+  "trade_log": [],
+  "runs": [
+    {
+      "ran_at": "2026-07-14T12:35:37Z",
+      "equity": 200.0,
+      "actions": [
+        "ENTRY (LONG XLE, conf 0.6, 10.0x): 3.524850 @ $56.74 - stop $55.72, T1 $58.44, T2 $60.14"
+      ]
+    }
+  ],
+  "peak_equity": 200.0,
+  "last_key": null
+}

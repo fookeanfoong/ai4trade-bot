@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-14T12:27:44Z",
+  "fetched_at": "2026-07-14T12:34:51Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
@@ -110,6 +110,16 @@
       "change_pct": 5.27,
       "volume": 3084184,
       "market_time": 1783972803
+    },
+    "XLE": {
+      "symbol": "XLE",
+      "last": 56.74,
+      "prev_close": 55.08,
+      "day_high": 56.965,
+      "day_low": 55.86,
+      "change_pct": 3.01,
+      "volume": 41111531,
+      "market_time": 1783972800
     },
     "JPM": {
       "symbol": "JPM",
