@@ -35,6 +35,24 @@ export function maxDiscount(): number {
   return Math.max(...models.map((m) => m.discount_percent));
 }
 
+// 全部模型名(按出现顺序去重),用于 /models 榜单
+export function uniqueModelNames(): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const m of models) {
+    if (!seen.has(m.model_name)) {
+      seen.add(m.model_name);
+      out.push(m.model_name);
+    }
+  }
+  return out;
+}
+
+// 有优惠码的中转站,用于 /deals
+export function providersWithDeals(): Provider[] {
+  return providers.filter((p) => !!p.discount_code);
+}
+
 // 相似中转站推荐:按共同地区数排序,取前 N
 export function similarProviders(slug: string, n = 3): Provider[] {
   const self = providers.find((p) => p.slug === slug);

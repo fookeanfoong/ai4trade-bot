@@ -142,6 +142,45 @@
     "rights": "All rights reserved",
     "langSwitch": "Language"
   },
+  "compare": {
+    "title": "Compare providers side by side",
+    "subtitle": "Pick 2-4 providers, compare price, speed and reliability line by line, and share a link",
+    "pick": "Select providers to compare (2-4)",
+    "needTwo": "Please select at least 2 providers to compare",
+    "max": "Compare up to 4 at once",
+    "clear": "Clear",
+    "share": "Copy share link",
+    "shareCopied": "Link copied",
+    "attribute": "Attribute",
+    "remove": "Remove",
+    "startCompare": "Compare"
+  },
+  "models": {
+    "title": "Model price rankings",
+    "subtitle": "See the latest per-provider price for each model (output /1M tokens); open one for the full ranking",
+    "providerCount": "{count} quotes",
+    "cheapest": "Lowest",
+    "official": "Official",
+    "viewModel": "View all quotes for this model"
+  },
+  "deals": {
+    "title": "Deals & coupons",
+    "subtitle": "Latest coupon codes and discounts across providers — copy and use",
+    "code": "Code",
+    "copy": "Copy",
+    "copied": "Copied",
+    "noDeals": "No coupons available yet",
+    "useAt": "Use it"
+  },
+  "rankings": {
+    "title": "AI API reseller rankings",
+    "subtitle": "Curated rankings across dimensions, each on its own page, kept up to date",
+    "rank": "Rank",
+    "viewRanking": "View full ranking",
+    "methodology": "How we rank",
+    "backToRankings": "Back to all rankings",
+    "value": "Metric"
+  },
   "common": {
     "sponsored": "Sponsored",
     "editorPick": "Editor's Pick",

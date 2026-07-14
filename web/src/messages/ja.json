@@ -142,6 +142,45 @@
     "rights": "All rights reserved",
     "langSwitch": "言語"
   },
+  "compare": {
+    "title": "プロバイダーを並べて比較",
+    "subtitle": "2〜4 社を選び、価格・速度・安定性を項目ごとに比較し、共有リンクを生成",
+    "pick": "比較するプロバイダーを選択(2〜4 社)",
+    "needTwo": "比較するには 2 社以上を選択してください",
+    "max": "同時比較は最大 4 社まで",
+    "clear": "クリア",
+    "share": "共有リンクをコピー",
+    "shareCopied": "リンクをコピーしました",
+    "attribute": "項目",
+    "remove": "削除",
+    "startCompare": "比較する"
+  },
+  "models": {
+    "title": "モデル価格ランキング",
+    "subtitle": "モデルごとに各社の最新価格(出力 /1M トークン)を確認。開くと完全なランキング",
+    "providerCount": "{count} 件の見積もり",
+    "cheapest": "最安",
+    "official": "公式",
+    "viewModel": "このモデルの全価格を見る"
+  },
+  "deals": {
+    "title": "クーポン一覧",
+    "subtitle": "各社の最新クーポンと割引。コピーしてすぐ使える",
+    "code": "コード",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "noDeals": "利用可能なクーポンはまだありません",
+    "useAt": "使いに行く"
+  },
+  "rankings": {
+    "title": "AI API プロバイダーランキング",
+    "subtitle": "さまざまな観点で厳選したランキング。各ランキングは個別ページで随時更新",
+    "rank": "順位",
+    "viewRanking": "完全なランキングを見る",
+    "methodology": "ランキング基準",
+    "backToRankings": "すべてのランキングへ戻る",
+    "value": "指標"
+  },
   "common": {
     "sponsored": "Sponsored",
     "editorPick": "編集部おすすめ",

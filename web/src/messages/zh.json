@@ -142,6 +142,45 @@
     "rights": "保留所有权利",
     "langSwitch": "语言"
   },
+  "compare": {
+    "title": "并排对比中转站",
+    "subtitle": "勾选 2-4 家,逐项对比价格、速度与稳定性,并生成分享链接",
+    "pick": "选择要对比的中转站(2-4 家)",
+    "needTwo": "请至少选择 2 家进行对比",
+    "max": "最多同时对比 4 家",
+    "clear": "清空",
+    "share": "复制分享链接",
+    "shareCopied": "链接已复制",
+    "attribute": "对比项",
+    "remove": "移除",
+    "startCompare": "开始对比"
+  },
+  "models": {
+    "title": "模型价格排行",
+    "subtitle": "按模型查看各中转站最新报价(输出价 /1M tokens),点开看完整榜单",
+    "providerCount": "{count} 家报价",
+    "cheapest": "最低",
+    "official": "官方价",
+    "viewModel": "查看该模型全部报价"
+  },
+  "deals": {
+    "title": "优惠码聚合",
+    "subtitle": "各中转站最新优惠码与折扣活动,复制即用",
+    "code": "优惠码",
+    "copy": "复制",
+    "copied": "已复制",
+    "noDeals": "暂无可用优惠码",
+    "useAt": "前往使用"
+  },
+  "rankings": {
+    "title": "AI API 中转站榜单",
+    "subtitle": "按不同维度精选排行,每个榜单独立收录,持续更新",
+    "rank": "排名",
+    "viewRanking": "查看完整榜单",
+    "methodology": "排名依据",
+    "backToRankings": "返回全部榜单",
+    "value": "指标"
+  },
   "common": {
     "sponsored": "Sponsored",
     "editorPick": "编辑精选",

@@ -142,6 +142,45 @@
     "rights": "保留所有權利",
     "langSwitch": "語言"
   },
+  "compare": {
+    "title": "並排比較中轉站",
+    "subtitle": "勾選 2-4 家,逐項比較價格、速度與穩定性,並生成分享連結",
+    "pick": "選擇要比較的中轉站(2-4 家)",
+    "needTwo": "請至少選擇 2 家進行比較",
+    "max": "最多同時比較 4 家",
+    "clear": "清空",
+    "share": "複製分享連結",
+    "shareCopied": "連結已複製",
+    "attribute": "比較項",
+    "remove": "移除",
+    "startCompare": "開始比較"
+  },
+  "models": {
+    "title": "模型價格排行",
+    "subtitle": "按模型查看各中轉站最新報價(輸出價 /1M tokens),點開看完整榜單",
+    "providerCount": "{count} 家報價",
+    "cheapest": "最低",
+    "official": "官方價",
+    "viewModel": "查看該模型全部報價"
+  },
+  "deals": {
+    "title": "優惠碼聚合",
+    "subtitle": "各中轉站最新優惠碼與折扣活動,複製即用",
+    "code": "優惠碼",
+    "copy": "複製",
+    "copied": "已複製",
+    "noDeals": "暫無可用優惠碼",
+    "useAt": "前往使用"
+  },
+  "rankings": {
+    "title": "AI API 中轉站榜單",
+    "subtitle": "按不同維度精選排行,每個榜單獨立收錄,持續更新",
+    "rank": "排名",
+    "viewRanking": "查看完整榜單",
+    "methodology": "排名依據",
+    "backToRankings": "返回全部榜單",
+    "value": "指標"
+  },
   "common": {
     "sponsored": "Sponsored",
     "editorPick": "編輯精選",

@@ -142,6 +142,45 @@
     "rights": "Alle Rechte vorbehalten",
     "langSwitch": "Sprache"
   },
+  "compare": {
+    "title": "Anbieter direkt vergleichen",
+    "subtitle": "2-4 Anbieter wählen, Preis, Geschwindigkeit und Zuverlässigkeit Zeile für Zeile vergleichen und Link teilen",
+    "pick": "Anbieter zum Vergleich wählen (2-4)",
+    "needTwo": "Bitte mindestens 2 Anbieter zum Vergleich wählen",
+    "max": "Maximal 4 gleichzeitig vergleichen",
+    "clear": "Leeren",
+    "share": "Link kopieren",
+    "shareCopied": "Link kopiert",
+    "attribute": "Merkmal",
+    "remove": "Entfernen",
+    "startCompare": "Vergleichen"
+  },
+  "models": {
+    "title": "Modellpreis-Rankings",
+    "subtitle": "Aktueller Preis je Anbieter pro Modell (Ausgabe /1M Tokens); für das volle Ranking öffnen",
+    "providerCount": "{count} Angebote",
+    "cheapest": "Niedrigster",
+    "official": "Offiziell",
+    "viewModel": "Alle Angebote für dieses Modell"
+  },
+  "deals": {
+    "title": "Gutscheine",
+    "subtitle": "Aktuelle Gutscheincodes und Rabatte aller Anbieter — kopieren und nutzen",
+    "code": "Code",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "noDeals": "Noch keine Gutscheine verfügbar",
+    "useAt": "Einlösen"
+  },
+  "rankings": {
+    "title": "AI-API-Anbieter-Rankings",
+    "subtitle": "Kuratierte Rankings nach Kriterien, jedes auf eigener Seite, laufend aktualisiert",
+    "rank": "Rang",
+    "viewRanking": "Vollständiges Ranking",
+    "methodology": "So ranken wir",
+    "backToRankings": "Zurück zu allen Rankings",
+    "value": "Kennzahl"
+  },
   "common": {
     "sponsored": "Sponsored",
     "editorPick": "Redaktionstipp",
