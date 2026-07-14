@@ -23,7 +23,8 @@ QUOTES_MD = ROOT / "quotes.md"
 WATCHLIST = [
     "SPY", "QQQ",              # broad market
     "NVDA", "AMD", "TSLA",     # tech / chips
-    "XOM", "OXY", "CVX",       # energy (oil catalyst)
+    "XOM", "OXY", "CVX",       # energy majors (oil catalyst)
+    "VLO", "MPC", "PSX",       # refiners (crack spread + oil)
     "JPM",                     # financials
     "USO",                     # oil ETF proxy
 ]

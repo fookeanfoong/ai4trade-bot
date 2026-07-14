@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-14T10:54:51Z",
+  "fetched_at": "2026-07-14T12:27:44Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
@@ -80,6 +80,36 @@
       "change_pct": 3.29,
       "volume": 7640248,
       "market_time": 1783973019
+    },
+    "VLO": {
+      "symbol": "VLO",
+      "last": 295.79,
+      "prev_close": 280.69,
+      "day_high": 297.66,
+      "day_low": 286.53,
+      "change_pct": 5.38,
+      "volume": 2780820,
+      "market_time": 1783972802
+    },
+    "MPC": {
+      "symbol": "MPC",
+      "last": 296.88,
+      "prev_close": 283.74,
+      "day_high": 299.05,
+      "day_low": 289.54,
+      "change_pct": 4.63,
+      "volume": 2091950,
+      "market_time": 1783972803
+    },
+    "PSX": {
+      "symbol": "PSX",
+      "last": 198.29,
+      "prev_close": 188.36,
+      "day_high": 198.58,
+      "day_low": 191.12,
+      "change_pct": 5.27,
+      "volume": 3084184,
+      "market_time": 1783972803
     },
     "JPM": {
       "symbol": "JPM",
