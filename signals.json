@@ -1,0 +1,28 @@
+{
+  "updated_at": "2026-07-14",
+  "note": "Claude fills these from news + live quotes. signal_sim trades any signal with direction in (bullish,bearish), confidence >= 0.6, already_priced_in == false, and no open position. Percent levels are relative to live entry price.",
+  "signals": [
+    {
+      "sector_or_ticker": "XLE",
+      "direction": "bullish",
+      "confidence": 0.6,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.018,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "scenarios": [
+        {"case": "bull", "trigger": "Hormuz disruption persists, oil holds > $78, energy keeps leading", "probability": 0.45},
+        {"case": "base", "trigger": "oil consolidates at high level, XLE chops sideways", "probability": 0.35},
+        {"case": "bear", "trigger": "US-Iran ceasefire / de-escalation, oil dumps, energy gives back gains", "probability": 0.20}
+      ],
+      "key_risks": [
+        "sudden ceasefire or de-escalation collapses the oil premium",
+        "high oil prices cause demand destruction",
+        "sector already extended +3-5% over two sessions"
+      ],
+      "reasoning": "油价因霍尔木兹海峡美伊冲突 +8%，能源板块连续两日领涨，地缘催化剂仍在升级而非缓和。方向看多，但板块已涨不少，止损收紧防反转。",
+      "already_priced_in": false
+    }
+  ]
+}
