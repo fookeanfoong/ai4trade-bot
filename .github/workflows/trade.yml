@@ -51,6 +51,10 @@ jobs:
         continue-on-error: true
         run: python amd_sim.py
 
+      - name: Run structured signal sim
+        continue-on-error: true
+        run: python signal_sim.py
+
       - name: Commit state + reports
         run: |
           git config user.name  "ai4trade-bot"
