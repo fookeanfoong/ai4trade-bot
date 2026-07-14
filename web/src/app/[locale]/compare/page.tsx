@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { hreflangAlternates } from '@/lib/site';
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { providers } from '@/lib/data/providers';
@@ -12,7 +13,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'compare' });
-  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/compare` } };
+  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/compare`, languages: hreflangAlternates('/compare') } };
 }
 
 // 价格映射:provider_id -> modelName -> { 最低输出价, 折扣 }

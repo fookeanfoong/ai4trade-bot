@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { hreflangAlternates } from '@/lib/site';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { SubmitForm } from '@/components/submit/submit-form';
 
@@ -8,7 +9,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'submit' });
-  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/submit` } };
+  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/submit`, languages: hreflangAlternates('/submit') } };
 }
 
 export default async function SubmitPage({ params: { locale } }: { params: { locale: string } }) {

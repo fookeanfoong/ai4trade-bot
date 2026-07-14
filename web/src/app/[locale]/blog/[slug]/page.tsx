@@ -9,6 +9,9 @@ import { getProvider } from '@/lib/data/providers';
 import { routing } from '@/i18n/routing';
 import { ProviderCard } from '@/components/providers/provider-card';
 import { Badge } from '@/components/ui/badge';
+import { JsonLd } from '@/components/json-ld';
+import { breadcrumbLd } from '@/lib/jsonld';
+import { hreflangAlternates } from '@/lib/site';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aggreapi.com';
 
@@ -26,7 +29,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/${locale}/blog/${slug}` },
+    alternates: { canonical: `/${locale}/blog/${slug}`, languages: hreflangAlternates(`/blog/${slug}`) },
     openGraph: {
       type: 'article',
       title: post.title,
@@ -64,7 +67,15 @@ export default async function BlogPostPage({
 
   return (
     <div className="container max-w-3xl py-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd
+        data={[
+          jsonLd,
+          breadcrumbLd([
+            { name: t('backToBlog'), path: `/${locale}/blog` },
+            { name: post.title, path: `/${locale}/blog/${slug}` },
+          ]),
+        ]}
+      />
 
       <nav className="mb-4 text-sm text-muted-foreground">
         <Link href="/blog" className="hover:text-foreground">

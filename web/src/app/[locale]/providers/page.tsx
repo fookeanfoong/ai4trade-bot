@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { hreflangAlternates } from '@/lib/site';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { providers } from '@/lib/data/providers';
 import { ProvidersExplorer } from '@/components/providers/providers-explorer';
@@ -11,7 +12,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'providers' });
   return {
     title: t('title'),
-    alternates: { canonical: `/${locale}/providers` },
+    alternates: { canonical: `/${locale}/providers`, languages: hreflangAlternates('/providers') },
   };
 }
 

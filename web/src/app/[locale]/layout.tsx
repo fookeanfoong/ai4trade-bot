@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -9,6 +9,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CookieConsent } from '@/components/cookie-consent';
+import { Analytics } from '@/components/analytics';
 import { cn } from '@/lib/utils';
 import '@/app/globals.css';
 
@@ -17,6 +18,15 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aggreapi.com';
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0b1220' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+  ],
+};
 
 export async function generateMetadata({
   params: { locale },
@@ -105,6 +115,7 @@ export default async function LocaleLayout({
               <Footer />
             </div>
             <CookieConsent />
+            <Analytics />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

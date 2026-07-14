@@ -16,6 +16,9 @@ import { ReportButton } from '@/components/provider/report-button';
 import { FavoriteButton } from '@/components/favorite-button';
 import { StarRating } from '@/components/star-rating';
 import { Badge } from '@/components/ui/badge';
+import { JsonLd } from '@/components/json-ld';
+import { providerProductLd, breadcrumbLd } from '@/lib/jsonld';
+import { hreflangAlternates } from '@/lib/site';
 import { regionLabel } from '@/lib/display';
 import { formatPrice } from '@/lib/utils';
 
@@ -36,7 +39,7 @@ export async function generateMetadata({
   return {
     title: `${provider.name} 价格、评价与实时状态`,
     description: desc,
-    alternates: { canonical: `/${locale}/providers/${slug}` },
+    alternates: { canonical: `/${locale}/providers/${slug}`, languages: hreflangAlternates(`/providers/${slug}`) },
     openGraph: {
       title: `${provider.name} · AggreAPI`,
       description: desc,
@@ -77,6 +80,16 @@ export default async function ProviderDetailPage({
 
   return (
     <div className="container py-8">
+      <JsonLd
+        data={[
+          providerProductLd(provider, models, reviews, rating, locale, `/${locale}/providers/${slug}`),
+          breadcrumbLd([
+            { name: common('backHome'), path: `/${locale}` },
+            { name: providersT('title'), path: `/${locale}/providers` },
+            { name: provider.name, path: `/${locale}/providers/${slug}` },
+          ]),
+        ]}
+      />
       <nav className="mb-4 text-sm text-muted-foreground">
         <Link href="/" className="hover:text-foreground">{common('backHome')}</Link>
         {' / '}

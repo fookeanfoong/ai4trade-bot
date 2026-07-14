@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { hreflangAlternates } from '@/lib/site';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { Trophy, ChevronRight } from 'lucide-react';
@@ -14,7 +15,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'rankings' });
-  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/rankings` } };
+  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/rankings`, languages: hreflangAlternates('/rankings') } };
 }
 
 export default async function RankingsPage({ params: { locale } }: { params: { locale: string } }) {

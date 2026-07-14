@@ -7,6 +7,9 @@ import { rankings, getRanking, rankingText } from '@/lib/data/rankings';
 import { routing } from '@/i18n/routing';
 import { OutboundLink } from '@/components/outbound-link';
 import { Badge } from '@/components/ui/badge';
+import { JsonLd } from '@/components/json-ld';
+import { itemListLd, breadcrumbLd } from '@/lib/jsonld';
+import { hreflangAlternates } from '@/lib/site';
 import { regionLabel } from '@/lib/display';
 import { cn } from '@/lib/utils';
 
@@ -26,7 +29,7 @@ export async function generateMetadata({
   return {
     title: rankingText(r, 'title', locale),
     description: rankingText(r, 'description', locale),
-    alternates: { canonical: `/${locale}/rankings/${slug}` },
+    alternates: { canonical: `/${locale}/rankings/${slug}`, languages: hreflangAlternates(`/rankings/${slug}`) },
     openGraph: {
       title: rankingText(r, 'title', locale),
       description: rankingText(r, 'description', locale),
@@ -49,6 +52,18 @@ export default async function RankingDetailPage({
 
   return (
     <div className="container max-w-4xl py-8">
+      <JsonLd
+        data={[
+          itemListLd(
+            rankingText(r, 'title', locale),
+            rows.map((row) => ({ name: row.provider.name, path: `/${locale}/providers/${row.provider.slug}` }))
+          ),
+          breadcrumbLd([
+            { name: t('backToRankings'), path: `/${locale}/rankings` },
+            { name: rankingText(r, 'title', locale), path: `/${locale}/rankings/${slug}` },
+          ]),
+        ]}
+      />
       <nav className="mb-4 text-sm text-muted-foreground">
         <Link href="/rankings" className="hover:text-foreground">{t('backToRankings')}</Link>
         {' / '}

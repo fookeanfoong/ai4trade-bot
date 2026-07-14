@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { hreflangAlternates } from '@/lib/site';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { FileText, ChevronRight } from 'lucide-react';
@@ -11,7 +12,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'legalIndex' });
-  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/legal` } };
+  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/legal`, languages: hreflangAlternates('/legal') } };
 }
 
 export default async function LegalIndexPage({ params: { locale } }: { params: { locale: string } }) {

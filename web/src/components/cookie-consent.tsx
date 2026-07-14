@@ -30,6 +30,8 @@ export function CookieConsent() {
   function persist(c: Consent) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...c, ts: Date.now() }));
+      // 通知分析组件:同意后即时加载(不刷新页面)
+      window.dispatchEvent(new CustomEvent('aggreapi:consent', { detail: c }));
     } catch {
       /* ignore */
     }

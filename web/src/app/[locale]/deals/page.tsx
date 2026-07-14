@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { hreflangAlternates } from '@/lib/site';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { Ticket } from 'lucide-react';
@@ -16,7 +17,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'deals' });
-  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/deals` } };
+  return { title: t('title'), description: t('subtitle'), alternates: { canonical: `/${locale}/deals`, languages: hreflangAlternates('/deals') } };
 }
 
 export default async function DealsPage({ params: { locale } }: { params: { locale: string } }) {

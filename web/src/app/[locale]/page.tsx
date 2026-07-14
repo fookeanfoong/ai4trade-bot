@@ -15,16 +15,32 @@ import { getFaq } from '@/lib/data/faq';
 import { cheapestByModel, editorPicks, newArrivals, maxDiscount } from '@/lib/selectors';
 import { formatPrice, cn } from '@/lib/utils';
 import { regionLabel } from '@/lib/display';
+import { JsonLd } from '@/components/json-ld';
+import { webSiteLd, organizationLd, faqPageLd } from '@/lib/jsonld';
+import { hreflangAlternates } from '@/lib/site';
+
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  return { alternates: { canonical: `/${locale}`, languages: hreflangAlternates('') } };
+}
 
 const MEDAL = ['text-gold', 'text-silver', 'text-bronze'];
 
 export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'home' });
+  const meta = await getTranslations({ locale, namespace: 'meta' });
   const cheap = cheapestByModel('GPT-4o').slice(0, 5);
+  const faqItems = getFaq(locale);
 
   return (
     <div>
+      <JsonLd
+        data={[
+          webSiteLd(locale, meta('siteName')),
+          organizationLd(meta('siteName')),
+          faqPageLd(faqItems.map((f) => ({ q: f.q, a: f.a }))),
+        ]}
+      />
       {/* Hero + 搜索 */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent)]" />
