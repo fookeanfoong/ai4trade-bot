@@ -21,6 +21,11 @@
       "actions": [
         "ENTRY (LONG XLE, conf 0.6, 10.0x): 3.524850 @ $56.74 - stop $55.72, T1 $58.44, T2 $60.14"
       ]
+    },
+    {
+      "ran_at": "2026-07-14T16:50:14Z",
+      "equity": 195.0652,
+      "actions": []
     }
   ],
   "peak_equity": 200.0,

@@ -63,8 +63,15 @@
       "actions": [
         "T1 HIT: sold half of PULLBACK_LONG_B at $752.00 (10.0x-lev), stop -> BE $747.00, booked $+6.69"
       ]
+    },
+    {
+      "ran_at": "2026-07-14T16:50:14Z",
+      "bar_date": "2026-07-14",
+      "close": 751.3499755859375,
+      "equity": 212.5167,
+      "actions": []
     }
   ],
   "peak_equity": 215.85002117846386,
-  "last_bar_date": "2026-07-13"
+  "last_bar_date": "2026-07-14"
 }
