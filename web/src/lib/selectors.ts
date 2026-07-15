@@ -48,6 +48,49 @@ export function uniqueModelNames(): string[] {
   return out;
 }
 
+// 模型名 → URL slug(用于 /models/[slug] 程序化 SEO 比价页)。
+// "GPT-4o" → "gpt-4o";"Claude Sonnet 4.5" → "claude-sonnet-4-5"。
+export function modelSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export interface ModelSummary {
+  name: string;
+  slug: string;
+  family: string;
+  official: number; // 官方基准输出价
+  providerCount: number;
+  cheapestOutput: number; // 最低折后输出价
+  maxDiscount: number; // 最高折扣 %
+}
+
+// 全部模型摘要(去重,含 slug / 收录家数 / 最低价 / 最高折扣),用于 /models 与 sitemap。
+export function modelSummaries(): ModelSummary[] {
+  const names = uniqueModelNames();
+  return names.map((name) => {
+    const rows = cheapestByModel(name); // 已按输出价升序
+    const first = models.find((m) => m.model_name === name)!;
+    const discounts = rows.map((r) => r.model.discount_percent);
+    return {
+      name,
+      slug: modelSlug(name),
+      family: first.model_family,
+      official: first.official_price_per_1m,
+      providerCount: rows.length,
+      cheapestOutput: rows[0]?.model.output_price_per_1m ?? 0,
+      maxDiscount: discounts.length ? Math.max(...discounts) : 0,
+    };
+  });
+}
+
+// slug → 模型名(找不到返回 undefined),用于 /models/[slug] 反查。
+export function modelNameBySlug(slug: string): string | undefined {
+  return uniqueModelNames().find((name) => modelSlug(name) === slug);
+}
+
 // 有优惠码的中转站,用于 /deals
 export function providersWithDeals(): Provider[] {
   return providers.filter((p) => !!p.discount_code);

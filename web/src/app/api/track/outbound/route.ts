@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { recordClick } from '@/lib/clicks';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -51,8 +52,18 @@ export async function POST(req: NextRequest) {
     ip_prefix: clientIpPrefix(req),
   };
 
-  // 一期:结构化日志;二期替换为 DB / analytics sink。
+  // 结构化日志(serverless 上作为兜底)+ 落地到点击存储(本地/长驻 Node 可查)。
+  // 二期可切换为 prisma OutboundClick 表(schema 已就绪)。
   console.log('[track/outbound]', JSON.stringify(record));
+  recordClick({
+    provider_id: record.provider_id,
+    provider_slug: record.provider_slug,
+    source_page: record.source_page,
+    ts: record.ts,
+    user_agent: record.user_agent,
+    referer: record.referer,
+    ip_prefix: record.ip_prefix,
+  });
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
