@@ -8,3 +8,6 @@ next-env.d.ts
 .vercel
 *.tsbuildinfo
 .DS_Store
+
+# 本地联盟点击埋点落地文件(生产用二期数据库,见 prisma OutboundClick)
+/.data
