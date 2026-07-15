@@ -4,6 +4,7 @@ import { providers } from '@/lib/data/providers';
 import { rankings } from '@/lib/data/rankings';
 import { posts } from '@/lib/data/blog';
 import { LEGAL_DOCS } from '@/lib/data/legal';
+import { modelSummaries } from '@/lib/selectors';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aicompareapi.com';
 const LM = new Date('2026-07-14');
@@ -23,6 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
     for (const r of rankings) {
       entries.push({ url: `${SITE_URL}/${locale}/rankings/${r.slug}`, lastModified: LM, changeFrequency: 'daily', priority: 0.7 });
+    }
+    for (const m of modelSummaries()) {
+      entries.push({ url: `${SITE_URL}/${locale}/models/${m.slug}`, lastModified: LM, changeFrequency: 'daily', priority: 0.7 });
     }
     for (const post of posts) {
       entries.push({ url: `${SITE_URL}/${locale}/blog/${post.slug}`, lastModified: new Date(post.date), changeFrequency: 'weekly', priority: 0.6 });

@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { hreflangAlternates } from '@/lib/site';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { Trophy } from 'lucide-react';
+import { Trophy, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { OutboundLink } from '@/components/outbound-link';
-import { uniqueModelNames, cheapestByModel } from '@/lib/selectors';
+import { uniqueModelNames, cheapestByModel, modelSlug } from '@/lib/selectors';
 import { models as allModels } from '@/lib/data/models';
 import { formatPrice, cn } from '@/lib/utils';
 
@@ -42,7 +42,12 @@ export default async function ModelsPage({ params: { locale } }: { params: { loc
               <CardContent className="p-0">
                 <div className="flex items-center justify-between border-b border-border px-5 py-3">
                   <div>
-                    <h2 className="font-semibold">{name}</h2>
+                    <Link
+                      href={`/models/${modelSlug(name)}`}
+                      className="font-semibold hover:text-primary"
+                    >
+                      <h2>{name}</h2>
+                    </Link>
                     <p className="text-xs text-muted-foreground">
                       {t('providerCount', { count: rows.length })}
                       {official ? ` · ${t('official')} ${formatPrice(official)}` : ''}
@@ -85,6 +90,13 @@ export default async function ModelsPage({ params: { locale } }: { params: { loc
                     ))}
                   </tbody>
                 </table>
+                <Link
+                  href={`/models/${modelSlug(name)}`}
+                  className="flex items-center justify-center gap-1 border-t border-border px-5 py-2.5 text-xs font-medium text-primary hover:bg-primary/5"
+                >
+                  {t('viewModel')}
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </CardContent>
             </Card>
           );
