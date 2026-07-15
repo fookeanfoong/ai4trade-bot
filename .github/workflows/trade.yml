@@ -1,11 +1,13 @@
 name: ai4trade-bot
 
 on:
-  schedule:
-    - cron: "37 12 * * 1-5"
-    - cron: "3,13,23,33,43,53 13-19 * * 1-5"
-    - cron: "53 19 * * 1-5"
-    - cron: "7 20 * * 6"
+  # Scheduled auto-trading is DISABLED. The bot no longer runs on its own.
+  # To re-enable, restore the `schedule:` cron triggers below.
+  # schedule:
+  #   - cron: "37 12 * * 1-5"
+  #   - cron: "3,13,23,33,43,53 13-19 * * 1-5"
+  #   - cron: "53 19 * * 1-5"
+  #   - cron: "7 20 * * 6"
   workflow_dispatch:
     inputs:
       mode:
