@@ -1,9 +1,9 @@
 {
   "meta": {
     "siteName": "AggreAPI",
-    "tagline": "AI API Reseller Price Comparison",
-    "description": "Compare leading AI API resellers like OpenRouter, AiHubMix and API2D in one place — price, speed and reliability side by side, so developers find the cheapest, fastest and most stable option.",
-    "homeTitle": "AI API Reseller Comparison — Find the Cheapest, Fastest, Most Reliable"
+    "tagline": "AI API Aggregator Price Comparison",
+    "description": "Compare AI API aggregators and proxy providers like OpenRouter, AiHubMix and API2D side by side on price, speed and reliability — find the cheapest OpenAI, Claude and GPT-4o API alternative.",
+    "homeTitle": "AI API Aggregator Comparison — Cheapest OpenAI & Claude API Alternative"
   },
   "nav": {
     "home": "Home",
@@ -69,9 +69,9 @@
     "error": "Failed to send. Please try again later or email us directly."
   },
   "home": {
-    "heroTitle": "Compare every AI API reseller in one place",
-    "heroSubtitle": "Price GPT-4o, Claude, Gemini and DeepSeek across providers. Find the cheapest, fastest and most reliable one.",
-    "searchPlaceholder": "Search a provider or model, e.g. GPT-4o, Claude, AiHubMix",
+    "heroTitle": "Compare every AI API aggregator in one place",
+    "heroSubtitle": "Price GPT-4o, Claude, Gemini and DeepSeek across proxy providers, and find the cheapest, fastest and most reliable OpenAI API alternative.",
+    "searchPlaceholder": "Search a provider or model — GPT-4o, Claude, AiHubMix",
     "searchButton": "Search",
     "statProviders": "Providers listed",
     "statModels": "Models compared",
@@ -94,8 +94,8 @@
     "faqTitle": "FAQ"
   },
   "providers": {
-    "title": "All AI API Resellers",
-    "subtitle": "{count} providers, compared on price, speed and reliability",
+    "title": "All AI API Aggregators & Proxy Providers",
+    "subtitle": "{count} providers compared on price, speed and reliability — find your OpenRouter alternative.",
     "sortBy": "Sort by",
     "sortTrust": "Trust score",
     "sortPrice": "Lowest price",
@@ -194,7 +194,7 @@
     "langSwitch": "Language"
   },
   "compare": {
-    "title": "Compare providers side by side",
+    "title": "Compare AI API providers side by side",
     "subtitle": "Pick 2-4 providers, compare price, speed and reliability line by line, and share a link",
     "pick": "Select providers to compare (2-4)",
     "needTwo": "Please select at least 2 providers to compare",
@@ -207,8 +207,8 @@
     "startCompare": "Compare"
   },
   "models": {
-    "title": "Model price rankings",
-    "subtitle": "See the latest per-provider price for each model (output /1M tokens); open one for the full ranking",
+    "title": "AI API Model Price Comparison",
+    "subtitle": "Latest per-provider price for each model (output /1M tokens) — see who is cheaper for GPT-4o, Claude and DeepSeek.",
     "providerCount": "{count} quotes",
     "cheapest": "Lowest",
     "official": "Official",
@@ -216,9 +216,9 @@
   },
   "modelDetail": {
     "backToModels": "Model prices",
-    "metaTitle": "{model} API Reseller Price Comparison — {count} providers, live lowest price",
-    "metaDescription": "Which reseller is cheapest for {model}? Compare output price, discount and reliability across {count} {model} API resellers in real time — from {cheapest}/1M tokens, up to {discount}% off official.",
-    "h1": "{model} API Reseller Comparison",
+    "metaTitle": "{model} API Price Comparison — Cheapest Aggregator Across {count} Providers",
+    "metaDescription": "Which aggregator is cheapest for {model}? Compare {count} {model} API proxy providers in real time on output price, discount and reliability — from {cheapest}/1M tokens, up to {discount}% below official.",
+    "h1": "{model} API Aggregator Comparison",
     "intro": "{count} resellers offering {model}, ranked by output price (USD /1M tokens), lowest first. Currently from {cheapest} — up to {discount}% below the {official} official price.",
     "cheapestNow": "Cheapest now",
     "colRank": "Rank",
@@ -255,7 +255,7 @@
     "useAt": "Use it"
   },
   "rankings": {
-    "title": "AI API reseller rankings",
+    "title": "AI API Aggregator Rankings 2026",
     "subtitle": "Curated rankings across dimensions, each on its own page, kept up to date",
     "rank": "Rank",
     "viewRanking": "View full ranking",
