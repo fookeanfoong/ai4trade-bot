@@ -39,15 +39,18 @@ const zh: Record<LegalDoc, Doc> = {
     title: '隐私政策',
     body: [
       '我们尊重并保护你的隐私,遵循数据最小化原则。本站仅收集提供服务与改进体验所必需的信息。',
-      '跳转埋点仅记录中转站 ID、时间、来源页与脱敏后的访问信息(不存储完整 IP),用于核对联盟返佣。分析统计使用自托管方案(如 Plausible / Umami),不使用 Google Analytics 等被墙服务。',
-      '根据 GDPR,你有权访问、导出或删除你的个人数据(相关功能将在用户中心提供)。完整隐私政策将于后续阶段发布。',
+      '跳转埋点(affiliate 追踪):仅记录中转站 ID、时间、来源页与脱敏后的访问信息(不存储完整 IP),用于核对联盟返佣。此追踪通过 URL 参数实现,不依赖广告 Cookie。',
+      '分析统计:在你同意「分析」类 Cookie 后,我们可能加载分析工具以了解站点使用情况——自托管的 Plausible / Umami、百度统计,以及 Google Analytics 4(GA4)与 Microsoft Clarity(点击热图/会话回放)。未获你同意前,不会加载任何此类脚本。',
+      '第三方广告:本站部分页面(如博客)可能展示第三方广告(如 Google AdSense)。此类广告服务可能使用 Cookie(含 DoubleClick Cookie)以投放与衡量广告效果;是否启用取决于你在弹窗中对「营销」类别的选择。',
+      '根据 GDPR,你有权访问、导出或删除你的个人数据,并可随时通过页面底部重新管理 Cookie 偏好。完整隐私政策将于后续阶段发布。',
     ],
   },
   cookies: {
     title: 'Cookie 政策',
     body: [
       '本站使用 Cookie 以提供必要功能(如语言、主题偏好)并了解站点使用情况。你可以在 Cookie 弹窗中按类别(必要 / 分析 / 营销)选择是否同意。',
-      '必要类 Cookie 始终开启;分析与营销类需你明确同意后才会启用。你可随时通过页面底部重新管理偏好。',
+      '必要类 Cookie 始终开启。分析类(GA4、Microsoft Clarity、Plausible / Umami、百度统计)与营销类(第三方广告,如 Google AdSense / DoubleClick 可能设置 Cookie 以投放和衡量广告)均需你明确同意对应类别后才会启用。',
+      '此外,我们使用 URL 参数(UTM)追踪你从本站前往第三方中转站的跳转,以核对联盟返佣;这不依赖广告 Cookie。你可随时通过页面底部重新管理偏好。',
     ],
   },
 };
@@ -83,15 +86,18 @@ const en: Record<LegalDoc, Doc> = {
     title: 'Privacy Policy',
     body: [
       'We respect your privacy and follow data minimisation. We collect only what is necessary to provide and improve the service.',
-      'Outbound tracking records only the provider ID, timestamp, source page and de-identified request info (no full IP) to reconcile affiliate commissions. Analytics use self-hosted tools (Plausible / Umami), never Google Analytics.',
-      'Under GDPR you may access, export or delete your data (features provided in the dashboard). A full policy will follow.',
+      'Outbound (affiliate) tracking records only the provider ID, timestamp, source page and de-identified request info (no full IP) to reconcile affiliate commissions. It works via URL parameters and does not rely on advertising cookies.',
+      'Analytics: after you consent to "analytics" cookies, we may load tools to understand usage — self-hosted Plausible / Umami, Baidu Tongji, and Google Analytics 4 (GA4) and Microsoft Clarity (click heatmaps / session replay). Nothing of this kind loads before your consent.',
+      'Third-party advertising: some pages (e.g. the blog) may show third-party ads such as Google AdSense. These services may set cookies (including DoubleClick cookies) to serve and measure ads; whether they load depends on your "marketing" choice in the banner.',
+      'Under GDPR you may access, export or delete your data, and re-manage cookie preferences at any time from the footer. A full policy will follow.',
     ],
   },
   cookies: {
     title: 'Cookie Policy',
     body: [
       'We use cookies for essential functionality (language, theme) and to understand usage. You can consent by category (necessary / analytics / marketing) in the banner.',
-      'Necessary cookies are always on; analytics and marketing require explicit consent. You can re-manage preferences at any time.',
+      'Necessary cookies are always on. Analytics cookies (GA4, Microsoft Clarity, Plausible / Umami, Baidu Tongji) and marketing cookies (third-party ads such as Google AdSense / DoubleClick, which may set cookies to serve and measure ads) load only after you consent to that category.',
+      'Separately, we use URL parameters (UTM) to track your click-through from our site to third-party providers so we can reconcile affiliate commissions; this does not rely on advertising cookies. You can re-manage preferences at any time.',
     ],
   },
 };

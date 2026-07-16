@@ -51,6 +51,8 @@ Cloudflare Pages 跑 Next.js App Router 需要官方适配器 `@cloudflare/next-
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` + `NEXT_PUBLIC_PLAUSIBLE_SRC` | 自托管 Plausible |
 | `NEXT_PUBLIC_UMAMI_URL` + `NEXT_PUBLIC_UMAMI_ID` | 自托管 Umami |
 | `NEXT_PUBLIC_BAIDU_TONGJI_ID` | 百度统计 ID |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics 4 Measurement ID(`G-XXXXXXXXXX`);覆盖海外,同意「分析」后加载 |
+| `NEXT_PUBLIC_CLARITY_ID` | Microsoft Clarity 项目 ID;点击热图/会话回放 |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile 站点密钥 |
 
 分析脚本默认不加载:仅当对应变量已配置**且**用户在 Cookie 弹窗同意「分析」后才注入,且不使用任何 Google 服务。

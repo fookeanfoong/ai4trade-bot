@@ -8,6 +8,7 @@ import { posts, getPost } from '@/lib/data/blog';
 import { getProvider } from '@/lib/data/providers';
 import { routing } from '@/i18n/routing';
 import { ProviderCard } from '@/components/providers/provider-card';
+import { NewsletterCta } from '@/components/newsletter/newsletter-cta';
 import { Badge } from '@/components/ui/badge';
 import { JsonLd } from '@/components/json-ld';
 import { breadcrumbLd } from '@/lib/jsonld';
@@ -109,6 +110,8 @@ export default async function BlogPostPage({
           <MDXRemote source={post.content} />
         </div>
       </article>
+
+      <NewsletterCta source={`blog/${slug}`} />
 
       {related.length > 0 && (
         <section className="mt-12">

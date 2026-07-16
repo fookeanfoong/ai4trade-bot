@@ -388,5 +388,14 @@
     "system": "跟隨系統",
     "loading": "載入中",
     "backHome": "返回首頁"
+  },
+  "newsletter": {
+    "title": "每月一封:最省錢的 AI API 情報",
+    "subtitle": "新中轉站、降價、穩定性預警,直送信箱。不發垃圾郵件。",
+    "placeholder": "you@example.com",
+    "button": "訂閱",
+    "sending": "訂閱中…",
+    "success": "訂閱成功!請查收郵件確認。",
+    "error": "出了點問題,請稍後再試。"
   }
 }
