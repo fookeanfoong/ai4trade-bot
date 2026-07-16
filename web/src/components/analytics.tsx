@@ -17,6 +17,36 @@ function analyticsAllowed(): boolean {
   }
 }
 
+function marketingAllowed(): boolean {
+  try {
+    const raw = localStorage.getItem(CONSENT_KEY);
+    if (!raw) return false;
+    return !!JSON.parse(raw).marketing;
+  } catch {
+    return false;
+  }
+}
+
+// Google AdSense 主脚本 —— 仅在用户同意「营销」类 Cookie 后加载(GDPR)。
+// 广告位由 <AdSlot> 渲染;未配置 NEXT_PUBLIC_ADSENSE_CLIENT 时完全不加载。
+function injectAds() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('aggreapi-ads-loaded')) return;
+  if (!marketingAllowed()) return;
+  const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT; // ca-pub-XXXXXXXXXXXXXXXX
+  if (!client) return;
+
+  const marker = document.createElement('meta');
+  marker.id = 'aggreapi-ads-loaded';
+  document.head.appendChild(marker);
+
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}`;
+  s.crossOrigin = 'anonymous';
+  document.head.appendChild(s);
+}
+
 function inject() {
   if (typeof document === 'undefined') return;
   if (document.getElementById('aggreapi-analytics-loaded')) return;
@@ -79,8 +109,12 @@ function inject() {
 export function Analytics() {
   useEffect(() => {
     inject();
-    // 用户在 Cookie 弹窗保存「分析」同意后再加载
-    const onConsent = () => inject();
+    injectAds();
+    // 用户在 Cookie 弹窗保存同意后再加载(分析→analytics,广告→marketing)
+    const onConsent = () => {
+      inject();
+      injectAds();
+    };
     window.addEventListener('aggreapi:consent', onConsent);
     return () => window.removeEventListener('aggreapi:consent', onConsent);
   }, []);
