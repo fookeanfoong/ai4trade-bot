@@ -26,7 +26,7 @@ export const REPORT = {
   currency: 'US$',
   earlyBirdTotal: 100, // 早鸟名额
   earlyBirdLeft: 43, // TODO: 先写死,未来动态化
-  checkoutUrl: '', // TODO: 贴 Lemon Squeezy / Stripe 结帐链接(留空 = 按钮显示「即将开放」)
+  checkoutUrl: 'https://aicompareapi1.lemonsqueezy.com/checkout/buy/4bf8a28e-f162-42a5-8ef8-5bcd1c6260b2', // Lemon Squeezy 托管结帐
 };
 
 export function abs(path: string): string {
