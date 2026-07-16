@@ -12,7 +12,7 @@ const LM = new Date('2026-07-14');
 // 标准 sitemap.xml,兼容百度/Google 提交格式。每个 locale × 页面独立 URL。
 // auth / dashboard 为 noindex,不收录。
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ['', '/providers', '/compare', '/models', '/deals', '/rankings', '/blog', '/submit', '/legal'];
+  const staticPaths = ['', '/providers', '/compare', '/models', '/deals', '/rankings', '/blog', '/report', '/submit', '/about', '/contact', '/legal'];
   const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of routing.locales) {

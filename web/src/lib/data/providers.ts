@@ -1,17 +1,18 @@
 import type { Provider } from '@/lib/types';
+import { affiliateLinks } from './affiliate-links';
 
 // 一期 mock:10 家市面上真实存在的 AI API 中转站。
-// 上线时只需替换 affiliate_url 即可对接联盟返佣,其余结构不动。
+// affiliate_url 不在这里写死,而是按 slug 从 affiliate-links.ts 统一读取
+// (见文件末尾的 providers 导出),上线换推广链接时只改那一个文件即可。
 // 说明:trust_score / uptime / latency / 折扣 为演示占位数据,非官方承诺值。
 
-export const providers: Provider[] = [
+const baseProviders: Omit<Provider, 'affiliate_url'>[] = [
   {
     id: 'p_openrouter',
     slug: 'openrouter',
     name: 'OpenRouter',
     logo: '/logos/openrouter.svg',
     website: 'https://openrouter.ai',
-    affiliate_url: 'https://openrouter.ai',
     regions: ['US', 'EU', 'Global'],
     payment_methods: ['card', 'paypal', 'usdt'],
     founded_date: '2023-03-01',
@@ -35,7 +36,6 @@ export const providers: Provider[] = [
     name: 'AiHubMix',
     logo: '/logos/aihubmix.svg',
     website: 'https://aihubmix.com',
-    affiliate_url: 'https://aihubmix.com',
     regions: ['CN', 'HK', 'SG', 'Global'],
     payment_methods: ['alipay', 'wechat', 'card', 'usdt'],
     founded_date: '2023-06-15',
@@ -60,7 +60,6 @@ export const providers: Provider[] = [
     name: 'CloseAI',
     logo: '/logos/closeai.svg',
     website: 'https://www.closeai-asia.com',
-    affiliate_url: 'https://www.closeai-asia.com',
     regions: ['CN', 'HK', 'Global'],
     payment_methods: ['alipay', 'wechat', 'unionpay'],
     founded_date: '2023-02-20',
@@ -82,7 +81,6 @@ export const providers: Provider[] = [
     name: 'DeepBricks',
     logo: '/logos/deepbricks.svg',
     website: 'https://deepbricks.ai',
-    affiliate_url: 'https://deepbricks.ai',
     regions: ['CN', 'SG', 'Global'],
     payment_methods: ['alipay', 'card', 'usdt'],
     founded_date: '2024-01-10',
@@ -106,7 +104,6 @@ export const providers: Provider[] = [
     name: 'API2D',
     logo: '/logos/api2d.svg',
     website: 'https://api2d.com',
-    affiliate_url: 'https://api2d.com',
     regions: ['CN', 'HK', 'Global'],
     payment_methods: ['alipay', 'wechat', 'unionpay', 'card'],
     founded_date: '2023-04-05',
@@ -128,7 +125,6 @@ export const providers: Provider[] = [
     name: 'OhMyGPT',
     logo: '/logos/ohmygpt.svg',
     website: 'https://www.ohmygpt.com',
-    affiliate_url: 'https://www.ohmygpt.com',
     regions: ['CN', 'HK', 'JP', 'Global'],
     payment_methods: ['alipay', 'wechat', 'card', 'usdt', 'paypal'],
     founded_date: '2023-05-12',
@@ -151,7 +147,6 @@ export const providers: Provider[] = [
     name: 'GPTAPI.us',
     logo: '/logos/gptapius.svg',
     website: 'https://gptapi.us',
-    affiliate_url: 'https://gptapi.us',
     regions: ['US', 'CN', 'Global'],
     payment_methods: ['alipay', 'card', 'usdt'],
     founded_date: '2023-08-22',
@@ -174,7 +169,6 @@ export const providers: Provider[] = [
     name: 'laozhang.ai',
     logo: '/logos/laozhang.svg',
     website: 'https://laozhang.ai',
-    affiliate_url: 'https://laozhang.ai',
     regions: ['CN', 'HK', 'Global'],
     payment_methods: ['alipay', 'wechat', 'usdt'],
     founded_date: '2024-02-18',
@@ -197,7 +191,6 @@ export const providers: Provider[] = [
     name: 'AiGCBest',
     logo: '/logos/aigcbest.svg',
     website: 'https://api.aigcbest.top',
-    affiliate_url: 'https://api.aigcbest.top',
     regions: ['CN', 'SG', 'Global'],
     payment_methods: ['alipay', 'wechat', 'usdt'],
     founded_date: '2024-03-30',
@@ -220,7 +213,6 @@ export const providers: Provider[] = [
     name: 'Poloai',
     logo: '/logos/poloai.svg',
     website: 'https://poloai.top',
-    affiliate_url: 'https://poloai.top',
     regions: ['CN', 'HK', 'EU', 'Global'],
     payment_methods: ['alipay', 'card', 'usdt', 'sepa'],
     founded_date: '2024-05-08',
@@ -238,6 +230,13 @@ export const providers: Provider[] = [
     },
   },
 ];
+
+// 每家的 affiliate_url 统一从 affiliate-links.ts 按 slug 注入(未配置则回退到官网),
+// 这样新增中转站也不可能漏配联盟链接,替换链接也只需改那一个文件。
+export const providers: Provider[] = baseProviders.map((p) => ({
+  ...p,
+  affiliate_url: affiliateLinks[p.slug] ?? p.website,
+}));
 
 export function getProvider(slug: string): Provider | undefined {
   return providers.find((p) => p.slug === slug);

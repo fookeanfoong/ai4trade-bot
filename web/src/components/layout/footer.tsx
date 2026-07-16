@@ -22,6 +22,7 @@ export function Footer() {
           <div>
             <p className="mb-3 text-sm font-semibold">{t('resources')}</p>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link href="/report" className="hover:text-foreground">{nav('report')}</Link></li>
               <li><Link href="/blog" className="hover:text-foreground">{nav('blog')}</Link></li>
               <li><Link href="/deals" className="hover:text-foreground">{nav('deals')}</Link></li>
               <li><Link href="/submit" className="hover:text-foreground">{nav('submit')}</Link></li>
@@ -39,6 +40,10 @@ export function Footer() {
           </div>
           <div>
             <p className="mb-3 text-sm font-semibold">{t('about')}</p>
+            <ul className="mb-3 space-y-2 text-sm text-muted-foreground">
+              <li><Link href="/about" className="hover:text-foreground">{nav('about')}</Link></li>
+              <li><Link href="/contact" className="hover:text-foreground">{nav('contact')}</Link></li>
+            </ul>
             {/* 亚洲合规:ICP / 公安 / 生成式 AI 备案预留位 */}
             <ul className="space-y-2 text-xs text-muted-foreground">
               <li>{t('icpPlaceholder')}</li>
