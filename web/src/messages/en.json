@@ -388,5 +388,14 @@
     "system": "System",
     "loading": "Loading",
     "backHome": "Back home"
+  },
+  "newsletter": {
+    "title": "The cheapest AI API deals, in your inbox",
+    "subtitle": "Monthly: new aggregators, price drops and reliability alerts. No spam.",
+    "placeholder": "you@example.com",
+    "button": "Subscribe",
+    "sending": "Subscribing…",
+    "success": "You’re in! Check your inbox to confirm.",
+    "error": "Something went wrong. Please try again."
   }
 }

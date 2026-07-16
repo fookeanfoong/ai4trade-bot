@@ -388,5 +388,14 @@
     "system": "跟随系统",
     "loading": "加载中",
     "backHome": "返回首页"
+  },
+  "newsletter": {
+    "title": "每月一封:最省钱的 AI API 情报",
+    "subtitle": "新中转站、降价、稳定性预警,直送邮箱。不发垃圾邮件。",
+    "placeholder": "you@example.com",
+    "button": "订阅",
+    "sending": "订阅中…",
+    "success": "订阅成功!请查收邮件确认。",
+    "error": "出了点问题,请稍后再试。"
   }
 }

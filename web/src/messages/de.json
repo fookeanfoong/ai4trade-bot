@@ -388,5 +388,14 @@
     "system": "System",
     "loading": "Lädt",
     "backHome": "Zur Startseite"
+  },
+  "newsletter": {
+    "title": "Die günstigsten AI-API-Deals per E-Mail",
+    "subtitle": "Monatlich: neue Aggregatoren, Preissenkungen und Zuverlässigkeits-Alerts. Kein Spam.",
+    "placeholder": "you@example.com",
+    "button": "Abonnieren",
+    "sending": "Wird abonniert…",
+    "success": "Fast geschafft! Bitte bestätige in deinem Postfach.",
+    "error": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
   }
 }

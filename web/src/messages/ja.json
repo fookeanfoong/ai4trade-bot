@@ -388,5 +388,14 @@
     "system": "システム",
     "loading": "読み込み中",
     "backHome": "ホームへ"
+  },
+  "newsletter": {
+    "title": "毎月1通:最も安い AI API 情報",
+    "subtitle": "新しいアグリゲーター・値下げ・安定性アラートをメールで。スパムなし。",
+    "placeholder": "you@example.com",
+    "button": "購読",
+    "sending": "送信中…",
+    "success": "登録完了!確認メールをご確認ください。",
+    "error": "問題が発生しました。もう一度お試しください。"
   }
 }
