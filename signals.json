@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-14",
-  "note": "Claude fills these from news + live quotes. signal_sim trades any signal with direction in (bullish,bearish), confidence >= 0.6, already_priced_in == false, and no open position. Percent levels are relative to live entry price.",
+  "updated_at": "2026-07-16",
+  "note": "Claude fills these from news + live quotes. signal_sim trades any signal with direction in (bullish,bearish), confidence >= 0.6, already_priced_in == false, and no open position. If an OPEN position's signal flips to already_priced_in==true (or is removed), signal_sim exits it at market next run. Percent levels are relative to live entry price.",
   "signals": [
     {
       "sector_or_ticker": "XLE",
@@ -12,17 +12,17 @@
       "t1_pct": 0.03,
       "t2_pct": 0.06,
       "scenarios": [
-        {"case": "bull", "trigger": "Hormuz disruption persists, oil holds > $78, energy keeps leading", "probability": 0.45},
+        {"case": "bull", "trigger": "Hormuz disruption persists, oil holds > $78, energy keeps leading", "probability": 0.30},
         {"case": "base", "trigger": "oil consolidates at high level, XLE chops sideways", "probability": 0.35},
-        {"case": "bear", "trigger": "US-Iran ceasefire / de-escalation, oil dumps, energy gives back gains", "probability": 0.20}
+        {"case": "bear", "trigger": "energy rolls over on profit-taking / ceasefire hopes, gives back the spike", "probability": 0.35}
       ],
       "key_risks": [
-        "sudden ceasefire or de-escalation collapses the oil premium",
-        "high oil prices cause demand destruction",
-        "sector already extended +3-5% over two sessions"
+        "energy already sold off 7/16 (VLO -2.9%, PSX -2.6%, OXY -1.5%) after +11% oil run",
+        "sudden ceasefire collapses the oil premium",
+        "the geopolitical premium is now largely priced in"
       ],
-      "reasoning": "油价因霍尔木兹海峡美伊冲突 +8%，能源板块连续两日领涨，地缘催化剂仍在升级而非缓和。方向看多，但板块已涨不少，止损收紧防反转。",
-      "already_priced_in": false
+      "reasoning": "能源在 7/16 全线回调（VLO -2.9%、PSX -2.6%、OXY -1.5%），油价三日 +11% 后的地缘溢价已基本 price in。继续做多的风险回报变差，标记为 already_priced_in=true —— 触发对持有中 XLE 多单的市价止损，及时抽身，不等硬止损。",
+      "already_priced_in": true
     }
   ]
 }
