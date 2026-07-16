@@ -30,8 +30,15 @@
       "close": 534.3900146484375,
       "equity": 200.0,
       "actions": []
+    },
+    {
+      "ran_at": "2026-07-16T12:49:16Z",
+      "bar_date": "2026-07-15",
+      "close": 529.1400146484375,
+      "equity": 200.0,
+      "actions": []
     }
   ],
   "peak_equity": 200.0,
-  "last_bar_date": "2026-07-13"
+  "last_bar_date": "2026-07-15"
 }
