@@ -1,19 +1,18 @@
 {
-  "cash": 0.0,
-  "position": {
-    "ticker": "XLE",
-    "side": "long",
-    "shares": 3.5248501938667607,
-    "entry": 56.74,
-    "stop": 55.72,
-    "t1": 58.44,
-    "t2": 60.14,
-    "half_taken": false,
-    "leverage": 10.0,
-    "confidence": 0.6,
-    "opened_at": 1783972800
-  },
-  "trade_log": [],
+  "cash": 191.5403595347197,
+  "position": null,
+  "trade_log": [
+    {
+      "ticker": "XLE",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 56.74,
+      "exit": 56.5,
+      "leverage": 10.0,
+      "pnl_usd": -8.4596,
+      "closed_at": 1784145600
+    }
+  ],
   "runs": [
     {
       "ran_at": "2026-07-14T12:35:37Z",
@@ -51,6 +50,14 @@
       "ran_at": "2026-07-16T12:49:17Z",
       "equity": 191.5404,
       "actions": []
+    },
+    {
+      "ran_at": "2026-07-16T13:20:39Z",
+      "equity": 191.5404,
+      "actions": [
+        "EXIT (signal invalidated): XLE long @ market $56.50 (10.0x) -> P&L $-8.46",
+        "no actionable signal (need direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "peak_equity": 207.40218540712021,
