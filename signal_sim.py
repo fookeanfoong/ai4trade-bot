@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Structured-signal paper trader (long + short).
+Structured-signal paper trader (long + short) with profit protection.
 
 Reads:
   - signals.json : trade signals in the requested schema + execution fields
@@ -10,15 +10,16 @@ Executes the single highest-confidence ACTIONABLE signal as a $200 paper
 trade with 10x leverage and a $40 drawdown circuit breaker (drops to 5x).
 Supports SHORT (bearish) as well as LONG (bullish).
 
-A signal is actionable when:
-  direction in ("bullish", "bearish")
-  AND confidence >= MIN_CONFIDENCE
-  AND already_priced_in == false
-  AND no position is currently open
-
-Exits use each run's day_high / day_low from quotes.json (conservative:
-stop is checked before targets). T1 sells half and moves stop to breakeven;
-T2 closes the rest.
+Exit priority (get out in time so winners don't round-trip to losers):
+  1. Signal invalidation -> market exit. If the signal that opened the
+     position is no longer actionable (already_priced_in flipped true,
+     direction changed, confidence dropped, or the signal is gone), close
+     NOW at the live price. This is the "judge in time and pull out" rule.
+  2. Trailing profit-lock. Once price runs TRAIL_ARM_PCT in our favour the
+     trail arms; if it then gives back TRAIL_GIVEBACK_PCT from the best
+     price, exit and keep the profit (floored at breakeven).
+  3. Hard stop.
+  4. T1 (sell half, stop -> breakeven), then T2 (close rest).
 
 State: signal_sim_state.json   Reports: reports/signal_sim/YYYY-MM-DD.md
 """
@@ -44,6 +45,10 @@ BASE_LEVERAGE = 10.0
 REDUCED_LEVERAGE = 5.0
 DRAWDOWN_CAP_USD = 40.0
 MIN_CONFIDENCE = 0.6
+
+# Trailing profit-lock (underlying-price percentages; 10x amplifies to equity).
+TRAIL_ARM_PCT = 0.004       # arm once +0.4% in our favour (~+4% equity at 10x)
+TRAIL_GIVEBACK_PCT = 0.0025  # exit if it gives back 0.25% from the best price
 
 
 def load_state() -> dict:
@@ -85,15 +90,33 @@ def leveraged_proceeds(shares, entry, exit_price, leverage, side):
     return cost + raw_pnl * leverage
 
 
-def pick_signal(state: dict):
-    """Return the best actionable signal dict, or None."""
+def load_signals() -> list:
     try:
-        data = json.loads(SIGNALS_FILE.read_text())
+        return json.loads(SIGNALS_FILE.read_text()).get("signals", [])
     except Exception as e:
         print(f"signals.json unreadable: {e}", file=sys.stderr)
-        return None
+        return []
+
+
+def signal_still_valid(ticker: str, side: str, signals: list) -> bool:
+    """True if an actionable signal matching this open position still exists."""
+    want = "bullish" if side == "long" else "bearish"
+    for s in signals:
+        if s.get("sector_or_ticker") != ticker:
+            continue
+        if s.get("direction") != want:
+            return False
+        if s.get("already_priced_in") is True:
+            return False
+        if float(s.get("confidence", 0)) < MIN_CONFIDENCE:
+            return False
+        return True
+    return False  # signal removed entirely -> invalidated
+
+
+def pick_signal(state: dict):
     actionable = []
-    for s in data.get("signals", []):
+    for s in load_signals():
         if s.get("direction") not in ("bullish", "bearish"):
             continue
         if float(s.get("confidence", 0)) < MIN_CONFIDENCE:
@@ -117,32 +140,70 @@ def get_quote(symbol: str):
     return q
 
 
-def manage_exit(state: dict, quote: dict) -> list:
+def _close(state, p, fill, side, lev, action, when):
+    proceeds = leveraged_proceeds(p["shares"], p["entry"], fill, lev, side)
+    pnl = proceeds - p["shares"] * p["entry"]
+    state["cash"] += proceeds
+    state["trade_log"].append({
+        "ticker": p["ticker"], "side": p["side"], "action": action,
+        "entry": p["entry"], "exit": round(fill, 4), "leverage": lev,
+        "pnl_usd": round(pnl, 4), "closed_at": when,
+    })
+    state["position"] = None
+    return pnl
+
+
+def manage_exit(state: dict, quote: dict, signals: list) -> list:
     lines = []
     p = state["position"]
     side = 1 if p["side"] == "long" else -1
     lev = p.get("leverage", BASE_LEVERAGE)
-    high = quote.get("day_high") or quote["last"]
-    low = quote.get("day_low") or quote["last"]
+    last = quote["last"]
+    high = quote.get("day_high") or last
+    low = quote.get("day_low") or last
 
-    # Stop check first (conservative). Long stops below; short stops above.
-    stop_hit = (low <= p["stop"]) if side == 1 else (high >= p["stop"])
-    if stop_hit:
-        fill = p["stop"]
-        proceeds = leveraged_proceeds(p["shares"], p["entry"], fill, lev, side)
-        pnl = proceeds - p["shares"] * p["entry"]
-        state["cash"] += proceeds
-        state["trade_log"].append({
-            "ticker": p["ticker"], "side": p["side"],
-            "action": "STOP_EXIT" if not p["half_taken"] else "BE_STOP_EXIT",
-            "entry": p["entry"], "exit": fill, "leverage": lev,
-            "pnl_usd": round(pnl, 4),
-            "closed_at": quote.get("market_time"),
-        })
-        state["position"] = None
-        lines.append(f"EXIT: {p['ticker']} {p['side']} stopped @ ${fill:.2f} ({lev}x) -> P&L ${pnl:+.2f}")
+    # backfill trailing fields for positions opened before this feature
+    p.setdefault("peak_price", p["entry"])
+    p.setdefault("armed", False)
+
+    # --- 1. Signal invalidation -> exit at market (judge in time, pull out) ---
+    if not signal_still_valid(p["ticker"], p["side"], signals):
+        pnl = _close(state, p, last, side, lev, "SIGNAL_INVALIDATED_EXIT", quote.get("market_time"))
+        lines.append(f"EXIT (signal invalidated): {p['ticker']} {p['side']} @ market ${last:.2f} ({lev}x) -> P&L ${pnl:+.2f}")
         return lines
 
+    # --- update peak + arm trailing ---
+    if side == 1:
+        p["peak_price"] = max(p["peak_price"], high)
+        if not p["armed"] and p["peak_price"] >= p["entry"] * (1 + TRAIL_ARM_PCT):
+            p["armed"] = True
+    else:
+        p["peak_price"] = min(p["peak_price"], low)
+        if not p["armed"] and p["peak_price"] <= p["entry"] * (1 - TRAIL_ARM_PCT):
+            p["armed"] = True
+
+    # --- 2. Trailing profit-lock (only once armed; floored at breakeven) ---
+    if p["armed"]:
+        if side == 1:
+            trail = max(p["peak_price"] * (1 - TRAIL_GIVEBACK_PCT), p["entry"])
+            trail_hit = low <= trail
+        else:
+            trail = min(p["peak_price"] * (1 + TRAIL_GIVEBACK_PCT), p["entry"])
+            trail_hit = high >= trail
+        if trail_hit:
+            pnl = _close(state, p, trail, side, lev, "TRAIL_LOCK_EXIT", quote.get("market_time"))
+            lines.append(f"TRAIL-LOCK: {p['ticker']} {p['side']} exited @ ${trail:.2f} ({lev}x), kept profit ${pnl:+.2f}")
+            return lines
+
+    # --- 3. Hard stop ---
+    stop_hit = (low <= p["stop"]) if side == 1 else (high >= p["stop"])
+    if stop_hit:
+        action = "STOP_EXIT" if not p["half_taken"] else "BE_STOP_EXIT"
+        pnl = _close(state, p, p["stop"], side, lev, action, quote.get("market_time"))
+        lines.append(f"EXIT: {p['ticker']} {p['side']} stopped @ ${p['stop']:.2f} ({lev}x) -> P&L ${pnl:+.2f}")
+        return lines
+
+    # --- 4. T1 (sell half, stop -> breakeven) ---
     t1_hit = (high >= p["t1"]) if side == 1 else (low <= p["t1"])
     if not p["half_taken"] and t1_hit:
         half = p["shares"] / 2
@@ -152,7 +213,8 @@ def manage_exit(state: dict, quote: dict) -> list:
         state["cash"] += proceeds
         p["shares"] -= half
         p["half_taken"] = True
-        p["stop"] = p["entry"]  # move to breakeven
+        p["stop"] = p["entry"]
+        p["armed"] = True  # protect the remainder with the trail from here
         state["trade_log"].append({
             "ticker": p["ticker"], "side": p["side"], "action": "T1_HALF",
             "entry": p["entry"], "exit": fill, "leverage": lev,
@@ -160,19 +222,11 @@ def manage_exit(state: dict, quote: dict) -> list:
         })
         lines.append(f"T1: sold half {p['ticker']} {p['side']} @ ${fill:.2f} ({lev}x), stop->BE, booked ${pnl:+.2f}")
 
+    # --- 5. T2 (close remainder) ---
     t2_hit = (high >= p["t2"]) if side == 1 else (low <= p["t2"])
     if state["position"] and p["shares"] > 1e-9 and t2_hit:
-        fill = p["t2"]
-        proceeds = leveraged_proceeds(p["shares"], p["entry"], fill, lev, side)
-        pnl = proceeds - p["shares"] * p["entry"]
-        state["cash"] += proceeds
-        state["trade_log"].append({
-            "ticker": p["ticker"], "side": p["side"], "action": "T2_EXIT",
-            "entry": p["entry"], "exit": fill, "leverage": lev,
-            "pnl_usd": round(pnl, 4),
-        })
-        state["position"] = None
-        lines.append(f"T2: closed {p['ticker']} {p['side']} @ ${fill:.2f} ({lev}x), booked ${pnl:+.2f}")
+        pnl = _close(state, p, p["t2"], side, lev, "T2_EXIT", quote.get("market_time"))
+        lines.append(f"T2: closed {p['ticker']} {p['side']} @ ${p['t2']:.2f} ({lev}x), booked ${pnl:+.2f}")
     return lines
 
 
@@ -200,6 +254,7 @@ def open_from_signal(state: dict, sig: dict) -> list:
         "ticker": ticker, "side": side, "shares": shares, "entry": entry,
         "stop": round(stop, 2), "t1": round(t1, 2), "t2": round(t2, 2),
         "half_taken": False, "leverage": lev,
+        "peak_price": entry, "armed": False,
         "confidence": sig.get("confidence"),
         "opened_at": quote.get("market_time"),
     }
@@ -228,7 +283,7 @@ def write_report(state: dict, actions: list, mark_sym: str, mark: float) -> None
     pos = state.get("position")
     realized = sum(t["pnl_usd"] for t in state["trade_log"])
     lines = [
-        f"# Signal Sim ($200, 10x, long+short) - {today}",
+        f"# Signal Sim ($200, 10x, long+short, trailing) - {today}",
         "",
         f"- Cash: ${state['cash']:.2f}",
         f"- Position: {json.dumps(pos) if pos else 'FLAT'}",
@@ -250,17 +305,17 @@ def main() -> int:
         return 0
 
     state = load_state()
+    signals = load_signals()
     actions = []
     mark_sym, mark = None, None
 
     if state.get("position"):
-        # Manage the open position against its ticker's live quote.
         p = state["position"]
         mark_sym = p["ticker"]
         quote = get_quote(mark_sym)
         if quote:
             mark = quote["last"]
-            actions += manage_exit(state, quote)
+            actions += manage_exit(state, quote, signals)
     if not state.get("position"):
         sig = pick_signal(state)
         if sig:
@@ -271,7 +326,6 @@ def main() -> int:
         else:
             actions.append("no actionable signal (need direction, confidence>=0.6, not priced-in)")
 
-    # refresh mark from any (new) open position
     if state.get("position"):
         q = get_quote(state["position"]["ticker"])
         if q:
