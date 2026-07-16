@@ -17,6 +17,18 @@ export function twitterUrl(handle: string): string {
   return `https://x.com/${handle.replace(/^@/, '')}`;
 }
 
+// 深度研究报告(Deep-Dive Report)商品设置 —— 定价与结帐的唯一改动入口。
+// ⚠️ 占位:上线前替换。checkoutUrl 建议用 Lemon Squeezy 托管结帐链接(对亚洲卖家友善,
+// 只需贴一个链接、无需接后端);留空时页面按钮显示「即将开放」,不会假装能买。
+export const REPORT = {
+  priceOriginal: 99, // 原价(划掉)
+  price: 49, // 早鸟价
+  currency: 'US$',
+  earlyBirdTotal: 100, // 早鸟名额
+  earlyBirdLeft: 43, // TODO: 先写死,未来动态化
+  checkoutUrl: '', // TODO: 贴 Lemon Squeezy / Stripe 结帐链接(留空 = 按钮显示「即将开放」)
+};
+
 export function abs(path: string): string {
   return `${SITE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
 }
