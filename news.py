@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
-Daily market-mover news digest.
+Daily market-mover news digest (freshness-enforced).
 
-Runs on the GitHub Actions runner (has internet). Pulls last-24h headlines
-via free Google News RSS for:
-  - people whose posts move markets (Trump, Musk, Fed chair, Treasury)
-  - macro catalysts (oil / Iran / OPEC, rates, tariffs)
-  - our watchlist themes (chips, energy, banks)
-  - general "stock market today"
+Runs on the GitHub Actions runner (has internet). Pulls headlines via free
+Google News RSS for the people/events that move markets, then:
+  - parses each headline's publish time
+  - DROPS anything older than MAX_AGE_HOURS (default 24h)
+  - sorts newest-first
+  - shows a relative age ("2h ago") so staleness is obvious
 
 Writes news.md (human digest) + news.json (machine-readable). A MOVERS
-section highlights headlines mentioning key market-moving figures so the
-signal analysis can react to them.
+section highlights headlines mentioning key market-moving figures.
 
 Note: direct Twitter/X access needs the paid API, so we don't read tweets
 firsthand. Financial media report market-moving tweets within minutes, so
@@ -19,6 +18,7 @@ these keyword searches capture the market impact just as well.
 """
 
 import datetime as dt
+import email.utils as eut
 import html
 import json
 import re
@@ -38,7 +38,11 @@ BROWSER_UA = (
     "Chrome/122.0 Safari/537.36"
 )
 
-# (label, query). when:1d limits to the last day.
+MAX_AGE_HOURS = 24   # drop anything older than this — keep the digest fresh
+PER_QUERY = 6
+
+# (label, query). when:1d already limits Google News to the last day; the
+# pubDate filter below is the hard guarantee.
 QUERIES = [
     ("Market",   "US stock market today when:1d"),
     ("Trump",    "Trump stock market OR tariffs OR Iran when:1d"),
@@ -49,14 +53,38 @@ QUERIES = [
     ("Earnings", "earnings today stock movers when:1d"),
 ]
 
-# Headlines mentioning any of these get flagged as market MOVERS.
 MOVER_KEYWORDS = [
-    "trump", "musk", "powell", "fed", "federal reserve", "tariff",
-    "iran", "opec", "hormuz", "war", "strike", "sanction", "rate cut",
-    "rate hike", "cpi", "inflation", "recession", "jobs report",
+    "trump", "musk", "powell", "warsh", "fed", "federal reserve", "tariff",
+    "iran", "opec", "hormuz", "ceasefire", "war", "strike", "sanction",
+    "rate cut", "rate hike", "cpi", "inflation", "recession", "jobs report",
 ]
 
-PER_QUERY = 5
+
+def now_utc():
+    return dt.datetime.now(dt.timezone.utc)
+
+
+def parse_pub(pub: str):
+    if not pub:
+        return None
+    try:
+        d = eut.parsedate_to_datetime(pub)
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=dt.timezone.utc)
+        return d
+    except Exception:
+        return None
+
+
+def age_str(pub_dt, ref):
+    if pub_dt is None:
+        return "age?"
+    mins = int((ref - pub_dt).total_seconds() // 60)
+    if mins < 60:
+        return f"{max(mins,0)}m ago"
+    if mins < 60 * 24:
+        return f"{mins // 60}h ago"
+    return f"{mins // (60*24)}d ago"
 
 
 def fetch_rss(query: str) -> list:
@@ -69,15 +97,16 @@ def fetch_rss(query: str) -> list:
     root = ET.fromstring(raw)
     items = []
     for it in root.iter("item"):
-        title = it.findtext("title") or ""
-        link = it.findtext("link") or ""
-        pub = it.findtext("pubDate") or ""
-        source_el = it.find("source")
-        source = source_el.text if source_el is not None else ""
-        title = html.unescape(re.sub(r"<[^>]+>", "", title)).strip()
-        items.append({"title": title, "link": link, "pub": pub, "source": source})
-        if len(items) >= PER_QUERY:
-            break
+        title = html.unescape(re.sub(r"<[^>]+>", "", it.findtext("title") or "")).strip()
+        if not title:
+            continue
+        src_el = it.find("source")
+        items.append({
+            "title": title,
+            "link": it.findtext("link") or "",
+            "pub": it.findtext("pubDate") or "",
+            "source": src_el.text if src_el is not None else "",
+        })
     return items
 
 
@@ -87,7 +116,10 @@ def is_mover(title: str) -> bool:
 
 
 def main() -> int:
-    now = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
+    ref = now_utc()
+    now_iso = ref.isoformat(timespec="seconds")
+    cutoff = ref - dt.timedelta(hours=MAX_AGE_HOURS)
+
     sections = {}
     movers = []
     errors = {}
@@ -102,38 +134,53 @@ def main() -> int:
             continue
         kept = []
         for it in items:
+            pub_dt = parse_pub(it["pub"])
+            # Hard freshness gate: drop stale. Keep undated (Google already
+            # filtered to ~1d) but they sort last.
+            if pub_dt is not None and pub_dt < cutoff:
+                continue
             key = it["title"].lower()[:80]
-            if not it["title"] or key in seen:
+            if key in seen:
                 continue
             seen.add(key)
+            it["age"] = age_str(pub_dt, ref)
+            it["_sort"] = pub_dt.timestamp() if pub_dt else 0
             kept.append(it)
             if is_mover(it["title"]):
                 movers.append({**it, "bucket": label})
-        sections[label] = kept
+        kept.sort(key=lambda x: x["_sort"], reverse=True)
+        sections[label] = kept[:PER_QUERY]
 
-    out = {"fetched_at": now, "movers": movers, "sections": sections, "errors": errors}
-    NEWS_JSON.write_text(json.dumps(out, indent=2))
+    movers.sort(key=lambda x: x["_sort"], reverse=True)
 
-    lines = [f"# Market News Digest — {now}", ""]
+    out = {"fetched_at": now_iso, "max_age_hours": MAX_AGE_HOURS,
+           "movers": movers, "sections": sections, "errors": errors}
+    NEWS_JSON.write_text(json.dumps(out, indent=2, default=str))
+
+    lines = [
+        f"# Market News Digest — {now_iso}",
+        f"_Freshness: only headlines from the last {MAX_AGE_HOURS}h; newest first._",
+        "",
+    ]
     if movers:
         lines += ["## 🔴 MARKET MOVERS (react to these)", ""]
         for m in movers[:12]:
-            lines.append(f"- **[{m['bucket']}]** {m['title']} — _{m['source']}_")
+            lines.append(f"- `{m['age']}` **[{m['bucket']}]** {m['title']} — _{m['source']}_")
         lines.append("")
     for label, _ in QUERIES:
         items = sections.get(label) or []
         if not items:
             continue
-        lines.append(f"## {label}")
-        lines.append("")
+        lines += [f"## {label}", ""]
         for it in items:
-            lines.append(f"- {it['title']} — _{it['source']}_")
+            lines.append(f"- `{it['age']}` {it['title']} — _{it['source']}_")
         lines.append("")
     if errors:
         lines += ["## Errors", ""] + [f"- {k}: {v}" for k, v in errors.items()]
     NEWS_MD.write_text("\n".join(lines) + "\n")
 
-    print(f"news: {sum(len(v) for v in sections.values())} headlines, {len(movers)} movers at {now}")
+    total = sum(len(v) for v in sections.values())
+    print(f"news: {total} fresh headlines (<{MAX_AGE_HOURS}h), {len(movers)} movers at {now_iso}")
     return 0
 
 
