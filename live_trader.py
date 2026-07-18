@@ -65,6 +65,12 @@ TRAIL_ARM_PCT = 0.004
 TRAIL_GIVEBACK_PCT = 0.0025
 ENABLE_SHORT = os.environ.get("ENABLE_SHORT", "false").lower() in ("yes", "true")
 
+# REGIME guard (the Korea/DeepSeek lesson): if the broad market is gapping down
+# more than this on the day, a sudden-crash / risk-off open is underway — do NOT
+# open new longs into it (symmetric for shorts on a rip). signals.json may
+# override with a top-level "regime_max_drop_pct".
+REGIME_MAX_DROP_PCT = float(os.environ.get("REGIME_MAX_DROP_PCT", "2.0"))
+
 # Fractional shares: default on for Alpaca (supports ~$1 slices), off for Moomoo
 # (whole shares). Override with ALLOW_FRACTIONAL=yes/no.
 _frac = os.environ.get("ALLOW_FRACTIONAL")
@@ -105,12 +111,38 @@ def is_weekday_ny() -> bool:
 
 # ------------------------- signals + quotes --------------------------------
 # (Mirror of signal_sim.py's semantics so paper and sim agree on what to trade.)
-def load_signals() -> list:
+def load_signals_doc() -> dict:
     try:
-        return json.loads(SIGNALS_FILE.read_text()).get("signals", [])
+        return json.loads(SIGNALS_FILE.read_text())
     except Exception as e:
         print(f"signals.json unreadable: {e}", file=sys.stderr)
-        return []
+        return {}
+
+
+def load_signals() -> list:
+    return load_signals_doc().get("signals", [])
+
+
+def ny_today_str() -> str:
+    if ZoneInfo:
+        return dt.datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+    return (dt.datetime.utcnow() - dt.timedelta(hours=4)).strftime("%Y-%m-%d")
+
+
+def signal_expired(doc: dict, today: str) -> bool:
+    """A signal file with valid_for in the past must be refreshed pre-open before
+    we act on it — a stale signal never fires (pre-open freshness discipline)."""
+    vf = doc.get("valid_for")
+    return bool(vf) and str(vf) < today
+
+
+def broad_market_chg(qmap: dict):
+    """Same-day % change of the broad market (SPY, else QQQ) for the regime guard."""
+    for sym in ("SPY", "QQQ"):
+        q = qmap.get(sym)
+        if q and q.get("change_pct") is not None:
+            return sym, float(q["change_pct"])
+    return None, None
 
 
 def actionable(s: dict) -> bool:
@@ -290,14 +322,24 @@ def manage_open(broker, state, signals, qmap, dry: bool) -> list:
     return lines
 
 
-def open_from_signal(broker, state, sig, qmap, dry: bool) -> list:
+def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> list:
     lines = []
     sym = sig["sector_or_ticker"]
     side = "long" if sig["direction"] == "bullish" else "short"
     now = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
+    if regime_max is None:
+        regime_max = REGIME_MAX_DROP_PCT
 
     if side == "short" and not ENABLE_SHORT:
         return [f"signal {sym} is SHORT but shorting disabled (set ENABLE_SHORT=yes); skip"]
+
+    # REGIME guard (Korea/DeepSeek lesson): don't open into a risk-off crash open.
+    gsym, gchg = broad_market_chg(qmap)
+    if gchg is not None:
+        if side == "long" and gchg < -regime_max:
+            return [f"REGIME: {gsym} {gchg:.1f}% today (< -{regime_max:.1f}%) — risk-off open, standing aside on {sym} long"]
+        if side == "short" and gchg > regime_max:
+            return [f"REGIME: {gsym} +{gchg:.1f}% today (> {regime_max:.1f}%) — risk-on open, not shorting {sym}"]
 
     last, src = get_price(broker, sym, qmap)
     if last is None:
@@ -439,8 +481,11 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
         return 0
 
     state = load_state()
-    signals = load_signals()
+    doc = load_signals_doc()
+    signals = doc.get("signals", [])
     qmap = quotes_map()
+    regime_max = float(doc.get("regime_max_drop_pct", REGIME_MAX_DROP_PCT))
+    expired = signal_expired(doc, ny_today_str())
     actions = []
     acct = None
     mark_sym, mark = None, None
@@ -478,12 +523,18 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
             actions += manage_open(broker, state, signals, qmap, dry)
 
         if not state.get("position"):
-            sig = pick_signal(signals)
-            if sig:
-                mark_sym = sig["sector_or_ticker"]
-                actions += open_from_signal(broker, state, sig, qmap, dry)
+            if expired:
+                actions.append(
+                    f"signal expired (valid_for {doc.get('valid_for')} < {ny_today_str()} NY) — "
+                    "awaiting pre-open refresh, no entry"
+                )
             else:
-                actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
+                sig = pick_signal(signals)
+                if sig:
+                    mark_sym = sig["sector_or_ticker"]
+                    actions += open_from_signal(broker, state, sig, qmap, dry, regime_max)
+                else:
+                    actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
 
         if mark_sym:
             mark, _ = get_price(broker if connected else None, mark_sym, qmap)
