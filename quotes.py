@@ -6,6 +6,9 @@ Runs on the GitHub Actions runner (can reach Yahoo Finance). Writes:
   - quotes.json : machine-readable {symbol: {...}} with a UTC timestamp
   - quotes.md   : human-readable table
 
+Also computes 3-day / 5-day % change (how far a name has already run) so the
+signal sim can refuse to chase an extended move.
+
 Purpose: give an accurate, timestamped price source. The Claude sandbox's
 egress proxy blocks Yahoo/Stooq, so prices must be fetched here and committed.
 """
@@ -37,10 +40,16 @@ BROWSER_UA = (
 )
 
 
+def _pct(now_val, then_val):
+    if now_val is None or then_val in (None, 0):
+        return None
+    return round((now_val - then_val) / then_val * 100, 2)
+
+
 def fetch_quote(symbol: str) -> dict:
-    """Return latest quote for one symbol from Yahoo chart JSON."""
+    """Return latest quote + multi-day change for one symbol from Yahoo."""
     url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
-           "?range=1d&interval=1m")
+           "?range=1mo&interval=1d")
     req = urlrequest.Request(url, headers={
         "User-Agent": BROWSER_UA,
         "Accept": "application/json",
@@ -54,16 +63,22 @@ def fetch_quote(symbol: str) -> dict:
     day_high = meta.get("regularMarketDayHigh")
     day_low = meta.get("regularMarketDayLow")
     vol = meta.get("regularMarketVolume")
-    chg_pct = None
-    if last is not None and prev:
-        chg_pct = round((last - prev) / prev * 100, 2)
+
+    # Daily closes for multi-day extension. Drop trailing None (today may be null intraday).
+    closes = [c for c in result["indicators"]["quote"][0].get("close", []) if c is not None]
+    ref = last if last is not None else (closes[-1] if closes else None)
+    chg_3d = _pct(ref, closes[-4]) if len(closes) >= 4 else None
+    chg_5d = _pct(ref, closes[-6]) if len(closes) >= 6 else None
+
     return {
         "symbol": symbol,
         "last": last,
         "prev_close": prev,
         "day_high": day_high,
         "day_low": day_low,
-        "change_pct": chg_pct,
+        "change_pct": _pct(last, prev),
+        "chg_3d_pct": chg_3d,
+        "chg_5d_pct": chg_5d,
         "volume": vol,
         "market_time": meta.get("regularMarketTime"),
     }
@@ -86,18 +101,23 @@ def main() -> int:
     lines = [
         f"# Live Quotes — {now}",
         "",
-        "| Symbol | Last | Chg% | Day Low | Day High | Prev Close | Volume |",
-        "|--------|------|------|---------|----------|------------|--------|",
+        "| Symbol | Last | Chg% | 3d% | 5d% | Day Low | Day High | Volume |",
+        "|--------|------|------|-----|-----|---------|----------|--------|",
     ]
     for sym in WATCHLIST:
         q = quotes.get(sym)
         if not q or q.get("last") is None:
-            lines.append(f"| {sym} | n/a | | | | | |")
+            lines.append(f"| {sym} | n/a | | | | | | |")
             continue
+
+        def f(v, suffix="%"):
+            return f"{v:+.2f}{suffix}" if v is not None else "n/a"
+
         lines.append(
-            f"| {sym} | {q['last']:.2f} | {q['change_pct']:+.2f}% | "
+            f"| {sym} | {q['last']:.2f} | {f(q['change_pct'])} | "
+            f"{f(q['chg_3d_pct'])} | {f(q['chg_5d_pct'])} | "
             f"{(q['day_low'] or 0):.2f} | {(q['day_high'] or 0):.2f} | "
-            f"{(q['prev_close'] or 0):.2f} | {(q['volume'] or 0):,} |"
+            f"{(q['volume'] or 0):,} |"
         )
     if errors:
         lines += ["", "## Errors", ""]
@@ -108,7 +128,7 @@ def main() -> int:
     for sym in WATCHLIST:
         q = quotes.get(sym, {})
         if q.get("last") is not None:
-            print(f"  {sym}: ${q['last']:.2f} ({q['change_pct']:+.2f}%)")
+            print(f"  {sym}: ${q['last']:.2f} ({q['change_pct']:+.2f}%, 3d {q['chg_3d_pct']})")
     return 0
 
 
