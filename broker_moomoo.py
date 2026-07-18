@@ -212,11 +212,23 @@ class MoomooBroker:
             raise BrokerError(f"place_order {side} {qty} {code} failed: {data}")
         return data
 
-    def buy(self, symbol: str, qty: float, ref_price: float):
+    def buy(self, symbol: str, qty: float, ref_price: float = 0.0):
         return self._order(symbol, TrdSide.BUY, qty, ref_price)
 
-    def sell(self, symbol: str, qty: float, ref_price: float):
+    def sell(self, symbol: str, qty: float, ref_price: float = 0.0):
         return self._order(symbol, TrdSide.SELL, qty, ref_price)
+
+    def close(self, symbol: str):
+        """Liquidate the full held position for symbol (market order)."""
+        for p in self.positions():
+            if p["symbol"] == symbol and abs(p["qty"]) > 1e-9:
+                side = TrdSide.SELL if p["qty"] > 0 else TrdSide.BUY
+                return self._order(symbol, side, abs(p["qty"]), self.price(symbol) or 0.0)
+        return None
+
+    def is_market_open(self):
+        """Moomoo has no simple clock call here — return None (unknown)."""
+        return None
 
 
 def describe_config() -> str:

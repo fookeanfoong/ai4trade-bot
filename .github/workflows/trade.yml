@@ -24,6 +24,11 @@ permissions:
 jobs:
   trade:
     runs-on: ubuntu-latest
+    env:
+      # Exposed to steps (and their `if:`) so the Alpaca step stays dormant until
+      # you add the secret, then activates automatically. Paper by default.
+      ALPACA_API_KEY_ID: ${{ secrets.ALPACA_API_KEY_ID }}
+      ALPACA_API_SECRET_KEY: ${{ secrets.ALPACA_API_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,6 +37,10 @@ jobs:
 
       - name: Install deps
         run: pip install --quiet pytz
+
+      - name: Install Alpaca SDK (only if key is set)
+        if: ${{ env.ALPACA_API_KEY_ID != '' }}
+        run: pip install --quiet -r requirements-alpaca.txt
 
       - name: Fetch live quotes
         continue-on-error: true
@@ -59,6 +68,17 @@ jobs:
       - name: Run structured signal sim
         continue-on-error: true
         run: python signal_sim.py
+
+      - name: Alpaca paper trade (real execution, cloud, only if key is set)
+        if: ${{ env.ALPACA_API_KEY_ID != '' }}
+        continue-on-error: true
+        env:
+          BROKER: alpaca
+          ALPACA_PAPER: "true"     # fake money until you flip this to false + confirm
+          BOOK_EQUITY: "200"
+          RISK_PCT: "0.05"
+          LEVERAGE_CAP: "2.0"
+        run: python live_trader.py
 
       - name: Commit state + reports
         run: |

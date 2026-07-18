@@ -1,0 +1,3 @@
+# Alpaca is pure-cloud (no gateway), so this DOES run on GitHub Actions.
+# The trade.yml workflow installs it before running live_trader.py (BROKER=alpaca).
+alpaca-py>=0.30
