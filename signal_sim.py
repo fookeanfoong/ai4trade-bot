@@ -4,20 +4,22 @@ Structured-signal paper trader (long + short) with profit protection.
 
 Reads:
   - signals.json : trade signals in the requested schema + execution fields
-  - quotes.json  : live prices (written by quotes.py earlier in the workflow)
+  - quotes.json  : live prices + 3d/5d extension (written by quotes.py)
 
 Executes the single highest-confidence ACTIONABLE signal as a $200 paper
 trade with 10x leverage and a $40 drawdown circuit breaker (drops to 5x).
 Supports SHORT (bearish) as well as LONG (bullish).
 
+Entry discipline:
+  - NO-CHASE guard: if the ticker has already run more than MAX_CHASE_3D_PCT
+    over the last 3 sessions in the signal's direction, skip and wait for a
+    pullback. (The XLE lesson: chasing an extended energy move lost money
+    while the earlier OXY entry won.)
+
 Exit priority (get out in time so winners don't round-trip to losers):
-  1. Signal invalidation -> market exit. If the signal that opened the
-     position is no longer actionable (already_priced_in flipped true,
-     direction changed, confidence dropped, or the signal is gone), close
-     NOW at the live price. This is the "judge in time and pull out" rule.
-  2. Trailing profit-lock. Once price runs TRAIL_ARM_PCT in our favour the
-     trail arms; if it then gives back TRAIL_GIVEBACK_PCT from the best
-     price, exit and keep the profit (floored at breakeven).
+  1. Signal invalidation -> market exit (already_priced_in flipped true, etc).
+  2. Trailing profit-lock (arm at TRAIL_ARM_PCT, exit on TRAIL_GIVEBACK_PCT
+     retrace, floored at breakeven).
   3. Hard stop.
   4. T1 (sell half, stop -> breakeven), then T2 (close rest).
 
@@ -45,6 +47,10 @@ BASE_LEVERAGE = 10.0
 REDUCED_LEVERAGE = 5.0
 DRAWDOWN_CAP_USD = 40.0
 MIN_CONFIDENCE = 0.6
+
+# No-chase guard: refuse to enter if the name already ran this much (%) over
+# 3 sessions in our direction. Wait for a pullback instead of chasing.
+MAX_CHASE_3D_PCT = 6.0
 
 # Trailing profit-lock (underlying-price percentages; 10x amplifies to equity).
 TRAIL_ARM_PCT = 0.004       # arm once +0.4% in our favour (~+4% equity at 10x)
@@ -240,6 +246,18 @@ def open_from_signal(state: dict, sig: dict) -> list:
     entry = quote["last"]
     side = "long" if sig["direction"] == "bullish" else "short"
     s = 1 if side == "long" else -1
+
+    # --- NO-CHASE guard: don't buy a move that already ran (the XLE lesson) ---
+    chg_3d = quote.get("chg_3d_pct")
+    max_chase = float(sig.get("max_chase_3d_pct", MAX_CHASE_3D_PCT))
+    if chg_3d is not None:
+        if side == "long" and chg_3d > max_chase:
+            lines.append(f"NO-CHASE: {ticker} already +{chg_3d:.1f}% over 3d (> {max_chase:.1f}%) - wait for pullback, not chasing")
+            return lines
+        if side == "short" and chg_3d < -max_chase:
+            lines.append(f"NO-CHASE: {ticker} already {chg_3d:.1f}% over 3d (< -{max_chase:.1f}%) - wait for bounce, not chasing")
+            return lines
+
     stop_pct = float(sig.get("stop_pct", 0.02))
     t1_pct = float(sig.get("t1_pct", 0.03))
     t2_pct = float(sig.get("t2_pct", 0.06))
@@ -256,10 +274,11 @@ def open_from_signal(state: dict, sig: dict) -> list:
         "half_taken": False, "leverage": lev,
         "peak_price": entry, "armed": False,
         "confidence": sig.get("confidence"),
+        "entry_chg_3d_pct": chg_3d,
         "opened_at": quote.get("market_time"),
     }
     lines.append(
-        f"ENTRY ({side.upper()} {ticker}, conf {sig.get('confidence')}, {lev}x): "
+        f"ENTRY ({side.upper()} {ticker}, conf {sig.get('confidence')}, {lev}x, 3d {chg_3d}): "
         f"{shares:.6f} @ ${entry:.2f} - stop ${stop:.2f}, T1 ${t1:.2f}, T2 ${t2:.2f}"
     )
     return lines
@@ -283,7 +302,7 @@ def write_report(state: dict, actions: list, mark_sym: str, mark: float) -> None
     pos = state.get("position")
     realized = sum(t["pnl_usd"] for t in state["trade_log"])
     lines = [
-        f"# Signal Sim ($200, 10x, long+short, trailing) - {today}",
+        f"# Signal Sim ($200, 10x, long+short, trailing+no-chase) - {today}",
         "",
         f"- Cash: ${state['cash']:.2f}",
         f"- Position: {json.dumps(pos) if pos else 'FLAT'}",
