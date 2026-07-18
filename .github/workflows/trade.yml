@@ -1,13 +1,12 @@
 name: ai4trade-bot
 
+# Cron in UTC. Times target EDT (UTC-4). Bots self-gate on NY wall-clock.
 on:
-  # Scheduled auto-trading is DISABLED. The bot no longer runs on its own.
-  # To re-enable, restore the `schedule:` cron triggers below.
-  # schedule:
-  #   - cron: "37 12 * * 1-5"
-  #   - cron: "3,13,23,33,43,53 13-19 * * 1-5"
-  #   - cron: "53 19 * * 1-5"
-  #   - cron: "7 20 * * 6"
+  schedule:
+    - cron: "37 12 * * 1-5"      # ~08:37 ET  premarket
+    - cron: "3,13,23,33,43,53 13-19 * * 1-5"  # every 10 min, market hours
+    - cron: "53 19 * * 1-5"      # ~15:53 ET  close
+    - cron: "7 20 * * 6"         # Sat weekly
   workflow_dispatch:
     inputs:
       mode:
