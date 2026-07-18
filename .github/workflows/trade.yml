@@ -38,6 +38,10 @@ jobs:
         continue-on-error: true
         run: python quotes.py
 
+      - name: Fetch market-mover news
+        continue-on-error: true
+        run: python news.py
+
       - name: Run ai4trade momentum bot
         env:
           AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
