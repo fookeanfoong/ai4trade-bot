@@ -1,0 +1,35 @@
+name: verify-alpaca
+
+# Manual only. Connects to Alpaca and prints your account + positions so you can
+# confirm the API key works — even on weekends/holidays when the trader itself
+# just skips. Places NO orders. Paper by default.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Alpaca SDK
+        run: pip install --quiet -r requirements-alpaca.txt
+
+      - name: Check Alpaca connection (no orders)
+        env:
+          BROKER: alpaca
+          ALPACA_PAPER: "true"
+          ALPACA_API_KEY_ID: ${{ secrets.ALPACA_API_KEY_ID }}
+          ALPACA_API_SECRET_KEY: ${{ secrets.ALPACA_API_SECRET_KEY }}
+        run: |
+          if [ -z "$ALPACA_API_KEY_ID" ]; then
+            echo "::error::ALPACA_API_KEY_ID secret is not set. Add it in Settings -> Secrets -> Actions."
+            exit 1
+          fi
+          python live_trader.py --check
