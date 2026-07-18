@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
 """
-Structured-signal paper trader (long + short) with profit protection.
+Structured-signal paper trader (long + short) with pro-grade risk control.
 
 Reads:
   - signals.json : trade signals in the requested schema + execution fields
   - quotes.json  : live prices + 3d/5d extension (written by quotes.py)
 
-Executes the single highest-confidence ACTIONABLE signal as a $200 paper
-trade with 10x leverage and a $40 drawdown circuit breaker (drops to 5x).
-Supports SHORT (bearish) as well as LONG (bullish).
+Position sizing (Paul Tudor Jones / Market Wizards rule):
+  Each trade is sized so that a stop-out loses at most RISK_PER_TRADE_PCT of
+  current equity — NOT the whole account. Leverage still amplifies the move,
+  but one bad trade can't wreck the account. The rest stays in cash.
 
 Entry discipline:
-  - NO-CHASE guard: if the ticker has already run more than MAX_CHASE_3D_PCT
-    over the last 3 sessions in the signal's direction, skip and wait for a
-    pullback. (The XLE lesson: chasing an extended energy move lost money
-    while the earlier OXY entry won.)
+  - NO-CHASE guard: skip if the name already ran > MAX_CHASE_3D_PCT over 3
+    sessions in the signal's direction (wait for a pullback).
 
 Exit priority (get out in time so winners don't round-trip to losers):
-  1. Signal invalidation -> market exit (already_priced_in flipped true, etc).
+  1. Signal invalidation -> market exit.
   2. Trailing profit-lock (arm at TRAIL_ARM_PCT, exit on TRAIL_GIVEBACK_PCT
      retrace, floored at breakeven).
   3. Hard stop.
@@ -48,12 +47,17 @@ REDUCED_LEVERAGE = 5.0
 DRAWDOWN_CAP_USD = 40.0
 MIN_CONFIDENCE = 0.6
 
+# Risk-based sizing: a stop-out costs at most this fraction of equity.
+# Market Wizards risk 1-2% per trade; 5% is our aggressive-but-survivable cap
+# (still 4x safer than the old all-in ~20%-per-trade).
+RISK_PER_TRADE_PCT = 0.05
+
 # No-chase guard: refuse to enter if the name already ran this much (%) over
 # 3 sessions in our direction. Wait for a pullback instead of chasing.
 MAX_CHASE_3D_PCT = 6.0
 
-# Trailing profit-lock (underlying-price percentages; 10x amplifies to equity).
-TRAIL_ARM_PCT = 0.004       # arm once +0.4% in our favour (~+4% equity at 10x)
+# Trailing profit-lock (underlying-price percentages; leverage amplifies).
+TRAIL_ARM_PCT = 0.004       # arm once +0.4% in our favour
 TRAIL_GIVEBACK_PCT = 0.0025  # exit if it gives back 0.25% from the best price
 
 
@@ -266,8 +270,19 @@ def open_from_signal(state: dict, sig: dict) -> list:
     stop = entry * (1 - stop_pct * s)
     t1 = entry * (1 + t1_pct * s)
     t2 = entry * (1 + t2_pct * s)
-    shares = state["cash"] / entry
-    state["cash"] -= shares * entry
+
+    # --- Risk-based sizing (Paul Tudor Jones): a stop-out loses at most
+    #     RISK_PER_TRADE_PCT of equity, not the whole account. ---
+    equity_now = state["cash"]  # flat before entry, so cash == equity
+    risk_amount = equity_now * RISK_PER_TRADE_PCT
+    if stop_pct > 0 and lev > 0:
+        cost = risk_amount / (stop_pct * lev)   # cash to deploy
+    else:
+        cost = state["cash"]
+    cost = min(cost, state["cash"])             # never deploy more than we have
+    shares = cost / entry
+    state["cash"] -= cost
+
     state["position"] = {
         "ticker": ticker, "side": side, "shares": shares, "entry": entry,
         "stop": round(stop, 2), "t1": round(t1, 2), "t2": round(t2, 2),
@@ -275,11 +290,14 @@ def open_from_signal(state: dict, sig: dict) -> list:
         "peak_price": entry, "armed": False,
         "confidence": sig.get("confidence"),
         "entry_chg_3d_pct": chg_3d,
+        "risk_usd": round(risk_amount, 2),
+        "cost_deployed": round(cost, 2),
         "opened_at": quote.get("market_time"),
     }
     lines.append(
-        f"ENTRY ({side.upper()} {ticker}, conf {sig.get('confidence')}, {lev}x, 3d {chg_3d}): "
-        f"{shares:.6f} @ ${entry:.2f} - stop ${stop:.2f}, T1 ${t1:.2f}, T2 ${t2:.2f}"
+        f"ENTRY ({side.upper()} {ticker}, conf {sig.get('confidence')}, {lev}x, "
+        f"risk ${risk_amount:.2f}, deployed ${cost:.2f}): {shares:.6f} @ ${entry:.2f} "
+        f"- stop ${stop:.2f}, T1 ${t1:.2f}, T2 ${t2:.2f}"
     )
     return lines
 
@@ -301,15 +319,17 @@ def write_report(state: dict, actions: list, mark_sym: str, mark: float) -> None
     pnl_pct = (eq - STARTING_CASH) / STARTING_CASH * 100
     pos = state.get("position")
     realized = sum(t["pnl_usd"] for t in state["trade_log"])
+    wins = sum(1 for t in state["trade_log"] if t["pnl_usd"] > 0)
+    closed = len(state["trade_log"])
     lines = [
-        f"# Signal Sim ($200, 10x, long+short, trailing+no-chase) - {today}",
+        f"# Signal Sim ($200, risk-{int(RISK_PER_TRADE_PCT*100)}%/trade, {int(BASE_LEVERAGE)}x, trailing+no-chase) - {today}",
         "",
         f"- Cash: ${state['cash']:.2f}",
         f"- Position: {json.dumps(pos) if pos else 'FLAT'}",
         f"- Mark ({mark_sym}): ${mark:.2f}" if mark else "- Mark: n/a",
         f"- Mark-to-market equity: ${eq:.2f} ({pnl_pct:+.2f}% vs $200)",
         f"- Realized P&L to date: ${realized:+.2f}",
-        f"- Closed trades: {len(state['trade_log'])}",
+        f"- Closed trades: {closed}  |  Wins: {wins}  |  Win rate: {(100*wins/closed) if closed else 0:.0f}%",
         "",
         "## Actions this run",
         "",
