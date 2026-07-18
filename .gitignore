@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 .env
 KILL_SWITCH.txt
+moomoo_trader_state.json
+moomoo.log
