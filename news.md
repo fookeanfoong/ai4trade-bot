@@ -1,73 +1,81 @@
-# Market News Digest — 2026-07-18T05:17:25Z
+# Market News Digest — 2026-07-18T05:21:17+00:00
+_Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- **[Market]** Stock Market Today: Dow, Nasdaq, S&P 500 Futures Slump as Trump Says U.S. Is Going 'Great'— Netflix, Coca - Benzinga — _Benzinga_
-- **[Trump]** Sources: Aide Trump called ‘excellent’ now facing insider trading probe - CNN — _CNN_
-- **[Trump]** Economic outlook is worsening and Trump is getting blamed, CNBC survey finds - CNBC — _CNBC_
-- **[Trump]** Paying for early access to Trump's Truth Social could raise big money - and major ethical issues - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
-- **[Trump]** Trump Media to Sell Traders ‘the Fastest’ Access to Truth Social Posts - Time Magazine — _Time Magazine_
-- **[Trump]** Analysis-Trump makes the stock market his scoreboard, but many Americans aren't even in the game - AOL.com — _AOL.com_
-- **[Musk]** Elon Musk Reacts to Jamie Dimon's ‘Einstein’ Praise With Two-Word Reply as Viral Post Hails His SpaceX and Tesla Legacy - Yahoo Finance — _Yahoo Finance_
-- **[Musk]** Tesla Stock Slips After-Hours: CEO Elon Musk Admits Hardware ‘Simply Does Not Have The Capability’ To Drive Full Autonomy - Stocktwits — _Stocktwits_
-- **[Musk]** Amateur astronomer spotted the Tesla Roadster Elon Musk launched in space and what he saw caused a bit of panic - supercarblondie.com — _supercarblondie.com_
-- **[Musk]** Elon Musk's Tesla Posts Best Quarter in Two Years - AOL.com — _AOL.com_
-- **[Musk]** Elon Musk Has Never Sold His Tesla Vision. Should You Buy the Dip Before July 22? - The Motley Fool — _The Motley Fool_
-- **[Fed]** The Fed’s Kevin Warsh Is Already on the Right Track - City Journal — _City Journal_
+- `29m ago` **[Musk]** Tesla's biggest challenge may no longer be BYD — it's Elon Musk - Irish Examiner — _Irish Examiner_
+- `2h ago` **[Oil]** Strait of Hormuz Closure: Understanding the Stability of Crude Oil Prices Amid US-Iran Tensions - Observer Voice — _Observer Voice_
+- `2h ago` **[Market]** US stocks today: US stocks end higher on cool inflation data, strong earnings - The Economic Times — _The Economic Times_
+- `2h ago` **[Trump]** Trump threatens to tariff Canada over wildfire smoke - CNN — _CNN_
+- `2h ago` **[Oil]** Iraq, Syria Revive Oil Pipeline Shut Since 2003 in Bid to Bypass Strait of Hormuz After Iran War Disrupts Exports - inkl — _inkl_
+- `2h ago` **[Fed]** Fed Chair Kevin Warsh facing deep divisions over future path of inflation, meeting minutes show - MSN — _MSN_
+- `2h ago` **[Musk]** Tesla's Elon Musk: We're 'Summoning The Demon' With Artificial Intelligence Richard Gere (AEz9ptVF2X) - Mshale — _Mshale_
+- `2h ago` **[Trump]** Trump Media Stock And the New Market Data Trade - simplywall.st — _simplywall.st_
+- `3h ago` **[Musk]** Elon Musk Reacts to Jamie Dimon's ‘Einstein’ Praise With Two-Word Reply as Viral Post Hails His SpaceX and Tesla Legacy - Yahoo Finance — _Yahoo Finance_
+- `4h ago` **[Trump]** Republican elections expert on Trump's election speech: "I was shocked there was nothing new" - CNN — _CNN_
+- `4h ago` **[Trump]** Analysis-Trump makes the stock market his scoreboard, but many Americans aren't even in the game - AOL.com — _AOL.com_
+- `4h ago` **[Musk]** Elon Musk Isn’t a Trillionaire Anymore, Says Forbes — SpaceX Stock Dropped After Aborted Launch - Mediaite — _Mediaite_
 
 ## Market
 
-- Stock market today: Nasdaq leads Dow, S&P 500 lower as chip stocks bounce off lows - Yahoo Finance — _Yahoo Finance_
-- How major US stock indexes fared Friday 7/17/2026 - The Washington Post — _The Washington Post_
-- Stock Market Today: Dow, Nasdaq, S&P 500 Futures Slump as Trump Says U.S. Is Going 'Great'— Netflix, Coca - Benzinga — _Benzinga_
-- Nasdaq, S&P 500 drop 1% after China’s latest AI breakthrough rattles tech stocks - CNN — _CNN_
-- US Stock Market Today: S&P 500 Sinks; Nasdaq Crashes 2% As Chip Stocks Selloff Worsens - NDTV Profit — _NDTV Profit_
+- `28m ago` BSE, Sona BLW among 10 midcap stocks that rose up to 53% in 2026. Do you own any? - The Economic Times — _The Economic Times_
+- `1h ago` US Markets Today: Apple-Nvidia Crown Swap, Semiconductor Bear Market, and Why Wall Street Fell This Week - Goodreturns — _Goodreturns_
+- `2h ago` US stocks today: US stocks end higher on cool inflation data, strong earnings - The Economic Times — _The Economic Times_
+- `2h ago` How major US stock indexes fared Friday 7/17/2026 - The Washington Post — _The Washington Post_
+- `5h ago` Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days - LiteFinance — _LiteFinance_
+- `7h ago` Stock Market Today: Nasdaq and Dow Fall as Chip Selloff Deepens, - Eurasia Business News — _Eurasia Business News_
 
 ## Trump
 
-- Sources: Aide Trump called ‘excellent’ now facing insider trading probe - CNN — _CNN_
-- Economic outlook is worsening and Trump is getting blamed, CNBC survey finds - CNBC — _CNBC_
-- Paying for early access to Trump's Truth Social could raise big money - and major ethical issues - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
-- Trump Media to Sell Traders ‘the Fastest’ Access to Truth Social Posts - Time Magazine — _Time Magazine_
-- Analysis-Trump makes the stock market his scoreboard, but many Americans aren't even in the game - AOL.com — _AOL.com_
+- `19m ago` Doonesbury Comic Strips by Garry Trudeau - July 18, 1976 - The Washington Post — _The Washington Post_
+- `2h ago` Trump threatens to tariff Canada over wildfire smoke - CNN — _CNN_
+- `2h ago` Trump Media Stock And the New Market Data Trade - simplywall.st — _simplywall.st_
+- `4h ago` Republican elections expert on Trump's election speech: "I was shocked there was nothing new" - CNN — _CNN_
+- `4h ago` Analysis-Trump makes the stock market his scoreboard, but many Americans aren't even in the game - AOL.com — _AOL.com_
+- `5h ago` Sources: Aide Trump called ‘excellent’ now facing insider trading probe - CNN — _CNN_
 
 ## Musk
 
-- Elon Musk Reacts to Jamie Dimon's ‘Einstein’ Praise With Two-Word Reply as Viral Post Hails His SpaceX and Tesla Legacy - Yahoo Finance — _Yahoo Finance_
-- Tesla Stock Slips After-Hours: CEO Elon Musk Admits Hardware ‘Simply Does Not Have The Capability’ To Drive Full Autonomy - Stocktwits — _Stocktwits_
-- Amateur astronomer spotted the Tesla Roadster Elon Musk launched in space and what he saw caused a bit of panic - supercarblondie.com — _supercarblondie.com_
-- Elon Musk's Tesla Posts Best Quarter in Two Years - AOL.com — _AOL.com_
-- Elon Musk Has Never Sold His Tesla Vision. Should You Buy the Dip Before July 22? - The Motley Fool — _The Motley Fool_
+- `29m ago` Tesla's biggest challenge may no longer be BYD — it's Elon Musk - Irish Examiner — _Irish Examiner_
+- `2h ago` Tesla's Elon Musk: We're 'Summoning The Demon' With Artificial Intelligence Richard Gere (AEz9ptVF2X) - Mshale — _Mshale_
+- `3h ago` Tesla releases first bike and it’s not even electric - Canadian Cycling Magazine — _Canadian Cycling Magazine_
+- `3h ago` Elon Musk Reacts to Jamie Dimon's ‘Einstein’ Praise With Two-Word Reply as Viral Post Hails His SpaceX and Tesla Legacy - Yahoo Finance — _Yahoo Finance_
+- `4h ago` Elon Musk Isn’t a Trillionaire Anymore, Says Forbes — SpaceX Stock Dropped After Aborted Launch - Mediaite — _Mediaite_
+- `4h ago` Tesla enters two new markets on two different continents in one week - Teslarati — _Teslarati_
 
 ## Fed
 
-- The Fed’s Kevin Warsh Is Already on the Right Track - City Journal — _City Journal_
-- The Fed’s Hawkish Tone Doesn’t Signal Rate Increases—at Least Not Yet - Barron's — _Barron's_
-- Fed Chair Warsh vows to fight inflation even as new CPI report shows 3.5% rise - Jefferson City News Tribune — _Jefferson City News Tribune_
-- Fed is laser-focused on inflation drop, Warsh says - Washington Examiner — _Washington Examiner_
-- Why WaFd Bank (WAFD) Shares Are Trading Lower Today - StockStory — _StockStory_
+- `2h ago` Fed Chair Kevin Warsh facing deep divisions over future path of inflation, meeting minutes show - MSN — _MSN_
+- `5h ago` Elizabeth Warren Accuses Fed Chair Warsh of “Inviting Corruption” - Bitget — _Bitget_
+- `7h ago` Why WaFd Bank (WAFD) Shares Are Trading Lower Today - StockStory — _StockStory_
+- `8h ago` Longtime Trump headache is now 'bathed in immunity' and practically untouchable - MSN — _MSN_
+- `12h ago` Supreme Court delivers scathing rebuke to Trump as his Federal Reserve takeover plan is blocked - MSN — _MSN_
+- `12h ago` The Fed’s Hawkish Tone Doesn’t Signal Rate Increases—at Least Not Yet - Barron's — _Barron's_
 
 ## Oil
 
-- Oil prices surge amid US-Iran tensions, Strait of Hormuz disruptions - Crypto Briefing — _Crypto Briefing_
-- Big-time oil price hikes loom in the third week of July as the United States and Iran battled over the vital Strait of Hormuz in the renewed Middle East war, the Department of Energy said. | via ANC 24/7 Link to full story in the comment section. - facebook.com — _facebook.com_
-- Strait of Hormuz closure: Why crude oil prices haven’t spiralled out of control amid US-Iran conflict - The Times of India — _The Times of India_
-- Oil Prices Fall After US and Iran Receive Framework Ceasefire Proposal - EnergyNow.com — _EnergyNow.com_
-- Oil Prices Up Over 3% Over Concerns About Prolonged Hormuz Disruption - EnergyNow — _EnergyNow_
+- `2h ago` Strait of Hormuz Closure: Understanding the Stability of Crude Oil Prices Amid US-Iran Tensions - Observer Voice — _Observer Voice_
+- `2h ago` Iraq, Syria Revive Oil Pipeline Shut Since 2003 in Bid to Bypass Strait of Hormuz After Iran War Disrupts Exports - inkl — _inkl_
+- `4h ago` WTI tops $81 as Iran threatens Hormuz chokepoint, fuelling weekly surge and options volatility - VT Markets — _VT Markets_
+- `5h ago` Oil prices surge amid US-Iran tensions, Strait of Hormuz disruptions - Crypto Briefing — _Crypto Briefing_
+- `6h ago` Oil Prices Jump on Latest US-Iran Peace Process Impasse - EnergyNow — _EnergyNow_
+- `7h ago` Oil Slides as Middle East Uncertainty Keeps Markets on Edge - EnergyNow — _EnergyNow_
 
 ## Chips
 
-- AMD Falls 5%, Intel Drops 4%, NVIDIA Slides 3% Before Recovering as Rotation Hits Semiconductor Stocks - 24/7 Wall St. — _24/7 Wall St._
-- Why AMD Stock Might Keep Outpacing Nvidia From Here - AOL.com — _AOL.com_
-- Nvidia, AMD, Mircon, TSMC Shares Sink as China Unveils Powerful New AI Model - TradingView — _TradingView_
-- The Zacks Analyst Blog Highlights NVIDIA, AMD, Taiwan Semiconductor Manufacturing and Seagate - The Globe and Mail — _The Globe and Mail_
-- Semiconductor stocks trim losses as investors buy the dip - Yahoo Finance — _Yahoo Finance_
+- `4h ago` New York Stocks Fall on Semiconductor Sell-Off... Nasdaq Down 1.4% - 아시아경제 — _아시아경제_
+- `5h ago` Philadelphia Semiconductor Index Enters Technical Bear Market; Apple Briefly Reclaims Market Cap Crown as AI Trade Logic Shifts - finance.biggo.com — _finance.biggo.com_
+- `6h ago` Moonshot AI's Kimi K3 Beats Claude and GPT Rivals to Top a Coding Benchmark - Startup Fortune — _Startup Fortune_
+- `6h ago` China’s Kimi K3 Hits US Stock Markets. Is the American AI Boom Over? - BeInCrypto — _BeInCrypto_
+- `6h ago` Why are investors selling off AI chip stocks? - AOL.com — _AOL.com_
+- `7h ago` Jim Cramer Says Semiconductor Stocks Are “Going Down.” Buy These 2 Dividend Stocks Instead - AOL.com — _AOL.com_
 
 ## Earnings
 
-- Biggest stock movers Friday: NFLX, SPCX, TRV, and more - Seeking Alpha — _Seeking Alpha_
-- What A Patient Holder Is Really Paying For CVS Health Stock - Trefis — _Trefis_
-- Wall Street Just Punished Netflix’s Guidance, But the Real Story Could Send the Stock Much Higher - Yahoo Finance — _Yahoo Finance_
-- AMD, Dell, Intel, Netflix, SpaceX, and More Stocks That Explain Today's Market - Barron's — _Barron's_
-- Travelers Companies Inc Stock (TRV) Moved Up by 8.13% on Jul 17: A Full Analysis - TradingKey — _TradingKey_
+- `3h ago` VTI Is Cheaper Than It Used to Be. So What’s the Catch? - Trefis — _Trefis_
+- `6h ago` Abbott Just Showed Its Growth Engine Has More Than One Cylinder - Trefis — _Trefis_
+- `6h ago` Why Is Dropbox Stock Down 3% In Premarket Today? - Stocktwits — _Stocktwits_
+- `7h ago` What A Patient Holder Is Really Paying For CVS Health Stock - Trefis — _Trefis_
+- `7h ago` The Real Question Buried Inside Merck Stock’s Premium Price - Trefis — _Trefis_
+- `8h ago` 12 Information Technology Stocks Moving In Friday's After-Market Session - Benzinga — _Benzinga_
 
