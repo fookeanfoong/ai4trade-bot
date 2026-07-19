@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>AI4Trade Signals</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icons/icon.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand" id="brandName">AI4Trade</div>
+    <button class="ghost-btn" id="statusChip" hidden></button>
+  </header>
+
+  <main id="view"><!-- JS 渲染 --></main>
+
+  <!-- 底部导航 -->
+  <nav class="tabbar" id="tabbar" hidden>
+    <button data-tab="today" class="tab active">今日信号</button>
+    <button data-tab="plan" class="tab">我的计划</button>
+    <button data-tab="account" class="tab">账户</button>
+  </nav>
+
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
