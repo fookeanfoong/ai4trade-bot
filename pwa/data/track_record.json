@@ -1,0 +1,142 @@
+{
+  "updated_at": "2026-07-19",
+  "note": "以下为模拟盘真实已平仓记录,未做任何美化。过往表现不代表未来结果。",
+  "summary": {
+    "trades": 11,
+    "wins": 0,
+    "losses": 9,
+    "breakeven": 2,
+    "win_rate": 0.0,
+    "net_pnl": -4.17,
+    "best": 0.0,
+    "worst": -1.19,
+    "days": 5,
+    "first_date": "2026-07-07",
+    "last_date": "2026-07-13"
+  },
+  "curve": [
+    {
+      "date": "2026-07-07",
+      "cum": 0.0
+    },
+    {
+      "date": "2026-07-07",
+      "cum": 0.0
+    },
+    {
+      "date": "2026-07-08",
+      "cum": -1.19
+    },
+    {
+      "date": "2026-07-09",
+      "cum": -1.24
+    },
+    {
+      "date": "2026-07-09",
+      "cum": -1.82
+    },
+    {
+      "date": "2026-07-09",
+      "cum": -2.34
+    },
+    {
+      "date": "2026-07-10",
+      "cum": -2.41
+    },
+    {
+      "date": "2026-07-10",
+      "cum": -2.44
+    },
+    {
+      "date": "2026-07-10",
+      "cum": -2.52
+    },
+    {
+      "date": "2026-07-13",
+      "cum": -3.42
+    },
+    {
+      "date": "2026-07-13",
+      "cum": -4.17
+    }
+  ],
+  "trades": [
+    {
+      "ticker": "AVGO",
+      "pnl_usd": -0.75,
+      "pnl_pct": -2.99,
+      "reason": "止损离场",
+      "date": "2026-07-13"
+    },
+    {
+      "ticker": "AMD",
+      "pnl_usd": -0.9,
+      "pnl_pct": -3.59,
+      "reason": "止损离场",
+      "date": "2026-07-13"
+    },
+    {
+      "ticker": "MSTR",
+      "pnl_usd": -0.08,
+      "pnl_pct": -0.31,
+      "reason": "趋势转弱离场",
+      "date": "2026-07-10"
+    },
+    {
+      "ticker": "COIN",
+      "pnl_usd": -0.03,
+      "pnl_pct": -0.14,
+      "reason": "趋势转弱离场",
+      "date": "2026-07-10"
+    },
+    {
+      "ticker": "PLTR",
+      "pnl_usd": -0.07,
+      "pnl_pct": -0.29,
+      "reason": "趋势转弱离场",
+      "date": "2026-07-10"
+    },
+    {
+      "ticker": "AMD",
+      "pnl_usd": -0.52,
+      "pnl_pct": -2.06,
+      "reason": "止损离场",
+      "date": "2026-07-09"
+    },
+    {
+      "ticker": "AVGO",
+      "pnl_usd": -0.58,
+      "pnl_pct": -2.32,
+      "reason": "止损离场",
+      "date": "2026-07-09"
+    },
+    {
+      "ticker": "PLTR",
+      "pnl_usd": -0.05,
+      "pnl_pct": -0.19,
+      "reason": "趋势转弱离场",
+      "date": "2026-07-09"
+    },
+    {
+      "ticker": "AMD",
+      "pnl_usd": -1.19,
+      "pnl_pct": -4.77,
+      "reason": "止损离场",
+      "date": "2026-07-08"
+    },
+    {
+      "ticker": "AVGO",
+      "pnl_usd": 0.0,
+      "pnl_pct": 0.0,
+      "reason": "新闻风控离场",
+      "date": "2026-07-07"
+    },
+    {
+      "ticker": "MSTR",
+      "pnl_usd": 0.0,
+      "pnl_pct": 0.0,
+      "reason": "新闻风控离场",
+      "date": "2026-07-07"
+    }
+  ]
+}

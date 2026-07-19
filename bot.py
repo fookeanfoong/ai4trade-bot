@@ -68,6 +68,9 @@ DEFAULT_PARAMS = {
     "cooldown_runs": 3,        # runs to wait before re-buying a stopped name
     "streak_throttle": 3,      # after N consecutive losses, halve position size
     "no_new_entries_min": 30,  # no new buys in last N min of trading day
+    "trend_sma_lookback": 12,  # only buy if price >= SMA(last N samples) — uptrend filter
+    "trend_break_only_if_below": 0.0,  # trend-break exit fires only when pnl <= this (protect winners)
+    "no_reentry_same_day": True,       # a name that stops out is benched for the rest of the day
 }
 
 # Names that all move with BTC — cap combined exposure to avoid concentration.
@@ -275,8 +278,10 @@ def load_state():
         "trade_log": [],        # recent closed trades for reflection
         "consec_losses": 0,     # for size-throttle
         "position_schema_seen": None,
+        "benched": {},          # symbol -> "YYYY-MM-DD" it stopped out (no same-day re-entry)
     })
     st.setdefault("consec_losses", 0)
+    st.setdefault("benched", {})
     return st
 
 # ----------------------------------------------------------------------------
@@ -301,6 +306,15 @@ def momentum(hist, sym, lookback):
     if then <= 0:
         return None
     return (now - then) / then
+
+
+def sma(hist, sym, lookback):
+    """Simple moving average of the last `lookback` price samples (uptrend filter)."""
+    series = hist.get(sym, [])
+    if lookback <= 0 or len(series) < lookback:
+        return None
+    prices = [s["p"] for s in series[-lookback:] if s.get("p")]
+    return sum(prices) / len(prices) if prices else None
 
 
 def deployed_cost(state):
@@ -524,7 +538,10 @@ def main():
             reason = f"TRAIL from peak +{peak_pnl:.2%} -> +{pnl_pct:.2%} (giveback {giveback:.2%})"
         elif news.get("score", 0) <= -2 and news.get("new_count", 0) > 0:
             reason = f"NEWS-RISK {news['score']} :: {(news.get('worst') or '')[:60]}"
-        elif mom is not None and mom <= params["exit_momentum"]:
+        elif (mom is not None and mom <= params["exit_momentum"]
+              and pnl_pct <= params.get("trend_break_only_if_below", 0.0)):
+            # Only cut on a trend-break if the position is NOT in profit — a winning
+            # trade is left to the trailing stop / take-profit, not killed by a wobble.
             reason = f"TREND-BREAK mom {mom:+.2%} (pnl {pnl_pct:+.2%})"
         if reason:
             if not gr.validate_order(sym, "sell", pos["qty"], px, BUDGET_USD):
@@ -545,6 +562,10 @@ def main():
                     state["consec_losses"] += 1
                 if reason.startswith(("STOP", "GR-STOP")):
                     state["cooldown"][sym] = params["cooldown_runs"]
+                    # Bench a stopped name for the rest of the calendar day so the bot
+                    # can't revenge-buy the same falling knife (AMD stopped 3x in a week).
+                    if params.get("no_reentry_same_day", True):
+                        state.setdefault("benched", {})[sym] = n.strftime("%Y-%m-%d")
                 gr.log_trade(sym, "sell", pos["qty"], px, reason)
                 gr.log_position_closed(sym, "buy", pos["qty"], pos["entry"], px, realized, reason)
                 del state["positions"][sym]
@@ -561,8 +582,14 @@ def main():
     slot = SLOT_USD / 2 if state["consec_losses"] >= params["streak_throttle"] else SLOT_USD
     if slot < SLOT_USD:
         actions.append(f"SIZE-THROTTLE consec_losses={state['consec_losses']} slot=${slot:.2f}")
+    today_str = n.strftime("%Y-%m-%d")
     for sym in WATCHLIST:
         if sym in state["positions"] or sym in state["cooldown"]:
+            continue
+        # Benched today after a stop-out? Don't re-enter a falling knife.
+        if state.get("benched", {}).get(sym) == today_str:
+            if not seeding:
+                actions.append(f"SKIP {sym}: benched (stopped out today)")
             continue
         if not gr.can_open_new_position(sym, BUDGET_USD, len(state["positions"])):
             actions.append(f"SKIP {sym}: guardrails can_open_new_position=False")
@@ -588,6 +615,12 @@ def main():
                 continue
             mom = momentum(hist, sym, params["momentum_lookback"])
             if mom is None or mom < params["entry_momentum"]:
+                continue
+            # Uptrend filter: only buy strength that's ALSO above its recent average.
+            # Blocks buying a bounce inside a downtrend (the semis-bear-market losses).
+            trend_avg = sma(hist, sym, params.get("trend_sma_lookback", 0))
+            if trend_avg is not None and px < trend_avg:
+                actions.append(f"SKIP {sym}: below SMA{params.get('trend_sma_lookback')} (downtrend)")
                 continue
             reason_note = f"mom {mom:+.2%}"
         # Guardrails sizing replaces slot-based sizing.
@@ -672,7 +705,7 @@ def reflect_and_learn(state, params, today):
     recent = [t for t in state["trade_log"] if t["closed_at"][:10] == today]
     wins = [t for t in recent if t["pnl_usd"] > 0]
     losses = [t for t in recent if t["pnl_usd"] <= 0]
-    stops = [t for t in recent if t["reason"] == "STOP"]
+    stops = [t for t in recent if t["reason"] in ("STOP", "GR-STOP")]
     trails = [t for t in recent if t["reason"] == "TRAIL"]
     takes = [t for t in recent if t["reason"] == "TAKE-PROFIT"]
     news_exits = [t for t in recent if t["reason"] == "NEWS-RISK"]

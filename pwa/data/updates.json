@@ -1,0 +1,10 @@
+{
+  "note": "路线图 / 更新日志。你手动维护这个文件，让用户看到他们的反馈被采纳。status: planned(计划中) / doing(开发中) / done(已上线)。from_feedback: true 会显示「来自用户反馈」标。",
+  "items": [
+    { "status": "done", "title": "首个交易日免费试用 + 订阅解锁", "date": "2026-07-19", "from_feedback": false },
+    { "status": "done", "title": "按本金/目标自动计算建议仓位", "date": "2026-07-19", "from_feedback": false },
+    { "status": "doing", "title": "增加历史战绩页（每日盈亏回顾）", "from_feedback": true },
+    { "status": "planned", "title": "开盘前推送提醒（当天有信号时通知你）", "from_feedback": true },
+    { "status": "planned", "title": "支持更多标的与自定义观察名单", "from_feedback": true }
+  ]
+}

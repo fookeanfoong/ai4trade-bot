@@ -1,0 +1,47 @@
+{
+  "updated_at": "2026-07-18",
+  "valid_for": "2026-07-20",
+  "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
+  "signals": [
+    {
+      "ticker": "XOM",
+      "direction": "bullish",
+      "confidence": 0.62,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.02,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "reasoning": "板块轮动:资金撤出芯片/科技(费半进入熊市,AI 资本开支恐慌,奈飞财报暴跌 -11%),涌入能源。周五霍尔木兹停火破裂、伊朗袭击科威特电厂、美国空袭伊朗,Brent ~$88 / WTI ~$82,油价一周 +12% —— 这是**新的**催化剂,不是旧的已 price-in 溢价。XOM 是最干净、最流动的原油受益标的。但这是事件驱动,停火即反转 —— 所以 requires_preopen_recheck:true,开盘前必须用最新新闻复核;若周末停火/降级就翻成 already_priced_in=true 不进场。",
+      "tradable": true,
+      "ref_price": 147.36,
+      "preopen_recheck": true
+    },
+    {
+      "ticker": "NVDA",
+      "direction": "bullish",
+      "confidence": 0.64,
+      "timeframe": "1-2 days",
+      "stop_pct": 0.03,
+      "t1_pct": 0.04,
+      "t2_pct": 0.07,
+      "ref_price": 172.0,
+      "reasoning": "示例:AI 芯片龙头,若大盘企稳、半导体反弹则领涨。",
+      "tradable": true,
+      "demo": true
+    },
+    {
+      "ticker": "COIN",
+      "direction": "bullish",
+      "confidence": 0.61,
+      "timeframe": "1-3 days",
+      "stop_pct": 0.04,
+      "t1_pct": 0.05,
+      "t2_pct": 0.09,
+      "ref_price": 305.0,
+      "reasoning": "示例:加密情绪回暖时的高 beta 代理标的,波动大、止损要严。",
+      "tradable": true,
+      "demo": true
+    }
+  ]
+}
