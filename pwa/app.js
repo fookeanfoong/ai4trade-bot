@@ -114,8 +114,56 @@ async function loadFeed() {
 // ============================================================================
 const view = $('#view');
 let currentTab = 'today';
+let showForm = false; // 落地页 -> 点「开始」才进入填表(onboarding)
 
 function esc(s) { return String(s ?? '').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
+
+function renderLanding() {
+  $('#tabbar').hidden = true;
+  $('#statusChip').hidden = true;
+  const feat = (icon, t, d) => `<div class="feat"><div class="fi">${icon}</div><div><b>${T(t)}</b><p class="muted small">${T(d)}</p></div></div>`;
+  const step = (n, k) => `<li><span class="sn">${n}</span><span>${T(k)}</span></li>`;
+  const qa = (q, a) => `<div class="qa"><b>${T(q)}</b><p class="muted small">${T(a)}</p></div>`;
+  view.innerHTML = `
+    <div class="landing">
+      <section class="lhero">
+        <div class="logo">📈</div>
+        <h1>${T('land_h1')}</h1>
+        <p class="muted lsub">${T('land_sub')}</p>
+        <button class="btn primary" onclick="startApp()">${T('land_start')} →</button>
+      </section>
+
+      <section class="lsec">
+        <h2>${T('land_feat_h')}</h2>
+        ${feat('📋', 'land_f1_t', 'land_f1_d')}
+        ${feat('🎯', 'land_f2_t', 'land_f2_d')}
+        ${feat('🧮', 'land_f3_t', 'land_f3_d')}
+      </section>
+
+      <section class="lsec">
+        <h2>${T('land_steps_h')}</h2>
+        <ol class="steps">${step(1, 'land_s1')}${step(2, 'land_s2')}${step(3, 'land_s3')}</ol>
+      </section>
+
+      <section class="lsec">
+        <h2>${T('land_price_h')}</h2>
+        <div class="lprice">
+          <div class="lp"><div class="amt">${fmt$(CFG.pricing.monthly)}</div><div class="muted small">${T('per_mo')}</div></div>
+          <div class="lp best"><div class="amt">${fmt$(CFG.pricing.yearly)}</div><div class="muted small">${T('per_yr')} · ${fmt$(CFG.pricing.yearly / 12)}${T('per_mo')}</div></div>
+        </div>
+        <p class="muted small center" style="margin-top:10px">🎁 ${T('land_price_free')}</p>
+      </section>
+
+      <section class="lsec">
+        <h2>${T('land_faq_h')}</h2>
+        ${qa('land_q1', 'land_a1')}${qa('land_q2', 'land_a2')}${qa('land_q3', 'land_a3')}
+      </section>
+
+      <button class="btn gold" onclick="startApp()">${T('land_cta')} →</button>
+      <div class="disclaimer" style="margin-top:16px">${T('risk_body')}</div>
+      <div class="note">${T('acc_footer', { brand: esc(CFG.brand) })}</div>
+    </div>`;
+}
 
 function renderOnboarding() {
   $('#tabbar').hidden = true;
@@ -551,6 +599,7 @@ function applyLang() {
 }
 
 // —— 全局动作(供 onclick 调用)——
+window.startApp = () => { showForm = true; render(); window.scrollTo(0, 0); };
 window.go = (tab) => { currentTab = tab; render(); };
 window.subscribe = (plan) => {
   const link = payLink(plan);
@@ -576,7 +625,7 @@ function toast(msg) {
 function render() {
   $('#brandName').textContent = CFG.brand;
   applyLang();
-  if (!state.onboarded) return renderOnboarding();
+  if (!state.onboarded) return showForm ? renderOnboarding() : renderLanding();
   document.querySelectorAll('.tab').forEach((b) => b.classList.toggle('active', b.dataset.tab === currentTab));
   if (currentTab === 'today') return renderToday();
   if (currentTab === 'record') return renderRecord();

@@ -137,10 +137,36 @@ input[type="number"] {
   padding: 14px 0; font-size: 13px; font-weight: 700;
 }
 .tab.active { color: var(--text); box-shadow: inset 0 2px 0 var(--accent); }
+/* hidden 属性要盖过 .tabbar 的 display:flex(否则落地页/填表页底栏会漏出来) */
+.tabbar[hidden] { display: none; }
 
 .hero { text-align: center; padding: 22px 0 6px; }
 .hero .logo { font-size: 40px; }
 .hero h1 { font-size: 24px; margin: 10px 0 6px; }
+
+/* 落地首页 */
+.landing { padding-bottom: 8px; }
+.lhero { text-align: center; padding: 28px 4px 20px; }
+.lhero .logo { font-size: 44px; }
+.lhero h1 { font-size: 27px; line-height: 1.25; margin: 12px 0 10px; font-weight: 800; }
+.lhero .lsub { font-size: 15px; line-height: 1.7; max-width: 30rem; margin: 0 auto 18px; }
+.lhero .btn { max-width: 320px; margin-left: auto; margin-right: auto; }
+.lsec { border-top: 1px solid var(--line); padding: 20px 0; }
+.lsec h2 { font-size: 18px; margin: 0 0 14px; }
+.feat { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.feat .fi { font-size: 22px; flex: 0 0 auto; }
+.feat b { display: block; margin-bottom: 2px; }
+.feat p { margin: 0; }
+.steps { list-style: none; margin: 0; padding: 0; }
+.steps li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 14px; line-height: 1.6; }
+.steps .sn { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 14px; }
+.lprice { display: flex; gap: 12px; }
+.lp { flex: 1; text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 8px; }
+.lp.best { border-color: var(--gold); }
+.lp .amt { font-size: 26px; font-weight: 900; }
+.qa { margin-bottom: 14px; }
+.qa b { display: block; margin-bottom: 3px; }
+.qa p { margin: 0; }
 .list { margin: 0; padding-left: 18px; line-height: 1.9; color: var(--muted); font-size: 14px; }
 .divider { height: 1px; background: var(--line); margin: 16px 0; }
 .note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
