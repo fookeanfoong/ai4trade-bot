@@ -1,9 +1,8 @@
 import { useLocale } from 'next-intl';
 
-// AI4Trade Signals PWA 的入口卡片。
-// 只有配置了环境变量 NEXT_PUBLIC_PWA_URL(你部署好的 PWA 网址)时才显示,
-// 否则渲染 null —— 网站外观零变化。文案内置 5 语言,不依赖 messages 文件。
-const PWA_URL = process.env.NEXT_PUBLIC_PWA_URL;
+// AI4Trade Signals PWA 的入口。文案内置 5 语言,不依赖 messages 文件。
+// 网址默认指向已部署的 PWA;可用环境变量 NEXT_PUBLIC_PWA_URL 覆盖。
+const PWA_URL = process.env.NEXT_PUBLIC_PWA_URL || 'https://ai4trade-bot.vercel.app';
 
 type Copy = { title: string; desc: string; cta: string; risk: string };
 const COPY: Record<string, Copy> = {
@@ -62,5 +61,40 @@ export function PwaPromo() {
       </div>
       <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">{t.risk}</p>
     </div>
+  );
+}
+
+// 首页顶部醒目横幅(比页脚卡片更抢眼)。
+export function PwaHero() {
+  if (!PWA_URL) return null;
+  const locale = useLocale();
+  const t = COPY[locale] ?? COPY.en;
+
+  return (
+    <section className="border-b border-border">
+      <div className="container py-3">
+        <div className="relative overflow-hidden rounded-xl border border-primary/30 bg-gradient-to-r from-primary/15 via-primary/5 to-transparent p-4 sm:p-5">
+          <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">📈</span>
+                <p className="text-sm font-bold text-foreground sm:text-base">{t.title}</p>
+                <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">NEW</span>
+              </div>
+              <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground sm:text-sm">{t.desc}</p>
+            </div>
+            <a
+              href={PWA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90"
+            >
+              {t.cta} →
+            </a>
+          </div>
+          <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">{t.risk}</p>
+        </div>
+      </div>
+    </section>
   );
 }
