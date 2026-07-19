@@ -167,18 +167,56 @@ function renderOnboarding() {
   };
 }
 
+// 由方向 + 参考价 + 百分比，算出具体的买入/止损/目标价位。
+function priceLevels(s) {
+  const ref = s.ref_price;
+  if (!ref) return null;
+  const long = s.direction !== 'bearish';
+  const mv = (p) => long ? ref * (1 + p) : ref * (1 - p);
+  return {
+    long,
+    entry: ref,
+    stop: long ? ref * (1 - s.stop_pct) : ref * (1 + s.stop_pct),
+    t1: mv(s.t1_pct),
+    t2: mv(s.t2_pct),
+  };
+}
+
 function signalCard(item, locked) {
   const s = item.sig;
-  const dirCls = s.direction === 'bearish' ? 'bear' : 'bull';
-  const dirTxt = s.direction === 'bearish' ? '看跌 ▼' : '看涨 ▲';
+  const long = s.direction !== 'bearish';
+  const dirCls = long ? 'bull' : 'bear';
+  const dirTxt = long ? '买升 ▲ 做多' : '买跌 ▼ 做空';
   const demo = s.demo ? '<span class="tag demo">示例</span>' : '';
   const recheck = s.preopen_recheck ? '<span class="tag">开盘前需复核</span>' : '';
+  const entryWhen = s.entry_mode === 'market' ? '现价/开盘市价买入' : (s.entry_mode ? esc(s.entry_mode) : '现价买入');
+
+  // 具体价位块（有实时价时）；否则退回百分比
+  const lv = priceLevels(s);
+  const levelsBlock = lv ? `
+    <div class="levels">
+      <div class="lv"><span class="lab">${long ? '买入价' : '卖出/做空价'}</span>
+        <span class="px" style="color:var(--accent)">${fmt$(lv.entry)}</span><span class="pc muted">${esc(entryWhen)}</span></div>
+      <div class="lv"><span class="lab">止损价（离场）</span>
+        <span class="px" style="color:var(--down)">${fmt$(lv.stop)}</span><span class="pc down">${long ? '-' : '+'}${pct(s.stop_pct)}</span></div>
+      <div class="lv"><span class="lab">目标价 ①（先卖一半）</span>
+        <span class="px" style="color:var(--up)">${fmt$(lv.t1)}</span><span class="pc up">${long ? '+' : '-'}${pct(s.t1_pct)}</span></div>
+      <div class="lv"><span class="lab">目标价 ②（清仓）</span>
+        <span class="px" style="color:var(--up)">${fmt$(lv.t2)}</span><span class="pc up">${long ? '+' : '-'}${pct(s.t2_pct)}</span></div>
+    </div>` : `
+    <div class="metrics">
+      <div class="metric"><div class="k">止损</div><div class="v down">${long ? '-' : '+'}${pct(s.stop_pct)}</div></div>
+      <div class="metric"><div class="k">目标一</div><div class="v up">${long ? '+' : '-'}${pct(s.t1_pct)}</div></div>
+      <div class="metric"><div class="k">目标二</div><div class="v up">${long ? '+' : '-'}${pct(s.t2_pct)}</div></div>
+    </div>`;
+
   const allocBlock = locked ? '' : `
     <div class="alloc">
       <div><div class="small muted">建议投入</div><div class="amt">${fmt$(item.alloc)}</div></div>
-      <div class="center"><div class="small muted">若达一档 (+${pct(s.t1_pct)})</div><div class="v up" style="color:var(--up);font-weight:800">${fmt$(item.potential)}</div></div>
-      ${item.shares != null ? `<div class="center"><div class="small muted">约</div><div style="font-weight:800">${item.shares >= 1 ? item.shares.toFixed(2) : item.shares.toFixed(3)} 股</div></div>` : ''}
+      ${item.shares != null ? `<div class="center"><div class="small muted">约买</div><div style="font-weight:800">${item.shares >= 1 ? item.shares.toFixed(2) : item.shares.toFixed(3)} 股</div></div>` : ''}
+      <div class="center"><div class="small muted">达目标① 约赚</div><div class="v up" style="color:var(--up);font-weight:800">${fmt$(item.potential)}</div></div>
     </div>`;
+
   return `
     <div class="card sig">
       <div class="head">
@@ -187,14 +225,10 @@ function signalCard(item, locked) {
         ${demo} ${recheck}
       </div>
       <div class="conf-wrap">
-        <div class="row spread small muted"><span>信心度</span><span>${Math.round((s.confidence || 0) * 100)}% · ${esc(s.timeframe || '')}</span></div>
+        <div class="row spread small muted"><span>信心度</span><span>${Math.round((s.confidence || 0) * 100)}% · 持有 ${esc(s.timeframe || '')}</span></div>
         <div class="conf-bar"><div class="conf-fill" style="width:${Math.round((s.confidence || 0) * 100)}%"></div></div>
       </div>
-      <div class="metrics">
-        <div class="metric"><div class="k">止损</div><div class="v down">-${pct(s.stop_pct)}</div></div>
-        <div class="metric"><div class="k">目标一</div><div class="v up">+${pct(s.t1_pct)}</div></div>
-        <div class="metric"><div class="k">目标二</div><div class="v up">+${pct(s.t2_pct)}</div></div>
-      </div>
+      ${levelsBlock}
       ${allocBlock}
       <div class="reason clamp" onclick="this.classList.toggle('clamp')">${esc(s.reasoning)}</div>
     </div>`;

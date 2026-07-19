@@ -15,7 +15,18 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "signals.json")
+QUOTES = os.path.join(ROOT, "quotes.json")
 OUT = os.path.join(ROOT, "pwa", "data", "signals.json")
+
+
+def load_quotes():
+    """symbol -> latest price, from quotes.json (机器人盘前/盘中刷新的实时报价)。"""
+    try:
+        with open(QUOTES, "r", encoding="utf-8") as f:
+            q = json.load(f).get("quotes", {})
+        return {k: v.get("last") for k, v in q.items() if v.get("last")}
+    except Exception:
+        return {}
 
 DISCLAIMER = (
     "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,"
@@ -42,23 +53,29 @@ DEMO = [
 ]
 
 
-def convert(sig: dict) -> dict:
+def convert(sig: dict, quotes: dict) -> dict:
     tradable = (
         sig.get("direction") in ("bullish", "bearish")
         and float(sig.get("confidence", 0)) >= 0.6
         and not sig.get("already_priced_in", False)
     )
+    ticker = sig.get("sector_or_ticker")
     out = {
-        "ticker": sig.get("sector_or_ticker"),
+        "ticker": ticker,
         "direction": sig.get("direction"),
         "confidence": sig.get("confidence"),
         "timeframe": sig.get("timeframe"),
+        "entry_mode": sig.get("entry_mode", "market"),
         "stop_pct": sig.get("stop_pct"),
         "t1_pct": sig.get("t1_pct"),
         "t2_pct": sig.get("t2_pct"),
         "reasoning": sig.get("reasoning"),
         "tradable": tradable,
     }
+    # 附上实时参考价 -> App 能算出具体的「买入价/止损价/目标价」。
+    ref = quotes.get(ticker)
+    if ref:
+        out["ref_price"] = round(ref, 2)
     if sig.get("requires_preopen_recheck"):
         out["preopen_recheck"] = True
     return out
@@ -68,7 +85,8 @@ def main() -> None:
     with open(SRC, "r", encoding="utf-8") as f:
         src = json.load(f)
 
-    signals = [convert(s) for s in src.get("signals", [])]
+    quotes = load_quotes()
+    signals = [convert(s, quotes) for s in src.get("signals", [])]
     if "--demo" in sys.argv:
         signals += DEMO
 

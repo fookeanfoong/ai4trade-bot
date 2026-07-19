@@ -78,6 +78,15 @@ main { max-width: 640px; margin: 0 auto; padding: 16px; }
 .metric .k { font-size: 11px; color: var(--muted); }
 .metric .v { font-size: 16px; font-weight: 800; margin-top: 2px; }
 .metric .v.up { color: var(--up); } .metric .v.down { color: var(--down); }
+/* 具体价位表 */
+.levels { margin: 12px 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.lv { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 11px 12px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+.lv:last-child { border-bottom: none; }
+.lv .lab { font-size: 13px; color: var(--muted); flex: 1; }
+.lv .px { font-size: 18px; font-weight: 800; }
+.lv .pc { font-size: 12px; width: 60px; text-align: right; }
+.lv .pc.up { color: var(--up); } .lv .pc.down { color: var(--down); }
+
 .alloc {
   display: flex; justify-content: space-between; align-items: center;
   background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.3);
