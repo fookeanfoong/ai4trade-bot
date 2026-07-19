@@ -142,3 +142,16 @@ input[type="number"] {
   font-size: 13px; z-index: 50; opacity: 0; transition: opacity .2s;
 }
 .toast.show { opacity: .95; }
+
+/* 安装提示条 */
+.install-bar {
+  position: fixed; left: 12px; right: 12px; bottom: calc(76px + var(--safe-b)); z-index: 40;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 12px 14px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+.install-bar button {
+  background: var(--accent); color: #fff; border: none; border-radius: 10px;
+  padding: 8px 14px; font-weight: 700; font-size: 13px; margin-left: 6px;
+}
+.install-bar button.x { background: transparent; color: var(--muted); padding: 8px; }

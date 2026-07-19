@@ -352,6 +352,61 @@ function renderAccount() {
     <div class="note">${esc(CFG.brand)} · 纯客户端 MVP</div>`;
 }
 
+// —— 透明战绩 ——
+function sparkline(curve) {
+  if (!curve || curve.length < 2) return '';
+  const vals = curve.map((p) => p.cum);
+  const min = Math.min(0, ...vals), max = Math.max(0, ...vals);
+  const W = 300, H = 70, n = curve.length;
+  const x = (i) => (i / (n - 1)) * W;
+  const y = (v) => H - ((v - min) / (max - min || 1)) * H;
+  const pts = curve.map((p, i) => `${x(i).toFixed(1)},${y(p.cum).toFixed(1)}`).join(' ');
+  const zeroY = y(0).toFixed(1);
+  const last = vals[vals.length - 1];
+  const stroke = last >= 0 ? 'var(--up)' : 'var(--down)';
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none" style="margin-top:8px">
+    <line x1="0" y1="${zeroY}" x2="${W}" y2="${zeroY}" stroke="var(--line)" stroke-width="1" stroke-dasharray="4 4"/>
+    <polyline points="${pts}" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>`;
+}
+
+async function renderRecord() {
+  $('#tabbar').hidden = false;
+  view.innerHTML = '<div class="card center muted">加载战绩中…</div>';
+  const data = await fetch(CFG.trackRecordUrl, { cache: 'no-store' }).then((r) => r.json()).catch(() => null);
+  if (!data || !data.summary) { view.innerHTML = '<div class="card center muted">暂无战绩数据。</div>'; return; }
+  const s = data.summary;
+  const netCls = s.net_pnl >= 0 ? 'up' : 'down';
+  const rows = (data.trades || []).map((t) => {
+    const cls = t.pnl_usd > 0 ? 'up' : (t.pnl_usd < 0 ? 'down' : 'muted');
+    const sign = t.pnl_usd > 0 ? '+' : '';
+    return `<div class="row spread" style="padding:10px 0;border-bottom:1px solid var(--line)">
+      <div><b>${esc(t.ticker)}</b> <span class="small muted">· ${esc(t.reason)}</span><div class="small muted">${esc(t.date)}</div></div>
+      <div class="center"><div style="font-weight:800;color:var(--${cls})">${sign}${fmt$(t.pnl_usd)}</div><div class="small muted">${sign}${t.pnl_pct}%</div></div>
+    </div>`;
+  }).join('');
+
+  view.innerHTML = `
+    <div class="card">
+      <div class="row spread"><h2>透明战绩</h2><span class="tag">模拟盘 · 真实记录</span></div>
+      <div class="metrics" style="grid-template-columns:repeat(2,1fr)">
+        <div class="metric"><div class="k">累计盈亏</div><div class="v ${netCls}">${s.net_pnl >= 0 ? '+' : ''}${fmt$(s.net_pnl)}</div></div>
+        <div class="metric"><div class="k">胜率</div><div class="v">${s.win_rate}%</div></div>
+        <div class="metric"><div class="k">交易次数</div><div class="v">${s.trades}</div></div>
+        <div class="metric"><div class="k">交易天数</div><div class="v">${s.days}</div></div>
+      </div>
+      ${sparkline(data.curve)}
+      <div class="small muted" style="margin-top:6px">${esc(s.first_date || '')} → ${esc(s.last_date || '')} · ${s.wins}胜 / ${s.losses}负 / ${s.breakeven}平</div>
+    </div>
+    <div class="card">
+      <h2>每笔明细</h2>
+      ${rows || '<span class="muted small">暂无</span>'}
+    </div>
+    <div class="disclaimer"><b>诚实披露</b>:${esc(data.note)} 我们把亏损也如实展示 —— 这是模拟盘的研究结果,
+      不是收益承诺,更不代表你会有同样表现。交易有风险,请自行判断。</div>
+    <div class="note">数据更新:${esc(data.updated_at || '—')}</div>`;
+}
+
 // —— 反馈 / 讨论区 ——
 const STATUS_LABEL = { planned: '计划中', doing: '开发中', done: '已上线' };
 const STATUS_DOT = { planned: 'var(--muted)', doing: 'var(--accent)', done: 'var(--up)' };
@@ -488,6 +543,7 @@ function render() {
   if (!state.onboarded) return renderOnboarding();
   document.querySelectorAll('.tab').forEach((b) => b.classList.toggle('active', b.dataset.tab === currentTab));
   if (currentTab === 'today') return renderToday();
+  if (currentTab === 'record') return renderRecord();
   if (currentTab === 'plan') return renderPlan();
   if (currentTab === 'feedback') return renderFeedback();
   if (currentTab === 'account') return renderAccount();
@@ -497,9 +553,56 @@ document.querySelectorAll('.tab').forEach((b) => {
   b.onclick = () => { currentTab = b.dataset.tab; render(); };
 });
 
+// —— 按功能开关显示/隐藏 tab ——
+document.querySelectorAll('.tab[data-feature]').forEach((b) => {
+  const on = CFG.features && CFG.features[b.dataset.feature];
+  b.hidden = !on;
+});
+function tabEnabled(tab) {
+  const b = document.querySelector(`.tab[data-tab="${tab}"]`);
+  return b && !b.hidden;
+}
+
+// —— 「添加到主屏幕」安装提示 ——
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  showInstallBar();
+});
+function isStandalone() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function showInstallBar() {
+  if (isStandalone() || state.installDismissed || $('#installBar')) return;
+  const bar = document.createElement('div');
+  bar.id = 'installBar';
+  bar.className = 'install-bar';
+  bar.innerHTML = `<span>把 App 装到主屏,像原生一样打开</span>
+    <span><button id="installYes">安装</button><button id="installNo" class="x">✕</button></span>`;
+  document.body.appendChild(bar);
+  $('#installYes').onclick = async () => {
+    if (deferredPrompt) { deferredPrompt.prompt(); await deferredPrompt.userChoice.catch(() => {}); deferredPrompt = null; }
+    bar.remove();
+  };
+  $('#installNo').onclick = () => { state.installDismissed = true; saveState(state); bar.remove(); };
+}
+// iOS 不支持 beforeinstallprompt,给一次性文字引导
+function maybeIosHint() {
+  const ua = navigator.userAgent;
+  const isIos = /iPhone|iPad|iPod/.test(ua);
+  if (isIos && !isStandalone() && !state.iosHintShown && state.onboarded) {
+    state.iosHintShown = true; saveState(state);
+    toast('装到主屏:点底部「分享」→「添加到主屏幕」');
+  }
+}
+
 // —— 启动 ——
 handlePaymentReturn();
+// 若功能关闭时停留在该 tab,回到今日
+if (currentTab === 'record' && !tabEnabled('record')) currentTab = 'today';
 render();
+maybeIosHint();
 
 // —— Service Worker(PWA 离线外壳)——
 if ('serviceWorker' in navigator) {

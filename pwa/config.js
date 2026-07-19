@@ -47,6 +47,15 @@ window.APP_CONFIG = {
   },
   // 路线图 / 更新日志数据（让用户看到「反馈 → 更新」）。你手动维护这个文件。
   updatesUrl: './data/updates.json',
+
+  // —— 功能开关 ——
+  features: {
+    // 「透明战绩」页：展示机器人真实历史成绩(python3 pwa/build_track_record.py 生成)。
+    // 默认关闭 —— 因为当前真实记录是净亏损。等成绩转正、或你想走「彻底透明」路线时,
+    // 把它改成 true 即可显示。数据不会造假,页面永远显示真实数字。
+    trackRecord: false,
+  },
+  trackRecordUrl: './data/track_record.json',
   // 可选：真正的「公开讨论区」（用户能看到彼此的留言）。免费、无需自建后端。
   // 用 giscus（基于 GitHub Discussions）。开启方法见 pwa/SETUP.md，填好下面对象即可：
   //   giscus: { repo:'user/repo', repoId:'...', category:'Announcements', categoryId:'...' }
