@@ -64,6 +64,27 @@ export function PwaPromo() {
   );
 }
 
+// 顶部导航栏里的常驻按钮(每个页面都可见)。
+const NAV_LABEL: Record<string, string> = {
+  en: 'Trading App', zh: '交易 App', 'zh-TW': '交易 App', ja: '取引アプリ', de: 'Trading-App',
+};
+export function PwaNavButton() {
+  if (!PWA_URL) return null;
+  const locale = useLocale();
+  const label = NAV_LABEL[locale] ?? NAV_LABEL.en;
+  return (
+    <a
+      href={PWA_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+    >
+      <span>📈</span>
+      <span className="hidden sm:inline">{label}</span>
+    </a>
+  );
+}
+
 // 首页顶部醒目横幅(比页脚卡片更抢眼)。
 export function PwaHero() {
   if (!PWA_URL) return null;
