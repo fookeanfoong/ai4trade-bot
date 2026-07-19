@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+node_modules/
 .env
 KILL_SWITCH.txt
 moomoo_trader_state.json
