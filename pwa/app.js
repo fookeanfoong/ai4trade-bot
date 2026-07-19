@@ -118,6 +118,44 @@ let showForm = false; // 落地页 -> 点「开始」才进入填表(onboarding)
 
 function esc(s) { return String(s ?? '').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
 
+// —— 法律页(隐私政策 / 条款) ——
+let legalReturn = 'account';
+function renderLegal(which) {
+  $('#tabbar').hidden = !state.onboarded;
+  $('#statusChip').hidden = true;
+  const lang = window.I18N.getLang();
+  const doc = window.LEGAL[which];
+  const title = doc.title[lang] || doc.title.en;
+  const contact = (CFG.feedback && CFG.feedback.email && !CFG.feedback.email.startsWith('REPLACE_')) ? CFG.feedback.email : 'your-email@example.com';
+  const html = (doc.body[lang] || doc.body.en)
+    .split('{BRAND}').join(esc(CFG.brand))
+    .split('{CONTACT}').join(esc(contact));
+  view.innerHTML = `
+    <div class="card">
+      <button class="ghost-btn" onclick="legalBack()" style="margin-bottom:12px">← ${T('back')}</button>
+      <h2>${esc(title)}</h2>
+      <p class="small muted" style="margin:2px 0 12px">${T('legal_updated')}: ${esc(doc.updated)}</p>
+      <div class="legal">${html}</div>
+    </div>
+    <div class="row" style="gap:10px;justify-content:center">
+      <button class="ghost-btn" onclick="openLegal('privacy')">${T('legal_privacy')}</button>
+      <button class="ghost-btn" onclick="openLegal('terms')">${T('legal_terms')}</button>
+    </div>`;
+}
+window.openLegal = (which) => { legalReturn = state.onboarded ? 'account' : 'landing'; currentTab = which; render(); window.scrollTo(0, 0); };
+window.legalBack = () => {
+  if (legalReturn === 'landing') { showForm = false; currentTab = 'today'; }
+  else { currentTab = 'account'; }
+  render(); window.scrollTo(0, 0);
+};
+// 页脚法律链接(落地页 + 账户页共用)
+function legalLinks() {
+  return `<div class="row" style="gap:8px;justify-content:center;margin-top:10px">
+    <button class="ghost-btn" onclick="openLegal('privacy')">${T('legal_privacy')}</button>
+    <button class="ghost-btn" onclick="openLegal('terms')">${T('legal_terms')}</button>
+  </div>`;
+}
+
 function renderLanding() {
   $('#tabbar').hidden = true;
   $('#statusChip').hidden = true;
@@ -161,6 +199,7 @@ function renderLanding() {
 
       <button class="btn gold" onclick="startApp()">${T('land_cta')} →</button>
       <div class="disclaimer" style="margin-top:16px">${T('risk_body')}</div>
+      ${legalLinks()}
       <div class="note">${T('acc_footer', { brand: esc(CFG.brand) })}</div>
     </div>`;
 }
@@ -413,6 +452,7 @@ function renderAccount() {
       <button class="btn outline" onclick="go('plan')">${T('acc_edit')}</button>
     </div>
     <div class="disclaimer"><b>${T('acc_disc_b')}</b>: ${T('acc_disc')}</div>
+    ${legalLinks()}
     <div class="note">${T('acc_footer', { brand: esc(CFG.brand) })}</div>`;
 }
 
@@ -625,6 +665,7 @@ function toast(msg) {
 function render() {
   $('#brandName').textContent = CFG.brand;
   applyLang();
+  if (currentTab === 'privacy' || currentTab === 'terms') return renderLegal(currentTab);
   if (!state.onboarded) return showForm ? renderOnboarding() : renderLanding();
   document.querySelectorAll('.tab').forEach((b) => b.classList.toggle('active', b.dataset.tab === currentTab));
   if (currentTab === 'today') return renderToday();

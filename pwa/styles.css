@@ -167,6 +167,14 @@ input[type="number"] {
 .qa { margin-bottom: 14px; }
 .qa b { display: block; margin-bottom: 3px; }
 .qa p { margin: 0; }
+
+/* 法律页排版 */
+.legal { font-size: 14px; line-height: 1.75; color: var(--muted); }
+.legal h3 { font-size: 15px; color: var(--text); margin: 18px 0 6px; }
+.legal p { margin: 0 0 10px; }
+.legal ul { margin: 0 0 10px; padding-left: 20px; }
+.legal li { margin-bottom: 6px; }
+.legal b { color: var(--text); }
 .list { margin: 0; padding-left: 18px; line-height: 1.9; color: var(--muted); font-size: 14px; }
 .divider { height: 1px; background: var(--line); margin: 16px 0; }
 .note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }

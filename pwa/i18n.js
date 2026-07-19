@@ -110,6 +110,10 @@
       pay_missing: `Payment link not configured yet (see config.js)`,
       signout_confirm: `Clear local subscription state? (won't cancel your real Stripe subscription)`,
       signout_done: `Cleared`,
+      legal_privacy: `Privacy`,
+      legal_terms: `Terms`,
+      legal_updated: `Last updated`,
+      back: `Back`,
       // landing / marketing homepage
       land_h1: `Know what to watch before the market opens`,
       land_sub: `Each US trading day, a simulated bot surfaces a few tickers with exact buy, stop and target prices — sized to your capital. First trading day free.`,
@@ -223,6 +227,10 @@
       pay_missing: `支付链接还没配置（见 config.js）`,
       signout_confirm: `确定清除本机订阅状态？(不会取消 Stripe 上的实际订阅)`,
       signout_done: `已清除`,
+      legal_privacy: `隐私政策`,
+      legal_terms: `条款`,
+      legal_updated: `最后更新`,
+      back: `返回`,
       // 落地首页
       land_h1: `开盘前，先知道该盯哪几只`,
       land_sub: `每个美股交易日，模拟机器人挑出几只票，给明确的买入价、止损价、目标价，并按你的本金算好仓位。首个交易日免费。`,
