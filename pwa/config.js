@@ -37,6 +37,21 @@ window.APP_CONFIG = {
   // 机器人每天开盘前把当日信号写进这个文件（build_feed.py 从 signals.json 生成）。
   feedUrl: './data/signals.json',
 
+  // —— 反馈 / 讨论区 ——
+  feedback: {
+    // 收集用户反馈的方式（二选一，优先用 endpoint）：
+    //   endpoint 为空时 -> 点「提交」会打开邮件草稿发到下面的 email；
+    //   endpoint 填了接口地址 -> POST JSON {message, contact, ts} 到该接口。
+    email: 'REPLACE_WITH_YOUR_EMAIL@example.com',
+    endpoint: '',
+  },
+  // 路线图 / 更新日志数据（让用户看到「反馈 → 更新」）。你手动维护这个文件。
+  updatesUrl: './data/updates.json',
+  // 可选：真正的「公开讨论区」（用户能看到彼此的留言）。免费、无需自建后端。
+  // 用 giscus（基于 GitHub Discussions）。开启方法见 pwa/SETUP.md，填好下面对象即可：
+  //   giscus: { repo:'user/repo', repoId:'...', category:'Announcements', categoryId:'...' }
+  discussion: { giscus: null },
+
   // —— 风控展示参数（只影响「建议仓位」的算法，不是下单）——
   risk: {
     maxDeployPct: 1.0,   // 最多建议投入本金的比例（1.0 = 100%）

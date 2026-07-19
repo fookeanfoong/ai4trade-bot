@@ -1,7 +1,7 @@
 // AI4Trade Signals — Service Worker
 // 外壳(HTML/CSS/JS/图标)走「缓存优先」保证离线可开;
 // 信号数据 data/signals.json 走「网络优先」保证尽量新鲜。
-const CACHE = 'a4t-shell-v1';
+const CACHE = 'a4t-shell-v2';
 const SHELL = [
   './',
   './index.html',
@@ -30,8 +30,8 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
-  // 信号数据:网络优先,失败回退缓存
-  if (url.pathname.endsWith('/data/signals.json')) {
+  // 信号 / 路线图等数据:网络优先,失败回退缓存
+  if (url.pathname.includes('/data/')) {
     e.respondWith(
       fetch(req).then((res) => {
         const copy = res.clone();

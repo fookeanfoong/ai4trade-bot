@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import { PwaPromo } from '@/components/pwa-promo';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -52,6 +53,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* AI4Trade Signals PWA 入口(仅在设置 NEXT_PUBLIC_PWA_URL 后显示) */}
+        <PwaPromo />
 
         {/* Affiliate Disclosure —— FTC / 欧盟强制,显眼位置 */}
         <div className="mt-8 rounded-lg border border-border bg-muted/30 p-4">

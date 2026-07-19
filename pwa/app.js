@@ -352,6 +352,111 @@ function renderAccount() {
     <div class="note">${esc(CFG.brand)} · 纯客户端 MVP</div>`;
 }
 
+// —— 反馈 / 讨论区 ——
+const STATUS_LABEL = { planned: '计划中', doing: '开发中', done: '已上线' };
+const STATUS_DOT = { planned: 'var(--muted)', doing: 'var(--accent)', done: 'var(--up)' };
+
+async function renderFeedback() {
+  $('#tabbar').hidden = false;
+  const mine = state.feedbacks || [];
+  const mineHtml = mine.length ? mine.map((f) => `
+    <div class="card" style="padding:12px">
+      <div class="row spread small muted"><span>${esc(f.ts)}</span><span style="color:var(--up)">✓ 已收到</span></div>
+      <div style="margin-top:6px;font-size:14px;white-space:pre-wrap">${esc(f.message)}</div>
+    </div>`).join('') : '<p class="small muted">还没提交过。你的第一条意见,可能就是下一个更新。</p>';
+
+  const giscus = CFG.discussion && CFG.discussion.giscus
+    ? '<div class="card"><h2>大家怎么说</h2><div id="giscus"></div></div>'
+    : '';
+
+  view.innerHTML = `
+    <div class="card">
+      <h2>说说你的想法 💬</h2>
+      <p class="small muted">这个 App 会<b style="color:var(--text)">根据你们的意见持续更新</b>。缺什么功能、哪里不好用、想要哪些标的 —— 都告诉我。</p>
+      <label>你的意见 / 建议</label>
+      <textarea id="fbMsg" rows="4" style="width:100%;background:var(--bg-2);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:14px;font-size:15px;font-family:inherit" placeholder="例如:希望能加个开盘前提醒 / 想看港股 / ……"></textarea>
+      <label>你的邮箱(选填,方便更新时通知你)</label>
+      <div class="field-suffix"><input id="fbContact" type="text" inputmode="email" placeholder="you@example.com" value="${esc(state.fbContact || '')}" /></div>
+      <button class="btn primary" id="fbSend">提交反馈</button>
+      <p class="note">提交即表示同意我们联系你跟进。我们不会公开你的邮箱。</p>
+    </div>
+    ${giscus}
+    <div class="card">
+      <h2>更新路线图</h2>
+      <p class="small muted">你们提的,我们做的。带「用户反馈」标的都来自这里。</p>
+      <div id="roadmap" class="small muted" style="margin-top:8px">加载中…</div>
+    </div>
+    <div class="card">
+      <h2>我提交的反馈</h2>
+      ${mineHtml}
+    </div>`;
+
+  $('#fbSend').onclick = submitFeedback;
+
+  // 路线图
+  fetch(CFG.updatesUrl, { cache: 'no-store' }).then((r) => r.json()).then((data) => {
+    const el = $('#roadmap');
+    if (!el) return;
+    el.innerHTML = (data.items || []).map((it) => `
+      <div class="row" style="align-items:flex-start;gap:10px;margin:10px 0">
+        <span style="width:9px;height:9px;border-radius:50%;background:${STATUS_DOT[it.status] || 'var(--muted)'};margin-top:5px;flex:0 0 auto"></span>
+        <div>
+          <div style="color:var(--text);font-weight:600">${esc(it.title)}
+            ${it.from_feedback ? '<span class="tag" style="margin-left:6px">用户反馈</span>' : ''}</div>
+          <div class="small muted">${STATUS_LABEL[it.status] || it.status}${it.date ? ' · ' + esc(it.date) : ''}</div>
+        </div>
+      </div>`).join('') || '<span class="muted">暂无</span>';
+  }).catch(() => { const el = $('#roadmap'); if (el) el.textContent = '路线图加载失败。'; });
+
+  // 可选:giscus 公开讨论区
+  if (CFG.discussion && CFG.discussion.giscus) injectGiscus(CFG.discussion.giscus);
+}
+
+function submitFeedback() {
+  const msg = ($('#fbMsg').value || '').trim();
+  const contact = ($('#fbContact').value || '').trim();
+  if (msg.length < 3) return toast('多写几个字吧 🙂');
+  state.fbContact = contact;
+  state.feedbacks = state.feedbacks || [];
+  const rec = { message: msg, ts: ny().dateStr + ' ' + new Date().toTimeString().slice(0, 5) };
+  state.feedbacks.unshift(rec);
+  saveState(state);
+
+  const ep = CFG.feedback && CFG.feedback.endpoint;
+  const payload = { message: msg, contact, ts: rec.ts, plan: state.sub?.plan || 'trial' };
+  if (ep && !ep.startsWith('REPLACE_')) {
+    fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(() => {});
+    toast('已收到,谢谢!我们会根据它更新 🙌');
+    render();
+  } else {
+    // 无接口 -> 打开邮件草稿
+    const to = (CFG.feedback && CFG.feedback.email) || '';
+    const subject = encodeURIComponent('[AI4Trade 反馈]');
+    const body = encodeURIComponent(msg + (contact ? '\n\n联系方式:' + contact : ''));
+    toast('已记录!正在打开邮件发送给我们 🙌');
+    render();
+    if (to && !to.startsWith('REPLACE_')) location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  }
+}
+
+function injectGiscus(g) {
+  const box = $('#giscus');
+  if (!box || box.dataset.loaded) return;
+  box.dataset.loaded = '1';
+  const s = document.createElement('script');
+  s.src = 'https://giscus.app/client.js';
+  s.async = true; s.crossOrigin = 'anonymous';
+  const attrs = {
+    'data-repo': g.repo, 'data-repo-id': g.repoId,
+    'data-category': g.category || 'Announcements', 'data-category-id': g.categoryId,
+    'data-mapping': 'pathname', 'data-strict': '0', 'data-reactions-enabled': '1',
+    'data-emit-metadata': '0', 'data-input-position': 'top', 'data-theme': 'dark_dimmed',
+    'data-lang': 'zh-CN',
+  };
+  Object.entries(attrs).forEach(([k, v]) => v != null && s.setAttribute(k, v));
+  box.appendChild(s);
+}
+
 // —— 全局动作(供 onclick 调用)——
 window.go = (tab) => { currentTab = tab; render(); };
 window.subscribe = (plan) => {
@@ -384,6 +489,7 @@ function render() {
   document.querySelectorAll('.tab').forEach((b) => b.classList.toggle('active', b.dataset.tab === currentTab));
   if (currentTab === 'today') return renderToday();
   if (currentTab === 'plan') return renderPlan();
+  if (currentTab === 'feedback') return renderFeedback();
   if (currentTab === 'account') return renderAccount();
 }
 
