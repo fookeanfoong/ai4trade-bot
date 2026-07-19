@@ -31,8 +31,8 @@ window.APP_CONFIG = {
   //    正式收钱前:在 Stripe 切到 Live 模式重建同样链接,再替换掉这两条。
   //    首购折扣关闭中(firstBuyDiscount:0)：monthlyFirst/yearlyFirst 留空,自动回退用原价链接。
   paymentLinks: {
-    monthly:      'https://buy.stripe.com/test_4gM5kF96fa0V5xC1XK3sI00',
-    yearly:       'https://buy.stripe.com/test_9B628t4PZ8WRf8c0TG3sI01',
+    monthly:      'https://buy.stripe.com/4gM5kF96fa0V5xC1XK3sI00',
+    yearly:       'https://buy.stripe.com/9B628t4PZ8WRf8c0TG3sI01',
     monthlyFirst: '',
     yearlyFirst:  '',
   },
