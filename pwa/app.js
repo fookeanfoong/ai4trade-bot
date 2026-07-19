@@ -329,9 +329,11 @@ async function renderToday() {
   const staleWarn = feed.valid_for && feed.valid_for < t.dateStr
     ? `<div class="disclaimer" style="border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.06)"><b style="color:var(--down)">${T('stale_b')}</b>: ${T('stale_body', { date: esc(feed.valid_for) })}</div>` : '';
 
-  startTrialIfNeeded();
-  const allowed = accessAllowed();
   const plan = computePlan(feed.signals);
+  const hasSignals = plan.tradable.length > 0;
+  // 只在「当天真的有信号」时才消耗免费试用日:没信号的日子(周末/无达标机会)不算
+  if (hasSignals) startTrialIfNeeded();
+  const allowed = accessAllowed();
 
   let summary = '';
   if (plan.tradable.length) {
@@ -352,7 +354,7 @@ async function renderToday() {
   const cards = plan.items.map((it) => signalCard(it, !allowed)).join('');
 
   let gate = '';
-  if (!allowed) {
+  if (!allowed && hasSignals) {   // 没信号的日子不弹付费墙(没东西可解锁)
     gate = `
       <div class="card lock-overlay">
         <div style="font-size:32px">🔒</div>
