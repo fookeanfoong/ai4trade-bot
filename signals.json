@@ -1,39 +1,57 @@
 {
   "updated_at": "2026-07-18",
   "valid_for": "2026-07-20",
-  "note": "Claude fills these from news + live quotes. live_trader.py / signal_sim.py trade any signal with direction in (bullish,bearish), confidence >= 0.6, already_priced_in == false, not expired (valid_for >= today NY), and no open position. THREE hard guards protect the open: (1) signal expires after valid_for -> must be refreshed pre-open, so a stale signal never fires; (2) NO-CHASE: skip if the name already ran > max_chase_3d_pct in our direction; (3) REGIME guard: skip new longs if the broad market (SPY) is down more than regime_max_drop_pct on the day (a risk-off / sudden-crash open — the Korea/DeepSeek lesson), and skip new shorts on a symmetric rip. A premarket routine re-checks the latest news and rewrites this file before the open, so the decision always uses pre-open info, not yesterday's.",
-  "data_quality_flags": [
-    "2026-07-18 quotes.json shows VLO +29%, MPC +27.8%, PSX +23.7% single-day — implausible for large refiners, treat as bad data; do NOT build signals on VLO/MPC/PSX until verified. XOM/CVX/OXY/XLE quotes look clean."
-  ],
+  "generator": "generate_signals.py (algorithmic)",
+  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
   "signals": [
+    {
+      "sector_or_ticker": "CVX",
+      "direction": "bullish",
+      "confidence": 0.63,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: CVX 3-day trend +3.1% (today +5.5%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:CVX 三日趋势 +3.1%(当日 +5.5%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      }
+    },
     {
       "sector_or_ticker": "XOM",
       "direction": "bullish",
       "confidence": 0.62,
       "timeframe": "1-3 days",
       "entry_mode": "market",
-      "stop_pct": 0.02,
+      "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
-      "max_chase_3d_pct": 6.0,
-      "requires_preopen_recheck": true,
-      "invalidate_if": {
-        "ceasefire_or_deescalation": "If the weekend/premarket brings an Iran ceasefire or de-escalation, the oil premium collapses — flip already_priced_in=true and do NOT enter.",
-        "broad_risk_off": "If SPY is down > regime_max_drop_pct at the open, the REGIME guard blocks entry automatically."
-      },
-      "scenarios": [
-        {"case": "bull", "trigger": "Hormuz disruption persists, WTI holds > $80, energy keeps leading the rotation out of semis", "probability": 0.40},
-        {"case": "base", "trigger": "oil consolidates at a high level, XOM chops sideways near Friday's close", "probability": 0.35},
-        {"case": "bear", "trigger": "weekend ceasefire / de-escalation collapses the oil premium; energy gives back the spike", "probability": 0.25}
-      ],
-      "key_risks": [
-        "event-driven: a sudden ceasefire reverses oil violently — REQUIRES a pre-open news recheck",
-        "broad risk-off from the semiconductor bear market (Nasdaq -1.81% Fri) could drag everything down at the open",
-        "XOM already +4.7% Friday — buying strength; 3d change still under the no-chase threshold so entry is allowed, but keep the 2% stop tight"
-      ],
-      "reasoning": "板块轮动:资金撤出芯片/科技(费半进入熊市,AI 资本开支恐慌,奈飞财报暴跌 -11%),涌入能源。周五霍尔木兹停火破裂、伊朗袭击科威特电厂、美国空袭伊朗,Brent ~$88 / WTI ~$82,油价一周 +12% —— 这是**新的**催化剂,不是旧的已 price-in 溢价。XOM 是最干净、最流动的原油受益标的。但这是事件驱动,停火即反转 —— 所以 requires_preopen_recheck:true,开盘前必须用最新新闻复核;若周末停火/降级就翻成 already_priced_in=true 不进场。",
-      "already_priced_in": false
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: XOM 3-day trend +1.6% (today +4.7%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:XOM 三日趋势 +1.6%(当日 +4.7%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      }
+    },
+    {
+      "sector_or_ticker": "XLE",
+      "direction": "bullish",
+      "confidence": 0.61,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: XLE 3-day trend +1.3% (today +5.5%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:XLE 三日趋势 +1.3%(当日 +5.5%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      }
     }
   ]
 }

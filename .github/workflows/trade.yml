@@ -50,6 +50,18 @@ jobs:
         continue-on-error: true
         run: python news.py
 
+      # 自动生成当日信号 -> signals.json,再转成 PWA 数据源。
+      # 想只做多(散户友好),把下面 env 的 LONG_ONLY 设为 "1"。
+      - name: Generate today's signals (algorithmic)
+        continue-on-error: true
+        env:
+          LONG_ONLY: "1"    # 默认只做多(散户友好);想同时发空单就设为 ""
+        run: python generate_signals.py
+
+      - name: Build PWA signal feed
+        continue-on-error: true
+        run: python pwa/build_feed.py
+
       - name: Run ai4trade momentum bot
         env:
           AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
