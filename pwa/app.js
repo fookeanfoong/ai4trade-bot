@@ -60,10 +60,13 @@ function priceFor(plan, firstBuy) {
   const base = CFG.pricing[plan];
   return firstBuy ? Math.round(base * (1 - CFG.pricing.firstBuyDiscount) * 100) / 100 : base;
 }
+// 首购折扣是否启用:需要 firstBuyDiscount>0 且用户还没买过。
+function firstBuyActive() {
+  return CFG.pricing.firstBuyDiscount > 0 && !state.everBought;
+}
 function payLink(plan) {
-  const firstBuy = !state.everBought;
-  const key = plan + (firstBuy ? 'First' : '');
-  return CFG.paymentLinks[key] || CFG.paymentLinks[plan];
+  const key = plan + (firstBuyActive() ? 'First' : '');
+  return CFG.paymentLinks[key] || CFG.paymentLinks[plan]; // 打折链接为空时回退原价链接
 }
 
 // —— 仓位建议算法 ——
@@ -320,7 +323,7 @@ function renderPlan() {
 function renderAccount() {
   $('#tabbar').hidden = false;
   const sub = isSubscribed();
-  const firstBuy = !state.everBought;
+  const firstBuy = firstBuyActive();
   const mPrice = priceFor('monthly', firstBuy);
   const yPrice = priceFor('yearly', firstBuy);
   const saveTag = firstBuy ? `<span class="badge-save">${T('first_buy', { pct: Math.round(CFG.pricing.firstBuyDiscount * 100) })}</span>` : '';
@@ -343,7 +346,7 @@ function renderAccount() {
           <button class="btn primary" onclick="subscribe('monthly')">${T('choose_mo')}</button>
         </div>
         <div class="plan best">
-          <div class="row spread"><b>${T('p_yearly')}</b><span class="badge-save">${T('save_amt', { amt: fmt$(CFG.pricing.monthly * 12 - CFG.pricing.yearly) })}</span></div>
+          <div class="row spread"><b>${T('p_yearly')}</b>${CFG.pricing.monthly * 12 - CFG.pricing.yearly > 0 ? `<span class="badge-save">${T('save_amt', { amt: fmt$(CFG.pricing.monthly * 12 - CFG.pricing.yearly) })}</span>` : ''}</div>
           <div class="price">${firstBuy ? `<s>${fmt$(CFG.pricing.yearly)}</s>` : ''}${fmt$(yPrice)}<span class="per"> ${T('per_yr')}</span></div>
           <div class="per">${T('approx_mo', { amt: fmt$(yPrice / 12) })}</div>
           <button class="btn gold" onclick="subscribe('yearly')">${T('choose_yr')}</button>
