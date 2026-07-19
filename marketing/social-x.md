@@ -2,7 +2,7 @@
 
 定位:**诚实、连载、不吹稳赚**。你的差异化不是「稳赚」,是「敢每天公开对错」。
 ⚠️ 合规:全程「simulated / educational / not advice / no guaranteed returns」,别改。
-把 `[LINK]` 换成 `https://aicompareapi.vercel.app`。
+把 `[LINK]` 换成 `https://aicompareapi.com`。
 
 ---
 

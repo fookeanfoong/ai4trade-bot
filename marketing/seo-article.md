@@ -90,7 +90,7 @@ The useful ones show the whole log.
 ## A shortcut
 
 If you'd rather not build this routine from scratch every morning, that's exactly what
-**[AI4Trade Signals](https://aicompareapi.vercel.app)** does: before each US trading day, a
+**[AI4Trade Signals](https://aicompareapi.com)** does: before each US trading day, a
 simulated bot surfaces a few tickers with exact entry, stop and target prices, and sizes
 them to your capital. It shows its real track record — wins and losses — and the first
 trading day is free. It's information to think with, not advice, and you always place the
