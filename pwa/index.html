@@ -16,7 +16,10 @@
   <!-- 顶栏 -->
   <header class="topbar">
     <div class="brand" id="brandName">AI4Trade</div>
-    <button class="ghost-btn" id="statusChip" hidden></button>
+    <div class="row" style="gap:8px">
+      <button class="ghost-btn" id="langBtn">🌐 EN</button>
+      <button class="ghost-btn" id="statusChip" hidden></button>
+    </div>
   </header>
 
   <main id="view"><!-- JS 渲染 --></main>
@@ -31,6 +34,7 @@
   </nav>
 
   <script src="./config.js"></script>
+  <script src="./i18n.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

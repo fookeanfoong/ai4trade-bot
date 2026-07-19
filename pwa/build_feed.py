@@ -40,14 +40,20 @@ DEMO = [
         "ticker": "NVDA", "direction": "bullish", "confidence": 0.64,
         "timeframe": "1-2 days", "stop_pct": 0.03, "t1_pct": 0.04, "t2_pct": 0.07,
         "ref_price": 172.0,
-        "reasoning": "示例:AI 芯片龙头,若大盘企稳、半导体反弹则领涨。",
+        "reasoning": {
+            "en": "Sample: AI-chip leader; leads the rally if the market steadies and semis bounce.",
+            "zh": "示例:AI 芯片龙头,若大盘企稳、半导体反弹则领涨。",
+        },
         "tradable": True, "demo": True,
     },
     {
         "ticker": "COIN", "direction": "bullish", "confidence": 0.61,
         "timeframe": "1-3 days", "stop_pct": 0.04, "t1_pct": 0.05, "t2_pct": 0.09,
         "ref_price": 305.0,
-        "reasoning": "示例:加密情绪回暖时的高 beta 代理标的,波动大、止损要严。",
+        "reasoning": {
+            "en": "Sample: high-beta crypto proxy for when sentiment warms up — volatile, keep the stop tight.",
+            "zh": "示例:加密情绪回暖时的高 beta 代理标的,波动大、止损要严。",
+        },
         "tradable": True, "demo": True,
     },
 ]
