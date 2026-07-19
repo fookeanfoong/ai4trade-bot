@@ -10,12 +10,6 @@ fi
 
 ROOT="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 
-# --- Next.js aggregator app (web/) ---
-if [ -f "$ROOT/web/package.json" ]; then
-  echo "[session-start] installing web/ npm dependencies..."
-  (cd "$ROOT/web" && npm install --no-audit --no-fund)
-fi
-
 # --- Python trading bot (repo root) ---
 if [ -f "$ROOT/requirements.txt" ]; then
   echo "[session-start] installing Python dependencies..."

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-  <rect width="300" height="300" fill="#0b1220"/>
-  <rect x="24" y="24" width="252" height="252" rx="28" fill="none" stroke="#06B6D4" stroke-width="3"/>
-  <text x="50%" y="46%" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" fill="#06B6D4">AggreAPI</text>
-  <text x="50%" y="60%" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#cbd5e1">AI API 中转站比价</text>
-</svg>
