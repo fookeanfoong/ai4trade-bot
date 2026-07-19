@@ -46,7 +46,7 @@ window.APP_CONFIG = {
     // 收集用户反馈的方式（二选一，优先用 endpoint）：
     //   endpoint 为空时 -> 点「提交」会打开邮件草稿发到下面的 email；
     //   endpoint 填了接口地址 -> POST JSON {message, contact, ts} 到该接口。
-    email: 'REPLACE_WITH_YOUR_EMAIL@example.com',
+    email: 'fookeanfoong@gmail.com',
     endpoint: '',
   },
   // 路线图 / 更新日志数据（让用户看到「反馈 → 更新」）。你手动维护这个文件。
