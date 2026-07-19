@@ -93,6 +93,7 @@ jobs:
         run: python live_trader.py
 
       - name: Commit state + reports
+        if: always()   # 即使前面某步失败,也要把已生成的信号/状态提交上去
         run: |
           git config user.name  "ai4trade-bot"
           git config user.email "bot@users.noreply.github.com"
