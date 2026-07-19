@@ -16,6 +16,7 @@ import { cheapestByModel, editorPicks, newArrivals, maxDiscount } from '@/lib/se
 import { formatPrice, cn } from '@/lib/utils';
 import { regionLabel } from '@/lib/display';
 import { JsonLd } from '@/components/json-ld';
+import { PwaHero } from '@/components/pwa-promo';
 import { webSiteLd, organizationLd, faqPageLd } from '@/lib/jsonld';
 import { hreflangAlternates } from '@/lib/site';
 
@@ -41,6 +42,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
           faqPageLd(faqItems.map((f) => ({ q: f.q, a: f.a }))),
         ]}
       />
+      {/* AI4Trade Signals App 醒目入口(顶部横幅) */}
+      <PwaHero />
+
       {/* Hero + 搜索 */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent)]" />
