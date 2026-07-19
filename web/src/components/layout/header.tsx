@@ -4,6 +4,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { LocaleSwitcher } from '@/components/locale-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
 import { AccountNav } from '@/components/layout/account-nav';
+import { PwaNavButton } from '@/components/pwa-promo';
 
 export function Header() {
   const t = useTranslations('nav');
@@ -40,6 +41,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-1">
+          <PwaNavButton />
           <LocaleSwitcher />
           <ThemeToggle />
           <AccountNav />
