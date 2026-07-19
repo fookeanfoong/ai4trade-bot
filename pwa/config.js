@@ -14,7 +14,9 @@ window.APP_CONFIG = {
   pricing: {
     monthly: 20,
     yearly: 240,
-    firstBuyDiscount: 0.05, // 首次购买 -5%
+    // 首购 -5%：想开启就改成 0.05,并在下面 paymentLinks 填好 monthlyFirst / yearlyFirst
+    // 两条打折链接。设为 0 时:不显示折扣、不显示划线价,一律用月付/年付原价链接。
+    firstBuyDiscount: 0,
   },
 
   // —— 免费试用 ——
@@ -22,15 +24,17 @@ window.APP_CONFIG = {
   trialTradingDays: 1,
 
   // —— Stripe 支付链接（Payment Links，无需自建后端）——
-  // 在 Stripe 后台建 4 条 Payment Link，把成功回跳地址(Success URL)设为：
-  //   https://你的域名/?paid=monthly    （月付）
-  //   https://你的域名/?paid=yearly     （年付）
-  // 首购折扣那两条，价格建成打完 5% 折的即可。建法见 pwa/README.md。
+  // 成功回跳地址(Redirect URL)在 Stripe 里设为：
+  //   https://ai4trade-bot.vercel.app/?paid=monthly （月付）
+  //   https://ai4trade-bot.vercel.app/?paid=yearly  （年付）
+  // ⚠️ 下面是 Stripe「测试模式」链接(test_)——仅用于试跑,不会真扣钱。
+  //    正式收钱前:在 Stripe 切到 Live 模式重建同样链接,再替换掉这两条。
+  //    首购折扣关闭中(firstBuyDiscount:0)：monthlyFirst/yearlyFirst 留空,自动回退用原价链接。
   paymentLinks: {
-    monthly:      'REPLACE_WITH_STRIPE_MONTHLY_LINK',
-    yearly:       'REPLACE_WITH_STRIPE_YEARLY_LINK',
-    monthlyFirst: 'REPLACE_WITH_STRIPE_MONTHLY_5OFF_LINK',
-    yearlyFirst:  'REPLACE_WITH_STRIPE_YEARLY_5OFF_LINK',
+    monthly:      'https://buy.stripe.com/test_4gM5kF96fa0V5xC1XK3sI00',
+    yearly:       'https://buy.stripe.com/test_9B628t4PZ8WRf8c0TG3sI01',
+    monthlyFirst: '',
+    yearlyFirst:  '',
   },
 
   // —— 信号数据源 ——
