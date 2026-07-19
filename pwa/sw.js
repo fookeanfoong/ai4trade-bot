@@ -1,7 +1,7 @@
 // AI4Trade Signals — Service Worker
 // 外壳(HTML/CSS/JS/图标)走「缓存优先」保证离线可开;
 // 信号数据 data/signals.json 走「网络优先」保证尽量新鲜。
-const CACHE = 'a4t-shell-v7';
+const CACHE = 'a4t-shell-v8';
 const SHELL = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const SHELL = [
   './app.js',
   './config.js',
   './i18n.js',
+  './legal.js',
   './manifest.webmanifest',
   './icons/icon.svg',
   './icons/maskable.svg',
