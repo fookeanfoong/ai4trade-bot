@@ -13,7 +13,7 @@ window.APP_CONFIG = {
   // 所以下面的「首购链接」必须在 Stripe 后台建成打完折的链接（见 README）。
   pricing: {
     monthly: 20,
-    yearly: 240,
+    yearly: 208,
     // 首购 -5%：想开启就改成 0.05,并在下面 paymentLinks 填好 monthlyFirst / yearlyFirst
     // 两条打折链接。设为 0 时:不显示折扣、不显示划线价,一律用月付/年付原价链接。
     firstBuyDiscount: 0,
