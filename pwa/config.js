@@ -25,8 +25,8 @@ window.APP_CONFIG = {
 
   // —— Stripe 支付链接（Payment Links，无需自建后端）——
   // 成功回跳地址(Redirect URL)在 Stripe 里设为：
-  //   https://ai4trade-bot.vercel.app/?paid=monthly （月付）
-  //   https://ai4trade-bot.vercel.app/?paid=yearly  （年付）
+  //   https://aicompareapi.vercel.app/?paid=monthly （月付）
+  //   https://aicompareapi.vercel.app/?paid=yearly  （年付）
   // ⚠️ 下面是 Stripe「测试模式」链接(test_)——仅用于试跑,不会真扣钱。
   //    正式收钱前:在 Stripe 切到 Live 模式重建同样链接,再替换掉这两条。
   //    首购折扣关闭中(firstBuyDiscount:0)：monthlyFirst/yearlyFirst 留空,自动回退用原价链接。

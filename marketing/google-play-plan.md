@@ -18,7 +18,7 @@ Google 对 PWA 友好(和苹果不同)。把 PWA 上架 Play 的标准做法是 
 - 有效的 Web Manifest:name / icons / start_url / display / 主题色 ✅
 - Service Worker ✅
 - Lighthouse 安装性得分 ≥ 80(应该没问题,建议正式打包前用 Chrome DevTools 跑一遍)
-- **Digital Asset Links**:把生成的 `assetlinks.json` 放到 `https://ai4trade-bot.vercel.app/.well-known/assetlinks.json`,里面填 App 签名的 SHA-256 —— 用来验证域名归属,并去掉顶部地址栏(才能真全屏)。⚠️ 待做
+- **Digital Asset Links**:把生成的 `assetlinks.json` 放到 `https://aicompareapi.vercel.app/.well-known/assetlinks.json`,里面填 App 签名的 SHA-256 —— 用来验证域名归属,并去掉顶部地址栏(才能真全屏)。⚠️ 待做
 - **可能要补的**:Play 商店图标建议 512×512 PNG + 512 maskable PNG(现在是 SVG,TWA 能用但 PNG 更稳)。⚠️ 待做
 
 **费用:** Google Play 开发者账号 **一次性 $25**;打包本身免费。

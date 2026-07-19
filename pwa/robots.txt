@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai4trade-bot.vercel.app/sitemap.xml
+Sitemap: https://aicompareapi.vercel.app/sitemap.xml

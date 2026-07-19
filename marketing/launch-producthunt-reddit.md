@@ -2,7 +2,7 @@
 
 ⚠️ 时机:**等自动信号跑出几周正记录再正式发布**。现在先备好文案。
 ⚠️ 合规:全程「simulated / educational / not advice / no guaranteed returns」。
-把 `[LINK]` 换成 `https://ai4trade-bot.vercel.app`。
+把 `[LINK]` 换成 `https://aicompareapi.vercel.app`。
 
 ---
 
