@@ -14,10 +14,10 @@
     }
   },
   "cooldown": {
-    "AMD": 3
+    "AMD": 2
   },
   "realized_pnl": -6.34193496957562,
-  "run_count": 23,
+  "run_count": 24,
   "last_reflection_date": "2026-07-09",
   "trade_log": [
     {
@@ -129,10 +129,30 @@
   ],
   "news": {
     "AMD": {
-      "at": "2026-07-20T13:46:38Z",
-      "score": 5,
+      "at": "2026-07-20T14:33:00Z",
+      "score": 3,
       "worst": null,
       "items": [
+        {
+          "title": "AMD Stock Gains After The Nvidia-Rival Lands Major Microsoft AI Win With Helios Azure Deployment",
+          "pubDate": "Mon, 20 Jul 2026 14:06:50 +0000",
+          "link": "https://stocktwits.com/news-articles/markets/equity/amd-microsoft-first-customer-helios-rack-ai-system-nvda-connection/cZZidowR7un?.tsrc=rss"
+        },
+        {
+          "title": "Google Stock: Alphabet Readies AI Chip With Built-In Gemini Brains",
+          "pubDate": "Mon, 20 Jul 2026 14:03:46 +0000",
+          "link": "https://finance.yahoo.com/m/0ca6790d-5ad4-350b-841c-7edde1bf6644/google-stock%3A-alphabet.html?.tsrc=rss"
+        },
+        {
+          "title": "AMD Stock Rises on Vote of Confidence From a Big AI Chip Customer",
+          "pubDate": "Mon, 20 Jul 2026 13:51:00 +0000",
+          "link": "https://finance.yahoo.com/m/0bf338fb-1e7b-3f42-8fcf-7ea97769cfda/amd-stock-rises-on-vote-of.html?.tsrc=rss"
+        },
+        {
+          "title": "Meet the Super Semiconductor ETF Obliterating Nvidia, AMD, and Broadcom This Year",
+          "pubDate": "Mon, 20 Jul 2026 13:40:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/20/meet-the-super-semiconductor-stock-obliterating-nv/?.tsrc=rss"
+        },
         {
           "title": "AMD stock surges 5% as Microsoft locks in massive AI infrastructure deal",
           "pubDate": "Mon, 20 Jul 2026 13:36:26 +0000",
@@ -152,34 +172,24 @@
           "title": "TSMC Expands Arizona AI Chip Bet",
           "pubDate": "Mon, 20 Jul 2026 13:12:37 +0000",
           "link": "https://finance.yahoo.com/technology/ai/articles/tsmc-expands-arizona-ai-chip-131237312.html?.tsrc=rss"
-        },
-        {
-          "title": "Microsoft to Deploy Next-Gen AMD Instinct and AMD EPYC Processors as the Companies Expand Their Long-Term Strategic Partnership",
-          "pubDate": "Mon, 20 Jul 2026 13:00:00 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-deploy-next-gen-amd-130000537.html?.tsrc=rss"
-        },
-        {
-          "title": "SK Hynix Jumps 5%, AMD Rises 4% as Korea Becomes the New Catalyst for Global Chip Stocks",
-          "pubDate": "Mon, 20 Jul 2026 12:59:03 +0000",
-          "link": "https://247wallst.com/investing/2026/07/20/sk-hynix-jumps-5-amd-rises-4-as-korea-becomes-the-new-catalyst-for-global-chip-stocks/?.tsrc=rss"
-        },
-        {
-          "title": "How Much Track Is Left For INTC Stock?",
-          "pubDate": "Mon, 20 Jul 2026 12:55:34 +0000",
-          "link": "https://www.trefis.com/articles/607960/how-much-track-is-left-for-intc-stock/2026-07-20?.tsrc=rss"
-        },
-        {
-          "title": "The One Deal That Could End Micron Stock's Old Boom-and-Bust Cycle",
-          "pubDate": "Mon, 20 Jul 2026 12:54:58 +0000",
-          "link": "https://www.trefis.com/articles/607950/the-one-deal-that-could-end-micron-stocks-old-boom-and-bust-cycle/2026-07-20?.tsrc=rss"
         }
       ]
     },
     "PLTR": {
-      "at": "2026-07-20T13:46:37Z",
+      "at": "2026-07-20T14:32:59Z",
       "score": 0,
       "worst": null,
       "items": [
+        {
+          "title": "2 of Wall Street\u2019s Favorite Stocks with Competitive Advantages and 1 Facing Headwinds",
+          "pubDate": "Mon, 20 Jul 2026 13:59:33 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/2-wall-street-favorite-stocks-135933378.html?.tsrc=rss"
+        },
+        {
+          "title": "Investors Heavily Search Palantir Technologies Inc. (PLTR): Here is What You Need to Know",
+          "pubDate": "Mon, 20 Jul 2026 13:00:03 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-palantir-technologies-130003861.html?.tsrc=rss"
+        },
         {
           "title": "1 Quantum Computing Stock That Could Be the Next Palantir",
           "pubDate": "Mon, 20 Jul 2026 09:19:00 +0000",
@@ -209,24 +219,19 @@
           "title": "What Do SpaceX, AMD, and Palantir Have in Common?",
           "pubDate": "Sat, 18 Jul 2026 20:33:00 +0000",
           "link": "https://www.fool.com/investing/2026/07/18/what-do-spacex-amd-and-palantir-have-in-common/?.tsrc=rss"
-        },
-        {
-          "title": "Palantir (NasdaqGS:PLTR) Teams Up With Nvidia On Sovereign AI For Governments",
-          "pubDate": "Sat, 18 Jul 2026 14:09:14 +0000",
-          "link": "https://finance.yahoo.com/technology/ai/articles/palantir-nasdaqgs-pltr-teams-nvidia-140914270.html?.tsrc=rss"
-        },
-        {
-          "title": "Palantir Stock Slipped 35% From Its Peak. Is the Artificial Intelligence (AI) Software Leader a Safe Buy for the Second Half of 2026?",
-          "pubDate": "Sat, 18 Jul 2026 08:05:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/18/palantir-stock-slipped-35-from-its-peak-is-the-art/?.tsrc=rss"
         }
       ]
     },
     "MSTR": {
-      "at": "2026-07-20T13:46:37Z",
+      "at": "2026-07-20T14:32:59Z",
       "score": 1,
       "worst": null,
       "items": [
+        {
+          "title": "Strategy stock rises after the company raises $263 million without selling bitcoin",
+          "pubDate": "Mon, 20 Jul 2026 14:04:54 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/article/strategy-stock-rises-after-the-company-raises-263-million-without-selling-bitcoin-140454002.html?.tsrc=rss"
+        },
         {
           "title": "Strategy Leaves Bitcoin Holdings Unchanged For Second Week",
           "pubDate": "Mon, 20 Jul 2026 13:33:00 +0000",
@@ -261,19 +266,19 @@
           "title": "Michael Saylor Says Bitcoin's Proposed BIP-110 Upgrade Is 'More Dangerous Than the Condition'",
           "pubDate": "Mon, 20 Jul 2026 04:49:37 +0000",
           "link": "https://finance.yahoo.com/markets/crypto/articles/michael-saylor-says-bitcoins-proposed-044937060.html?.tsrc=rss"
-        },
-        {
-          "title": "Ex-Goldman Credit Veteran Says Markets May Be Mispricing MicroStrategy\u2019s STRC by 13%",
-          "pubDate": "Sun, 19 Jul 2026 20:52:55 +0000",
-          "link": "https://beincrypto.com/strategy-strc-mispriced-13-percent/?.tsrc=rss"
         }
       ]
     },
     "AVGO": {
-      "at": "2026-07-20T13:46:38Z",
+      "at": "2026-07-20T14:33:00Z",
       "score": 1,
       "worst": null,
       "items": [
+        {
+          "title": "Meet the Super Semiconductor ETF Obliterating Nvidia, AMD, and Broadcom This Year",
+          "pubDate": "Mon, 20 Jul 2026 13:40:00 +0000",
+          "link": "https://www.fool.com/investing/2026/07/20/meet-the-super-semiconductor-stock-obliterating-nv/?.tsrc=rss"
+        },
         {
           "title": "AMD, Micron, SK Hynix lead chip stock recovery",
           "pubDate": "Mon, 20 Jul 2026 13:31:10 +0000",
@@ -290,6 +295,11 @@
           "link": "https://247wallst.com/investing/2026/07/20/why-i-cant-stop-buying-credo-technology-stock/?.tsrc=rss"
         },
         {
+          "title": "Short Bets Against US Equities Hit Record as AI Risks Mount",
+          "pubDate": "Mon, 20 Jul 2026 12:30:17 +0000",
+          "link": "https://finance.yahoo.com/markets/stocks/articles/short-bets-against-us-equities-123017397.html?.tsrc=rss"
+        },
+        {
           "title": "The Divergent Paths Ahead For NVIDIA Stock",
           "pubDate": "Mon, 20 Jul 2026 12:21:51 +0000",
           "link": "https://www.trefis.com/articles/607933/the-divergent-paths-ahead-for-nvidia-stock/2026-07-20?.tsrc=rss"
@@ -303,24 +313,19 @@
           "title": "AI Chips Update - AI Labor Milestone Revolutionizes Consumer Finance Interactions",
           "pubDate": "Mon, 20 Jul 2026 11:37:47 +0000",
           "link": "https://finance.yahoo.com/technology/ai/articles/ai-chips-ai-labor-milestone-113747825.html?.tsrc=rss"
-        },
-        {
-          "title": "Chipmakers head for big profit gains, but will it be enough?",
-          "pubDate": "Mon, 20 Jul 2026 10:03:09 +0000",
-          "link": "https://finance.yahoo.com/markets/stocks/articles/chipmakers-head-big-profit-gains-100309114.html?.tsrc=rss"
-        },
-        {
-          "title": "AMD vs. Broadcom: The Better AI-Chip Stock to Buy After the Sell-Off",
-          "pubDate": "Mon, 20 Jul 2026 09:01:00 +0000",
-          "link": "https://www.fool.com/investing/2026/07/20/amd-vs-broadcom-the-better-ai-chip-stock-to-buy-af/?.tsrc=rss"
         }
       ]
     },
     "COIN": {
-      "at": "2026-07-20T13:46:38Z",
+      "at": "2026-07-20T14:33:01Z",
       "score": -1,
       "worst": "Coinbase CEO Armstrong Dismisses Chamath\u2019s Bitcoin Mining Warning: Will Price Suffer?",
       "items": [
+        {
+          "title": "Hyperliquid To Add Decentralized Prediction Market",
+          "pubDate": "Mon, 20 Jul 2026 13:40:00 +0000",
+          "link": "https://www.cryptoprowl.com/releases/hyperliquid-to-add-decentralized-prediction-market-6203?.tsrc=rss"
+        },
         {
           "title": "Chamath Palihapitiya Says Bitcoin Faces Two \u2018Structural\u2019 Headwinds \u2013 But Two Of Crypto's Biggest CEOs Call The Threat Overblown",
           "pubDate": "Mon, 20 Jul 2026 11:20:38 +0000",
@@ -355,11 +360,6 @@
           "title": "Billionaire Investor Just Revealed the AI Bet That Could Pay Off Big in 5 Years",
           "pubDate": "Sat, 18 Jul 2026 20:38:12 +0000",
           "link": "https://beincrypto.com/billionaire-investor-ai-bet-pay-off-2031/?.tsrc=rss"
-        },
-        {
-          "title": "Coinbase CEO Brian Armstrong Tells Founders to Solve 'Hard Problems,' Not Chase 'Base Hits'",
-          "pubDate": "Sat, 18 Jul 2026 20:31:30 +0000",
-          "link": "https://finance.yahoo.com/small-business/articles/coinbase-ceo-brian-armstrong-tells-203130586.html?.tsrc=rss"
         }
       ]
     }

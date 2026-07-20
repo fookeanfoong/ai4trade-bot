@@ -8,8 +8,8 @@
     "t1": 193.18,
     "t2": 198.81,
     "half_taken": false,
-    "peak_price": 187.555,
-    "armed": false,
+    "peak_price": 188.995,
+    "armed": true,
     "confidence": 0.63,
     "entry_chg_3d_pct": 3.27,
     "notional_usd": 400.0,
@@ -26,6 +26,12 @@
       "actions": [
         "ENTRY LONG CVX conf 0.63 2.13271 sh @ $187.56 [broker] notional $400 risk $10.00 | stop $182.87 T1 $193.18 T2 $198.81"
       ]
+    },
+    {
+      "ran_at": "2026-07-20T14:33:03Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": []
     }
   ],
   "last_key": null
