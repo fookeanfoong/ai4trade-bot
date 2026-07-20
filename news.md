@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-20T19:18:21+00:00
+# Market News Digest — 2026-07-20T22:41:03+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `1h ago` **[Trump]** Trump’s funding cuts created ‘the perfect storm’ that slowed the government’s cyclosporiasis response - CNN — _CNN_
-- `1h ago` **[Trump]** Trump warns Iran will pay 'many times over' for US troop deaths - The Economic Times — _The Economic Times_
-- `1h ago` **[Musk]** Elon Musk sheds details on Tesla FSD’s upcoming improvements - Teslarati — _Teslarati_
-- `2h ago` **[Musk]** Milei opens door to electric cars as Musk's Tesla firms up arrival plans - Buenos Aires Times — _Buenos Aires Times_
-- `2h ago` **[Trump]** Trump’s Iran Retaliation Warning: Potential Ripple Effects on Defense and Energy Stocks - TipRanks — _TipRanks_
-- `2h ago` **[Oil]** Oil Price Forecast: Brent Spikes to $91, Fades to $88.54 as Iran Signals Talks — $91.30 the Line to $100, $85 the Risk - TradingNEWS — _TradingNEWS_
-- `2h ago` **[Musk]** What Will Elon Musk Say About Robotaxis, Optimus? - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` **[Musk]** Elon Musk debunks $52 billion SpaceX-NVIDIA GPU deal - Teslarati — _Teslarati_
-- `2h ago` **[Musk]** 'Lords And Peasants Divide': Elon Musk Calls Out US AI Firms As Chinese Rivals Close In - NDTV Profit — _NDTV Profit_
-- `2h ago` **[Trump]** Premier Doug Ford responds to Trump claims of Canadian wildfire smoke 'poisoning' American air - CNN — _CNN_
-- `2h ago` **[Musk]** Elon Musk has lost over 500 billion dollars, after the value of SpaceX's assets decreased by almost 40%. - Informat.ro — _Informat.ro_
-- `3h ago` **[Trump]** 'It has lot of capability but...': Trump's $400M Qatar jet to get major upgrade after Iran threats - The Economic Times — _The Economic Times_
+- `10m ago` **[Musk]** Elon Musk Says AI and Robots Will Do ‘So Much Stuff’ We Run Out of Things for Humans to Do — But ‘We’ll B - Benzinga — _Benzinga_
+- `26m ago` **[Trump]** Trump hits Canada with 50% tariffs on hockey sticks, alcohol, and dairy - Israel National News — _Israel National News_
+- `43m ago` **[Trump]** Dow Jones Futures: Trump Comments Spark Stock Market Losses; Elon Musk-Led SpaceX, Tesla Tumble - Investor's Business Daily — _Investor's Business Daily_
+- `44m ago` **[Musk]** Elon Musk debunks $52 billion SpaceX-NVIDIA GPU deal - Teslarati — _Teslarati_
+- `59m ago` **[Trump]** White House rushes to further secure Trump’s new Air Force One — but he plans to keep flying it domestically - CNN — _CNN_
+- `1h ago` **[Trump]** The Dubious Rags to Riches Promise of Trump Accounts - FactCheck.org — _FactCheck.org_
+- `1h ago` **[Chips]** S&P 500, Dow End Lower As Oil Prices Rise Amid US-Iran Crisis — PSKY, GOOGL, IREN, AMD, NVDA, AVGO In Focus - TradingView — _TradingView_
+- `1h ago` **[Trump]** Trump’s new 50% tariffs on Canada risk igniting a fresh trade war - CNN — _CNN_
+- `1h ago` **[Market]** TSX down more than 300 points amid inflation data, U.S. stock markets also negative - BNN Bloomberg — _BNN Bloomberg_
+- `1h ago` **[Trump]** US Equity Indexes Fall, Crude Oil Rises After Trump Warns More Strikes on Iran Amid Risk to Saudi Arabian Supplies - marketscreener.com — _marketscreener.com_
+- `1h ago` **[Musk]** Musk Says Teslas Will Remember How You Drive. Why That Matters for the Stock. - Barron's — _Barron's_
+- `2h ago` **[Market]** US stocks today: US stocks end higher on cool inflation data, strong earnings - The Economic Times — _The Economic Times_
 
 ## Market
 
-- `15m ago` Chip rebound lifts Nasdaq 100, Micron rallies 5%: Stock market today - MSN — _MSN_
-- `1h ago` Stock Market Today: Nasdaq 100 Gains On Chip Stock Rebound - Vanguard S&P 500 ETF (ARCA:VOO) - Benzinga — _Benzinga_
-- `1h ago` US Stock Market Today: Wall Street Gains as Chip Stocks Rebound Before Megacap Earnings - Analytics Insight — _Analytics Insight_
-- `2h ago` Weekly market commentary - BlackRock — _BlackRock_
-- `3h ago` Stock market today: Dow rises on peace hopes; Nvidia, Micron, SanDisk rebound (live coverage) - MSN — _MSN_
-- `3h ago` Wall Street steadies as AI stocks recover some of last week’s sharp losses - BNN Bloomberg — _BNN Bloomberg_
+- `33m ago` Tesla Q2 Earnings 2026 Predictions: Why is Nasdaq TSLA Stock Down Today? Can Shares Rebound After a 17% YTD Decline – Check Key Factors, IPO Capital, Market Cap, Revenue, EPS Forecast & More - The Sunday Guardian — _The Sunday Guardian_
+- `1h ago` TSX down more than 300 points amid inflation data, U.S. stock markets also negative - BNN Bloomberg — _BNN Bloomberg_
+- `1h ago` Stock market today: Dow rises on peace hopes; Nvidia, Micron, SanDisk rebound (live coverage) - MSN — _MSN_
+- `2h ago` Wall Street drifts as AI stocks hold steadier after last week’s losses - BNN Bloomberg — _BNN Bloomberg_
+- `2h ago` US stocks today: US stocks end higher on cool inflation data, strong earnings - The Economic Times — _The Economic Times_
+- `2h ago` S&P/TSX composite down more than 300 points, U.S. stock markets also negative - thecanadianpressnews.ca — _thecanadianpressnews.ca_
 
 ## Trump
 
-- `1h ago` Trump’s funding cuts created ‘the perfect storm’ that slowed the government’s cyclosporiasis response - CNN — _CNN_
-- `1h ago` Trump warns Iran will pay 'many times over' for US troop deaths - The Economic Times — _The Economic Times_
-- `2h ago` Trump’s Iran Retaliation Warning: Potential Ripple Effects on Defense and Energy Stocks - TipRanks — _TipRanks_
-- `2h ago` Premier Doug Ford responds to Trump claims of Canadian wildfire smoke 'poisoning' American air - CNN — _CNN_
-- `3h ago` 'It has lot of capability but...': Trump's $400M Qatar jet to get major upgrade after Iran threats - The Economic Times — _The Economic Times_
-- `3h ago` Trump Jr.’s investment firm soars during Trump presidency - CNN — _CNN_
+- `26m ago` Trump hits Canada with 50% tariffs on hockey sticks, alcohol, and dairy - Israel National News — _Israel National News_
+- `43m ago` Dow Jones Futures: Trump Comments Spark Stock Market Losses; Elon Musk-Led SpaceX, Tesla Tumble - Investor's Business Daily — _Investor's Business Daily_
+- `59m ago` White House rushes to further secure Trump’s new Air Force One — but he plans to keep flying it domestically - CNN — _CNN_
+- `1h ago` The Dubious Rags to Riches Promise of Trump Accounts - FactCheck.org — _FactCheck.org_
+- `1h ago` Trump’s new 50% tariffs on Canada risk igniting a fresh trade war - CNN — _CNN_
+- `1h ago` US Equity Indexes Fall, Crude Oil Rises After Trump Warns More Strikes on Iran Amid Risk to Saudi Arabian Supplies - marketscreener.com — _marketscreener.com_
 
 ## Musk
 
-- `44m ago` Options traders bet $550M against Tesla ahead of earnings - MSN — _MSN_
+- `10m ago` Elon Musk Says AI and Robots Will Do ‘So Much Stuff’ We Run Out of Things for Humans to Do — But ‘We’ll B - Benzinga — _Benzinga_
+- `44m ago` Elon Musk debunks $52 billion SpaceX-NVIDIA GPU deal - Teslarati — _Teslarati_
 - `1h ago` Here’s How Much Traders See Tesla Stock Moving After Earnings - Investopedia — _Investopedia_
-- `1h ago` Options Traders Bet $550M Against Tesla Ahead of Earnings - 24/7 Wall St. — _24/7 Wall St._
-- `1h ago` Tesla Q2 Earnings Outlook, Record Deliveries, Profit Challenges - RS Web Solutions — _RS Web Solutions_
-- `1h ago` Elon Musk sheds details on Tesla FSD’s upcoming improvements - Teslarati — _Teslarati_
-- `2h ago` Milei opens door to electric cars as Musk's Tesla firms up arrival plans - Buenos Aires Times — _Buenos Aires Times_
+- `1h ago` Musk Says Teslas Will Remember How You Drive. Why That Matters for the Stock. - Barron's — _Barron's_
+- `3h ago` Tesla reveals first vehicle model to receive Starlink integration - Teslarati — _Teslarati_
+- `3h ago` Tesla Into Earnings: "Do NOT Buy" - Hedgeye — _Hedgeye_
 
 ## Fed
 
-- `3h ago` UK inflation: What is the rate and why are prices still rising? - BBC — _BBC_
-- `3h ago` Could AI-Driven Inflation Lead to Fed Rate Hikes? - AOL.com — _AOL.com_
-- `5h ago` Don't be fooled: Why Fed Chair Warsh's tough talk could be the real deal - MSN — _MSN_
-- `5h ago` Gold Near $4,000 on Iran’s Ninth Strike Night: Why This War Has Been Bad for Bullion - Tech Times — _Tech Times_
-- `5h ago` Monetary Inflation vs ‘Economic Shock’ Price Rises - GoldSeek — _GoldSeek_
-- `8h ago` The Federal Reserve’s independence is still under threat, warns Rebecca Slaughter - Financial Times — _Financial Times_
+- `2h ago` Could Warsh Break a 56-Year Fed Rate-Hike Streak? - Benzinga — _Benzinga_
+- `3h ago` Iran uses drones, decoys in Strait of Hormuz to challenge US operations - Crypto Briefing — _Crypto Briefing_
+- `3h ago` Trump wants Powell out. Powell is digging in. - MSN — _MSN_
+- `3h ago` DoubleLine bets on stable US interest rates under new Fed Chair Warsh in 2026 - Crypto Briefing — _Crypto Briefing_
+- `6h ago` Macro funds disappoint investors in first half - Valor International — _Valor International_
+- `6h ago` UK inflation: What is the rate and why are prices still rising? - BBC — _BBC_
 
 ## Oil
 
-- `2h ago` Oil Price Forecast: Brent Spikes to $91, Fades to $88.54 as Iran Signals Talks — $91.30 the Line to $100, $85 the Risk - TradingNEWS — _TradingNEWS_
-- `3h ago` Brent Crude Rebounds Above US$90 As Ceasefire Collapses - NewsGhana — _NewsGhana_
-- `3h ago` Hormuz at Near Standstill as Iran Warns Ships to Keep to its Waters - EnergyNow.com — _EnergyNow.com_
-- `4h ago` US refining profitability hits record high as capacity declines, demand surges - Crypto Briefing — _Crypto Briefing_
-- `4h ago` Kuwait intercepts missiles and drones amid Iran war tensions - Crypto Briefing — _Crypto Briefing_
-- `5h ago` Oil hits $90 as US-Iran war enters a dangerous new phase - Rolling Out — _Rolling Out_
+- `2h ago` Falling Oil Prices Explained Despite the US-Iran War - Discovery Alert — _Discovery Alert_
+- `2h ago` Iran reasserts control over Strait of Hormuz amid 2026 conflict escalation - Crypto Briefing — _Crypto Briefing_
+- `2h ago` EU pauses methane penalties amid energy crisis, US pressure - Crypto Briefing — _Crypto Briefing_
+- `2h ago` Gas prices jump 13 cents over past week - nottinghammd.com — _nottinghammd.com_
+- `2h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - LiteFinance — _LiteFinance_
+- `3h ago` OPEC+ Agrees to Boost Oil Output When Strait of Hormuz Reopens - EnergyNow — _EnergyNow_
 
 ## Chips
 
-- `22m ago` AMD stock surges over 3% as Microsoft joins Helios launch, intensifying Nvidia rivalry - Cryptopolitan — _Cryptopolitan_
-- `2h ago` AMD stock edges higher as investors weigh AI demand and margin outlook - Ad-hoc-news.de — _Ad-hoc-news.de_
-- `2h ago` AMD’s Big AI Moment: Why Wall Street Keeps Raising Price Targets - Advanced Micro Devices (NASDAQ:AMD) - Benzinga — _Benzinga_
-- `2h ago` Tech stocks live: Chip stocks recover from last week's losses on Google, AMD news - Yahoo Finance UK — _Yahoo Finance UK_
-- `2h ago` AMD Gains a Major Customer for Its Latest Tech Ahead of Its ‘Advancing AI’ Event—Here’s What You Need to Know - Investopedia — _Investopedia_
-- `3h ago` Nvidia Stock Tests $200 Support as Chinese AI Competition Shakes the Broader Semiconductor Chip Rally - International Business Times Australia — _International Business Times Australia_
+- `1h ago` S&P 500, Dow End Lower As Oil Prices Rise Amid US-Iran Crisis — PSKY, GOOGL, IREN, AMD, NVDA, AVGO In Focus - TradingView — _TradingView_
+- `1h ago` AI chip stocks recover from 10% weekly drop; late dip increases expectations - TechStock² — _TechStock²_
+- `2h ago` What Just Happened To AI Stocks? (Micron, AMD & Nvidia Explained) Tampa Bay Rays (R1YP3IyRnV) - Mshale — _Mshale_
+- `2h ago` NASDAQ Futures Rise as Chip Stocks Recover and Oil Retreats from Highs - Analytics Insight — _Analytics Insight_
+- `4h ago` AMD: Hyperscaler Deals Drive Growth - TradingView — _TradingView_
+- `4h ago` Market Recap: AMD (AMD) and Microsoft Forge AI Alliance While Nvidia (NVDA) Rebounds - Blockonomi — _Blockonomi_
 
 ## Earnings
 
-- `28m ago` Micron, Lumentum, Sweetgreen, AMC, Domino’s, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
-- `1h ago` S&P 500, Nasdaq edge higher as chips recover; megacap earnings in focus - The Spokesman-Review — _The Spokesman-Review_
-- `2h ago` Circle Internet Group Inc Stock (CRCL) Moved Up by 8.44% on Jul 20: What Signal Does It Send? - TradingKey — _TradingKey_
-- `2h ago` 12 Industrials Stocks Moving In Monday's Intraday Session - Benzinga — _Benzinga_
-- `2h ago` Will Anthropic boost Alphabet’s earnings to the stratosphere? - MSN — _MSN_
-- `2h ago` Will Anthropic Boost Alphabet’s Earnings to the Stratosphere? - 24/7 Wall St. — _24/7 Wall St._
+- `1h ago` LandBridge Stock Sinks As Earnings Miss Rattles Investors - TipRanks — _TipRanks_
+- `1h ago` Are You Paying A Fair Price For What’s Inside VOO? - Trefis — _Trefis_
+- `1h ago` Stock Market Today, July 20: AMC Surges on Earnings Beat and Record Revenue - The Motley Fool — _The Motley Fool_
+- `1h ago` 12 Industrials Stocks Moving In Monday's After-Market Session - Benzinga — _Benzinga_
+- `1h ago` 12 Information Technology Stocks Moving In Monday's After-Market Session - Benzinga — _Benzinga_
+- `3h ago` Chipotle Stock Is Sliding: What's Going On Today? - Chipotle Mexican Grill (NYSE:CMG) - Benzinga — _Benzinga_
 

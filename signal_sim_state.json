@@ -1,22 +1,22 @@
 {
-  "cash": 156.3771760928505,
+  "cash": 156.65768806853674,
   "position": {
-    "ticker": "CVX",
+    "ticker": "OXY",
     "side": "long",
-    "shares": 0.20625880565164412,
-    "entry": 189.54,
-    "stop": 184.8,
-    "t1": 195.23,
-    "t2": 200.91,
+    "shares": 0.7096289548312048,
+    "entry": 55.19,
+    "stop": 53.81,
+    "t1": 56.85,
+    "t2": 58.5,
     "half_taken": false,
     "leverage": 10.0,
-    "peak_price": 189.54,
+    "peak_price": 55.19,
     "armed": false,
     "confidence": 0.63,
-    "entry_chg_3d_pct": 4.37,
-    "risk_usd": 9.77,
-    "cost_deployed": 39.09,
-    "opened_at": 1784575096
+    "entry_chg_3d_pct": 2.64,
+    "risk_usd": 9.79,
+    "cost_deployed": 39.16,
+    "opened_at": 1784577602
   },
   "trade_log": [
     {
@@ -48,6 +48,16 @@
       "leverage": 10.0,
       "pnl_usd": 1.7101,
       "closed_at": 1784575096
+    },
+    {
+      "ticker": "CVX",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 189.54,
+      "exit": 189.71,
+      "leverage": 10.0,
+      "pnl_usd": 0.3506,
+      "closed_at": 1784577781
     }
   ],
   "runs": [
@@ -117,6 +127,14 @@
       "actions": [
         "TRAIL-LOCK: CVX long exited @ $189.86 (10.0x), kept profit $+1.71",
         "ENTRY (LONG CVX, conf 0.63, 10.0x, risk $9.77, deployed $39.09): 0.206259 @ $189.54 - stop $184.80, T1 $195.23, T2 $200.91"
+      ]
+    },
+    {
+      "ran_at": "2026-07-20T22:41:27Z",
+      "equity": 195.8221,
+      "actions": [
+        "EXIT (signal invalidated): CVX long @ market $189.71 (10.0x) -> P&L $+0.35",
+        "ENTRY (LONG OXY, conf 0.63, 10.0x, risk $9.79, deployed $39.16): 0.709629 @ $55.19 - stop $53.81, T1 $56.85, T2 $58.50"
       ]
     }
   ],
