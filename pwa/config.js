@@ -20,8 +20,9 @@ window.APP_CONFIG = {
   },
 
   // —— 免费试用 ——
-  // 用户第一次看信号的那个「交易日」可以全程免费；此后必须订阅才能看。
-  trialTradingDays: 1,
+  // 用户「看到真实信号」的前 N 个交易日可以全程免费；此后必须订阅才能看。
+  // 只有「当天真的有信号」才消耗一天（周末/无信号日不算）。改这个数即可调整时长。
+  trialTradingDays: 3,
 
   // —— Stripe 支付链接（Payment Links，无需自建后端）——
   // 成功回跳地址(Redirect URL)在 Stripe 里设为：
