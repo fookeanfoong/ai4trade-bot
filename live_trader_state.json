@@ -8,7 +8,7 @@
     "t1": 193.18,
     "t2": 198.81,
     "half_taken": false,
-    "peak_price": 188.995,
+    "peak_price": 189.625,
     "armed": true,
     "confidence": 0.63,
     "entry_chg_3d_pct": 3.27,
@@ -29,6 +29,12 @@
     },
     {
       "ran_at": "2026-07-20T14:33:03Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": []
+    },
+    {
+      "ran_at": "2026-07-20T19:18:41Z",
       "broker": "alpaca",
       "dry_run": false,
       "actions": []

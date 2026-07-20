@@ -84,3 +84,12 @@
   the sim for 2-4 weeks before charging users or trading real money. If still shaky,
   pivot the product to "transparent research/learning tool", not "we make you money".
 
+## 2026-07-20
+- Trades: 2 (0W / 2L, WR 0%)
+- Exits: 1 STOP, 0 TRAIL, 0 TP, 0 NEWS
+- Avg win: $+0.00, avg loss: $-1.09, payoff 0.00x
+- Realized today: $-2.18 | cumulative: $-6.34
+- Consec losses now: 13
+- Lessons:
+  - net -2.18$, 0W/2L, WR 0% -> params held
+
