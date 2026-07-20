@@ -34,15 +34,34 @@ function ny() {
 }
 
 // —— 订阅 / 试用 ——
+// 免费试用 = 用户「看到真实信号」的前 N 个交易日(N = config.trialTradingDays)。
+// trialDays 记录已消耗的交易日(NY 日期);只在有信号的日子才计入。
 function isSubscribed() { return !!(state.sub && state.sub.plan); }
+function trialLimit() { return CFG.trialTradingDays || 1; }
+function trialDaysUsed() {
+  if (!state.trialDays && state.trialDate) state.trialDays = [state.trialDate]; // 兼容旧字段
+  return (state.trialDays || []).length;
+}
+function trialDaysLeft() { return Math.max(0, trialLimit() - trialDaysUsed()); }
 function accessAllowed() {
   if (isSubscribed()) return true;
   const today = ny().dateStr;
-  if (!state.trialDate) return true;
-  return state.trialDate === today;
+  const days = state.trialDays || (state.trialDate ? [state.trialDate] : []);
+  if (days.includes(today)) return true;      // 今天已算作试用日,仍在有效期内
+  return days.length < trialLimit();          // 还有剩余免费交易日 -> 今天可免费
 }
-function startTrialIfNeeded() {
-  if (!state.trialDate && !isSubscribed()) { state.trialDate = ny().dateStr; saveState(state); }
+// 只在「当天有信号」时调用:把今天记为一个已用的试用交易日(若还有名额)。
+function consumeTrialDayIfNeeded() {
+  if (isSubscribed()) return;
+  const today = ny().dateStr;
+  const days = state.trialDays || (state.trialDate ? [state.trialDate.slice(0)] : []);
+  if (!days.includes(today) && days.length < trialLimit()) {
+    days.push(today);
+    state.trialDays = days;
+    saveState(state);
+  } else if (!state.trialDays && state.trialDate) {
+    state.trialDays = days; saveState(state); // 迁移旧字段
+  }
 }
 
 // —— 支付回跳: ?paid=monthly|yearly ——
@@ -167,7 +186,7 @@ function renderLanding() {
       <section class="lhero">
         <div class="logo">📈</div>
         <h1>${T('land_h1')}</h1>
-        <p class="muted lsub">${T('land_sub')}</p>
+        <p class="muted lsub">${T('land_sub', { n: CFG.trialTradingDays })}</p>
         <button class="btn primary" onclick="startApp()">${T('land_start')} →</button>
       </section>
 
@@ -189,7 +208,7 @@ function renderLanding() {
           <div class="lp"><div class="amt">${fmt$(CFG.pricing.monthly)}</div><div class="muted small">${T('per_mo')}</div></div>
           <div class="lp best"><div class="amt">${fmt$(CFG.pricing.yearly)}</div><div class="muted small">${T('per_yr')} · ${fmt$(CFG.pricing.yearly / 12)}${T('per_mo')}</div></div>
         </div>
-        <p class="muted small center" style="margin-top:10px">🎁 ${T('land_price_free')}</p>
+        <p class="muted small center" style="margin-top:10px">🎁 ${T('land_price_free', { n: CFG.trialTradingDays })}</p>
       </section>
 
       <section class="lsec">
@@ -226,7 +245,7 @@ function renderOnboarding() {
         <input id="target" type="number" inputmode="decimal" min="0" placeholder="${T('ob_ph_target')}" value="${state.dailyTarget || ''}" />
         <span class="suf">${T('usd')}</span>
       </div>
-      <button class="btn primary" id="startBtn">${T('ob_start')}</button>
+      <button class="btn primary" id="startBtn">${T('ob_start', { n: CFG.trialTradingDays })}</button>
     </div>
     <div class="disclaimer"><b>${T('risk_b')}</b>: ${T('risk_body')}</div>`;
   $('#startBtn').onclick = () => {
@@ -332,7 +351,7 @@ async function renderToday() {
   const plan = computePlan(feed.signals);
   const hasSignals = plan.tradable.length > 0;
   // 只在「当天真的有信号」时才消耗免费试用日:没信号的日子(周末/无达标机会)不算
-  if (hasSignals) startTrialIfNeeded();
+  if (hasSignals) consumeTrialDayIfNeeded();
   const allowed = accessAllowed();
 
   let summary = '';
@@ -427,7 +446,7 @@ function renderAccount() {
   const plans = sub ? '' : `
     <div class="card">
       <h2>${T('plans_h')} ${saveTag}</h2>
-      <p class="small muted">${T('plans_sub')}</p>
+      <p class="small muted">${T('plans_sub', { n: CFG.trialTradingDays })}</p>
       <div class="plans">
         <div class="plan">
           <div class="row spread"><b>${T('p_monthly')}</b><div class="per">${T('p_monthly_sub')}</div></div>
