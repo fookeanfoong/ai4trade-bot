@@ -1,12 +1,15 @@
 name: ai4trade-bot
 
-# Cron in UTC. Times target EDT (UTC-4). Bots self-gate on NY wall-clock.
+# Cron in UTC. Bots self-gate on NY wall-clock, so extra runs outside RTH are no-ops.
+# GitHub's scheduled crons are unreliable (delayed/skipped under load), so we run
+# DENSE (every 5 min, the GitHub minimum) to raise the odds one fires near the open,
+# AND a claude-code-remote "market-open kick" routine dispatches this workflow at the
+# open as a reliable backstop if GitHub drops the whole window.
 on:
   schedule:
-    - cron: "37 12 * * 1-5"      # ~08:37 ET  premarket
-    - cron: "3,13,23,33,43,53 13-19 * * 1-5"  # every 10 min, market hours
-    - cron: "53 19 * * 1-5"      # ~15:53 ET  close
-    - cron: "7 20 * * 6"         # Sat weekly
+    - cron: "32,37,47,57 12 * * 1-5"   # premarket (multiple, ~08:3x ET)
+    - cron: "*/5 13-21 * * 1-5"        # every 5 min across the session (covers EDT+EST)
+    - cron: "7 20 * * 6"               # Sat weekly review
   workflow_dispatch:
     inputs:
       mode:
