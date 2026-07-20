@@ -10,6 +10,10 @@ on:
     - cron: "32,37,47,57 12 * * 1-5"   # premarket (multiple, ~08:3x ET)
     - cron: "*/5 13-21 * * 1-5"        # every 5 min across the session (covers EDT+EST)
     - cron: "7 20 * * 6"               # Sat weekly review
+  push:
+    paths:
+      - ".trigger"                      # reliable kick: a routine touches this file to fire a run
+                                        # (push events are prompt; bot state-commits never touch it, so no loop)
   workflow_dispatch:
     inputs:
       mode:
