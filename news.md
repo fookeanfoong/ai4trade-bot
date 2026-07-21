@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-21T10:02:32+00:00
+# Market News Digest — 2026-07-21T13:32:06+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `21m ago` **[Musk]** Elon Musk Warns SpaceX Short Sellers Following Post IPO Decline - sekbernews.id — _sekbernews.id_
-- `46m ago` **[Trump]** The S&P 500 stays rangebound as traders await Trump's decision on ceasefire or full-scale war - investingLive — _investingLive_
-- `1h ago` **[Trump]** When US troops die, Trump often reaches quickly for politics - CNN — _CNN_
-- `1h ago` **[Trump]** Is Trump picking a new trade war with Canada? - CNN — _CNN_
-- `1h ago` **[Fed]** Kevin Warsh Made His First Big Move as Fed Chair, and the Bond Market Has Taken Action -- but Most Investors Missed It - The Globe and Mail — _The Globe and Mail_
-- `1h ago` **[Market]** US Stock Market Today: S&P 500 Futures Edge Higher On Mixed Inflation And Rate Worries - simplywall.st — _simplywall.st_
-- `1h ago` **[Market]** US Stock Market Today: S&P 500 Futures Edge Higher As Inflation Pressure Eases - Yahoo Finance — _Yahoo Finance_
-- `1h ago` **[Oil]** South African rand strengthens as oil prices drop on US-Iran mediation hopes - Crypto Briefing — _Crypto Briefing_
-- `2h ago` **[Musk]** Elon Musk’s new experiment: Tesla launches a bike with no motor, no pedals - Business Today — _Business Today_
-- `2h ago` **[Musk]** Elon Musk's Alleged Epstein Email Goes Viral After Billboard Near Tesla Store Sparks Row - International Business Times UK — _International Business Times UK_
-- `2h ago` **[Musk]** Musk: SpaceX Engineering Data Will Train Grok's Next 2T Run - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
-- `3h ago` **[Trump]** 'Direct violation': Canada vows to protect workers after Trump slaps 50% tariffs on select goods - The Times of India — _The Times of India_
+- `17m ago` **[Musk]** Elon Musk Claims FSD Will Start Mimicking Your Driving Style Good Or Bad - AutoSpies — _AutoSpies_
+- `32m ago` **[Trump]** Trump Oversees Ethics Provisions As Clarity Act Nears Vote - Investor's Business Daily — _Investor's Business Daily_
+- `37m ago` **[Market]** US Stock Market Today: Dow Futures Rise 150 Points, Nasdaq Futures Jump Over 1% as Strong Corporate Earnings Boost Sentiment Despite US-Iran War, Higher Oil Prices - The Sunday Guardian — _The Sunday Guardian_
+- `47m ago` **[Musk]** Elon Musk Regains Trillionaire Status on SpaceX and Tesla Gains - MSN — _MSN_
+- `56m ago` **[Trump]** U.S. strikes continue, GM earnings, the latest on cyclosporiasis and more in Morning Squawk - CNBC — _CNBC_
+- `57m ago` **[Trump]** Two-tiered markets? Trump Media’s Truth API sparks fairness debate - The American Bazaar — _The American Bazaar_
+- `1h ago` **[Musk]** Why Tesla shareholders are begging Musk for answers - Rolling Out — _Rolling Out_
+- `1h ago` **[Fed]** Wall Street Deploys AI to Decode Fed Chair Warsh as Seoul and Washington Flash Hawkish Signals - finance.biggo.com — _finance.biggo.com_
+- `1h ago` **[Oil]** Oil Prices Top $90 as Kuwaiti Tanker Hit in Strait of Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `2h ago` **[Musk]** Man paid $15,000 to build a fully functional wooden Tesla Cybertruck and even Elon Musk responded to it - supercarblondie.com — _supercarblondie.com_
+- `2h ago` **[Fed]** New Trump book will have readers playing the parlour game: who blabbed? - The Conversation — _The Conversation_
+- `2h ago` **[Trump]** On sidelines of Iran war, Israel is readying plans in case of escalation - CNN — _CNN_
 
 ## Market
 
-- `1h ago` Global Market: London Stock Exchange to roll out overnight trading exchange LSE 24 in 2027 - The Economic Times — _The Economic Times_
-- `1h ago` Stock market today: Nasdaq leads Dow, S&P 500 futures higher as chip stocks revive - Yahoo Finance — _Yahoo Finance_
-- `1h ago` US Stock Market Today: S&P 500 Futures Edge Higher On Mixed Inflation And Rate Worries - simplywall.st — _simplywall.st_
-- `1h ago` US Stock Market Today: S&P 500 Futures Edge Higher As Inflation Pressure Eases - Yahoo Finance — _Yahoo Finance_
-- `2h ago` Stock Market Today: Live Updates 21.07.2026 - TechStock² — _TechStock²_
-- `2h ago` Current US Stock Market Margin Debt to GDP ratio 👀 https://t.co/jfEGBPSGxZ - KuCoin — _KuCoin_
+- `17m ago` US markets today: Dow, S&P 500, Nasdaq futures indicate gap-up open amid mixed global market cues - Upstox — _Upstox_
+- `37m ago` US Stock Market Today: Dow Futures Rise 150 Points, Nasdaq Futures Jump Over 1% as Strong Corporate Earnings Boost Sentiment Despite US-Iran War, Higher Oil Prices - The Sunday Guardian — _The Sunday Guardian_
+- `46m ago` Stock Futures Rise After Three Straight Sessions of Losses for Major Indexes - MSN — _MSN_
+- `47m ago` The AI Bubble Is No Ordinary Bubble - The Atlantic — _The Atlantic_
+- `1h ago` US stock market today: S&P 500, Nasdaq futures rise up to 1.4% as chip stocks rebound after last week's rout - livemint.com — _livemint.com_
+- `1h ago` 9am Markets Update - RTE.ie — _RTE.ie_
 
 ## Trump
 
-- `46m ago` The S&P 500 stays rangebound as traders await Trump's decision on ceasefire or full-scale war - investingLive — _investingLive_
-- `1h ago` When US troops die, Trump often reaches quickly for politics - CNN — _CNN_
-- `1h ago` Is Trump picking a new trade war with Canada? - CNN — _CNN_
-- `3h ago` 'Direct violation': Canada vows to protect workers after Trump slaps 50% tariffs on select goods - The Times of India — _The Times of India_
-- `4h ago` US hits Iran for tenth night, Trump hits Canada with 50% tariffs, SBI Funds lists at 7% premium - LinkedIn — _LinkedIn_
-- `5h ago` Trump’s Canada tariffs: 4 stocks facing the biggest cross-border shock - Invezz — _Invezz_
+- `32m ago` Trump Oversees Ethics Provisions As Clarity Act Nears Vote - Investor's Business Daily — _Investor's Business Daily_
+- `56m ago` U.S. strikes continue, GM earnings, the latest on cyclosporiasis and more in Morning Squawk - CNBC — _CNBC_
+- `57m ago` Two-tiered markets? Trump Media’s Truth API sparks fairness debate - The American Bazaar — _The American Bazaar_
+- `2h ago` On sidelines of Iran war, Israel is readying plans in case of escalation - CNN — _CNN_
+- `3h ago` Premarket: TSX futures point to a higher open despite Trump’s latest tariff threats - The Globe and Mail — _The Globe and Mail_
+- `4h ago` When US troops die, Trump often reaches quickly for politics - CNN — _CNN_
 
 ## Musk
 
-- `21m ago` Elon Musk Warns SpaceX Short Sellers Following Post IPO Decline - sekbernews.id — _sekbernews.id_
-- `1h ago` Tesla Earnings Are Coming. 2 Things That Will Drive the Stock. - Barron's — _Barron's_
-- `2h ago` Tesla's Cybercab to feature built-in Starlink antenna, bringing satellite internet to robotaxis - Firstpost — _Firstpost_
-- `2h ago` Elon Musk’s new experiment: Tesla launches a bike with no motor, no pedals - Business Today — _Business Today_
-- `2h ago` Tesla’s AI Chief just hinted at something big for FSD v14 lite owners - Teslarati — _Teslarati_
-- `2h ago` Elon Musk's Alleged Epstein Email Goes Viral After Billboard Near Tesla Store Sparks Row - International Business Times UK — _International Business Times UK_
+- `11m ago` Tesla self-driving mode wasn't to blame in Houston-area crash, report suggests - InnovationMap — _InnovationMap_
+- `11m ago` Tesla Faces Critical Test On Wall Street As AI Cash Burn Weighs On Investors - NDTV Profit — _NDTV Profit_
+- `17m ago` Elon Musk Claims FSD Will Start Mimicking Your Driving Style Good Or Bad - AutoSpies — _AutoSpies_
+- `47m ago` Elon Musk Regains Trillionaire Status on SpaceX and Tesla Gains - MSN — _MSN_
+- `1h ago` Tesla Prepares for First Cash Burn in Two Years Due to AI Investments - businesstimes-bd.com — _businesstimes-bd.com_
+- `1h ago` Why Tesla shareholders are begging Musk for answers - Rolling Out — _Rolling Out_
 
 ## Fed
 
-- `1h ago` Kevin Warsh Made His First Big Move as Fed Chair, and the Bond Market Has Taken Action -- but Most Investors Missed It - The Globe and Mail — _The Globe and Mail_
-- `12h ago` 8 Reasons Wall Street is Worried About the New Fed Chair Kevin Warsh - mibolsillo.co — _mibolsillo.co_
-- `13h ago` 24 hours until the Fed’s big announcement: Here’s what we know as of now - MSN — _MSN_
-- `14h ago` Could Warsh Break a 56-Year Fed Rate-Hike Streak? - Benzinga — _Benzinga_
-- `14h ago` Iran uses drones, decoys in Strait of Hormuz to challenge US operations - Crypto Briefing — _Crypto Briefing_
-- `14h ago` Trump wants Powell out. Powell is digging in. - MSN — _MSN_
+- `1h ago` Wall Street Deploys AI to Decode Fed Chair Warsh as Seoul and Washington Flash Hawkish Signals - finance.biggo.com — _finance.biggo.com_
+- `2h ago` New Trump book will have readers playing the parlour game: who blabbed? - The Conversation — _The Conversation_
+- `3h ago` In the first half of 2026, the monetary policy heads of Seoul and Washington were replaced at the sa.. - 매일경제 — _매일경제_
+- `4h ago` The Supreme Court Just Changed How Power Works in Washington | by Sagar S Nair | Geopolitics & Beyond | Jul, 2026 - Medium — _Medium_
+- `4h ago` Market Movers blog: US stocks rise as Iran pushes for negotiations - Investment Week — _Investment Week_
+- `4h ago` UK inflation: What is the rate and why are prices still rising? - BBC — _BBC_
 
 ## Oil
 
-- `1h ago` South African rand strengthens as oil prices drop on US-Iran mediation hopes - Crypto Briefing — _Crypto Briefing_
-- `2h ago` MCX Crude Oil Trading Guide: Lot Size, Margin, Live Price - Sahi — _Sahi_
-- `4h ago` Iran rejects US, Israeli influence amid escalating conflict - Crypto Briefing — _Crypto Briefing_
-- `4h ago` Markets pull back as Iran signals US talks - Petroleum Australia — _Petroleum Australia_
-- `4h ago` US strategic oil reserves hit 43-year low amid geopolitical tensions - Crypto Briefing — _Crypto Briefing_
-- `5h ago` OPEC+’s Upcoming August Meeting: Fuel Considerations due to Hormuz Volatility - Modern Diplomacy — _Modern Diplomacy_
+- `1h ago` Oil Prices Top $90 as Kuwaiti Tanker Hit in Strait of Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `2h ago` Steve Hanke’s Oil Price Spike and Strait of Hormuz Closure Warning 2026 - Discovery Alert — _Discovery Alert_
+- `2h ago` Is $126/bbl history for now? Why oil prices may not surge again despite US-Iran tensions - Zee Business — _Zee Business_
+- `3h ago` Oil Swings as Traders Weigh Slew of Risks From Hormuz to Red Sea - livemint.com — _livemint.com_
+- `3h ago` COMMENTARY: Trump Broke OPEC. He May Regret It: Bousso - EnergyNow — _EnergyNow_
+- `3h ago` The Iran war’s big oil mystery: No one seems to want it - CNN — _CNN_
 
 ## Chips
 
-- `44m ago` Zacks Investment Ideas feature highlights: AMD, Taiwan Semiconductor, NVIDIA, Meta Platforms and Microsoft - The Globe and Mail — _The Globe and Mail_
-- `4h ago` Why AMD Stock Might Keep Outpacing Nvidia From Here - AOL.com — _AOL.com_
-- `9h ago` AI Capital Migration! Tech Giants' Earnings Loom as Retail Investors Hunt for the Next Nvidia - finance.biggo.com — _finance.biggo.com_
-- `10h ago` Wall Street's Big AI Stock Lie Exposed! New Send Legislation Uk Schools (lkmgh9E74L) - Mshale — _Mshale_
-- `12h ago` S&P 500, Dow End Lower As Oil Prices Rise Amid US-Iran Crisis — PSKY, GOOGL, IREN, AMD, NVDA, AVGO In Focus - TradingView — _TradingView_
-- `12h ago` Intel, AMD, and Applied Materials Drop 4% as SK Hynix Rout and Oil Spike Hit Chip Stocks - AOL.com — _AOL.com_
+- `10m ago` Intel Jumps 6% on RBC's Q2 Beat Call, AMD Rises 4%, Broadcom Climbs 3% as Chip Rally Resumes - 24/7 Wall St. — _24/7 Wall St._
+- `56m ago` Forget Picking the Next AI Winner: TSM Lets You Profit From Every Wave of the Revolution - 24/7 Wall St. — _24/7 Wall St._
+- `2h ago` Chip Stocks Extend Rebound on Tuesday as Nvidia, AMD, SNDK, Micron, and Intel Rise. Here’s Why - TipRanks — _TipRanks_
+- `2h ago` Price Prediction: Nvidia, AMD & Broadcom-Our Bold Price Predictions for 2029 - AOL.com — _AOL.com_
+- `4h ago` Zacks Investment Ideas feature highlights: AMD, Taiwan Semiconductor, NVIDIA, Meta Platforms and Microsoft - The Globe and Mail — _The Globe and Mail_
+- `7h ago` Why AMD Stock Might Keep Outpacing Nvidia From Here - AOL.com — _AOL.com_
 
 ## Earnings
 
-- `17m ago` Why Is Nebius Group Stock Soaring Tuesday? - Nebius Group (NASDAQ:NBIS) - Benzinga — _Benzinga_
-- `1h ago` Biggest stock movers Tuesday: NBIS, ZION, and more - Seeking Alpha — _Seeking Alpha_
-- `1h ago` Stock Market: Will S&P 500 Open Up or Down Today? - Benzinga — _Benzinga_
-- `2h ago` symbol__ Stock Quote Price and Forecast - CNN — _CNN_
-- `11h ago` US stocks edge down with Iran and earnings season in focus - marketscreener.com — _marketscreener.com_
-- `11h ago` Biggest stock movers Friday: NFLX, SPCX, TRV, and more - MSN — _MSN_
+- `1m ago` Morning Movers: Equifax sinks following second quarter earnings - TipRanks — _TipRanks_
+- `17m ago` ServiceNow Stock in the Spotlight: A Look at the Earnings, Analyst Activity, Technical Picture - Benzinga — _Benzinga_
+- `44m ago` Northrop Reports Q2 Double Beat, Record Backlog — Stock Falls Anyway - Benzinga — _Benzinga_
+- `57m ago` Get insights into the top movers in the S&P500 index of Tuesday's pre-market session. - ChartMill — _ChartMill_
+- `1h ago` Today's Pre-Market Movers and Top Ratings | SKHY, MU, INTC and More - Moomoo — _Moomoo_
+- `1h ago` 12 Industrials Stocks Moving In Tuesday's Pre-Market Session - Benzinga — _Benzinga_
 

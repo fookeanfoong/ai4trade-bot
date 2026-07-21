@@ -1,23 +1,33 @@
 {
   "position": {
-    "ticker": "CVX",
+    "ticker": "OXY",
     "side": "long",
-    "qty": 2.132708,
-    "entry": 187.555,
-    "stop": 182.87,
-    "t1": 193.18,
-    "t2": 198.81,
+    "qty": 7.169744,
+    "entry": 55.79,
+    "stop": 54.4,
+    "t1": 57.46,
+    "t2": 59.14,
     "half_taken": false,
-    "peak_price": 189.625,
-    "armed": true,
+    "peak_price": 55.79,
+    "armed": false,
     "confidence": 0.63,
-    "entry_chg_3d_pct": 3.27,
+    "entry_chg_3d_pct": 4.05,
     "notional_usd": 400.0,
     "book_risk_usd": 10.0,
-    "opened_at": "2026-07-20T13:46:44Z",
+    "opened_at": "2026-07-21T13:32:10Z",
     "price_src": "broker"
   },
-  "trade_log": [],
+  "trade_log": [
+    {
+      "ticker": "CVX",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 187.555,
+      "exit": 190.54,
+      "qty": 2.132708,
+      "closed_at": "2026-07-21T13:32:09Z"
+    }
+  ],
   "runs": [
     {
       "ran_at": "2026-07-20T13:46:45Z",
@@ -53,6 +63,15 @@
       "dry_run": false,
       "actions": [
         "market closed \u2014 no orders this run"
+      ]
+    },
+    {
+      "ran_at": "2026-07-21T13:32:10Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "CLOSE CVX long (SIGNAL_INVALIDATED_EXIT) @ ~$190.54 [broker]",
+        "ENTRY LONG OXY conf 0.63 7.16974 sh @ $55.79 [broker] notional $400 risk $10.00 | stop $54.4 T1 $57.46 T2 $59.14"
       ]
     }
   ],
