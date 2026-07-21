@@ -1,4 +1,0 @@
-# Install ONLY on the host that runs OpenD (your PC or a small always-on VPS).
-# The GitHub Actions pipeline does NOT use this — OpenD can't run on ephemeral
-# CI runners, so the paper/live trader lives on a persistent host. See SETUP_MOOMOO.md.
-moomoo-api>=9.0

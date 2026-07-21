@@ -80,14 +80,9 @@ ALLOW_FRACTIONAL = (_frac.lower() in ("yes", "true")) if _frac is not None else 
 # ----------------------------- broker factory ------------------------------
 def get_broker():
     """Return (broker_or_None, available, describe_fn, BrokerError). Never imports
-    a broker SDK unless that broker is selected."""
-    if BROKER_NAME == "alpaca":
-        from broker_alpaca import AlpacaBroker, BrokerError, describe_config, ALPACA_AVAILABLE
-        return (AlpacaBroker() if ALPACA_AVAILABLE else None, ALPACA_AVAILABLE, describe_config, BrokerError)
-    if BROKER_NAME == "moomoo":
-        from broker_moomoo import MoomooBroker, BrokerError, describe_config, MOOMOO_AVAILABLE
-        return (MoomooBroker() if MOOMOO_AVAILABLE else None, MOOMOO_AVAILABLE, describe_config, BrokerError)
-    raise SystemExit(f"Unknown BROKER={BROKER_NAME!r}; use 'alpaca' or 'moomoo'.")
+    a broker SDK at import time."""
+    from broker_alpaca import AlpacaBroker, BrokerError, describe_config, ALPACA_AVAILABLE
+    return (AlpacaBroker() if ALPACA_AVAILABLE else None, ALPACA_AVAILABLE, describe_config, BrokerError)
 
 
 # ----------------------------- state ---------------------------------------

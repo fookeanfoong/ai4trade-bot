@@ -70,25 +70,6 @@ jobs:
         continue-on-error: true
         run: python pwa/build_feed.py
 
-      - name: Run ai4trade momentum bot
-        env:
-          AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
-          BUDGET_USD: "100"
-          MODE: ${{ inputs.mode || 'auto' }}
-        run: python bot.py
-
-      - name: Run SPY $200 TA simulator
-        continue-on-error: true
-        run: python spy_sim.py
-
-      - name: Run AMD $200 TA simulator
-        continue-on-error: true
-        run: python amd_sim.py
-
-      - name: Run structured signal sim
-        continue-on-error: true
-        run: python signal_sim.py
-
       - name: Alpaca paper trade (real execution, cloud, only if key is set)
         if: ${{ env.ALPACA_API_KEY_ID != '' }}
         continue-on-error: true
