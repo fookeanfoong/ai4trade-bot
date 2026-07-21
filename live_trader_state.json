@@ -1,22 +1,4 @@
 {
-  "position": {
-    "ticker": "OXY",
-    "side": "long",
-    "qty": 7.169744,
-    "entry": 55.79,
-    "stop": 54.4,
-    "t1": 57.46,
-    "t2": 59.14,
-    "half_taken": false,
-    "peak_price": 55.79,
-    "armed": false,
-    "confidence": 0.63,
-    "entry_chg_3d_pct": 4.05,
-    "notional_usd": 400.0,
-    "book_risk_usd": 10.0,
-    "opened_at": "2026-07-21T13:32:10Z",
-    "price_src": "broker"
-  },
   "trade_log": [
     {
       "ticker": "CVX",
@@ -73,7 +55,36 @@
         "CLOSE CVX long (SIGNAL_INVALIDATED_EXIT) @ ~$190.54 [broker]",
         "ENTRY LONG OXY conf 0.63 7.16974 sh @ $55.79 [broker] notional $400 risk $10.00 | stop $54.4 T1 $57.46 T2 $59.14"
       ]
+    },
+    {
+      "ran_at": "2026-07-21T13:46:52Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "total exposure ~$400 at 2.0x cap \u2014 no new entries"
+      ]
     }
   ],
-  "last_key": null
+  "last_key": null,
+  "positions": {
+    "OXY": {
+      "ticker": "OXY",
+      "side": "long",
+      "qty": 7.169744,
+      "entry": 55.79,
+      "stop": 54.4,
+      "t1": 57.46,
+      "t2": 59.14,
+      "half_taken": false,
+      "peak_price": 55.99,
+      "armed": false,
+      "confidence": 0.63,
+      "entry_chg_3d_pct": 4.05,
+      "notional_usd": 400.0,
+      "book_risk_usd": 10.0,
+      "opened_at": "2026-07-21T13:32:10Z",
+      "price_src": "broker"
+    }
+  },
+  "benched": {}
 }
