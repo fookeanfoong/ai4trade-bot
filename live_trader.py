@@ -6,14 +6,17 @@ Runs against a real broker account (Alpaca, paper by default): auth, order
 placement, fills, position/account queries. When the paper account is
 consistently profitable, flipping to real money is one env var.
 
-MULTI-POSITION: holds up to MAX_POSITIONS names at once (default 3, matching
-generate_signals' top-N). The $200 book is split into equal slices, so:
-    per-position book = BOOK_EQUITY / MAX_POSITIONS
-    a stop-out on one name risks RISK_PCT of ITS slice (~1.7% of the book)
-    each name's notional <= slice * LEVERAGE_CAP
-    total notional across all names <= BOOK_EQUITY * LEVERAGE_CAP  (still ~2x)
+MULTI-POSITION, CONVICTION-BASED COUNT: how many names we hold is driven by how
+many signals the premarket routine keeps (its judgement), not a fixed number.
+    - up to BASE_SLICES (3) names: each gets a fixed 1/BASE_SLICES slice, so
+      picking 1 deploys ~1/3 of the book, 3 deploys the full 2x.
+    - more than BASE_SLICES (e.g. 10): the book splits evenly across ALL chosen
+      names, so total notional still stays within BOOK*LEVERAGE_CAP (~2x).
+    - a stop-out on one name risks RISK_PCT of ITS slice; total risk ~5%.
+So the count can be 1..MAX_POSITIONS by conviction, and buying more names never
+raises total leverage — it just makes each slice smaller.
 A total-exposure guard refuses new entries once total notional hits the 2x cap
-(this also protects against a legacy oversized position after a schema change).
+(also protects against a legacy oversized position after a schema change).
 A name that exits is benched for the rest of the day (no falling-knife re-entry).
 
 Each position is managed independently: signal-invalidation exit, trailing
@@ -49,8 +52,13 @@ BROKER_NAME = os.environ.get("BROKER", "alpaca").lower()
 BOOK_EQUITY = float(os.environ.get("BOOK_EQUITY", "200"))
 RISK_PER_TRADE_PCT = float(os.environ.get("RISK_PCT", "0.05"))
 LEVERAGE_CAP = float(os.environ.get("LEVERAGE_CAP", "2.0"))   # real US margin ~2x
-MAX_POSITIONS = max(1, int(os.environ.get("MAX_POSITIONS", "3")))   # hold up to N names
-PER_POSITION_BOOK = BOOK_EQUITY / MAX_POSITIONS
+# The NUMBER of names is driven by conviction (how many signals the premarket
+# routine keeps), NOT a fixed number. BASE_SLICES is the floor divisor: up to
+# BASE_SLICES names each get a fixed 1/BASE_SLICES slice (so picking 1 deploys
+# ~1/3, not the whole book). Beyond that, the book splits across ALL chosen names
+# so total notional stays within BOOK*LEVERAGE_CAP no matter the count (even 10+).
+BASE_SLICES = max(1, int(os.environ.get("BASE_SLICES", "3")))
+MAX_POSITIONS = max(1, int(os.environ.get("MAX_POSITIONS", "20")))   # hard safety ceiling
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
 TRAIL_ARM_PCT = 0.004
@@ -197,14 +205,21 @@ def get_price(broker, symbol: str, qmap: dict):
 
 
 # ------------------------------- sizing ------------------------------------
-def size_shares(entry: float, stop_pct: float) -> float:
+def slice_book(n_names: int) -> float:
+    """Book allocated to each position. Up to BASE_SLICES names each get a fixed
+    1/BASE_SLICES slice; beyond that, split the book across all chosen names so
+    total exposure stays within BOOK*LEVERAGE_CAP regardless of count."""
+    return BOOK_EQUITY / max(int(n_names), BASE_SLICES)
+
+
+def size_shares(entry: float, stop_pct: float, per_position_book: float) -> float:
     """Shares so a stop-out risks RISK_PCT of ONE book slice, capped by that
     slice's share of margin. N slices => total stays within BOOK * LEVERAGE_CAP."""
-    risk_amount = PER_POSITION_BOOK * RISK_PER_TRADE_PCT
+    risk_amount = per_position_book * RISK_PER_TRADE_PCT
     if stop_pct <= 0 or entry <= 0:
         return 0.0
     shares = risk_amount / (entry * stop_pct)
-    max_notional = PER_POSITION_BOOK * LEVERAGE_CAP
+    max_notional = per_position_book * LEVERAGE_CAP
     if shares * entry > max_notional:
         shares = max_notional / entry
     if not ALLOW_FRACTIONAL:
@@ -330,13 +345,15 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
 
 
 # ------------------------------ entry (one signal) -------------------------
-def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> list:
+def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_position_book=None) -> list:
     lines = []
     sym = sig["sector_or_ticker"]
     side = "long" if sig["direction"] == "bullish" else "short"
     now = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
     if regime_max is None:
         regime_max = REGIME_MAX_DROP_PCT
+    if per_position_book is None:
+        per_position_book = slice_book(BASE_SLICES)
 
     if side == "short" and not ENABLE_SHORT:
         return [f"signal {sym} is SHORT but shorting disabled (set ENABLE_SHORT=yes); skip"]
@@ -368,12 +385,12 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> li
     t2_pct = float(sig.get("t2_pct", 0.06))
     s = 1 if side == "long" else -1
 
-    shares = size_shares(last, stop_pct)
+    shares = size_shares(last, stop_pct, per_position_book)
     if shares <= 0:
         return [
             f"{sym}: risk-based size < 1 share at ${last:.2f} "
-            f"(slice ${PER_POSITION_BOOK:.0f}, cap {LEVERAGE_CAP}x, fractional={ALLOW_FRACTIONAL}). "
-            f"Raise BOOK_EQUITY / lower MAX_POSITIONS, or set ALLOW_FRACTIONAL=yes."
+            f"(slice ${per_position_book:.0f}, cap {LEVERAGE_CAP}x, fractional={ALLOW_FRACTIONAL}). "
+            f"Raise BOOK_EQUITY / keep fewer names, or set ALLOW_FRACTIONAL=yes."
         ]
 
     entry = last
@@ -381,7 +398,7 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> li
     t1 = round(entry * (1 + t1_pct * s), 2)
     t2 = round(entry * (1 + t2_pct * s), 2)
     notional = shares * entry
-    slice_risk = PER_POSITION_BOOK * RISK_PER_TRADE_PCT
+    slice_risk = per_position_book * RISK_PER_TRADE_PCT
 
     fn = (lambda: broker.buy(sym, shares, entry)) if side == "long" \
         else (lambda: broker.sell(sym, shares, entry))
@@ -429,16 +446,16 @@ def write_report(state, actions, acct, describe) -> None:
         f"# Live Trader ({BROKER_NAME}) — {today}",
         "",
         f"- Config: {describe()}",
-        f"- Book: ${BOOK_EQUITY:.0f} logical | up to {MAX_POSITIONS} names "
-        f"(slice ${PER_POSITION_BOOK:.0f}) | risk {int(RISK_PER_TRADE_PCT*100)}%/slice | "
-        f"cap {LEVERAGE_CAP}x | fractional {ALLOW_FRACTIONAL}",
+        f"- Book: ${BOOK_EQUITY:.0f} logical | conviction-based count "
+        f"(1-{BASE_SLICES} names each get 1/{BASE_SLICES}, more split evenly; ceiling {MAX_POSITIONS}) | "
+        f"risk {int(RISK_PER_TRADE_PCT*100)}%/slice | cap {LEVERAGE_CAP}x | fractional {ALLOW_FRACTIONAL}",
     ]
     if acct:
         lines.append(
             f"- Broker account: cash ${acct.get('cash')}, equity ${acct.get('equity')}, "
             f"mkt_val ${acct.get('market_val')}, status {acct.get('status')}"
         )
-    lines.append(f"- Open positions ({len(positions)}/{MAX_POSITIONS}), total notional ${total_notional(state):.0f}:")
+    lines.append(f"- Open positions ({len(positions)}), total notional ${total_notional(state):.0f} / cap ${BOOK_EQUITY*LEVERAGE_CAP:.0f}:")
     if positions:
         for tkr, p in positions.items():
             lines.append(
@@ -541,6 +558,10 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
             if not picks:
                 actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
             else:
+                # Book splits across however many names were kept (conviction-based
+                # count). Up to BASE_SLICES => fixed 1/BASE_SLICES each; more => the
+                # book divides among all of them so total stays within the 2x cap.
+                pbook = slice_book(len(picks))
                 exposure_cap = BOOK_EQUITY * LEVERAGE_CAP
                 for sig in picks:
                     tkr = sig["sector_or_ticker"]
@@ -554,7 +575,7 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
                     if state.get("benched", {}).get(tkr) == ny_today_str():
                         actions.append(f"{tkr}: benched today (already exited once) — no re-entry until tomorrow")
                         continue
-                    actions += open_from_signal(broker, state, sig, qmap, dry, regime_max)
+                    actions += open_from_signal(broker, state, sig, qmap, dry, regime_max, pbook)
     finally:
         if connected:
             broker.disconnect()
