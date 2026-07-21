@@ -2,35 +2,25 @@
 """
 Broker-agnostic signal trader — the real-execution twin of signal_sim.py.
 
-signal_sim.py proves the STRATEGY on a synthetic internal book. This proves the
-PLUMBING against a real broker account (paper by default): auth, order
+Runs against a real broker account (Alpaca, paper by default): auth, order
 placement, fills, position/account queries. When the paper account is
 consistently profitable, flipping to real money is one env var.
 
-Broker is chosen by the BROKER env var:
-  BROKER=alpaca  (default) -> broker_alpaca.py  (pure cloud, runs on GitHub Actions)
-  BROKER=moomoo            -> broker_moomoo.py  (needs a local OpenD gateway host)
+MULTI-POSITION: holds up to MAX_POSITIONS names at once (default 3, matching
+generate_signals' top-N). The $200 book is split into equal slices, so:
+    per-position book = BOOK_EQUITY / MAX_POSITIONS
+    a stop-out on one name risks RISK_PCT of ITS slice (~1.7% of the book)
+    each name's notional <= slice * LEVERAGE_CAP
+    total notional across all names <= BOOK_EQUITY * LEVERAGE_CAP  (still ~2x)
+A total-exposure guard refuses new entries once total notional hits the 2x cap
+(this also protects against a legacy oversized position after a schema change).
+A name that exits is benched for the rest of the day (no falling-knife re-entry).
 
-Both adapters expose the same surface: connect/disconnect, account, positions,
-price, buy, sell, close, is_market_open. This file never imports a broker SDK
-directly, so it runs anywhere for --dry-run.
+Each position is managed independently: signal-invalidation exit, trailing
+profit-lock, hard stop, T1 (half + stop->BE), T2.
 
-Sizing = signal_sim's Market Wizards rule, but with REAL leverage (not the
-synthetic 10x): a stop-out risks at most RISK_PCT of BOOK_EQUITY.
-    risk_amount = BOOK_EQUITY * RISK_PCT
-    shares      = risk_amount / (entry * stop_pct)                 # stop = risk_amount loss
-    notional    = min(shares*entry, BOOK_EQUITY * LEVERAGE_CAP)    # margin cap
-We size off BOOK_EQUITY ($200), NOT the paper account's virtual balance, so the
-paper run mirrors the real plan we intend to trade.
-
-Modes:
-  python live_trader.py --check           connect, print account+positions, trade nothing
-  python live_trader.py --test-order SPY  place a small paper order to prove the order path
-  python live_trader.py --dry-run         run full logic, print intended orders, send none
-  python live_trader.py                    run one signal-driven cycle (paper by default)
-
-State: live_trader_state.json (committed so GitHub Actions runs persist the exit
-plan across runs). Reports: reports/live_trader/YYYY-MM-DD.md
+State: live_trader_state.json (committed so GitHub Actions runs persist across
+runs). Reports: reports/live_trader/YYYY-MM-DD.md
 """
 
 from __future__ import annotations
@@ -59,6 +49,8 @@ BROKER_NAME = os.environ.get("BROKER", "alpaca").lower()
 BOOK_EQUITY = float(os.environ.get("BOOK_EQUITY", "200"))
 RISK_PER_TRADE_PCT = float(os.environ.get("RISK_PCT", "0.05"))
 LEVERAGE_CAP = float(os.environ.get("LEVERAGE_CAP", "2.0"))   # real US margin ~2x
+MAX_POSITIONS = max(1, int(os.environ.get("MAX_POSITIONS", "3")))   # hold up to N names
+PER_POSITION_BOOK = BOOK_EQUITY / MAX_POSITIONS
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
 TRAIL_ARM_PCT = 0.004
@@ -71,16 +63,14 @@ ENABLE_SHORT = os.environ.get("ENABLE_SHORT", "false").lower() in ("yes", "true"
 # override with a top-level "regime_max_drop_pct".
 REGIME_MAX_DROP_PCT = float(os.environ.get("REGIME_MAX_DROP_PCT", "2.0"))
 
-# Fractional shares: default on for Alpaca (supports ~$1 slices), off for Moomoo
-# (whole shares). Override with ALLOW_FRACTIONAL=yes/no.
+# Fractional shares: default on for Alpaca (supports ~$1 slices), off otherwise.
 _frac = os.environ.get("ALLOW_FRACTIONAL")
 ALLOW_FRACTIONAL = (_frac.lower() in ("yes", "true")) if _frac is not None else (BROKER_NAME == "alpaca")
 
 
 # ----------------------------- broker factory ------------------------------
 def get_broker():
-    """Return (broker_or_None, available, describe_fn, BrokerError). Never imports
-    a broker SDK at import time."""
+    """Return (broker_or_None, available, describe_fn, BrokerError)."""
     from broker_alpaca import AlpacaBroker, BrokerError, describe_config, ALPACA_AVAILABLE
     return (AlpacaBroker() if ALPACA_AVAILABLE else None, ALPACA_AVAILABLE, describe_config, BrokerError)
 
@@ -88,8 +78,23 @@ def get_broker():
 # ----------------------------- state ---------------------------------------
 def load_state() -> dict:
     if STATE_FILE.exists():
-        return json.loads(STATE_FILE.read_text())
-    return {"position": None, "trade_log": [], "runs": [], "last_key": None}
+        st = json.loads(STATE_FILE.read_text())
+        # Migrate the old single-"position" schema -> multi "positions" dict.
+        if "positions" not in st:
+            positions = {}
+            p = st.get("position")
+            if p and p.get("ticker"):
+                positions[p["ticker"]] = p
+            st["positions"] = positions
+        st.pop("position", None)
+        st.setdefault("trade_log", [])
+        st.setdefault("runs", [])
+        # Names exited today are benched (no falling-knife / churn re-entry).
+        # Keep only today's benches; prior days are eligible again.
+        today = ny_today_str()
+        st["benched"] = {k: v for k, v in st.get("benched", {}).items() if v == today}
+        return st
+    return {"positions": {}, "trade_log": [], "runs": [], "benched": {}, "last_key": None}
 
 
 def save_state(state: dict) -> None:
@@ -105,7 +110,6 @@ def is_weekday_ny() -> bool:
 
 
 # ------------------------- signals + quotes --------------------------------
-# (Mirror of signal_sim.py's semantics so paper and sim agree on what to trade.)
 def load_signals_doc() -> dict:
     try:
         return json.loads(SIGNALS_FILE.read_text())
@@ -148,12 +152,11 @@ def actionable(s: dict) -> bool:
     )
 
 
-def pick_signal(signals: list):
+def actionable_signals(signals: list) -> list:
+    """All tradable signals, best confidence first."""
     picks = [s for s in signals if actionable(s)]
-    if not picks:
-        return None
     picks.sort(key=lambda s: float(s.get("confidence", 0)), reverse=True)
-    return picks[0]
+    return picks
 
 
 def signal_still_valid(ticker: str, side: str, signals: list) -> bool:
@@ -195,17 +198,22 @@ def get_price(broker, symbol: str, qmap: dict):
 
 # ------------------------------- sizing ------------------------------------
 def size_shares(entry: float, stop_pct: float) -> float:
-    """Shares so a stop-out risks RISK_PCT of the book, capped by margin."""
-    risk_amount = BOOK_EQUITY * RISK_PER_TRADE_PCT
+    """Shares so a stop-out risks RISK_PCT of ONE book slice, capped by that
+    slice's share of margin. N slices => total stays within BOOK * LEVERAGE_CAP."""
+    risk_amount = PER_POSITION_BOOK * RISK_PER_TRADE_PCT
     if stop_pct <= 0 or entry <= 0:
         return 0.0
     shares = risk_amount / (entry * stop_pct)
-    max_notional = BOOK_EQUITY * LEVERAGE_CAP
+    max_notional = PER_POSITION_BOOK * LEVERAGE_CAP
     if shares * entry > max_notional:
         shares = max_notional / entry
     if not ALLOW_FRACTIONAL:
         shares = float(math.floor(shares))
     return round(shares, 6)
+
+
+def total_notional(state: dict) -> float:
+    return sum(float(p.get("notional_usd", 0) or 0) for p in state.get("positions", {}).values())
 
 
 # ------------------------------ order helper -------------------------------
@@ -233,12 +241,12 @@ def _log_trade(state, p, action, exit_price, qty, when):
     })
 
 
-# ------------------------------ exits --------------------------------------
-def manage_open(broker, state, signals, qmap, dry: bool) -> list:
-    """Apply invalidation / trailing / stop / T1 / T2 to the tracked position."""
+# ------------------------------ exits (one position) -----------------------
+def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> list:
+    """Apply invalidation / trailing / stop / T1 / T2 to ONE tracked position."""
     lines = []
-    p = state["position"]
-    sym = p["ticker"]
+    p = state["positions"][ticker]
+    sym = ticker
     side = 1 if p["side"] == "long" else -1
     now = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
 
@@ -254,7 +262,10 @@ def manage_open(broker, state, signals, qmap, dry: bool) -> list:
                    lambda: broker.close(sym))
         if ok:
             _log_trade(state, p, action, ref_price, p["qty"], now)
-            state["position"] = None
+            state["positions"].pop(sym, None)
+            # Bench this name for the rest of the day: no same-day re-entry
+            # (the falling-knife lesson). Eligible again tomorrow.
+            state.setdefault("benched", {})[sym] = ny_today_str()
         return ok
 
     # 1. Signal invalidation -> exit at market.
@@ -302,21 +313,23 @@ def manage_open(broker, state, signals, qmap, dry: bool) -> list:
                 else (lambda: broker.buy(sym, half, p["t1"]))
             if _send(broker, dry, lines, f"T1 {reduce_side} half {sym} @ ${p['t1']:.2f}, stop->BE", fn):
                 p["qty"] = round(p["qty"] - half, 6)
+                p["notional_usd"] = round(p["qty"] * p["entry"], 2)
                 p["half_taken"] = True
                 p["stop"] = p["entry"]
                 p["armed"] = True
                 _log_trade(state, p, "T1_HALF", p["t1"], half, now)
         else:
-            lines.append("T1 reached but half-lot < 1 share; holding full until T2/stop")
+            lines.append(f"{sym}: T1 reached but half-lot < 1 share; holding full until T2/stop")
 
     # 5. T2 — close remainder.
     t2_hit = (last >= p["t2"]) if side == 1 else (last <= p["t2"])
-    if state["position"] and p["qty"] > 1e-9 and t2_hit:
+    if sym in state["positions"] and p["qty"] > 1e-9 and t2_hit:
         close_all("T2_EXIT", p["t2"])
 
     return lines
 
 
+# ------------------------------ entry (one signal) -------------------------
 def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> list:
     lines = []
     sym = sig["sector_or_ticker"]
@@ -359,8 +372,8 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> li
     if shares <= 0:
         return [
             f"{sym}: risk-based size < 1 share at ${last:.2f} "
-            f"(book ${BOOK_EQUITY:.0f}, cap {LEVERAGE_CAP}x, fractional={ALLOW_FRACTIONAL}). "
-            f"Raise BOOK_EQUITY, set ALLOW_FRACTIONAL=yes, or pick a cheaper ticker."
+            f"(slice ${PER_POSITION_BOOK:.0f}, cap {LEVERAGE_CAP}x, fractional={ALLOW_FRACTIONAL}). "
+            f"Raise BOOK_EQUITY / lower MAX_POSITIONS, or set ALLOW_FRACTIONAL=yes."
         ]
 
     entry = last
@@ -368,22 +381,22 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> li
     t1 = round(entry * (1 + t1_pct * s), 2)
     t2 = round(entry * (1 + t2_pct * s), 2)
     notional = shares * entry
+    slice_risk = PER_POSITION_BOOK * RISK_PER_TRADE_PCT
 
     fn = (lambda: broker.buy(sym, shares, entry)) if side == "long" \
         else (lambda: broker.sell(sym, shares, entry))
     desc = (f"ENTRY {side.upper()} {sym} conf {sig.get('confidence')} {shares:g} sh @ ${entry:.2f} "
-            f"[{src}] notional ${notional:.0f} risk ${BOOK_EQUITY*RISK_PER_TRADE_PCT:.2f} "
-            f"| stop ${stop} T1 ${t1} T2 ${t2}")
+            f"[{src}] notional ${notional:.0f} risk ${slice_risk:.2f} | stop ${stop} T1 ${t1} T2 ${t2}")
     if not _send(broker, dry, lines, desc, fn):
         return lines
 
-    state["position"] = {
+    state["positions"][sym] = {
         "ticker": sym, "side": side, "qty": shares, "entry": entry,
         "stop": stop, "t1": t1, "t2": t2, "half_taken": False,
         "peak_price": entry, "armed": False,
         "confidence": sig.get("confidence"), "entry_chg_3d_pct": chg_3d,
         "notional_usd": round(notional, 2),
-        "book_risk_usd": round(BOOK_EQUITY * RISK_PER_TRADE_PCT, 2),
+        "book_risk_usd": round(slice_risk, 2),
         "opened_at": now, "price_src": src,
     }
     return lines
@@ -391,32 +404,33 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None) -> li
 
 # ------------------------- reconciliation ----------------------------------
 def reconcile(broker, state, BrokerError) -> list:
-    """If the broker no longer holds our tracked symbol, the position closed
-    outside our control (fill, manual close) — drop our stale plan."""
-    p = state.get("position")
-    if not p or broker is None:
+    """Drop any tracked name the broker no longer holds (filled/closed elsewhere)."""
+    if not state.get("positions") or broker is None:
         return []
     try:
         held = {pos["symbol"]: pos["qty"] for pos in broker.positions()}
     except Exception as e:
         return [f"positions() failed, trusting local state: {e}"]
-    if abs(held.get(p["ticker"], 0.0)) < 1e-6:
-        state["position"] = None
-        return [f"reconcile: broker shows no {p['ticker']} — clearing stale local plan"]
-    return []
+    lines = []
+    for tkr in list(state["positions"].keys()):
+        if abs(held.get(tkr, 0.0)) < 1e-6:
+            state["positions"].pop(tkr, None)
+            lines.append(f"reconcile: broker shows no {tkr} — clearing stale local plan")
+    return lines
 
 
 # ------------------------------ report -------------------------------------
-def write_report(state, actions, acct, describe, mark_sym, mark) -> None:
+def write_report(state, actions, acct, describe) -> None:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     today = dt.datetime.utcnow().strftime("%Y-%m-%d")
-    pos = state.get("position")
+    positions = state.get("positions", {})
     closed = len(state["trade_log"])
     lines = [
         f"# Live Trader ({BROKER_NAME}) — {today}",
         "",
         f"- Config: {describe()}",
-        f"- Book: ${BOOK_EQUITY:.0f} logical | risk {int(RISK_PER_TRADE_PCT*100)}%/trade | "
+        f"- Book: ${BOOK_EQUITY:.0f} logical | up to {MAX_POSITIONS} names "
+        f"(slice ${PER_POSITION_BOOK:.0f}) | risk {int(RISK_PER_TRADE_PCT*100)}%/slice | "
         f"cap {LEVERAGE_CAP}x | fractional {ALLOW_FRACTIONAL}",
     ]
     if acct:
@@ -424,14 +438,17 @@ def write_report(state, actions, acct, describe, mark_sym, mark) -> None:
             f"- Broker account: cash ${acct.get('cash')}, equity ${acct.get('equity')}, "
             f"mkt_val ${acct.get('market_val')}, status {acct.get('status')}"
         )
-    lines += [
-        f"- Position: {json.dumps(pos) if pos else 'FLAT'}",
-        f"- Mark ({mark_sym}): ${mark:.2f}" if mark else "- Mark: n/a",
-        f"- Closed trades logged: {closed}",
-        "",
-        "## Actions this run",
-        "",
-    ]
+    lines.append(f"- Open positions ({len(positions)}/{MAX_POSITIONS}), total notional ${total_notional(state):.0f}:")
+    if positions:
+        for tkr, p in positions.items():
+            lines.append(
+                f"  - {tkr} {p['side']} {round(p['qty'],4)} sh @ ${p['entry']} "
+                f"| stop ${p['stop']} T1 ${p['t1']} T2 ${p['t2']} "
+                f"{'(half taken)' if p.get('half_taken') else ''}"
+            )
+    else:
+        lines.append("  - FLAT")
+    lines += [f"- Closed trades logged: {closed}", "", "## Actions this run", ""]
     lines += [f"- {a}" for a in actions] if actions else ["- (no actionable signal / waiting)"]
     (REPORTS_DIR / f"{today}.md").write_text("\n".join(lines) + "\n")
 
@@ -443,8 +460,7 @@ def run_check(broker, describe) -> int:
     try:
         print(f"Account: {json.dumps(broker.account(), indent=2)}")
         print(f"Positions: {json.dumps(broker.positions(), indent=2)}")
-        mo = broker.is_market_open()
-        print(f"Market open: {mo}")
+        print(f"Market open: {broker.is_market_open()}")
     finally:
         broker.disconnect()
     print("Connection OK.")
@@ -483,13 +499,11 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
     expired = signal_expired(doc, ny_today_str())
     actions = []
     acct = None
-    mark_sym, mark = None, None
 
     connected = False
     if broker is not None and not dry:
-        # A real run REQUIRES a working broker. If connect/account fails (e.g.
-        # keys not set yet) we report and do NOTHING — never fall through to the
-        # trading logic with no broker, which would fake a position into state.
+        # A real run REQUIRES a working broker. If connect/account fails we report
+        # and do NOTHING — never fall through with no broker and fake positions.
         try:
             broker.connect()
             connected = True
@@ -500,50 +514,57 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
                 broker.disconnect()
             except Exception:
                 pass
-            _finish(state, actions, acct, describe, None, None, dry, persist=True)
+            _finish(state, actions, acct, describe, dry, persist=True)
             return 0
-        mo = broker.is_market_open()
-        if mo is False:
+        if broker.is_market_open() is False:
             actions.append("market closed — no orders this run")
             broker.disconnect()
-            _finish(state, actions, acct, describe, None, None, dry, persist=True)
+            _finish(state, actions, acct, describe, dry, persist=True)
             return 0
 
     try:
         if connected:
             actions += reconcile(broker, state, BrokerError)
 
-        if state.get("position"):
-            mark_sym = state["position"]["ticker"]
-            actions += manage_open(broker, state, signals, qmap, dry)
+        # 1) Manage every open position independently (a name may exit here).
+        for tkr in list(state["positions"].keys()):
+            actions += manage_position(broker, state, tkr, signals, qmap, dry)
 
-        if not state.get("position"):
-            if expired:
-                actions.append(
-                    f"signal expired (valid_for {doc.get('valid_for')} < {ny_today_str()} NY) — "
-                    "awaiting pre-open refresh, no entry"
-                )
+        # 2) Open new names up to the cap (skip if signals expired).
+        if expired:
+            actions.append(
+                f"signals expired (valid_for {doc.get('valid_for')} < {ny_today_str()} NY) — "
+                "managing existing only, no new entries"
+            )
+        else:
+            picks = actionable_signals(signals)
+            if not picks:
+                actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
             else:
-                sig = pick_signal(signals)
-                if sig:
-                    mark_sym = sig["sector_or_ticker"]
+                exposure_cap = BOOK_EQUITY * LEVERAGE_CAP
+                for sig in picks:
+                    tkr = sig["sector_or_ticker"]
+                    if len(state["positions"]) >= MAX_POSITIONS:
+                        break
+                    if total_notional(state) >= exposure_cap - 1:
+                        actions.append(f"total exposure ~${total_notional(state):.0f} at {LEVERAGE_CAP}x cap — no new entries")
+                        break
+                    if tkr in state["positions"]:
+                        continue  # already holding this name
+                    if state.get("benched", {}).get(tkr) == ny_today_str():
+                        actions.append(f"{tkr}: benched today (already exited once) — no re-entry until tomorrow")
+                        continue
                     actions += open_from_signal(broker, state, sig, qmap, dry, regime_max)
-                else:
-                    actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
-
-        if mark_sym:
-            mark, _ = get_price(broker if connected else None, mark_sym, qmap)
     finally:
         if connected:
             broker.disconnect()
 
-    # Only a real (non-dry) run mutates the committed state file. A --dry-run
-    # exercises the logic and writes a report but never persists a fake position.
-    _finish(state, actions, acct, describe, mark_sym, mark, dry, persist=not dry)
+    # Only a real (non-dry) run mutates the committed state file.
+    _finish(state, actions, acct, describe, dry, persist=not dry)
     return 0
 
 
-def _finish(state, actions, acct, describe, mark_sym, mark, dry, persist):
+def _finish(state, actions, acct, describe, dry, persist):
     state["runs"].append({
         "ran_at": dt.datetime.utcnow().isoformat(timespec="seconds") + "Z",
         "broker": BROKER_NAME,
@@ -553,15 +574,15 @@ def _finish(state, actions, acct, describe, mark_sym, mark, dry, persist):
     state["runs"] = state["runs"][-200:]
     if persist:
         save_state(state)
-    write_report(state, actions, acct, describe, mark_sym or "-", mark or 0.0)
+    write_report(state, actions, acct, describe)
     banner = "DRY-RUN" if dry else BROKER_NAME.upper()
-    print(f"[{banner}] live_trader done.")
+    print(f"[{banner}] live_trader done. Open: {list(state.get('positions', {}).keys()) or 'FLAT'}")
     for a in actions:
         print(f"  * {a}")
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Broker-agnostic signal trader")
+    ap = argparse.ArgumentParser(description="Broker-agnostic signal trader (multi-position)")
     ap.add_argument("--check", action="store_true", help="connect, show account+positions, trade nothing")
     ap.add_argument("--test-order", metavar="SYMBOL", help="place a small paper order to prove the order path")
     ap.add_argument("--qty", type=float, default=1.0, help="qty for --test-order (default 1)")
@@ -572,8 +593,7 @@ def main() -> int:
 
     if not available and (args.check or args.test_order):
         print(f"{BROKER_NAME} SDK/keys not ready on this host. Config: {describe()}")
-        req = "requirements-alpaca.txt" if BROKER_NAME == "alpaca" else "requirements-moomoo.txt"
-        print(f"Install:  pip install -r {req}   and set the API credentials.")
+        print("Install:  pip install -r requirements-alpaca.txt   and set the API credentials.")
         return 1
 
     if args.check:

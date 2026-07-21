@@ -79,6 +79,7 @@ jobs:
           BOOK_EQUITY: "200"
           RISK_PCT: "0.05"
           LEVERAGE_CAP: "2.0"
+          MAX_POSITIONS: "3"       # hold up to N names at once (book split into N slices)
         run: python live_trader.py
 
       - name: Commit state + reports
