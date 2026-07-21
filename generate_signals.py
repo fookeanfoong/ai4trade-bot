@@ -29,7 +29,7 @@ EXCLUDE = {"SPY", "QQQ"}
 TREND_MIN = 1.0        # 3 日趋势至少 ±1% 才有方向
 BADDATA_ABS = 18.0     # 单日涨跌超过这个视为坏数据
 CHASE_ABS = 7.0        # 当日已在方向上跑过这个 % 就不追
-MAX_NAMES = 3
+MAX_NAMES = 8       # candidate pool size; the premarket routine curates the final count by conviction
 STOP_PCT, T1_PCT, T2_PCT = 0.025, 0.03, 0.06
 REGIME_MAX_DROP = 2.0
 
