@@ -79,6 +79,14 @@
       "actions": [
         "total exposure ~$400 at 2.0x cap \u2014 no new entries"
       ]
+    },
+    {
+      "ran_at": "2026-07-21T17:56:17Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "total exposure ~$400 at 2.0x cap \u2014 no new entries"
+      ]
     }
   ],
   "last_key": null,
@@ -92,8 +100,8 @@
       "t1": 57.46,
       "t2": 59.14,
       "half_taken": false,
-      "peak_price": 55.99,
-      "armed": false,
+      "peak_price": 56.21,
+      "armed": true,
       "confidence": 0.63,
       "entry_chg_3d_pct": 4.05,
       "notional_usd": 400.0,
