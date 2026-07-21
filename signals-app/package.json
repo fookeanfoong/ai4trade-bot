@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "AI4Trade Signals — educational pre-market stock analysis. Companion app to aicompareapi.com. Android / Huawei AppGallery.",
+  "description": "AI4Trade Signals — daily pre-market educational stock analysis for US-market tickers, with entry, stop-loss and target levels position-sized to your capital. Educational content, not investment advice. Android app for Huawei AppGallery.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

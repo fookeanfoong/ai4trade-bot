@@ -2,7 +2,12 @@
 
 Mobile app delivering **daily pre-market educational stock analysis** for
 US-market tickers — entry, stop-loss and target levels, position-sized to the
-user's capital. Companion app to **aicompareapi.com**.
+user's capital. Learn to read charts, follow market news, and study potential
+setups. Educational content, not investment advice.
+
+<sub>Backend REST API and the hosted legal documents live on `aicompareapi.com`
+(see [Backend endpoints](#backend-endpoints)); this is an implementation detail,
+not how the app is described to users.</sub>
 
 > **Educational content only. Not investment advice. Trading carries risk of loss.**
 
