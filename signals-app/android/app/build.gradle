@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+
+// ---------------------------------------------------------------------------
+// Release signing configuration.
+// Credentials are read from android/keystore.properties (gitignored) so the
+// keystore and its passwords are NEVER committed. See README > "Signing the
+// release AAB". If the file is absent (e.g. debug-only local builds), the
+// release signing config is simply not attached.
+// ---------------------------------------------------------------------------
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+def hasKeystore = keystorePropertiesFile.exists()
+if (hasKeystore) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace "com.ai4trade.signals"
+    compileSdk rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.ai4trade.signals"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+
+    signingConfigs {
+        if (hasKeystore) {
+            release {
+                storeFile rootProject.file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (hasKeystore) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+
+    // --- HMS Core SDKs -----------------------------------------------------
+    // Push Kit — delivers notifications on Huawei devices (bridged to the
+    //   Capacitor PushNotifications plugin via HmsMessagingService).
+    implementation "com.huawei.hms:push:$rootProject.ext.hmsPushVersion"
+    // In-App Purchases — subscriptions (used by HmsIapPlugin).
+    implementation "com.huawei.hms:iap:$rootProject.ext.hmsIapVersion"
+    // Analytics Kit (optional) — used by HmsAnalyticsPlugin.
+    implementation "com.huawei.hms:hianalytics:$rootProject.ext.hmsAnalyticsVersion"
+    // AppGallery Connect core.
+    implementation "com.huawei.agconnect:agconnect-core:$rootProject.ext.agconnectCoreVersion"
+}
+
+apply from: 'capacitor.build.gradle'
+
+// Apply the AppGallery Connect plugin only when its config file is present, so
+// debug builds without agconnect-services.json still assemble. HMS features
+// require this file — see README.
+try {
+    def agconnectJSON = file('agconnect-services.json')
+    if (agconnectJSON.exists() && agconnectJSON.text) {
+        apply plugin: 'com.huawei.agconnect'
+    }
+} catch (Exception e) {
+    logger.warn("agconnect-services.json not found — HMS Push/IAP/Analytics will not work until it is placed in android/app/. See README.")
+}
