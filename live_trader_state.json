@@ -87,6 +87,14 @@
       "actions": [
         "total exposure ~$400 at 2.0x cap \u2014 no new entries"
       ]
+    },
+    {
+      "ran_at": "2026-07-21T21:46:22Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "market closed \u2014 no orders this run"
+      ]
     }
   ],
   "last_key": null,
