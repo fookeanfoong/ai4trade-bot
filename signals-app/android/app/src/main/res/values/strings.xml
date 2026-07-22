@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AI4Trade Signals</string>
+    <string name="title_activity_main">AI4Trade Signals</string>
+    <string name="package_name">com.ai4trade.signals</string>
+    <string name="custom_url_scheme">com.ai4trade.signals</string>
+</resources>
