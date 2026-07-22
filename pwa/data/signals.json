@@ -1,24 +1,55 @@
 {
   "updated_at": "2026-07-22",
-  "valid_for": "2026-07-22",
+  "valid_for": "2026-07-23",
   "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
   "signals": [
     {
-      "ticker": "OXY",
+      "ticker": "AMD",
       "direction": "bullish",
-      "confidence": 0.66,
+      "confidence": 0.71,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
       "reasoning": {
-        "en": "HOLD energy. Iran escalation intact: 11th consecutive day of US strikes, Brent ~$95, ceasefire hopes faded, Hormuz shipping still disrupted (Rubio: US will keep protecting shipping). Already long OXY from $55.79 (+1.3%), 3d +5.3% (under no-chase). Managed by armed trailing stop; note energy is very extended today (+9%), so a pullback likely trail-locks the gain — that's fine.",
-        "zh": "继续持有能源。伊朗升级不变:美国连续第 11 天空袭、Brent ~$95、停火希望消退、霍尔木兹航运仍受阻(Rubio 称美国将继续护航)。已在 $55.79 持有 OXY(+1.3%),3 日 +5.3%(未过热)。由已武装的移动止盈管理;今天能源很超买(+9%),回调大概率会锁利离场,可以接受。"
+        "en": "Auto: AMD 3-day trend +11.4% (today +0.1%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:AMD 三日趋势 +11.4%(当日 +0.1%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
       },
       "tradable": true,
-      "ref_price": 57.67,
-      "preopen_recheck": true
+      "ref_price": 552.33
+    },
+    {
+      "ticker": "NVDA",
+      "direction": "bullish",
+      "confidence": 0.65,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "reasoning": {
+        "en": "Auto: NVDA 3-day trend +4.6% (today +1.6%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:NVDA 三日趋势 +4.6%(当日 +1.6%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      },
+      "tradable": true,
+      "ref_price": 212.06
+    },
+    {
+      "ticker": "JPM",
+      "direction": "bullish",
+      "confidence": 0.62,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "reasoning": {
+        "en": "Auto: JPM 3-day trend +2.1% (today +5.0%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:JPM 三日趋势 +2.1%(当日 +5.0%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      },
+      "tradable": true,
+      "ref_price": 348.21
     }
   ]
 }

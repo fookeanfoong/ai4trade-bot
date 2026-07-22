@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-22T17:50:56+00:00
+# Market News Digest — 2026-07-22T21:42:49+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `41m ago` **[Trump]** Trump’s Crashes Were Powerful Slingshots That Made Everyone Richer - Newsweek — _Newsweek_
-- `46m ago` **[Musk]** Musk takes on Nolan over *Odyssey* on the day of Tesla’s results - Il Sole 24 ORE — _Il Sole 24 ORE_
-- `48m ago` **[Oil]** Oil Price Forecast — Brent ($91.51), WTI ($86) Hit Five-Week Highs on the 11th Night of Iran Strikes — Hormuz Risk vs a $60 Fundamental Anchor - tradingnews.com — _tradingnews.com_
-- `1h ago` **[Musk]** Musk Says France FSD Delay Will Cost Lives After Minister Raises Concerns - eletric-vehicles.com — _eletric-vehicles.com_
-- `1h ago` **[Trump]** Senator: Trump social media post showed 'great disrespect' to US service members killed in Iran war - CNN — _CNN_
-- `1h ago` **[Musk]** Quote of the day by Elon Musk: "Being an entrepreneur… - inkl — _inkl_
-- `1h ago` **[Trump]** WATCH LIVE: Trump promotes investment accounts for kids at Georgia high school - PBS — _PBS_
-- `1h ago` **[Market]** Why is US Stock Market Up Today? Dow Jones, Nasdaq & S&P 500 Edge Higher as Nvidia, Netflix & AMD Surge While Nike, Amazon, Microsoft & Adobe Crash Amid US-Iran Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` **[Fed]** Fed’s favorite inflation tracker is getting an overhaul — just as the central bank weighs interest-rate hikes. What’s going on? - MSN — _MSN_
-- `1h ago` **[Trump]** Swiss Stocks Held Firm As Trump Floated Drug Tariffs - Finimize — _Finimize_
-- `1h ago` **[Oil]** Iran conflict disrupts LNG supply, boosts coal and oil demand - Crypto Briefing — _Crypto Briefing_
-- `1h ago` **[Fed]** 'Inflation Is a Choice': Cracking Fed Chair Kevin Warsh's Code Before Next Week's Rate Showdown - 24/7 Wall St. — _24/7 Wall St._
+- `10m ago` **[Musk]** Tesla Profit Misses Estimates as Elon Musk Looks Beyond the Car Business - Bloomberg.com — _Bloomberg.com_
+- `15m ago` **[Musk]** Earnings at Musk's car company fall as research spending cuts into profit from selling cars - Ottumwa Courier — _Ottumwa Courier_
+- `20m ago` **[Oil]** Oil prices surge 25% amid Strait of Hormuz supply disruptions - Crypto Briefing — _Crypto Briefing_
+- `28m ago` **[Musk]** Tesla Q2 earnings: Elon Musk's automaker delivers revenue beat but misses on profit, stock falls 2% - LinkedIn — _LinkedIn_
+- `34m ago` **[Musk]** Elon Musk is 'in denial' that Tesla is just an EV company: Ross Gerber - Yahoo Finance — _Yahoo Finance_
+- `1h ago` **[Musk]** Earnings at Musk's car company fall as research spending cut into profit from selling cars - The Killeen Daily Herald — _The Killeen Daily Herald_
+- `1h ago` **[Musk]** Earnings at Musk’s car company fall as research spending cut into profit from selling cars - KDVR — _KDVR_
+- `1h ago` **[Musk]** Elon Musk’s Tesla reports negative free cash flow for first time in more than two years - The Globe and Mail — _The Globe and Mail_
+- `1h ago` **[Market]** Stock Market Today: SPY, QQQ Stumble as Oil Extends Rally on Escalating U.S.-Iran Tensions - TipRanks — _TipRanks_
+- `1h ago` **[Fed]** A leadership fight inside the Fed could change interest rates for everyone - msn.com — _msn.com_
+- `1h ago` **[Oil]** Iraq lost over $40 bn in revenue during war: govt official - Arab News — _Arab News_
+- `2h ago` **[Musk]** Tesla’s $225 Balance Bike Runs on the One Power Source Musk Can’t Electrify - Gadget Review — _Gadget Review_
 
 ## Market
 
-- `52m ago` Stock Market Today: Nasdaq 100 Falls as Crude Rallies to $88 - Benzinga — _Benzinga_
-- `1h ago` Why is US Stock Market Up Today? Dow Jones, Nasdaq & S&P 500 Edge Higher as Nvidia, Netflix & AMD Surge While Nike, Amazon, Microsoft & Adobe Crash Amid US-Iran Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` S&P 500 Stock Market Today: US S&P 500 Slips as Energy Gains Offset Tech Weakness Ahead of Earnings Season | Here’s What Investors Need to Know - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` Canada Stock Market Today: Why is TSX Up Today? Energy and Mining Stocks Rally Boost Canadian Markets; Check Key Reasons Behind Today’s Gains, Top Movers and Latest Investor Updates - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` Nasdaq Today: NASDAQ Composite Falls 0.36% as Tech Stocks Slip, AI-Fueled Rally Pauses Ahead of Earnings Season | Here’s What Investors Need to Know - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` Sector & Industry Performance - Bloomberg.com — _Bloomberg.com_
+- `0m ago` How major US stock indexes fared Wednesday 7/22/2026 - The Washington Post — _The Washington Post_
+- `1h ago` Top News Today: U.S. Stocks Fall Slightly as Oil Extends Gains - Moomoo — _Moomoo_
+- `1h ago` Stock Market Today: Nasdaq Slides, Nvidia Can't Lift The Dow; Super Micro Shines - Investor's Business Daily — _Investor's Business Daily_
+- `1h ago` Stock Market Today: SPY, QQQ Stumble as Oil Extends Rally on Escalating U.S.-Iran Tensions - TipRanks — _TipRanks_
+- `1h ago` Stock market today: Dow, S&P 500, Nasdaq slip as oil prices rise, Alphabet and Tesla earnings loom - Yahoo Finance — _Yahoo Finance_
+- `3h ago` Oil prices rise another 3%, while Wall Street drifts in mixed trading - BNN Bloomberg — _BNN Bloomberg_
 
 ## Trump
 
-- `41m ago` Trump’s Crashes Were Powerful Slingshots That Made Everyone Richer - Newsweek — _Newsweek_
-- `1h ago` Senator: Trump social media post showed 'great disrespect' to US service members killed in Iran war - CNN — _CNN_
-- `1h ago` WATCH LIVE: Trump promotes investment accounts for kids at Georgia high school - PBS — _PBS_
-- `1h ago` Swiss Stocks Held Firm As Trump Floated Drug Tariffs - Finimize — _Finimize_
-- `3h ago` Trump's $200 Billion Bet on Lower Mortgage Rates Worked. War in Iran Just Changed Everything. - 24/7 Wall St. — _24/7 Wall St._
-- `3h ago` See how pilots would navigate the skies with Trump’s arch in place | CNN Politics - CNN — _CNN_
+- `2h ago` Trump greets the fallen as he faces a decision point on Iran - CNN — _CNN_
+- `2h ago` Trump approves deal with Saudi Arabia that could allow kingdom to enrich nuclear fuel - CNN — _CNN_
+- `3h ago` President Trump Announces Phased Generic Drug Tariff Plan: Report - Pharmaceutical Executive — _Pharmaceutical Executive_
+- `3h ago` 18 Days in Minnesota: False claims, chaos and cover-ups - CNN — _CNN_
+- `4h ago` Trump’s Crashes Were Powerful Slingshots That Made Everyone Richer - Newsweek — _Newsweek_
+- `4h ago` Senator: Trump social media post showed 'great disrespect' to US service members killed in Iran war - CNN — _CNN_
 
 ## Musk
 
-- `26m ago` Tesla is about to make parking in busy lots less stressful than ever - Teslarati — _Teslarati_
-- `46m ago` Musk takes on Nolan over *Odyssey* on the day of Tesla’s results - Il Sole 24 ORE — _Il Sole 24 ORE_
-- `1h ago` Musk Says France FSD Delay Will Cost Lives After Minister Raises Concerns - eletric-vehicles.com — _eletric-vehicles.com_
-- `1h ago` SpaceX stock hovers as traders eye Tesla and August - Rolling Out — _Rolling Out_
-- `1h ago` Quote of the day by Elon Musk: "Being an entrepreneur… - inkl — _inkl_
-- `1h ago` Tesla surpasses Wall Street delivery estimates by 74,000 vehicles - Crypto Briefing — _Crypto Briefing_
+- `10m ago` Tesla Profit Misses Estimates as Elon Musk Looks Beyond the Car Business - Bloomberg.com — _Bloomberg.com_
+- `15m ago` Earnings at Musk's car company fall as research spending cuts into profit from selling cars - Ottumwa Courier — _Ottumwa Courier_
+- `28m ago` Tesla Q2 earnings: Elon Musk's automaker delivers revenue beat but misses on profit, stock falls 2% - LinkedIn — _LinkedIn_
+- `34m ago` Elon Musk is 'in denial' that Tesla is just an EV company: Ross Gerber - Yahoo Finance — _Yahoo Finance_
+- `37m ago` Tesla shares dip after profit misses expectations - Yahoo Finance UK — _Yahoo Finance UK_
+- `40m ago` Tesla’s profits slide despite growing revenue as it pivots to robotics and AI - The Guardian — _The Guardian_
 
 ## Fed
 
-- `49m ago` Interest Rate Predictions for the Next 5 Years: 2026-2030 - Norada Real Estate Investments — _Norada Real Estate Investments_
-- `1h ago` Fed’s favorite inflation tracker is getting an overhaul — just as the central bank weighs interest-rate hikes. What’s going on? - MSN — _MSN_
-- `1h ago` US 30-Year Treasury Yield Above 5% Triggers Alarm in Longest Run Since 2007 - The Eastern Herald — _The Eastern Herald_
-- `1h ago` 'Inflation Is a Choice': Cracking Fed Chair Kevin Warsh's Code Before Next Week's Rate Showdown - 24/7 Wall St. — _24/7 Wall St._
-- `3h ago` As Oil Races Toward $100, the Federal Reserve’s Next Move Gets Cloudier - Yahoo Finance — _Yahoo Finance_
-- `5h ago` A leadership fight inside the Fed could change interest rates for everyone - MSN — _MSN_
+- `1h ago` A leadership fight inside the Fed could change interest rates for everyone - msn.com — _msn.com_
+- `2h ago` Kenneth Rogoff | FRONTLINE | PBS | Official Site | Documentary Series - PBS — _PBS_
+- `3h ago` White House accuses Moonshot of illegal use of Nvidia chips, AI models - Crypto Briefing — _Crypto Briefing_
+- `3h ago` June PPI and CPI show cooling inflation, Fed rate hike odds rise - Crypto Briefing — _Crypto Briefing_
+- `4h ago` Interest Rate Predictions for the Next 5 Years: 2026-2030 - Norada Real Estate Investments — _Norada Real Estate Investments_
+- `5h ago` Fed’s favorite inflation tracker is getting an overhaul — just as the central bank weighs interest-rate hikes. What’s going on? - msn.com — _msn.com_
 
 ## Oil
 
-- `1m ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - LiteFinance — _LiteFinance_
-- `48m ago` Oil Price Forecast — Brent ($91.51), WTI ($86) Hit Five-Week Highs on the 11th Night of Iran Strikes — Hormuz Risk vs a $60 Fundamental Anchor - tradingnews.com — _tradingnews.com_
-- `1h ago` Iran conflict disrupts LNG supply, boosts coal and oil demand - Crypto Briefing — _Crypto Briefing_
-- `2h ago` Oil Prices Jump on Latest US-Iran Peace Process Impasse - EnergyNow — _EnergyNow_
-- `3h ago` Trump: 'US will bomb and destroy' Iranian bridges or power plants - TMGM trading — _TMGM trading_
-- `3h ago` Oil prices jump 4% as Rubio says Iran not serious about peace talks - Crypto Briefing — _Crypto Briefing_
+- `20m ago` Oil prices surge 25% amid Strait of Hormuz supply disruptions - Crypto Briefing — _Crypto Briefing_
+- `1h ago` Iraq lost over $40 bn in revenue during war: govt official - Arab News — _Arab News_
+- `2h ago` Iran threatens to disrupt Gulf oil flow if US acts on threats - Crypto Briefing — _Crypto Briefing_
+- `4h ago` Oil Price Forecast — Brent ($91.51), WTI ($86) Hit Five-Week Highs on the 11th Night of Iran Strikes — Hormuz Risk vs a $60 Fundamental Anchor - tradingnews.com — _tradingnews.com_
+- `5h ago` Iran conflict disrupts LNG supply, boosts coal and oil demand - Crypto Briefing — _Crypto Briefing_
+- `6h ago` Goldman Sachs Flags Two‑Way Risks to Their 2026 Oil Price Outlook - EnergyNow.com — _EnergyNow.com_
 
 ## Chips
 
-- `21m ago` AMD Stock Jumps 10% on Anthropic Deal: Can Nvidia’s Lead Hold? - BeInCrypto — _BeInCrypto_
-- `1h ago` Why Nvidia stock is surging over 3% today - Invezz — _Invezz_
-- `1h ago` AMD to sell Anthropic tens of billions in AI servers, invest up to $5 billion in startup - Reuters — _Reuters_
-- `1h ago` AMD’s Microsoft Win Signals Dominance Over NVIDIA and Our Price Target Reflects It - 24/7 Wall St. — _24/7 Wall St._
-- `1h ago` Zacks Investment Ideas feature highlights: Intel, Micron, Marvell, AMD, Nvidia and Taiwan Semiconductor - The Globe and Mail — _The Globe and Mail_
-- `2h ago` Nvidia Stock Price To $1000? AMD NVDA Stock Price Analysis Giulia Michelini (6whDDh8dDM) - Mshale — _Mshale_
+- `1h ago` Don’t Bet Against the Workhorses - Brownstone Research — _Brownstone Research_
+- `2h ago` 2 AI Infrastructure Stocks That Could Outperform NVIDIA - TradingView — _TradingView_
+- `2h ago` Beyond Nvidia: Why the Next Phase of AI Could Crown a New Market Leader - Yahoo Finance — _Yahoo Finance_
+- `4h ago` AMD Stock Jumps 10% on Anthropic Deal: Can Nvidia’s Lead Hold? - Yahoo Finance — _Yahoo Finance_
+- `4h ago` 6 Best Chip Stocks to Buy in 2026 for UK Investors - MoneyMagpie — _MoneyMagpie_
+- `4h ago` AMD to sell Anthropic tens of billions in AI servers, invest up to $5 billion in startup - Reuters — _Reuters_
 
 ## Earnings
 
-- `27m ago` ServiceNow Stock Slides: What's Happening Today? - Benzinga — _Benzinga_
-- `1h ago` Investors Pin Their Hopes on Earnings Breakout - Bloomberg.com — _Bloomberg.com_
-- `2h ago` Super Micro, HPE, Intel, Marvell, and More Stocks That Explain Today's Market - Barron's — _Barron's_
-- `2h ago` Here's The AI Problem That Has GE Vernova Plunging - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` AT&T Gains on Earnings; Reddit Falls on Google Content Use Limitation | Stock Movers - marketscreener.com — _marketscreener.com_
-- `2h ago` Capital One Financial Corp Stock (COF) Moved Down by 3.48% on Jul 22: Facts Behind the Movement - TradingKey — _TradingKey_
+- `37m ago` 12 Consumer Discretionary Stocks Moving In Wednesday's After-Market Session - Benzinga — _Benzinga_
+- `37m ago` 12 Information Technology Stocks Moving In Wednesday's After-Market Session - Benzinga — _Benzinga_
+- `37m ago` 12 Health Care Stocks Moving In Wednesday's After-Market Session - Benzinga — _Benzinga_
+- `39m ago` Investors Pin Their Hopes on Earnings Breakout - Bloomberg.com — _Bloomberg.com_
+- `1h ago` Super Micro, ServiceNow, GE Vernova, Pegasystems, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `2h ago` S&P 500 Top Stock Gainers, 7/22/26 - TipRanks — _TipRanks_
 
