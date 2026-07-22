@@ -17,6 +17,15 @@
       "exit": 57.46,
       "qty": 3.584872,
       "closed_at": "2026-07-22T13:32:26Z"
+    },
+    {
+      "ticker": "OXY",
+      "side": "long",
+      "action": "TRAIL_LOCK_EXIT",
+      "entry": 55.79,
+      "exit": 57.46,
+      "qty": 3.584872,
+      "closed_at": "2026-07-22T17:03:21Z"
     }
   ],
   "runs": [
@@ -126,28 +135,20 @@
       "broker": "alpaca",
       "dry_run": false,
       "actions": []
+    },
+    {
+      "ran_at": "2026-07-22T17:03:21Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "CLOSE OXY long (TRAIL_LOCK_EXIT) @ ~$57.46 [broker]",
+        "OXY: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "last_key": null,
-  "positions": {
-    "OXY": {
-      "ticker": "OXY",
-      "side": "long",
-      "qty": 3.584872,
-      "entry": 55.79,
-      "stop": 55.79,
-      "t1": 57.46,
-      "t2": 59.14,
-      "half_taken": true,
-      "peak_price": 57.68,
-      "armed": true,
-      "confidence": 0.63,
-      "entry_chg_3d_pct": 4.05,
-      "notional_usd": 200.0,
-      "book_risk_usd": 10.0,
-      "opened_at": "2026-07-21T13:32:10Z",
-      "price_src": "broker"
-    }
-  },
-  "benched": {}
+  "positions": {},
+  "benched": {
+    "OXY": "2026-07-22"
+  }
 }
