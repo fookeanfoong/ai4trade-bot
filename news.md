@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-21T21:46:18+00:00
+# Market News Digest — 2026-07-22T07:42:25+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `30m ago` **[Trump]** Warren Buffett’s $140 Billion Giveaway: Will Trump Accounts Get a Slice? - BeInCrypto — _BeInCrypto_
-- `31m ago` **[Trump]** Roger Rogoff: US attorney who Trump fired minutes after he got the job sues to get it back - CNN — _CNN_
-- `36m ago` **[Oil]** US Crude Oil Inventories Build As Hormuz Shipping Headache Drags On - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `1h ago` **[Fed]** Fed Monetary Tightening: Interest Rate Outlook & Inflation - Funds Society — _Funds Society_
-- `1h ago` **[Trump]** Tech stocks recover; Trump threatens Iran escalation - National Business Review — _National Business Review_
-- `1h ago` **[Musk]** What Construction Of Elon Musk's Terafab Would Mean For Tesla, SpaceX - Investor's Business Daily — _Investor's Business Daily_
-- `1h ago` **[Trump]** The market largely ignores Trump’s posts. These are the exceptions - Straight Arrow — _Straight Arrow_
-- `1h ago` **[Oil]** Norway's Oil Output Beats Forecasts as Hormuz Traffic Stays Near Crisis Lows - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `2h ago` **[Musk]** TSLA Stock Badly Needs a Pump From Elon Musk. Buy Shares Now to Bet on Post-Earnings Hype. - Barchart.com — _Barchart.com_
-- `2h ago` **[Musk]** Who Is Elon Musk? A Guide to the CEO of Tesla, SpaceX and xAI - Built In — _Built In_
-- `2h ago` **[Musk]** Musk is reportedly sleeping in the Tesla office - MSN — _MSN_
-- `2h ago` **[Market]** Stock Market Today: SPY, QQQ Shrug Off U.S.-Iran Tensions, Renewed Tariff Concerns - TipRanks — _TipRanks_
+- `13m ago` **[Trump]** Canadians voice frustration over new Trump tariffs - Reuters — _Reuters_
+- `15m ago` **[Market]** CJP protest in Delhi Jantar Mantar: Why India can't afford this crisis to last long amid US-Iran war? Explained - livemint.com — _livemint.com_
+- `42m ago` **[Musk]** Elon Musk: Grok Build introduces features for tracking and boosting token efficiency - Traders Union — _Traders Union_
+- `52m ago` **[Trump]** What is Iran's Pickaxe Mountain and why has Trump threatened to attack it? - Business Standard — _Business Standard_
+- `1h ago` **[Musk]** Elon Musk handed Grok something no other AI company can get their hands on - Teslarati — _Teslarati_
+- `1h ago` **[Oil]** Iran executes protester Mehdi Khanaki amid crackdown on dissent - Crypto Briefing — _Crypto Briefing_
+- `1h ago` **[Trump]** Indian pharma stocks fall as Trump warns of 200% tariff on generic drugs - Business Standard — _Business Standard_
+- `1h ago` **[Trump]** As the president touts Trump Accounts, some families are still waiting for baby's $1,000 - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
+- `1h ago` **[Musk]** Elon Musk Regains Trillionaire Status on SpaceX and Tesla Gains - MSN — _MSN_
+- `1h ago` **[Trump]** What is Iran’s Pickaxe Mountain, the facility buried 100 meters under a mountain? - CNN — _CNN_
+- `2h ago` **[Musk]** Elon Musk Needs to 'Shore Up Credibility,' Stop Making 'Outlandish' Promises, Says Gary Black Ahead of Te - Benzinga — _Benzinga_
+- `2h ago` **[Trump]** Indian pharma stocks fall after Trump outlines tariffs on generics - Investing.com — _Investing.com_
 
 ## Market
 
-- `1h ago` US Stock Market Rally Today: Tech Defies Global Fears - stl.news — _stl.news_
-- `1h ago` AI stocks lead Wall Street higher, even as Brent oil’s price tops US$91 - BNN Bloomberg — _BNN Bloomberg_
-- `1h ago` Dow Jones, Nasdaq, US Stock Market Today Updates: Check Latest Move in Futures, Dow, S&P and Nasdaq Leads as Micron, AMD & Intel Surge While Amazon, Walmart & IBM Crash | Why Are Stocks Up Today - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` U.S. stocks inch up after investors assess strong earnings, higher oil - Seeking Alpha — _Seeking Alpha_
-- `1h ago` US Stock Market Technical Analysis | July 21, 2026 - FXDailyReport.Com — _FXDailyReport.Com_
-- `2h ago` Stock Market Today: SPY, QQQ Shrug Off U.S.-Iran Tensions, Renewed Tariff Concerns - TipRanks — _TipRanks_
+- `15m ago` CJP protest in Delhi Jantar Mantar: Why India can't afford this crisis to last long amid US-Iran war? Explained - livemint.com — _livemint.com_
+- `42m ago` Stock market today: Nasdaq jumps 1.29 percent, Hang Seng falls and DAX gains as chip rebound meets oil risks - Economy Middle East — _Economy Middle East_
+- `1h ago` Asian Stocks Set for Gains as Chipmakers Rebound: Markets Wrap - Bloomberg.com — _Bloomberg.com_
+- `2h ago` US Stock Market: Goldman Sachs launches new private markets platform to expand offerings for wealthy clien - The Economic Times — _The Economic Times_
+- `2h ago` Sector & Industry Performance - Bloomberg.com — _Bloomberg.com_
+- `3h ago` Sensex falls over 300 points, Nifty below 24,150; IndiGo tumbles 2.6%, pharma under pressure - financialexpress.com — _financialexpress.com_
 
 ## Trump
 
-- `30m ago` Warren Buffett’s $140 Billion Giveaway: Will Trump Accounts Get a Slice? - BeInCrypto — _BeInCrypto_
-- `31m ago` Roger Rogoff: US attorney who Trump fired minutes after he got the job sues to get it back - CNN — _CNN_
-- `1h ago` Tech stocks recover; Trump threatens Iran escalation - National Business Review — _National Business Review_
-- `1h ago` The market largely ignores Trump’s posts. These are the exceptions - Straight Arrow — _Straight Arrow_
-- `2h ago` What to Know About the 50% Tariffs Trump Is Imposing on Canada - U.S. News & World Report — _U.S. News & World Report_
-- `2h ago` Trump discloses 21,000 securities trades during first year in office - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
+- `13m ago` Canadians voice frustration over new Trump tariffs - Reuters — _Reuters_
+- `52m ago` What is Iran's Pickaxe Mountain and why has Trump threatened to attack it? - Business Standard — _Business Standard_
+- `1h ago` Indian pharma stocks fall as Trump warns of 200% tariff on generic drugs - Business Standard — _Business Standard_
+- `1h ago` As the president touts Trump Accounts, some families are still waiting for baby's $1,000 - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
+- `1h ago` What is Iran’s Pickaxe Mountain, the facility buried 100 meters under a mountain? - CNN — _CNN_
+- `2h ago` Indian pharma stocks fall after Trump outlines tariffs on generics - Investing.com — _Investing.com_
 
 ## Musk
 
-- `1h ago` Tesla Q2 Preview: Could This Be ‘The One That Helps Turn Things Around’? - Benzinga — _Benzinga_
-- `1h ago` What Construction Of Elon Musk's Terafab Would Mean For Tesla, SpaceX - Investor's Business Daily — _Investor's Business Daily_
-- `1h ago` SpaceX (SPCX) announces the date for its first-ever Earnings Call and financial results (Q2 2026) - Tesla Oracle — _Tesla Oracle_
-- `2h ago` TSLA Stock Badly Needs a Pump From Elon Musk. Buy Shares Now to Bet on Post-Earnings Hype. - Barchart.com — _Barchart.com_
-- `2h ago` Who Is Elon Musk? A Guide to the CEO of Tesla, SpaceX and xAI - Built In — _Built In_
-- `2h ago` Musk is reportedly sleeping in the Tesla office - MSN — _MSN_
+- `42m ago` Elon Musk: Grok Build introduces features for tracking and boosting token efficiency - Traders Union — _Traders Union_
+- `1h ago` Elon Musk handed Grok something no other AI company can get their hands on - Teslarati — _Teslarati_
+- `1h ago` Elon Musk Regains Trillionaire Status on SpaceX and Tesla Gains - MSN — _MSN_
+- `2h ago` Elon Musk Needs to 'Shore Up Credibility,' Stop Making 'Outlandish' Promises, Says Gary Black Ahead of Te - Benzinga — _Benzinga_
+- `2h ago` Tesla earnings are coming. 2 things that will drive the stock. - livemint.com — _livemint.com_
+- `2h ago` Elon Musk's Brother Sold Millions Of Tesla Stock... Chimaev Vs Strickland Dove Vederlo (OrddqRtho6) - Mshale — _Mshale_
 
 ## Fed
 
-- `1h ago` Fed Monetary Tightening: Interest Rate Outlook & Inflation - Funds Society — _Funds Society_
-- `4h ago` Warsh's First Test: Fed Chair Faces Inflation Scrutiny - Legis1 — _Legis1_
-- `6h ago` UK inflation: What is the rate and why are prices still rising? - BBC — _BBC_
-- `9h ago` Wall Street Deploys AI to Decode Fed Chair Warsh as Seoul and Washington Flash Hawkish Signals - finance.biggo.com — _finance.biggo.com_
-- `10h ago` New Trump book will have readers playing the parlour game: who blabbed? - The Conversation — _The Conversation_
-- `11h ago` In the first half of 2026, the monetary policy heads of Seoul and Washington were replaced at the sa.. - 매일경제 — _매일경제_
+- `4h ago` Gold Caught Between Two Forces as Fed Rate-Hike Bets Climb Past 55% - Ad-hoc-news.de — _Ad-hoc-news.de_
+- `6h ago` Gold’s $4,000 Floor Holds as Investors Weigh Fed’s Next Move Against Middle East Turmoil - Ad-hoc-news.de — _Ad-hoc-news.de_
+- `7h ago` Forex Economic Calendar Overview: Key Events for the Next Trading Week (27.07.2026–02.08.2026) - LiteFinance — _LiteFinance_
+- `8h ago` I'm 'optimistic' that Warsh will be a better Fed chair than Powell: Jeffrey Gundlach - MSN — _MSN_
+- `11h ago` Fed Monetary Tightening: Interest Rate Outlook & Inflation - Funds Society — _Funds Society_
+- `12h ago` BNY Mellon Core Plus Fund Q2 2026 Commentary - Seeking Alpha — _Seeking Alpha_
 
 ## Oil
 
-- `36m ago` US Crude Oil Inventories Build As Hormuz Shipping Headache Drags On - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `1h ago` Norway's Oil Output Beats Forecasts as Hormuz Traffic Stays Near Crisis Lows - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `2h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - LiteFinance — _LiteFinance_
-- `3h ago` India Pulls Back From Iraqi Oil as Hormuz Turns Too Dangerous - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `5h ago` Trump Warns Iran on Hormuz Tolls as Energy Crunch Prompts Japan to Release More Oil - EnergyNow.com — _EnergyNow.com_
-- `5h ago` Oil Prices Jump on Latest US-Iran Peace Process Impasse - EnergyNow — _EnergyNow_
+- `1h ago` Oil prices climb as Middle East supply risks resurface - Crypto Briefing — _Crypto Briefing_
+- `1h ago` Iran executes protester Mehdi Khanaki amid crackdown on dissent - Crypto Briefing — _Crypto Briefing_
+- `2h ago` US oil prices surge above $85 as Iran conflict escalates - Crypto Briefing — _Crypto Briefing_
+- `3h ago` Pakistan eyes new crude oil suppliers amid rising petrol prices as ME tensions mount - Pakistan Observer — _Pakistan Observer_
+- `5h ago` Japan's Crude Oil Import Price Hits Record ¥117,000 per Kiloliter as Hormuz Crisis Upends Procurement Structure - finance.biggo.com — _finance.biggo.com_
+- `5h ago` US CENTCOM says it has completed 11th night of strikes on Iran - FXStreet — _FXStreet_
 
 ## Chips
 
-- `2h ago` TSMC Inches Closer to $2 Trillion Market Cap As Chip Stocks Rebound: Top Executive Buys Stock - Stocktwits — _Stocktwits_
-- `2h ago` Chip Stocks Are Rebounding - Should Investors Buy Intel (INTC) Before Q2 Earnings? - TradingView — _TradingView_
-- `2h ago` NVIDIA Isn't Leading AI Stocks in 2026 - These 2 Are Up Over 180% - TradingView — _TradingView_
-- `2h ago` Why Intel Stock Popped on Tuesday - The Globe and Mail — _The Globe and Mail_
-- `3h ago` QUICK SPARK: Intel And Micron Lead Semi Stock Rebound — Expert Blames Hegde Funds For Sell Off - Benzinga — _Benzinga_
-- `4h ago` AMD Stock Jumps 8% Ahead of Advancing AI Event as Microsoft Partnership Expansion Fuels Rally - International Business Times Australia — _International Business Times Australia_
+- `1h ago` Semiconductor Stocks Rebound as Wall Street Weighs AI Costs - sekbernews.id — _sekbernews.id_
+- `3h ago` Why AMD Stock Jumped Today - The Motley Fool — _The Motley Fool_
+- `3h ago` Jim Cramer Picks Micron, Applied Materials And Intel Or AMD As Top Semiconductor Bets After AI Selloff, S - Benzinga — _Benzinga_
+- `5h ago` Why AMD stock might keep outpacing Nvidia from here - MSN — _MSN_
+- `6h ago` NVIDIA details next-generation Vera CPU for AI, challenging AMD and Intel - 富途牛牛 — _富途牛牛_
+- `6h ago` Philadelphia Semiconductor Index Surges 5%, Igniting Asian Stock Rally; South Korea's KOSPI Soars Over 6%, Triggering Circuit Breaker Again; Nikkei Rebounds Over 1,000 Points - finance.biggo.com — _finance.biggo.com_
 
 ## Earnings
 
-- `40m ago` 12 Industrials Stocks Moving In Tuesday's After-Market Session - Benzinga — _Benzinga_
-- `40m ago` 12 Information Technology Stocks Moving In Tuesday's After-Market Session - Benzinga — _Benzinga_
-- `46m ago` Tuesday's after hours session: top gainers and losers - ChartMill — _ChartMill_
-- `55m ago` Alaska Airlines Narrowly Beats Estimates as Fuel Costs Stay High - Bloomberg.com — _Bloomberg.com_
-- `1h ago` After-Hours Stock Movers: SMCI, OKLO, XE, PEGA, CLDX, ALK By Investing.com - Investing.com Australia — _Investing.com Australia_
-- `1h ago` Interactive Brokers Stock Climbs as Q2 Earnings Come in Ahead of Expectations - Benzinga — _Benzinga_
+- `1h ago` S&P 500 Movers | Winners: SNDK, WDC, MU | Losers: DHR, MSCI, TYL - Trefis — _Trefis_
+- `5h ago` Super Micro Soars Late On Booming Margins, Orders; Dell, HP Enterprise Also Rally - Investor's Business Daily — _Investor's Business Daily_
+- `8h ago` Intel and AMD surge ahead of earnings as semiconductor equipment rally lifts SOXX 5.5% - StartupHub.ai — _StartupHub.ai_
+- `9h ago` Closing Bell Movers: Finward jumps after First Financial deal - TipRanks — _TipRanks_
+- `10h ago` 12 Industrials Stocks Moving In Tuesday's After-Market Session - Benzinga — _Benzinga_
+- `10h ago` Tuesday's after hours session: top gainers and losers - ChartMill — _ChartMill_
 
