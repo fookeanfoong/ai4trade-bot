@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-23T13:32:44+00:00
+# Market News Digest — 2026-07-23T14:32:25+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `4m ago` **[Trump]** With bombing campaign unlikely to change Iran’s posture according to US intel, Trump faces limited options - CNN — _CNN_
-- `29m ago` **[Trump]** Trump Threatens Iran Over Houthi Attacks: Energy and Defense Stocks in Focus - TipRanks — _TipRanks_
-- `34m ago` **[Musk]** Elon Musk Just Gave SpaceX A Bigger Role Inside Tesla - Benzinga — _Benzinga_
-- `59m ago` **[Trump]** Trump places new condition on signed Saudi nuclear deal, says country must join Abraham Accords - CNN — _CNN_
-- `1h ago` **[Market]** Stock Market Today: Sensex Falls 364 Points, Nifty Slips Below 24,000 After US Air Strike - APAC Media — _APAC Media_
-- `1h ago` **[Musk]** Musk Says Rival Humanoid Demos Run on Remote Control and Scripts - eletric-vehicles.com — _eletric-vehicles.com_
-- `1h ago` **[Trump]** Why Indian pharma stocks aren't panicking yet over Trump's proposed tariffs on generic drugs - CNBC TV18 — _CNBC TV18_
-- `1h ago` **[Trump]** Trump has activated a secretive court for deporting ‘alien terrorists.’ Here’s what to know - CNN — _CNN_
-- `1h ago` **[Musk]** Elon Musk says Tesla should be spending on AI 'as fast as we can' - AOL.com — _AOL.com_
-- `2h ago` **[Oil]** Iran strikes on US bases in Jordan expose defense vulnerabilities - Crypto Briefing — _Crypto Briefing_
-- `2h ago` **[Oil]** Oil prices rise as Strait of Hormuz peace talks collapse - Crypto Briefing — _Crypto Briefing_
-- `2h ago` **[Musk]** Elon Musk’s answer to Christopher Nolan’s Odyssey got way more specific - Teslarati — _Teslarati_
+- `5m ago` **[Trump]** House votes to restrict Trump’s Iran war powers in latest rebuke over the conflict - CNN — _CNN_
+- `7m ago` **[Musk]** Elon Musk promised robotaxis across half the nation — here’s where Tesla is at - The Independent — _The Independent_
+- `15m ago` **[Musk]** Elon Musk Changes Tune On 'Cautious' Robotaxi Rollout While Tesla's Net Income Falls Because Of AI Spending - Jalopnik — _Jalopnik_
+- `18m ago` **[Trump]** BATL, CVX, XOM Stocks Rise As Brent Crude Tops $100 – Trump Threatens Iran With 'Major Military Punishment' After Houthi Attack On Saudi Ships - Stocktwits — _Stocktwits_
+- `22m ago` **[Fed]** On tonight’s episode of Paul Murray Live, Sky News host Paul Murray says Labor's economic promises have unravelled, warning Australians are now facing even tougher interest rate pressure. - facebook.com — _facebook.com_
+- `28m ago` **[Musk]** Tesla shares fall 11% after mixed Q2 earnings report, Musk tempers Optimus expectations - Crypto Briefing — _Crypto Briefing_
+- `29m ago` **[Musk]** Elon Musk Preaches Patience On Robotaxi, Optimus Rollout. Tesla Stock Plummets. - Investor's Business Daily — _Investor's Business Daily_
+- `33m ago` **[Fed]** The $100 Million Question Kevin Warsh Will Not Answer - mitchthelawyer.substack.com — _mitchthelawyer.substack.com_
+- `33m ago` **[Musk]** 'More and more overlap': Musk edges toward a Tesla-SpaceX merger - Yahoo Finance — _Yahoo Finance_
+- `37m ago` **[Musk]** Musk left room for potential merger of SpaceX and Tesla - Українські Національні Новини (УНН) — _Українські Національні Новини (УНН)_
+- `38m ago` **[Oil]** Iran warns $100 oil just the beginning amid rising tensions - Crypto Briefing — _Crypto Briefing_
+- `45m ago` **[Trump]** The Odds: Trump's Tariff Backlash - CNN — _CNN_
 
 ## Market
 
-- `6m ago` US Stock Market Today: Futures Fall as Tech Cash Burn Meets $99 Oil - TechStock² — _TechStock²_
-- `58m ago` US markets today: Dow, S&P 500, Nasdaq futures indicate gap-down open amid $99/bbl oil prices; Intel earnings in focus - Upstox — _Upstox_
-- `1h ago` Stock Market Today: Sensex Falls 364 Points, Nifty Slips Below 24,000 After US Air Strike - APAC Media — _APAC Media_
-- `2h ago` Sector & Industry Performance - Bloomberg.com — _Bloomberg.com_
-- `3h ago` Where the Stock Market May Be Heading Next and What to Buy Now - Morningstar — _Morningstar_
-- `4h ago` Stock Market Today: Dow Jones, S&P 500 Futures Slip As GOOGL, Elon Musk's TSLA Drag After Q2 Earnings—Int - Benzinga — _Benzinga_
+- `10m ago` US Stock Market In The Red On Tech Earnings, Surging Oil Prices - Moomoo — _Moomoo_
+- `29m ago` US stocks tumble on renewed concerns over massive AI spending, rising crude prices - livemint.com — _livemint.com_
+- `29m ago` US stock market today: Dow falls over 450 points as Brent crude tops $100; Alphabet, Tesla drag Nasdaq - CNBC TV18 — _CNBC TV18_
+- `49m ago` US Stock Market Today: Nasdaq Slides 1.7%, Dow Slumps 500 Points As Tech Stocks Drag; Google Falls 6% - NDTV Profit — _NDTV Profit_
+- `1h ago` US Stock Market Today: Futures Fall as Tech Cash Burn Meets $99 Oil - TechStock² — _TechStock²_
+- `1h ago` Stock market today: Dow, S&P 500, Nasdaq sell off as markets weigh AI capex, widening Mideast attacks - Yahoo Finance — _Yahoo Finance_
 
 ## Trump
 
-- `4m ago` With bombing campaign unlikely to change Iran’s posture according to US intel, Trump faces limited options - CNN — _CNN_
-- `29m ago` Trump Threatens Iran Over Houthi Attacks: Energy and Defense Stocks in Focus - TipRanks — _TipRanks_
-- `59m ago` Trump places new condition on signed Saudi nuclear deal, says country must join Abraham Accords - CNN — _CNN_
-- `1h ago` Why Indian pharma stocks aren't panicking yet over Trump's proposed tariffs on generic drugs - CNBC TV18 — _CNBC TV18_
-- `1h ago` Trump has activated a secretive court for deporting ‘alien terrorists.’ Here’s what to know - CNN — _CNN_
-- `2h ago` Trump’s Iran War and Tariffs Are Changing Corporate Strategies - Barron's — _Barron's_
+- `5m ago` House votes to restrict Trump’s Iran war powers in latest rebuke over the conflict - CNN — _CNN_
+- `18m ago` BATL, CVX, XOM Stocks Rise As Brent Crude Tops $100 – Trump Threatens Iran With 'Major Military Punishment' After Houthi Attack On Saudi Ships - Stocktwits — _Stocktwits_
+- `45m ago` The Odds: Trump's Tariff Backlash - CNN — _CNN_
+- `48m ago` Why Senator Van Hollen is skeptical about President Trump's nuclear deal with Saudi Arabia - CNN — _CNN_
+- `55m ago` Trump says Saudi Arabia must join Abraham Accords for nuclear deal in new condition - CNN — _CNN_
+- `1h ago` With bombing campaign unlikely to change Iran’s posture according to US intel, Trump faces limited options - CNN — _CNN_
 
 ## Musk
 
-- `34m ago` Elon Musk Just Gave SpaceX A Bigger Role Inside Tesla - Benzinga — _Benzinga_
-- `45m ago` Micron Secures Major Tesla Memory Chip Allocation - TradingView — _TradingView_
-- `56m ago` Tesla-SpaceX Merger Speculation Builds - TradingView — _TradingView_
-- `1h ago` Musk Says Rival Humanoid Demos Run on Remote Control and Scripts - eletric-vehicles.com — _eletric-vehicles.com_
-- `1h ago` Elon Musk says Tesla should be spending on AI 'as fast as we can' - AOL.com — _AOL.com_
-- `2h ago` Elon Musk’s answer to Christopher Nolan’s Odyssey got way more specific - Teslarati — _Teslarati_
+- `7m ago` Elon Musk promised robotaxis across half the nation — here’s where Tesla is at - The Independent — _The Independent_
+- `15m ago` Elon Musk Changes Tune On 'Cautious' Robotaxi Rollout While Tesla's Net Income Falls Because Of AI Spending - Jalopnik — _Jalopnik_
+- `28m ago` Tesla shares fall 11% after mixed Q2 earnings report, Musk tempers Optimus expectations - Crypto Briefing — _Crypto Briefing_
+- `29m ago` Elon Musk Preaches Patience On Robotaxi, Optimus Rollout. Tesla Stock Plummets. - Investor's Business Daily — _Investor's Business Daily_
+- `32m ago` Historic Tesla and SpaceX Merger Looks More Likely. Is This Sell-Off Your Best Buying Opportunity Yet? - 24/7 Wall St. — _24/7 Wall St._
+- `33m ago` 'More and more overlap': Musk edges toward a Tesla-SpaceX merger - Yahoo Finance — _Yahoo Finance_
 
 ## Fed
 
-- `3h ago` Warsh's no-guidance approach confronts a hawkish world and hawkish Fed colleagues - Reuters — _Reuters_
-- `3h ago` As the July FOMC meeting approaches, market expectations are diverging, and elevated oil prices are heightening uncertainty around the Federal Reserve's rate hike path. - 富途牛牛 — _富途牛牛_
-- `4h ago` The Fed Is Heading Into One of Its Most Unpredictable Meetings in Years - WSJ — _WSJ_
-- `4h ago` WEAKEST LEVEL AGAIN The Philippine peso again sank to its weakest level of P61.75 to the US dollar Thursday, July 23, 2026. - facebook.com — _facebook.com_
-- `7h ago` Kevin Warsh’s Federal Reserve May Follow This Economist’s Road Map - Barron's — _Barron's_
-- `8h ago` The Fed under Worshe was too unpredictable! As the FOMC meeting approaches, markets still can't determine next week's policy direction. - 富途牛牛 — _富途牛牛_
+- `18m ago` 10-Year Treasury Yield Tops 4.7%: Three Forces Behind the Surge - Discovery Alert — _Discovery Alert_
+- `22m ago` On tonight’s episode of Paul Murray Live, Sky News host Paul Murray says Labor's economic promises have unravelled, warning Australians are now facing even tougher interest rate pressure. - facebook.com — _facebook.com_
+- `33m ago` The $100 Million Question Kevin Warsh Will Not Answer - mitchthelawyer.substack.com — _mitchthelawyer.substack.com_
+- `1h ago` Kevin Warsh’s Federal Reserve May Follow This Economist’s Road Map - Barron's — _Barron's_
+- `4h ago` Warsh's no-guidance approach confronts a hawkish world and hawkish Fed colleagues - Reuters — _Reuters_
+- `4h ago` As the July FOMC meeting approaches, market expectations are diverging, and elevated oil prices are heightening uncertainty around the Federal Reserve's rate hike path. - 富途牛牛 — _富途牛牛_
 
 ## Oil
 
-- `2h ago` Iran strikes on US bases in Jordan expose defense vulnerabilities - Crypto Briefing — _Crypto Briefing_
-- `2h ago` Oil prices rise as Strait of Hormuz peace talks collapse - Crypto Briefing — _Crypto Briefing_
-- `3h ago` Iraq Estimates $40-45 Billion in Oil Losses Linked to Hormuz Closure - energynews.pro — _energynews.pro_
-- `3h ago` Saudi oil tanker attacked in Red Sea, oil prices rise above $98 - Crypto Briefing — _Crypto Briefing_
-- `4h ago` WTI extends rally towards $90 as Middle East energy supply risks intensify - TMGM trading — _TMGM trading_
-- `6h ago` IRAN’S “CROWN JEWEL” – Kharg Island, Struck by US, is Key Hub for Iran Oil Exports - EnergyNow.com — _EnergyNow.com_
+- `38m ago` Iran warns $100 oil just the beginning amid rising tensions - Crypto Briefing — _Crypto Briefing_
+- `49m ago` Breaking News: Global oil prices reached $100 a barrel that for the first time since May, as the widening war between the U.S. and Iran stifled the flow of energy in the Middle East. https://nyti.ms/4fu2ulT - facebook.com — _facebook.com_
+- `1h ago` Iran Is Seeking To Dominate The Strait Of Hormuz. Gulf Countries Are Planning To Bypass It - International Business Times — _International Business Times_
+- `1h ago` How Mideast Oil Producers Are Bypassing the Strait of Hormuz - Discovery Alert — _Discovery Alert_
+- `3h ago` Iran strikes on US bases in Jordan expose defense vulnerabilities - Crypto Briefing — _Crypto Briefing_
+- `3h ago` Oil prices rise as Strait of Hormuz peace talks collapse - Crypto Briefing — _Crypto Briefing_
 
 ## Chips
 
-- `8m ago` The Overlooked Infrastructure Play Quietly Winning the AI Boom - The Motley Fool — _The Motley Fool_
-- `35m ago` Nvidia vs. Intel: Which is the Better AI Chip Stock to Own for the Next 3 Years? - The Motley Fool — _The Motley Fool_
-- `3h ago` TSMC Just Announced Incredible News for Nvidia and Broadcom Investors - AOL.com — _AOL.com_
-- `4h ago` NVIDIA Corporation (NASDAQ:NVDA) Confronts Expanding AI Funding and Intensifying Chip Sector Rivalry - TechStock² — _TechStock²_
-- `5h ago` STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities - Macau Business — _Macau Business_
-- `6h ago` Why AMD Stock Price NVDA Stock Price Are Down | Semiconductor Stocks Rousey (LpWyyoVFu4) - Mshale — _Mshale_
+- `35m ago` The Overlooked Infrastructure Play Quietly Winning the AI Boom - The Motley Fool — _The Motley Fool_
+- `1h ago` Bank of America Gives AMD Investors a New Reason to Watch - 24/7 Wall St. — _24/7 Wall St._
+- `1h ago` Nvidia vs. Intel: Which is the Better AI Chip Stock to Own for the Next 3 Years? - The Globe and Mail — _The Globe and Mail_
+- `3h ago` AI Disruption and the Semiconductor Surge: Inside The Motley Fool’s July 2026 Market Analysis - Azat TV — _Azat TV_
+- `5h ago` NVIDIA Corporation (NASDAQ:NVDA) Confronts Expanding AI Funding and Intensifying Chip Sector Rivalry - TechStock² — _TechStock²_
+- `6h ago` STARTRADER Introduces 24/7 US Stock CFDs Across NVIDIA, Apple, Meta, and Leading Global Equities - Macau Business — _Macau Business_
 
 ## Earnings
 
-- `13m ago` Meta Stock Trades Below Three of Its Four Key Averages Ahead of Earnings - Benzinga — _Benzinga_
-- `20m ago` Amazon Stock Trades Below Its 50-Day Average With Earnings Just a Week Away - Benzinga — _Benzinga_
-- `29m ago` Tesla Hits $100 Billion in Trailing Revenue, but EPS Miss Sends Stock Down 7% - Benzinga — _Benzinga_
-- `39m ago` Google Parent Alphabet Stock Drops 4% After Brief Post-Earnings Pop - Benzinga — _Benzinga_
-- `1h ago` Vita Coco, Domo rallies, Mobileye falls premarket in earnings deluge - Investing.com — _Investing.com_
-- `1h ago` 12 Information Technology Stocks Moving In Thursday's Pre-Market Session - Benzinga — _Benzinga_
+- `26m ago` Intel Stock Sits 15% Above Its 100-Day Average, but Below Its 20-Day, Ahead of Earnings - Benzinga — _Benzinga_
+- `52m ago` Microsoft Stock Sits 11% Below Its 200-Day Average as Earnings Approach - Benzinga — _Benzinga_
+- `1h ago` Meta Stock Trades Below Three of Its Four Key Averages Ahead of Earnings - Benzinga — _Benzinga_
+- `1h ago` Amazon Stock Trades Below Its 50-Day Average With Earnings Just a Week Away - Benzinga — _Benzinga_
+- `1h ago` Tesla Hits $100 Billion in Trailing Revenue, but EPS Miss Sends Stock Down 7% - Benzinga — _Benzinga_
+- `1h ago` Google Parent Alphabet Stock Drops 4% After Brief Post-Earnings Pop - Benzinga — _Benzinga_
 
