@@ -160,11 +160,17 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-23T06:46:21Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "market closed \u2014 no orders this run"
+      ]
     }
   ],
   "last_key": null,
   "positions": {},
-  "benched": {
-    "OXY": "2026-07-22"
-  }
+  "benched": {}
 }
