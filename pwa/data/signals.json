@@ -1,24 +1,55 @@
 {
   "updated_at": "2026-07-23",
-  "valid_for": "2026-07-23",
+  "valid_for": "2026-07-24",
   "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
   "signals": [
     {
-      "ticker": "NVDA",
+      "ticker": "AMD",
       "direction": "bullish",
-      "confidence": 0.64,
+      "confidence": 0.67,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
       "reasoning": {
-        "en": "NVDA relative strength (+1.6% premarket) while AI-capex profitability fears hit the SPENDERS (GOOGL -4%, TSLA -7%) — the market differentiates: NVDA sells the chips that capex buys, and Asian chipmakers rallied on the AI buildout. Clean 3d +4.6% (not extended), 5d flat = consolidation, not a blow-off. Risk: on a broad AI-scare day correlations spike and NVDA could get dragged down regardless — hence 1 slice only + a tight 2.5% stop.",
-        "zh": "NVDA 相对强势(盘前 +1.6%),而 AI 资本开支的盈利担忧打的是'花钱方'(GOOGL -4%、TSLA -7%)—— 市场在区分:NVDA 是卖芯片的,别人担忧的资本开支正是它的收入,亚洲芯片股也因 AI 建设走强。三日 +4.6%(未过热),五日走平=盘整非顶背离。风险:若全大盘 AI 恐慌,相关性升高 NVDA 也可能被拖下水——所以只做 1 份 + 2.5% 紧止损。"
+        "en": "Auto: AMD 3-day trend +7.2% (today +3.8%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:AMD 三日趋势 +7.2%(当日 +3.8%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
       },
       "tradable": true,
-      "ref_price": 212.06,
-      "preopen_recheck": true
+      "ref_price": 539.69
+    },
+    {
+      "ticker": "NVDA",
+      "direction": "bullish",
+      "confidence": 0.63,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "reasoning": {
+        "en": "Auto: NVDA 3-day trend +2.7% (today +4.4%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:NVDA 三日趋势 +2.7%(当日 +4.4%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      },
+      "tradable": true,
+      "ref_price": 208.76
+    },
+    {
+      "ticker": "JPM",
+      "direction": "bullish",
+      "confidence": 0.63,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "reasoning": {
+        "en": "Auto: JPM 3-day trend +3.2% (today +4.7%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:JPM 三日趋势 +3.2%(当日 +4.7%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      },
+      "tradable": true,
+      "ref_price": 349.9
     }
   ]
 }

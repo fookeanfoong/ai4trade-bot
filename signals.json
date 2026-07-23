@@ -1,29 +1,56 @@
 {
   "updated_at": "2026-07-23",
-  "valid_for": "2026-07-23",
-  "generator": "Claude premarket curation (news-driven)",
-  "note": "算法候选经 Claude 盘前按新闻/信心筛选。仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
-  "data_quality_flags": [
-    "QQQ shows -4.42% in quotes.json which is inconsistent with SPY +0.4% and NVDA +1.6% — likely a bad prev_close; ignored (regime guard uses SPY)."
-  ],
+  "valid_for": "2026-07-24",
+  "generator": "generate_signals.py (algorithmic)",
+  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
-  "conviction_note": "1 name (NVDA), moderate conviction, into a cautious tape. Today's story: futures down ~0.4%, GOOGL -4% / TSLA -7% on AI-capex 'profitability' fears, cooling jobs (ADP), 10y ~4.63%. But the worry hits the SPENDERS; NVDA (the chip SELLER) shows relative strength premarket (+1.6%). Dropped AMD (+11%/3d = chased, no-chase blocks) and JPM (+5% pop, catalyst unconfirmed = chasing an unexplained gap). Energy still ripping but way overextended and OXY is benched (exited yesterday). 1 slice, tight stop given the risk-off lean.",
   "signals": [
     {
-      "sector_or_ticker": "NVDA",
+      "sector_or_ticker": "AMD",
       "direction": "bullish",
-      "confidence": 0.64,
+      "confidence": 0.67,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
-      "max_chase_3d_pct": 6.0,
-      "requires_preopen_recheck": true,
       "already_priced_in": false,
+      "auto_generated": true,
       "reasoning": {
-        "en": "NVDA relative strength (+1.6% premarket) while AI-capex profitability fears hit the SPENDERS (GOOGL -4%, TSLA -7%) — the market differentiates: NVDA sells the chips that capex buys, and Asian chipmakers rallied on the AI buildout. Clean 3d +4.6% (not extended), 5d flat = consolidation, not a blow-off. Risk: on a broad AI-scare day correlations spike and NVDA could get dragged down regardless — hence 1 slice only + a tight 2.5% stop.",
-        "zh": "NVDA 相对强势(盘前 +1.6%),而 AI 资本开支的盈利担忧打的是'花钱方'(GOOGL -4%、TSLA -7%)—— 市场在区分:NVDA 是卖芯片的,别人担忧的资本开支正是它的收入,亚洲芯片股也因 AI 建设走强。三日 +4.6%(未过热),五日走平=盘整非顶背离。风险:若全大盘 AI 恐慌,相关性升高 NVDA 也可能被拖下水——所以只做 1 份 + 2.5% 紧止损。"
+        "en": "Auto: AMD 3-day trend +7.2% (today +3.8%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:AMD 三日趋势 +7.2%(当日 +3.8%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      }
+    },
+    {
+      "sector_or_ticker": "NVDA",
+      "direction": "bullish",
+      "confidence": 0.63,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: NVDA 3-day trend +2.7% (today +4.4%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:NVDA 三日趋势 +2.7%(当日 +4.4%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      }
+    },
+    {
+      "sector_or_ticker": "JPM",
+      "direction": "bullish",
+      "confidence": 0.63,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: JPM 3-day trend +3.2% (today +4.7%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:JPM 三日趋势 +3.2%(当日 +4.7%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
       }
     }
   ]
