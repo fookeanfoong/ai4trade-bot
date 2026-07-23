@@ -182,6 +182,12 @@
       "broker": "alpaca",
       "dry_run": false,
       "actions": []
+    },
+    {
+      "ran_at": "2026-07-23T17:06:28Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": []
     }
   ],
   "last_key": null,
@@ -195,7 +201,7 @@
       "t1": 215.01,
       "t2": 221.28,
       "half_taken": false,
-      "peak_price": 208.75,
+      "peak_price": 209.49,
       "armed": false,
       "confidence": 0.64,
       "entry_chg_3d_pct": 2.82,
