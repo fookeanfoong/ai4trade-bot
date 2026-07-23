@@ -168,9 +168,36 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-23T13:32:48Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG NVDA conf 0.64 0.638723 sh @ $208.75 [broker] notional $133 risk $3.33 | stop $203.53 T1 $215.01 T2 $221.28"
+      ]
     }
   ],
   "last_key": null,
-  "positions": {},
+  "positions": {
+    "NVDA": {
+      "ticker": "NVDA",
+      "side": "long",
+      "qty": 0.638723,
+      "entry": 208.75,
+      "stop": 203.53,
+      "t1": 215.01,
+      "t2": 221.28,
+      "half_taken": false,
+      "peak_price": 208.75,
+      "armed": false,
+      "confidence": 0.64,
+      "entry_chg_3d_pct": 2.82,
+      "notional_usd": 133.33,
+      "book_risk_usd": 3.33,
+      "opened_at": "2026-07-23T13:32:48Z",
+      "price_src": "broker"
+    }
+  },
   "benched": {}
 }
