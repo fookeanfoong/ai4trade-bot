@@ -1,15 +1,2069 @@
 {
-  "fetched_at": "2026-07-23T21:41:22+00:00",
+  "fetched_at": "2026-07-24T06:46:03+00:00",
   "max_age_hours": 24,
-  "movers": [],
-  "sections": {},
-  "errors": {
-    "Market": "HTTPError: HTTP Error 503: Service Unavailable",
-    "Trump": "HTTPError: HTTP Error 503: Service Unavailable",
-    "Musk": "HTTPError: HTTP Error 503: Service Unavailable",
-    "Fed": "HTTPError: HTTP Error 503: Service Unavailable",
-    "Oil": "HTTPError: HTTP Error 503: Service Unavailable",
-    "Chips": "HTTPError: HTTP Error 503: Service Unavailable",
-    "Earnings": "HTTPError: HTTP Error 503: Service Unavailable"
-  }
+  "movers": [
+    {
+      "title": "Tesla sees 'Worst Day' since the day Elon Musk said that 'I can\u2019t pass a TV without spotting a Tesla up i - The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxQTnVPTGg5MjdFYXNOZ0UzSHZuQmFaNENEa3cwQTlDNUVzaEdLTEJJazFYaE5GYjFHRTJFaTVtcnRQS0NYbVpQVk9yUjhXeElpYnpwcGlKTWtQNHFRRERUUm9tRFZBQkJGa09PLXZIR1R1YVhYaWJxSnVCcXhFN05FWGNiNXprTl9IR0NKTWhtQ1N1N1ZIdldFWGlvc0dKd1phUHVrTXdSc2VxWmZ0Rk80eTdKcnE2LVk4NzF3MEdic2UyVGpIZzhYaVVyQ05ObE5jQ0s5TTkzc1dvU3BDYTRjWkRYbVlrb044ZW5kemVDSVJodkZNOEdMbkZROTNnVEhrbllfeEoxUUpGdjZTTXdYRnM4VEd6UU9QZGFyTdIBogJBVV95cUxOV3ZUZUJOcHJKQjJqR1RIZHZhVGs2ZHBSbGlyVFVPNE14OVZLaFB2WDJUVU5ldkxQWFlOTmtZWDhYYUpvSzRJY0pVajN1M1ljWHBCY185VjBFbDBKakxQR3lIcXFaUkFocTZHYnc1aHpsTFJKZ1JhdTl1OXVITXk2OWFjNkl4V3drYjhXQ3dOLXBzdGF3OHotOWl4bzAzLS1ieW1mY0xGWmdZUGFLbmpOMlpGMEt6VERDZllsWnM3dEZuVnFWOWxDTU5YVWV0UW5EV0ZFajhPZnNXRTFmMl9LU2xGYUhKdk1JSXBlRnMzVjZxTkJsTV9qWUI1TExib0FaQVJFSmpXNXdYeV9iMlNQYjQxR0RJWEsyeTVNN0preHlEdw?oc=5",
+      "pub": "Fri, 24 Jul 2026 06:04:00 GMT",
+      "source": "The Times of India",
+      "age": "42m ago",
+      "_sort": 1784873040.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk says Tesla must invest in AI as soon as possible - \ub514\uc9c0\ud138\ud22c\ub370\uc774",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZi02VXVyclZvSWZBR1hUTVpWUVNuaVMwVUtqVV9xaFdvVlRfLUVQR0lod3BRZWEycXdBT3NTT3prdnRoTkJOWThXZXNOa0IxcmQ1SHJzdzVKbU01MFVpanE2cXJBdTNmMnh4Wk42MEg0UW4yZWdGSW84ZUVmRnh0VkZhbzZKTFlTY0h5MkRLcm80Y3BrLVQxcXpnNmJ3U28?oc=5",
+      "pub": "Fri, 24 Jul 2026 05:49:55 GMT",
+      "source": "\ub514\uc9c0\ud138\ud22c\ub370\uc774",
+      "age": "56m ago",
+      "_sort": 1784872195.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Asian stocks decline on Trump's tariffs, US-Iran tension; South Korea's KOSPI underperform - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNX2dYcWZwRzFzV2hVZTE3eDBsNW5pVlo4VVR0NDJDLUpiOFhpMjJJX3I0aWJMTjlFMWFfZnd2MWp1VTFJai1xR0dFaDV3U2h1VHA1VUlycGp3SHk4RHlQSW9vbDQxbFBWaWZRRmFjMG9EelhOOG13T1JFOW5NOERKY2VJaUdFanFBcGZyUHdyWTVQMHB4c1dOM3JRY0JLWDlTczBEaUFQYU5GVDlCQ2kwUFB1S1JpUmo4T01jbUdwUFlRRWNoQ3FTLQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 05:33:13 GMT",
+      "source": "FXStreet",
+      "age": "1h ago",
+      "_sort": 1784871193.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Canada ready to respond if Trump's new tariffs take affect: PM Carney - Business Standard",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQNldpeFo1X0s1VFkzS3RCTmtnaWNhRlItOWZTOXhiNjcwVWtON1RlWi1sUlcxampLZHZwZ0N0Y2NVT21XN1BvRmJxNUxobk1vZHBqamFSUVE3N3lwbXhmbVZ5c1g1akJfQ1FDYW9IbU50bVMteWZBRmFiWWo4RUFtWXloaGVPNmZhVDRNcktoQUpFSDl6dVU2aHV2UlpwNnZCR0Jzb2J0d3kzRGFWNHBYa0hvbklsSHVEY1NVOEpfNlVaX1ZJa2hwZm00bk1fZ9IB0wFBVV95cUxPMVl1Q195MkI5WExkNkowT3JFNXZyenV4QXdsMnVEVHZSRE1yMnl4V0RSekI3Yll4N1JWSDhMbGNpa0tVRU83NnpfMXBhVzhmRUZNSU9VWERnV2ZRTFBudVRyZVFUVWd0bzZnbzEySXNoQnFuMEdCUUc4VHhnODNuMkp0Vk1pWkhlampCQnRkN2Y4Y2lqMHpyN0JaSDdXVG5QaldrcjlSZ09tbFRlSkhWdERoLWJUYXU2Qmw5VU5rMDNEWW50SGdWR1FhTWlzbWxIZ1dN?oc=5",
+      "pub": "Fri, 24 Jul 2026 05:21:33 GMT",
+      "source": "Business Standard",
+      "age": "1h ago",
+      "_sort": 1784870493.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Says Taxes Could Wipe Out Three-Quarters of His Wealth - Tesla (NASDAQ:TSLA) - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQa3hleDJ1UDVaemozVXJEMTBnRUdzSHlSYThscHZRQ2RvcElvRkNRUnNQSjVFU2tQVTJraExvMkFtZGV3T1ZCVDhnbE1KeXJUM0lUWG5TaUFOTGIwUko1cmhnbWdPWmhfN2tDdTJJVlp0N2paM1NqclU4Wi1Td2hlUEZBTjFHcHdvNFUxeUljaTZQdF9mUkkyNDZ2TUdtOENVZDg0cFdKQTFhVTZmaHBnRE9MMmZfOXJESXFUdjlBRGx5ckt3elVBc2ZWZ090Mk80VjU2LUowWUUyV2tKU3VEMkVxckVOWk91OFAwRUdLVmZsZjNRNUVhUmc5S2RjZw?oc=5",
+      "pub": "Fri, 24 Jul 2026 05:17:00 GMT",
+      "source": "Benzinga",
+      "age": "1h ago",
+      "_sort": 1784870220.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Gold Price Forecast: XAU/USD Retains Bearish Bias As Markets Brace For Fed Decision - Bitcoin World",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9aQUpiYkpuMUFXaUt2UHYxRnFwekZhel9qMnAybW9PT2N4WEFzb01VMnU0SzFEcDNhN0lDUGhOS2pxV0FBajR5QzlEbVp1NWJJcm9UTzl4NFZUaXVTbnFQTl9JVFZ2UWtYZTUxblNiclRhWGJLN1FtSkUyODQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 04:20:11 GMT",
+      "source": "Bitcoin World",
+      "age": "2h ago",
+      "_sort": 1784866811.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Is the Fed's Easing Bias Officially Off the Table - Kavout | AI",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNQWttamV1d0plT2Q3eGJIaTRBeS02TlV4ZTFmaTBoWXp5c3RJVDZ5WVl3b2pBZWN5ZlUydXFZWTlNNUtiZklaTE9VVWtWRy03STlnR1pvQkZyTENnaExHSGlTMEVCTjFKbDdlU0hCRVd6R2NEZ1pxcVZNVjhyaGN3Q0VqZGdyaGx6R3ZYZg?oc=5",
+      "pub": "Fri, 24 Jul 2026 04:19:59 GMT",
+      "source": "Kavout | AI",
+      "age": "2h ago",
+      "_sort": 1784866799.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Asia stocks fall as Trump tariffs rattle exporters; Japan, S.Korea tumble - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNc1pMTTF6SHpBcXZzUVp1eW9rUzhNa0stUV81Wkg5d1VpRURsZU9yTUR5YjhLUGhESHJIa29qeTEwY0pwX2NQZWxmemEyT2RuRVNvZTB1Q1pjSE4xWlVudnVEWVR2Ri13eUN0eW1MVjdQM0JuQVVFQUN6blE1ZW5FaWhaWHNBazZJSk9NTjh6a3lKcFZsbk1XaHFQVlU1WXEtR2pyOGVFc2pIOVJHZEZKUUtDVkkwOUlOQ1kyQmZCYm13WmowX3c?oc=5",
+      "pub": "Fri, 24 Jul 2026 04:13:21 GMT",
+      "source": "Investing.com",
+      "age": "2h ago",
+      "_sort": 1784866401.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Thune and White House trade jabs over Trump\u2019s controversial elections legislation - CNN",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFB5OFhldVVTMUFDTzRKREhnVFh6bW0yYl9EV05FMW44d3IzbWY2V1FEWUwwTzlMSmpkZnhqR1NpMnFuQ2diaklzSEtuMEUwY3RSTE1DbExEZE1OWmJ2aFJPMVBCMnloWDlZczBwbkhTaFAzM2ZXVmszLVRzaGc4Zw?oc=5",
+      "pub": "Fri, 24 Jul 2026 03:59:00 GMT",
+      "source": "CNN",
+      "age": "2h ago",
+      "_sort": 1784865540.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Oil prices surged past $100 a barrel on July 23 after Iran-backed Houthi rebels targeted Red Sea shipping and US President Donald Trump threatened strikes in the region. | via ANC 24/7 Full story link in the comments section. - facebook.com",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNbEJsRHk0ZDJGTDZZS2tIN1E2Wm13U1ZOdklOajd4aXowZFJMWEdpWlJlVWpLWThya0EyYjU3RWpfQlNqbzR0VS0tZmU1UnItVTNUcEhrT2REMVloTVJfek93UUFiV1UyT1UxU0JtaUhBb21wbXhOSFBjRjYtbUt0VlVPd29FMUxCR08zZmJFdFFsajNBbnlReFNrZkxyOEZJYXhDaElrNEpRanU0RzFnM1B1NkZDdmg1WkJjWUhRV21Mb0hDOHZ2R2F6Y2tmbWhNTDNZQnFwTQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 03:55:03 GMT",
+      "source": "facebook.com",
+      "age": "2h ago",
+      "_sort": 1784865303.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Stock Market Today (July 24, 2026): Sensex, Nifty Decline As US-Iran Escalation Pushes Oil Above $100 - Times Now",
+      "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNMnZlOGJUX3REUGpyZ19UYTlheXQ3Q3NhYjdEWVB0MWVwWUdLclNtNGhhSlNUdTBCWDNySWN1Q3NHbU5KY2ZUSnFJZkZTY1FSUE9jTmt5V1NlejdIdDdGYkRPYjUwV0pnVGdDa21fTDZmWjFubVpWVzAyRlJxVjZkWjhDQzI5eFN1X1ZhUUp5N1hnWXpPR1JxcDdIVUVhdkgxT3JwQUFSSEs4bm9GcFlEM3A5b3o3SEp5OEdnaDdaNEJvc2x3QlUyd3FGblRGSmdPRlJDNGpWOXphQV9LX2xyYy1GZFYtQUwxaEdLaThmZk9qOHFxaHpxUGFYb9IBgAJBVV95cUxOelhBOWxKQmxJeVlzUTlQZUdsT09SOGkzM0NlUUhIUS1hOVE0a2VjbENyVGlJd21RQzlMODBPWlBkbF9ZcDdIeUxaSEpDUlZNcVBrWnZwazluWkMzRFJqdU9VN2MwMk9GUzY5Njl6bGdhbkZRLU5yR0RxU0JWMWdoYmZacUVvTF9QeDlIZ04yazh0anphREp6TF84d1l5WHduWHFKY0pQc1k5aWx1bzlOVTljemRfYVBrWkF1NWNuY0RtaWhvQ0gxX1QzTHhTcVFKUXMzN004Zzd4dWNHN3dkSmo3WXA4WjRENG00QjJWSnBaQWxtX01zcnVRRzNZd0xF?oc=5",
+      "pub": "Fri, 24 Jul 2026 03:52:10 GMT",
+      "source": "Times Now",
+      "age": "2h ago",
+      "_sort": 1784865130.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "'Unjustified': Asian allies push back against Trump's forced-labor tariffs - Business Standard",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPQkItUS1GanA1am03MC1PZUF0elZPMUI1dGJUejRjdWkwLU8wTGdldDk1b2ZXSTFFbVh5TXVtbHRPQzFJdXlfQ2hlWWpRUTZyRnQ2N0tuaWwtdnNYZ193UkIyWWlDd1NHRjdjYkQtaDNIZGtSZC01WUgzMnFiZlZZeEhTUW1qZWhpVVdoeGtBbDhaNXctQXhvbVkyemlZWUJ4QWg5VlNuR3FqSnA4VEYxTGJ3QlItQ19WSzJrWVhCTUlQRVY4ZnNTV2NrY3N3Q0xTWUptdU94b9IB1wFBVV95cUxPQkItUS1GanA1am03MC1PZUF0elZPMUI1dGJUejRjdWkwLU8wTGdldDk1b2ZXSTFFbVh5TXVtbHRPQzFJdXlfQ2hlWWpRUTZyRnQ2N0tuaWwtdnNYZ193UkIyWWlDd1NHRjdjYkQtaDNIZGtSZC01WUgzMnFiZlZZeEhTUW1qZWhpVVdoeGtBbDhaNXctQXhvbVkyemlZWUJ4QWg5VlNuR3FqSnA4VEYxTGJ3QlItQ19WSzJrWVhCTUlQRVY4ZnNTV2NrY3N3Q0xTWUptdU94bw?oc=5",
+      "pub": "Fri, 24 Jul 2026 03:41:42 GMT",
+      "source": "Business Standard",
+      "age": "3h ago",
+      "_sort": 1784864502.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Stock Market Today: Gift Nifty Drops Over 200 Points, Signals Weak Opening Amid Rising Crude Oil and US-Iran War - The Sunday Guardian",
+      "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOWnI5Skg0TTRGZFNaa09wb3diOHdIM25YWFpUeTRvX3ZfWGY3WGV5MVdYXzI0Q3dEMlZPMFlfUWpZRkl6eDhxODFBeEYwaDg3bmdjOVB4LTMtQ0xNOXZwbFBwVmlmbHVmZU5xU0FKODhQUllJQld5ZU00enZoaWtmWFdBTHpONVN2ZjF6eHY3WkE2QWNTdFpMemJ3UWtEalZDTGx3RGloX3prbHdMSlM1RTFDeVNvVnJpT0prYVRVc1FtbTNfbkJHamxFbG1KWFFOVjdXRDFYTzZGck5fSG5SM0hrdjl1UmY3Tk1jdVlXY9IB9AFBVV95cUxQREEtVmZmakN4bGlsLWIweXBuOWJLTkhFY0dhampOejBYWmFXamJiX3RHX29qektNb3hvU3BQNWo0cElZZ1RCSmQ4VzJhWWpOMEYwc0pVNDZqVGljaDljaGlzcVBCTDYtWGhjaG1VSDZaYUR4SE5rRFZ6Rm0tNXo3SnpHa01pTVFON3dFdVEyQlp3dXZ3VURfd0tWaC1rZlB3WEtOVGZGcE5YZm81MVc5SldlSl9TNXh6eTVNeG9aX0ExNUk3MUZuRWdaWnpOYW1sWjMxMnY4elh6MF9XeEJFQ3EtLTJhVUNRNDRZYVVKTHdWT3pa?oc=5",
+      "pub": "Fri, 24 Jul 2026 03:40:35 GMT",
+      "source": "The Sunday Guardian",
+      "age": "3h ago",
+      "_sort": 1784864435.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "Shares dip as oil tops $US100, Trump levels new tariffs - aapnews.aap.com.au",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVlg4QUVmUHRvdnFnbkRFWF91LXVINEZJMEpISi1wdGE2Q1RVUUQ0SG11VUpLTF8yOERKd3IybXRnZFVnWWxfYzgwUFptdzVSMUxIZW5mTFhIUXpKWFU4Mmd6Y2VEVHh5M1VBR3U2clUwUVQ0dk9waEg1bC1ZZFBHVWFOTzJScXdGbmpDT1hB?oc=5",
+      "pub": "Fri, 24 Jul 2026 02:51:02 GMT",
+      "source": "aapnews.aap.com.au",
+      "age": "3h ago",
+      "_sort": 1784861462.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "\"Show Results, Not Just Vision!\" Tesla Plunges 14.5% as Investors Turn Cold and Warn \"Next Month Is a Major Hurdle\" - news.sbs.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE50M1hHZ2xsTDBUUnZ4dzNxOFlJOEhRbjNoTnplVjRkb0tnaDRraVpCTGxPcXllS1d1TnVVMklfTU5ZV1l4cE81ZFFfUklmTjBCNlZvUnR6N3BGVXBEZ2QzZEttcktLQdIBZkFVX3lxTE50M1hHZ2xsTDBUUnZ4dzNxOFlJOEhRbjNoTnplVjRkb0tnaDRraVpCTGxPcXllS1d1TnVVMklfTU5ZV1l4cE81ZFFfUklmTjBCNlZvUnR6N3BGVXBEZ2QzZEttcktLQQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 02:47:00 GMT",
+      "source": "news.sbs.co.kr",
+      "age": "3h ago",
+      "_sort": 1784861220.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Market Today: US Tariff on India, Infosys CEO Surprise, Crude Above $100; Key Stocks in Focus - NiftyTrader",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNblk1QXBZMmotcDV3eDlmb2drNlBRVGlEbGRQV09rdlM3QkVPcGNPSjVwRGxXRzZaZE5XTFJwby14d1NMd1ljeVZ0czB0eVFKWlVjUWxTazhQemxVZTJrOWh1cGRLNlp3SEpWLTNuODFEQXpJbmE0d3VDRGFocXNFVnRB?oc=5",
+      "pub": "Fri, 24 Jul 2026 02:23:41 GMT",
+      "source": "NiftyTrader",
+      "age": "4h ago",
+      "_sort": 1784859821.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "TSLA Stock Sinks Toward Worst Week This Year After Weak Q2 \u2014 But CEO Elon Musk Is A 'Big Fan' Of His Insightful Retail Investor Army - Stocktwits",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNVV9KRmdKX0xCWE81Vk03OC1sZnJoaFE3dW1yNW56T3NvU1BKTi1yQ1h1b0NTZWgzazV4Q3ZNTHJCZGlfRnBDZ1FnYXRHaXFtOUxNd1RQVDIxSlJlSmhNMGlTM21Wc0pvWWd5d0R5ZlptbUw3OWVjOGwxR01JZExNRkhOY21SdXFPbmpDeUZHLTVLdThDX0VxQlRrVFhBb2pXc1N2Wll3aFJVblFMNE5WX0txekgyUXZLeXc?oc=5",
+      "pub": "Fri, 24 Jul 2026 02:16:00 GMT",
+      "source": "Stocktwits",
+      "age": "4h ago",
+      "_sort": 1784859360.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - ktnv.com",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYmVRdl9mRG1KR210bWY3RWdvNGgtb0tOeGJIXzJod05SdnFLdGtrcmpXdlVmS29XNjNSeWZFRXdMYzFfTFBwTWxNQU1zak5JbGlCdDk5a04xWHVhVzR4UXVVSTdYOWY5Mzk2UTk3NVJkMWNfM0xoMldLeFFvTExGcjM4RE9uelNMb0NnLWtGTVlha2F1bXhPRHlFN21yRkRLX3lIRXRIYy0?oc=5",
+      "pub": "Fri, 24 Jul 2026 02:07:48 GMT",
+      "source": "ktnv.com",
+      "age": "4h ago",
+      "_sort": 1784858868.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Buy or sell: Gift Nifty slides on rising tension in US-Iran war, Vaishali Parekh recommends three intraday stocks to buy - livemint.com",
+      "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNTXdyT1E4ZGJpMzc5Q3p5LXBJTWE3NkRQM0N6VHptdDRoRVJDWXlEY2dkcUotaFNsLTNPQ1RNbVY0NmRDdTJCd2xNYlJqU3B1b21oakM3OUJSWHNsbzlOMHdNVzl2MWFvZUh2QzRtck9CVW5BNFZ3QUktTDlXNW5BRHdCWUVmdnF1MW1zTmxIbGFRR0lXN24zeV9EZkNXZVFNUExRWDVyR0UwRGY3Q3paVTJzQ2VJcXBRRWRZaG1SaG5DU3ZVbzdtN2tjd3I1V0xqcEVrd1NDa0RBc3VJRlJ6MUdmRHV4LXJWWWhaSnJPdHZEMWNURTdPSVFKYjJZUjN4aVFvUERfOWhDMmppemlIOFNCZ3puZFHSAZwCQVVfeXFMTld1ZjR3OGpqSnZVSTNiWmszSWN2a0ljSlJTenJBVi1BbnVJZzdhUFFYQWxVWndOcGs2cGNlNzUyaGNQdWVxblZ1WGFWejJPM2M5TmJDS3dpZE96V2VnSXprbjVLaGY3MWRhSEtVVmZ3eFViV3BYb2c2N2FRUmhzcGllOHQyU3VKSDhnOFZpYURqRDJ0d056YzVqN1J6N0xxR1EwU1dEY0lnU1F2VWRqbngtVVRzRXdtdjhndWlhSjJxeDFKS1p0NkV3OW9UZFozc3l5RngwV1FSbUpqeWZTZGFwVHF1b0ZVVDJvYzVZSU5Rd2tjbHNXYkNOV2F0Z1VOUDhKRkMzU05PZnlxQnNPMUFNSmw3aW5qSTZldng?oc=5",
+      "pub": "Fri, 24 Jul 2026 02:07:14 GMT",
+      "source": "livemint.com",
+      "age": "4h ago",
+      "_sort": 1784858834.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "On tonight\u2019s episode of Paul Murray Live, Sky News host Paul Murray says Labor's economic promises have unravelled, warning Australians are now facing even tougher interest rate pressure. - facebook.com",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPdHJxbmduV2xpeGkwQlZUNnJaMVVDX053WjN6cWNIY1B5YlkwRVpNckxzQ2w0ZW5vem5ZVElicktBSVY0OHhKX19RTC04RVFHTkpoQ1NmUjBWSkhMSV9JTFA1Z0pzMzFHdVNsQkhIVDNYMTZDcWlrT0x1VXE2SkhWX1BhYi1yektMb2RidVQtTF9KZGxXSk1xSE5SdlhKdndzOE5vQ3k0U2xwaDloUnlNX1d1OFpJbkxyTkhSZzNNME5Zei1SeUlza3poWDg3aU5TT194WVdPcnpmYmtjaVo0?oc=5",
+      "pub": "Fri, 24 Jul 2026 01:50:45 GMT",
+      "source": "facebook.com",
+      "age": "4h ago",
+      "_sort": 1784857845.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Brits warned 'fuel prices are shooting up like a rocket' as tensions rise in Iran - AOL.co.uk",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQVTg1UFJnM1RIMEU5WnI0ckhXNzBZa2FORUp4Zk85N250Z2N1bkdXV3RHLUJUY01VWlNDTnlxRk83YVk0RncwMDhaYV8wdTdPZ1F3X3gzTjliVTRpbkwzQjEtcDZrVzRpTGs5VlJ4cTd2RVk5MVlsS3hJbnVJWk1VM3VMQWdLUQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 01:39:00 GMT",
+      "source": "AOL.co.uk",
+      "age": "5h ago",
+      "_sort": 1784857140.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "US stocks plummet! Oil surpasses $100 \u2013 Tesla plunges 15%, dragging down the market amid fears of inflation and rising interest rates. - \u0e27\u0e32\u0e23\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE93RFZYRGk0NmZDbnBhSzJXSTlYU09yYjRDc19YbW5iZmdEcUkxSXh2UVJEei02emU1ZGhQUVBnUXR2cjZQbWtLV2lWZVVxclRnajFmd0praGw?oc=5",
+      "pub": "Fri, 24 Jul 2026 01:18:00 GMT",
+      "source": "\u0e27\u0e32\u0e23\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23",
+      "age": "5h ago",
+      "_sort": 1784855880.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "US President Donald Trump vows to punish Iran for Houthi attacks in Red Sea - TMGM trading",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQN3prSE5WUnhPMHNMUWRxaVBvakhaYUJwUFUwZnNqdkV5bXRIREROamRIbld3TWZCckZHMjBRRDdzX0RNTW5Dd1l6N0YtX3FCQXZtNUpxdFVwenk1RkpqQnFxSGNhczhBYXQ5bGFRWkUwME9uTkk4MjFnWnY0UncwWXJZNjh1YUJmakhXOUxzU0hIMmY3dVNuWnpjMER5Q0NXMEhqZFRDQ3R6ZVgxSmwtYVBFdGNuWkV2T04wUjVDbXVhMGRGQlZpY3U1ZWU0cGxDc3dYSklDSGM?oc=5",
+      "pub": "Fri, 24 Jul 2026 01:02:12 GMT",
+      "source": "TMGM trading",
+      "age": "5h ago",
+      "_sort": 1784854932.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Elon Musk\u2019s Tesla, SpaceX Stock Nosedive Leads Nearly $20 Billion Profit For Short Sellers - CoinGape",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPM09oZFFDM3JfYU9ITDI4OVQwTDZzaExCYkgwUFNxbzVwd1oyTkRxY3hLa3k2R1VUTkRFQUZhNXNHWmY1VVg4MEtqYmdFa2I0WVBrLWRXLWotYWxaS2hjSVNZX1lUYmRGYnpqME9NdzBQeDBHOHFJOWJ0V3F2Ylo0NWVYdUJHWkNhZm5Ub2ZKLXNwSzVhdk1FS3djUkpxd3FXYW5UaXBIdENFSlJ6?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:58:34 GMT",
+      "source": "CoinGape",
+      "age": "5h ago",
+      "_sort": 1784854714.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Gun dealers with serious violations back in business, thanks to Trump - CNN",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNQlRWbHh6OEZoUEFmMU1wS3E1Rm9lZmhqMGJXRnItZnJwemdkWmdUTDlHZFdCajNpVlpmVzlBZ0lpX1NBdVVZOTgzbm5HVnY0NUoyU1prbHpyM2R3YjhTMWJFQUpMeUVCcWQ5RnNXaml6WEdRVXlWWktOYUI4UTJ3QVFTU3BfTTA5N1JTbEVGejQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:47:29 GMT",
+      "source": "CNN",
+      "age": "5h ago",
+      "_sort": 1784854049.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "CHARTED: Oil Trade Through the Strait of Hormuz by Country \u2013 Visual Capitalist - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQeU1tdWFDbEwyc2R5ZEFYN3Y4Q3czZEZKX2ZMWUZWUjVDaHljOVZXY1dTX1h1LXFMSlNJcGtad1VURWhBaHFPWm5nNmY5YzJDX1B1RU1ISDFKWEs1US1TNkptS3lIYXVyWUZsdUM4OTFzRk8zOU1abWE5M3IwV0dtX2VqWlhBUW5mbERvOVVoU2EyR25PQk5qbk9PNXBfbmZ3NTFlR1hXVVZNUQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:43:21 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784853801.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Iran War Anxiety Sends Global Container Shipping Rates Soaring - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPdmtCcm5uQXIxNTktbnI1QW55LWtqTjJvODRGWVJUUS04aW1TNWVhS1FpNVNicW5vWHhxWm1pU0FVYmZQRnNNNXRULUlRTHdQQ2gtaThhS19TVUZwdmZ0WG52SUlDUmRBellYVG96ckZ3WjVNSHp4WGNKV1ZidVA0U0JiS1ZON3VZaFA3UWJpMVJxNFllMElwSQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:40:54 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784853654.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Trump adds new requirement to Saudi nuclear deal amid criticism - CNN",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBpR293Q0pVMzUycXV1VXZaQUU3aHY2d0xIakF3N0plWkludTN2TFVLZVloOTVmcmk3ZHRuWm1mVFFOQ1E5TmpwczhPUmF5SFpYYlFlUXJmZFR1cnkzN1VIMFBJR18tOG5NWGU2ZDF3?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:40:09 GMT",
+      "source": "CNN",
+      "age": "6h ago",
+      "_sort": 1784853609.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "How Trump upended the Saudi nuclear deal less than 24 hours after its signing - CNN",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOSVVXZUVSZmo2bG5paUFoTEdKRjJfQ3RVUkxPSU55WGxzRFpXM2N4cDZLbGtqR1U0dDZsUFRLRXhhWkltaV9pejV2Ukpia000cEY0X1hiX1MweE9ZLWF2dWJvNFh6WHNOQVB3UGt4Vkk3V1d6dV9yZ3luOU9yWFc4cm92VUs?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:31:00 GMT",
+      "source": "CNN",
+      "age": "6h ago",
+      "_sort": 1784853060.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Oil-Gear Maker NOV Cuts Earnings Guidance as Iran War Hikes Costs and Snarls Deliveries - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQTkc4VE5VcFJuNzNERXo0bDRSdWJkMnQzcGJNUjdRdzM3bDdZYy1lRFppVWhNT0tsSnhmbnZGM2FXaEJtbzV5MlpwYUlqRFNVWnl0RE1lM1FGcEZCYlJ0WFJteS1ZZVM4SWkzY21tX09XOXBSWTNwMlhUWkhIZGdaM3lNZHVtNUhsbWxMcUdwdW5xblFoYXRWX0pSblZxbkVhVE4zVzBGRzhBUTRFaHVfNG1Wbk9UbG1zVUE?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:30:53 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784853053.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb2k4RHBPd0V4OEFXVEw5T2hxMy1UaDZOU1dfcXluNnM0NzY4RlZjSzhNekFzWUNCUFJYY0pBT0FWOXBtQzZ3VXRBYjdEeXlRMm1Na0hyRkZQUnNZdTNRYTdxMWItS0h6ZnB3Ny1sTFhGQWRCd0xvSktGcGp1NHJZTzV4czZxZkprQnVWMHRmcmxqM3hIMENydDd5R1ViLS0ySGM1c2tkMVI?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:25:03 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784852703.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Musk worries about 'Robotaxi'-crash headlines as Tesla expands service - USA Today",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOdXpjZllqNUJmNVdMZ3dHME53aUd2MzlwYlZiRnZzUDRXYUxhZ1dFZE8yVHMzMmJLYjZBaUNmaFgwb25HYmRieXREUWVIRGd0VWVEcFo4MUc2R0NDME5CczhXeHRRQ2ZCUjl1dV9kZjJHNzF5ZnR5VWdqVURRZTBwSjJ5R3ZfM0M1S0c4ZDNhcnU1X3FLOUtFN2tYRzFzYlY3V0NWcUZTTUc1MFBOUFJESzFHaW5OWjF0QWxwU09YSQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:22:00 GMT",
+      "source": "USA Today",
+      "age": "6h ago",
+      "_sort": 1784852520.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "OPEC+ Agrees to Boost Oil Output When Strait of Hormuz Reopens - EnergyNow",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNR05wUXRmTE5QLTNpWE9WWFpTZ2ZpeVRkdUtKdHVXM0Nxc0pnclVSQk9WSEdjcEVuMXBKdnZkYXY5anZIaUo0bmhYd3M5Z0pEQnp3TFJEay1YamxTNjJubTBqZHBUNlB6MkpuWDBfWVNBTm43RGRUeXFnNng5ZndJVFAxenhWS0x4RzJwTnZBY3ZULTdDbUE?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:21:51 GMT",
+      "source": "EnergyNow",
+      "age": "6h ago",
+      "_sort": 1784852511.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Oil Prices Fall After US and Iran Receive Framework Ceasefire Proposal - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQU2EzT2V0SWZFdVQ5QlZsMWtnNjhxMjF5RTFJNmNmZkZ5d2VFcFBjX21mQ1lDRG5XYk5XUHVTZWo1RlhYcThmOWZjU2k4WXZNVXBNTFoxeGdWRVQ2YndtS2tqdHNJcGlzdjIwMjctdG0tMGFBQkpVQkxXQ3pJUWVOV29qaUdMLXNGZGctOU0zNDB6bkliTGI3dHNoUGJwaEFvRGxV?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:13:56 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784852036.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Hormuz at Near Standstill as Iran Warns Ships to Keep to its Waters - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPMkFocGRSMmpaV3lZTXFET0ZZbHItdHZZajVBcWtiZTg4R2xDLVVBRzIyQ3NWSTZpRUUtSllFSE5Xa0UzTVFuMmh6UTBscGJWVXBtdTM5SzNhWWhkZjlDNmRMbmxwZ0pVQ3FRbnRTaGhzaUJEdlAxVlZlNmZTN3BzZTdURjZfSTVIdUxRR2JyUllpYkxxT3AxOU9BZm9VaWs?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:13:56 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784852036.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - KOAA News 5",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNVmZ3WkVJU0dzVkNGcmNmVEgtRVZMOTNPb1cxcUFoMlBXVF9mdDJkcUpTVG9GVGdxYnVqaUV0UUtISmJpNGNURE9ieXItWVZqaFVBU1FsQmtvZk9Zd1JiSklXUERjMFU4SUJ4ckNwSlhadjg0cENfNTdFa3pDblJ2RHVVODh5WGVqYjV1emdtVnZtSGlOMnZOdENibzI5OU81WWlSQXEtclY?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:06:04 GMT",
+      "source": "KOAA News 5",
+      "age": "6h ago",
+      "_sort": 1784851564.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - News 5 Cleveland WEWS",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQTE9uWXNnYlRnVlpHdXozR29pT2ZLbUFPTUhlbjVsVWJhd3BoVEMyR2twTDBhUVdZWDNuLV96dllFaFprazgyLW1qY3lENDVIRDFLdU9lV0E3bk1KNktUZGNQR2ttUFZrNWpqUkNCU1BvSUZyYXM2cXVLM09ZQ0NrNXpHdE1sRlRSNE82ZG1HOWlZeXBxX2dvdHFQc0ptR0RBRnBBa2lVM2Vmc3dCSDF2QnJPeWNvUQ?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:04:32 GMT",
+      "source": "News 5 Cleveland WEWS",
+      "age": "6h ago",
+      "_sort": 1784851472.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk says he \u2018got carried away\u2019 in politics, defends DOGE - USA Today",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMkV3R0x3UXpxNnlUT2hlR1k2MTlDLWtvWTR2VHFOVVVwUGxwVGMzbkczV29ZTWlKMllBYmFZVl9YU3d3cEZjYnRTLVVuaVFyX1V6LVdpQ3ExRlZGRjYxVVFiMHAyOGdBSnpGQlR5dGY2ZFZnRHIzaERhWTRHb2tFTnM5Q0ZwZkFaOTFYazBJMHNHY205Ti1rVGNVNzRUNU9fbWREMWNB?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:04:00 GMT",
+      "source": "USA Today",
+      "age": "6h ago",
+      "_sort": 1784851440.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "No Evidence Iran Has Mined Strait of Hormuz, Pentagon\u2019s Hegseth Says - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQMEFaWHZFNnNKek1uaHhya3FWaG9KWm81dUlEZmZoTFBFMEZld0E2MExEbTU1UE1NV2RMc3NTdFk4YWJwM3pnYkttYXF2djRxZUJIVnJDelZKZEV4emJTVklPb2piNjdHSUlvSkxWdm1sYWFCQWdSVXJaVjFGQnRJbzVFaDJVUFJZS1hlSWt2MHMxMW9leWZkS3FvZ3ZUZw?oc=5",
+      "pub": "Fri, 24 Jul 2026 00:02:48 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784851368.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Oil Prices Rise as Hormuz Stays Shut Ahead of Trump Deadline, Strikes on Iran Intensify - EnergyNow",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNVndRdlBIVWNXNnd1cXNDVmIwbjBrWmItNkt4MFVWYm5NLU90MFlFa3hLUF9ISmM5N0tjQzhWcGt5SlB2dnpVcElqYl9DYV80U2hWdWt3Z1l2TU5OMmx5ZUZvSWN2NnFqamFYVTl4NXJFLTFPcFlhM0ZCVlFPWWtrcmswQXJNb1V6cVhTQVZXZTN3VGl5akVfRjFBcV85VF9yYkpWTmJSU2hzV3VtOUVsQUU0a1UtMmM?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:58:33 GMT",
+      "source": "EnergyNow",
+      "age": "6h ago",
+      "_sort": 1784851113.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Morgan Stanley Lowers Oil Price Forecasts After US-Iran Peace Deal - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSVctRUFVM1l4Z3VNRnhLZVN0dV9KMENjZW1wWWo4eXJycklOLTdJSkJNSm9qbTB4WDB5OUFsaktnUDc0V2JheDl0eUZoZk43bVpCMjhSTEFJeXNpeWhlc1FhZnhvOXN3Q3B4R0ppbkM3ZmJreFpEbUd3Y3A3WmxTY2Jla1RzSXUwekdNV1l4bnlZOEw3bG85TUt2S08wRm9FNkNlajRR?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:54:33 GMT",
+      "source": "EnergyNow.com",
+      "age": "6h ago",
+      "_sort": 1784850873.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Reports: Trump weighs \u2018massive attack\u2019 on Iran; US surging forces - CNN",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1lWGdFQ2JCa0M1cXVHb0Z1c1kzWVFEMDZ2M2FfekZiSFhtb0dicUktTUlYRC03UVlPQ01Id3NCMlJsQ3FWLWtKcF8zWG1zZFloZEw4b0sxQVBvNGV1MWhKN1p6bWdxXzA1WHZreUNEUTB0RVQ0U2dZ?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:52:34 GMT",
+      "source": "CNN",
+      "age": "6h ago",
+      "_sort": 1784850754.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Tesla and Elon Musk deprioritize robotaxi proje... - Pluang",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPMnhsMll4TG1RaHlVQW9tbkl3MWNUWm9UOGNndHlLZVduZWNGZUh3c0lsUENXX0Uyb3d5a1JYaUl5N3hNd2FXWElDSFY0R3NRa1lXMGp6MTBkMzVDS0s0LTM0bDVaUHNKUDZuZWE0cXlNYXhiMGxGX19JdnVsOHpyaHcyWQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:47:59 GMT",
+      "source": "Pluang",
+      "age": "6h ago",
+      "_sort": 1784850479.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "LA Dodgers gift Trump a World Series ring - CNN",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNTzFqdjJGQks3MGl5SVo4S29hdG0zaEhnMXJhZ3ZaVEt3MWJDQmN2QnVVWW1qdVBYdk53M2xaODVHcjd1VjNPYU1vSVRwLU5aNmRVVklMbEdSUnpJbENYaVlPTl92VnlWVGdpY0xGRG83LXMxTkhrc3ROc241Q0w3ZG43b04zSFE3V0d3WkdDdEFKOWRw?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:28:00 GMT",
+      "source": "CNN",
+      "age": "7h ago",
+      "_sort": 1784849280.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Musk's $150 Billion Empire Fortress: \"First Principles\" Management Forged Through Three Bubbles - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE81UFZreUh6LTM0ZkZwSVE4akwyUHJXWmdkZENQX0Z0OWVfR1RyNW1Sc3BwT0FsTTNGc1MySno4aXRPVFRsXzNrRTRVRnNoY24tZlVCNUVnLVJUY1pBWTBzVFlqazJickh6Q0ZhWmlrZTJ6Xy12OXc?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:26:00 GMT",
+      "source": "finance.biggo.com",
+      "age": "7h ago",
+      "_sort": 1784849160.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "American Spirits Industry Thanks Trump for \u2018Much Needed\u2019 Elimination of Tariffs on Scotch Whisky - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYVZUbFZXZ0JlelVlNHl5d3hqenpsLXMtMjI0ZXE0SzFlNkRMR0Y3Uk1BR09pd0ZoNHIzMmpNdDBnYzNRUENMVHJTdWtTUG9tUGtDZzZZOXVJdGk4ZE4zblQwVll5OWRkeGVtRURNWDJFVEFlOUlTN245ZWRsellOTTVDX2ZjLVhWVjlBYnJzVHd3YWtUX3FiOGVxcEdpbUZfOUhuNXpR?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:24:56 GMT",
+      "source": "Yahoo Finance",
+      "age": "7h ago",
+      "_sort": 1784849096.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Oil Jumps 7% to Above $100 Ahead of US Blockade on Strait of Hormuz - EnergyNow",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPZENOdEo1d1lGd09RbjR2RzE5SGRweDhuMHQ1eERzb2c4N3JMVnE3bGZnRUd0TGYyRHhLMVRMZkM0ZWtFTzZxY1p6MHVMeV9FakpxRktTSWtYZWEyTG5lUVNUUmktUUZRRFppNVRsQXZlX2hYaHV2b25rRUdOY1RvRFl2emV1c0FBU21DLXd2YjRxT0ZLR19QSjh5QQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:10:27 GMT",
+      "source": "EnergyNow",
+      "age": "7h ago",
+      "_sort": 1784848227.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - 2 News Oklahoma KJRH Tulsa",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPOF9QT0FVR2JRQjdzS0JQbjE4TnYtOW82ZUNUbkNQanJhWnozc21xMEE2b3JUbzNXT3RzZElZTVg5d0tGcURfRXBCbGlYMGd1ZE45b2lidWlRcWxmcWxNNnhxQ0MyNzdyVDNTczgyTXV4c2JWdDZCdzZaWUttRVFGXzloeHMtZ0I5U3J6QUxuMXhxS09Wc3g1VGExNEk2eGZ0c29EeFkwbG4?oc=5",
+      "pub": "Thu, 23 Jul 2026 23:07:28 GMT",
+      "source": "2 News Oklahoma KJRH Tulsa",
+      "age": "7h ago",
+      "_sort": 1784848048.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "UK, Germany withdraw embassy staff from Tehran amid Iran-Israel tensions - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQSE5yVzNVeUN6Y081b1hjeGs1VFM2TjF4OGlsYkxzVmx0MWFuYW1BQXVHNHFnenk3UERrS1pQMHU2UzVfZEd4SHZxdnotMk4tMWNUX0RxblQtTzVXOTlqMkFVLXJoUnJMYjJBaXVUMzBjTEJoTlJFRklUa3gxQ3Y2RVN4NjdFanVGenFBSjg3cDVJOVo3QVJDZ1ZYSEx4cF9Q?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:59:52 GMT",
+      "source": "Crypto Briefing",
+      "age": "7h ago",
+      "_sort": 1784847592.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Indian stock markets rise on US-Iran peace deal hopes and lower oil prices - News On AIR",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObnNVbGpWSlRSWUtBZXY2Y3loYWUza3Fvd2ZJY0NHLVdhZkw0aTdPcG41UDlxQXFjMWl1ajRvckhWZVJaWmx5U3RuTWg5dGdFcXhFRGxYaGlyaElOOUVqVGhOcl9QME4xSVZ2UVhUMmlNSlhOVFh2VDF1VkMtYnE5MTBpZzFITDN4Z011SmlQVUpETW9COUpGaDhvRUlFNTJpNEE?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:58:24 GMT",
+      "source": "News On AIR",
+      "age": "7h ago",
+      "_sort": 1784847504.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "Earnings at Musk's Tesla fall as spending on research cuts into profit from selling cars - PBS",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPYm1MVnVlbjZleXBBSG50TDdGTDU1dTM0elFNU2UybU5XNlVHbFJxUkZtTzFpVE1EQy0yV2ZxVjltQU15Tnd3WXZOVDBYYkt5bTBUSVc1U1dKUm1UenMxRXZkUXdFNUNkMjUxMjFLWTJIdDZQWFhCWXF5RDNpeHRHTlNqVldOeE9qb1J3ZnlidVlXZmRjbHhLM0h3VUFNZEZiRDQ1RDRhSmQtd01pTlFyRXZwcmg3X3U1MjhvaGJLMElZUW5JVFdF0gHHAUFVX3lxTE9ibUxWdWVuNmV5cEFIbnRMN0ZMNTV1MzR6UU1TZTJtTlc2VUdsUnFSRm1PMWlUTURDLTJXZnFWOW1BTXlOd3dZdk5UMFhiS3ltMFRJVzVTV0pSbVR6czFFdmRRd0U1Q2QyNTEyMUtZMkh0NlBYWEJZcXlEM2l4dEdOU2pWV054T2pvUndmeWJ1WVdmZGNseEszSHdVQU1kRmJENDVENGFKZC13TWlOUXJFdnByaDdfdTUyOG9oYkswSVlRbklUV0U?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:56:35 GMT",
+      "source": "PBS",
+      "age": "7h ago",
+      "_sort": 1784847395.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Fed may hike rates twice in 2026, 36% chance per Polymarket - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUTU3T0xib0JET05jdGFtT1Y3ckluUTJIc1QxeVVPa2xOX2VXRTVYdzgtUjVIT3ZybDBwZEhkS2NrdWRmX2tKQTNNM1BtTG1JVEwyVGtNY2xCbTdsd1BwWnp4SkpXSkEyaVEzeGlNMTBoODNwX3RnX1hLSG56ZzBZUG00REhLMUxPV19tUzdB?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:53:52 GMT",
+      "source": "Crypto Briefing",
+      "age": "7h ago",
+      "_sort": 1784847232.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Trump Unveils New Tariffs, affecting 99% of US imports - Eurasia Business News",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQbFFqZ3V6NC1ER3B4QVhpRU15SEVMUFI5QXR2UzFHWW10V0RiMU93UXA0TV9PS2hRdnNTZDR0TWtjb0RmcEh2ZFFrOGpzSmpZNWM5bDN0LTJKbkIwVlNGckxWRzZiM1lGNzVrQURuUkYxZ2FEdVRJUW1Kdjg5dXN3ZzZFTE9JYkFtUzJJNlFyZzlSTHk1VURFSWtRakg?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:50:20 GMT",
+      "source": "Eurasia Business News",
+      "age": "7h ago",
+      "_sort": 1784847020.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "JP Morgan Sees Brent Staying in Low $100s Even if Hormuz Reopens in June - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQMzZsdVBYMlNNcVJSSk13TXI2OEtuWmpHc01pRDNKMUU4RkhhOW82UzdpeFVuTnExdGwwNmVvaHR2ZjVIdTZaVmt2TEZzWGV4TXluS1pmM2JxVEpOZjE0ZGwzNC1oXzhBVjRCR2lBMndBd0YxNUl4cTdfdFZhYXhtQTlfYlNrQXFNS2Y4dkxnSU1QUlNFXzY0ck15dkk1bmNnWW1wUw?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:43:58 GMT",
+      "source": "EnergyNow.com",
+      "age": "8h ago",
+      "_sort": 1784846638.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Tesla Sees a $214 Billion Wipeout as Investors Pan Elon Musk's Spending Plan - Moomoo",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQSXg0QVl5WHVpRWZXd0t0a0NHZzEySXFHal9TRDRnVlY0QVhrZnllZkdyV1MxRWoySjEwVjZYT0VPYXktclNUMzUzc0lVTTIxSGJXX3BnOGw0dFllNkNWZmVVNlo4Q3UzNFhLVmFUYnN5OGdEQ0tsM1gycHlmY1A1d3FGaE5VN0I4M3VuTklwejFNT1dMeWlUaTlkaFY?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:41:05 GMT",
+      "source": "Moomoo",
+      "age": "8h ago",
+      "_sort": 1784846465.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Oil Prices Rise 3% as Iran War Stand-off Persists - Energy News, Top Headlines, Commentaries, Features & Events - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOT05ScjQwX2cxMmpKblVhR2g0enp2S2RWWVZ4aXUyMGZJNUR3bkNwX0tCN1hTcXYzSUdTMlA5djVsQ0F6eE4wOTBfbHlnSUc0b0x2bXZ5UXZEOGhrYWhyVnJPcGJVWHZzM2hPSDB4bW1rMFp1NktuTEdjdDNaZngzX2l0aGVsQQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:38:17 GMT",
+      "source": "EnergyNow.com",
+      "age": "8h ago",
+      "_sort": 1784846297.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Trump Ka Naya Elaan | Monday Stock Market Up Or Down | Best ETFs For Falling Stock Market? Basilico Delfin (x38zU4eOg2) - Mshale",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9GamxVbW94Z3JsQWlzV0pJdFhOY1E1QXA0cl82YlQ4ZGZfNE9LWTE1S2VIMkRMSm5kSUlKRXZaS1VIakJqODhISWJ4dXZGOFgzczY1ZmpqNS1sX1J5dTJQMQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:26:12 GMT",
+      "source": "Mshale",
+      "age": "8h ago",
+      "_sort": 1784845572.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Melts Down Over Perfectly Normal Questions in Wild New Interview - Gizmodo",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBXc3VSN2loVk43YzlNaXRDUHJlYWlLUWxMbXA4eVkwMy1fRURVRkxBbEVibS1LMU03MmFRRm9wc2hxaWNvdEpjVkN0V3pHWU5jbEoxeFpNaFY1UGxwQmZxZDRoN3pqZUpmVThkNQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:23:53 GMT",
+      "source": "Gizmodo",
+      "age": "8h ago",
+      "_sort": 1784845433.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "The world\u2019s most important market is flashing red about the Iran war - Houston Style Magazine",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRXNzcGNkYzFwZjNRNThndFRLMUM1NXlDMERPY1FpbEFtdVlDY1hDUGNwek5sSUkzQlpZNzVfbVpXMXNwOTBjbVRocHRQdHhZZWhXNkhHTUJEeTBISjQ5Ukh6MnRCb2JSblEyUHpibUJVR0pOdTVCZ3ZYY3BfOU5iRG5HVWx6cWdjYWZSUWFQNUxiZ0J5UF9Uck12ZktPZHFWc0pLVzlua3UwZlN2b2lWRw?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:22:18 GMT",
+      "source": "Houston Style Magazine",
+      "age": "8h ago",
+      "_sort": 1784845338.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Trump admin imposes new tariffs it says are meant to punish use of 'forced labor' - CNN",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1wR09FWkk0RDFJeDRpaXczSjZub2pBQ0xWQTJzT0lYLWlLQ0l5N0tQbFNpM0REY0djR0NDWEdIeHo5Y2dpdFlEcnhTM3pvV0J4emVkLXRubHVSN3BIeW5xSzdCcGx4VGxoNGpYMlhOQjhpT25yMjBzeWU4VlVFbE0?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:19:57 GMT",
+      "source": "CNN",
+      "age": "8h ago",
+      "_sort": 1784845197.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Trump\u2019s Iran Reimbursement Pledge: Implications for Financial and Industrial Sector ETFs - TipRanks",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNMmR0OXFOTTNmNUtfNDNPRkp6QlhPb2k0UE5yeklJTUdlQUlhaWdIUHBKU3Z5bUtudUJZTEpUeUhVcGR5RTg4RTNDQUxEa0xSMXQ2Ym1aanpYM210ek5HT29YSDVHNUFyS1NsWnotOC11T2ZrS3I2MERQa3h1blVtNkgwYzlCTzNnSVp6RjIxX3I4eGNrM0I5ak9BS0J4U3NiSjRoY0NReXNXRVU3Rk8xcVRleUNCSlhfNGZna1l0aW9oenc?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:19:30 GMT",
+      "source": "TipRanks",
+      "age": "8h ago",
+      "_sort": 1784845170.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "How Will Tesla Teach a 40-Ton Semi To Drive Itself? Elon Musk Just Revealed The Plan - Torque News",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxObHdZc0FmcVZaRGFmVlhMR3BpUkhOWFI5YkZPRkVYSlE3UHpIRTRLaUp5RTNYSnlxaHozMjYzZEdLdGZHTGlfdEtEakdZMDRlX0xCcEhCMkNqNDNrMjgybDhiU0pPS1NDVjcyMWZ0ZnU2emNDOFp6VTFwZDV6Sno5MjM2YVdHeHIxaE05ZjRBZmxqYnQ4RkItal9fMnFjOU9LQjYtckNn?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:09:10 GMT",
+      "source": "Torque News",
+      "age": "8h ago",
+      "_sort": 1784844550.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk is not happy about this Tesla Full Self-Driving approval delay - Teslarati",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPN2s0TzlWNXRfbWdoNjVra0JWNS1QLVVyb01mSVBJcHdtWS1xWnJsRUVrdzR6Y1hudndwOHVXREUzWkRTUm5mTXF2X29TbVdGWlN6RDBlUWw5R0JGa0tHaXg4bnRyWEpHM2lpRzZvV3dwNnY2LU95RWU4eUVVTmZ1OFljQlIycG5kdVpyeWdRZmhZZTNQQVpsMA?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:05:54 GMT",
+      "source": "Teslarati",
+      "age": "8h ago",
+      "_sort": 1784844354.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "OPEC+ plans output increase despite production shortfalls, market cautious - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZ1g2VGFjNDhscWZJdHhSX3V5ZzlCb0JJLWdfTUktdTc1SVZBeURiLWp1ZUN1aThLY3BJTmlpd1FoSkh5SVVuSU9icWZlbURiN0l5VEozbDJPSXlPNmJOWVFCNE5IVV9BUE9RUTF3cUtQQjJXUzBsQWtvaHVLNEgzblFxTlRKMVZkaldheXhTUjRULVR1dUg2cUF2WkJ2RjVpLWc?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:05:50 GMT",
+      "source": "Crypto Briefing",
+      "age": "8h ago",
+      "_sort": 1784844350.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "OPEC Set to Raise Output AgainEven as Members Can't Pump It - Crude Oil Prices Today | OilPrice.com",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQa2NwTU1BZFRuVG5DbWgyWmphNVAzZWJEOGhlMEVvXzRUVzBzXzdnUFV3LUc1NFhGdnI4UnhiZ2IycXNRNGNOWDFUWE1lZkJQS0RoMFlQRzVnbHJwMkxKMmNlUFlTUWhrZVJLUFhIblJlQ3dDUjRNNjlURkdGSXdQZkpoZVBOTkxUYkUzZm1WWmdIUm9VQnhwYUNxU29zR2luWmtFS0ZLR2_SAagBQVVfeXFMUGtjcE1NQWRUblRuQ21oMlpqYTVQM2ViRDhoZTBFb180VFcwc183Z1BVdy1HNTRYRnZyOFJ4YmdiMnFzUTRjTlgxVFhNZWZCUEtEaDBZUEc1Z2xycDJMSjJjZVBZU1Foa2VSS1BYSG5SZUN3Q1I0TTY5VEZHRkl3UGZKaGVQTk5MVGJFM2ZtVlpnSFJvVUJ4cGFDcVNvc0dpblprRUtGS0dv?oc=5",
+      "pub": "Thu, 23 Jul 2026 22:00:00 GMT",
+      "source": "Crude Oil Prices Today | OilPrice.com",
+      "age": "8h ago",
+      "_sort": 1784844000.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Trump Hits 60 Countries with 10% to 12.5% Tariffs as Temporary Levies Expire - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPa0tnNkhVME9WS2RKZXd0NVlDRGFPaW1wS3cyT3duSkJ1Ql9sVWtlemZqM3BLSHNMaXBOQkI3QmRVeXQzQWdQN0Rvc3dfVEFjbmRDYVpQNnE4clVBTk85TGRmZ2NzcjhvZWFnd0U0alBkQ0NNWVBSdmNFV2ZiaW1yQWMxbXdLYVBtWnlSVjNMOWU2OXFnSWFEQWxDa2pqQVIyQUVsbHdnVDJwaWRuOXNPWU00OHVCak5HV0MzeFozb3poMG1hcGc4?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:52:59 GMT",
+      "source": "Benzinga",
+      "age": "8h ago",
+      "_sort": 1784843579.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Addresses Tesla and SpaceX Merger Speculation During Earnings Call \u2013 Sort Of - driveteslacanada.ca",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOYTVScDRjS2xrcE1QMjdCOGNnTmJRY3FaaVdpVVZUVjNNMktUaGhINW5NYUw4aFFCeEgzbmYxaEtLbFYtVS1tdThBb0FpOEdQYllZaEFZcDVXUXdhdk8wMG9aV21kdmNaVWc5RnFkTm9GVUlLVC00ZjJvYkwyT2ZHczRsVQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:46:32 GMT",
+      "source": "driveteslacanada.ca",
+      "age": "8h ago",
+      "_sort": 1784843192.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Bond Markets React to Iran Tensions With Higher Borrowing Costs - Investopedia",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQNUNDQ1Nxb2hLZVFTeUYyN2RpcHloWFc4YzB1ZHBHbGkybTAtTFdFdmtMbTRQNmMtczVFZHkxR2xIbHdQSnNLOXRmRFlXaVhYZjloTnBibUF5akV5VHVtTllPZndxbzhzSVN1SGFUUTdoelpwUFpvY1lESFNRYnlkM3B1d0VCcS1jWXdYRTlraG5BcGdDRjROTnhrNU12MHZrVlhZ?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:44:20 GMT",
+      "source": "Investopedia",
+      "age": "9h ago",
+      "_sort": 1784843060.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Trump announces next phase of global tariffs, affecting 99.4% of US imports - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNQUZxeUxxMDJMU0JNYk1XdHJBQi1VWVdFb3cxYVp2Nks0UTRRTk5BQ3pXUVBpWE9JLXo0LTY5WHRieDNRR3lRUFFkajVhN3JyLWRfS3k3VW1ubWstenltN0dSVVp2WWRSMUFCMURrbDhaLXBFSkxYdTI3bml3S1NLUVdhMDRVdnhQdUlCWllJdURvazZRYnR1d19qMXpjeFZaUnRvTENyZXBtQTkzWGhRZUpTREE3TGtwN3lFa3pzaExjbFBRd2o3VXJESlF5cmVYaXc?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:40:10 GMT",
+      "source": "Yahoo Finance",
+      "age": "9h ago",
+      "_sort": 1784842810.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - Scripps News",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPdXFobFJIemNkLVE2S0xqMDEycEp2d0x3TGN6NzU5eUJ6NWJVQzJpaVdjQTd6bC1menVEdlJsdEVDdWFtTDlfX2wyN0JYZHdJWHFKOGJPQ0RiczBNUDFyN1pQd0NNZFlZYXpqdThZbDUwTVJYakpXZ2h3Zk1ENUpGeE9zd0REbzhmamxaZTFmNnEzRU92MENNdUNnVG1yZGlfUG5CR2dPNXhTQXFX?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:31:36 GMT",
+      "source": "Scripps News",
+      "age": "9h ago",
+      "_sort": 1784842296.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - WTXL ABC 27",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNMkpFSXQ4ejUzTE0zTS1lY0hqekFZZWFGWWN4Y1owNUV4b2dNbXRQM2FaallsUXZXZjZYTHVxNmY5UHhybWpyZ3pybVhiam5Qck0ycDRoRmh2eDVwZ1NxWHRjLVNaMzBhSFpCcnZCV1dUQ0UxTFBpdEUyLUlUZXUxd0ZsY2pDR09SRFhYeVdfM1lBMlA3Y09ZcDQwQWhvM1Atc28xSE0wZEE?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "WTXL ABC 27",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - KPAX News",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPRXBpNW1URFpNOEpLTTQ2ZDkwSURhXzFLWU1RRUQ5ZVhnYW9LcUxFNVc5VmRpVEJqNDRmYkJrWklRNnEwVTlPZlBsYUxna2UzQ0Q2SXV4bnM4RVFyMTZDb2c1dEpuZFozZ2J4WGVyRkFmZkw1bG9Ob3lEYzJ6enl2MFNvdlJMZFlLejR0QWxvekdGcXc3emJpLURndjM5TDhGSEE4aEZXYlM?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "KPAX News",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - WTVR.com",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOU1ltbWlsQS1vYnBkMnhlNGE1RnpFTDNaeEYxd1JSb2UyLWdMT2VpT2pqSU5iNXB0T2dWNG1Ed1ljSHRMN1Npbk1oOEwyVjZPR25FSjFYRGhna0w4R2s1M2JRYVF2TnlfWlFsMGJpSTdMRUMxQm5tdjdwT0RYMVdUSDItM1BWM2lob0k0aENfS0ZydVVBdTNyVFpqMDlEQVhtaGFMNXlqMWc?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "WTVR.com",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - KATC",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPSmVGWFBkWWJTNzU1RUhzQV82RXVSMTJWT1FqeFl2M1ZYMDVRSC1GZ3BZYkE1VDk0bXB5c0NxOHRnZ2R2WGxpbmRuVjRoOUdHOHhwYXEyd3NCbFlaVF9ZSzB1NlJteXRKMlBaMmo4OU5OdVlmWEpmVUE4aWlHaVREUklic05iQURlSjNQNEs4QnF0X2x1LTlBNUliQ0JGZVJWYjhGcC1jV2Q?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "KATC",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - KSBY News",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQMjNuQWxYbHMzc0JCQTFpMWw5cGkzRVpNTmMtTHhvVjNSQk5RWmFRUDNISkdLUG5mejE1TGNyb1dPU3M3UTE0XzZWalhTU3BzVFBJdTlsR1BvcEJmNTBULWl3MHlPcjA0YVpjZ0hzQXB6VHhtN0JtZ0tOQkVoaEtNcF9mMGFwYkJEcDExMTNsNTNITG5OcHFmZV9McXR5amZLeXdiNnFTamY?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "KSBY News",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - ABC15 Arizona",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQMXpfUlRZdi04MGNqSFpVM3pRdHRqX1Z6U2xhMEY0bzJJaHdPclFVSUZ6cnRUOTJGYTdxdENySHZpZF9Fczhra2JuNzRnYTl6M1NfTWpva3BmaGRIVExNdWw3b3RyNzI2dkhGOFIwUm1lZFg5NnlkdjdhTWJVa0NIN1dBbUhuZ0hQMVdGNjdPWW5nLVNGbS15amh5TUJ1bW9uQV8w?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "ABC15 Arizona",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - FOX 13 News Utah",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPOVFUaFNMVXFhaFRnVmRIT0Zzb0x0MlBUVmZ2SzFRVElRQmxNQVdCMzJPa3BVNklOS0Jsc2hvV1VJWmZReWhUd09vcDdwZ2tkN29YM2tMVVdwaG9Rb09WeUE1akdiczNvdlUtNFBaRWx6NjRCYnpDU3g5NllCMnBiZmM2Uks2aGV4TG1mcTQweXlDVHI0NGZ6LXVJckg3OFJMX2VIdm9RZ1ljbDBlVEE?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "FOX 13 News Utah",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - FOX 47 News",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPQ2VEUjkyUF9qNnZMcXlEN1oxN3NMaEdnUWJwV1pVNjEwVXV5RXQ5bGVQRlVPWGM2WkYwcGhHMDJtaHd1TDZ6dlBxdWNFR1JGckVCbDZPVE5JMFBQV1BQRnF5cC1MWnZjcmE5d0hTRjNxei1lTmhfa1NYUm9zTWZIRHlUS1FmYXlfYlBXTkVvS19MYVRvbUxncTFJRWhUakNFU29fWkMzY1RYLXBrRzZJ?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "FOX 47 News",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - WTKR",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbTZrc0NKOWRZQVNudDFtMzNCN1g2WGtUaWN1ZzVjLVFTelVGRmo2OTV4aTFDdHk4TXFGNWlxQkFBcDctdDZfM2FzZGpVZ1h5OHN1TV9JY1lNbTFVUU1WV3JtN1hUMnZXX1MxRzl5bHRUODU2Vnh6WmROVFV2SUhqWGRmclg5aE9MY2UtRWxYc0hnVzNscEVYY01TNDk0enVULW5TNm1ka1A?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "WTKR",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - LEX 18 News",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNUGpiQXI3TUxBSDd4YklVVXdFYzVoUlpVY0prN0dyNmJxOFFTRFlJN29PUEU3V0lZYmt3ZkJraEZ4Q1V5anNMSXp1VjJXY3F1d0hVNTh0Z1pXQ255X1NIcEttc0xOTTA4cWRJT1Q1MXh1UExJZU9aUFBJR1l3RGp5TUdDNnZwMUJ5Q2FPVW8yUXF5YWh4cmZjanpwX0pqYjZNeERjRUpiYXhrUQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "LEX 18 News",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Will SpaceX buy Tesla? Elon Musk is not revealing his plans - Tampa Bay 28",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNa01qQU4zczgweVhQX1hBU1JoVUR6enQyS0tZXzdROXpsX0pOb3VTdnd4UkZFejF2WEJPY0ZJNWtSa0V3RXJEQnBrZ0hPNE5nNkZqb1lhWXBiZ1pjbVo0a05MV0ZvNS1heGxJREZQUTZsa210b0VCekZhNXd2MXd0YmQ0NDdqXzNjcEpkNHJ2VUMxWkt6SGNXWGNPUWg3M0VkNUEyZ05VOTNxMllycUQ2eQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:19:54 GMT",
+      "source": "Tampa Bay 28",
+      "age": "9h ago",
+      "_sort": 1784841594.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Tesla sees a $214 billion wipeout as investors pan Elon Musk\u2019s plan to spend \u2018as fast as we can\u2019 - MarketWatch",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOLUhfQXBrdi1FNUVFU2JVd1d4cUVOY0xKaVlua2hmdmFUZ3FiNjBCMllGWFdVN3JrR0JaUE12bkNIemVxakpTQmhkRTR1VFBKYmllYXF2WTR5Tjdjd1V0aFpsc2IzQ0Q2dE4xT2JONHpLZ1JZZzdXWGEtMFVFbGFjN0ljb2ZkRGd5ckZuNGN5MmFxcmNmX3ZKVkhaaUthS05TWi1oaTMxMENtdlRKaXh1ZUJJSUlXNWFrcklnc21zUTJ0V0YxWW1PdUFB?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:14:00 GMT",
+      "source": "MarketWatch",
+      "age": "9h ago",
+      "_sort": 1784841240.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "US Equity Indexes Slump, Crude Oil Soars as Trump Warns of Big Iran Attack - marketscreener.com",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNZDNmcFRNdGhkVUFraDBlZmRCVmhqcXBmVDJpOXVvOGxyb0pFcGJZTHV0VE9WakNKMlNDYjZ5QTgtSmpGdVJGY0JlSVJPY1VOa1Q5QzZmdnpjZWU4NTNRb0k0cUd2U2xmLUZkdlFGb296X1hGU1M2XzhqdENNZ2ZBbVNBMXZwMjRUc0k5MlpCTG1xNUVRV2RMYkVrMWZZb1hXSDVVZFNRbi1MZDBKYi1TSVkxSmkyeVhKcFdNWWlBUXVEQjI2?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:05:32 GMT",
+      "source": "marketscreener.com",
+      "age": "9h ago",
+      "_sort": 1784840732.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Reality Bites Elon Musk and His Tesla, SpaceX Believers - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNbEE5dDNJOGxDaVpOVDRPeFpiallOa0xFSW9EN3BGeDdZQll3TklPYmJYVzJ1bFJURlhJZUU0c3pBVHVBVUtDUFhidjhiMWNWUFZMaDZGb2RCR0NwMnZuM2U4c2JMUGxxd2JKVlJtNElzSkFKWkFGYmdLUlJOYUxWdUsydWNvdjQ4cko3aXZqUWlvOVZhV25KS2JfcjNUTWc?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:04:00 GMT",
+      "source": "WSJ",
+      "age": "9h ago",
+      "_sort": 1784840640.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump imposes new tariff targeting dozens of countries - CNN",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1tbzdkbUtPQWNTSzVCb21SZklWTDAxbWg2eDI3ckZJN0ZqNG5SUEtnRzZTQnNTZ2hONzNOUVF1aVlfRHdZRlVmd2s1aXZUXzVVYWwyQzdRYUhCRlZGQ3haTzlRTXZTSUk?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:03:19 GMT",
+      "source": "CNN",
+      "age": "9h ago",
+      "_sort": 1784840599.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Trump administration faces record turnover in second term - CNN",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBsckFTelVLT3Y1cjN2SUExSGFRZUtTQXFxbGZFeVBiTDF4Tl92XzNlbnFZNGZMTERRX3V0YlJnLUJXY1owSnRqU2lKUHRNN2RtTHpuNDNBbU5PbkpQZ1dNOEV0ZDZJa0cxczlvYmZScEVUVS0xR2F3aQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:01:46 GMT",
+      "source": "CNN",
+      "age": "9h ago",
+      "_sort": 1784840506.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Trump administration announces the next phase of global tariffs, with 10% to 12.5% rates on much of the globe - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQWmNnUnlDcE9LbzVBSm9CUzB6a0ota2J5dGc5VGw5em5ORHVtNVJvUlhXdVB3NUhicEphUWk2bkhCY2NtRHQyZWVXb2lNVmNEVkhzX3RoQmNyeHF3VjQ1b25ZVEFXRjhhRXVyRFFoc0dpWFRCX29TQXhnSldDNXRRMzRfYUJQbWNrRngtTVNkY0labjVjSDI3ZEZYT0NVQ3lfSnZVQUxNc21aN280dlp6bDQxRzZsV0RXbEVNanhXTnlWeEdxbWJKRGRLNFlDVlBkbUJ4VkM1WWd2YlhVTGw0eGdRcDc4SUktTGw3QW9UWVk2S3loUXo2R0hqZHdRZw?oc=5",
+      "pub": "Thu, 23 Jul 2026 21:00:32 GMT",
+      "source": "Yahoo Finance",
+      "age": "9h ago",
+      "_sort": 1784840432.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Iran seeks access to $11B in energy funds in Iraq - Shafaq News | Latest breaking news in Iraq and the world - \u0634\u0641\u0642 \u0646\u064a\u0648\u0632",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPLVNfajVuTEctcUNqZGJXTEI0bk9yYWwwbzN3dFRWYTdhNUdkbE0xQWs5ZFVsRy03X0RTX3JyaW5SM0JCTTZwYkJRT0F6Yk9wMzloOU85QXU0UGxzcm1sSEJCZTN6Vi1ZWWJ0SVpQakRZUGtrNnhjdjY5MjVTWmZJXy1fMXBOY1U?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:38:40 GMT",
+      "source": "\u0634\u0641\u0642 \u0646\u064a\u0648\u0632",
+      "age": "10h ago",
+      "_sort": 1784839120.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Tesla set for \u2018massive capex\u2019 spend of $25B, Musk says - CFO Dive",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQNDM3XzREMV9UTnoxMDg5UW8ydEctSXFlWGViNjFnc1V5RF85eV80clVMWFA4cFFxVkUwVTA3czJUZDBPMWJ6aHVLSUp2cnVyRXREWFJNQnJwcGVfTjA3NmpNVFFweExtdGpkenp5X3V3WXp1YjZtN3U3dEpNbGk0RVcxTnRyOFlKWFpWOV9UR09TcGM?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:37:13 GMT",
+      "source": "CFO Dive",
+      "age": "10h ago",
+      "_sort": 1784839033.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Lots of Trump's tariffs expire on Friday. It's Thursday afternoon, and no one knows what will replace them. - Reason Magazine",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNLUc0OElpU3F1bmNlRzBQQzduRFpkMU5MZFl4Vmp2Rk1NdEFKVXdBUkVDM1d6LW5EdWpYQ0s3VXliX0txQ3MzS3h4dXlSYUs4aXBQMU52OGtkZTFUQW5Nb0VYUmVXZVpoLXFyR0p1QzNWaFBJczdiQVJfRk9LdUdWQzU0VjYxQlhvQ0luMktvd3ZsUVMwLXhEdWo2Ym45MlZXMTlocmh0c0lHaTBvNFE4Wk5xTnBuWEt5STBHR1dFOWFUUklyaGJyNFFqTmhTUQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:30:36 GMT",
+      "source": "Reason Magazine",
+      "age": "10h ago",
+      "_sort": 1784838636.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Stock Market Today: SPY, QQQ Stumble as Trump Eyes Major Offensive Against Iran; Oil Spikes Above $100 - TipRanks",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQT3FEczdCM1p5SFl6bnVwTFRnMnZiWjZKWU13Ym5jcnBaU3hud1BPUXhubmpRVUVkVU16dVhyUld1OFJFcndmX0NUSUdHaHBOUWptS0VCRDRBWWZwXzNMY3M5Y0d6dUVTNnFiVzZjUjhheTFFZDc3MkZZb3BYb05yTllISUxqUC1KeGNXTWNkVHhfQXd5Z1BfRk1zTVhmbWZDQW50eGp0Nm9EWTZZQU1vcmZUX25jOUlZejQzLXV6S1lZT1YzM1I0?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:29:03 GMT",
+      "source": "TipRanks",
+      "age": "10h ago",
+      "_sort": 1784838543.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Tesla Robotaxi\u2019s slow rollout gets explanation from Elon Musk - Teslarati",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNTnJBdndkNkZUcjZNYkhCOEluYWs5SDhraUx0bS1LUzlwWmNpaFhnTkEyc3ZNLUhwTFBYcFF6Ti1DdkhxX3RsQW5IVFF5amdpamNUN211T0RQY2VVc200NVljTlRUOTg5ZjdEb1B4dG56d2hGWU5sb3dQWVBINEYxb0h3?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:20:08 GMT",
+      "source": "Teslarati",
+      "age": "10h ago",
+      "_sort": 1784838008.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Strike on Saudi tanker in Red Sea sends oil above $100 a barrel - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPYURGQnRxLVZLN21ULUd2dkhZQ3JFLUY0a2xLUTRyWGs0T0Zpd3ZveUgxeC1EM2RZYVpEWk14Z0pidkF0anYzMy1Fd1JuQVNzR1Z0VnYzVGJqWS14T0pSUGFtOXM2azczb0NjNmliZTk2TFZPay1MNDd6djQ3Y1lwRld4Ml9QYlBENFlMeWlXZ01qYy1V?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:18:13 GMT",
+      "source": "Crypto Briefing",
+      "age": "10h ago",
+      "_sort": 1784837893.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Oil Prices Surge as Red Sea and Hormuz Risks Mount - tovima.com",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPTkl6Z2JEYXJqamdQWEpBcDFNUG5tS0VQT0FBWmo4aGYycl9CUHRrbWFTN2hneVNSMWhoVHpmcndqS0NiTkYtQno3T3BqMzRjZGFkcXlRWTNGekw0STV4SlYyQm9vbm10TmFJeGhmckpVNDRJb3c3MjJNNDl5c3BuMkdKRVRMU201SXfSAY8BQVVfeXFMTkVja0RzbjBDZmQzLW1QdnMtbGx3aXBfeE1mcHZfcWxpdlpFdEQxNlhsR19SMGFtN2pDZmpmaXZSQmNrc0YtLVJLOEJQSjFMUXFCTHViR29peC1BY3lGQWJXb1k4bDZBWGJBRmQ4VzFPSEFwWDFYVmNKcU44aWFCQS1oUUE3b3VNQ2ZwVWpmR28?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:12:42 GMT",
+      "source": "tovima.com",
+      "age": "10h ago",
+      "_sort": 1784837562.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Iran sanctions backfire as oil prices hit triple digits, says Ghalibaf - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNc2dLbldYTERqVXc1M3dVWXpFNW1nWk0taXA2VENyVjBDUmk3TVRNRUp0SzdReURkSk51S0VOVUM4SVl6VXRYeXVGZXBiWVJpbnRIbnFZbVB5ZkxtSTQzRWFBX19VNWVjY25fRTBSSVNQNGdMaGhDZXVRd0JQRW5kNXllVzlxNTZfRE52cXJIOHg5TFhYaEtDN0JpY21aZw?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:10:12 GMT",
+      "source": "Crypto Briefing",
+      "age": "10h ago",
+      "_sort": 1784837412.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Evening digest: Trump ramps Iran threat, Magnificent 7 tumbles - Invezz",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNeVRDWEdGSzNyQWNHaWZZckdHdFp2QVF1bk8zTFJpMUNDSDhLSHJuVWhhQXlFaEpnVVBpUUhMVkljdmZ3b053UGtTYzBVQ3hqTmxuUU9oVVVxY0hJRFpGeXpqdTUzQWtHSGZvdXozNXhhOTh2VElvcjZHUFY4Zk9pWDQwWm5aTzEtcG1aYkZZQnNhMHA4UkR2Tl9xM1o?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:06:29 GMT",
+      "source": "Invezz",
+      "age": "10h ago",
+      "_sort": 1784837189.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Preaches Patience On Robotaxi, Optimus Rollout. Tesla Stock Plummets. - Investor's Business Daily",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQcXM4bnRjS1JRSkY2NG9nTWVCcjVlOWxhOE42RmpZLXBEbDRMMmVIVXNWUlliRjNiMEtBS1JwOG9meHJxaFNlb294SVBYa0t4YkFUcDUyQVdaQ3RMTmtFZUh6aTZiYlp0Yzk2ZVdOYkgyUG5WRjI0Y2Y0elh2VmFQRzFIYUI3V0FWeUE?oc=5",
+      "pub": "Thu, 23 Jul 2026 20:03:00 GMT",
+      "source": "Investor's Business Daily",
+      "age": "10h ago",
+      "_sort": 1784836980.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump\u2019s DOJ says it will withdraw subpoenas targeting NY Times reporters - CNN",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNb1U5bTJJZ0JsMGlBRFVFSEpqSWNZdUx5bm1mRHpfaU9keHVCaTdxVTNwNFhEVU9VMUlsZmVYMHB0MVlld0FGZUh3SjFSNFFRdzM4OWF3aEJOSFhoajdacE83Qk14UFJTZE5VMFFsazZkUV9OMTN1THNtYkxqV1FqODdnejBfRFNmZk9z?oc=5",
+      "pub": "Thu, 23 Jul 2026 19:44:50 GMT",
+      "source": "CNN",
+      "age": "11h ago",
+      "_sort": 1784835890.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk\u2019s answer to Christopher Nolan\u2019s Odyssey got way more specific - Teslarati",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOM3VBUXAzTTEzM1oxMkNWODljSWZGNHR4T0J0SzFxdXpQaUtiLTQ1b2M4M1RYbVNKcjJVQV9PdXBveTRSWjdhS1dhaWZIdGszcFBDZWFIX0VRc1FSNFE4NHBQVDdTS0o2amNYVEdqYVVjVUw3Mmg1RzFKOFBMWkkzSnJhRHdUZzJqdGtXaExHR3AtOXJuMG5ReG5lWXA?oc=5",
+      "pub": "Thu, 23 Jul 2026 19:41:11 GMT",
+      "source": "Teslarati",
+      "age": "11h ago",
+      "_sort": 1784835671.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Nothing screams 2026 like Elon Musk thanking chipmakers on an earnings call - Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPUDJyTGd4Nk1tRkk5UG1NZzFzbnR1WHlueGJMWlRDQ3VIS1c1a0g4ZkFtZ2dGSTFTOTBVOS1LdmdNbzVDTUcwZUNWOVRNTU5mTHVWY1E4VEtHMjdmaTR5R25kQ2J4VVpTMGplVXVIQXgwbzFicDFWQ1FWQklCd3VQV2hlQWZ2Si1UVWNUNA?oc=5",
+      "pub": "Thu, 23 Jul 2026 19:24:00 GMT",
+      "source": "Business Insider",
+      "age": "11h ago",
+      "_sort": 1784834640.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "France opposes EU approval of Tesla's FSD driver assistance software for now - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPc3N6OERSTzNCd2xGWDFOdjE0bFlHM2Q5MEJIdWc0MmtJVm5zbFZ5WW4tT3NPam1HVXR6dUJDR1dUdVVlOGZiLVAzaXZMNlZ1YmJIY1BDNVh1NThNYlVETzhENEQ2aUxYM2FHVzJ3cGhDakpKdlNIRWIzemRmQWVMdHBRZHdRTTF4bHZzZWFQdDN6TDh2eU03cHhLTVZHSUNuNXItamJ4YmppeXY4NnpBajN3WQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 19:00:13 GMT",
+      "source": "Reuters",
+      "age": "11h ago",
+      "_sort": 1784833213.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Oil Prices Soar as US-Iran Conflict Expands to Red Sea - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQdGdQbmR6Y3RSbHZ1WFlDeVA2SmtOY0h4dFUzUHhBcmZ2UUpYTXJNNHMyUWZEQ0NJZTl3eDkyNTNuemRuUzNtcGtiTHdUaFQ1QWhfUVdkV3lDcEV6Ml9NZHlxVnQ5cDJUZ05zMVdvS2Q5MWg0aHNoWDRVbVVqeUdSQXVTbFF4ZkF4azdpNDNfVDdIZTlOVkhFWnltVF9zUlRtY3VVU2RXdGhUWUMyOGtNQzRBYw?oc=5",
+      "pub": "Thu, 23 Jul 2026 18:57:02 GMT",
+      "source": "TradingView",
+      "age": "11h ago",
+      "_sort": 1784833022.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Suddenly, as His Empire Crumbles, Elon Musk Admits He Made a Huge Mistake With DOGE - Futurism",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE15Z09oOGZXaFYyakRJalA1ZHhIOGUxN0V0eWlLbGoxcnVfUTllRE9zMFQ5Ukg0ZWtyMjRLbVpuN1RKMFltWEN1ZzJRbU5pcTJtNFY0eTk0REVVUHBxNXdEd0M1UVhBU0VOYXFadGNxWXlCNnVTenhWYWI0WkxnaE0?oc=5",
+      "pub": "Thu, 23 Jul 2026 18:49:56 GMT",
+      "source": "Futurism",
+      "age": "11h ago",
+      "_sort": 1784832596.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk: Retail Investors Are 'Very Insightful' Long-Term Thinkers - BASENOR - Tesla Accessories",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOQm53RGJ4UUpHQVlNbkNjZEg5dVRNVGNkR3RhNW1tMHNPMzJ4elJFYTBMWUlyVGJfRHVlVjJBTFJjWXE5NU5FRE1vb3NseVVCU2Q5WDBzcmFkVEpQbFZHc2dtVFBRY2JENGIySHBMOWh6UWs1SUhUdjM4TFEyVkFtMExld2JBY0VTc0RqcVJJTG5POTlBY203bmlxQVZtM1BITHc?oc=5",
+      "pub": "Thu, 23 Jul 2026 18:05:53 GMT",
+      "source": "BASENOR - Tesla Accessories",
+      "age": "12h ago",
+      "_sort": 1784829953.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk tempers robotaxi ambitions as Tesla faces rollout challenges - Latest news from Azerbaijan",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbEMxV2c4NG9jTEs3OUYtLW9tMjBmVmtqamdHYUNrd0tfaU1BNnNkZHdHeTFUcTB0a09Ga21LS3lLRkhfUUo1NWdXT1hQX3I0WlJWUGkwOGJCRTZFYS1XRWE2ZzktWS1US3VLOV95bGNyRFB2VHctQ2psQjMtTmR1elQ3NFBjTFhnSTRwdWl4c1JHVVoyRFE?oc=5",
+      "pub": "Thu, 23 Jul 2026 17:54:34 GMT",
+      "source": "Latest news from Azerbaijan",
+      "age": "12h ago",
+      "_sort": 1784829274.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump\u2019s Economy Faces Headwinds as Midterms Grow Closer | National News | U.S. News - U.S. News & World Report",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQa0ZaVjJ0QTBPVG9xem5IRm9yWmMxUFVOcmdQdmxlMkl3U3drOWd3U3RnVTZ5UVdWMXJjcHFSd2pyMTQ5Qnp2UzRIbnppNGpQY21aWnB5MmF5Y2JrYVFTVVJzZTR0UzJzSzZEenZQbXBoV053ajhVRXNJakcybnNySWloUG4zeHVDMmQtalRPcGs3V3p3Si01WUE1YURtejM4RlJGREpSR3FlVmZkbG5kVVkwQWdnQXc?oc=5",
+      "pub": "Thu, 23 Jul 2026 17:54:00 GMT",
+      "source": "U.S. News & World Report",
+      "age": "12h ago",
+      "_sort": 1784829240.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Tesla Plummets 14%\u2014Costing Elon Musk $18 Billion - Forbes",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNTXEybHlpbGotUE1adWpVdDVoUXVqUUtiQlQtZ0tvSVA1T2E0cXdjeWVYcnRwX1lQYjlEdVJBWHZ3SUdMTmcwbnZURkh3UTh1ekhIbjRwWTFhY2pGWi15bUFRWDUwTjg2dWtlczVUOTFHLWpXbUFNNkVick5yb1pvTnhmamE1M3ZQaTViRmVac2w2QlRDeVdaemw4Sk1qTDB6UG9rVkM4eGhhbzY4TUcxa0dGZERLRmFUUWc?oc=5",
+      "pub": "Thu, 23 Jul 2026 17:53:09 GMT",
+      "source": "Forbes",
+      "age": "12h ago",
+      "_sort": 1784829189.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Tesla HW3 Owners Won't Get an Upgrade to AI4, As Musk Promised, AI5 Still Uncertain - autoevolution",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNcTQyLVNWRjU0Z2tWWmFhREpuQ3o1cEdNSUZEMjlMa3E3blBRdGFnT1hWZDZ1OE9yR3FvQ0prQjZ3MWFLOTFoMGdiUm9mZjZudy1TeGlpZUtzNHlKd0Fna0UtblcxcHFJUWM3bGxxTWFiYVJjbzM4RGR6ZWoyUzQxLWdhem5YSnBUWTh2cS1wT2dVUFhrUHV5MHZxeWt0a29WQzcxOGwzSlF2ZFhUU2ZIRlNwU2piWmdKMjh5aHBIaG5lR01lckkw?oc=5",
+      "pub": "Thu, 23 Jul 2026 17:51:30 GMT",
+      "source": "autoevolution",
+      "age": "12h ago",
+      "_sort": 1784829090.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Markets See Chance Fed Hikes Next Week At July Meeting - Forbes",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRWZRbE1fYjhod2RHMVJYbkROZTFlSmZ1Ni1nWFFmcHJNY0RmbGQwdjBhRFZzMjZLWEhXYTZCc1d1X1JybUVhckNEaTJuNjFKa1BINW96MU9pNTcyQktKS2FjVHpBQXB1REt2UU5rYkg3Qnk2T1RDLWZhOTdnbkFpeWRWS2NkOEhmX3ZNQlJjYTBWSWpOcHdfeVRyVWswLTRoZVdSZXplWm9qUQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 17:31:51 GMT",
+      "source": "Forbes",
+      "age": "13h ago",
+      "_sort": 1784827911.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "As the US and Iran carried out more strikes, world oil prices rose, with the benchmark international contract Brent North Sea crude surpassing $95 for the first time in nearly six weeks. I via ANC 24/7 Full story link in the comments section. - facebook.com",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNblFYUEF6VHpxTVdfdEdla0FyM3QzNHRXeDdfT2FCRWhfRmFycGIxVUt3bVJQN0FuZTV2REJhcTJnLXpRelk1ZzdBT09WSC16elNmRE5NeE5wT0UxUFlRWGRySGR0a280S0M5LURxR28xU2FrRGVCRFF0UjNHQU02MGtmbFhTZ0p2OEZmWjJxdGhRb3hJWmFud1ZHVWg2NmQzSzl2VkVJaEpBbDNSODlzLWhqLUpiMFNaTk9ucFBzVlE0M2p4eUt3UkZDZjlUbkYxTTkzekNBYw?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:55:00 GMT",
+      "source": "facebook.com",
+      "age": "13h ago",
+      "_sort": 1784825700.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Tesla Stock Falls After Elon Musk Frets Over the Difficulty of Building Robots - Gizmodo",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE84OTdiclZhV202eVBEZzBXMFFURm91VVFFLWxzWHFUSTJUdlQtNC1xVWN3Ymx3TW9nWlh3WTluOUtEaWtQM3FSQ1hIU2xsS2Y4REJBV2pJejlXWFJvbnFPZHFZMG1jeWdaNzRISVdYRy0wT3NaZ19ra1VfQm0?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:40:43 GMT",
+      "source": "Gizmodo",
+      "age": "14h ago",
+      "_sort": 1784824843.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Millions have signed up for Trump Accounts, but some families are still waiting for baby's $1,000 - ABC7 New York",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZjBxb2Y0Y0xhSXlBUGtJUFdfQmZ4NUNqYzNnTmFpaUhLeTRGV21naEh1bjMwbWtFQnhqZDZldjQzdTlJVW9tNmxSbVhyUzE3UmRjX1VrUzZjbFA2LVM0NkRjZDFpMFZyS29EY3lUU1dmWkF5eGZicE1VWnhjOFk5eXM1cFk3V1lvTHBNQjBiX0pqSnkxNkNpT3VuSnRJMVZZSU8yTw?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:24:09 GMT",
+      "source": "ABC7 New York",
+      "age": "14h ago",
+      "_sort": 1784823849.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk laid out why it's so hard to make Optimus a reality - Yahoo News Canada",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9Zd3l3b2YyV3R1VGczSjhiSU54cW9CaUIzZXBLTFlYR0p4c2FPWjFxZmViZklXUFg4TDBaWERZS1RucjZpVjZLNnpUbVNIaFdFenNIMWlIVl9JOXRRZFhudUdEeGNjWkU3Ync2RmJWMDBQdw?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:22:41 GMT",
+      "source": "Yahoo News Canada",
+      "age": "14h ago",
+      "_sort": 1784823761.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Tesla FSD v14 Lite finally goes wide release with software update version 2026.20.6.11 - Tesla Oracle",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNSHR2SFE5THVqbEZqNHF2OEtya0dOTWRrQXBiaHctTW1kZFJhdWpJWXVzY1VDa0NsTVdra0ZUajVxdng1SDBaeEtYa2VhX1hNZEh6N0F1TmZsV2dLLVVNQXpBRU1tbDZyejF5cUVBWnVFVC1YRXdyVTZLYi15dmlsMlhzN2c5Yk5rM2oyRDA4dUR4cjlpa1UzM1JGcFdhS1BrQ2dIRzhUYzdDZ1p0NVJSWnAzbG5tc1Z6cDhaWFgxMnNXN2NO?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:22:18 GMT",
+      "source": "Tesla Oracle",
+      "age": "14h ago",
+      "_sort": 1784823738.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk spelled out how hard it will be to design Optimus, scale up manufacturing - Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNYXROaXBLc2JseWc1cU9ueU5Lb0RWWEZZOEpjN2ZFaXlZbi1FZldaZkVnemVjZGtBVWZvOTQwQ002V2VuazdDdkRLZEM1bHE0cHk2UzN6MTZ1RjI4S0hNWTZ4TGdFcjdoX0wybE8wX0w1OTR0aXgyMURSbDBSS3R3c3o4YzVYYzl6MnVGWmxTSUpYNDJhSU1MRXRTNVNxRDJSZ1JrN3RsWnFMX2s?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:22:00 GMT",
+      "source": "Business Insider",
+      "age": "14h ago",
+      "_sort": 1784823720.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Assessing four of Trump\u2019s key claims about the war - CNN",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOdm5zTDZodG52QVY5enFoZ25lazdfTm1MN3RWRk5lZzJBc3ZJOC1oUzVYUzgyTV9zLTRiNFlfRURPd1FMWlhtRmpOWmlQTU5ZUkQzUXpqQWZSaDhIY19PMlZyUGJnUmJXdDQ4UlJXNXFsMFlqVXFpakU5bUtmaHhXdGZoN2x4OV80ZWhyVWdyeHFoZmZIbGQxQm1wbmYzeF8yV3BmbXhmM2YxTkRvVS1tNGN1cUl6Wnd4SDhBeVBaT3huS1cxODJoUnVidjVFSXlF?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:18:46 GMT",
+      "source": "CNN",
+      "age": "14h ago",
+      "_sort": 1784823526.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Just Admitted Optimus Has No Supply Chain, But There Are Still Reasons to Be Optimistic - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQUkM2UFN0a1Y3cG5vNjhSM0lsTDFEd0VNNU44NXd3d25kelFYTmUycU0xbGgwbF9Lb195Ri1kV1o1NmM2RnhPdERxbFFjTU9PQTN3VXFhemNaVk9faVhqSkxfMEFMU0JqNEhNT0xzazFVT1ZxNTRBQ05oYjVIUGJnSlNDaDBhVXU2QXpYS1EtQ0xiQ2Z4b3lkdktEamE?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:16:33 GMT",
+      "source": "Yahoo Finance",
+      "age": "14h ago",
+      "_sort": 1784823393.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "US missile strikes Iran\u2019s Qeshm Island, escalating tensions - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMnFMaDF1NTM5Q0F0ZGM4QjJQYkRNZ202TTZNTzhRZEZGSjhWSDJ6ZW5RdWxvNmVjcFVaRGpqWTViTWlOSmlJU2NvRVFwblU2V3NZdllZQWxsYWk2UGozdEx4ZFRBUmVsUUxYWTVnUlBDOVR0dDBsYUdLV3pGY2Vha1F3Vmk1VVkyVkxWMl9B?oc=5",
+      "pub": "Thu, 23 Jul 2026 16:01:25 GMT",
+      "source": "Crypto Briefing",
+      "age": "14h ago",
+      "_sort": 1784822485.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Gold price opens below $4,100 amid inflation concerns and safe-haven demand - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNM3duOFg1NW90VzZWYjI1RHhpZmtESEtzN25xU3dJWDhpbUo2SXh0Wll6YnItU21HVF9mTElrNndGdmxXcUotd0Y3aUJyWUJNQ1NXOFNwQS03WXE2ckJmeTN0X1ZlVVJyRk9ydHRyZ1FSNGp1NU5wcFJ6UE5qb0dHMlB6RUVOWkFoSzQ3UkF1aFRQckRTUmdmV2FkY0g5UmVjTTNj?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:57:38 GMT",
+      "source": "Crypto Briefing",
+      "age": "14h ago",
+      "_sort": 1784822258.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Oil Prices Fall as Supply Concerns Ease on Hopes for US-Iran Talks - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMDdwM3pzM3RDb0lCRVhFWWtTZjgtQXh4WEQxd2pKYmZQS3hnbUdFZ0UtVEpFTWM3VDJwMnlVM2tRSFlaa0p0RXVkUVJBLWNZRGZUdlJqLTdkSTFTSmtqNk9ySmtlR0JxOU9HWFR2YVlDM1FobHYwUEFORE5kZEhjLUt5WWJSVEdjZE1sY2dGbC1RZ2FNUTZzYVV2dlBadw?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:53:43 GMT",
+      "source": "EnergyNow.com",
+      "age": "14h ago",
+      "_sort": 1784822023.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Goldman Lowers Oil Price Forecasts on Deal to Reopen Strait of Hormuz - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQYjhVM2FKUElUMkRPM2ZESFZ6ZTFrMnYxSy1Qc3VyU2Y2VmcydXF2NDM4Vk11RjNJVnpqVGNDYzdJWVR0VjM0REQ2eWF3ZkJSZXpwMTcyOHN4VDdLMlJuUVdJbElRZXlFRmlWSEZDMjdmdmp1andOMFl2ekE3U2ZuUVFOM0JBbjhDRlB2b2dtMkhFMUVSVVNFdzFGSWY5c1YwdHc?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:53:34 GMT",
+      "source": "EnergyNow.com",
+      "age": "14h ago",
+      "_sort": 1784822014.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Elon Musk and Tesla's next big engineering challenge? Thumbs. - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOcFNJd2k4eDh3alJFbnpJQ0ZPMGxRcExNcGwydWJXZlpMbUkxRHl1eXhKMjVDbkIyVHJvSTRYR2VqWEo0SUxFcTFITWZrT0xTNG5iMFhncnptNFFJV3l2LUNJYVB2ejNYSGtLbHJWNUlhWnlaWmx1TkZVbmhGSWh3TUJ6d3QtVm1iT0hCVFRTOWU5by12dFFpT3poQ1dkLUEySWQzZ1lJUkpINTJ2YzVFcW5iZGV1am0zSkE?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:53:03 GMT",
+      "source": "Yahoo Finance",
+      "age": "14h ago",
+      "_sort": 1784821983.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump considering \u2018massive attack\u2019 on Iran bigger than previous strikes, Axios reports - The Economic Times",
+      "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQSklmZ3JpNGx4X1RQaXNPQk83d3ptQWdOMzc1TU5iaVBONnRGbnczSUxSaVBOQzJ3MFB1Undtb2hBa2hQZ1ItNHFSaWRDUk9HV3ZjS19McXZtckRueFdMYzdtcFRfTTdhYVh0NWw3RnlySElFZGhMckRjZjJ0VjdrYVgwUE5nMXY1cWFUN3VFRmx4WXg4VEVGdUtmWEhjSVUtaThzVVNUOEdaRDRXR2l4SUpSUWx1dlRsNG0xb0lJMmxoenRiN0Fzang1S3ltUlR5S0hIcVNhdV93SGxzeDlNcXdCY0NUUkJpVXF0cE8zS3VNQUnSAfgBQVVfeXFMTVhrLTBQNGoxUDNBUTI1T0lQN0NPMkdEOUppeldIbG00V2l3MWJIcUVyX0E2OGpOV0U5V3lRR2RSSWVTMGtCcjMybzlwLVphUTFhbF9DakNWSWdOS0o5WVV2OFh1WWxLRWtXN3BSTUtSTUlEdmtWd3JzOUQ4Z0Q1VWlCV1dzWUpMYUU0YmUzWmQ4NVhJMGRteTNaejUzNUR4ZzFUc0VKaDR4QzdYYmNXT2pUVmlnTzBWWHQ3T3FmYWRUdzc1Zk1yUTl3N0xsQTl4RVpkbm9JLUV6RDZaaUl2VVVVc3hvVnk4S1hwVHVtTlFGQWd3RW9TYTk?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:44:29 GMT",
+      "source": "The Economic Times",
+      "age": "15h ago",
+      "_sort": 1784821469.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk says Tesla\u2013SpaceX merger has to be a 'process': Earnings recap - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBWSjdQTmE3eVdkeEhreTFoanZHNXVSdHlCaC1fdjZkbERHNHJJSE1PSlNfczlnR094WHdvY2dwQWYxUW1WX212Z2ZNaGVmX0pLcVh0SS1nLVc3R2U4WEpkVE1NX2YyOGFFZW96Y09NeXVuOWU2R0Y4bWRTSXFjU28?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:30:00 GMT",
+      "source": "Yahoo Finance",
+      "age": "15h ago",
+      "_sort": 1784820600.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Elon Musk says he got \u2018carried away\u2019 with Trump \u2013 but still holds on to contentious political views - The Guardian",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcFpCd1dMdXZvV1hJZlRPSzB1V2FmU0p2VWJRMTNKSURVQ3RjQWg5aVZKY0lEaU5oeXA2WEdEZ3BxR2hNTXYzWERGalhCRXlQdVI5V05KY002OXZqNXFwQWJZNEtZbDhWaDNtQjg5YTVDbFZ1OEczZDFJeVZFLWh0TkhvMW9vV3hh?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:27:00 GMT",
+      "source": "The Guardian",
+      "age": "15h ago",
+      "_sort": 1784820420.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Iran not ready for deal, but will be soon, says Trump - Social News XYZ",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbXVlN1dZeHlTYl9ibEtVNHZmTlN1UmtkaXlsQnp2WUVRZzY2eXU4R2JaQ0JGel9zaGV1UUlSN2tkNUlFT2MtUDA2bmowTFZMWXlWLU9PSE9XaHBCMnFYSURYN3lNTmowckR4NmZlV3dpZ21XME0xTngzMjU4S3pLdTU5REh6R01XaHNvcGk3MGhjVS030gGUAUFVX3lxTE1tdWU3V1l4eVNiX2JsS1U0dmZOU3VSa2RpeWxCenZZRVFnNjZ5dThHYlpDQkZ6X3NoZXVRSVI3a2Q1SUVPYy1QMDZuajBMVkxZeVYtT09IT1docEIycVhJRFg3eU1OajByRHg2ZmVXd2lnbVcwTTFOeDMyNThLekt1NTlESHpHTVdoc29waTcwaGNVLTc?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:26:41 GMT",
+      "source": "Social News XYZ",
+      "age": "15h ago",
+      "_sort": 1784820401.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Trump dismissed affordability as a Democratic \u2018made-up word\u2019\u2014then oil hit $100 a barrel - Fortune",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMFNMUUZvTGdHY3g5WGtZSnVKbUVGZ2ppV1VzY3hoUUFEdnNCaV9xaVNSLUE2WnN5MTVkelMzS05aQ2JFNUllcmVRRXJUVVRhTkdFbnBBbWhiaEZUSnEtWnhDTWZxeDRXM2RFZHJ6UE85cm9BTEVHQVhKVndkT3paVTlYbzZVY2dJZWZ3UXRWYkxUVGtkam5RNnVqeUJGUEYyV05CN0h1dHQxQQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:20:00 GMT",
+      "source": "Fortune",
+      "age": "15h ago",
+      "_sort": 1784820000.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Tesla\u2019s automotive engine faces strain as Musk pivots beyond cars - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNLXY4OEpENkY2WnVLZ091RE9FWE1UZlJteTFIN0hzdmtVX1l0enY2X0FPY3lMQTEtOW1pOXBwb3BmdGozXy1sUDhTTlpFLXVXeTZuc09VVDBYZk1RWmdzUjFZdk1ER0txM01BMkhURzg5SGxCdllnT3VDYUJ0dWMtaw?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:18:32 GMT",
+      "source": "Crypto Briefing",
+      "age": "15h ago",
+      "_sort": 1784819912.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump hyped up Michael Dell again after his mega Trump Accounts donation - Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNRk9IVHdOQTEyNWR2VXlrU0lsZ1Z6cjJwQ2U2cm9XckZYT1lCWHpndzdIck1DM0YyX3hGaGFkeXF4RmpRcTl5dVRad2tQLU5QNEk2czc0LUQwUGh3QmpxSzE5MXNxSmNMVmNhN0FvYlhYb0MtcGtKVHFFT1hPSnhJZWxPb09RV2JxUUFoWktFZ095N3Mt?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:12:12 GMT",
+      "source": "Business Insider",
+      "age": "15h ago",
+      "_sort": 1784819532.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Dow Falls Over 500 Points, Trump's Latest Iran Threat Sends Crude Oil Prices Over $100 A Barrel \u2014 Nasdaq Declines After TSLA, GOOGL Earnings - Stocktwits",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQb2VsdE12bkFfbkVHSjFocUx2UUNiaERoT0dYRVJsVVB4UTFvZG1HanNaMU1ocjYwZXdiajBkTlNsZW8zZHpaWC1oLWRtV045UWsxX0ptbzlBRmNNNVhLam8yVkVxNDJzWmllWlNIQmtiNzAxaXc2TnhoVkV0VFExNkdHcjQzSjdZbmlWb0dVRG1EMWprazJxaXVRWkd0MmVfdXpTbFVYTzBubzJrd1kyWDJuemhXUDljdjNJRC1hdEtpMUdObDNzcDRTU1FUd1Rj?oc=5",
+      "pub": "Thu, 23 Jul 2026 15:08:00 GMT",
+      "source": "Stocktwits",
+      "age": "15h ago",
+      "_sort": 1784819280.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Says Tesla's Spending Spree Is the 'Fastest Industrial Scale-Up Since World War II' as 2026 Sha - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxOWmJTaHcwVmg1R0k5emRjLXpXZDNkVmhSU1d2c2pDWm90NUc4VkdXdEs5THZjZDUyLVQya2EtXzY0bXNfc3NQVHFsNE1wQTZkNU9aekhaN0xHRHIzQkNnQzhnVnRxaTMyX1MyZWRxZXBycG4zYjhRSndFSWwxM0paeEJVbVg0cl9OVzlocWtTejkzSXRfME10ZS0zWl9abEk2YUw1SXdFVkNVbEltU01RNV9GY2lILU1jaEF0eVlVTDJYOXNPWmNjbDIwTkFORFE3MHBoc2JkbTdZZ2EtV2xNWDdPc0laaTVJZEN2SWFjdG8yY29pS1hPVzE4T09WSmU2bmtvckRxMEZwVnp6cnVkRDNtNkp2bDQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 14:47:00 GMT",
+      "source": "Benzinga",
+      "age": "15h ago",
+      "_sort": 1784818020.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Tesla (TSLA) crashes 12%, sheds $140B as Elon Musk\u2019s \u2018just trust me\u2019 doesn\u2019t hold anymore - Electrek",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNMjJBRjdBUjlQVU45dURzdlk2RmZkci1UNTRIRFFjRUtrTmlJM050NndGZFhQaW56Q24yRVA2bUpaM1A2T0FzNmZnMnBCVVdPaUM2Nlp3SGJ0U2RwY1ZadGpfbXlPcC1QOFl3SGNERzl5VDZzemQxUTJpbTV1ZmtCNw?oc=5",
+      "pub": "Thu, 23 Jul 2026 14:30:00 GMT",
+      "source": "Electrek",
+      "age": "16h ago",
+      "_sort": 1784817000.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "House rebukes Trump in vote to restrict his Iran war powers - CNN",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBHNlRZakpCcGpIYmdvSHQ2ZnpWRGpDcG9SUWFFeWhUNWljSTFLSERIX2lscEEtMHFxdlQybmVYV3F0T1p6Z2dMaGIycDg3cm1uZFhXbi1nTlFzeXV1YXpNZGtTQ3E4WmtBbVFsdEZB?oc=5",
+      "pub": "Thu, 23 Jul 2026 14:26:28 GMT",
+      "source": "CNN",
+      "age": "16h ago",
+      "_sort": 1784816788.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Changes Tune On 'Cautious' Robotaxi Rollout While Tesla's Net Income Falls Because Of AI Spending - Jalopnik",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQOTZVSjdMOUFpQW1MZVB2cnU1eHo4ZjRrR0ZDU09xZHQ1TlNyamFXTEpBRk1HNXIxX0xNVTJ4LWs1VEJGZF9JRTQzYjdHYThmbmlpcnZZd3Q1ZWF2eEdMcUtZLXVvRk9zaVNkNDAwalpxN1NaUlJ5VENNZ29kRnhySm11ZElvdndZaDlQWG9PdVRJQy1x?oc=5",
+      "pub": "Thu, 23 Jul 2026 14:16:45 GMT",
+      "source": "Jalopnik",
+      "age": "16h ago",
+      "_sort": 1784816205.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "BATL, CVX, XOM Stocks Rise As Brent Crude Tops $100 \u2013 Trump Threatens Iran With 'Major Military Punishment' After Houthi Attack On Saudi Ships - Stocktwits",
+      "link": "https://news.google.com/rss/articles/CBMipgJBVV95cUxOVkM0VVBEZHJ0R2EzcGNvd3lWT0pneTNXSHVtajZYcUJldW9zLXhhakJDdlpXZ0V6LTc3UlVrNlNhZG5JQTY4eXQzRi0tSVlVUlRhLTZIU2gwcnNmVUY0YkJvZ0xIV3pxejJoeVd6OXNQdm1GQ2lfNWJtSHhLcV9lQ21MOV85UHk1dG9JeXRFaEwyYUlKZk9LQzJybkVFejNiNFFMQ25lZHZOZ0x0cnR3Nmk1TGtlLURXcDJfNzZTUGFQcU90Zkh6N2xBc3E5Tm0yeDBCZ3Zub2ZIX2E3ZG03bFd0d05qYklWX28tQ0VXNDQ0VEJzb2lKSWFYdjI4dE8xMTFYWDlMRGo1cDRKRmlxMGltN2tqWmg1ZzMyNmQ1TFRsQnhKcnc?oc=5",
+      "pub": "Thu, 23 Jul 2026 14:14:00 GMT",
+      "source": "Stocktwits",
+      "age": "16h ago",
+      "_sort": 1784816040.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "No more Fed spoilers - Investorsobserver",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBtUFpGanpldTB0Rlphd1ZyeGZhbnYxeTQtVnphNFF0WkstV29ZZG5Jb21wZzRGNnp4Q0JPRDlMNDA1ZHM0amlfbGRnT0Z2M3p1OWxqbU5tbzZUNjhLblYteG5yUmVIUW56dWktcEw1R2Q?oc=5",
+      "pub": "Thu, 23 Jul 2026 14:13:08 GMT",
+      "source": "Investorsobserver",
+      "age": "16h ago",
+      "_sort": 1784815988.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "'More and more overlap': Musk edges toward a Tesla-SpaceX merger - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOR0VHTlJZNVFHcmpRT0k0ak4wYk1LMU1YcWdRVHVWOVVVbjNxUFJuRkhUQUVTVHJNTldieEtLd0FXeXpFamQyd2xXMk1sdTlZRXpIMFFUcWhYaGRQQ0F6azNoX2dOYzdzZUtEZ2N1Ylo4bWZIZWpqcnhOYmFUZ3ladW1jRVFnSE03T1d3aE40LTAzaUxIU1MzX1N6NjBsWHAxTFczVV92YTlVMjM1Z25LbXNHYUhlR2c4am9uVTFYNVVQZDQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:58:39 GMT",
+      "source": "Yahoo Finance",
+      "age": "16h ago",
+      "_sort": 1784815119.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Musk left room for potential merger of SpaceX and Tesla - \u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0456 \u041d\u0430\u0446\u0456\u043e\u043d\u0430\u043b\u044c\u043d\u0456 \u041d\u043e\u0432\u0438\u043d\u0438 (\u0423\u041d\u041d)",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQY1l0Nm8tbF9xVE1vaHJWLU9CT0NGTGRqM1B2c1FnejFkV3NBMFlXLS1HWnNsazlsamZRcXRZVkFhX2RYeWFXUDNVRXlEb0FvdWtCZTdjQnpBNUdDODlZUzM2Qmxmb3Awb1Vzb0MxZWhlU3JBNktOS3NqSUJaMjdod0hhWdIBgwFBVV95cUxQY1l0Nm8tbF9xVE1vaHJWLU9CT0NGTGRqM1B2c1FnejFkV3NBMFlXLS1HWnNsazlsamZRcXRZVkFhX2RYeWFXUDNVRXlEb0FvdWtCZTdjQnpBNUdDODlZUzM2Qmxmb3Awb1Vzb0MxZWhlU3JBNktOS3NqSUJaMjdod0hhWQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:55:13 GMT",
+      "source": "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0456 \u041d\u0430\u0446\u0456\u043e\u043d\u0430\u043b\u044c\u043d\u0456 \u041d\u043e\u0432\u0438\u043d\u0438 (\u0423\u041d\u041d)",
+      "age": "16h ago",
+      "_sort": 1784814913.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Iran warns $100 oil just the beginning amid rising tensions - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNd3ZLTWhCN203Nnl3eTRfaTVkSG9OSW5GR2xraXExbzVQSzJaZkk4V29HWlNBZWlmeGRESXp0WmV4aWd0OFBjbHNsMXRxd3VqUVJ6TTJfa0N5WXd2RUQxTGx0QmQyTHV6WkdBOEJGdEFuSzhFMVZVXzNKVU1LeEI3S0h3djdYMml5cWZjQ19Vaw?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:53:28 GMT",
+      "source": "Crypto Briefing",
+      "age": "16h ago",
+      "_sort": 1784814808.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "The Odds: Trump's Tariff Backlash - CNN",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNdUlXenZOeEZwSGt3eHRJNGl1WGNoSWxQNVdETFlUaENuOFBWQ25oTVVIUXdnSWt0SThEbzc3REtDclMzaWJTSkpVdXlIa0R1bkJnN3RFN0NiUWZza0c4NUxuX0JMNnVXNU5penJ3VWlmZFh1UWRHZE1DNXdnaHYzUXJOVXNqSno0VHMyVEtYZGxYUQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:46:32 GMT",
+      "source": "CNN",
+      "age": "16h ago",
+      "_sort": 1784814392.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Bought His Dad a Car \u2014 But Instead of a Tesla, He Asked for a Bentley Flying Spur. \u2018I Don\u2019t Wan - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxPSUk1QXVmazRSbTBWR3NWLVM0VVlYOFVpanNPUkVUV21zQkZQMmtGRFRPdXRaaGJINU5VREFwTkVhZC0yVU5vNEwxcnZVc3BPMEVxcnZfS0NqM2RmNXdIYXJyeGNCTmZwWmhZRUNvZlJBWTNMZXJlOFdMTVZTUWVkeWVoYmNkdE0xdlBZOXRzcUo1RC1Ia21oZDhLSEpsdnJPN3RsQndHaV9tTUtVdEdIdVlsZXJCOGtiZ3pmSVZfcGlOSWZ0OHk0bVFFLVlWZ0ZrOFgyblN3OVAydkdWbmh0Z2FYVzdVSHpGeURTNG1wU0d4eHRNTzduaXA2eWRYYkdxUV9OcWJEazYyYkgyUGh0ag?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:46:08 GMT",
+      "source": "Benzinga",
+      "age": "16h ago",
+      "_sort": 1784814368.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Tesla burns through a billion as Musk bets the farm on chips and bots - The Register",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMXN6V3lZT3Jtc2VGUHRmc3RmblYtSklFMXpZOFg1M0t1SVIyOGRMd2JsTXN3YzNXbVd6RWsxUHFXLS12M3Fva0hIR3ZJNmVYMnFUOVkzR19PRWhBY2o0WGNOS0xHTzlsVGNjZFZJTExIN0tiMmxiQVJEeGh5WXZQbmF2RTV5NGNHeFFDY3p0cVplQUZrSnltRU5jcjV3UXZNeV80cWxCVnhHT2JoVG0wZW9SZ3dYYmVnUHl5T1lPV2RZQQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:45:00 GMT",
+      "source": "The Register",
+      "age": "17h ago",
+      "_sort": 1784814300.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Why Elon Musk Thanked Micron on Tesla's Earnings Call - Tesla (NASDAQ:TSLA), Micron Technology (NASDAQ:MU - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQRUJEdWduWGxwRllPdW56cURKOUdhRGR0dTM0RktSaFV3OHU3eWxPMmFCSEY3Q19KYUxlNGNPanlVUDlBYUJ2QTdjTENsS0JxWDVxYXZrQjdQNTQtUmE4ei1xSUVEOFpxUV8wbGNnUF9pckNnSWx4bTAzZ1k1M0tiV1RuYWtBNWtKSGZZVUp0Q0o4aUs3T2h4dWtMRFROV0tWdDBISnBkSV9JV0cyN24wWWFlY0RLWEtGbEhSRnZ0SFcybXhsMlFMcnFCd2pHX1hjV3ZYVlcwWQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:35:03 GMT",
+      "source": "Benzinga",
+      "age": "17h ago",
+      "_sort": 1784813703.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Iran Is Seeking To Dominate The Strait Of Hormuz. Gulf Countries Are Planning To Bypass It - Inkl",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPQ1V1eEpOOU1MbzdJLURDYnIxUGxvb09EMlQ3cm9Bc3R3MS1uNGx4Uy1td1ZxLWl5Y3duLW5MY1I5T1p0eF9jYnZYYkVmU041UG9VYzA4cy1ld0xGVlpGdENBMXhQX2dtTTJENFNleWFkSkNVQ01CTUtEZkhjcHh6OVk1ZVFvYTYwenE1U3Nkd0lqM2NQY3NqMFo5X1dpdlduWEhOcl84dmEzRXo2LVRyRm9LZFBLQQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:31:11 GMT",
+      "source": "Inkl",
+      "age": "17h ago",
+      "_sort": 1784813471.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "The world\u2019s most important market is flashing red about the Iran war - CNN",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE01M0tDOWxlS2Y5ZkRyWTBBblZqMjR1S1JMQS16TWZfTTBlaXhXdWM4NnlSbFNIaEZrNnhFLW5wWG5iOXhYcEdFOXVZZTBhRjlScXZTMGp2aXJCYnBqVHhreUloYU1CUmY5aTFRMlNOUXpOSU0?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:30:46 GMT",
+      "source": "CNN",
+      "age": "17h ago",
+      "_sort": 1784813446.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "With bombing campaign unlikely to change Iran\u2019s posture according to US intel, Trump faces limited options - CNN",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5QOHFfVTBWZHFZV0FpSExURFY1WUNKOW9TbjUwRTBCQk9wZXJ1ZWxPejVGVno0YUw1M2gtNFNEYzlCNG1WbE9SRGI4MHl5TmE5ZTZzSDl1S0wtQl9JQVI1Q3pzUE9wU3dTM0xSUG9NNEZ3Nm01UlIwaQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:27:58 GMT",
+      "source": "CNN",
+      "age": "17h ago",
+      "_sort": 1784813278.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "How Mideast Oil Producers Are Bypassing the Strait of Hormuz - Discovery Alert",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOUjlBelJzUEFoZ0llVDhuMlBZdjNXWWFUQ3YzcEtCVVdSOHo5alFjelJUekljd3ZzMGk3b1MtZUR5UDY2WFBYbUdQLWRzVldER25zN3pYc29yYmkycWlBLU5rOVdqdnBkcFY3WmtyUEVXQTRHbFBVTW5WMjJXaDk5YmJGUFRTUE5IZHBSYUVlbw?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:15:17 GMT",
+      "source": "Discovery Alert",
+      "age": "17h ago",
+      "_sort": 1784812517.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Kevin Warsh\u2019s Federal Reserve May Follow This Economist\u2019s Road Map - Barron's",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPcE96S1RkU255NGFOeEFsZDJ0WmRkeVc2TFM2aUlxcktaRHdVbllla2JOazFIU0c0dDl3eE91dUh6STN6bGx0OXRXZ2hpLVoyUlpMMUx0NTRsV1hIWUpSZkJOdDBvcHAwZWtTdmp4THpfS1BlMWhrUEN5TmhLaGRKM1VQYU4xUQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:12:00 GMT",
+      "source": "Barron's",
+      "age": "17h ago",
+      "_sort": 1784812320.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Trump Threatens Iran Over Houthi Attacks: Energy and Defense Stocks in Focus - TipRanks",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOMldYTlhNZHg4TXFQRXBHaXhCV2JlU1AtVGZpRk02V3h1NzJwWnJxNUpXTFRKZjd0WThUN3ZsMW55OTA0ZkFQUFBwcHVqd2V5ajJFdEd4LVgtVjZqU01MYWpqVzhUbGpleURBc3pxdHl0ZjR5VjAtR0dDWDZSUkE5alR4YjMwMU85Y1hkVlpfMC1wQS0wSG8yZVZxMjRJNTZ0OVhPb3doSGctYkJZdU5ZVkttMzg?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:03:11 GMT",
+      "source": "TipRanks",
+      "age": "17h ago",
+      "_sort": 1784811791.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Oil hits $100 as Trump weighs \u2018massive attack\u2019 - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxObkdmOHQ2WGVXeW1nVXlwY0U4aVJMcW5uSzVSd1ZyZlo5LVJBelctZzNvNGVSdV9ObXYzclhnQjVNblM5N1JNRGFNcVU4cXdMdmIxQzFObXZlTi0zMGo4amt6M0kxRmVFcTRPUXZBcXc2V0pYM2phc3FtM3N1MVRMWTNscnY?oc=5",
+      "pub": "Thu, 23 Jul 2026 13:02:14 GMT",
+      "source": "Financial Times",
+      "age": "17h ago",
+      "_sort": 1784811734.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk Just Gave SpaceX A Bigger Role Inside Tesla - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQNklVaDRfYjhoczZIbWRTRy1CZjR5UU5OcWVYWDFOV0l1d0tKTEQ3LXdEbXJTZzREdHNzQ3dWWFFfN0c3UmFwQV9CYUJpTmJ0bk1aekt3TFpZUUFNdW5WVklqMGVFQWRwLUFMMjBINDVoSmx4UzdqRklUeFpZQnRPek1DUGYyYzZXX0ZFb19mQWN2Z0did3lIX1ZWcDVVWXBwWDBKaUEwVGlMRUJMaHZQWFNEal9GLVBuSkE?oc=5",
+      "pub": "Thu, 23 Jul 2026 12:57:49 GMT",
+      "source": "Benzinga",
+      "age": "17h ago",
+      "_sort": 1784811469.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump places new condition on signed Saudi nuclear deal, says country must join Abraham Accords - CNN",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5WZkNlM2lrVFJDYnZQVlpmWUdGZzlneUJNNF9WTkExb0VEUERMRGlkdVhYWVF2WmVYQkdGYjBxenVTNEM4dF9VVTdURW5ib3A4YW9wUEFkUDFQRGdIem43R084bFpFWHF4N1M2bC1iY2xuWWIwX0JkdVgwcw?oc=5",
+      "pub": "Thu, 23 Jul 2026 12:32:47 GMT",
+      "source": "CNN",
+      "age": "18h ago",
+      "_sort": 1784809967.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Trump warns Iran will be held 'responsible' for Houthi ship attacks - The Economic Times",
+      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOWERHTlVnVFotVWJjSVRncWd1R0I4ZzRwZmstZmx1eURqYlk2Ulo4ZXpVUy13Sl9jTFYwblhPeHA4SFZ1RGk3aDFUaVJxMEVsczRWV2xiZ2RvM01nNWVSVjhxUGJWY0pJU0VXM081RHNUTy1RRElKaTdRaUJXOVNzc012M2Q2Tk5OSHg0c3A4dzFhWFp6a2tSNFJ0NXlYRzR4ZFFKSVRSYlN5OHRBMWIxSHZUWndhWHpPenVmQk15SmhUYzVHa2Uya1F0SDFnLTNqOVZTek55WE1JUERMT2JSWHRwVdIB6AFBVV95cUxNMzE4dG5pMU9DLVZCM0pNQU0tdHFZOXBQN05ZZkVlaFRKQWxmVmczYmhnUnYyOHpuQkJFTDRDZG9FanpNcHZ4c0UwNTJkRXJUMHo3MlB0bmxjM0lsb0ZPUVVkclhHaUt6WEZMS0E3ckhrMFRBMFdlLWN2NE1JdDdHUEZDaVFDMC1xdU5JRE5WeUtBbzltWmdmeTBkcm9Meks5bktXZ1RwV09kOG4wZUp2WTlFQWtyaFphUy1NZUdOaDJ2S1BDTjNNME5CTjFTMjZVRHJ5WkI1TkJiM0RmcENTY2xMeWpkVVox?oc=5",
+      "pub": "Thu, 23 Jul 2026 12:24:45 GMT",
+      "source": "The Economic Times",
+      "age": "18h ago",
+      "_sort": 1784809485.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Stock Market Today: Sensex Falls 364 Points, Nifty Slips Below 24,000 After US Air Strike - APAC Media",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZnhOWWN0bTFRaWM1dHJlYUFiWG45dTN2N2dlRGs0VFZacW5kb1NjbTdQSTZvMHBSOTFNSzRZSGlfdmtUbXFPTU9FVHNVVmp4cU13QXBPS2NneTdsTVc2LWdiMG56bTZyZHhLTEpRN3g5b1hrVnFXSTJEMWE0ZUtXaE9rVzlaSFpKUmxGbndiU1M0SUFORmdvR24zcG90Y0lacnB0d3BuZnROZw?oc=5",
+      "pub": "Thu, 23 Jul 2026 12:24:02 GMT",
+      "source": "APAC Media",
+      "age": "18h ago",
+      "_sort": 1784809442.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "Elon Musk says it's worth the risk of killer AI because 'abundance for all' is more likely - Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOQ2M3ZklKMVhUQl82YnZya1FtdHQ2Z3BTcjhZOHUwQkxQeWZaN3VTZ09ETjBzNEhMWDZoR3o2WlREXzUtUDE1T0E3bjNDcGJreDhvSDYwWEkwcTFJME1wUmZyeVM0N2dNTUpXUjBLSDlyZ1FDRTdQUUQ4MTVmMF8wX3JvNExWbk5XSldpZmJiTW93NlFpRmlHdHRoYmU?oc=5",
+      "pub": "Thu, 23 Jul 2026 12:07:00 GMT",
+      "source": "Business Insider",
+      "age": "18h ago",
+      "_sort": 1784808420.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Why Indian pharma stocks aren't panicking yet over Trump's proposed tariffs on generic drugs - CNBC TV18",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQQkozMENRMmpzWVBZN2xqeW9BOEY4anpacEp3eV83R1lHRjg2Ymp6R0dGQmRnelZWN2RPcXd2Vm80WEY1bHpEYmh2NXl5S2NMRGV4SDFWR3ZwNEZqYVNibzh4Y0xmVjJ2b0VYdFVzM1ZUYjFYY0NoNXEtQlgzS0FjZURCbGNZay1XLWRnc1RaNjZ3anFILUJpdWV6d1NraWcydVhLSHlDUUNwYzJhdnJN0gGvAUFVX3lxTFBCSjMwQ1EyanNZUFk3bGp5b0E4RjhqelpwSnd5XzdHWUdGODZianpHR0ZCZGd6VlY3ZE9xd3ZWbzRYRjVsekRiaHY1eXlLY0xEZXhIMVZHdnA0RmphU2JvOHhjTGZWMnZvRVh0VXMzVlRiMVhjQ2g1cS1CWDNLQWNlREJsY1lrLVctZGdzVFo2NndqcUgtQml1ZXp3U2tpZzJ1WEtIeUNRQ3BjMmF2ck0?oc=5",
+      "pub": "Thu, 23 Jul 2026 11:53:04 GMT",
+      "source": "CNBC TV18",
+      "age": "18h ago",
+      "_sort": 1784807584.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Trump has activated a secretive court for deporting \u2018alien terrorists.\u2019 Here\u2019s what to know - CNN",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPUXU0czFiTDNxSWdUcS1qTnhOWk9IRGhIaVdONjFwLXg0MG1DUTU4VWJDN2ZIVzdHUW1WbW5SWnZZSTEyOWI2UVJUXzlxYmI1Tl9vMUJtZFc5MzR3NURBZVBvM21HaVZ4WndGMENJOW5tLVVKNG5OVUJVTlFVMXFrdHVqaXZIQQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 11:50:15 GMT",
+      "source": "CNN",
+      "age": "18h ago",
+      "_sort": 1784807415.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk says Tesla should be spending on AI 'as fast as we can' - AOL.com",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBzQzFJMExENENDRzJvck53X2p6YVdZVFpqdHZxelhkbFNkOGdqRDAzU1hmY09xT1Z3ejVUcEhacTZPejdxT0hKU0ZhMVhZdTZqcjdtMUFkSEZHcGx1NUNzSDVHaENtSFVkZjhPSmlmVThMb3dpa1dZREFISVR0QQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 11:41:20 GMT",
+      "source": "AOL.com",
+      "age": "19h ago",
+      "_sort": 1784806880.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Iran strikes on US bases in Jordan expose defense vulnerabilities - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPV3h6Q1NkR1ptVXR3QmEyN3gzYlh4OGFDZ1NYVlFDSWVvQkJWREtLenN2LXFhdFhzVWlYTnU3cHdidjlCTHpOcWFMV3U2RkU5XzN1MlQ2Q1pmbUlYNGRPZzBFekUzR2cwSkZUbjgtTWdSYVNfdmpsdjFnazE5ZjNsdmV5RndqV29jYkYzMXBDUEZDVzhuYmFlWQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 11:20:28 GMT",
+      "source": "Crypto Briefing",
+      "age": "19h ago",
+      "_sort": 1784805628.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Oil prices rise as Strait of Hormuz peace talks collapse - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdDVDMzl4Z2pXZldqLU1WYkZYMExSbnVocVFfekFSX2JNVll5VEtqNmY2WHdpZzZtdFZ2bUpDdU41cVZLVXRoeTJ0YmFkS2JlZlBfRXVjRmFhbnpFaF94QlVUWHFNZDgtTVVOMUphaFhIbHBzUkhTbHdKQVoyZFBERDNkUnllMXFXOW81Rw?oc=5",
+      "pub": "Thu, 23 Jul 2026 11:20:25 GMT",
+      "source": "Crypto Briefing",
+      "age": "19h ago",
+      "_sort": 1784805625.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Elon Musk Says Tesla Should Be Spending on AI 'As Fast As We Can' - Business Insider",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNSlpyaWRpbENOVko2N3NwR1JFMlBfTTk1emEwUnhDNUdFZ1loUmtCLUFzMEN0YWJCX3U2bVFZTWNDWFJEbk1VMnllWm5OakMwQWpDOTF1ejhFVGMwdEk4X1J5eVkzaGZCM2ZrMm85aDhCelJLZEIzTXI4RC1KY1FKV2R1YlpaT00?oc=5",
+      "pub": "Thu, 23 Jul 2026 11:00:00 GMT",
+      "source": "Business Insider",
+      "age": "19h ago",
+      "_sort": 1784804400.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump\u2019s Iran War and Tariffs Are Changing Corporate Strategies - Barron's",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPcS1oWjJldk9sTElIMmpZUWZoNUUxS0dfNEJBeS1IRG80Y3NIYmdpUHdaa1dBOGUtWnFSX0txb0RzdVBQNkhxS01tVXNFMDNvSWhMakdMV3Z4ekdzbmhYMjVkVGM5cDdoNUZKS21jYi1MUmdTblpOUWVKbUpZLWxFTG5ReGpZUk1LeFFqLWJYc0NSV0tGQ29tdUEwTTBPaWd2NjlfYzE1NA?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:55:00 GMT",
+      "source": "Barron's",
+      "age": "19h ago",
+      "_sort": 1784804100.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Iraq Estimates $40-45 Billion in Oil Losses Linked to Hormuz Closure - energynews.pro",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOeGNpZjlmSGQ0Qzk3RXRuMHRXeEZNRUt5UjlXTVJNZERRaGNqdGJXRkFKc1RLcEJHZ0ZTM1RxVkdHVGNHZ3VSMEw1bUNJM05CLTRyX0R0WXlMallMYTZDbTVMZ3cwRm5MZ2RLOGF3dGktNnNVOXBWYkdWOWF0dlNBUmU3V3ExekpGV2RjdzU2X3FJRHlQbG9kMg?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:25:25 GMT",
+      "source": "energynews.pro",
+      "age": "20h ago",
+      "_sort": 1784802325.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Musk Refuses to Confirm It, But This SpaceX Rumor Should Terrify Every Tesla Investor - 24/7 Wall St.",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOVpJNGNQVkt0RXN0VlhNeWxDN1dXVTA4My1BNFpJakFOV3pVQnFBS1BmUlUzZkViNzBZdzVmakI3MDVVb042ckYwYk5iYW13cDhuVXl0MjY4MDZaVVdTX1dqdTZLNWhqbzJZUGx4QmstMXUxb2dKMGtTZktFMGJLY0ZwMkJ3NEVsOW43Q2Y0NHJZS1dLY2hoYTg5MWpDQ1R3elJ0VnJLRXVmajVWLVVqTnVSNVlhVFZmTzZEY0R1b3oyWjBQcmw0?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:20:12 GMT",
+      "source": "24/7 Wall St.",
+      "age": "20h ago",
+      "_sort": 1784802012.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Warsh's no-guidance approach confronts a hawkish world and hawkish Fed colleagues - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOdXJSbHFXVUVGNTR2UmlFTnh1VGo0VUhVand6cWF3X3lwVXk5eTFpTV9TcEJPblAxWnNQcy1DSHVLamVrWjNMYUtNT09xS1pMcjRaMG1oVjctdS0tbk1CMlhUSmtpVl9BZWo2TVhlbmtWaktScEdDU0ZjclNOZlZBd3J1SVpfZ29yRkJpTTVDV2lCN21wZGwtanBqdks4c3o1WUtiS1dlS1dfRGVnNVpueFRaY3JIV1h3YnBF?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:14:34 GMT",
+      "source": "Reuters",
+      "age": "20h ago",
+      "_sort": 1784801674.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Elon Musk made a huge robotaxi promise. Now investors are asking what happened - The Independent",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOaHNmNldZOEdvYWZ6c3N1Uy1BYjlnYmhVUmxRbndycWFJdklsQkZRUWRubUtpZmRqclB2ZG9OUkVxZ0hNem5DU3hER2oxc0VUZEdlWnBmTExuS0FrTXZwa1BFbnVaV0pkUkR5el9hcExkVW1KN2ZoenRyblhFWUxEaXJ3bUlBTUpNc3dFOVJDdmxZS3lJTHBnOG1QZFc?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:11:00 GMT",
+      "source": "The Independent",
+      "age": "20h ago",
+      "_sort": 1784801460.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "As the July FOMC meeting approaches, market expectations are diverging, and elevated oil prices are heightening uncertainty around the Federal Reserve's rate hike path. - \u5bcc\u9014\u725b\u725b",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNS2JoWWRsdmFfZDYwdHVNZGxRYkk0a0ZoTzF4cEg2Q1hSYWg1ZUdlNDZxOHBhek5VdGFCNWx0akIyeG11NUE3ZTREbzZreEtRcHlCX3RPbGhvUHVlemhUaER2NlBiMmNJR1E4a3diYjhhblRyeElfU0VDbEJuSG9iVTM4VGhjUTNVaVVQNkVJb2Znd0NNdlphODlMZ1FZUENDWm1aSm1RSkt3dnAyR2tV?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:08:07 GMT",
+      "source": "\u5bcc\u9014\u725b\u725b",
+      "age": "20h ago",
+      "_sort": 1784801287.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Wall Street Firms Already Trade Trump\u2019s Truth Social Feed. Now They Can Pay to Be Faster. - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPeUNRdnJzUGxvdFVQbjRvZUNwN0tPSS04bmkxTjdFbmQzcFJfNmNiRmpXN1JHdHAydExDa0pRVXBwY1J1QW5zQm5iVFN2Ynd4Y2RsMjdzVy1YbTFVc0N3MmJjZDRIa0lsTjlkM1puOFUyYVZCb0RscG5MdV9WYzFtaHpxMVN0aFVoVExEdG5YSWRpVWpMWHc5a3VzdTRpNDFwbGtwQzRtMnJjeGQ5WXVESUtTQmpNOU1sQV9BNWNB?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:02:00 GMT",
+      "source": "WSJ",
+      "age": "20h ago",
+      "_sort": 1784800920.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk hints Tesla and SpaceX could one day become one company - calcalistech.com",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAtRUVLeE42U20wc0w0NHRISk1FbDZaZ0hJektrdWVYT3NXd2VjNUtyMTFzODZ5cE95SlUtSmZHNGk2UjZ6NGlBT1Bwby04MlZLRWUzc3RDcV8tQTdjMEYtbW5NRjlkYk9u?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:01:00 GMT",
+      "source": "calcalistech.com",
+      "age": "20h ago",
+      "_sort": 1784800860.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "How gun dealers with serious past violations got licenses back under Trump - CNN",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBPUEF2UEk2bVBoc2tuSHpSamFJX3VhTUFtcE5lXzBub0NSZ28zRENSUDRlZVdlYVRpaXVwdllsV0JWRjhXTUd1SFd2ejdveVU2MUZIbWlrRG5DMC1xcVdlYWpxVk9VNHl1MHlsVzM5UUlaNEw0VDhDYw?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:00:28 GMT",
+      "source": "CNN",
+      "age": "20h ago",
+      "_sort": 1784800828.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "\u2018Got to be kidding me\u2019: GOP officials pan Trump\u2019s claims of shocking new election threats - CNN",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTk9DMk9Ia0dxZkRVZGwxUVFnc2ZqejBVS2lXZUFyek5BMTBzUm8yNHIyQ0hZOGtyOWJpMUt4ZUFOTS1rRmNSYWMwM2RZdDZsYlNCbEZFcUxrYTI5d0otdG5vS0daSHdBQnhScTNzZWo2dHVvMHhpWVBvSXNLSGw0Xzl3Qmd6QVZQTEpJOTRYakhiTjA?oc=5",
+      "pub": "Thu, 23 Jul 2026 10:00:27 GMT",
+      "source": "CNN",
+      "age": "20h ago",
+      "_sort": 1784800827.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Elon Musk\u2019s vision of the future - The Economist",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxONmp6R2hScWRqWXhTNy0xNmtZYktBSG1uRDUzUVFIVnhoUS1PS1U5M1hjOVNkUl9idkx6LURkaGxPUUp2MWJZMGFRcVRwblRRc0dicWVWZUN5bGxCSnEwcFJJckgzUVE3ZWV1RGMyOTZEOWE2UllUb3hfWmpzVVRqeHBWUQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:51:46 GMT",
+      "source": "The Economist",
+      "age": "20h ago",
+      "_sort": 1784800306.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Why Trump\u2019s tariff plan may more likely benefit Indian pharma than hurt? Bernstein explains - financialexpress.com",
+      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPcmsxd19MYmd0ZjA4ckJzWnFMTFhncllxVjg3MUt5R0ZuRFc3MFoyREhmVlRnRVFDdWR3RzgzRVo2NEhqdUxYMmh2cUpFMDdsSllCZFlIbDRWV25wOHhOVUhHSDFvZHJubEpZUU1mTU1uS0hjRENiR3NHN3FRVC1Eckd0am8xUkMwdEgzZ0JadXFodGlrNWRHTTE2dkZ2cmREZjF0a3hVeThLVHBpd3pYVWZ0R2lyUXVhRDh3dldoa2ZrbkFCWjRvWUJzMmU2b0RGZFBDMGNMWXQ0dkxzV05sV0ZkRdIB6gFBVV95cUxPb0NiTHd5SW9oSUo2X0xLQjVhd3dIVmxMTzJOYnJzM3JlNHhOd1owNW9tbUt6UUo5ODRfMzI5NzFzYkY4X2ZUMmw2dnRCbTNTSWlJeFcxN2w3bjRDRVdPbmR0OGFJNl92eTNraGp4SDd1VGV2dFpyZEc0ZlBmSlFGQktnMmhKQ1FoNW1uRGkzS25VWTdBYkdWWVVvWHZseWxGaGZtVWtjQTVXcHRBZ2xRY1d1VnR1UmU3X1dTT0FnM2R1RjdtQ3JpVmpMMnM4Vjc5eE9YbTZ5VENILUtwcGZjODZGMVBVM3dteEE?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:50:00 GMT",
+      "source": "financialexpress.com",
+      "age": "20h ago",
+      "_sort": 1784800200.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Bitcoin Price Slides After Fed Holds Interest Rates Steady, Rate Hike Odds Rise - CoinMarketCap",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNVXlrOGJQQ2I4WnJWeThMMXdxTGFNZGNsUHZwXzNEVU1Ib0Q1bklSb0w2cC0zcjZyaU9LeGtPeWRXTUxMWW03dkRjZjhuRTY2UVdEMGk3SHZhNmROcUNDSml6Zm1zRHlpX2d5Z1FmWUNoWXIxS1hROFB4V1RiZHpKOVZfNkRVYm5JTGtlMDUzR3VqRnFuQUJ3?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:35:51 GMT",
+      "source": "CoinMarketCap",
+      "age": "21h ago",
+      "_sort": 1784799351.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Tesla Profit Misses Estimates as Elon Musk Looks Beyond the Car Business - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNRzdVZWZiRlpBd3J4cGs3cXByWU1VT0NmUkoyRG4tbFpyTDBGenMxV2ZsT2h6RGpwdjdpZGlZOXg0bl9SSFctUjhpRlpUaW1TdEMyWF9EY0ZyaE5xN2xNZXJvQk4tYWlOd2NuVmRxSDRxMVVnelg5TTFIYzk3MFFRbjlvV0NpWXFQcUZaSVFwQ3UzNmZhdUs5ZS05QVVIMzh2c0VrUlRwYzBmWm5kS3F0OVNJdTZ0WXFHWnA1X1Q2OUdqNjEw?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:32:50 GMT",
+      "source": "Bloomberg.com",
+      "age": "21h ago",
+      "_sort": 1784799170.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Get ready for Trump\u2019s tariff Plan C - CNN",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1wa2ExTFFfUG1pS3l6c0NsdjExVVoyaGRuQXJJdFdLMmdRdFExV3MyYkl4WmVZMjZ2RFBHNVg1c19mTE5nLV9OZm10RE5fSDZKR1k3eDU3czNBd21mMngwSS00bGp3Tk5Y?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:30:25 GMT",
+      "source": "CNN",
+      "age": "21h ago",
+      "_sort": 1784799025.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "The Fed Is Heading Into One of Its Most Unpredictable Meetings in Years - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNVGNvM0dQRTJ5MVh3MVN0RHV0R2k5bTVvSUZNeVFDa192eW9WUUZqekhHMzFVQlZ0eXB4ZGdiNU5vRFQ4QmJsZXpBa25ja18xVUxib0Ryb0Nwc29PMnh5V2l6ekluU2xSYmJia1h5NVpIMHZ6WXltTlVXb2ZTWGl3MjR3d2FxUnh5WVRvZk02WUlRZWcxOW1WVWMwd0lpYkcyMmYxYjF6aTFTRXRQaTN3WEI4Rk5UV0I3V1V2c29WZ0ZNZw?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:30:00 GMT",
+      "source": "WSJ",
+      "age": "21h ago",
+      "_sort": 1784799000.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Stock Market Today: Dow Jones, S&P 500 Futures Slip As GOOGL, Elon Musk's TSLA Drag After Q2 Earnings\u2014Int - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxOckc3M3pzd3FCRzRqN0xjZ3pwSEVlVmh6bTBNNXM0VVVoS1lyamVQYU9xX3g2bmpZd2dLLWtYZzFsZk1mSkFjT2NoNl9PSmtURlliaUR1VjRRdjhETDYwT0YtTDA4eC1vdzNZYUwtYWRGclczWkhiSE93eFdLSXdVME1sRFpGTHZUaG42SGRWcEtIZWwtbGdhXy1NWW1FUmhwbmt1dlFTZUc1dEVleHB1X0c1RXlZLVRkYzgtWEZaekw3ZnBNSXJpMWJVd2ZnRVAzZG5WdEVKcDcyQWRpX2pzUXdvTmNTaWUtdzJSWDF0V1FLdW9COUN4OE5VMUdENE1jNVVZM1pMTkQzVFJKWlIySXVIVzB0NnNpZDNySA?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:25:37 GMT",
+      "source": "Benzinga",
+      "age": "21h ago",
+      "_sort": 1784798737.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "Calm on the surface, but perilous beneath: U.S. equities face mounting risks! Geopolitical tensions heighten the likelihood of a Fed rate hike, as analysts sound the alarm on an impending economic recession. - Moomoo",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPaURHbVl1MTJDam1EbmFJMnNYNHBXUmtORXFLcVEyQ0VZeDBQekhtdlpoMS1TS1dEc1J1emZnT0J2OXZycWl3N2JrZzA1dVBYNzQ0MExYd1NNcHBHd24zOEpVRWRfYXlzOVBPVXpDWTN1VkJLdjlCVmp1NGtpc0VUODN2NUpmVFRRX3c0UjJhMXg5SWlGdEtacnNfMC10LTh1?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:06:20 GMT",
+      "source": "Moomoo",
+      "age": "21h ago",
+      "_sort": 1784797580.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "WTI extends rally towards $90 as Middle East energy supply risks intensify - TMGM trading",
+      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQd3YxOWZxcEFrRV90VnQ2N1I5VDBtZjZ3UmZXa3k2djBXVUh0MGdwUjhYczN2R1NtNWlIWjkwQ0R4djZZZnJyNnJ2UDgzVDNNM25ITXVuMFpIbHZHWWp4aGRVNkZncEN3T1hvU2twS2hnbkF3QVUyNkxIcUpaSWc3WExmWWJYOUszLUtSVWN0Z2VKNXpYRkNPSkhaNWlQNlNINklQM1VKdlV2c2RGUFRFc0NjRW01RDJNbEdESFhvcDBpRGxOY1JHa3EwbFM3TWE4aEp0RHVn?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:03:07 GMT",
+      "source": "TMGM trading",
+      "age": "21h ago",
+      "_sort": 1784797387.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "As Musk pivots beyond cars, Tesla\u2019s autos engine is under strain - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPbUdiN1ZmbFlVUkpQRDNpWmY2aHFDRzlDc2tIZ1ZEOURNaW5fWTFlenl1WktmN3FPeW10S3Z5ckVMX2ZhVEtUeDJXdnVsM1J2dlpzMW40MjBsdm5TMTd0VkFjVDBQNXJtd1NVT2RXWmYyVFpkb3RHcHpCdjFzb0VBdWV3?oc=5",
+      "pub": "Thu, 23 Jul 2026 09:01:21 GMT",
+      "source": "Yahoo Finance",
+      "age": "21h ago",
+      "_sort": 1784797281.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Trump Account funds see delays - The Arkansas Democrat-Gazette",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPYTk4T1hoUE5ubkJSYldsT3RLbzdJaXNfZmVpNENBclN3MkJoMUhjbUtSOHpPaG41UUhLRVNDblBoV1pFWk1ubEdpTWx4cXNyREp3eDREYy1jNUVGTmJOM3JmcmZfMUJzY2F0Tk5HSUdKbkV1RlJ1eUN4d0lWX09FTG1ENXRWQQ?oc=5",
+      "pub": "Thu, 23 Jul 2026 08:37:00 GMT",
+      "source": "The Arkansas Democrat-Gazette",
+      "age": "22h ago",
+      "_sort": 1784795820.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Fed Chair Kevin Warsh Just Threw Cold Water on Investors Who Thought the Worst of Inflation Was Over - AOL.com",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1JVjdBck9HODZRVEhzRkFXamZaVWRPckxMLWdoN3U4WDJjX1lTMjJ3c3ZsSXRFYjIzRlRXdXYwcjlVR2lkXzhpZnpac2U0czdZZmdGNXlOZURnOHpUTzlBeXdkTVRWSUZmUnlJMnFWQkU0Z1F2aEpVOElR?oc=5",
+      "pub": "Thu, 23 Jul 2026 08:27:00 GMT",
+      "source": "AOL.com",
+      "age": "22h ago",
+      "_sort": 1784795220.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "How four key Trump claims about the Iran war have fallen apart - CNN",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5xODRlalc5eWlLZE9oellZQTVKTDRYc0s2VVVfb1ZqYm9vTWRkYlRDN1FuVnI1V3BBZGE3WjVzQllVU29NSkZDb1dobU95RjAwZXFySDF2ZUNCaTNoVldXc2E4aWR4THVXNW5MeldlbGxndnJpSkY4cGJBV0M?oc=5",
+      "pub": "Thu, 23 Jul 2026 08:00:25 GMT",
+      "source": "CNN",
+      "age": "22h ago",
+      "_sort": 1784793625.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "Iran threats, tanker incident push oil prices higher amid Hormuz fears - Anadolu Ajans\u0131",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQREpfWVBoZTltU25wNHNaZUR6c2JnbGRMOVItRm12Y0Q5SUtTcXVfY1BMQjdQdWt2QnpPaFhuZ3FiTGdvLWozc1IzQmRkWl91RGQ5VGtOWFVUdUs4ZGUtOVVzaE8xa1pNN0x4TVJkV1YweTBMekxJbVQydXhXYlhtOUZobjQtUG8tQjl5Y2ZyNFN3bXNZRVV2SXlYV0gyVWJ2djVmamJLZlJMNWJEbUFNOTJNbVBnUdIBvgFBVV95cUxQakxIaDlwU25WcFJTaGhfVzlZQnQ2ckZ1RWZNNlQxcDV1X1dLa0xrZXllNWduNHJhOE12dy0zZUVyYkRwWE5CSWJzbVhTSFJRMWxuM2R3TU9pUkFJZFlvcGVJRVB4V2pYZHZSUlZNbUlULUo0cWtlNWZBN3U3czlnTW9YWXRmaVg5dzl6TXdaS2kwUWIwcU4zclgxc0QxZ0NQQ2NDZVFyVzkzYVpGb2xmUmtVOVZSTzFUb0xlQjFn?oc=5",
+      "pub": "Thu, 23 Jul 2026 07:36:27 GMT",
+      "source": "Anadolu Ajans\u0131",
+      "age": "23h ago",
+      "_sort": 1784792187.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Tesla-SpaceX merger? Elon Musk weighs in - Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9JZ0Y2V1VreUlXMk9hUkRVRGRmemxEcUltalNrUHF0aFNtTndFOXlUSDFCbUdpdmo3dksxYURJUGI4WEtvTE02ZFJFX3VaWjhpRGZfcGp5WXBNSWo5VTJQOGdOQ0l5Qzk5VlBGSU9qZUozVHV5T1c2TGs3MGU?oc=5",
+      "pub": "Thu, 23 Jul 2026 07:23:13 GMT",
+      "source": "Seeking Alpha",
+      "age": "23h ago",
+      "_sort": 1784791393.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Oil Prices Jump on Latest US-Iran Peace Process Impasse - EnergyNow",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNQW1YMGxNSF9iaUxDaHhfazB3SXN2VzRJQUJUNThOY2tkZTJibnlnbkdhZE5FMjdYbkJCTEl5d0JTSm5wTDlCZjNqblQ3MGxNX3B6Q2V6NmhjMFNzYmpmYlZjc195S2YwOXk4MjlycmxmeXp0bVdGdkYzUm1INmRCTGRXYUw3WUVfQUdOM0V3?oc=5",
+      "pub": "Thu, 23 Jul 2026 07:14:44 GMT",
+      "source": "EnergyNow",
+      "age": "23h ago",
+      "_sort": 1784790884.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Citi Cuts Brent Forecasts as U.S.-Iran MoU Points to Strait of Hormuz Flow Normalization - EnergyNow",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdVVFbTFkNmphOG5GaG1Kcm5tNnpZSVlBRU10ekhXTlVlWmt0Zk1ybjJEbTBtNkVtdVJZWUlVZjd5T3U0VzM5eGs2WXNZS08zY3E5Z0dqTzV2Yy1qSnBkTmF2ZU9zcUl2UUcxclBYZTFBTV9xTTR6Qno2U3Fhd2RsTHF1bnFkZ2FlNjkzUVZoUkJ0Ukh3M0RpbnFQclk4d283M0plWC1wdGFvUXppTTd5YmVpeG50T2Zm?oc=5",
+      "pub": "Thu, 23 Jul 2026 07:07:45 GMT",
+      "source": "EnergyNow",
+      "age": "23h ago",
+      "_sort": 1784790465.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Trump Can\u2019t Stop Pretending the Iran War Is Over - The Bulwark",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPVzRLT1NLQUxMOWlBWmM4MU9hRzVGN3FEZDZhT0hiQ011WHNaNmhTMC1heUVKSDlqMzVQelVJLV9nUFNaRFplclZ2TGVONDRKUEUzdS1PWXZHVkpaOU0xa0dCeDBxN1VnNDNiR2IyS29yNWUwdE1zU2JvMEx1YlJDeWJR?oc=5",
+      "pub": "Thu, 23 Jul 2026 06:52:51 GMT",
+      "source": "The Bulwark",
+      "age": "23h ago",
+      "_sort": 1784789571.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "US Republicans back Trump on Iran war despite voter unease - India Today",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOR216UWF1OS1aR1l2TGVxY0tMWWVOVkwwRWJjbjdURlplcUpWVTB5NHhSQWdONkNpM1BvSVVuNXhYQzZDZUcwNTNXckxBaXlNU0NRa3hBRzNoT3lwRk5SU0JQQnVJRzF5VUFid2JHU0RMUVFrS3VFR2ZRVk11WXhjLWtPOE80cktoUmVxV3prWXlnNnI0b3YycFB2Rk9sZ3BLaC1VQnkzOFk4SC1qQ0VLZUFwVE5uLTllcVFvcW1CX1dSSzVhR0hlb2lzTXNhSGdieDUxanotSTfSAd4BQVVfeXFMT1hfY0xPVWMxQWszN1g3MW9FbFB6UTF2Wlk5MTBwY3dsak1UNEFraVdpa01wc0xvZXhLSE5jeURxclRlOFg2UEpsQVRVUzJPTjZuSzdMTkptVHVYZWYwa2RmbjBTMjhWbnBLRlhXdW1VcHRncWdzZHpSbFJkV1pZR21MV3BuQ2V4OFlBNmw2NEZuZE01N25PcUIzQ2x3MzA0Y3psNkl6N3Vkd0dBOHh5dE00X3NwNE5TMGo0bEpIRnpHbnlWQ0tlM1BCZzN4UG40WmdxWUFjUDNNTmRZcWZ3?oc=5",
+      "pub": "Thu, 23 Jul 2026 06:52:43 GMT",
+      "source": "India Today",
+      "age": "23h ago",
+      "_sort": 1784789563.0,
+      "bucket": "Trump"
+    }
+  ],
+  "sections": {
+    "Market": [
+      {
+        "title": "SEC to hold September roundtable on 24-hour trading for U.S. stock market - \ub514\uc9c0\ud138\ud22c\ub370\uc774",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPUEk2Q2loeGNCN1pNbUY1VzJsVy1iZkFDMFJpdkFHZldUZFVtVVNRSWRHaDctNE83aVIwcHRoMmhkeUp2X3RpNktPaDllZ29FcTNRRV9vZHYxMnRvbFZVWE9fUWJhWWJRTGRJNWxnTHpfcG0wRVlQWS1TbVdYaDB2NFR4bllPTW5pVm8yZktpbEpwQUtucVZydklfUEo1SnBYazJpY2NkenJRQm1fSEtlNzdnN2tybEE?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:58:48 GMT",
+        "source": "\ub514\uc9c0\ud138\ud22c\ub370\uc774",
+        "age": "47m ago",
+        "_sort": 1784872728.0
+      },
+      {
+        "title": "These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; Google Holds Top Rating - Investor's Business Daily",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQd2FkMG42Rmh3aXFzM0xLX2hESGVCcnR6NW1MWjhiaFZjNGtST2pXOGY4dzVnUzFnQy13dHY5OGh0QzlnRjlxcmZrbEhEcGFtc00xWjY3S2g2NGZzTllfMzNMaGdWTmNfUEgyTEVRekF6aWZNLTRUOGNzcTRQVjdBb2M1c0Fia21VUTM1QWw2UXRodw?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:25:13 GMT",
+        "source": "Investor's Business Daily",
+        "age": "1h ago",
+        "_sort": 1784870713.0
+      },
+      {
+        "title": "Sensex tanks 870 pts intraday, Nifty at 23650: Why is market falling today? - Business Standard",
+        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPd1RVZ1RRajZ0LXU3Y19ZWFRITWJ0RVFmZE1EN2NaSm4weTBYcGMxem8tVTJRcy0zRXotakdkU1gzM1EzbEJadjVHcXVRcm5RWk02eExXSy1aLUlpU25NM2JvM2hULWMzVHZ3YjJOOUpwSXQzeVc2bEFqbURsRDdXYVNZNEUyWHVNbm15V19PcEswTFNQelpXRGg1WWdQYWs3LUhqblpqRU9PREp5RkJSVEttaFo3czhXSF9iUXMza242UVI5b3dBcENUWHljZ1VTX2stbHRn0gHbAUFVX3lxTE00cGpkd3gxb3hac1hHR2Y0d09lZ2lVRmZDeDhjVzJ0MldPMmJmNEw3cVEyd09hREllQ1gybmlOeEJMV2hyR0FzQm1HY3pXS0dCYjRwelM2YkhVQnZHLVRYMWEzR3NFcDluTDJwQngwVG5UaW1EOEhrYklWOEVsbWpIcFZlVmZibzJUb21UdDdYb2Zpa2tqQU9IMU9rbzhiQkRxeUFuU3BoNmVhTkpnOFpEMXZLOV9NOWZZSlQ0dmU3c25tRmE0NjluSXk2SjFWZGFSbDAwWWZnbnVCbw?oc=5",
+        "pub": "Fri, 24 Jul 2026 04:45:06 GMT",
+        "source": "Business Standard",
+        "age": "2h ago",
+        "_sort": 1784868306.0
+      },
+      {
+        "title": "Why is market falling today? Sensex slumps over 700 points: 7 key factors behind Rs 3 lakh crore rout - The Economic Times",
+        "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxQak1saTMzMGItWmFKa1RjX3h1a0RqYzluVUNvWHJhVFBZN0FITWVrcVQyMGJzaEpoOVduTkFRNC1WQWZPNWJtUTlDMmpJdTA0VGZUeld2N18wRkFQQVNmVkhpRlNCdm90c19WVnVEcEFfLUhoLWlNWWlzOXpjdXFpMUR0eVdLVTlhZHV1bUN4bUUzUE5GMVNEdk9lVDlleGtrYlZOZDdQNHE1LW1GRXZQMEpIbmh4QzVDbzVvNHVZdmRRNWpsSkIxeGNCNFlJUElPc1R2bGJWR3V6QnBMLXZyV1ZUUnZwQ2hFMU5xVXN0anRiU0RwOTZDWTMtbU5tT3FCUWhBSlhwelQ2TXdGNFZMMGx0SUjSAZoCQVVfeXFMUGhVLW1tbkpwMWdUZW8wREFhUzdlN2lMU0tBMEtiWnQtRm5vUGdkakxxLWRkRkRXVlVYeDBCcWxxSXA5VWxHS09YeTRiY0IyV3N0aVp6UjdkQ2ZyWmM2b19KbGpnSUV4YzZKbm9NUXNlakRTRHI3YnFCclF2RzVndGNEQ0NwdmdWb2lZbVZBZkplSmZkSmVLUm0zYUo0bXdVcnNNQ2VkLUpBVmRiaEJHY0x5aXJySGdRQ0g5NjYwaXB4Y0xaclUxR3ZjSi1Wd3BTcmtLbk1WdUJuME11WTlLQlZVZWktbEsyQlMtMGVWQWFYb0dRcTBoODBtUDBBcUJ2VzB0ckQtWWNjRVlpM2lhM3dvaTg5NUlxNlZ3?oc=5",
+        "pub": "Fri, 24 Jul 2026 04:12:32 GMT",
+        "source": "The Economic Times",
+        "age": "2h ago",
+        "_sort": 1784866352.0
+      },
+      {
+        "title": "Stock Market Today (July 24, 2026): Sensex, Nifty Decline As US-Iran Escalation Pushes Oil Above $100 - Times Now",
+        "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNMnZlOGJUX3REUGpyZ19UYTlheXQ3Q3NhYjdEWVB0MWVwWUdLclNtNGhhSlNUdTBCWDNySWN1Q3NHbU5KY2ZUSnFJZkZTY1FSUE9jTmt5V1NlejdIdDdGYkRPYjUwV0pnVGdDa21fTDZmWjFubVpWVzAyRlJxVjZkWjhDQzI5eFN1X1ZhUUp5N1hnWXpPR1JxcDdIVUVhdkgxT3JwQUFSSEs4bm9GcFlEM3A5b3o3SEp5OEdnaDdaNEJvc2x3QlUyd3FGblRGSmdPRlJDNGpWOXphQV9LX2xyYy1GZFYtQUwxaEdLaThmZk9qOHFxaHpxUGFYb9IBgAJBVV95cUxOelhBOWxKQmxJeVlzUTlQZUdsT09SOGkzM0NlUUhIUS1hOVE0a2VjbENyVGlJd21RQzlMODBPWlBkbF9ZcDdIeUxaSEpDUlZNcVBrWnZwazluWkMzRFJqdU9VN2MwMk9GUzY5Njl6bGdhbkZRLU5yR0RxU0JWMWdoYmZacUVvTF9QeDlIZ04yazh0anphREp6TF84d1l5WHduWHFKY0pQc1k5aWx1bzlOVTljemRfYVBrWkF1NWNuY0RtaWhvQ0gxX1QzTHhTcVFKUXMzN004Zzd4dWNHN3dkSmo3WXA4WjRENG00QjJWSnBaQWxtX01zcnVRRzNZd0xF?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:52:10 GMT",
+        "source": "Times Now",
+        "age": "2h ago",
+        "_sort": 1784865130.0
+      },
+      {
+        "title": "Stock Market Today: Sensex falls over 600 pts, Nifty slips below 23,700 as weak global cues, oil surge weigh on markets - Zee Business",
+        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOWmVlM25TSnpuOC02TlF5bUpRWUlqN1c3OUJRZkg2Vk5wNnNXc00tNXpHMTl4c0tjUTB0bGpIdm9PekxDUmwtMHVxS1J5RGJVSW1PU2VCMGFBRW1rZUNDUHcyWHJOZjNaRWlCNlIwTUFXLUxtenZVT2lTeXNFUXRQRnFRamo1MDY3RFVEZUlidHdsbkJtZGU0R2NzNFdkVUNOR2NlUThVZlRLRUQycTh1UUI4M1NnVnRoWjFwTXEwR2JoNFlpRExoWkZIbzJCbkF1Q052S0VXVGtnQ1hoMkdqbzlMZEh6OEJHaWR4ckRkTE03QUNW?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:49:03 GMT",
+        "source": "Zee Business",
+        "age": "2h ago",
+        "_sort": 1784864943.0
+      }
+    ],
+    "Trump": [
+      {
+        "title": "Asian stocks decline on Trump's tariffs, US-Iran tension; South Korea's KOSPI underperform - FXStreet",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNX2dYcWZwRzFzV2hVZTE3eDBsNW5pVlo4VVR0NDJDLUpiOFhpMjJJX3I0aWJMTjlFMWFfZnd2MWp1VTFJai1xR0dFaDV3U2h1VHA1VUlycGp3SHk4RHlQSW9vbDQxbFBWaWZRRmFjMG9EelhOOG13T1JFOW5NOERKY2VJaUdFanFBcGZyUHdyWTVQMHB4c1dOM3JRY0JLWDlTczBEaUFQYU5GVDlCQ2kwUFB1S1JpUmo4T01jbUdwUFlRRWNoQ3FTLQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:33:13 GMT",
+        "source": "FXStreet",
+        "age": "1h ago",
+        "_sort": 1784871193.0
+      },
+      {
+        "title": "Canada ready to respond if Trump's new tariffs take affect: PM Carney - Business Standard",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQNldpeFo1X0s1VFkzS3RCTmtnaWNhRlItOWZTOXhiNjcwVWtON1RlWi1sUlcxampLZHZwZ0N0Y2NVT21XN1BvRmJxNUxobk1vZHBqamFSUVE3N3lwbXhmbVZ5c1g1akJfQ1FDYW9IbU50bVMteWZBRmFiWWo4RUFtWXloaGVPNmZhVDRNcktoQUpFSDl6dVU2aHV2UlpwNnZCR0Jzb2J0d3kzRGFWNHBYa0hvbklsSHVEY1NVOEpfNlVaX1ZJa2hwZm00bk1fZ9IB0wFBVV95cUxPMVl1Q195MkI5WExkNkowT3JFNXZyenV4QXdsMnVEVHZSRE1yMnl4V0RSekI3Yll4N1JWSDhMbGNpa0tVRU83NnpfMXBhVzhmRUZNSU9VWERnV2ZRTFBudVRyZVFUVWd0bzZnbzEySXNoQnFuMEdCUUc4VHhnODNuMkp0Vk1pWkhlampCQnRkN2Y4Y2lqMHpyN0JaSDdXVG5QaldrcjlSZ09tbFRlSkhWdERoLWJUYXU2Qmw5VU5rMDNEWW50SGdWR1FhTWlzbWxIZ1dN?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:21:33 GMT",
+        "source": "Business Standard",
+        "age": "1h ago",
+        "_sort": 1784870493.0
+      },
+      {
+        "title": "Asia stocks fall as Trump tariffs rattle exporters; Japan, S.Korea tumble - Investing.com",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNc1pMTTF6SHpBcXZzUVp1eW9rUzhNa0stUV81Wkg5d1VpRURsZU9yTUR5YjhLUGhESHJIa29qeTEwY0pwX2NQZWxmemEyT2RuRVNvZTB1Q1pjSE4xWlVudnVEWVR2Ri13eUN0eW1MVjdQM0JuQVVFQUN6blE1ZW5FaWhaWHNBazZJSk9NTjh6a3lKcFZsbk1XaHFQVlU1WXEtR2pyOGVFc2pIOVJHZEZKUUtDVkkwOUlOQ1kyQmZCYm13WmowX3c?oc=5",
+        "pub": "Fri, 24 Jul 2026 04:13:21 GMT",
+        "source": "Investing.com",
+        "age": "2h ago",
+        "_sort": 1784866401.0
+      },
+      {
+        "title": "Thune and White House trade jabs over Trump\u2019s controversial elections legislation - CNN",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFB5OFhldVVTMUFDTzRKREhnVFh6bW0yYl9EV05FMW44d3IzbWY2V1FEWUwwTzlMSmpkZnhqR1NpMnFuQ2diaklzSEtuMEUwY3RSTE1DbExEZE1OWmJ2aFJPMVBCMnloWDlZczBwbkhTaFAzM2ZXVmszLVRzaGc4Zw?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:59:00 GMT",
+        "source": "CNN",
+        "age": "2h ago",
+        "_sort": 1784865540.0
+      },
+      {
+        "title": "'Unjustified': Asian allies push back against Trump's forced-labor tariffs - Business Standard",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPQkItUS1GanA1am03MC1PZUF0elZPMUI1dGJUejRjdWkwLU8wTGdldDk1b2ZXSTFFbVh5TXVtbHRPQzFJdXlfQ2hlWWpRUTZyRnQ2N0tuaWwtdnNYZ193UkIyWWlDd1NHRjdjYkQtaDNIZGtSZC01WUgzMnFiZlZZeEhTUW1qZWhpVVdoeGtBbDhaNXctQXhvbVkyemlZWUJ4QWg5VlNuR3FqSnA4VEYxTGJ3QlItQ19WSzJrWVhCTUlQRVY4ZnNTV2NrY3N3Q0xTWUptdU94b9IB1wFBVV95cUxPQkItUS1GanA1am03MC1PZUF0elZPMUI1dGJUejRjdWkwLU8wTGdldDk1b2ZXSTFFbVh5TXVtbHRPQzFJdXlfQ2hlWWpRUTZyRnQ2N0tuaWwtdnNYZ193UkIyWWlDd1NHRjdjYkQtaDNIZGtSZC01WUgzMnFiZlZZeEhTUW1qZWhpVVdoeGtBbDhaNXctQXhvbVkyemlZWUJ4QWg5VlNuR3FqSnA4VEYxTGJ3QlItQ19WSzJrWVhCTUlQRVY4ZnNTV2NrY3N3Q0xTWUptdU94bw?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:41:42 GMT",
+        "source": "Business Standard",
+        "age": "3h ago",
+        "_sort": 1784864502.0
+      },
+      {
+        "title": "Shares dip as oil tops $US100, Trump levels new tariffs - aapnews.aap.com.au",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVlg4QUVmUHRvdnFnbkRFWF91LXVINEZJMEpISi1wdGE2Q1RVUUQ0SG11VUpLTF8yOERKd3IybXRnZFVnWWxfYzgwUFptdzVSMUxIZW5mTFhIUXpKWFU4Mmd6Y2VEVHh5M1VBR3U2clUwUVQ0dk9waEg1bC1ZZFBHVWFOTzJScXdGbmpDT1hB?oc=5",
+        "pub": "Fri, 24 Jul 2026 02:51:02 GMT",
+        "source": "aapnews.aap.com.au",
+        "age": "3h ago",
+        "_sort": 1784861462.0
+      }
+    ],
+    "Musk": [
+      {
+        "title": "Tesla sees 'Worst Day' since the day Elon Musk said that 'I can\u2019t pass a TV without spotting a Tesla up i - The Times of India",
+        "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxQTnVPTGg5MjdFYXNOZ0UzSHZuQmFaNENEa3cwQTlDNUVzaEdLTEJJazFYaE5GYjFHRTJFaTVtcnRQS0NYbVpQVk9yUjhXeElpYnpwcGlKTWtQNHFRRERUUm9tRFZBQkJGa09PLXZIR1R1YVhYaWJxSnVCcXhFN05FWGNiNXprTl9IR0NKTWhtQ1N1N1ZIdldFWGlvc0dKd1phUHVrTXdSc2VxWmZ0Rk80eTdKcnE2LVk4NzF3MEdic2UyVGpIZzhYaVVyQ05ObE5jQ0s5TTkzc1dvU3BDYTRjWkRYbVlrb044ZW5kemVDSVJodkZNOEdMbkZROTNnVEhrbllfeEoxUUpGdjZTTXdYRnM4VEd6UU9QZGFyTdIBogJBVV95cUxOV3ZUZUJOcHJKQjJqR1RIZHZhVGs2ZHBSbGlyVFVPNE14OVZLaFB2WDJUVU5ldkxQWFlOTmtZWDhYYUpvSzRJY0pVajN1M1ljWHBCY185VjBFbDBKakxQR3lIcXFaUkFocTZHYnc1aHpsTFJKZ1JhdTl1OXVITXk2OWFjNkl4V3drYjhXQ3dOLXBzdGF3OHotOWl4bzAzLS1ieW1mY0xGWmdZUGFLbmpOMlpGMEt6VERDZllsWnM3dEZuVnFWOWxDTU5YVWV0UW5EV0ZFajhPZnNXRTFmMl9LU2xGYUhKdk1JSXBlRnMzVjZxTkJsTV9qWUI1TExib0FaQVJFSmpXNXdYeV9iMlNQYjQxR0RJWEsyeTVNN0preHlEdw?oc=5",
+        "pub": "Fri, 24 Jul 2026 06:04:00 GMT",
+        "source": "The Times of India",
+        "age": "42m ago",
+        "_sort": 1784873040.0
+      },
+      {
+        "title": "Elon Musk says Tesla must invest in AI as soon as possible - \ub514\uc9c0\ud138\ud22c\ub370\uc774",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZi02VXVyclZvSWZBR1hUTVpWUVNuaVMwVUtqVV9xaFdvVlRfLUVQR0lod3BRZWEycXdBT3NTT3prdnRoTkJOWThXZXNOa0IxcmQ1SHJzdzVKbU01MFVpanE2cXJBdTNmMnh4Wk42MEg0UW4yZWdGSW84ZUVmRnh0VkZhbzZKTFlTY0h5MkRLcm80Y3BrLVQxcXpnNmJ3U28?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:49:55 GMT",
+        "source": "\ub514\uc9c0\ud138\ud22c\ub370\uc774",
+        "age": "56m ago",
+        "_sort": 1784872195.0
+      },
+      {
+        "title": "Elon Musk Says Taxes Could Wipe Out Three-Quarters of His Wealth - Tesla (NASDAQ:TSLA) - Benzinga",
+        "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQa3hleDJ1UDVaemozVXJEMTBnRUdzSHlSYThscHZRQ2RvcElvRkNRUnNQSjVFU2tQVTJraExvMkFtZGV3T1ZCVDhnbE1KeXJUM0lUWG5TaUFOTGIwUko1cmhnbWdPWmhfN2tDdTJJVlp0N2paM1NqclU4Wi1Td2hlUEZBTjFHcHdvNFUxeUljaTZQdF9mUkkyNDZ2TUdtOENVZDg0cFdKQTFhVTZmaHBnRE9MMmZfOXJESXFUdjlBRGx5ckt3elVBc2ZWZ090Mk80VjU2LUowWUUyV2tKU3VEMkVxckVOWk91OFAwRUdLVmZsZjNRNUVhUmc5S2RjZw?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:17:00 GMT",
+        "source": "Benzinga",
+        "age": "1h ago",
+        "_sort": 1784870220.0
+      },
+      {
+        "title": "SpaceX May Buy Tesla, But Its Own Stock Has Fallen 50% Since June - Yellow.com",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE12Vk1PRUp5R1VmU05KLUNiMmY1U0FsazRBaDdCeE16NmtKeUpGRlN5S2l4bUVDMVNWLXdjbzY4Vk45ekRaekRoU3o5T2Qwc1JDRFpGS1BjU0V0VGlLdFVMQWswU05Td0k?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:52:54 GMT",
+        "source": "Yellow.com",
+        "age": "2h ago",
+        "_sort": 1784865174.0
+      },
+      {
+        "title": "Tesla stock suffers double-digit drop on carmaker\u2019s worst day in years - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOSnVqZXgzTXJ3akhvQWd0eU5jT2ZsaWQyMVNOOTN3UE9CTmhRSDB1Z0xXUlpxUHdBalVfb0xoalo3LXprTHlNMHVocTRhT3NRM2xSRk50MmxuUTJSdG9YbGp3LWxPZFh3aW44TXRuZGc2RVlwMTVDcXhaMWZ6bTA3UkVIT0E?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:19:00 GMT",
+        "source": "The Guardian",
+        "age": "3h ago",
+        "_sort": 1784863140.0
+      },
+      {
+        "title": "\"Show Results, Not Just Vision!\" Tesla Plunges 14.5% as Investors Turn Cold and Warn \"Next Month Is a Major Hurdle\" - news.sbs.co.kr",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE50M1hHZ2xsTDBUUnZ4dzNxOFlJOEhRbjNoTnplVjRkb0tnaDRraVpCTGxPcXllS1d1TnVVMklfTU5ZV1l4cE81ZFFfUklmTjBCNlZvUnR6N3BGVXBEZ2QzZEttcktLQdIBZkFVX3lxTE50M1hHZ2xsTDBUUnZ4dzNxOFlJOEhRbjNoTnplVjRkb0tnaDRraVpCTGxPcXllS1d1TnVVMklfTU5ZV1l4cE81ZFFfUklmTjBCNlZvUnR6N3BGVXBEZ2QzZEttcktLQQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 02:47:00 GMT",
+        "source": "news.sbs.co.kr",
+        "age": "3h ago",
+        "_sort": 1784861220.0
+      }
+    ],
+    "Fed": [
+      {
+        "title": "Gold Price Forecast: XAU/USD Retains Bearish Bias As Markets Brace For Fed Decision - Bitcoin World",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9aQUpiYkpuMUFXaUt2UHYxRnFwekZhel9qMnAybW9PT2N4WEFzb01VMnU0SzFEcDNhN0lDUGhOS2pxV0FBajR5QzlEbVp1NWJJcm9UTzl4NFZUaXVTbnFQTl9JVFZ2UWtYZTUxblNiclRhWGJLN1FtSkUyODQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 04:20:11 GMT",
+        "source": "Bitcoin World",
+        "age": "2h ago",
+        "_sort": 1784866811.0
+      },
+      {
+        "title": "Is the Fed's Easing Bias Officially Off the Table - Kavout | AI",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNQWttamV1d0plT2Q3eGJIaTRBeS02TlV4ZTFmaTBoWXp5c3RJVDZ5WVl3b2pBZWN5ZlUydXFZWTlNNUtiZklaTE9VVWtWRy03STlnR1pvQkZyTENnaExHSGlTMEVCTjFKbDdlU0hCRVd6R2NEZ1pxcVZNVjhyaGN3Q0VqZGdyaGx6R3ZYZg?oc=5",
+        "pub": "Fri, 24 Jul 2026 04:19:59 GMT",
+        "source": "Kavout | AI",
+        "age": "2h ago",
+        "_sort": 1784866799.0
+      },
+      {
+        "title": "On tonight\u2019s episode of Paul Murray Live, Sky News host Paul Murray says Labor's economic promises have unravelled, warning Australians are now facing even tougher interest rate pressure. - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPdHJxbmduV2xpeGkwQlZUNnJaMVVDX053WjN6cWNIY1B5YlkwRVpNckxzQ2w0ZW5vem5ZVElicktBSVY0OHhKX19RTC04RVFHTkpoQ1NmUjBWSkhMSV9JTFA1Z0pzMzFHdVNsQkhIVDNYMTZDcWlrT0x1VXE2SkhWX1BhYi1yektMb2RidVQtTF9KZGxXSk1xSE5SdlhKdndzOE5vQ3k0U2xwaDloUnlNX1d1OFpJbkxyTkhSZzNNME5Zei1SeUlza3poWDg3aU5TT194WVdPcnpmYmtjaVo0?oc=5",
+        "pub": "Fri, 24 Jul 2026 01:50:45 GMT",
+        "source": "facebook.com",
+        "age": "4h ago",
+        "_sort": 1784857845.0
+      },
+      {
+        "title": "Brits warned 'fuel prices are shooting up like a rocket' as tensions rise in Iran - AOL.co.uk",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQVTg1UFJnM1RIMEU5WnI0ckhXNzBZa2FORUp4Zk85N250Z2N1bkdXV3RHLUJUY01VWlNDTnlxRk83YVk0RncwMDhaYV8wdTdPZ1F3X3gzTjliVTRpbkwzQjEtcDZrVzRpTGs5VlJ4cTd2RVk5MVlsS3hJbnVJWk1VM3VMQWdLUQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 01:39:00 GMT",
+        "source": "AOL.co.uk",
+        "age": "5h ago",
+        "_sort": 1784857140.0
+      },
+      {
+        "title": "UK petrol and diesel drivers urged to not fill up on Friday - 'stinging prices' - AOL.co.uk",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPV1RRT2otZWVsalBxOE5lM3FLMXlfNWYtdVVNV1dsaEItMlZOMVJNQTZpZC1tS1c0andNMVNuTzFDNG4yLUt5Q2k5QjBycnhWNGNGQ05MeGl0LXNQNkpnN0pyX3loNVhObGFVRTBwX293MHVqc2c5bVEzd0poT0J3dVF3?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:47:00 GMT",
+        "source": "AOL.co.uk",
+        "age": "5h ago",
+        "_sort": 1784854020.0
+      },
+      {
+        "title": "UK, Germany withdraw embassy staff from Tehran amid Iran-Israel tensions - Crypto Briefing",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQSE5yVzNVeUN6Y081b1hjeGs1VFM2TjF4OGlsYkxzVmx0MWFuYW1BQXVHNHFnenk3UERrS1pQMHU2UzVfZEd4SHZxdnotMk4tMWNUX0RxblQtTzVXOTlqMkFVLXJoUnJMYjJBaXVUMzBjTEJoTlJFRklUa3gxQ3Y2RVN4NjdFanVGenFBSjg3cDVJOVo3QVJDZ1ZYSEx4cF9Q?oc=5",
+        "pub": "Thu, 23 Jul 2026 22:59:52 GMT",
+        "source": "Crypto Briefing",
+        "age": "7h ago",
+        "_sort": 1784847592.0
+      }
+    ],
+    "Oil": [
+      {
+        "title": "Oil prices surged past $100 a barrel on July 23 after Iran-backed Houthi rebels targeted Red Sea shipping and US President Donald Trump threatened strikes in the region. | via ANC 24/7 Full story link in the comments section. - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNbEJsRHk0ZDJGTDZZS2tIN1E2Wm13U1ZOdklOajd4aXowZFJMWEdpWlJlVWpLWThya0EyYjU3RWpfQlNqbzR0VS0tZmU1UnItVTNUcEhrT2REMVloTVJfek93UUFiV1UyT1UxU0JtaUhBb21wbXhOSFBjRjYtbUt0VlVPd29FMUxCR08zZmJFdFFsajNBbnlReFNrZkxyOEZJYXhDaElrNEpRanU0RzFnM1B1NkZDdmg1WkJjWUhRV21Mb0hDOHZ2R2F6Y2tmbWhNTDNZQnFwTQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 03:55:03 GMT",
+        "source": "facebook.com",
+        "age": "2h ago",
+        "_sort": 1784865303.0
+      },
+      {
+        "title": "US President Donald Trump vows to punish Iran for Houthi attacks in Red Sea - TMGM trading",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQN3prSE5WUnhPMHNMUWRxaVBvakhaYUJwUFUwZnNqdkV5bXRIREROamRIbld3TWZCckZHMjBRRDdzX0RNTW5Dd1l6N0YtX3FCQXZtNUpxdFVwenk1RkpqQnFxSGNhczhBYXQ5bGFRWkUwME9uTkk4MjFnWnY0UncwWXJZNjh1YUJmakhXOUxzU0hIMmY3dVNuWnpjMER5Q0NXMEhqZFRDQ3R6ZVgxSmwtYVBFdGNuWkV2T04wUjVDbXVhMGRGQlZpY3U1ZWU0cGxDc3dYSklDSGM?oc=5",
+        "pub": "Fri, 24 Jul 2026 01:02:12 GMT",
+        "source": "TMGM trading",
+        "age": "5h ago",
+        "_sort": 1784854932.0
+      },
+      {
+        "title": "CHARTED: Oil Trade Through the Strait of Hormuz by Country \u2013 Visual Capitalist - EnergyNow.com",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQeU1tdWFDbEwyc2R5ZEFYN3Y4Q3czZEZKX2ZMWUZWUjVDaHljOVZXY1dTX1h1LXFMSlNJcGtad1VURWhBaHFPWm5nNmY5YzJDX1B1RU1ISDFKWEs1US1TNkptS3lIYXVyWUZsdUM4OTFzRk8zOU1abWE5M3IwV0dtX2VqWlhBUW5mbERvOVVoU2EyR25PQk5qbk9PNXBfbmZ3NTFlR1hXVVZNUQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:43:21 GMT",
+        "source": "EnergyNow.com",
+        "age": "6h ago",
+        "_sort": 1784853801.0
+      },
+      {
+        "title": "Iran War Anxiety Sends Global Container Shipping Rates Soaring - EnergyNow.com",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPdmtCcm5uQXIxNTktbnI1QW55LWtqTjJvODRGWVJUUS04aW1TNWVhS1FpNVNicW5vWHhxWm1pU0FVYmZQRnNNNXRULUlRTHdQQ2gtaThhS19TVUZwdmZ0WG52SUlDUmRBellYVG96ckZ3WjVNSHp4WGNKV1ZidVA0U0JiS1ZON3VZaFA3UWJpMVJxNFllMElwSQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:40:54 GMT",
+        "source": "EnergyNow.com",
+        "age": "6h ago",
+        "_sort": 1784853654.0
+      },
+      {
+        "title": "Goldman Sachs Flags Two\u2011Way Risks to Their 2026 Oil Price Outlook - EnergyNow.com",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNWmRQSFJXSzRMb29XeEtFOGJnei0wZXhQZUd3aDN3T1o4MWRkTDBBelV3Y08wSnhsTC1EakpJNzRuVTVJVVdWY1Z2bXlQNUI4N1h0dnRpY3MwMjNzV0tZNmdJS2dEcF9lV2h1WTBDZUxXR1dMSEpTSEUzbGlNcHRGRnk0NWlPMlk5U2E4aEV0S3Y5dkZiRXBjcEExbUo?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:34:18 GMT",
+        "source": "EnergyNow.com",
+        "age": "6h ago",
+        "_sort": 1784853258.0
+      },
+      {
+        "title": "Oil-Gear Maker NOV Cuts Earnings Guidance as Iran War Hikes Costs and Snarls Deliveries - EnergyNow.com",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQTkc4VE5VcFJuNzNERXo0bDRSdWJkMnQzcGJNUjdRdzM3bDdZYy1lRFppVWhNT0tsSnhmbnZGM2FXaEJtbzV5MlpwYUlqRFNVWnl0RE1lM1FGcEZCYlJ0WFJteS1ZZVM4SWkzY21tX09XOXBSWTNwMlhUWkhIZGdaM3lNZHVtNUhsbWxMcUdwdW5xblFoYXRWX0pSblZxbkVhVE4zVzBGRzhBUTRFaHVfNG1Wbk9UbG1zVUE?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:30:53 GMT",
+        "source": "EnergyNow.com",
+        "age": "6h ago",
+        "_sort": 1784853053.0
+      }
+    ],
+    "Chips": [
+      {
+        "title": "Forget Picking the Next AI Winner: TSM Lets You Profit From Every Wave of the Revolution - AOL.com",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFAzMjRpelB5RUpnZWVxWHNxLVFUeHN4aEstdzlvWVh5czNyalFaQVZYUTRDNGc5VTdhY0FqVXJWTE5GYWUyUmFZYm9WYVA5QUxMS1FtcEZBb2UtY1hzWktWLXhVV1VjRXp1aTItVmp0QTV1ejNUSUhVV0VYVFhuZw?oc=5",
+        "pub": "Fri, 24 Jul 2026 05:04:08 GMT",
+        "source": "AOL.com",
+        "age": "1h ago",
+        "_sort": 1784869448.0
+      },
+      {
+        "title": "Why the Best-Performing AI ETF isn't a Pure Semiconductor Investment - Analytics Insight",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNeG9nWVJ2dk90SkhEVzBlR0RlMHJyeDZpUTExOU1zS0t2blpyTmczRTJ6RWRoX2V6VURPQkRWRUY3NjRRcDJmQ3VoV1JmSFNlcmZhUFZodTBYTHNNRVJpV09LZFhpYmFhMzlBWExfYW9STFhnS2xHSE1GRUd5YmVjVnhNM1pPZ2lCZkpvUG92MW9TeEVwdTFFcFd6QmV6RzU1NjExMEhYUHU2RWVQaGx0Nmp0RkVXcHRrZXRoRW9RMUhNZ9IBzwFBVV95cUxQLUU5TUlrTzJKeEwwNWFoaFJiY1d1Yk9LdGtTcGpKdkthSkhmbWh5czduV1hsTXhxZTJEOHJzaVpZdnhLX2VXd1NkVVBGYnF5dTI1bVlUeGx5SWRMRjdMTjN6NlpJZFlVaHF5Q0QwWk40TUhwYzIxSjlXUW1ISkxrX3RsOWdzcTM3SjFWQUwtanFGYWRRRW0zd3BId1lZU0RGMkYzczZWR0hwYWhvMFh6Ry1rSkxmd1I3dmE0UnRYOFBTUi1PUlNwcFRJdmtJaEk?oc=5",
+        "pub": "Fri, 24 Jul 2026 04:30:00 GMT",
+        "source": "Analytics Insight",
+        "age": "2h ago",
+        "_sort": 1784867400.0
+      },
+      {
+        "title": "AMD Unveils Its Latest Nvidia Challenger\u2014but Investors Remain Unconvinced - Kalkine",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOX3NIaXJSV3VEdnRxLXVuQ1lvLXpLZVhmQWl5ckZjbjc0QXJoSVZSOVpWV0piMl8wcDJnYlE5RTE4ck9ValRiTHQ4bnFYOEViSllXRFVPRGVRTmt1NHJSMFdrTnd0UnJ6bDZuR1l2c3NvRlJBbFdONTJIVmJzRXoxQktTall2SEU0U2poZ2NwRlhmdUlzTnJvbm9OTllidWwyRDRqTTMtUUVaXy1hLVFtRw?oc=5",
+        "pub": "Fri, 24 Jul 2026 02:48:00 GMT",
+        "source": "Kalkine",
+        "age": "3h ago",
+        "_sort": 1784861280.0
+      },
+      {
+        "title": "\ud83d\udea8 AI Stocks Are Dropping Fast \u2014 9 Stocks Ranked Psg Vs Brest (qeX3adyly4) - Mshale",
+        "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1lcnFBUUdfOE9BTF9yTFg2VjJXS3I0WTNUNmVORGFxUDZXVnh0RTBFU3ZfSmh0UHhyQXhnTG90LTBEUHpqbldOYnJocHNuZG5uZGpfdjdLdXBybHh4am1hMQ?oc=5",
+        "pub": "Fri, 24 Jul 2026 01:58:19 GMT",
+        "source": "Mshale",
+        "age": "4h ago",
+        "_sort": 1784858299.0
+      },
+      {
+        "title": "Nvidia Commits $1.5 Billion to Amkor for US Advanced Chip Packaging, Shares Surge 17% - finance.biggo.com",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBxNGZtMHhFYTlEX0ZZT2c1dl9pb2ktdmJ6a04wX1pCN1lhQUhEckJiVEpwcUFoRkZVd2xtcTFUOExCWjliZGF2dzB3UEY2a001WUwwQWlnWE1kUXlKMkhNZUpGTVBLVHhVUzNHZ1oxT2h4UENxNlE?oc=5",
+        "pub": "Fri, 24 Jul 2026 01:15:00 GMT",
+        "source": "finance.biggo.com",
+        "age": "5h ago",
+        "_sort": 1784855700.0
+      },
+      {
+        "title": "AMD Unveils \u2018Helios\u2019 Targeting Agentic AI, Bets on 30% Cost Savings vs. Nvidia - finance.biggo.com",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9hYzJHaHBSd0hNX1RVNDM4Qnd2M1JqV2ZQV3VhcVZ4bFVFNlFtZ2hpU3ZOZ3BZenZlU3BERFZraU1JRHNDQk1ua1lLQ0xZaDVJZGV6bDhOVU1ZTlZDSzVpR1JLMFpGaDV3MU1jeGNybkExVDhuRXc?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:05:00 GMT",
+        "source": "finance.biggo.com",
+        "age": "6h ago",
+        "_sort": 1784851500.0
+      }
+    ],
+    "Earnings": [
+      {
+        "title": "Nasdaq Composite Plunges to 25,137.69 as Alphabet and Tesla Earnings Spook AI Investors - BBN Times",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNOEQxdWhIWEIzanR3OGZQUXJaWjhRdFhMREJtTW1ZeURrWl80Y1pFLTdITkhSd194RWJIWEg1d2JNSVFQaGEzMDVZLXdZYzZlZ3hjZG96RXpVVHpJcXhXYWlqSXIxTkF3YjJMZE9vT193SXBBNjQ1amZia2tLbm5fbm1jT0VLTkt2MjBqZ1hJaHBBSUxqNjRvUTByRWJJbHZLNFZHTTZJVzZXa0xsdVJMR25rNUo0TVRaSjlIWmo5QXE?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:47:27 GMT",
+        "source": "BBN Times",
+        "age": "5h ago",
+        "_sort": 1784854047.0
+      },
+      {
+        "title": "Closing Bell Movers: Intel up 4% on Q2 earnings beat - TipRanks",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSXRHNUdrYzJtTVRHR01YZzBweW9INkNvT0hVdmJraEJhVzNsTmgyNVYxV1pDbHpWS24zX01vQV8yQUt5aFl6dXFQZkJESGlBYTVTTzE0Ni03YUFYeVZuQWlWZlFCbWh5dXlUbHY1V01CcTE5YllOMHc2NC1STzZhZnFodGJiNk5fM0l6dmFVakt4N3Y2cVV1WE9GUFdNbTktUXc?oc=5",
+        "pub": "Fri, 24 Jul 2026 00:16:00 GMT",
+        "source": "TipRanks",
+        "age": "6h ago",
+        "_sort": 1784852160.0
+      },
+      {
+        "title": "After-Hours Stock Movers: INTC, AMD, ARM, MXL, EW, DECK - Investing.com",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxONUMzS1c3c3ZoS2ZNNzVRcHdQY0luclczXzAzQ3Qxd3F1RXQ4dUZubEhBVjZhcDBiTmQtek1VMDQyX09sYnBXYlhscTd1cmFQTHdoSW9HUDlSSnE4VFZDVVRKTm9MMDNBeDM4U1d5WTk1SjY3LUtXZDNYLVZESTVKck5BdVpXUkJGOW9BV1ByRXFyS2NMSUJkUUt3Z3I4VFA5R1JYakttdGhUQ2k5Z25nVw?oc=5",
+        "pub": "Thu, 23 Jul 2026 22:18:14 GMT",
+        "source": "Investing.com",
+        "age": "8h ago",
+        "_sort": 1784845094.0
+      },
+      {
+        "title": "12 Health Care Stocks Moving In Thursday's After-Market Session - Benzinga",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPMXZ2X3A4YzlFN3NaQTZGSVVuZF8yblBpX25KVlR3YVE2dGxPWjBjNkwwVXN5TlhQUkF3aTVJWHFsTkt4cFg1SDNsdXNJeUZOZFZaZnI4ODNieHlIcGxaM0NFUWYwa3E0bWlma3hKQVE2dlpnaUwyNXJwNDJUZXdKR2duWkVFM21KTDdmbGpJRERvNTJRZGlQMVM2WTc1RjBzM1p1blROaTZ3cWVVWF9STzlJRlpCbEJZQkJDZU93?oc=5",
+        "pub": "Thu, 23 Jul 2026 21:06:01 GMT",
+        "source": "Benzinga",
+        "age": "9h ago",
+        "_sort": 1784840761.0
+      },
+      {
+        "title": "AMD Stock Rises After The Bell: Here's Why - Benzinga",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPcDgtclYtSXJkNjJxXzIxeXc1MDZqRFpVN3J6YnoyNUdXWnoyNFpucXJBbXZQWVRrVXdRV29ienl1dDhqQ09qUVVfTlVoMTBiRTlFSXdlYnZmaTM5TmFSVmVaWnRnRWlnaEh2LWw2eHdhWXU5TEp6MVNjdElWaVVRUzBKaDYxTGZzQURHTXhVYkhGOXFvSERxMmZhUHZWaGFPbFVB?oc=5",
+        "pub": "Thu, 23 Jul 2026 21:01:50 GMT",
+        "source": "Benzinga",
+        "age": "9h ago",
+        "_sort": 1784840510.0
+      },
+      {
+        "title": "Nvidia, Tesla, SpaceX, Alphabet, Lockheed, AT&T, and More Stocks That Explain Today\u2019s Market - Barron's",
+        "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBkQkpydmlMMkdWMHc2d1JWRDRnNnpQTl9uNFJ1Z3JEOGFwYnRwRU5jR2g1YlhQZmF2TmVoVjkxRng4QW1rVlpGZXpoYm9JZFl6THJOM0hyMFJDWDZsdVNzX1Y3NEs?oc=5",
+        "pub": "Thu, 23 Jul 2026 20:34:00 GMT",
+        "source": "Barron's",
+        "age": "10h ago",
+        "_sort": 1784838840.0
+      }
+    ]
+  },
+  "errors": {}
 }
