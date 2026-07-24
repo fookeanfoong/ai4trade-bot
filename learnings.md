@@ -93,3 +93,13 @@
 - Lessons:
   - net -2.18$, 0W/2L, WR 0% -> params held
 
+
+## 2026-07-24 — Alpaca paper Week 1 review (real-execution) — 3W/0L, +$18.34 (+9.2% on $200 book)
+- Closed exits: CVX +$6.37 (signal-invalidation into strength), OXY +$5.99 (T1 half) + $5.99 (trailing lock). All 3 green. NVDA still open (~flat).
+- Win rate 100% (3/3), net realized +$18.34, account +$18 (+9.2% on the $200 logical book). Health: system clean — entries/exits fired every day via the open-kick, 0 broker/data errors, 0 failed orders, quotes errors {} across 28 runs.
+- What worked:
+  1. Disciplined EXITS: OXY T1 half-out + trailing lock captured +3% without round-tripping; CVX signal-invalidation booked the gain cleanly. Locking > hoping.
+  2. NO-CHASE earned its keep: kept me out of AMD (+8–11%/3d) two days running; AMD then went ~flat on its Advancing-AI conference day ("sell the rumor"), so skipping it for OXY was the better P&L. Also dropped JPM's unexplained 4-day/+4.7% gap into a new-tariff Friday.
+  3. CONVICTION-BASED COUNT worked: sized just 1 slice ($133) for a single-name NVDA day instead of padding to 3; sat mostly in cash on the murky AI-worry days.
+- HONEST caveat: returns were FLATTERED by a strong trending week — energy ripped on the Iran/Hormuz oil spike and CVX/OXY rode it. The discipline was sound but +9%/week is NOT a repeatable baseline; it's regime-dependent. Sample is tiny (2–3 positions). Do NOT extrapolate.
+- CHANGE: none. Results fine + sample far too small to tune; adjusting thresholds on a 3-win streak would overfit. Keep the discipline, accumulate trades. Still targeting 4 weeks / 20+ trades / net-positive / no data errors before any real-money talk. Paper only.
