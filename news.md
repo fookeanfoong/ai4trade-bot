@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-24T06:46:03+00:00
+# Market News Digest — 2026-07-24T13:32:42+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `42m ago` **[Musk]** Tesla sees 'Worst Day' since the day Elon Musk said that 'I can’t pass a TV without spotting a Tesla up i - The Times of India — _The Times of India_
-- `56m ago` **[Musk]** Elon Musk says Tesla must invest in AI as soon as possible - 디지털투데이 — _디지털투데이_
-- `1h ago` **[Trump]** Asian stocks decline on Trump's tariffs, US-Iran tension; South Korea's KOSPI underperform - FXStreet — _FXStreet_
-- `1h ago` **[Trump]** Canada ready to respond if Trump's new tariffs take affect: PM Carney - Business Standard — _Business Standard_
-- `1h ago` **[Musk]** Elon Musk Says Taxes Could Wipe Out Three-Quarters of His Wealth - Tesla (NASDAQ:TSLA) - Benzinga — _Benzinga_
-- `2h ago` **[Fed]** Gold Price Forecast: XAU/USD Retains Bearish Bias As Markets Brace For Fed Decision - Bitcoin World — _Bitcoin World_
-- `2h ago` **[Fed]** Is the Fed's Easing Bias Officially Off the Table - Kavout | AI — _Kavout | AI_
-- `2h ago` **[Trump]** Asia stocks fall as Trump tariffs rattle exporters; Japan, S.Korea tumble - Investing.com — _Investing.com_
-- `2h ago` **[Trump]** Thune and White House trade jabs over Trump’s controversial elections legislation - CNN — _CNN_
-- `2h ago` **[Oil]** Oil prices surged past $100 a barrel on July 23 after Iran-backed Houthi rebels targeted Red Sea shipping and US President Donald Trump threatened strikes in the region. | via ANC 24/7 Full story link in the comments section. - facebook.com — _facebook.com_
-- `2h ago` **[Market]** Stock Market Today (July 24, 2026): Sensex, Nifty Decline As US-Iran Escalation Pushes Oil Above $100 - Times Now — _Times Now_
-- `3h ago` **[Trump]** 'Unjustified': Asian allies push back against Trump's forced-labor tariffs - Business Standard — _Business Standard_
+- `20m ago` **[Fed]** The Federal Reserve faces increasing volatility with the rise in bond yields and the change in Kevin Warsh's approach - المتداول العربي — _المتداول العربي_
+- `37m ago` **[Trump]** Donald Trump’s approval rating: the latest polls - The Times — _The Times_
+- `51m ago` **[Musk]** Elon Musk's companies are having a bad week on the markets: Why SpaceX and Tesla stock prices are down - Fast Company — _Fast Company_
+- `1h ago` **[Oil]** CENTCOM strikes Iranian military sites amid Strait of Hormuz tensions - Crypto Briefing — _Crypto Briefing_
+- `1h ago` **[Trump]** Trump administration imposes new tariffs accounting for 99% of US imports - WJCL — _WJCL_
+- `1h ago` **[Trump]** At White House Correspondents’ Dinner do-over, Trump meets a press corps under his pressure - CNN — _CNN_
+- `1h ago` **[Trump]** Trump Unveils New Tariffs: 8 Key Items Shaping the Stock Market Friday - TheStreet Pro — _TheStreet Pro_
+- `1h ago` **[Trump]** Oil spurs a sell-off, Trump's new tariffs, Intel earnings and more in Morning Squawk - CNBC — _CNBC_
+- `1h ago` **[Fed]** FOMC Preview: Fed Poised To Hold Rates Steady After June's Hawkish Turn - Bitcoin World — _Bitcoin World_
+- `1h ago` **[Musk]** Will SpaceX buy Tesla? Elon Musk is not revealing his plans - NBC26 — _NBC26_
+- `1h ago` **[Fed]** Fed Chairman Warsh faces cruel summer as bond yields spike - WKZO — _WKZO_
+- `1h ago` **[Trump]** Tech Turmoil and Tariffs: A Stock Market Saga - Devdiscourse — _Devdiscourse_
 
 ## Market
 
-- `47m ago` SEC to hold September roundtable on 24-hour trading for U.S. stock market - 디지털투데이 — _디지털투데이_
-- `1h ago` These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; Google Holds Top Rating - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` Sensex tanks 870 pts intraday, Nifty at 23650: Why is market falling today? - Business Standard — _Business Standard_
-- `2h ago` Why is market falling today? Sensex slumps over 700 points: 7 key factors behind Rs 3 lakh crore rout - The Economic Times — _The Economic Times_
-- `2h ago` Stock Market Today (July 24, 2026): Sensex, Nifty Decline As US-Iran Escalation Pushes Oil Above $100 - Times Now — _Times Now_
-- `2h ago` Stock Market Today: Sensex falls over 600 pts, Nifty slips below 23,700 as weak global cues, oil surge weigh on markets - Zee Business — _Zee Business_
+- `19m ago` US stock market today: Dow futures rebound over 200 points as oil prices retreat; Intel gains after earnings - CNBC TV18 — _CNBC TV18_
+- `30m ago` US stock market today: S&P 500, Nasdaq futures edge higher as oil retreats, Intel jumps 4% - livemint.com — _livemint.com_
+- `32m ago` US Stock Market Today: Dow Futures Jump Over 200 Points, S&P 500 and Nasdaq Rebound as Oil Prices Ease, Intel Shares Surge; What Investors Should Know - The Sunday Guardian — _The Sunday Guardian_
+- `1h ago` Stocks Get Relief As Oil Halts Surge; Intel Rises - Investor's Business Daily — _Investor's Business Daily_
+- `2h ago` Alphabet Inc. (GOOGL) Stock Price, News, Quote & History - Yahoo Finance — _Yahoo Finance_
+- `2h ago` Sector & Industry Performance - Bloomberg.com — _Bloomberg.com_
 
 ## Trump
 
-- `1h ago` Asian stocks decline on Trump's tariffs, US-Iran tension; South Korea's KOSPI underperform - FXStreet — _FXStreet_
-- `1h ago` Canada ready to respond if Trump's new tariffs take affect: PM Carney - Business Standard — _Business Standard_
-- `2h ago` Asia stocks fall as Trump tariffs rattle exporters; Japan, S.Korea tumble - Investing.com — _Investing.com_
-- `2h ago` Thune and White House trade jabs over Trump’s controversial elections legislation - CNN — _CNN_
-- `3h ago` 'Unjustified': Asian allies push back against Trump's forced-labor tariffs - Business Standard — _Business Standard_
-- `3h ago` Shares dip as oil tops $US100, Trump levels new tariffs - aapnews.aap.com.au — _aapnews.aap.com.au_
+- `37m ago` Donald Trump’s approval rating: the latest polls - The Times — _The Times_
+- `1h ago` Trump administration imposes new tariffs accounting for 99% of US imports - WJCL — _WJCL_
+- `1h ago` At White House Correspondents’ Dinner do-over, Trump meets a press corps under his pressure - CNN — _CNN_
+- `1h ago` Trump Unveils New Tariffs: 8 Key Items Shaping the Stock Market Friday - TheStreet Pro — _TheStreet Pro_
+- `1h ago` Oil spurs a sell-off, Trump's new tariffs, Intel earnings and more in Morning Squawk - CNBC — _CNBC_
+- `1h ago` Tech Turmoil and Tariffs: A Stock Market Saga - Devdiscourse — _Devdiscourse_
 
 ## Musk
 
-- `42m ago` Tesla sees 'Worst Day' since the day Elon Musk said that 'I can’t pass a TV without spotting a Tesla up i - The Times of India — _The Times of India_
-- `56m ago` Elon Musk says Tesla must invest in AI as soon as possible - 디지털투데이 — _디지털투데이_
-- `1h ago` Elon Musk Says Taxes Could Wipe Out Three-Quarters of His Wealth - Tesla (NASDAQ:TSLA) - Benzinga — _Benzinga_
-- `2h ago` SpaceX May Buy Tesla, But Its Own Stock Has Fallen 50% Since June - Yellow.com — _Yellow.com_
-- `3h ago` Tesla stock suffers double-digit drop on carmaker’s worst day in years - The Guardian — _The Guardian_
-- `3h ago` "Show Results, Not Just Vision!" Tesla Plunges 14.5% as Investors Turn Cold and Warn "Next Month Is a Major Hurdle" - news.sbs.co.kr — _news.sbs.co.kr_
+- `51m ago` Elon Musk's companies are having a bad week on the markets: Why SpaceX and Tesla stock prices are down - Fast Company — _Fast Company_
+- `1h ago` Will SpaceX buy Tesla? Elon Musk is not revealing his plans - NBC26 — _NBC26_
+- `3h ago` Elon Musk loses $19 billion after Tesla shares plunge 14%. What’s spooking investors? - The Economic Times — _The Economic Times_
+- `3h ago` Tesla posted a $1.1 billion free cash flow deficit and investors finally stopped giving Musk the benefit of the doubt - Startup Fortune — _Startup Fortune_
+- `3h ago` Tesla just lost a near-free money stream worth $2.76 billion a year after Trump rolled back fuel economy standards - Yahoo! Finance Canada — _Yahoo! Finance Canada_
+- `3h ago` Elon Musk Has Lost $650 Billion In 5 Weeks As Tesla And SpaceX Plummet - 24/7 Wall St. — _24/7 Wall St._
 
 ## Fed
 
-- `2h ago` Gold Price Forecast: XAU/USD Retains Bearish Bias As Markets Brace For Fed Decision - Bitcoin World — _Bitcoin World_
-- `2h ago` Is the Fed's Easing Bias Officially Off the Table - Kavout | AI — _Kavout | AI_
-- `4h ago` On tonight’s episode of Paul Murray Live, Sky News host Paul Murray says Labor's economic promises have unravelled, warning Australians are now facing even tougher interest rate pressure. - facebook.com — _facebook.com_
-- `5h ago` Brits warned 'fuel prices are shooting up like a rocket' as tensions rise in Iran - AOL.co.uk — _AOL.co.uk_
-- `5h ago` UK petrol and diesel drivers urged to not fill up on Friday - 'stinging prices' - AOL.co.uk — _AOL.co.uk_
-- `7h ago` UK, Germany withdraw embassy staff from Tehran amid Iran-Israel tensions - Crypto Briefing — _Crypto Briefing_
+- `20m ago` The Federal Reserve faces increasing volatility with the rise in bond yields and the change in Kevin Warsh's approach - المتداول العربي — _المتداول العربي_
+- `1h ago` Interest Rate Predictions for the Next 5 Years: 2026-2030 - Norada Real Estate Investments — _Norada Real Estate Investments_
+- `1h ago` FOMC Preview: Fed Poised To Hold Rates Steady After June's Hawkish Turn - Bitcoin World — _Bitcoin World_
+- `1h ago` Fed Chairman Warsh faces cruel summer as bond yields spike - WKZO — _WKZO_
+- `2h ago` What to Watch for at Next Week’s Federal Reserve Meeting - Investopedia — _Investopedia_
+- `3h ago` Rate-Hike Odds Surge Past 30%: With the Fed Decision on Deck, Why Is the Market Completely in the Dark? - finance.biggo.com — _finance.biggo.com_
 
 ## Oil
 
-- `2h ago` Oil prices surged past $100 a barrel on July 23 after Iran-backed Houthi rebels targeted Red Sea shipping and US President Donald Trump threatened strikes in the region. | via ANC 24/7 Full story link in the comments section. - facebook.com — _facebook.com_
-- `5h ago` US President Donald Trump vows to punish Iran for Houthi attacks in Red Sea - TMGM trading — _TMGM trading_
-- `6h ago` CHARTED: Oil Trade Through the Strait of Hormuz by Country – Visual Capitalist - EnergyNow.com — _EnergyNow.com_
-- `6h ago` Iran War Anxiety Sends Global Container Shipping Rates Soaring - EnergyNow.com — _EnergyNow.com_
-- `6h ago` Goldman Sachs Flags Two‑Way Risks to Their 2026 Oil Price Outlook - EnergyNow.com — _EnergyNow.com_
-- `6h ago` Oil-Gear Maker NOV Cuts Earnings Guidance as Iran War Hikes Costs and Snarls Deliveries - EnergyNow.com — _EnergyNow.com_
+- `54m ago` Oil prices surge past $100 amid Middle East conflict, disrupting supply lines - Crypto Briefing — _Crypto Briefing_
+- `1h ago` CENTCOM strikes Iranian military sites amid Strait of Hormuz tensions - Crypto Briefing — _Crypto Briefing_
+- `2h ago` Russian attack cuts power in Ukraine’s north; Kyiv targets missile, oil sites - Crypto Briefing — _Crypto Briefing_
+- `3h ago` Iran conflict disruptions expected to drive up oil prices amid Strait of Hormuz risks - Crypto Briefing — _Crypto Briefing_
+- `3h ago` U.S. carries out more strikes as Trump threatens Iran, Houthis with "major military punishment" - CBS News — _CBS News_
+- `4h ago` Iran, Houthis drive $49 oil price hike; demand cuts trim $10 - Crypto Briefing — _Crypto Briefing_
 
 ## Chips
 
-- `1h ago` Forget Picking the Next AI Winner: TSM Lets You Profit From Every Wave of the Revolution - AOL.com — _AOL.com_
-- `2h ago` Why the Best-Performing AI ETF isn't a Pure Semiconductor Investment - Analytics Insight — _Analytics Insight_
-- `3h ago` AMD Unveils Its Latest Nvidia Challenger—but Investors Remain Unconvinced - Kalkine — _Kalkine_
-- `4h ago` 🚨 AI Stocks Are Dropping Fast — 9 Stocks Ranked Psg Vs Brest (qeX3adyly4) - Mshale — _Mshale_
-- `5h ago` Nvidia Commits $1.5 Billion to Amkor for US Advanced Chip Packaging, Shares Surge 17% - finance.biggo.com — _finance.biggo.com_
-- `6h ago` AMD Unveils ‘Helios’ Targeting Agentic AI, Bets on 30% Cost Savings vs. Nvidia - finance.biggo.com — _finance.biggo.com_
+- `16m ago` Intel Rises 3% on Q2 Earnings Beat, Upbeat Q3 Outlook as Chip Sector Stays Flat - 24/7 Wall St. — _24/7 Wall St._
+- `25m ago` Nvidia Stock Has Been a Chip Stock Outperformer in July. Why Its Rally Is at Risk. - Barron's — _Barron's_
+- `1h ago` AMD, NVDA, and INTC Forecasts – Semiconductor Stocks Test Key 50-Day EMA Support - FXEmpire — _FXEmpire_
+- `1h ago` Nvidia Shares Are Priced For Everything To Go Wrong: That Makes No Sense - The Information — _The Information_
+- `2h ago` NVIDIA Corporation (NASDAQ:NVDA) Outperforms Nasdaq, Lags Broader Chip Gains as AI Investment Expands - TechStock² — _TechStock²_
+- `2h ago` Latest News In AI Chips - AMD and Cerebras Team Up for AI Infrastructure Enhancement - simplywall.st — _simplywall.st_
 
 ## Earnings
 
-- `5h ago` Nasdaq Composite Plunges to 25,137.69 as Alphabet and Tesla Earnings Spook AI Investors - BBN Times — _BBN Times_
-- `6h ago` Closing Bell Movers: Intel up 4% on Q2 earnings beat - TipRanks — _TipRanks_
-- `8h ago` After-Hours Stock Movers: INTC, AMD, ARM, MXL, EW, DECK - Investing.com — _Investing.com_
-- `9h ago` 12 Health Care Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
-- `9h ago` AMD Stock Rises After The Bell: Here's Why - Benzinga — _Benzinga_
-- `10h ago` Nvidia, Tesla, SpaceX, Alphabet, Lockheed, AT&T, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `23m ago` Tesla Stock Erases $214 Billion in a Single Day — Here's What Happened This Month - Benzinga — _Benzinga_
+- `43m ago` Intel, SpaceX, Verizon, Oracle, SAP, Tenet, Amex, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `48m ago` Intel, Amkor on AI optimism; eBay slips - Yahoo! Finance Canada — _Yahoo! Finance Canada_
+- `2h ago` Verizon Beats on Wireless, Internet Revenue Amid Turnaround - Bloomberg.com — _Bloomberg.com_
+- `3h ago` Intel, Sandisk, SAP, Newmont, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `4h ago` Biggest stock movers Friday: INTC, SAP, and more - Seeking Alpha — _Seeking Alpha_
 
