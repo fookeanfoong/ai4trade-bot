@@ -65,6 +65,15 @@ TRAIL_ARM_PCT = 0.004
 TRAIL_GIVEBACK_PCT = 0.0025
 ENABLE_SHORT = os.environ.get("ENABLE_SHORT", "false").lower() in ("yes", "true")
 
+# Stock-split (corporate action) recognition. A split changes the broker's share
+# COUNT by a clean factor (10:1 => 10x shares at 1/10 price); our stored plan
+# (entry/stop/T1/T2) stays at pre-split prices, which would otherwise trip a false
+# catastrophic stop next run. We confirm a split from the share-count change — a
+# real price crash NEVER multiplies your share count — so it can't be fooled by a
+# genuine down day. (Corporate-action handling is the one idea worth borrowing
+# from heavyweight engines like LEAN, kept minimal here.)
+SPLIT_FACTORS = (2, 3, 4, 5, 6, 7, 8, 10, 15, 20)
+
 # REGIME guard (the Korea/DeepSeek lesson): if the broad market is gapping down
 # more than this on the day, a sudden-crash / risk-off open is underway — do NOT
 # open new longs into it (symmetric for shorts on a rip). signals.json may
@@ -420,8 +429,26 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
 
 
 # ------------------------- reconciliation ----------------------------------
+def detect_split_divisor(local_qty: float, broker_qty: float):
+    """If the broker's share count vs our tracked count is a clean integer factor,
+    a split happened. Return the PRICE divisor d (new_price ~= old_price / d,
+    new_qty ~= old_qty * d): d = k for a k:1 forward split, d = 1/k for a 1:k
+    reverse split. None if the counts match (no corporate action)."""
+    if local_qty <= 1e-9 or broker_qty <= 1e-9:
+        return None
+    ratio = broker_qty / local_qty          # >1 forward split, <1 reverse split
+    for k in SPLIT_FACTORS:
+        if abs(ratio - k) <= 0.03 * k:            # broker ~ k× ours  -> k:1 forward
+            return float(k)
+        if abs(ratio - 1.0 / k) <= 0.03 / k:      # broker ~ ours/k   -> 1:k reverse
+            return 1.0 / k
+    return None
+
+
 def reconcile(broker, state, BrokerError) -> list:
-    """Drop any tracked name the broker no longer holds (filled/closed elsewhere)."""
+    """Drop any tracked name the broker no longer holds (filled/closed elsewhere),
+    and adjust a held position for a stock split so its frozen plan doesn't trip a
+    false stop. Runs BEFORE exit logic, so a rescaled stop is in place first."""
     if not state.get("positions") or broker is None:
         return []
     try:
@@ -430,9 +457,26 @@ def reconcile(broker, state, BrokerError) -> list:
         return [f"positions() failed, trusting local state: {e}"]
     lines = []
     for tkr in list(state["positions"].keys()):
-        if abs(held.get(tkr, 0.0)) < 1e-6:
+        p = state["positions"][tkr]
+        bqty = abs(held.get(tkr, 0.0))
+        if bqty < 1e-6:
             state["positions"].pop(tkr, None)
             lines.append(f"reconcile: broker shows no {tkr} — clearing stale local plan")
+            continue
+        old_qty = abs(float(p.get("qty", 0.0)))
+        d = detect_split_divisor(old_qty, bqty)
+        if d:
+            for key in ("entry", "stop", "t1", "t2", "peak_price"):
+                if p.get(key):
+                    p[key] = round(float(p[key]) / d, 4)
+            p["qty"] = round(bqty, 6)
+            p["notional_usd"] = round(p["qty"] * p["entry"], 2)
+            kind = f"{int(d)}:1 forward" if d >= 1 else f"1:{int(round(1.0 / d))} reverse"
+            lines.append(
+                f"CORPORATE ACTION: {tkr} stock split detected ({kind}; broker qty "
+                f"{bqty:g} vs tracked {old_qty:g}) — rescaled entry/stop/T1/T2 by /{d:g}; "
+                "no false stop"
+            )
     return lines
 
 
