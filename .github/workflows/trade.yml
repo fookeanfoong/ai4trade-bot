@@ -59,11 +59,11 @@ jobs:
         run: python news.py
 
       # 自动生成当日信号 -> signals.json,再转成 PWA 数据源。
-      # 想只做多(散户友好),把下面 env 的 LONG_ONLY 设为 "1"。
+      # 多空都做:LONG_ONLY 留空 => 允许生成空单(bearish)候选。
       - name: Generate today's signals (algorithmic)
         continue-on-error: true
         env:
-          LONG_ONLY: "1"    # 默认只做多(散户友好);想同时发空单就设为 ""
+          LONG_ONLY: ""     # 空 = 多空都做;想只做多就设回 "1"
         run: python generate_signals.py
 
       - name: Build PWA signal feed
@@ -80,6 +80,7 @@ jobs:
           RISK_PCT: "0.05"
           LEVERAGE_CAP: "2.0"
           MAX_POSITIONS: "20"      # safety ceiling only; actual count = # of signals kept (conviction)
+          ENABLE_SHORT: "yes"      # 允许做空(sell-to-open);纸上账户可做空,真钱现金户不行(需 >=$2k 保证金户)
         run: python live_trader.py
 
       - name: Commit state + reports
