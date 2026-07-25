@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-25T06:36:30+00:00
+# Market News Digest — 2026-07-25T23:42:12+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `50m ago` **[Musk]** Musk’s AI Push Is Increasingly Tied to Samsung, Tesla Earnings Call Shows - bloomingbit — _bloomingbit_
-- `2h ago` **[Trump]** Trump bombed at the White House Correspondents’ Dinner — and proved its point - CNN — _CNN_
-- `2h ago` **[Musk]** Open-Source Tesla, Starship Flight And More: Roundup Of Elon Musk's Latest Announcements - NDTV Profit — _NDTV Profit_
-- `2h ago` **[Trump]** Trump warns Iran of 'major military punishment' after Houthi attack on Saudi tankers - Mid-Day — _Mid-Day_
-- `3h ago` **[Musk]** Elon Musk admits he got too involved in politics as his business empire faces mounting challenges - MARCA — _MARCA_
-- `3h ago` **[Trump]** Trump jokes about a 2028 run - CNN — _CNN_
-- `3h ago` **[Musk]** Tesla (TSLA) and SpaceX Stock Declines Impact Elon Musk's Wealth - GuruFocus — _GuruFocus_
-- `3h ago` **[Musk]** Elon Musk's Wealth Plummets as Tesla (TSLA) and SpaceX Stocks Tu - GuruFocus — _GuruFocus_
-- `3h ago` **[Trump]** Trump threatens fresh EU tariffs after $1 billion Google antitrust fine - Business Standard — _Business Standard_
-- `4h ago` **[Trump]** Trump jumps from jokes to weighing in on the war in Iran - CNN — _CNN_
-- `4h ago` **[Trump]** Trump tariff wall set to stay after Supreme Court blow: Analysts - The Economic Times — _The Economic Times_
-- `4h ago` **[Musk]** Elon Musk's Boring Company seeks funding at $20 billion valuation: WSJ - The Economic Times — _The Economic Times_
+- `25m ago` **[Musk]** Earnings at Musk's car company fall as research spending cuts into profit from selling cars - Salem News — _Salem News_
+- `53m ago` **[Musk]** Elon Musk Is Quietly Turning to This Fossil Fuel to Power His AI Ambitions. - The Motley Fool — _The Motley Fool_
+- `1h ago` **[Musk]** Tesla to open source Model S and Model X designs and software - Teslarati — _Teslarati_
+- `1h ago` **[Trump]** WSJ tears into Trump over 'obsession' he can't quit despite major 'harm' - Alternet — _Alternet_
+- `2h ago` **[Musk]** Elon Musk's Boring Company Vegas Loop falls short, says YouTuber - Mashable — _Mashable_
+- `3h ago` **[Trump]** The ‘Trump Trade’ is turning into a loser in the stock market - Fortune — _Fortune_
+- `3h ago` **[Musk]** Will SpaceX buy Tesla? Elon Musk is not revealing his plans - Scripps News — _Scripps News_
+- `3h ago` **[Musk]** Elon Musk: Your Future Doctor Will Be AI - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
+- `3h ago` **[Musk]** SpaceX Crashes 50% From Peak, Erasing $600 Billion From Elon Musk's Fortune in a Month - finance.biggo.com — _finance.biggo.com_
+- `3h ago` **[Trump]** Trump pulls back after Iran crosses his red line as US military breaks two-week streak of airstrikes - Fortune — _Fortune_
+- `3h ago` **[Musk]** Musk Counterfeits Open Source and NVidia Posts a 25 Company Letter to Help - flyingpenguin.com — _flyingpenguin.com_
+- `4h ago` **[Musk]** SpaceX wants to catch Starship for launch 14, Elon Musk says - Teslarati — _Teslarati_
 
 ## Market
 
-- `18m ago` Gland Pharma - Hitachi Energy, Solar Industries among top 10 best midcaps in 2026. Check full list - The Economic Times — _The Economic Times_
-- `2h ago` European shares gain as SAP lifts tech stocks; Middle East on watch - The Economic Times — _The Economic Times_
-- `2h ago` Yen records biggest weekly drop in over two months, dollar climbs for the week - The Economic Times — _The Economic Times_
-- `5h ago` UK Stock Market Forecast Today (July 23): FTSE 100 Expected To Open Lower as Oil Prices, Middle East Tensions Weigh on Sentiment – Check Top Stocks to Watch And Market Outlook - The Sunday Guardian — _The Sunday Guardian_
-- `9h ago` Stock market today: Nasdaq slips, Dow and S&P 500 recover to close a volatile week on Wall Street - Yahoo Finance — _Yahoo Finance_
-- `9h ago` TSX rises more than 150 points as oil prices fall, U.S. markets post mixed results - BNN Bloomberg — _BNN Bloomberg_
+- `2h ago` Top 3 US Stock Market Stories From This Week - BeInCrypto — _BeInCrypto_
+- `4h ago` Yen records biggest weekly drop in over two months, dollar climbs for the week - The Economic Times — _The Economic Times_
+- `4h ago` T-Mobile US stock holds support as revenue and cash flow stay strong - AD HOC NEWS — _AD HOC NEWS_
+- `5h ago` BCE Inc. (BCE) Stock Price, News, Quote & History - Yahoo! Finance Canada — _Yahoo! Finance Canada_
+- `6h ago` Iran war, tariffs raise new risks for a resilient U.S. economy - The Washington Post — _The Washington Post_
+- `6h ago` Nasdaq 100 forecast: Chipmakers and US jobs report in focus - FOREX.com — _FOREX.com_
 
 ## Trump
 
-- `1h ago` Doonesbury Comic Strips by Garry Trudeau - July 25, 1976 - The Washington Post — _The Washington Post_
-- `2h ago` Trump bombed at the White House Correspondents’ Dinner — and proved its point - CNN — _CNN_
-- `2h ago` Trump warns Iran of 'major military punishment' after Houthi attack on Saudi tankers - Mid-Day — _Mid-Day_
-- `3h ago` Trump jokes about a 2028 run - CNN — _CNN_
-- `3h ago` Trump threatens fresh EU tariffs after $1 billion Google antitrust fine - Business Standard — _Business Standard_
-- `4h ago` Trump jumps from jokes to weighing in on the war in Iran - CNN — _CNN_
+- `1h ago` WSJ tears into Trump over 'obsession' he can't quit despite major 'harm' - Alternet — _Alternet_
+- `3h ago` The ‘Trump Trade’ is turning into a loser in the stock market - Fortune — _Fortune_
+- `3h ago` Trump pulls back after Iran crosses his red line as US military breaks two-week streak of airstrikes - Fortune — _Fortune_
+- `4h ago` Netanyahu may share Iran nuclear intel with Trump - Breakingthenews.net — _Breakingthenews.net_
+- `4h ago` Trump administration admits it canceled clean-energy grants in states that voted for Kamala Harris - CNN — _CNN_
+- `8h ago` Smerconish on Trump’s unexpected reaction to White House Correspondents’ Dinner award - CNN — _CNN_
 
 ## Musk
 
-- `50m ago` Musk’s AI Push Is Increasingly Tied to Samsung, Tesla Earnings Call Shows - bloomingbit — _bloomingbit_
-- `1h ago` Tesla Shares Plunge 15% as Wall Street Demands Robot Results - Seoul Economic Daily — _Seoul Economic Daily_
-- `2h ago` Open-Source Tesla, Starship Flight And More: Roundup Of Elon Musk's Latest Announcements - NDTV Profit — _NDTV Profit_
-- `2h ago` SpaceX Starship just nailed something it’s never done before - Teslarati — _Teslarati_
-- `3h ago` Elon Musk admits he got too involved in politics as his business empire faces mounting challenges - MARCA — _MARCA_
-- `3h ago` Tesla (TSLA) and SpaceX Stock Declines Impact Elon Musk's Wealth - GuruFocus — _GuruFocus_
+- `25m ago` Earnings at Musk's car company fall as research spending cuts into profit from selling cars - Salem News — _Salem News_
+- `53m ago` Elon Musk Is Quietly Turning to This Fossil Fuel to Power His AI Ambitions. - The Motley Fool — _The Motley Fool_
+- `1h ago` Tesla to open source Model S and Model X designs and software - Teslarati — _Teslarati_
+- `2h ago` Elon Musk's Boring Company Vegas Loop falls short, says YouTuber - Mashable — _Mashable_
+- `3h ago` Will SpaceX buy Tesla? Elon Musk is not revealing his plans - Scripps News — _Scripps News_
+- `3h ago` Elon Musk: Your Future Doctor Will Be AI - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
 
 ## Fed
 
-- `5m ago` Interest Rate Predictions for the Next 5 Years: 2026-2030 - Norada Real Estate Investments — _Norada Real Estate Investments_
-- `3h ago` UK petrol and diesel drivers urged to not fill up on Friday - 'stinging prices' - AOL.co.uk — _AOL.co.uk_
-- `8h ago` Stewart Information Services (STC) Stock Trades Up, Here Is Why - StockStory — _StockStory_
-- `8h ago` First American Financial (FAF) Stock Trades Up, Here Is Why - TradingView — _TradingView_
-- `11h ago` Fed Chair Warsh an 'Enigma' as Surprise July Rate Hike Talk Rattles Markets - finance.biggo.com — _finance.biggo.com_
-- `12h ago` Fed Chairman Warsh faces cruel summer as bond yields spike - Reuters — _Reuters_
+- `4h ago` Gas, groceries and back-to-school items are where shoppers might see higher oil prices surface - AOL.com — _AOL.com_
+- `5h ago` Fed July FOMC Meeting Preview: Rate Hike or No Change? - TradingKey — _TradingKey_
+- `7h ago` The Fed vote everyone's watching - and why Trump is already deflecting blame - upday News — _upday News_
+- `9h ago` Kevin Warsh Fed Chair Inflation Stance and Rate Outlook 2026 - News and Statistics - IndexBox — _IndexBox_
+- `9h ago` How Trump Could Be On A Collision Course With His New Fed Chair - Forbes — _Forbes_
+- `9h ago` Fed Chair Kevin Warsh's Blunt 2-Word Statement on Inflation That Could Determine Interest Rates in 2026 - The Motley Fool — _The Motley Fool_
 
 ## Oil
 
-- `5h ago` Strait of Hormuz crossings drop 60% amid US-Iran tensions - Crypto Briefing — _Crypto Briefing_
-- `7h ago` OPEC+ Agrees to Boost Oil Output When Strait of Hormuz Reopens - EnergyNow.com — _EnergyNow.com_
-- `7h ago` US Seeks International Help to Reopen Strait of Hormuz as Crude Prices Surge - EnergyNow.com — _EnergyNow.com_
-- `7h ago` Oil Prices Rise as Hormuz Stays Shut Ahead of Trump Deadline, Strikes on Iran Intensify - EnergyNow.com — _EnergyNow.com_
-- `7h ago` Hormuz Reopening Could be OPEC’s Undoing: Bousso - EnergyNow.com — _EnergyNow.com_
-- `7h ago` COMMENTARY: Trump Broke OPEC. He May Regret It: Bousso - EnergyNow.com — _EnergyNow.com_
+- `5h ago` When OPEC Quotas Don’t Matter Anymore - dailycaller.com — _dailycaller.com_
+- `10h ago` Oil Prices Jump More Than 2% After Renewed Iranian Attacks on UAE - EnergyNow.com — _EnergyNow.com_
+- `11h ago` UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com — _EnergyNow.com_
+- `11h ago` Saudi Aramco Seeks to Reroute Crude Away From Strait of Hormuz, Sources Say - EnergyNow.com — _EnergyNow.com_
+- `11h ago` Goldman Sachs Flags Upside Risks to Oil Prices in Near Term and Into 2027 - EnergyNow.com — _EnergyNow.com_
+- `11h ago` Russia’s Sechin Says U.S. Companies Benefit From the Closure of the Strait of Hormuz - EnergyNow.com — _EnergyNow.com_
 
 ## Chips
 
-- `2h ago` AMD Stock Price Forecast: Microsoft AI Partnership Ignites Rally, Stock Price Expected to Rise to $700 in Short Term - TradingKey — _TradingKey_
-- `3h ago` What Triggered the Recent Semiconductor Sell-Off - Kavout | AI — _Kavout | AI_
-- `5h ago` Why Intel Vs. Taiwan Semiconductor Isn’t a Real Competition Through The End of 2026 - AOL.com — _AOL.com_
-- `7h ago` Texas Instruments vs. Qualcomm: One Pays Out 94% of Earnings. The Better Dividend Chip Stock Is Clear. - Barchart.com — _Barchart.com_
-- `8h ago` TSMC Boosts U.S. Chip Production by $100 Billion as AI Fuels Growth - MarketWise — _MarketWise_
-- `10h ago` AMD Stock Scores Price-Target Hikes On AI Computer News - Investor's Business Daily — _Investor's Business Daily_
+- `4h ago` AMD Just Landed a $5 Billion AI Coup — Is Nvidia’s Grip Finally Starting to Slip? - AOL.com — _AOL.com_
+- `4h ago` Why the Hyperscaler Spending Spree Might Put a Big Cushion Under Nvidia and AMD - AOL.com — _AOL.com_
+- `5h ago` Micron, Nvidia, or SpaceX: Which Is the Best AI Stock to Put $1,000 in Right Now? - The Globe and Mail — _The Globe and Mail_
+- `5h ago` How AMD Captures Significant Market Share From Nvidia - AOL.com — _AOL.com_
+- `5h ago` SK Hynix Pares 4% Drop After Denying Talks to Buy Intel’s Ohio Fab as Market Shrugs Off Iran Jitters - AOL.com — _AOL.com_
+- `5h ago` AMD, NVIDIA & Micron Just Hit Investors' Radar | Jim Cramer, CNBC & Schwab Market Update Premier League Games (qzkVs2H1P1) - Mshale — _Mshale_
 
 ## Earnings
 
-- `9h ago` Chip Stock Sell-off Puts Downward Pressure on Broader Market - TradingView — _TradingView_
-- `10h ago` SpaceX, Micron, SAP, Verizon, Amex, Tenet, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
-- `10h ago` Stock Market Today: Nasdaq Sinks As Sellers Hit Memory Chips; Oil, Yields Slide - Investor's Business Daily — _Investor's Business Daily_
-- `10h ago` Advanced Micro Devices Inc Stock (AMD) Closed Down by 3.53% on Jul 24: What Investors Need To Know - TradingKey — _TradingKey_
-- `11h ago` S&P 500 Top Stock Gainers Today, 7/24/26 - TipRanks — _TipRanks_
-- `12h ago` SanDisk, American Express among market cap stock movers on Friday - Investing.com — _Investing.com_
+- `2h ago` Big tech earnings, FOMC, and SK hynix results set roil Korea markets - CHOSUNBIZ - Chosunbiz — _Chosunbiz_
+- `2h ago` Why Did CoreWeave (CRWV) Stock Plummet After Earnings - Kavout | AI — _Kavout | AI_
+- `3h ago` How MasTec’s Expanding US$20.33 Billion Backlog And EPS Gains At MasTec (MTZ) Has Changed Its Investment Story - simplywall.st — _simplywall.st_
+- `3h ago` Goldman Sachs raises TOPIX 12-month target to 4,500 on weaker yen outlook - Investing.com — _Investing.com_
+- `7h ago` Earnings Scoreboard: 83% of S&P 500 early reporters top EPS estimates ahead of big tech wave - Seeking Alpha — _Seeking Alpha_
+- `9h ago` Financial stocks win on fund inflows; Hut 8, Iren among gainers; Canadian banks, AmEx in losers (XLF:NYSEARCA) - Seeking Alpha — _Seeking Alpha_
 
