@@ -103,3 +103,18 @@
   3. CONVICTION-BASED COUNT worked: sized just 1 slice ($133) for a single-name NVDA day instead of padding to 3; sat mostly in cash on the murky AI-worry days.
 - HONEST caveat: returns were FLATTERED by a strong trending week — energy ripped on the Iran/Hormuz oil spike and CVX/OXY rode it. The discipline was sound but +9%/week is NOT a repeatable baseline; it's regime-dependent. Sample is tiny (2–3 positions). Do NOT extrapolate.
 - CHANGE: none. Results fine + sample far too small to tune; adjusting thresholds on a 3-win streak would overfit. Keep the discipline, accumulate trades. Still targeting 4 weeks / 20+ trades / net-positive / no data errors before any real-money talk. Paper only.
+
+## 2026-07-26 — External-tools review (LEAN / quant-terminal demos): adopt ideas, not platforms
+- ADOPTED (live in code since 21bb9f8): stock-split guard in live_trader.py reconcile() —
+  confirms a split from the broker SHARE-COUNT change (a real crash never multiplies your
+  share count) and rescales entry/stop/T1/T2, preventing a false catastrophic stop on a held
+  name. The one corporate-action idea worth borrowing from heavyweight engines like LEAN.
+- DEFERRED — MUST DO BEFORE ANY REAL-MONEY GO/NO-GO: haircut paper results by realistic
+  slippage+fees (~0.1%/round trip) when judging whether the system is truly net-positive.
+  Not added now: Alpaca paper fills are already non-ideal, layering a second haircut today
+  would double-count. This line item exists so the weekly review does not forget it.
+- REJECTED: migrating to LEAN (a $200 cloud bot on free GitHub Actions would be crushed by
+  its ops complexity — simplicity IS the edge here) and cosmetic "quant terminal" dashboards
+  (pretty numbers ≠ edge; EV = win%×odds −(1−win%) discipline is already encoded in our
+  stops/targets/sizing). Built a clearly-labeled demo terminal for the user as a teaching
+  toy; it is NOT part of the trading system.
