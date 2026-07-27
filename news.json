@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-27T18:12:33+00:00",
+  "fetched_at": "2026-07-27T18:16:02+00:00",
   "max_age_hours": 24,
   "movers": [
     {
@@ -7,7 +7,7 @@
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPODllM3lnR3hSa1VwdlllRnZueFFkZFFpZjhCNTVfMGdvRk1mZEYyVEg2NzN3aWs3ekxyTzZtelJOYmhxNDlrTTNjamF6aTE3NEZBUk1aZHVaektEZ254bUlMVERFMUpQRjNlWE9yM1BGQkJGdkhpYzZGdnBmX2N2SFQ0WEF1RVRMbDBGNko4UHFVaFY3bkQ2UEU3V25Nd25iVlE?oc=5",
       "pub": "Mon, 27 Jul 2026 18:11:01 GMT",
       "source": "UA.NEWS",
-      "age": "1m ago",
+      "age": "5m ago",
       "_sort": 1785175861.0,
       "bucket": "Trump"
     },
@@ -16,25 +16,16 @@
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZnh4aldndlNNTlE4eEhFRV80RlNxMlpWSUdxMmtIVVNJVXVwMl8zbUlrMXU5WHh2Wk15RXBrdjdwcklKMXpTcWxrT3FyaDJwWXBYNjVhRHRvdFNyOTBwcVpFaUduZ0VicVZmU0RPNVpoWWF5aEVRTV9NVnlFMjNUVzhCd296enhIeGpqQ1dR?oc=5",
       "pub": "Mon, 27 Jul 2026 18:03:00 GMT",
       "source": "thestreet.com",
-      "age": "9m ago",
+      "age": "13m ago",
       "_sort": 1785175380.0,
       "bucket": "Musk"
-    },
-    {
-      "title": "Why warnings about the US munitions stockpile look increasingly pivotal - CNN",
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQjdQZWZBZ1VLMW5yeTh2dkxabWs1TWlBc2RKRUxMR3dvSFR5cGE3MlhaYmNmUkZOX0VUMUVGcHp0RGJ5d3F1a0VBcXBoYk9ocGJ2dUc1Q3dfVWdLWmlLNGU2RloyRjdKaUdWdWNTSko1dmhNU2JPWDF2bzktRm04WmN2MHE4MlE?oc=5",
-      "pub": "Mon, 27 Jul 2026 18:02:48 GMT",
-      "source": "CNN",
-      "age": "9m ago",
-      "_sort": 1785175368.0,
-      "bucket": "Trump"
     },
     {
       "title": "Trump urges Fed to cut rates, says US should have world\u2019s lowest borrowing costs - Anadolu Ajans\u0131",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQdnBicFlURUkybG5WQWx6bS0zc19BWW1VS1M3N3lZUTdlbFRaS1B2ZUpyN3ZRNUtUc2pBaW4tNk81M3dWWGRBdFhTZXFSY1ZMbHRPLXJ1VUUyUUJRUHJ3eW9HMkZGdmlHbWNYbUJWWEJxRWpMbFd1emNIamE1eEVmZFFvN0JOYjAxS05aQVo3VmZta3B1WUNaSTVObVFNMUNQWGRXZDlpamJwNUx3WmF1ZFBZSEl6NnFTeUV5Rw?oc=5",
       "pub": "Mon, 27 Jul 2026 17:37:13 GMT",
       "source": "Anadolu Ajans\u0131",
-      "age": "35m ago",
+      "age": "38m ago",
       "_sort": 1785173833.0,
       "bucket": "Fed"
     },
@@ -43,7 +34,7 @@
       "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOMVB1QTVaU0NKSmFrdnBkOTZxS1ZQLXI4dk5kU3dKMGR0em5iREdXVTVnU2xRSzdZR2tFc2lhWTVLNjhwS3hXTGtia3phbEM0emx3VmVjZHhPOG9jMHptcEgwcmh6S1NoUFZ2aElvdVJnNTB5RkRNckdoc1pGYlBPa3daTE13SkJNOUhpUG9UMkhVUzAyUjdHdEtBb2hpSVcxRndpV2tfeVBxMVRBYjJaemFtZFlOLVRNTEtXd0FTTVk1Wm9XVUHSAc4BQVVfeXFMTkxPc2pZQUFRQ0NBdlJoQl9iZmZBWmRXZGpwN0ltVEYydm16dmRkczY1Y1RaRkdnOUlJUVNxSTVsa3NzSmpya0N0NjRqTUlxZFpDZ3NlWEdGYlhfV25HZEVHOGhtYURlSnZ0WWVuUncwaVl1SEpzVl9iR1dJc0Qtc3lLUjFGU19zUWE1NzZlZG1nd1I0VC00M3BqcUplWnFCT1pjRHNyWkQ0UC1Cc19Ed0FZWTFTaElnNGcxVlVXU1g0emN6bVhLZndiSVB1dUE?oc=5",
       "pub": "Mon, 27 Jul 2026 17:25:13 GMT",
       "source": "NDTV Profit",
-      "age": "47m ago",
+      "age": "50m ago",
       "_sort": 1785173113.0,
       "bucket": "Fed"
     },
@@ -52,7 +43,7 @@
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWndhcTJsbDhPblFwd0xwcmlOeHB6MG1DR2pBZ0NYQXh3QU8tX3BpMEtHaHUtNkZyMDZ3RnZGa2lwdjh2M01pdWJWYWZfZ2hoX0VZd1B2ckk1dWZkdjdmRnpfcVdVOC1HYjVkUHVhVVUzaUtQaWdOcEhnZW5veWRCOXkyempJb1pLNHJ0SlpFY3hGMG9lVXVrNjdRdG5Bb0JBVVZyVVpyODZQZ2JUUm5Nb2s0bnlBSFF4UGN6Vg?oc=5",
       "pub": "Mon, 27 Jul 2026 17:23:05 GMT",
       "source": "Barchart.com",
-      "age": "49m ago",
+      "age": "52m ago",
       "_sort": 1785172985.0,
       "bucket": "Musk"
     },
@@ -61,7 +52,7 @@
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOeWNKZzNwMU05NmQzMFM4Q3FKX0kxUld4TjEzdkxYaXNScnFTSHB2TEVicXdXMmhvWWlLR3N0RDFKSzAwaXFYVU4xOG1YUXZUUE5UcnB2bnNHbkJ0SUVkUEdvRGRjaUZoVWJxUk1UMUp4YzJVYnI2aGxvNDU1MWNObUhOV1JZMGJoeUI1UjM1YUk0UXNOTDhoM014ZXdVQmtmeW5uN19mVjZTd2tmbFJKTg?oc=5",
       "pub": "Mon, 27 Jul 2026 17:17:11 GMT",
       "source": "Stocktwits",
-      "age": "55m ago",
+      "age": "58m ago",
       "_sort": 1785172631.0,
       "bucket": "Trump"
     },
@@ -120,39 +111,12 @@
       "bucket": "Trump"
     },
     {
-      "title": "LIVE | 'If talks fail, we strike': Trump issues Iran warning before Netanyahu White House meeting - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPQjNXcmJoMW5LWjV3XzNXRjFfenB3Ty16aGhsejRfSW15alF4RlJ4SUQ5WE1PZWVFMU9mNmpqMmN5Z3NwRkVXNmxkRk1tLTNCMjlpMDVyQ29DWVdKRjB1NjRCVWdGSEtJbDhQdUtUb0NsV2dOTTFqRTNLNktMZFYxMVZpX3QtQVgydXZwb0c5OEx0Q3lFMDBLMEtnTnl0dEZxWFNpU1NLYkFqdU8yMlF5ckZObkpEVERIYzFPY3h1NGZIWFpreXhlTXotZlZmVENMTjZMZUNhSzhqanF0WVpzUjkwdUQ4ZW5QekJ0dmFaRkRyNUVaaW9WT0hQbGFLUXhiZjhv0gGIAkFVX3lxTE1DN2phNV9pVGlhLU9wX0s4cmhodUV4bnBiVWtUczZ4c1FGenl3VE9OTVpISDFkc3k4SFZPbnIweGlGMklYSTRkVWZaNWFLZGRjM3IteUIzeHJ3bTVYU1BPTWxGTzJKb3hVcG9McFV1aklWLXVfYmNOa2ExLVpaMEM3Ny1PckFBTDEyQ0J0OTVFQ3N0M0NEYzNMbHhMVFZtSlhNdklvSkF4Rll4Smd0YVo4YTBsbXMzZXgzbmV2dVhnVFUzNGxsWkx1OGxLYlVTeTRrSFdxWTN3ekw3cmZSWUt5cEtxYnJjLV8zMTNIUWRSRThXSGZiRUNMb1JQdjZuSzlDZlhTc1d4Uw?oc=5",
-      "pub": "Mon, 27 Jul 2026 16:42:38 GMT",
-      "source": "The Economic Times",
-      "age": "1h ago",
-      "_sort": 1785170558.0,
-      "bucket": "Trump"
-    },
-    {
-      "title": "'Power of the presidency is nothing\u2026': Ossoff tears into Trump, calls him a 'broken man' - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNdWZEcl9wUTdlT2xydTdkX3ZXc3hueUxWRENfWXhVaDl3dHdrSG1aS1QzdlhEVmthS2xHWExhNnNpa011WXdEcnlaQnR5anc3Y0hQWl8xeUd1MVJFaXpMRFZXTHFvcGYxSHo2cFc1U3hPY2p4WTltdUcyQXRBWG9MTklHNXBOa3pPTmlLeUVMQUJWaGpfNUE5dWw3a191QnpFNlZrVEtLS2c5QlQxRTNCM1BQcVkwb0NFOTIyTW9Od3NWMUJtdFdpYTdJSGNWR0FNdlp6MlctZWxoTllZbTNRYzRrT0JucjlwMUxGRkxHMmZzTC1jS3o5T1ZFUdIB-wFBVV95cUxNdWZEcl9wUTdlT2xydTdkX3ZXc3hueUxWRENfWXhVaDl3dHdrSG1aS1QzdlhEVmthS2xHWExhNnNpa011WXdEcnlaQnR5anc3Y0hQWl8xeUd1MVJFaXpMRFZXTHFvcGYxSHo2cFc1U3hPY2p4WTltdUcyQXRBWG9MTklHNXBOa3pPTmlLeUVMQUJWaGpfNUE5dWw3a191QnpFNlZrVEtLS2c5QlQxRTNCM1BQcVkwb0NFOTIyTW9Od3NWMUJtdFdpYTdJSGNWR0FNdlp6MlctZWxoTllZbTNRYzRrT0JucjlwMUxGRkxHMmZzTC1jS3o5T1ZFUQ?oc=5",
-      "pub": "Mon, 27 Jul 2026 16:38:00 GMT",
-      "source": "The Economic Times",
-      "age": "1h ago",
-      "_sort": 1785170280.0,
-      "bucket": "Trump"
-    },
-    {
       "title": "Trump: Ready for \"Strong Military Action\" if Talks with Iran Fail - dailybeirut.com",
       "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNNDFFZ0JCbjQydnFsV3pRU0FsUTV2NHdicE50RGZEMG1ENHMta01GbkZYTGx6bGdhZmtJMzFweGl2bFB3dUUzWTRSSUJmWm1ibzJ0dFFoUWxobEF2TDBqSGpISE54c01VUUtQcGZ4Qlc4ZHlDUnJhSWRZdVFla3FFQl9BekFBMm9Wd2J1Z2ZlTVgza21vMjJ2SUkyeHE?oc=5",
       "pub": "Mon, 27 Jul 2026 16:37:24 GMT",
       "source": "dailybeirut.com",
       "age": "1h ago",
       "_sort": 1785170244.0,
-      "bucket": "Trump"
-    },
-    {
-      "title": "Donald Trump says US in 'good talks' with Iran, sees chance of breakthrough - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNcG9JQ1dUZVdaV0JXcllvTktrY2JMbi1vdlpLUWZEMkJCM0hycHU2dVM2TE5SallESTdHcUc1elVqRWZ6MF9Ld0dKeUdUckJXM0w2aWkxbTFsejM1dGZNQXZCRE1yQzNualJTczJ5aHNTUVBBLTNnZnVfMFpBZXpWSGhrSGtNc3RvRUYtOG9odnh0YnV6T2xObzhCR1JkVXpIZGhyVm5xd0VnZkR2eTZRMjUyQlRrZmtLblRPOVlBZ1huRHRtWXVZTHhHNXA5WTFTVGpqUjZLNFJFcENQdFRNdFFVemYyREd4TUJUQ3UyVUFSd9IB8gFBVV95cUxNcG9JQ1dUZVdaV0JXcllvTktrY2JMbi1vdlpLUWZEMkJCM0hycHU2dVM2TE5SallESTdHcUc1elVqRWZ6MF9Ld0dKeUdUckJXM0w2aWkxbTFsejM1dGZNQXZCRE1yQzNualJTczJ5aHNTUVBBLTNnZnVfMFpBZXpWSGhrSGtNc3RvRUYtOG9odnh0YnV6T2xObzhCR1JkVXpIZGhyVm5xd0VnZkR2eTZRMjUyQlRrZmtLblRPOVlBZ1huRHRtWXVZTHhHNXA5WTFTVGpqUjZLNFJFcENQdFRNdFFVemYyREd4TUJUQ3UyVUFSdw?oc=5",
-      "pub": "Mon, 27 Jul 2026 16:32:00 GMT",
-      "source": "The Economic Times",
-      "age": "1h ago",
-      "_sort": 1785169920.0,
       "bucket": "Trump"
     },
     {
@@ -273,20 +237,11 @@
       "bucket": "Trump"
     },
     {
-      "title": "'Trump\u2019s statements are at issue\u2026': Judge limits BBC from relitigating Jan 6 in $10 billion lawsuit - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxNcW1BYnVMVFdNUHc1SFNJSXYzUWFvbTdHaHc4TnR2ZXZWUS1QdUYyU2lDTFlESDFnX1phaDJUaFFPWnJHMFQyeGQ5Wm0wZHhEYVBHWXFWTDl2QXhOelZSNVMtOTZ4cDEyOF9EUU9rT2J6Qkd1NTFheWs1aVhKdzRic3VIdzA0cERRZlg3dkhkN3NTTHNQNC1fSzhnM1p6R1JQZktrbk93Z1VZV3oxRWxuMndKYzJtQlNrVndHS1pEUWdXYjI0bEMzZklDeUFYT2R1dkR2SXpDYnRoV0hYQ2Z3RGR0bzNYODVqM3FIRzZPSHJMNDBnajRXcFBfbEtGYlNxd0RQZk930gGLAkFVX3lxTE5aVjkzWjVkVW5Sc0F0UElOMzZEQV9LeGJrMjRMeW1hckwtdTUwOEx1T21tS1JuUXRYNXdzTV9iM2VjN0xwclJETXFZTzdiZU9DZGJheGIyQXVNNGNnMW5ZUFJvMnRtYy1hMUhRS3BRZENMNEZoakpueWZEaUhHWVlYT0dpR1F4Nm9tT20zYndzQXJBT3hMNWVCeklrbG9FeE5Xd2VCckJTVkxDeUtyM2RTQWhmOExUNUlGY2NvLVoxN0drTmh2REdIMm9wVm5LZUxpNDJ0MVN5R29ocmZQeGNGb2ZnYXRRNWNQdDlrc0dCNjJ6NmlLdUt4UHFKQVYxTVRBRFFXN0xQWElIcw?oc=5",
-      "pub": "Mon, 27 Jul 2026 15:15:12 GMT",
-      "source": "The Economic Times",
-      "age": "2h ago",
-      "_sort": 1785165312.0,
-      "bucket": "Trump"
-    },
-    {
       "title": "Trump to Axios: I'm ready for \"strong military action\" if Iran talks fail - Axios",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE16SnRDZDYydVNWMnRSdHM3VldleXNaUUpzRTlhOXk2bjh2RTFuam9GTlE0bjZUYktsVlNtejhvWmV5Zm1ZUTBpdGJzVGtHalRGWlkwQXJ1M0FNOThHYk8zd0hvOUNOTEpSbDN2QlpJVC1xTFZ1Wmc?oc=5",
       "pub": "Mon, 27 Jul 2026 15:13:01 GMT",
       "source": "Axios",
-      "age": "2h ago",
+      "age": "3h ago",
       "_sort": 1785165181.0,
       "bucket": "Trump"
     },
@@ -358,7 +313,7 @@
       "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxPYk95RmdXTXBsT0FXQUUtbUJTdWNuSGZibmJ4QjhxZU1sWEFGQkgzZFZUZkNwcEE1VndLTWt3dDl1YVJaMFFYYk1FX1Q3bTVZMnlyNjhtT1BMaWpndnNTcmp1RElZWERFejRERHBraTd4aXF4elQ3OVNfTTRzdi1KOXpnVDNTZWhESFZzVXVxeTdqV3pBZkxmOXE3alRhOHN3eXlrOXE4akRMVkV4alZEOHdNcURLSjBleW84SVd3SkFUQU8zOUhJN2NYR1N6WFF4THk5TVB3aFZKY2M5OXRFbnRPQXdKdUVaNWVIblpadUdDdXBETHhhbU9yY2hhUjJoY2RncEdR0gGLAkFVX3lxTE52OVJrMlZ4Y2ZoODFxZ1VXS3V3ZWlQd2JJdHotMkxoa1JwTjBiZjlBZk5JdzRiUk8yOGY3OTVsVmUyWEU5aWM1aE1GMXZMQlZHVGkxNGhySFROYUhDaWNvb0hlUGpmaVpUb3pOWGJEbGhZUnZBTXptcWtWcDJPa1FldExFeFNFdWNFY29yWk85X3RqZjFrZjl0X0lDMWYwRDA2Y2dISHBZSFUxY0E1UDd1ZkdId2tpX1F2SVZDSUYtRlFNa3lhWUZjc1JDV2xMN0o5cWpRNThwSzlvOGlHcWR4Z19aSVpSeVVseG1GdFZUdjdQcnVCTHJkSVA2WFQzQThubnJqcGZ5OEVrbw?oc=5",
       "pub": "Mon, 27 Jul 2026 14:15:00 GMT",
       "source": "The Economic Times",
-      "age": "3h ago",
+      "age": "4h ago",
       "_sort": 1785161700.0,
       "bucket": "Trump"
     },
@@ -367,7 +322,7 @@
       "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOcHA0V0FZcjVBMlVheWJOM0dxSlhrS0pVcVBRRHpkYTJYUVFDUWNIc3BRaW83V2RveWtyanpMU1E5LVprcUVVSklTd0lRc1dZX3UzVzlHWlQ5eTROb016R2FrT2J1WmpXUFcyMzhtM1NoTWFSenlzVGVLa2lRSzBwWjdjRU5ld0VrVzhSZS1Mam9wTEhORktvR3V6TEJBcnRKS2RsbEFOb0xtNUlIRmNZZjczRWxiRlQyNllPdmtTVEdudw?oc=5",
       "pub": "Mon, 27 Jul 2026 14:14:30 GMT",
       "source": "National Enquirer",
-      "age": "3h ago",
+      "age": "4h ago",
       "_sort": 1785161670.0,
       "bucket": "Musk"
     },
@@ -527,10 +482,10 @@
     {
       "title": "UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb2k4RHBPd0V4OEFXVEw5T2hxMy1UaDZOU1dfcXluNnM0NzY4RlZjSzhNekFzWUNCUFJYY0pBT0FWOXBtQzZ3VXRBYjdEeXlRMm1Na0hyRkZQUnNZdTNRYTdxMWItS0h6ZnB3Ny1sTFhGQWRCd0xvSktGcGp1NHJZTzV4czZxZkprQnVWMHRmcmxqM3hIMENydDd5R1ViLS0ySGM1c2tkMVI?oc=5",
-      "pub": "Mon, 27 Jul 2026 12:50:18 GMT",
+      "pub": "Mon, 27 Jul 2026 12:42:04 GMT",
       "source": "EnergyNow.com",
       "age": "5h ago",
-      "_sort": 1785156618.0,
+      "_sort": 1785156124.0,
       "bucket": "Oil"
     },
     {
@@ -624,6 +579,15 @@
       "bucket": "Musk"
     },
     {
+      "title": "Fed faces growing pressure to hike rates as price risks rebound - Canadian Mortgage Trends",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNOVJsRHBBa2ZZZ3ZIYmZFWHBHUXRGOVJ0bUxFOEZsdDY2dlIxOGlVczhrc0lOVk5LbUJkZ0lrbUlIaHlSekMta1pHY05ZbEZSQm91eHNiNUNBNTRlT256bXJXUlc3aDZmLUNTUnhzNG51X2E0bW5GbWRONi1EZ0pPMlBCdXZaM1VobHJQOS1pYm55X2lNUDVoLTg3al82UlRja0ZhZEFuaFFOd1MzVGZkVA?oc=5",
+      "pub": "Mon, 27 Jul 2026 11:44:36 GMT",
+      "source": "Canadian Mortgage Trends",
+      "age": "6h ago",
+      "_sort": 1785152676.0,
+      "bucket": "Fed"
+    },
+    {
       "title": "Iran war escalation puts Federal Reserve in a bind - thenationalnews.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQVGVqU2RxVDNqM0dRT0wzUGRBOEtZN01fOFdsQ0JURTNNcjJ6LVJxampnNjBxakpfZUIzcGZsX2FyNjJ3NzQtdi1FMEZsLTV5a252MDFwQ005THRxbDc1dnY5bVc4UnEyeHJ5NGxjdldZY0p1WTRpZjR5cGZBbUxBUHhXMFIxTTZTc3hlSUQ3QVpIOEpxWGh0ZlVPeThfSVhyQjRXQzRtckRBQk5wMHF3bg?oc=5",
       "pub": "Mon, 27 Jul 2026 11:42:53 GMT",
@@ -642,10 +606,10 @@
       "bucket": "Market"
     },
     {
-      "title": "US Stocks Catch a Bid as Oil Tumbles With Iran Conflict Pause - Bloomberg",
+      "title": "US Stocks Catch a Bid as Oil Tumbles With Iran Conflict Pause - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOOGRBbERDcVZiWEQ3NkkxZGRiaW1uTjRjWXJzb2JvUWFGZ1NKaHphRjFIeC02bEhsMUcxVnlaWG1RYVdRZldVVGI4dlFlTkZTZU9RQ181dVp0a2k5ZlFHMnpKUXNzdldva1lRZWJlU09VdV8zaVFmNTVUQ01yQXZKN2lQdTlNeXpTYkUzVkhxejFWdjZjU0pZSU1FVEdaSWN0c2o1TUFoYzJnQ0lqejJhVUVR?oc=5",
       "pub": "Mon, 27 Jul 2026 11:12:22 GMT",
-      "source": "Bloomberg",
+      "source": "Bloomberg.com",
       "age": "7h ago",
       "_sort": 1785150742.0,
       "bucket": "Market"
@@ -876,10 +840,10 @@
       "bucket": "Trump"
     },
     {
-      "title": "Warsh\u2019s Twist Could Be Higher Fed Rates and Lower Mortgage Rates - Bloomberg",
+      "title": "Warsh\u2019s Twist Could Be Higher Fed Rates and Lower Mortgage Rates - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQMThhd0FHTUZpSkhwOUF0SmdqMjdaX0dybjk2dUJHNE12aUthQmFEV2hla3NVNkppSy14Z1ZzX3RZRGQ1QzdWN3l4SzJkS0ViTXhSOGY4LXVSVVRLRTVvbnA5STRDb0NMMk1URXp3U004SzJZd3BEdTNOV2FILWFLX2Z0akNzMkoxYnBEUFJiZ3J1OEdDYkw4SjNTbHUtQkRUVk5PVFcwbklqd3NGNHd2MEw4MFdzcVp3TlRmcw?oc=5",
       "pub": "Mon, 27 Jul 2026 09:00:20 GMT",
-      "source": "Bloomberg",
+      "source": "Bloomberg.com",
       "age": "9h ago",
       "_sort": 1785142820.0,
       "bucket": "Fed"
@@ -1042,7 +1006,7 @@
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSHZTbllNY2taSm8wSzBTcUxOdkc3OWJyQkJlNkV2a0s3QWJPc3F3UldWekg0UEdOT0pLRi1Lbk44ai1FMDdTa0EyN2ViOVBYaWNwOUlPWTM5eTZuNjNRZERQUGVVTHpYNWk0Xy1rTmJVUmZYdTFJNklsa3lpZ2R0NmtkeTVHb3lDWDJocEljdUxYTTNVd0EzNlh2NnhqLUxld0dnQk5EM3VMSDVkTU1kZTVQOGh5TV91?oc=5",
       "pub": "Mon, 27 Jul 2026 07:13:25 GMT",
       "source": "scanx.trade",
-      "age": "10h ago",
+      "age": "11h ago",
       "_sort": 1785136405.0,
       "bucket": "Musk"
     },
@@ -1291,7 +1255,7 @@
     },
     {
       "title": "At every fork in the road on Iran, Trump\u2019s choices get worse - CNN",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQVmp5anItbkVZMjZDbEJiLXFGMV81V2dsWUV1R3dwSjZVa1NTalBMcUNUOFBIcnRKbzk3cHoyMjhfN19SRmZWaUlORXFpeTBWRkFsVXhCWnVrZVJObXlJWWRuN05RYVN5dVUwUWlBaFlaRktpZDVEMzhSbXNVek42RHVWNkx4REFZYkVOTVpESVpKay1tSl9N?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQeEtUbElMZjlqa1ZBdTlPODZPTHZqeE9QODY0ZC1lWTNVZWlCbnpLTXh1ZjRVYXVwMk01M1l3ZVhDSjhNaGp3NUI0QU5JZ3pteFlPelJLZEJ6SW1UTG92VDN2ZXBGUWR0cmtxYXFSRm5FckMzTDJQR2F2M2JjQ1FJbVJuRWZUQVZRblFqMGRwZnNFZw?oc=5",
       "pub": "Mon, 27 Jul 2026 04:00:25 GMT",
       "source": "CNN",
       "age": "14h ago",
@@ -1327,11 +1291,11 @@
     },
     {
       "title": "US Stock Market: Wall Street eyes Fed decision, AI earnings as traders navigate rising uncertainty - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQTFJJeW9qdkpSQzZGNHp3MjVuYmpfVS1ROGI5Zi1POGZxbWlSWXRGN19heHV3WkpiUnpSU3dFYm9IemRKcGtwYS14NkhzSHhCVmtxWlFfaU9Sbi1PWDdHV1lRRHZhOTNpNHRsTHNEVzQ3NnJrVHJTS0k4T0hzVGNiRmdVeWk5QlRwYVdaZmdGOHdVQlcwREIxMHVfSHdLc0dHVy1MbHRuLXRvN1VuYURRc0p5SFY4bE85Yjlaa0FvQkRxcm5IRHIyMm9wN0k5Q1JrQVZiZGFyTktjc1BXTTlJdFk5d3VLNUpLamlXMFFZZ0VnQUNQZ2xpeG9CS0JnQkd3cXpYdWYwVzbSAYgCQVVfeXFMUExSSXlvanZKUkM2RjR6dzI1bmJqX1UtUThiOWYtTzhmcW1pUll0RjdfYXh1d1pKYlJ6UlN3RWJvSHpkSnBrcGEteDZIc0h4QlZrcVpRX2lPUm4tT1g3R1dZUUR2YTkzaTR0bExzRFc0NzZya1RyU0tJOE9Ic1RjYkZnVXlpOUJUcGFXWmZnRjh3VUJXMERCMTB1X0h3S3NHR1ctTGx0bi10bzdVbmFEUXNKeUhWOGxPOWI5WmtBb0JEcXJuSERyMjJvcDdJOUNSa0FWYmRhck5LY3NQV005SXRZOXd1SzVKS2ppVzBRWWdFZ0FDUGdsaXhvQktCZ0JHd3F6WHVmMFc2?oc=5",
-      "pub": "Mon, 27 Jul 2026 03:51:00 GMT",
+      "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPdW1QMVhrT00xWU1NUTZudExYRW1YXzBUUWVWTnN0MHF4cWtYX1ZEbzRBbWN0eDlGaDdIcUlIaFZONmNvbGNTNXg2Y0xacmQybDE0ckJlZ3lvN2E5MVFfYVlLSDFFbzFOYm1MQ0syUGluSDY2NE13YWpLYXdZaWZnd3diUUhiU3hTOWdyS1g5T2pYYjdrbzdGOXk0SXFSQ2h5M2dhVEhrMkxudjFVMkJfTU51X2FUR2VQc0V6S3J2OE9jQXBRR2RRLW11ODVzWUU4TEx0Z0FUN0xvU3djT2JIV0hqQk82ai1BUXE1djZVWHVvRmpzOW5pRkJlOUdKdVl2U1BF0gGIAkFVX3lxTFBMUkl5b2p2SlJDNkY0encyNW5ial9VLVE4YjlmLU84ZnFtaVJZdEY3X2F4dXdaSmJSelJTd0Vib0h6ZEpwa3BhLXg2SHNIeEJWa3FaUV9pT1JuLU9YN0dXWVFEdmE5M2k0dGxMc0RXNDc2cmtUclNLSThPSHNUY2JGZ1V5aTlCVHBhV1pmZ0Y4d1VCVzBEQjEwdV9Id0tzR0dXLUxsdG4tdG83VW5hRFFzSnlIVjhsTzliOVprQW9CRHFybkhEcjIyb3A3STlDUmtBVmJkYXJOS2NzUFdNOUl0WTl3dUs1SktqaVcwUVlnRWdBQ1BnbGl4b0JLQmdCR3dxelh1ZjBXNg?oc=5",
+      "pub": "Mon, 27 Jul 2026 03:51:32 GMT",
       "source": "The Economic Times",
       "age": "14h ago",
-      "_sort": 1785124260.0,
+      "_sort": 1785124292.0,
       "bucket": "Market"
     },
     {
@@ -1342,15 +1306,6 @@
       "age": "14h ago",
       "_sort": 1785123598.0,
       "bucket": "Musk"
-    },
-    {
-      "title": "Fed officials weigh rate hike amid rising prices - The Detroit News",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNaUJLYUlOaGlWOWhrNERSdkpfZTI0aEJvNWNWdDY1S3J4VXhCQ3drZ2ZfclB6V3g0YXlvRW04VUJLWjItT0ltcEZQWkVyQVNQbERtWGgzWEtVQzNKNi1WQWU3Y0dvOUI0SzhvYllyb2ZqZmxLbEUybUR3V3ItX0M2djVtTmNFXzdyT0F6YjdmbnNkTkkyNXhBdjdBQmIwaU80MEdsTE1oU21GV2l0dFEtOENtdks1dw?oc=5",
-      "pub": "Mon, 27 Jul 2026 03:35:00 GMT",
-      "source": "The Detroit News",
-      "age": "14h ago",
-      "_sort": 1785123300.0,
-      "bucket": "Fed"
     },
     {
       "title": "Iran Flips The Script On Trump; Sets Unexpected Condition For War To End | Neither Hormuz Nor Nukes - The Times of India",
@@ -1404,15 +1359,6 @@
       "source": "EnergyNow",
       "age": "15h ago",
       "_sort": 1785119908.0,
-      "bucket": "Oil"
-    },
-    {
-      "title": "Oil Prices Rise 5% on Fears of US-Iran Ceasefire Collapse - EnergyNow",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNcmVZVUhHeTR3THhfaG5SYkUxS2ZyWWRIOTd6ZWZJUzlfZ2FZOW9QbEh5X3FUdmV4NTJ1d0VPZWxTRFlGeWp1SDd6WGJJNU5IMkpWaDVFRHgxNWFDSE16LVVkaldDZzdmWjBUMVpvX0hLTnEtVnJCRXQ1MFoyc1NjWEFQM3FxQUZmcnlZWGkzNA?oc=5",
-      "pub": "Mon, 27 Jul 2026 02:37:53 GMT",
-      "source": "EnergyNow",
-      "age": "15h ago",
-      "_sort": 1785119873.0,
       "bucket": "Oil"
     },
     {
@@ -1711,16 +1657,16 @@
         "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOcG9YVzRFbFdXZy1ZRm5aZ1M0N1RFZHdpMjNtSjVKc0UzSVpzNGRqWHEzR1U1a185THFJVlhHa1VlRndpYllrcGp0TTdkQVNlVFVpenRSb04tRXhGZEswbjhkTWJNZmNTSE9PdWFNd3ZwSHV5RjRaOUVXcDBueGRqQlhSam5yTHFQbWg3NThnT1YxQ2hkLVJFM2gzV19HMVZBa1lveEJ4UEo0SFN3c2Jscm5iaVR4dw?oc=5",
         "pub": "Mon, 27 Jul 2026 17:45:00 GMT",
         "source": "Stock Titan",
-        "age": "27m ago",
+        "age": "31m ago",
         "_sort": 1785174300.0
       },
       {
-        "title": "Silver Price Today | Silver Spot Price Charts - SD Bullion",
-        "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5hT3hFTEstRXBaRUNWQ0NITm80Q0pVS0tOaXhEZXVCWF93MGhBaFNVOVRLamxfZElqVEx0S1hKaUhkbGx6aWY0R2Ywaw?oc=5",
-        "pub": "Mon, 27 Jul 2026 17:00:53 GMT",
-        "source": "SD Bullion",
+        "title": "Why is US Stock Market Down Today? Dow Jones Climbs While S&P 500 & Nasdaq Turn Negative \u2013 What Investors Should Watch - The Sunday Guardian",
+        "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNYzVYYmNhOEw1VzByZ3YyMDE2S3lPVFVLSDUybnZmUi00WTA4V29RTDhlamlwS2s1Rmc2SzBpZ1lMWktuOEVWakUybVlORmoxMWVIN1R1d04tUFp3WHE0bUY3Wk1xR0tFWE1TVWthWHFpcWNKOFJGLUhXZnZ0bXdGX05JcTdzLXhKMk9JNG9RZHRFb2J1Ql9RQ1JkdXBfblA5MU9qSXRNT1ZxWGg3bnUyN3ZvQVUzTHo3dlAyMlFkY2ZHZVJJSnBBSDFPYmE1TnV4Z3BqdFByMWt3ZDBxc1UtY2lrWEZSMnR0T1ZoMk93ZFRsTWF5bzBB0gH3AUFVX3lxTE1jNVhiY2E4TDVXMHJndjIwMTZLeU9UVUtINTJudmZSLTRZMDhXb1FMOGVqaXBLazVGZzZLMGlnWUxaS244RVZqRTJtWU5GajExZUg3VHV3Ti1QWndYcTRtRjdaTXFHS0VYTVNVa2FYcWlxY0o4UkYtSFdmdnRtd0ZfTklxN3MteEoyT0k0b1FkdEVvYnVCX1FDUmR1cF9uUDkxT2pJdE1PVnFYaDdudTI3dm9BVTNMejd2UDIyUWRjZkdlUklKcEFIMU9iYTVOdXhncGp0UHIxa3dkMHFzVS1jaWtYRlIydHRPVmgyT3dkVGxNYXlvMEE?oc=5",
+        "pub": "Mon, 27 Jul 2026 17:03:13 GMT",
+        "source": "The Sunday Guardian",
         "age": "1h ago",
-        "_sort": 1785171653.0
+        "_sort": 1785171793.0
       },
       {
         "title": "Stocks waver on Wall Street while crude oil prices fall for the first time in a week - BNN Bloomberg",
@@ -1747,12 +1693,12 @@
         "_sort": 1785169459.0
       },
       {
-        "title": "US Stock Market Today: Dow Jones, NASDAQ & S&P 500 Major Indexes Trading Mixed Amid Oil Price Fall | Here\u2019s What Investors Should Watch - The Sunday Guardian",
-        "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQVm1tTW5fMUFTblJsZXFCV3BNeGNkdVpvcVBEa0ZMeDBjb204RXZKQlJjX2FpVkF4U2cyWnJSM1BoX1Nqd1ZhUVlHTG5KejZuSk43ejl0YkZvd2VpcUFZTG91TXdCdm9fS3RCRVYzVXU0LWlBRjYwLUpsek9KUkFXX1ZwTU9MRXVfaWMwMS1pVmxYMVVpdjQ2Um5abDJGaDdPTzE2dThKLVpVMzV1QlI5cUlveklTT3lBdmtWZ0xCMzBFSk01TndqbUJJZF9LYUZtME9sRFVadmJpRGJudXExdnppYlB2bWV5UWJYUzJnMFhUbEdpUGt5LU5RMGJpb0dPeFdPYTNB0gGLAkFVX3lxTE1DSm9fXzlzV2RUMTg5UjdyY2hwaXQ5YUxuMnRNXzlWRUpDTzl4a0JLcHhHSU14NVRGaHROU1JxZVNya043SnZuM0hKV2lIVWZ6a1lHQlNRUUxmVnA2ellOSjB0U3V2c0hhOG5oX1ZabEcwdWpPd3Q1YkFMNHdBdWVIc3ZUNEJWWVZ0YjJkcXQ3MmFQOTF4NjJiek1semFjVjFQTVB0akQ4QWlfcG1hUHIwRTZwNUpWRFJ5eFVjaWZ3QnhVV2hKY0VjUGdLeFB3TXF6eExjVk5NUF8wUEd2TGZYZnJQWmF0eVJ6RUthaXl2UEg5SE5fZXZ3WFRCMGVjdTRucFZvUmtGNU84WQ?oc=5",
-        "pub": "Mon, 27 Jul 2026 15:54:16 GMT",
-        "source": "The Sunday Guardian",
+        "title": "Weekly market commentary - BlackRock",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNUVRpWnpzel9vdWlfUTRyMGZwLVhXN2dmVDBNclBHRzhhNWx4MnVDSFBZNl8wZmxuZzlpZjZPTC0zMTZMRU9Udl9zWTB1X0FFR2ZBMGFQaWgydTVSY21qTzBkUWoyaTlGUHFJeVZybVZnb3d3YWoyRkZHeDVyLWszMmFPLUNZUmh0WUh3UG9ZejBFanRudmt5VV9YNmVSa1hmeWp2TE1CUWgtdw?oc=5",
+        "pub": "Mon, 27 Jul 2026 15:57:09 GMT",
+        "source": "BlackRock",
         "age": "2h ago",
-        "_sort": 1785167656.0
+        "_sort": 1785167829.0
       }
     ],
     "Trump": [
@@ -1761,31 +1707,15 @@
         "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPODllM3lnR3hSa1VwdlllRnZueFFkZFFpZjhCNTVfMGdvRk1mZEYyVEg2NzN3aWs3ekxyTzZtelJOYmhxNDlrTTNjamF6aTE3NEZBUk1aZHVaektEZ254bUlMVERFMUpQRjNlWE9yM1BGQkJGdkhpYzZGdnBmX2N2SFQ0WEF1RVRMbDBGNko4UHFVaFY3bkQ2UEU3V25Nd25iVlE?oc=5",
         "pub": "Mon, 27 Jul 2026 18:11:01 GMT",
         "source": "UA.NEWS",
-        "age": "1m ago",
+        "age": "5m ago",
         "_sort": 1785175861.0
-      },
-      {
-        "title": "Why warnings about the US munitions stockpile look increasingly pivotal - CNN",
-        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQjdQZWZBZ1VLMW5yeTh2dkxabWs1TWlBc2RKRUxMR3dvSFR5cGE3MlhaYmNmUkZOX0VUMUVGcHp0RGJ5d3F1a0VBcXBoYk9ocGJ2dUc1Q3dfVWdLWmlLNGU2RloyRjdKaUdWdWNTSko1dmhNU2JPWDF2bzktRm04WmN2MHE4MlE?oc=5",
-        "pub": "Mon, 27 Jul 2026 18:02:48 GMT",
-        "source": "CNN",
-        "age": "9m ago",
-        "_sort": 1785175368.0
-      },
-      {
-        "title": "James Comey asks judge to drop case over \u201886 47\u2019 seashell post - CNN",
-        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE93b2F5VFlzUXdDTk9mV2RXWWhyNmlzZWV0NmNOV3FXbVVPRWk3SUk4RmdVeDRVU1cxVUtrbWR4VkhQTGhIT0hUenhudXkyOW9DM2lWeExhc3AzZTZYdzBxc3VjQ084SlM4VmZvN21MdXNnZw?oc=5",
-        "pub": "Mon, 27 Jul 2026 17:25:13 GMT",
-        "source": "CNN",
-        "age": "47m ago",
-        "_sort": 1785173113.0
       },
       {
         "title": "Trump Warns Iran Of 'Very Strong Military Action' If Diplomatic Talks Collapse, Says Report - Stocktwits",
         "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOeWNKZzNwMU05NmQzMFM4Q3FKX0kxUld4TjEzdkxYaXNScnFTSHB2TEVicXdXMmhvWWlLR3N0RDFKSzAwaXFYVU4xOG1YUXZUUE5UcnB2bnNHbkJ0SUVkUEdvRGRjaUZoVWJxUk1UMUp4YzJVYnI2aGxvNDU1MWNObUhOV1JZMGJoeUI1UjM1YUk0UXNOTDhoM014ZXdVQmtmeW5uN19mVjZTd2tmbFJKTg?oc=5",
         "pub": "Mon, 27 Jul 2026 17:17:11 GMT",
         "source": "Stocktwits",
-        "age": "55m ago",
+        "age": "58m ago",
         "_sort": 1785172631.0
       },
       {
@@ -1803,6 +1733,22 @@
         "source": "WSJ",
         "age": "1h ago",
         "_sort": 1785170580.0
+      },
+      {
+        "title": "Trump: Ready for \"Strong Military Action\" if Talks with Iran Fail - dailybeirut.com",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNNDFFZ0JCbjQydnFsV3pRU0FsUTV2NHdicE50RGZEMG1ENHMta01GbkZYTGx6bGdhZmtJMzFweGl2bFB3dUUzWTRSSUJmWm1ibzJ0dFFoUWxobEF2TDBqSGpISE54c01VUUtQcGZ4Qlc4ZHlDUnJhSWRZdVFla3FFQl9BekFBMm9Wd2J1Z2ZlTVgza21vMjJ2SUkyeHE?oc=5",
+        "pub": "Mon, 27 Jul 2026 16:37:24 GMT",
+        "source": "dailybeirut.com",
+        "age": "1h ago",
+        "_sort": 1785170244.0
+      },
+      {
+        "title": "Fauci expressed disillusionment with \u2018rambling, crazy\u2019 Trump in journal - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPSmZieU9VX1BfbWNnWVhkUWZmRmxITkcxTzFrWVBtOVY4a1JhNlJNRXFTelBHemhKcGRaYmFoeTh0TnJCQmNWX2FlWVdMOUo3Q2J5blVyNDhyOGZCOUtDSWFhR1RGcWpjWmprQlJybmVmSHdxc2VoWDNxdzRneU9nZGEzVlBkYVZV?oc=5",
+        "pub": "Mon, 27 Jul 2026 15:54:00 GMT",
+        "source": "The Guardian",
+        "age": "2h ago",
+        "_sort": 1785167640.0
       }
     ],
     "Musk": [
@@ -1811,7 +1757,7 @@
         "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZnh4aldndlNNTlE4eEhFRV80RlNxMlpWSUdxMmtIVVNJVXVwMl8zbUlrMXU5WHh2Wk15RXBrdjdwcklKMXpTcWxrT3FyaDJwWXBYNjVhRHRvdFNyOTBwcVpFaUduZ0VicVZmU0RPNVpoWWF5aEVRTV9NVnlFMjNUVzhCd296enhIeGpqQ1dR?oc=5",
         "pub": "Mon, 27 Jul 2026 18:03:00 GMT",
         "source": "thestreet.com",
-        "age": "9m ago",
+        "age": "13m ago",
         "_sort": 1785175380.0
       },
       {
@@ -1819,7 +1765,7 @@
         "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNdjNXUlVLeDdoMlB5c0VUemxLWnloU0U0cXUwRUZaenlEY1FEVWozTFFVTlVVWlJIWFRBblFxel8yZU5rRG9ESHNGaFhmRkFSMzVHVzhHalRZam02cFZ0NHdkTWNGQkhXUGJTUWhzeXBRSVFoVy1qNldfRG82T1FEZWVid0podENTWVpGZ0luOFRJd1doWTdGWUxGeC1yVGlUS2tMRk5WbkV0aE1SV3JUYWlrLTlwOEVQZXc0Njh1WWpDTE5kZi1IT2FiSUllZkRWV00ycmE2Z1RrY2NfZVNUQVpONVM?oc=5",
         "pub": "Mon, 27 Jul 2026 17:27:09 GMT",
         "source": "Yahoo Finance",
-        "age": "45m ago",
+        "age": "48m ago",
         "_sort": 1785173229.0
       },
       {
@@ -1827,7 +1773,7 @@
         "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWndhcTJsbDhPblFwd0xwcmlOeHB6MG1DR2pBZ0NYQXh3QU8tX3BpMEtHaHUtNkZyMDZ3RnZGa2lwdjh2M01pdWJWYWZfZ2hoX0VZd1B2ckk1dWZkdjdmRnpfcVdVOC1HYjVkUHVhVVUzaUtQaWdOcEhnZW5veWRCOXkyempJb1pLNHJ0SlpFY3hGMG9lVXVrNjdRdG5Bb0JBVVZyVVpyODZQZ2JUUm5Nb2s0bnlBSFF4UGN6Vg?oc=5",
         "pub": "Mon, 27 Jul 2026 17:23:05 GMT",
         "source": "Barchart.com",
-        "age": "49m ago",
+        "age": "52m ago",
         "_sort": 1785172985.0
       },
       {
@@ -1861,7 +1807,7 @@
         "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQdnBicFlURUkybG5WQWx6bS0zc19BWW1VS1M3N3lZUTdlbFRaS1B2ZUpyN3ZRNUtUc2pBaW4tNk81M3dWWGRBdFhTZXFSY1ZMbHRPLXJ1VUUyUUJRUHJ3eW9HMkZGdmlHbWNYbUJWWEJxRWpMbFd1emNIamE1eEVmZFFvN0JOYjAxS05aQVo3VmZta3B1WUNaSTVObVFNMUNQWGRXZDlpamJwNUx3WmF1ZFBZSEl6NnFTeUV5Rw?oc=5",
         "pub": "Mon, 27 Jul 2026 17:37:13 GMT",
         "source": "Anadolu Ajans\u0131",
-        "age": "35m ago",
+        "age": "38m ago",
         "_sort": 1785173833.0
       },
       {
@@ -1869,7 +1815,7 @@
         "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOMVB1QTVaU0NKSmFrdnBkOTZxS1ZQLXI4dk5kU3dKMGR0em5iREdXVTVnU2xRSzdZR2tFc2lhWTVLNjhwS3hXTGtia3phbEM0emx3VmVjZHhPOG9jMHptcEgwcmh6S1NoUFZ2aElvdVJnNTB5RkRNckdoc1pGYlBPa3daTE13SkJNOUhpUG9UMkhVUzAyUjdHdEtBb2hpSVcxRndpV2tfeVBxMVRBYjJaemFtZFlOLVRNTEtXd0FTTVk1Wm9XVUHSAc4BQVVfeXFMTkxPc2pZQUFRQ0NBdlJoQl9iZmZBWmRXZGpwN0ltVEYydm16dmRkczY1Y1RaRkdnOUlJUVNxSTVsa3NzSmpya0N0NjRqTUlxZFpDZ3NlWEdGYlhfV25HZEVHOGhtYURlSnZ0WWVuUncwaVl1SEpzVl9iR1dJc0Qtc3lLUjFGU19zUWE1NzZlZG1nd1I0VC00M3BqcUplWnFCT1pjRHNyWkQ0UC1Cc19Ed0FZWTFTaElnNGcxVlVXU1g0emN6bVhLZndiSVB1dUE?oc=5",
         "pub": "Mon, 27 Jul 2026 17:25:13 GMT",
         "source": "NDTV Profit",
-        "age": "47m ago",
+        "age": "50m ago",
         "_sort": 1785173113.0
       },
       {
@@ -1889,20 +1835,20 @@
         "_sort": 1785169811.0
       },
       {
-        "title": "Stephen Moore | FRONTLINE | PBS | Official Site | Documentary Series - PBS",
-        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE82Ni1ld1VvbmtQU0s0czNkekxVcC1FdEJJaTMxNVlidDhDV2ZXdFRadl8tM0pmZmctRE9yTl90blBHLTdtSmtoSEpVdklxWWU3aXRueGtHNHpWMHBGcEZ4Qzh2RDhndXlUZm1J?oc=5",
-        "pub": "Mon, 27 Jul 2026 16:07:27 GMT",
-        "source": "PBS",
-        "age": "2h ago",
-        "_sort": 1785168447.0
-      },
-      {
         "title": "What would a rate hike signal about the new Fed chief's MO? - Axios",
         "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5peUZ0QVc0N2xYNlZ6SkJJVTE1R1ZjN202LXgyS2E2SUVLZm1VOGlhZkluZG1FeVdmTUdnU2QtRVdHWjAzUVhUWFZDV0pMWkxtSkZ0VnVfN1NCUVVNOHVYNlM1bHZHQmJrcV9TOWxn?oc=5",
         "pub": "Mon, 27 Jul 2026 16:00:41 GMT",
         "source": "Axios",
         "age": "2h ago",
         "_sort": 1785168041.0
+      },
+      {
+        "title": "Federal Reserve Set to Hold Interest Rates Steady Under New Chair Kevin Warsh - streamlinefeed.co.ke",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNaGtuaHJoT0QyLVA1R284MnJtNFgxbFhOTVFYbnV1ODZzSURwRGRwdGFkSVFLUWtqLWtTNlNKQVZiQklxbnloUE5vcmlHck1IZ01FOUpGcm8wcF9GclJSZEdWVS1KZGVsUEtLRmpMZnZzOFZ4Y3pvaThMdHdqYzhDVDUySlRFTDAtVlJ2b09GNA?oc=5",
+        "pub": "Mon, 27 Jul 2026 13:26:17 GMT",
+        "source": "streamlinefeed.co.ke",
+        "age": "4h ago",
+        "_sort": 1785158777.0
       }
     ],
     "Oil": [
@@ -1911,7 +1857,7 @@
         "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQeEozRVNwZm12Vms5YjhlaU02TGt5eGc4d0tzS1liN0xJM0R3YmxUeFdQbUs5TVZXR0J6bndHXzg5UGVocGpJbURmeTFDM2xFRzBoSzZFd1JEY2NzaGVNNy13VEhjeGhYakJqaGNFb0dNeng4d3RzZkE3WjBFZHVUektqUTI0UTBSTDZLSE1wUmRSTXVCUzBGWkVmNEM0N2ZfU3NRRXNzNFgtZTUzYkdz?oc=5",
         "pub": "Mon, 27 Jul 2026 17:38:44 GMT",
         "source": "nottinghammd.com",
-        "age": "33m ago",
+        "age": "37m ago",
         "_sort": 1785173924.0
       },
       {
@@ -1941,10 +1887,10 @@
       {
         "title": "UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com",
         "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb2k4RHBPd0V4OEFXVEw5T2hxMy1UaDZOU1dfcXluNnM0NzY4RlZjSzhNekFzWUNCUFJYY0pBT0FWOXBtQzZ3VXRBYjdEeXlRMm1Na0hyRkZQUnNZdTNRYTdxMWItS0h6ZnB3Ny1sTFhGQWRCd0xvSktGcGp1NHJZTzV4czZxZkprQnVWMHRmcmxqM3hIMENydDd5R1ViLS0ySGM1c2tkMVI?oc=5",
-        "pub": "Mon, 27 Jul 2026 12:50:18 GMT",
+        "pub": "Mon, 27 Jul 2026 12:42:04 GMT",
         "source": "EnergyNow.com",
         "age": "5h ago",
-        "_sort": 1785156618.0
+        "_sort": 1785156124.0
       },
       {
         "title": "Oil Jumps 7% to Above $100 Ahead of US Blockade on Strait of Hormuz - EnergyNow.com",
@@ -1957,11 +1903,19 @@
     ],
     "Chips": [
       {
+        "title": "Is Qualcomm Stock a Buy Ahead of July 29 Q3 Earnings? - 24/7 Wall St.",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOcDNURk1zOVZkenZhUkoybjVZeWZibWVCaWxMQW5EZlR6YmprcXhySGFyenFySlViV29oN0pYeF9CZWE1M3k2RWRycUN6NXVwMFNzYWVDUDlIUF9nU0JZMzEtMWRKUUI1N3prZG1EWjhJNHk1QUNpank5MTNCeUszZUpVUXFtc2VfbGNGVmxRQUY2NHdiSmVQY2dlZHE?oc=5",
+        "pub": "Mon, 27 Jul 2026 18:03:03 GMT",
+        "source": "24/7 Wall St.",
+        "age": "12m ago",
+        "_sort": 1785175383.0
+      },
+      {
         "title": "SNDK Stock Eyes 1,000 After Breaking 1,300 Support as Semiconductor Selloff and Chinese Competition Weigh - FXLeaders",
         "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPWVZRQU83VEJBelBQNlJvTUswdkp0N3IxcGJVTXllcEpyVzdMb3lxcFhla3RjOG9ZazVYaEpOUHRONk1TMks1Nm01c2o3LWZ2YzR0dDNWbUlwTGNNeVhnSElQOUREY2VfdWRnUzlLWEtVcS11Z3hoZDZQMHZjTG90YWl4aE9sZU53WmlOaGdiRE9HTFAzUDNlZ1JtMnZsa2k2RzdQYzM2R2lEamUzRXBITHJGakN5eVVtdy10cmp4eU92VGtnUEtXT3NpbllHY2hSWXl3bmVUNzhzMWEwWDRj?oc=5",
         "pub": "Mon, 27 Jul 2026 17:25:19 GMT",
         "source": "FXLeaders",
-        "age": "47m ago",
+        "age": "50m ago",
         "_sort": 1785173119.0
       },
       {
@@ -1969,7 +1923,7 @@
         "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOQTdBWDJpRnJLR0pTUUhMZHhWc0xYeG5JaV8wSlhIVG5uV0l3cHlaYUdpNm16VDZQQ0pOaFZGMDZRM0EtVF9MelNkbktSNVg2Nlowa2o3SzRTZHpmNnF2eUo0S1hlYkZ6TUFlOFAwUkpPWXB5NmdOYlNOT09XQ1BrUHlQSzMyYVFtWFdGYmVoT0gtc3RjX3NkUDdn?oc=5",
         "pub": "Mon, 27 Jul 2026 17:24:42 GMT",
         "source": "Seeking Alpha",
-        "age": "47m ago",
+        "age": "51m ago",
         "_sort": 1785173082.0
       },
       {
@@ -1977,7 +1931,7 @@
         "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPOElmUWl3dDNVbXZhVUxhZUw1bDJjMTg4UXdzaHdFWk5FRHRrLUpNOUkydTBEZHB3N2VZSlhoejhtVlo3dHZ0bk42Rktib2FvZG1NVFVnNVpWLUpzYTU5UW14VURrYWpKcDZNWHVNa1JaY1RSbkdQSnNNbEhJNzYwX29oWE5MTFhBLVV3bVBmNEszOTZEanRlNVlHRG1UaWZjMUFTVWJnMk5xZ3N6UHBNY0xyVWFTNXZnR3NpSXRONXpTMDJ6UWplRVRvSnQxaDJYRVNGN1d0bktFQXRINEhrQUNxVTE5TVNoSWEwc3pYQXNfVHc?oc=5",
         "pub": "Mon, 27 Jul 2026 17:22:51 GMT",
         "source": "The Globe and Mail",
-        "age": "49m ago",
+        "age": "53m ago",
         "_sort": 1785172971.0
       },
       {
@@ -1995,14 +1949,6 @@
         "source": "NDTV Profit",
         "age": "1h ago",
         "_sort": 1785171116.0
-      },
-      {
-        "title": "Could AMD Dethrone Nvidia? - Yahoo Finance",
-        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQQXFZRlRHTVpVaE81N2Q1Vnc2eTNUT3R2ZUNKZkNiakQ3SThiTS1USlU3aVg1RGx6M3p5QkJXZ0VEbVE4LW1pZnVSUnByRVRnUjdLc19ielRSMV9wdlhuNWdiZmJVQ1lvbFRqZl9XN2ZQVzhoMGlCTEJKVzJEUUhmNTVILWs2eGxiTTRnS0VfZnc0YjRF?oc=5",
-        "pub": "Mon, 27 Jul 2026 16:45:00 GMT",
-        "source": "Yahoo Finance",
-        "age": "1h ago",
-        "_sort": 1785170700.0
       }
     ],
     "Earnings": [
@@ -2011,7 +1957,7 @@
         "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOX3BDQk9jYlA0NTc1OXlta3hhTUdqN3FHNEVpcHRaYWxJbUlUMlM3ZUhQNGZOSnJacUZjTm9EVWZSd0N0aVhBeUVhRmlXWmNJMDc5V2ZMU2l3OEQ5TkU2YTNPZjB5RVNyM3FfZ2lCMmJvTFhEUU5qTXk2UTJONGxzb0tyMkJMU3pYbjlPa0ZXSGlFTGl3c2R3cGdnQnBvalZ1?oc=5",
         "pub": "Mon, 27 Jul 2026 18:01:43 GMT",
         "source": "Benzinga",
-        "age": "10m ago",
+        "age": "14m ago",
         "_sort": 1785175303.0
       },
       {
@@ -2019,23 +1965,23 @@
         "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOaWVJLXJ4TFNNUUpBdzBpallISTU3emhUb01HUWswNURPN0FqSVY5d1FvV0VvUENoNXpLemk4bFRwZmZsSTNwRHJ4TnVfRDJLc2VpUEhZUmhDR0UxM0pkUnZIR09oVjJNaTJtdEZJc2lma2liZ1ZwN1NVSjRnWDBRbmFrekhZRmxBMERaZTU1c0U5dDJYS08xdzdVcE9Jcl91SEhkRkJtQ3Atd1E?oc=5",
         "pub": "Mon, 27 Jul 2026 17:49:57 GMT",
         "source": "Benzinga",
-        "age": "22m ago",
+        "age": "26m ago",
         "_sort": 1785174597.0
       },
       {
         "title": "Should You Buy Tesla Stock After Its Post-Earnings Dip? - The Motley Fool",
         "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQZ1V3a3M5N2xmNnREQk16MUt3UnFqd05FZFRPc3NlXzc2QUhBQl9FWGhIclNiTUtBMkM1S1JEaWVmMWhsRjZ1Z0VyMVlpVi1BSHZDX1p0VVhLVURvX3pNY1VkRFBKRlhpY2NraTBHck5rTE5fSHhmeWM5dGV1TDhGVktKaWxySnQzRmhhcDhDNmpNNk9LeGJXRg?oc=5",
-        "pub": "Mon, 27 Jul 2026 17:48:15 GMT",
+        "pub": "Mon, 27 Jul 2026 17:46:16 GMT",
         "source": "The Motley Fool",
-        "age": "24m ago",
-        "_sort": 1785174495.0
+        "age": "29m ago",
+        "_sort": 1785174376.0
       },
       {
         "title": "Why Is Salesforce Stock Surging Monday? - Benzinga",
         "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNXzFCY05UY1pYaGJ0Rks1enV6b3ZWTFZHbW1LSjZLamlrQTZVaUdMUEFzYUVmN0NoNV90TV83OHBpMDdHZ2hBaXZBYUo0bmJfV09HS1h0S0U2YVlId1U5bldveldZcmJobGktUFBQdVBXSmpLTWdqUmE1NnA5M19TUUFjZGxVR1loN2RmUXRiT3NHQ215eTZObVBIdkJ6d20w?oc=5",
         "pub": "Mon, 27 Jul 2026 17:20:56 GMT",
         "source": "Benzinga",
-        "age": "51m ago",
+        "age": "55m ago",
         "_sort": 1785172856.0
       },
       {
