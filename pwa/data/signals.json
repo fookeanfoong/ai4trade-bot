@@ -1,39 +1,23 @@
 {
   "updated_at": "2026-07-27",
-  "valid_for": "2026-07-27",
+  "valid_for": "2026-07-28",
   "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
   "signals": [
     {
-      "ticker": "NVDA",
-      "direction": "bullish",
-      "confidence": 0.6,
+      "ticker": "AMD",
+      "direction": "bearish",
+      "confidence": 0.69,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
       "reasoning": {
-        "en": "Hold existing NVDA long through a risk-on tech day (Nasdaq-100 futures +1.4% on Iran de-escalation). NVDA is the chip-group laggard in 2026, so conviction is only modest — the stored stop ($203.53) manages downside; letting it work one more day beats dumping into a green open. Not a fresh high-conviction add.",
-        "zh": "维持已持有的 NVDA 多单,借今日 risk-on 科技反弹(纳指期货 +1.4%,伊朗降温)给它一天。NVDA 是今年半导体里的落后者,所以只给低信心——已设止损 $203.53 控回撤;绿盘早上硬砍不如让它多走一天。不是新的高信心加仓。"
+        "en": "Auto: AMD 3-day trend -9.1% (today -5.1%), aligned down. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:AMD 三日趋势 -9.1%(当日 -5.1%),方向下跌一致。动量+趋势过滤生成,非人工分析。"
       },
       "tradable": true,
-      "ref_price": 205.96
-    },
-    {
-      "ticker": "JPM",
-      "direction": "bullish",
-      "confidence": 0.61,
-      "timeframe": "1-3 days",
-      "entry_mode": "market",
-      "stop_pct": 0.025,
-      "t1_pct": 0.03,
-      "t2_pct": 0.06,
-      "reasoning": {
-        "en": "Financials diversifier on a risk-on day: oil crashing -7% is disinflationary (rate-relief tailwind) and independent of the semis theme, so JPM genuinely diversifies vs NVDA. Modest conviction — JPM popped ~+6% Friday and a Fed decision lands midweek, so the execution-time no-chase guard (live quotes) is the backstop: if it's still ripping at the open it won't fill.",
-        "zh": "risk-on 日的金融分散仓:油价 -7% 利于通胀降温(利率端顺风),且与半导体主题相互独立,JPM 相对 NVDA 是真正的分散。信心中等——JPM 上周五涨了约 6%、本周还有联储决议,所以把执行时的『不追高』护栏(用实时报价)当最后一道闸:开盘若仍在猛拉就不会成交。"
-      },
-      "tradable": true,
-      "ref_price": 353.21
+      "ref_price": 494.95
     }
   ]
 }
