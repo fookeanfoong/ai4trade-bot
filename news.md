@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-25T23:42:12+00:00
+# Market News Digest — 2026-07-27T13:32:29+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `25m ago` **[Musk]** Earnings at Musk's car company fall as research spending cuts into profit from selling cars - Salem News — _Salem News_
-- `53m ago` **[Musk]** Elon Musk Is Quietly Turning to This Fossil Fuel to Power His AI Ambitions. - The Motley Fool — _The Motley Fool_
-- `1h ago` **[Musk]** Tesla to open source Model S and Model X designs and software - Teslarati — _Teslarati_
-- `1h ago` **[Trump]** WSJ tears into Trump over 'obsession' he can't quit despite major 'harm' - Alternet — _Alternet_
-- `2h ago` **[Musk]** Elon Musk's Boring Company Vegas Loop falls short, says YouTuber - Mashable — _Mashable_
-- `3h ago` **[Trump]** The ‘Trump Trade’ is turning into a loser in the stock market - Fortune — _Fortune_
-- `3h ago` **[Musk]** Will SpaceX buy Tesla? Elon Musk is not revealing his plans - Scripps News — _Scripps News_
-- `3h ago` **[Musk]** Elon Musk: Your Future Doctor Will Be AI - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
-- `3h ago` **[Musk]** SpaceX Crashes 50% From Peak, Erasing $600 Billion From Elon Musk's Fortune in a Month - finance.biggo.com — _finance.biggo.com_
-- `3h ago` **[Trump]** Trump pulls back after Iran crosses his red line as US military breaks two-week streak of airstrikes - Fortune — _Fortune_
-- `3h ago` **[Musk]** Musk Counterfeits Open Source and NVidia Posts a 25 Company Letter to Help - flyingpenguin.com — _flyingpenguin.com_
-- `4h ago` **[Musk]** SpaceX wants to catch Starship for launch 14, Elon Musk says - Teslarati — _Teslarati_
+- `1m ago` **[Market]** Stock market opens in green as U.S.-Iran hostilities pause (SP500:) - Seeking Alpha — _Seeking Alpha_
+- `6m ago` **[Fed]** Federal Reserve Set to Hold Interest Rates Steady Under New Chair Kevin Warsh - streamlinefeed.co.ke — _streamlinefeed.co.ke_
+- `13m ago` **[Musk]** Money Won't Matter In 2036, Elon Musk Makes Bold Claim; Explains Why - NDTV Profit — _NDTV Profit_
+- `24m ago` **[Fed]** Fed patience risks shredding credibility - Reuters — _Reuters_
+- `27m ago` **[Musk]** Elon Musk Imagines a World Without Money in 10 Years - Cointribune — _Cointribune_
+- `31m ago` **[Musk]** 'I Wish I Was Rich Enough': Peter Schiff Mocks Elon Musk After Brutal $100 Billion Weekly Loss - International Business Times UK — _International Business Times UK_
+- `35m ago` **[Market]** Stock Market Today: S&P 500, Dow Jones, Nasdaq 100 Futures Rise as US-Iran Halt Retaliatory Strikes—Micro - Benzinga — _Benzinga_
+- `59m ago` **[Musk]** Musk’s SpaceX tumbles back to Earth, dragging Tesla stock down with it - The Washington Post — _The Washington Post_
+- `59m ago` **[Market]** US stock market today: S&P 500, Nasdaq futures jump up to 1.7% as oil prices tumble on easing US-Iran tensions - livemint.com — _livemint.com_
+- `1h ago` **[Market]** US stock futures rise as oil prices slide; Fed policy, Microsoft, Apple earnings in focus - CNBC TV18 — _CNBC TV18_
+- `1h ago` **[Trump]** Trump Delays Iran Operation, Sending Oil Prices Below $90 - Barron's — _Barron's_
+- `1h ago` **[Musk]** Musk loses trillionaire status as Tesla crashes 19% and SpaceX drops $1 trillion in value - upday News — _upday News_
 
 ## Market
 
-- `2h ago` Top 3 US Stock Market Stories From This Week - BeInCrypto — _BeInCrypto_
-- `4h ago` Yen records biggest weekly drop in over two months, dollar climbs for the week - The Economic Times — _The Economic Times_
-- `4h ago` T-Mobile US stock holds support as revenue and cash flow stay strong - AD HOC NEWS — _AD HOC NEWS_
-- `5h ago` BCE Inc. (BCE) Stock Price, News, Quote & History - Yahoo! Finance Canada — _Yahoo! Finance Canada_
-- `6h ago` Iran war, tariffs raise new risks for a resilient U.S. economy - The Washington Post — _The Washington Post_
-- `6h ago` Nasdaq 100 forecast: Chipmakers and US jobs report in focus - FOREX.com — _FOREX.com_
+- `1m ago` Stock market opens in green as U.S.-Iran hostilities pause (SP500:) - Seeking Alpha — _Seeking Alpha_
+- `35m ago` Stock Market Today: S&P 500, Dow Jones, Nasdaq 100 Futures Rise as US-Iran Halt Retaliatory Strikes—Micro - Benzinga — _Benzinga_
+- `59m ago` US stock market today: S&P 500, Nasdaq futures jump up to 1.7% as oil prices tumble on easing US-Iran tensions - livemint.com — _livemint.com_
+- `1h ago` US stock futures rise as oil prices slide; Fed policy, Microsoft, Apple earnings in focus - CNBC TV18 — _CNBC TV18_
+- `1h ago` Share Market Today: Nifty 50, Bank Nifty | July 27, 2026 - Liquide Blog — _Liquide Blog_
+- `2h ago` Indian Stock Market Next Week, April 13-17: Sensex, Nifty May Consolidate; US-Iran Talks, Q4 Results in Focus - Goodreturns — _Goodreturns_
 
 ## Trump
 
-- `1h ago` WSJ tears into Trump over 'obsession' he can't quit despite major 'harm' - Alternet — _Alternet_
-- `3h ago` The ‘Trump Trade’ is turning into a loser in the stock market - Fortune — _Fortune_
-- `3h ago` Trump pulls back after Iran crosses his red line as US military breaks two-week streak of airstrikes - Fortune — _Fortune_
-- `4h ago` Netanyahu may share Iran nuclear intel with Trump - Breakingthenews.net — _Breakingthenews.net_
-- `4h ago` Trump administration admits it canceled clean-energy grants in states that voted for Kamala Harris - CNN — _CNN_
-- `8h ago` Smerconish on Trump’s unexpected reaction to White House Correspondents’ Dinner award - CNN — _CNN_
+- `1h ago` Trump Delays Iran Operation, Sending Oil Prices Below $90 - Barron's — _Barron's_
+- `2h ago` U.S. Stock Futures Jump After Trump Puts Fighting on Hold - WSJ — _WSJ_
+- `2h ago` Trump pauses Iran strikes as officials weigh dwindling air defense stocks - livemint.com — _livemint.com_
+- `2h ago` Residents share whether Trump's tariffs will change spending habits in Thompson-Okanagan - Castanet — _Castanet_
+- `3h ago` Trump economy at 18 months is a tale of shocks, resilience, and signs of stalled progress - Reuters — _Reuters_
+- `3h ago` Exxon, Chevron Stocks Drop Alongside Oil Prices as Trump Delays Iran Operation - Barron's — _Barron's_
 
 ## Musk
 
-- `25m ago` Earnings at Musk's car company fall as research spending cuts into profit from selling cars - Salem News — _Salem News_
-- `53m ago` Elon Musk Is Quietly Turning to This Fossil Fuel to Power His AI Ambitions. - The Motley Fool — _The Motley Fool_
-- `1h ago` Tesla to open source Model S and Model X designs and software - Teslarati — _Teslarati_
-- `2h ago` Elon Musk's Boring Company Vegas Loop falls short, says YouTuber - Mashable — _Mashable_
-- `3h ago` Will SpaceX buy Tesla? Elon Musk is not revealing his plans - Scripps News — _Scripps News_
-- `3h ago` Elon Musk: Your Future Doctor Will Be AI - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
+- `13m ago` Money Won't Matter In 2036, Elon Musk Makes Bold Claim; Explains Why - NDTV Profit — _NDTV Profit_
+- `27m ago` Elon Musk Imagines a World Without Money in 10 Years - Cointribune — _Cointribune_
+- `31m ago` 'I Wish I Was Rich Enough': Peter Schiff Mocks Elon Musk After Brutal $100 Billion Weekly Loss - International Business Times UK — _International Business Times UK_
+- `59m ago` Musk’s SpaceX tumbles back to Earth, dragging Tesla stock down with it - The Washington Post — _The Washington Post_
+- `1h ago` Musk loses trillionaire status as Tesla crashes 19% and SpaceX drops $1 trillion in value - upday News — _upday News_
+- `1h ago` Tesla Triumphs: Supreme Court Reignites 5G Patent Battle - Devdiscourse — _Devdiscourse_
 
 ## Fed
 
-- `4h ago` Gas, groceries and back-to-school items are where shoppers might see higher oil prices surface - AOL.com — _AOL.com_
-- `5h ago` Fed July FOMC Meeting Preview: Rate Hike or No Change? - TradingKey — _TradingKey_
-- `7h ago` The Fed vote everyone's watching - and why Trump is already deflecting blame - upday News — _upday News_
-- `9h ago` Kevin Warsh Fed Chair Inflation Stance and Rate Outlook 2026 - News and Statistics - IndexBox — _IndexBox_
-- `9h ago` How Trump Could Be On A Collision Course With His New Fed Chair - Forbes — _Forbes_
-- `9h ago` Fed Chair Kevin Warsh's Blunt 2-Word Statement on Inflation That Could Determine Interest Rates in 2026 - The Motley Fool — _The Motley Fool_
+- `6m ago` Federal Reserve Set to Hold Interest Rates Steady Under New Chair Kevin Warsh - streamlinefeed.co.ke — _streamlinefeed.co.ke_
+- `24m ago` Fed patience risks shredding credibility - Reuters — _Reuters_
+- `1h ago` Iran war escalation puts Federal Reserve in a bind - thenationalnews.com — _thenationalnews.com_
+- `2h ago` Interest Rate Predictions for the Next 5 Years: 2026-2030 - Norada Real Estate Investments — _Norada Real Estate Investments_
+- `2h ago` David Wessel on the Fed’s Current Inflection Point - Mercatus Center — _Mercatus Center_
+- `4h ago` Markets Brief: Oil Prices Heat the Markets Like a Frog in a Pot - Morningstar — _Morningstar_
 
 ## Oil
 
-- `5h ago` When OPEC Quotas Don’t Matter Anymore - dailycaller.com — _dailycaller.com_
-- `10h ago` Oil Prices Jump More Than 2% After Renewed Iranian Attacks on UAE - EnergyNow.com — _EnergyNow.com_
-- `11h ago` UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com — _EnergyNow.com_
-- `11h ago` Saudi Aramco Seeks to Reroute Crude Away From Strait of Hormuz, Sources Say - EnergyNow.com — _EnergyNow.com_
-- `11h ago` Goldman Sachs Flags Upside Risks to Oil Prices in Near Term and Into 2027 - EnergyNow.com — _EnergyNow.com_
-- `11h ago` Russia’s Sechin Says U.S. Companies Benefit From the Closure of the Strait of Hormuz - EnergyNow.com — _EnergyNow.com_
+- `3h ago` Strait of Hormuz is Shut, Must Reopen Without Conditions, UAE Oil Giant ADNOC’s CEO Says - EnergyNow — _EnergyNow_
+- `3h ago` OPEC Cuts 2026 Global Oil Demand Growth Forecast - EnergyNow — _EnergyNow_
+- `4h ago` Iran Guards Turn Back Six Vessels in Hormuz Strait 2026 - Discovery Alert — _Discovery Alert_
+- `4h ago` OPEC Monthly Oil Market Report, July 2026 (Commodity:CL1:COM) - Seeking Alpha — _Seeking Alpha_
+- `4h ago` How Long Can India Handle Crude Oil Supply Disruption? Hardeep Singh Puri Cites 76-80 Days of Fuel Stocks - Goodreturns — _Goodreturns_
+- `4h ago` Brent Crude Falls 5% as US-Iran Pause Fuels Hopes of Strait of Hormuz Shipping Reopening - The Trumpet Newspaper Nigeria — _The Trumpet Newspaper Nigeria_
 
 ## Chips
 
-- `4h ago` AMD Just Landed a $5 Billion AI Coup — Is Nvidia’s Grip Finally Starting to Slip? - AOL.com — _AOL.com_
-- `4h ago` Why the Hyperscaler Spending Spree Might Put a Big Cushion Under Nvidia and AMD - AOL.com — _AOL.com_
-- `5h ago` Micron, Nvidia, or SpaceX: Which Is the Best AI Stock to Put $1,000 in Right Now? - The Globe and Mail — _The Globe and Mail_
-- `5h ago` How AMD Captures Significant Market Share From Nvidia - AOL.com — _AOL.com_
-- `5h ago` SK Hynix Pares 4% Drop After Denying Talks to Buy Intel’s Ohio Fab as Market Shrugs Off Iran Jitters - AOL.com — _AOL.com_
-- `5h ago` AMD, NVIDIA & Micron Just Hit Investors' Radar | Jim Cramer, CNBC & Schwab Market Update Premier League Games (qzkVs2H1P1) - Mshale — _Mshale_
+- `29m ago` NVIDIA: The Most "Boring" AI Stock on the Market — and Possibly the Most Undervalued - Moomoo — _Moomoo_
+- `1h ago` Nvidia Stock Struggles as It Chases SK Hynix, OpenAI Deals - Barron's — _Barron's_
+- `1h ago` Analysts Growing Bullish on AMD; AMUU May Be Worth a Trade - ETF Trends — _ETF Trends_
+- `1h ago` 【US Pre-Market】Three Major Index Futures Rise as Oil Slump Boosts Tech and Airline Stocks; AMD, Micron Up About 2% - TradingKey — _TradingKey_
+- `1h ago` Taiwan Semiconductor's Latest Move Shows It's a Screaming Buy - AOL.com — _AOL.com_
+- `1h ago` AI Chips Today - NVIDIA and Silvaco Partner to Elevate Semiconductor Design - Yahoo Finance Singapore — _Yahoo Finance Singapore_
 
 ## Earnings
 
-- `2h ago` Big tech earnings, FOMC, and SK hynix results set roil Korea markets - CHOSUNBIZ - Chosunbiz — _Chosunbiz_
-- `2h ago` Why Did CoreWeave (CRWV) Stock Plummet After Earnings - Kavout | AI — _Kavout | AI_
-- `3h ago` How MasTec’s Expanding US$20.33 Billion Backlog And EPS Gains At MasTec (MTZ) Has Changed Its Investment Story - simplywall.st — _simplywall.st_
-- `3h ago` Goldman Sachs raises TOPIX 12-month target to 4,500 on weaker yen outlook - Investing.com — _Investing.com_
-- `7h ago` Earnings Scoreboard: 83% of S&P 500 early reporters top EPS estimates ahead of big tech wave - Seeking Alpha — _Seeking Alpha_
-- `9h ago` Financial stocks win on fund inflows; Hut 8, Iren among gainers; Canadian banks, AmEx in losers (XLF:NYSEARCA) - Seeking Alpha — _Seeking Alpha_
+- `12m ago` Capricor Therapeutics Stock Plunges After FDA Releases Briefing Documents - Benzinga — _Benzinga_
+- `22m ago` Hut 8 Stock Trades 65% Above Its 200-Day Average Ahead of Earnings - Benzinga — _Benzinga_
+- `30m ago` Oklo Shares Bounce Off 52-Week Low Zone: What's Driving the Action? - Benzinga — _Benzinga_
+- `57m ago` These S&P500 stocks that are showing activity before the opening bell on Monday. - ChartMill — _ChartMill_
+- `1h ago` Varex to webcast Q3 earnings call after Aug. 10 market close - Stock Titan — _Stock Titan_
+- `1h ago` Palantir's Value Score Sits at Just 2.41 — Its Growth Score Is Nearly 98 - Benzinga — _Benzinga_
 

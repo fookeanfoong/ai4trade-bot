@@ -26,6 +26,15 @@
       "exit": 57.46,
       "qty": 3.584872,
       "closed_at": "2026-07-22T17:03:21Z"
+    },
+    {
+      "ticker": "NVDA",
+      "side": "long",
+      "action": "TRAIL_LOCK_EXIT",
+      "entry": 208.75,
+      "exit": 205.56,
+      "qty": 0.638723,
+      "closed_at": "2026-07-27T13:32:32Z"
     }
   ],
   "runs": [
@@ -242,28 +251,40 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-27T13:32:33Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "CLOSE NVDA long (TRAIL_LOCK_EXIT) @ ~$205.56 [broker]",
+        "ENTRY LONG JPM conf 0.61 0.372356 sh @ $358.08 [broker] notional $133 risk $3.33 | stop $349.13 T1 $368.82 T2 $379.56",
+        "NVDA: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "last_key": null,
   "positions": {
-    "NVDA": {
-      "ticker": "NVDA",
+    "JPM": {
+      "ticker": "JPM",
       "side": "long",
-      "qty": 0.638723,
-      "entry": 208.75,
-      "stop": 203.53,
-      "t1": 215.01,
-      "t2": 221.28,
+      "qty": 0.372356,
+      "entry": 358.08,
+      "stop": 349.13,
+      "t1": 368.82,
+      "t2": 379.56,
       "half_taken": false,
-      "peak_price": 209.8,
-      "armed": true,
-      "confidence": 0.64,
-      "entry_chg_3d_pct": 2.82,
+      "peak_price": 358.08,
+      "armed": false,
+      "confidence": 0.61,
+      "entry_chg_3d_pct": 3.84,
       "notional_usd": 133.33,
       "book_risk_usd": 3.33,
-      "opened_at": "2026-07-23T13:32:48Z",
+      "opened_at": "2026-07-27T13:32:33Z",
       "price_src": "broker"
     }
   },
-  "benched": {}
+  "benched": {
+    "NVDA": "2026-07-27"
+  }
 }
