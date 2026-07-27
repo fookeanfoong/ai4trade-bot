@@ -1,24 +1,55 @@
 {
-  "updated_at": "2026-07-24",
+  "updated_at": "2026-07-27",
   "valid_for": "2026-07-27",
-  "generator": "generate_signals.py (algorithmic)",
-  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
+  "generator": "Claude premarket curation (news-driven)",
+  "note": "盘前人工复核:结合最新新闻挑选,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
+  "data_quality_flags": [
+    "quotes.json 为上周五(7/24)收盘的陈旧数据,盘中会由 quotes.py 刷新;能源股显示的 +12~14% 是上周五油价飙升的行情,今日油价 -7% 会反向。",
+    "QQQ 显示当日 -3.71% 而 SPY +0.78%,两者高度相关却背离,疑似坏数据,已忽略,仅用作参考。"
+  ],
+  "market_context": {
+    "regime": "risk-on relief rally (US–Iran 停火), Nasdaq-100 期货 +1.4%, SPX +0.9%",
+    "oil": "WTI/Brent -7%,能源主题(CVX/OXY/XOM)反转;不做多、也不追空(停火脆弱,存在轧空/反弹风险)",
+    "excluded": {
+      "energy_CVX_OXY_XOM_XLE": "油价 -7% 使上周做多逻辑失效;已在低位不追空;整体回避",
+      "TSLA": "Q2 财报暴雷(利润腰斩、自由现金流转负)是真利空,但已跌 ~16% 且今日大盘 risk-on,此时做空=追刀+逆势,回避",
+      "AMD": "基本面/动量强,但与已持仓的 NVDA 高度相关(同为 AI 半导体),不重复押同一主题"
+    }
+  },
   "signals": [
     {
-      "sector_or_ticker": "JPM",
+      "sector_or_ticker": "NVDA",
       "direction": "bullish",
-      "confidence": 0.62,
+      "confidence": 0.6,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
+      "max_chase_3d_pct": 6.0,
       "already_priced_in": false,
-      "auto_generated": true,
+      "auto_generated": false,
       "reasoning": {
-        "en": "Auto: JPM 3-day trend +2.3% (today +5.9%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
-        "zh": "自动:JPM 三日趋势 +2.3%(当日 +5.9%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+        "en": "Hold existing NVDA long through a risk-on tech day (Nasdaq-100 futures +1.4% on Iran de-escalation). NVDA is the chip-group laggard in 2026, so conviction is only modest — the stored stop ($203.53) manages downside; letting it work one more day beats dumping into a green open. Not a fresh high-conviction add.",
+        "zh": "维持已持有的 NVDA 多单,借今日 risk-on 科技反弹(纳指期货 +1.4%,伊朗降温)给它一天。NVDA 是今年半导体里的落后者,所以只给低信心——已设止损 $203.53 控回撤;绿盘早上硬砍不如让它多走一天。不是新的高信心加仓。"
+      }
+    },
+    {
+      "sector_or_ticker": "JPM",
+      "direction": "bullish",
+      "confidence": 0.61,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "max_chase_3d_pct": 6.0,
+      "already_priced_in": false,
+      "auto_generated": false,
+      "reasoning": {
+        "en": "Financials diversifier on a risk-on day: oil crashing -7% is disinflationary (rate-relief tailwind) and independent of the semis theme, so JPM genuinely diversifies vs NVDA. Modest conviction — JPM popped ~+6% Friday and a Fed decision lands midweek, so the execution-time no-chase guard (live quotes) is the backstop: if it's still ripping at the open it won't fill.",
+        "zh": "risk-on 日的金融分散仓:油价 -7% 利于通胀降温(利率端顺风),且与半导体主题相互独立,JPM 相对 NVDA 是真正的分散。信心中等——JPM 上周五涨了约 6%、本周还有联储决议,所以把执行时的『不追高』护栏(用实时报价)当最后一道闸:开盘若仍在猛拉就不会成交。"
       }
     }
   ]
