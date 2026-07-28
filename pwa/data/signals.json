@@ -1,23 +1,6 @@
 {
   "updated_at": "2026-07-28",
-  "valid_for": "2026-07-28",
+  "valid_for": "2026-07-29",
   "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
-  "signals": [
-    {
-      "ticker": "JPM",
-      "direction": "bullish",
-      "confidence": 0.61,
-      "timeframe": "1-3 days",
-      "entry_mode": "market",
-      "stop_pct": 0.025,
-      "t1_pct": 0.03,
-      "t2_pct": 0.06,
-      "reasoning": {
-        "en": "Keep the held JPM long. Today is a tech-to-value rotation (Dow +0.9% while semis sell off -3~4%), which favors a large-cap financial; JPM sits near breakeven with its stop ($349.13) as protection. Modest conviction — the Fed decides tomorrow (possible hike), so this holds through today's rotation and gets re-evaluated pre-Fed tomorrow, not held blindly into the event.",
-        "zh": "维持已持有的 JPM 多单。今天是科技→价值轮动(道指 +0.9%、半导体杀跌 -3~4%),利于大盘金融股;JPM 在成本附近,止损 $349.13 兜底。信心中等——明天联储决议(可能加息),所以今天先扛住轮动、明天盘前再决定是否带它过决议,不盲目扛事件。"
-      },
-      "tradable": true,
-      "ref_price": 358.1
-    }
-  ]
+  "signals": []
 }
