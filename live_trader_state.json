@@ -293,6 +293,12 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-28T13:32:51Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": []
     }
   ],
   "last_key": null,
@@ -306,7 +312,7 @@
       "t1": 368.82,
       "t2": 379.56,
       "half_taken": false,
-      "peak_price": 358.08,
+      "peak_price": 358.41,
       "armed": false,
       "confidence": 0.61,
       "entry_chg_3d_pct": 3.84,
@@ -316,7 +322,5 @@
       "price_src": "broker"
     }
   },
-  "benched": {
-    "NVDA": "2026-07-27"
-  }
+  "benched": {}
 }
