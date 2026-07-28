@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-28T13:32:47+00:00
+# Market News Digest — 2026-07-28T14:32:41+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `8m ago` **[Trump]** 3 US Infrastructure Stocks Tied To Trump Tariffs And Domestic Supply Chains - simplywall.st — _simplywall.st_
-- `31m ago` **[Musk]** Elon Musk teases a Warren Buffett-style pledge to give his money away - AOL.com — _AOL.com_
-- `45m ago` **[Oil]** OPEC+ plans to pause oil quota hikes after September amid Iran conflict - Crypto Briefing — _Crypto Briefing_
-- `1h ago` **[Market]** 【US Pre-Market】Micron, AMD Slump as China Chip Competition Heats Up; Fed Meeting Begins Today - TradingKey — _TradingKey_
-- `1h ago` **[Musk]** Elon Musk Called Cybertruck Tesla’s ‘Best Product Ever,’ but Sales Are Now Tracking Lower Than Ford’s Eds - Benzinga — _Benzinga_
-- `2h ago` **[Fed]** Fed Chair Warsh unlikely to raise rates this we... - Pluang — _Pluang_
-- `2h ago` **[Musk]** Think Tesla's Robotaxis and Humanoid Robots Are Coming Soon? Maybe Think Again, as Elon Musk Cites "Substantial" Challenge. - The Motley Fool — _The Motley Fool_
-- `2h ago` **[Musk]** How Musk lost nearly $500B in a month - NewsBytes — _NewsBytes_
-- `2h ago` **[Musk]** Musk keeps Tesla-SpaceX merger speculation alive, cites growing overlap - AOL.com — _AOL.com_
-- `2h ago` **[Fed]** Analysis: Kevin Warsh's Fed press conference will be revealing even without a rate hike - CNBC — _CNBC_
-- `2h ago` **[Fed]** Two Fed dissents seen; could a third put a hike in play? - Seeking Alpha — _Seeking Alpha_
-- `2h ago` **[Musk]** Elon Musk calls himself ‘former trillionaire’ as billions vanish amid Tesla, SpaceX crash. Why the rich laugh at losses - Yahoo Finance — _Yahoo Finance_
+- `7m ago` **[Musk]** Elon Musk warns America will 1,000% go bankrupt and fail as a country - thestreet.com — _thestreet.com_
+- `18m ago` **[Musk]** Joy Reid Rips 'Idiot' Elon Musk for Buying, Not Inventing Tesla: Calls Cybertruck 'Sh*t' - International Business Times UK — _International Business Times UK_
+- `18m ago` **[Fed]** US economy strength boosts rate hike expectations for September 2026 - Crypto Briefing — _Crypto Briefing_
+- `28m ago` **[Trump]** Trump rebukes Netanyahu on plans to share Iran intel: ‘Why didn’t you just tell it to me’ - The Indian Express — _The Indian Express_
+- `30m ago` **[Musk]** Musk’s Dwindling Wealth is Equal to How Many Chinese Billionaires? We Did the Math. - Barron's — _Barron's_
+- `36m ago` **[Musk]** After Losing An Average Of $16.3 Billion A Day For Over A Month, Elon Musk Says "Money Won't Matter in 2036" - 24/7 Wall St. — _24/7 Wall St._
+- `43m ago` **[Musk]** Elon Musk Spent Months Trying to Cut Government Spending. Now He Says The Treasury Should Just "Issue People Checks" - 24/7 Wall St. — _24/7 Wall St._
+- `47m ago` **[Fed]** Fed rate hike unlikely this week amid low market expectations - Crypto Briefing — _Crypto Briefing_
+- `56m ago` **[Trump]** Rep. Landsman reacts to President Trump telling autoworkers ‘I’ve done more for you than your parents’ - CNN — _CNN_
+- `1h ago` **[Trump]** 3 US Infrastructure Stocks Tied To Trump Tariffs And Domestic Supply Chains - simplywall.st — _simplywall.st_
+- `1h ago` **[Musk]** Elon Musk teases a Warren Buffett-style pledge to give his money away - AOL.com — _AOL.com_
+- `1h ago` **[Oil]** OPEC+ plans to pause oil quota hikes after September amid Iran conflict - Crypto Briefing — _Crypto Briefing_
 
 ## Market
 
-- `44m ago` US Stock Market Today: Dow Jones, NASDAQ, S&P 500 Futures to Open Mixed Amid Falling Oil Prices, AI Spending & More – Here’s What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `54m ago` Stock Market Today: Dow Jones Futures Gain as Coca-Cola Jumps After Q2 Beat, S&P 500, Nasdaq 100 Decline - Benzinga — _Benzinga_
-- `1h ago` 【US Pre-Market】Micron, AMD Slump as China Chip Competition Heats Up; Fed Meeting Begins Today - TradingKey — _TradingKey_
-- `1h ago` US stock market today: Wall Street edges lower as chip stocks face fresh sell-off; Brent slips below $85 - livemint.com — _livemint.com_
-- `2h ago` Share Market Today: Nifty 50, Bank Nifty | July 28, 2026 - Liquide Blog — _Liquide Blog_
-- `3h ago` Stock Market Opens Strong: Nifty Up 1.5%, Sensex Rallies 1,516 Pts; Rupee Recovers as Trump Delays Iran Strike - Goodreturns — _Goodreturns_
+- `12m ago` US stock markets today: Dow rises, Nasdaq falls as chip sell-off fuels fresh concerns over AI spending - CNBC TV18 — _CNBC TV18_
+- `26m ago` US stock market today: S&P 500, Dow Jones trade flat; Nasdaq drops over 1% as chips stocks drop - The Times of India — _The Times of India_
+- `51m ago` US Stock Market Today: Dow Jumps 300 Points On Earnings Boost; Nasdaq Slips As Chip Sell-Off Persists - NDTV Profit — _NDTV Profit_
+- `1h ago` US Stock Market Today: Dow Jones, NASDAQ, S&P 500 Futures to Open Mixed Amid Falling Oil Prices, AI Spending & More – Here’s What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
+- `1h ago` Stock Market Today: Dow Jones Futures Gain as Coca-Cola Jumps After Q2 Beat, S&P 500, Nasdaq 100 Decline - Benzinga — _Benzinga_
+- `2h ago` Quote of the day by John Templeton: 'I have learned that the great opportunities are the places that have - The Economic Times — _The Economic Times_
 
 ## Trump
 
-- `8m ago` 3 US Infrastructure Stocks Tied To Trump Tariffs And Domestic Supply Chains - simplywall.st — _simplywall.st_
-- `2h ago` Netanyahu's first meeting with Trump since the Iran war began is a chance to smooth over strains - Audacy — _Audacy_
-- `3h ago` Doonesbury Comic Strips by Garry Trudeau - July 27, 1986 - The Washington Post — _The Washington Post_
-- `3h ago` Trump Tells GM Workers "I've Done More For You Than Your Parents." Michigan Lost 4,000 Auto Parts Jobs This Year. - 24/7 Wall St. — _24/7 Wall St._
-- `3h ago` John Roberts is trying to send a message on Trump but is largely in lockstep - CNN — _CNN_
-- `3h ago` How Trump’s ‘America first’ administration could shut US scientists out of the next Nobel-worthy discovery - CNN — _CNN_
+- `28m ago` Trump rebukes Netanyahu on plans to share Iran intel: ‘Why didn’t you just tell it to me’ - The Indian Express — _The Indian Express_
+- `56m ago` Rep. Landsman reacts to President Trump telling autoworkers ‘I’ve done more for you than your parents’ - CNN — _CNN_
+- `1h ago` 3 US Infrastructure Stocks Tied To Trump Tariffs And Domestic Supply Chains - simplywall.st — _simplywall.st_
+- `3h ago` Netanyahu's first meeting with Trump since the Iran war began is a chance to smooth over strains - Audacy — _Audacy_
+- `4h ago` Doonesbury Comic Strips by Garry Trudeau - July 27, 1986 - The Washington Post — _The Washington Post_
+- `4h ago` Trump Tells GM Workers "I've Done More For You Than Your Parents." Michigan Lost 4,000 Auto Parts Jobs This Year. - 24/7 Wall St. — _24/7 Wall St._
 
 ## Musk
 
-- `31m ago` Elon Musk teases a Warren Buffett-style pledge to give his money away - AOL.com — _AOL.com_
-- `1h ago` Elon Musk Called Cybertruck Tesla’s ‘Best Product Ever,’ but Sales Are Now Tracking Lower Than Ford’s Eds - Benzinga — _Benzinga_
-- `1h ago` Tesla opens first authorised body shop in India, launches Model Y test drives - madhyamamonline.com — _madhyamamonline.com_
-- `2h ago` Think Tesla's Robotaxis and Humanoid Robots Are Coming Soon? Maybe Think Again, as Elon Musk Cites "Substantial" Challenge. - The Motley Fool — _The Motley Fool_
-- `2h ago` How Musk lost nearly $500B in a month - NewsBytes — _NewsBytes_
-- `2h ago` Musk keeps Tesla-SpaceX merger speculation alive, cites growing overlap - AOL.com — _AOL.com_
+- `7m ago` Elon Musk warns America will 1,000% go bankrupt and fail as a country - thestreet.com — _thestreet.com_
+- `18m ago` Joy Reid Rips 'Idiot' Elon Musk for Buying, Not Inventing Tesla: Calls Cybertruck 'Sh*t' - International Business Times UK — _International Business Times UK_
+- `22m ago` Tesla has taken another massive speculative industrial building — this time in Mustang Ridge - The Business Journals — _The Business Journals_
+- `30m ago` Musk’s Dwindling Wealth is Equal to How Many Chinese Billionaires? We Did the Math. - Barron's — _Barron's_
+- `36m ago` After Losing An Average Of $16.3 Billion A Day For Over A Month, Elon Musk Says "Money Won't Matter in 2036" - 24/7 Wall St. — _24/7 Wall St._
+- `37m ago` spacex-starship-13-orbit - Teslarati — _Teslarati_
 
 ## Fed
 
-- `2h ago` Fed Chair Warsh unlikely to raise rates this we... - Pluang — _Pluang_
-- `2h ago` Analysis: Kevin Warsh's Fed press conference will be revealing even without a rate hike - CNBC — _CNBC_
-- `2h ago` Two Fed dissents seen; could a third put a hike in play? - Seeking Alpha — _Seeking Alpha_
-- `3h ago` Stephen Moore | FRONTLINE | PBS | Official Site | Documentary Series - PBS — _PBS_
-- `4h ago` President Trump Urges Fed to Cut Rates to Secure World’s Lowest Borrowing Costs - The Daily Hodl — _The Daily Hodl_
-- `4h ago` Federal Reserve’s July Decision Keeps Dollar Traders Data-Focused, BNY Says - Bitcoin World — _Bitcoin World_
+- `18m ago` US economy strength boosts rate hike expectations for September 2026 - Crypto Briefing — _Crypto Briefing_
+- `47m ago` Fed rate hike unlikely this week amid low market expectations - Crypto Briefing — _Crypto Briefing_
+- `3h ago` Fed Chair Warsh unlikely to raise rates this we... - Pluang — _Pluang_
+- `3h ago` Analysis: Kevin Warsh's Fed press conference will be revealing even without a rate hike - CNBC — _CNBC_
+- `3h ago` Two Fed dissents seen; could a third put a hike in play? - Seeking Alpha — _Seeking Alpha_
+- `4h ago` Stephen Moore | FRONTLINE | PBS | Official Site | Documentary Series - PBS — _PBS_
 
 ## Oil
 
-- `45m ago` OPEC+ plans to pause oil quota hikes after September amid Iran conflict - Crypto Briefing — _Crypto Briefing_
-- `3h ago` This Week at Blue Water Strategy: Energy Markets Are Celebrating a Ceasefire That Doesn’t Exist - t.co — _t.co_
-- `4h ago` COMMENTARY: Trump Broke OPEC. He May Regret It: Bousso - EnergyNow — _EnergyNow_
-- `4h ago` WTI Oil flirts with the $80 level amid speculation about US-Iran peace talks - TMGM trading — _TMGM trading_
-- `5h ago` Looking Beyond Oil: How Hormuz Disruption Is Reshaping Iraq-GCC Trade - auis.edu.krd — _auis.edu.krd_
-- `6h ago` Oman presents Hormuz fee proposal to Iran - FXStreet — _FXStreet_
+- `1h ago` OPEC+ plans to pause oil quota hikes after September amid Iran conflict - Crypto Briefing — _Crypto Briefing_
+- `1h ago` Citi Cuts Brent Forecasts as U.S.-Iran MoU Points to Strait of Hormuz Flow Normalization - EnergyNow — _EnergyNow_
+- `2h ago` Hormuz at Near Standstill as Iran Warns Ships to Keep to its Waters - EnergyNow.com — _EnergyNow.com_
+- `2h ago` Strait of Hormuz Disruption Could Push Oil Market Recovery into 2027, Aramco CEO Says - EnergyNow.com — _EnergyNow.com_
+- `3h ago` How the Iran War Is Disrupting Global Oil and Gas Supply - EnergyNow.com — _EnergyNow.com_
+- `3h ago` Morgan Stanley Maintains Oil Price Forecasts and Predicts Slow Recovery in Supply - EnergyNow.com — _EnergyNow.com_
 
 ## Chips
 
-- `1h ago` Nvidia bets $5B on AI, so why is the stock falling - Rolling Out — _Rolling Out_
-- `3h ago` Beyond tech selloff: How China's homegrown DUV chip machine is challenging ASML, Nvidia, AMD and Micron - Moneycontrol.com — _Moneycontrol.com_
-- `3h ago` China's DUV Lithography Breakthrough Clouds AI Trade; ASML, Nvidia, AMD, Micron Futures Slump 5% - NDTV Profit — _NDTV Profit_
-- `8h ago` AMD down 8pc, Nvidia nearly 5pc as China chip breakthrough report sparks tech sell‑off - Malay Mail — _Malay Mail_
-- `10h ago` LIVE: Nifty Reclaims 24,000! Brent Slips Below $88, China Sparks Chip Sell-Off | Opening Bell - Moneycontrol.com — _Moneycontrol.com_
-- `11h ago` Semiconductor Stocks Plunge on Chinese DUV Report - 조선일보 — _조선일보_
+- `11m ago` AMD splits the experts, is it a buy or a trap? - Rolling Out — _Rolling Out_
+- `11m ago` Top Losers today: Sandisk plunges nearly 12% - Business Upturn — _Business Upturn_
+- `35m ago` US Chip Stocks Slide; Philadelphia Semiconductor Index Drops More Than 5%, Nasdaq 100 Down 10% From Peak - bloomingbit — _bloomingbit_
+- `2h ago` Nvidia bets $5B on AI, so why is the stock falling - Rolling Out — _Rolling Out_
+- `3h ago` Why are Micron, Nvidia and AMD stocks plunging before Wall Street opens today? - Invezz — _Invezz_
+- `3h ago` Why Are AI Chip Stocks Nvidia, Micron, AMD, and Intel Down in Pre-Market Today, July 28? - TipRanks — _TipRanks_
 
 ## Earnings
 
-- `57m ago` These S&P500 stocks are moving in today's pre-market session - ChartMill — _ChartMill_
-- `1h ago` Which stocks are moving before the opening bell on Tuesday? - ChartMill — _ChartMill_
-- `1h ago` 12 Information Technology Stocks Moving In Tuesday's Pre-Market Session - Benzinga — _Benzinga_
-- `1h ago` Why Is Cadence Design Systems Stock Gaining Tuesday? - Cadence Design Systems (NASDAQ:CDNS) - Benzinga — _Benzinga_
-- `1h ago` AI concerns pressure chipmakers premarket; UPS, Carrier rise - Yahoo Finance Australia — _Yahoo Finance Australia_
-- `1h ago` Applied Digital Stock Swings After Q4 Earnings Beat: What to Know - Benzinga — _Benzinga_
+- `26m ago` Stocks Mixed as Weakness in Chipmakers Deepens - Barchart.com — _Barchart.com_
+- `42m ago` Ford Q2 Earnings Preview: What's Driving the Golden Cross Momentum? - Benzinga — _Benzinga_
+- `42m ago` AMD Stock Sets Up For This Bearish Trade As AI Bubble Trouble Looms - Investor's Business Daily — _Investor's Business Daily_
+- `43m ago` Tech stocks today: Big Tech earnings this week mark a pivotal moment for the AI trade - Yahoo Finance — _Yahoo Finance_
+- `59m ago` Bloom Energy Stock Tests 200-Day Moving Average: Can Thursday Earnings Spark a Rebound to $181? - Benzinga — _Benzinga_
+- `1h ago` Amkor Tech's Revenue Outlook Disappoints Investors, Stock Tanks - Benzinga — _Benzinga_
 
