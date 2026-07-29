@@ -1,18 +1,25 @@
 {
   "updated_at": "2026-07-29",
-  "valid_for": "2026-07-29",
-  "generator": "Claude premarket curation (news-driven)",
-  "note": "盘前人工复核:今天是联储决议日,主动选择空仓过事件。仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
+  "valid_for": "2026-07-30",
+  "generator": "generate_signals.py (algorithmic)",
+  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
-  "intentional_flat": true,
-  "data_quality_flags": [
-    "quotes.json 陈旧(updated_at=None),盘中由 quotes.py 刷新;能源/AMD 等旧行情仅供参考。"
-  ],
-  "market_context": {
-    "event": "FOMC 联储决议今天下午 2:00 ET(18:00 UTC)公布。市场定价:约 64% 维持不变、约 36% 意外加息 25bp——这是一个真实的二元事件。",
-    "decision": "主动空仓过决议:JPM 目前仅在成本附近、无强独立催化,拿一只对利率敏感的金融股赌 1/3 概率的意外加息 = 负偏押注(上行有限、下行可能跳空穿止损)。我们的优势就是风控纪律,所以今天开盘先平掉 JPM、不新开任何仓位,空仓观望决议。",
-    "note_on_empty": "signals 为空是『刻意空仓』,不是数据缺失:空信号会让 live_trader 在开盘把 JPM 按信号失效平掉(约成本价),远早于下午 2 点的决议。",
-    "reentry_plan": "明天(7/30)盘前根据联储结果和市场反应重新评估——若决议后出现清晰方向(鸽派 relief 上涨 or 鹰派杀跌),再按催化剂决定做多/做空。"
-  },
-  "signals": []
+  "signals": [
+    {
+      "sector_or_ticker": "NVDA",
+      "direction": "bearish",
+      "confidence": 0.68,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: NVDA 3-day trend -8.1% (today -2.5%), aligned down. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:NVDA 三日趋势 -8.1%(当日 -2.5%),方向下跌一致。动量+趋势过滤生成,非人工分析。"
+      }
+    }
+  ]
 }
