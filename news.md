@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-29T13:32:58+00:00
+# Market News Digest — 2026-07-29T16:58:53+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `5m ago` **[Oil]** China and the Iran War Oil Shock That Wasn’t - ChinaTalk | Jordan Schneider — _ChinaTalk | Jordan Schneider_
-- `13m ago` **[Trump]** Market News Today: Fed Decision, Microsoft and Meta Earnings, and Trump's Iran Hardline Converge in One Session — South Korea Activates Emergency Market Stabilization - Binance — _Binance_
-- `22m ago` **[Trump]** Trump vows fresh strikes on Iran after missiles targeting US forces are intercepted - FXStreet — _FXStreet_
-- `22m ago` **[Market]** US stock futures steady as Wall Street braces for Fed interest rate decision, Warsh presser - CNBC TV18 — _CNBC TV18_
-- `23m ago` **[Trump]** Trump Says US Will ‘Hit Iran Hard’ If Negotiations Fail – Stock Futures Fall, Oil Prices Start Climbing Again - TradingView — _TradingView_
-- `40m ago` **[Musk]** Elon Musk’s brutal reply has everyone picking sides - Rolling Out — _Rolling Out_
-- `45m ago` **[Market]** Stock market today: Dow, S&P 500, Nasdaq futures steady in countdown to Fed decision, AI earnings test - Yahoo Finance — _Yahoo Finance_
-- `48m ago` **[Trump]** The Fed meeting, Ford earnings, Trump's investment portfolio and more in Morning Squawk - CNBC — _CNBC_
-- `51m ago` **[Musk]** Volvo Discontinues Use Of Lidar Giving Elon Musk An "I Told You So" Moment - Auto Spies — _Auto Spies_
-- `1h ago` **[Market]** Stock Market Today: Dow Futures Slip, S&P 500, Nasdaq 100 Rise as Investors Await Federal Reserve's Decis - Benzinga — _Benzinga_
-- `1h ago` **[Market]** US stock market today: Wall Street futures inch higher ahead of Fed decision; Middle East tensions resurface - livemint.com — _livemint.com_
-- `1h ago` **[Market]** US Stock Market Today: Dow Futures Slip 106 Points, S&P 500 & Nasdaq Futures Rise 0.2% Ahead of Fed Rate Decision as Oil Prices Jump - The Sunday Guardian — _The Sunday Guardian_
+- `1m ago` **[Musk]** Elon Musk updates the SpaceX timeline for Mars - Teslarati — _Teslarati_
+- `4m ago` **[Trump]** Oil prices jump following fighting with Iran, while sinking AI stocks drag Wall Street lower - AP News — _AP News_
+- `34m ago` **[Trump]** Oil prices rebound, jump 8% as Trump warns Iran after attacks on US forces; Brent nears $90 - livemint.com — _livemint.com_
+- `36m ago` **[Market]** Why is US Stock Market Down Today? Dow Jones Falls 800 Points as Oil Prices Surges Nearly 7% Before Fed Rate Decision Amid Middle East Tensions | What Investors Should Watch - sundayguardianlive.com — _sundayguardianlive.com_
+- `36m ago` **[Fed]** The Fed’s next step is far from clear - Financial Times — _Financial Times_
+- `42m ago` **[Market]** US Stock Market Crash: Oil Spike To Fed Pivot Fears — Three Reasons Why Wall Street Is Under Pressure - NDTV Profit — _NDTV Profit_
+- `1h ago` **[Market]** S&P 500 Today: Index Falls 0.70% as Chip Selloff Weighs & Oil Price Surge Nearly 7% Before Fed Decision – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - sundayguardianlive.com — _sundayguardianlive.com_
+- `1h ago` **[Trump]** Top Midday Stories: Stocks Down, Oil Up as Trump Vows Strong Response to Iran Attacks; Vertiv Q2 Revenue Misses Estimates - Yahoo Finance — _Yahoo Finance_
+- `1h ago` **[Fed]** Rates and Debt Payments to Rise with Inflation | Steve Rattner on Morning Joe - stevenrattner.com — _stevenrattner.com_
+- `1h ago` **[Market]** Stock market today: Dow falls over 800 points, S&P 500 and Nasdaq slide in countdown to Fed decision, AI earnings test - Yahoo Finance — _Yahoo Finance_
+- `2h ago` **[Market]** Dow Jones Today: Dow Falls 1.50% as Caterpillar, AMD & Nvidia Crashes as Semiconductor Stock Slide Amid Fed Rate Hike – Check Key Drivers, Performance, Top Gainers-Losers & What Investors Should Watch - sundayguardianlive.com — _sundayguardianlive.com_
+- `2h ago` **[Trump]** Trump officials launch probe over alleged testosterone vials, kissing exercise in 2 school districts - CNN — _CNN_
 
 ## Market
 
-- `22m ago` US stock futures steady as Wall Street braces for Fed interest rate decision, Warsh presser - CNBC TV18 — _CNBC TV18_
-- `45m ago` Stock market today: Dow, S&P 500, Nasdaq futures steady in countdown to Fed decision, AI earnings test - Yahoo Finance — _Yahoo Finance_
-- `1h ago` Stock Market Today: Dow Futures Slip, S&P 500, Nasdaq 100 Rise as Investors Await Federal Reserve's Decis - Benzinga — _Benzinga_
-- `1h ago` US stock market today: Wall Street futures inch higher ahead of Fed decision; Middle East tensions resurface - livemint.com — _livemint.com_
-- `1h ago` US Stock Market Today: Dow Futures Slip 106 Points, S&P 500 & Nasdaq Futures Rise 0.2% Ahead of Fed Rate Decision as Oil Prices Jump - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` 9am Markets Update - RTE.ie — _RTE.ie_
+- `18m ago` Oil prices jump, and U.S. stocks fall following fighting in the Middle East - Pittsburgh Post-Gazette — _Pittsburgh Post-Gazette_
+- `36m ago` Why is US Stock Market Down Today? Dow Jones Falls 800 Points as Oil Prices Surges Nearly 7% Before Fed Rate Decision Amid Middle East Tensions | What Investors Should Watch - sundayguardianlive.com — _sundayguardianlive.com_
+- `42m ago` US Stock Market Crash: Oil Spike To Fed Pivot Fears — Three Reasons Why Wall Street Is Under Pressure - NDTV Profit — _NDTV Profit_
+- `1h ago` S&P 500 Today: Index Falls 0.70% as Chip Selloff Weighs & Oil Price Surge Nearly 7% Before Fed Decision – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - sundayguardianlive.com — _sundayguardianlive.com_
+- `1h ago` Nasdaq Today: Nasdaq 100 Falls -1.15% as Semiconductor Stocks Slide Amid Micron, AMD & Nvidia Tech Selloff – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - sundayguardianlive.com — _sundayguardianlive.com_
+- `1h ago` Stock market today: Dow falls over 800 points, S&P 500 and Nasdaq slide in countdown to Fed decision, AI earnings test - Yahoo Finance — _Yahoo Finance_
 
 ## Trump
 
-- `13m ago` Market News Today: Fed Decision, Microsoft and Meta Earnings, and Trump's Iran Hardline Converge in One Session — South Korea Activates Emergency Market Stabilization - Binance — _Binance_
-- `22m ago` Trump vows fresh strikes on Iran after missiles targeting US forces are intercepted - FXStreet — _FXStreet_
-- `23m ago` Trump Says US Will ‘Hit Iran Hard’ If Negotiations Fail – Stock Futures Fall, Oil Prices Start Climbing Again - TradingView — _TradingView_
-- `48m ago` The Fed meeting, Ford earnings, Trump's investment portfolio and more in Morning Squawk - CNBC — _CNBC_
-- `1h ago` President Trump hits lowest approval rating since January 6 aftermath - CNN — _CNN_
-- `1h ago` Trump Calls Warsh "Fantastic" But Says "We Should Have the Lowest Interest Rate in the World" Ahead of Critical Fed Meeting - 24/7 Wall St. — _24/7 Wall St._
+- `4m ago` Oil prices jump following fighting with Iran, while sinking AI stocks drag Wall Street lower - AP News — _AP News_
+- `34m ago` Oil prices rebound, jump 8% as Trump warns Iran after attacks on US forces; Brent nears $90 - livemint.com — _livemint.com_
+- `1h ago` Top Midday Stories: Stocks Down, Oil Up as Trump Vows Strong Response to Iran Attacks; Vertiv Q2 Revenue Misses Estimates - Yahoo Finance — _Yahoo Finance_
+- `2h ago` Trump officials launch probe over alleged testosterone vials, kissing exercise in 2 school districts - CNN — _CNN_
+- `2h ago` Dow slumps 700 points, oil jumps over 6% after Trump vows to give Iran ‘beating’ following surprise attacks - New York Post — _New York Post_
+- `2h ago` Trump says US to hit Iran 'hard' after attack on bases in Jordan: Fox News - The Economic Times — _The Economic Times_
 
 ## Musk
 
-- `40m ago` Elon Musk’s brutal reply has everyone picking sides - Rolling Out — _Rolling Out_
-- `51m ago` Volvo Discontinues Use Of Lidar Giving Elon Musk An "I Told You So" Moment - Auto Spies — _Auto Spies_
-- `1h ago` Elon Musk's Recent Fortune Decline Explained %%page%% %%sep%% - mediatakeout.com — _mediatakeout.com_
-- `1h ago` Elon Musk's Companies Have Lost $1.5 Trillion In Value. SpaceX's Biggest Test Yet Starts Next Week - inkl — _inkl_
-- `2h ago` Elon Musk to Donate His Wealth Before 2036? Tesla CEO Says He Might After Nobel Prize Winner's Challenge - Yahoo Finance — _Yahoo Finance_
-- `2h ago` Elon Musk Says ‘I Did Try to Warn Them’ After Volvo Drops Luminar LiDAR From the EX90 and ES90 EVs Follow - Benzinga — _Benzinga_
+- `1m ago` Elon Musk updates the SpaceX timeline for Mars - Teslarati — _Teslarati_
+- `2h ago` Elon Musk responds to Volvo’s latest LiDAR decision - Teslarati — _Teslarati_
+- `3h ago` What is Elon Musk's net worth? This is exactly how the former trillionaire made his fortune - Indy100 — _Indy100_
+- `3h ago` Volvo Discontinues Use Of Lidar Giving Elon Musk An "I Told You So" Moment - Auto Spies — _Auto Spies_
+- `4h ago` Elon Musk’s brutal reply has everyone picking sides - Rolling Out — _Rolling Out_
+- `4h ago` Elon Musk's Recent Fortune Decline Explained %%page%% %%sep%% - mediatakeout.com — _mediatakeout.com_
 
 ## Fed
 
-- `2h ago` Fed watch - Crypto Briefing — _Crypto Briefing_
+- `36m ago` The Fed’s next step is far from clear - Financial Times — _Financial Times_
+- `1h ago` Rates and Debt Payments to Rise with Inflation | Steve Rattner on Morning Joe - stevenrattner.com — _stevenrattner.com_
 - `2h ago` Uncertainty creeps into Fed's rate decision as Warsh keeps his cards hidden - Reuters — _Reuters_
-- `3h ago` Federal Reserve rate decision faces uncertainty under Warsh's no-guidance approach - Traders Union — _Traders Union_
-- `4h ago` Federal Reserve Board Concludes Meeting - Southeast AgNET — _Southeast AgNET_
-- `4h ago` Fed on collision path with Trump as rate hikes loom on horizon - Politico — _Politico_
-- `5h ago` Watch: Fed Chairman Kevin Warsh Holds News Conference - WSJ — _WSJ_
+- `3h ago` Will the Fed hold or hike interest rates today? It's a close call. - Yahoo Finance — _Yahoo Finance_
+- `4h ago` Uncertainty Surrounds Potential Federal Reserve Interest Rate Hike Amid Market Signals - SSBCrack — _SSBCrack_
+- `4h ago` US Fed rate decision: Will Kevin Warsh keep rates unchanged or surprise markets? - Firstpost — _Firstpost_
 
 ## Oil
 
-- `5m ago` China and the Iran War Oil Shock That Wasn’t - ChinaTalk | Jordan Schneider — _ChinaTalk | Jordan Schneider_
-- `1h ago` Oil Prices Plunge 5% as US-Iran Ceasefire Fuels Peace Hopes - Business Post Nigeria — _Business Post Nigeria_
-- `1h ago` Iran pushes back on US talk claims - Crypto Briefing — _Crypto Briefing_
-- `2h ago` Iran Rejects Oman's Proposal to Evenly Divide Hormuz Control - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `3h ago` Oil Prices Rise on Doubts US-Iran Peace Talks Will Ease Hormuz Disruption - EnergyNow.com — _EnergyNow.com_
-- `3h ago` Crude Oil Prices: Jump 3% as Hormuz Risk Lifts Brent and WTI - Coinpaper — _Coinpaper_
+- `3h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - LiteFinance — _LiteFinance_
+- `3h ago` China and the Iran War Oil Shock That Wasn’t - ChinaTalk | Jordan Schneider — _ChinaTalk | Jordan Schneider_
+- `4h ago` Oil Prices Jump $3 as Middle East Tensions Escalate - tovima.com — _tovima.com_
+- `4h ago` UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com — _EnergyNow.com_
+- `4h ago` Oil Prices Plunge 5% as US-Iran Ceasefire Fuels Peace Hopes - Business Post Nigeria — _Business Post Nigeria_
+- `5h ago` Iran pushes back on US talk claims - cryptobriefing.com — _cryptobriefing.com_
 
 ## Chips
 
-- `1h ago` GlobalFoundries Gets $300M CHIPS Award Boost From Trump Administration — NVDA's Jensen Huang Calls Silicon Photonics 'Essential' To AI Future - TradingView — _TradingView_
-- `2h ago` The Chinese AI Model That Wiped Hundreds Of Billions Off Nvidia Just Made Its Creator Worth $35B - TradingView — _TradingView_
-- `2h ago` Prediction: AMD Stock Could Double by 2028. Here's Why - The Motley Fool — _The Motley Fool_
-- `2h ago` Prediction: AMD Stock Could Double by 2028. Here's Why - Yahoo Finance — _Yahoo Finance_
-- `2h ago` AMD Stock Falls 6% as Wedbush Raises Target to $600: What the Disconnect Means for Investors - WEEX — _WEEX_
-- `3h ago` Semiconductor Stocks NVDA, AMD, Micron, and SNDK Extend Their Sell-Off in Pre-Market Today, July 29. What Triggered the Latest Slide? - TipRanks — _TipRanks_
+- `1h ago` Nvidia, Micron, AMD sink as SK Hynix results fail to impress, AI trade unwinds - Yahoo Finance — _Yahoo Finance_
+- `1h ago` Micron Technology: Long-Term AI Deals Stabilize Earnings Visibility - scanx.trade — _scanx.trade_
+- `1h ago` AMD Stock Risks Falling Below $400: Buy More Or Sell? - Watcher Guru — _Watcher Guru_
+- `1h ago` The AI Trade Is Still On: Why Nvidia Remains at the Center of It - 24/7 Wall St. — _24/7 Wall St._
+- `2h ago` US Stocks Fall Amid Iran Attacks and Fed Rate Decision Loom - Readers.id — _Readers.id_
+- `2h ago` Semiconductor stocks fall: Nvidia and chipmakers face broad market pressure - Business Upturn — _Business Upturn_
 
 ## Earnings
 
-- `38m ago` SoFi Stock Falls Despite Q2 Earnings Beat and Raised Guidance: What Investors Need to Know - Benzinga — _Benzinga_
-- `47m ago` Vertiv, SK Hynix, SoFi, Bloom Energy, GE HealthCare, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
-- `1h ago` Scholar Rock (SRRK) Stock SURGES 24% After Q3 Earnings: Apitegromab's Future & Biotech Catalyst Karolína Plíšková (6XJ4cTguwe) - Mshale — _Mshale_
-- `1h ago` Today's Pre-Market Movers and Top Ratings | STX, BE, VRT and More - Moomoo — _Moomoo_
-- `1h ago` Dow Jones Futures Fall, Oil Jumps On Iran News; Seagate, SK Hynix, KLA, Bloom Energy Are AI Earnings Movers - Investor's Business Daily — _Investor's Business Daily_
-- `1h ago` 12 Industrials Stocks Moving In Wednesday's Pre-Market Session - Benzinga — _Benzinga_
+- `33m ago` Snowflake Stock Rises as Wells Fargo Lifts Target to $500 - Benzinga — _Benzinga_
+- `1h ago` What's Going On With Applied Digital Stock Today? - Benzinga — _Benzinga_
+- `1h ago` Reddit Stock Is Rising Ahead of Thursday Earnings: What Investors Need to Know - Benzinga — _Benzinga_
+- `1h ago` Vertiv, SoFi, GE HealthCare, Micron, SK Hynix, Garmin, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `2h ago` SoFi Earnings, Revenue Top Estimates. Here's Why Fintech Stock Tumbled. - Investor's Business Daily — _Investor's Business Daily_
+- `2h ago` Biggest stock movers Wednesday: F, CAR, TEVA, PSN, and more - Seeking Alpha — _Seeking Alpha_
 

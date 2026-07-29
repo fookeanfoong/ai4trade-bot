@@ -351,6 +351,14 @@
         "CLOSE JPM long (SIGNAL_INVALIDATED_EXIT) @ ~$355.99 [broker]",
         "no actionable signal (direction, confidence>=0.6, not priced-in)"
       ]
+    },
+    {
+      "ran_at": "2026-07-29T16:58:58Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "last_key": null,
