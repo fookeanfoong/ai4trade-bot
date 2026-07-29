@@ -35,6 +35,15 @@
       "exit": 205.56,
       "qty": 0.638723,
       "closed_at": "2026-07-27T13:32:32Z"
+    },
+    {
+      "ticker": "JPM",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 358.08,
+      "exit": 355.99,
+      "qty": 0.372356,
+      "closed_at": "2026-07-29T13:33:03Z"
     }
   ],
   "runs": [
@@ -333,28 +342,20 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-29T13:33:04Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "CLOSE JPM long (SIGNAL_INVALIDATED_EXIT) @ ~$355.99 [broker]",
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "last_key": null,
-  "positions": {
-    "JPM": {
-      "ticker": "JPM",
-      "side": "long",
-      "qty": 0.372356,
-      "entry": 358.08,
-      "stop": 349.13,
-      "t1": 368.82,
-      "t2": 379.56,
-      "half_taken": false,
-      "peak_price": 358.41,
-      "armed": false,
-      "confidence": 0.61,
-      "entry_chg_3d_pct": 3.84,
-      "notional_usd": 133.33,
-      "book_risk_usd": 3.33,
-      "opened_at": "2026-07-27T13:32:33Z",
-      "price_src": "broker"
-    }
-  },
-  "benched": {}
+  "positions": {},
+  "benched": {
+    "JPM": "2026-07-29"
+  }
 }
