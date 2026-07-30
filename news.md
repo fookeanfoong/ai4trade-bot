@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-30T18:02:30+00:00
+# Market News Digest — 2026-07-30T21:53:28+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `47m ago` **[Musk]** Elon Musk has a crazy prediction about AI in two years - Teslarati — _Teslarati_
-- `59m ago` **[Musk]** Tesla hits 10 million EVs, edging toward Elon Musk payout - NewsBytes — _NewsBytes_
-- `1h ago` **[Market]** Why is US Stock Market Up Today? Dow Jones Climbs 300 Points, Nasdaq Rally as Microsoft Surges & Meta Slides 8.5% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` **[Trump]** Why the GOP’s anti-Fauci crusade is awkward for Trump - CNN — _CNN_
-- `1h ago` **[Musk]** Tesla reaches ten million electric cars, edges toward Musk’s targets - Межа. Новини України. — _Межа. Новини України._
-- `1h ago` **[Musk]** Elon Musk returns to politics with plan to boost Republican turnout - The Telegraph — _The Telegraph_
-- `1h ago` **[Musk]** Tesla Hits 10 Million EV Milestone Toward Musk's Pay Goal - Whalesbook — _Whalesbook_
-- `1h ago` **[Market]** S&P 500 Today: S&P 500 Index Trading Up Today +0.93% Amid Big Tech Earnings, Fed Rate – Check Market Trends, Key Drivers & What This Means for Investors - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` **[Musk]** Elon Musk’s fortune has fallen below $750 billion for the first time since December following another sharp decline in SpaceX shares. The world’s richest person has lost roughly $750 billion from his peak of $1.45 trillion in J... - NewsBreak: Local News & Alerts — _NewsBreak: Local News & Alerts_
-- `2h ago` **[Market]** Dow Jones Today: Dow Climbs 300 Points as Microsoft, Intel & Amazon Surges on Apple Earnings Amid Fed Decisions – Check Key Drivers, Performance, Top Gainers-Losers & What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` **[Trump]** Trump says he’s open to temporarily withdrawing Blanche nomination amid GOP resistance - CNN — _CNN_
-- `2h ago` **[Musk]** What is Elon Musk's net worth? This is exactly how the former trillionaire made his fortune - Indy100 — _Indy100_
+- `13m ago` **[Fed]** Will the Fed raise interest rates this year? Divided economists weigh in - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
+- `17m ago` **[Musk]** Elon Musk Proved Critics Wrong on EVs, But Tesla Won’t Have a Home Run with AI - Barchart.com — _Barchart.com_
+- `40m ago` **[Market]** Microsoft's best day since 2008 leads US stocks, while inflation worries remain in the bond market - AP News — _AP News_
+- `50m ago` **[Musk]** Musk to Spend Millions Boosting MAGA Candidates in Midterms - Rolling Stone — _Rolling Stone_
+- `1h ago` **[Trump]** Trump admin pressures law enforcement groups to support controversial cryptocurrency legislation - CNN — _CNN_
+- `1h ago` **[Musk]** Elon Musk's $100 Million Republican Midterm Push - 조선일보 — _조선일보_
+- `1h ago` **[Trump]** Markets whipsaw as Trump, Fed face new inflation risks - The Hill — _The Hill_
+- `1h ago` **[Musk]** Elon Musk Is Firing Up the Vote-Buying Machine Again - Gizmodo — _Gizmodo_
+- `1h ago` **[Musk]** Elon Musk: China Produces Half of the World's Goods - ababnews.com — _ababnews.com_
+- `2h ago` **[Trump]** State Department announces Trump passports will be available throughout the US - CNN — _CNN_
+- `2h ago` **[Oil]** Crude Oil Prices Drop on Increased Traffic Through Strait of Hormuz - Barchart.com — _Barchart.com_
+- `2h ago` **[Oil]** Gulf Oil Exports Struggle to Recover Despite Higher Hormuz Traffic - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
 
 ## Market
 
-- `33m ago` Stock Market Today: Microsoft Sparks Chip Rebound, SanDisk Up 24% - Microsoft (NASDAQ:MSFT), State Street - Benzinga — _Benzinga_
-- `53m ago` US Stock Market Technical Analysis | July 30, 2026 - FXDailyReport.Com — _FXDailyReport.Com_
-- `53m ago` Jersey Mike's stock falls 2% in public market debut after pricing shares at $23 - cnbc.com — _cnbc.com_
-- `1h ago` Why is US Stock Market Up Today? Dow Jones Climbs 300 Points, Nasdaq Rally as Microsoft Surges & Meta Slides 8.5% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `1h ago` US Stock Market Live: Nasdaq Surges, AI Strength Outpaces Broader Weakness - TechStock² — _TechStock²_
-- `1h ago` S&P 500 Today: S&P 500 Index Trading Up Today +0.93% Amid Big Tech Earnings, Fed Rate – Check Market Trends, Key Drivers & What This Means for Investors - The Sunday Guardian — _The Sunday Guardian_
+- `40m ago` Microsoft's best day since 2008 leads US stocks, while inflation worries remain in the bond market - AP News — _AP News_
+- `1h ago` Wall Street ends sharply higher, lifted by soaring Microsoft - Reuters — _Reuters_
+- `1h ago` Dow Jones, Nasdaq, US Stock Market Today Updates: Check Latest Move in Futures, Nasdaq Jumps 2% as Microsoft, Intel, Micron & Amazon Surge While Nike, Adobe & Meta Crash | Why Are Stocks Up Today - The Sunday Guardian — _The Sunday Guardian_
+- `3h ago` 2.40pm Markets Update - RTE.ie — _RTE.ie_
+- `4h ago` Stock Market Today: Microsoft Sparks Chip Rebound, SanDisk Up 24% - Microsoft (NASDAQ:MSFT), State Street - Benzinga — _Benzinga_
+- `4h ago` US Stock Market Technical Analysis | July 30, 2026 - fxdailyreport.com — _fxdailyreport.com_
 
 ## Trump
 
-- `1h ago` Why the GOP’s anti-Fauci crusade is awkward for Trump - CNN — _CNN_
-- `2h ago` Trump says he’s open to temporarily withdrawing Blanche nomination amid GOP resistance - CNN — _CNN_
-- `7h ago` US-Iran war: Trump, team under scrutiny over allegations of playing the stock market; here’s what’s happening - Business Today — _Business Today_
-- `8h ago` Investing and thinking beyond Trump, Iran and oil prices: 5 large-caps from different sectors with upside - The Economic Times — _The Economic Times_
-- `9h ago` OPINION | Silent copper grab: How Trump is reshaping the global market - News24 — _News24_
-- `9h ago` Trump reacts to Fauci hearing on the Hill - CNN — _CNN_
+- `1h ago` Trump admin pressures law enforcement groups to support controversial cryptocurrency legislation - CNN — _CNN_
+- `1h ago` Markets whipsaw as Trump, Fed face new inflation risks - The Hill — _The Hill_
+- `2h ago` State Department announces Trump passports will be available throughout the US - CNN — _CNN_
+- `3h ago` Trump’s FCC targeted ABC. Viewers rushed to its defense - CNN — _CNN_
+- `3h ago` Trump’s Truth Social Offers Deep-Pocketed Traders Exclusive Early Access to Market-Moving Posts - Investopedia — _Investopedia_
+- `3h ago` Trump administration faces first major test after activating court that hasn’t heard a case in 30 years - CNN — _CNN_
 
 ## Musk
 
-- `47m ago` Elon Musk has a crazy prediction about AI in two years - Teslarati — _Teslarati_
-- `59m ago` Tesla hits 10 million EVs, edging toward Elon Musk payout - NewsBytes — _NewsBytes_
-- `1h ago` SpaceX Stock Is Tumbling. Baron and ARK Are Feeling the Pain. - Barron's — _Barron's_
-- `1h ago` Tesla reaches ten million electric cars, edges toward Musk’s targets - Межа. Новини України. — _Межа. Новини України._
-- `1h ago` Elon Musk returns to politics with plan to boost Republican turnout - The Telegraph — _The Telegraph_
-- `1h ago` The Madness Of King Elon The First - CleanTechnica — _CleanTechnica_
+- `17m ago` Elon Musk Proved Critics Wrong on EVs, But Tesla Won’t Have a Home Run with AI - Barchart.com — _Barchart.com_
+- `48m ago` Tesla (TSLA)and SpaceX Stock Drops Hit Cathie Wood and Ron Baron Funds - Barron's — _Barron's_
+- `50m ago` Musk to Spend Millions Boosting MAGA Candidates in Midterms - Rolling Stone — _Rolling Stone_
+- `1h ago` Elon Musk's $100 Million Republican Midterm Push - 조선일보 — _조선일보_
+- `1h ago` Elon Musk Is Firing Up the Vote-Buying Machine Again - Gizmodo — _Gizmodo_
+- `1h ago` Elon Musk: China Produces Half of the World's Goods - ababnews.com — _ababnews.com_
 
 ## Fed
 
-- `4h ago` SPY US chicago Fed labor market indicators (Jul) 4.13% (Prev. 4.19%) - Crypto Briefing — _Crypto Briefing_
-- `7h ago` The Federal Reserve Just Changed How It Talks About The Economy. Here's What's Different Under Kevin Warsh - ibtimes.com — _ibtimes.com_
-- `8h ago` Why Trump’s pressure on the Fed still isn’t working - bostonglobe.com — _bostonglobe.com_
-- `8h ago` US Borrowing Costs Climb to Highest Since 2007 After Fed Holds Interest Rates - Arbiterz — _Arbiterz_
-- `8h ago` Fed holds rates steady despite three dissenters favoring hike - Long Island Business News — _Long Island Business News_
-- `9h ago` What to Look for Ahead of Sept. Federal Reserve Board Meeting - Southeast AgNET — _Southeast AgNET_
+- `13m ago` Will the Fed raise interest rates this year? Divided economists weigh in - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
+- `3h ago` Federal Reserve Chair Kevin Warsh defends holding interest rates steady as dissent grows - Crypto Briefing — _Crypto Briefing_
+- `4h ago` Why PennyMac Financial Services (PFSI) Stock Is Falling Today - TradingView — _TradingView_
+- `5h ago` Interest Rate Predictions for the Next 5 Years: 2026-2030 - Norada Real Estate Investments — _Norada Real Estate Investments_
+- `5h ago` Fed holds rates steady as three officials push for a hike - Heartlander News — _Heartlander News_
+- `5h ago` Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years - TradingView — _TradingView_
 
 ## Oil
 
-- `4h ago` Qatar Turns to American LNG After Iran War Cripples Ras Laffan - oilprice.com — _oilprice.com_
-- `4h ago` Fuel Prices Could Keep Rising for Months After Hormuz Reopens, US EIA Says - EnergyNow.com — _EnergyNow.com_
-- `6h ago` Iran Says Two Oil Tankers Ditched Attempt to Transit Hormuz - oilprice.com — _oilprice.com_
-- `6h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - litefinance.org — _litefinance.org_
-- `7h ago` Iraq Oil Exports Drop to 530,000 bpd in May-June 2026 Amid Hormuz Closure - News and Statistics - IndexBox — _IndexBox_
-- `8h ago` Iran war shows China role in setting the price of oil - Crypto Briefing — _Crypto Briefing_
+- `2h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - LiteFinance — _LiteFinance_
+- `2h ago` Crude Oil Prices Drop on Increased Traffic Through Strait of Hormuz - Barchart.com — _Barchart.com_
+- `2h ago` Gulf Oil Exports Struggle to Recover Despite Higher Hormuz Traffic - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `3h ago` Oil prices went up on Wednesday, July 29 in the world market after Iran attacked a US base in Jordan. I via ANC 24/7 Full story link in the comments section. - facebook.com — _facebook.com_
+- `3h ago` Crude Oil is pricing a Hormuz deal, not a peace deal - fxstreet.com — _fxstreet.com_
+- `3h ago` Oil rises in volatile trade as US resumes attacks on Iran - sundayworld.co.za — _sundayworld.co.za_
 
 ## Chips
 
-- `1h ago` SMH (NASDAQ:SMH) Jumps 6.5% but Lags SOXX (NASDAQ:SOXX) as Semiconductor Stocks Gain Momentum - TechStock² — _TechStock²_
-- `1h ago` The Ultimate Bull Run for AMD, Broadcom, and Arm May Be Closer Than You Think - 24/7 Wall St. — _24/7 Wall St._
-- `1h ago` AI stock correction reflects a more rational market reassessment - Business Standard — _Business Standard_
-- `2h ago` Intel and AMD Soar 13%, Taiwan Semiconductor Rallies 7% as AI-Chip Stocks Bounce Hard - 24/7 Wall St. — _24/7 Wall St._
-- `2h ago` AMD Shares Drop 5.7 Percent as AI Spending Doubts Trigger Chip Selloff - sekbernews.id — _sekbernews.id_
-- `2h ago` Why Did Semiconductor Stocks NVDA, AMD, and INTC Rebound Today? - TipRanks — _TipRanks_
+- `19m ago` Semiconductor Stocks Rebound, Lifting New York Markets - 조선일보 — _조선일보_
+- `1h ago` 5 Best CPU and GPU Stocks to Buy in 2026 - U.S. News - Money — _U.S. News - Money_
+- `2h ago` AMD Stock Has Surged 364% in 5 Years. History Suggests That It Will Become a Multibagger By 2030 - The Motley Fool — _The Motley Fool_
+- `2h ago` Cathie Wood Invests $28.7 Million in Two High-Stakes Tech Stocks - TradingView — _TradingView_
+- `3h ago` AI Accelerators and Networking Fuel Broadcom's Growth: What's Ahead? - TradingView — _TradingView_
+- `3h ago` NVDA, AMD, ORCL, MU And Other Stocks In Focus — Situational Awareness Reportedly Sells Bulk Of Public Portfolio To Citadel - TradingView — _TradingView_
 
 ## Earnings
 
-- `56m ago` 7 Consumer Discretionary Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
-- `56m ago` 12 Information Technology Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
-- `56m ago` 12 Industrials Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
-- `1h ago` Super Micro Stock Rises Thursday: What's Happening? - Benzinga — _Benzinga_
-- `1h ago` Sandisk, SpaceX, Micron, Samsung, Microsoft, Meta, Lam Research, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
-- `2h ago` What's Going On With Applied Digital Stock Today? - Benzinga — _Benzinga_
+- `47m ago` 12 Health Care Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `47m ago` 12 Information Technology Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `47m ago` 11 Consumer Discretionary Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `47m ago` 12 Industrials Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `57m ago` After-Hours Stock Movers: AAPL, AMZN, COIN, RBLX, RDDT, AXTI, FND, WU, GDDY - Investing.com — _Investing.com_
+- `1h ago` Sandisk, Micron, Apple, SpaceX, Samsung, Microsoft, Meta, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
 
