@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-30T06:45:13+00:00
+# Market News Digest — 2026-07-30T13:32:16+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `29m ago` **[Oil]** Oil prices slip as tankers continue to ply the Middle East despite escalating US-Iran war - The Business Times — _The Business Times_
-- `43m ago` **[Musk]** Cathie Wood Bought $53.5 Million of Tesla Stock Right After Elon Musk's Post-Earnings Sell-Off. Is a Rebound Coming? - The Motley Fool — _The Motley Fool_
-- `44m ago` **[Trump]** Alex Jones calls for Trump’s impeachment on live show - CNN — _CNN_
-- `1h ago` **[Trump]** US Market Crash: Donald Trump's close ally takes big decision, triggers widespread sell-off across US markets - India.Com — _India.Com_
-- `1h ago` **[Market]** Indian stock market impact: What rising September Fed rate hike bets mean - Business Today — _Business Today_
-- `1h ago` **[Musk]** Tesla Inc TSLA CEO Elon Musk is returning to the political front with a huge injection of funds to b.. - 매일경제 — _매일경제_
-- `1h ago` **[Trump]** Trump and Netanyahu explored all Iran options including attack, Israeli official says - The Economic Times — _The Economic Times_
-- `1h ago` **[Fed]** A divided Fed holds interest rates steady despite stubborn inflation - The Washington Post — _The Washington Post_
-- `2h ago` **[Market]** US Stock Market: Trump backs Warsh as Fed’s hawkish tilt raises rate hike odds - The Economic Times — _The Economic Times_
-- `2h ago` **[Musk]** After Losing 40% Of His Net Worth In A Month, Elon Musk Attempts To Raise $4 Billion For Another Company - AOL.com — _AOL.com_
-- `2h ago` **[Market]** US Stock Market: Warsh faces early Fed dissent as three policymakers push for rate hike - The Economic Times — _The Economic Times_
-- `2h ago` **[Trump]** Trump is stuck in Iran. Here’s one idea that could offer a way out - CNN — _CNN_
+- `13m ago` **[Fed]** SPY US chicago Fed labor market indicators (Jul) 4.13% (Prev. 4.19%) - Crypto Briefing — _Crypto Briefing_
+- `16m ago` **[Musk]** Elon Musk Set to Swoop In and Give Republicans a Last-Minute Midterms Boost: Report - westernjournal.com — _westernjournal.com_
+- `46m ago` **[Market]** US Stock Market Today: Dow Futures Rise Over 150 Points, S&P 500 Futures Gain 0.35% & Nasdaq Futures Jump 0.61% as Microsoft Rally Offsets Fed Jitters ahead of PCE Inflation Data - sundayguardianlive.com — _sundayguardianlive.com_
+- `57m ago` **[Market]** US stock market today: Wall Street futures recover from Fed-led losses; Microsoft jumps 10% - livemint.com — _livemint.com_
+- `1h ago` **[Musk]** 'Pathetic Crash-Out': Elon Musk Dragged for Childish Reaction to Journalist's 'Loathed' Comment - International Business Times UK — _International Business Times UK_
+- `1h ago` **[Earnings]** Microsoft rally offsets Fed jitters; Quanta, Huntington Ingalls gain - Investing.com — _Investing.com_
+- `2h ago` **[Oil]** Iran Says Two Oil Tankers Ditched Attempt to Transit Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `2h ago` **[Musk]** Elon Musk's Tesla Pay Plan: What It Takes to Fully Vest - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
+- `2h ago` **[Market]** Trading Day: All Warshed up - whbl.com — _whbl.com_
+- `2h ago` **[Oil]** Iraq Oil Exports Drop to 530,000 bpd in May-June 2026 Amid Hormuz Closure - News and Statistics - IndexBox — _IndexBox_
+- `3h ago` **[Trump]** US-Iran war: Trump, team under scrutiny over allegations of playing the stock market; here’s what’s happening - Business Today — _Business Today_
+- `3h ago` **[Musk]** Elon Musk And SpaceX To Shock The AI WORLD Re: ASML Saipem (k3H3rR0910) - Mshale — _Mshale_
 
 ## Market
 
-- `1h ago` Indian stock market impact: What rising September Fed rate hike bets mean - Business Today — _Business Today_
-- `2h ago` Global Market: Zhongji Innolight shares slip in Hong Kong debut after record $6.8 billion IPO - The Economic Times — _The Economic Times_
-- `2h ago` US Stock Market: Trump backs Warsh as Fed’s hawkish tilt raises rate hike odds - The Economic Times — _The Economic Times_
-- `2h ago` US Stock Market: Warsh faces early Fed dissent as three policymakers push for rate hike - The Economic Times — _The Economic Times_
-- `2h ago` Pine Labs among 4 stocks that closed crossing below VWAP - The Economic Times — _The Economic Times_
-- `2h ago` Stock Market Today (July 30, 2026): Sensex, Nifty Open Flat As US-Iran Tensions Weigh On Sentiment - Times Now — _Times Now_
+- `46m ago` US Stock Market Today: Dow Futures Rise Over 150 Points, S&P 500 Futures Gain 0.35% & Nasdaq Futures Jump 0.61% as Microsoft Rally Offsets Fed Jitters ahead of PCE Inflation Data - sundayguardianlive.com — _sundayguardianlive.com_
+- `57m ago` US stock market today: Wall Street futures recover from Fed-led losses; Microsoft jumps 10% - livemint.com — _livemint.com_
+- `1h ago` US stock market today: Dow, S&P 500, Nasdaq futures rise as Microsoft rallies after earnings - CNBC TV18 — _CNBC TV18_
+- `1h ago` Dow Jones Futures Rise; Microsoft, Meta Lead Big Earnings After Market Tumbles, Oil Prices Soar - Investor's Business Daily — _Investor's Business Daily_
+- `1h ago` 9.15am Markets Update - RTE.ie — _RTE.ie_
+- `1h ago` US Premarket Movers for July 30, 2026 - Bloomberg — _Bloomberg_
 
 ## Trump
 
-- `44m ago` Alex Jones calls for Trump’s impeachment on live show - CNN — _CNN_
-- `1h ago` US Market Crash: Donald Trump's close ally takes big decision, triggers widespread sell-off across US markets - India.Com — _India.Com_
-- `1h ago` Trump and Netanyahu explored all Iran options including attack, Israeli official says - The Economic Times — _The Economic Times_
-- `2h ago` Trump is stuck in Iran. Here’s one idea that could offer a way out - CNN — _CNN_
-- `3h ago` Trump says he'd be 'quite disappointed' if China arms Iran - The Economic Times — _The Economic Times_
-- `3h ago` Panelist: ‘Fauci was trying to save us, Trump was trying to grave us’ - CNN — _CNN_
+- `3h ago` US-Iran war: Trump, team under scrutiny over allegations of playing the stock market; here’s what’s happening - Business Today — _Business Today_
+- `4h ago` Investing and thinking beyond Trump, Iran and oil prices: 5 large-caps from different sectors with upside - The Economic Times — _The Economic Times_
+- `5h ago` Trump reacts to Fauci hearing on the Hill - CNN — _CNN_
+- `5h ago` Trump's huge hidden upward redistribution - Robert Reich | Substack — _Robert Reich | Substack_
+- `7h ago` Alex Jones calls for Trump’s impeachment on live show - CNN — _CNN_
+- `8h ago` US Market Crash: Donald Trump's close ally takes big decision, triggers widespread sell-off across US markets - India.Com — _India.Com_
 
 ## Musk
 
-- `43m ago` Cathie Wood Bought $53.5 Million of Tesla Stock Right After Elon Musk's Post-Earnings Sell-Off. Is a Rebound Coming? - The Motley Fool — _The Motley Fool_
-- `1h ago` Tesla Inc TSLA CEO Elon Musk is returning to the political front with a huge injection of funds to b.. - 매일경제 — _매일경제_
-- `1h ago` China Says US Humanoid Robot Ban 'Severely Damages' Relations - Tesla (NASDAQ:TSLA) - Benzinga — _Benzinga_
-- `2h ago` After Losing 40% Of His Net Worth In A Month, Elon Musk Attempts To Raise $4 Billion For Another Company - AOL.com — _AOL.com_
-- `3h ago` Tesla's Supercharger Renewable Push: 4 Details That Matter - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
-- `3h ago` Elon Musk's posts about making an espresso in FSD are being scrutinized in a Tesla investigation - AOL.com — _AOL.com_
+- `16m ago` Elon Musk Set to Swoop In and Give Republicans a Last-Minute Midterms Boost: Report - westernjournal.com — _westernjournal.com_
+- `1h ago` 'Pathetic Crash-Out': Elon Musk Dragged for Childish Reaction to Journalist's 'Loathed' Comment - International Business Times UK — _International Business Times UK_
+- `1h ago` SpaceX to attempt Starship catch in Flight 14, as Flight 13 Ship 40 landed precisely - Tesla Oracle — _Tesla Oracle_
+- `1h ago` This Tesla owner's hilariously underwhelming boast speaks volumes about the Cybertruck, and the people who buy them - thepoke.com — _thepoke.com_
+- `1h ago` Tesla Delays Optimus Robot Production as R and D Costs Soar - sekbernews.id — _sekbernews.id_
+- `2h ago` Elon Musk's Tesla Pay Plan: What It Takes to Fully Vest - BASENOR - Tesla Accessories — _BASENOR - Tesla Accessories_
 
 ## Fed
 
-- `1h ago` A divided Fed holds interest rates steady despite stubborn inflation - The Washington Post — _The Washington Post_
-- `2h ago` After the interest rate decision, BTC fell below $64,000, with $270 million institutional funds moving unusually at midnight - Bitget — _Bitget_
-- `2h ago` Trump faults Fed after decision to hold interest rates steady - The Hans India — _The Hans India_
-- `3h ago` Tracking Trump: Trump threatens to hit Iran ‘hard’; Fed holds interest rates steady; Trump’s intelligence czar confirmed; and more - The Washington Post — _The Washington Post_
-- `4h ago` Fed holds rates at 3.50–3.75% as inflation remains above 2% target - Nation Thailand — _Nation Thailand_
-- `5h ago` Warsh-Led Federal Reserve Holds Interest Rates Steady - kaohoon international — _kaohoon international_
+- `13m ago` SPY US chicago Fed labor market indicators (Jul) 4.13% (Prev. 4.19%) - Crypto Briefing — _Crypto Briefing_
+- `4h ago` Fed holds rates steady despite three dissenters favoring hike - Long Island Business News — _Long Island Business News_
+- `5h ago` https://youtu.be/a7toaymwNlI?si=KsGIBQuni54PVr55 #gold #silver #usfed #goldmarket The US Federal Reserve has decided to keep interest rates unchanged, but policymakers have indicated that future decisions will depend on incoming economic data, infl - facebook.com — _facebook.com_
+- `8h ago` A divided Fed holds interest rates steady despite stubborn inflation - The Washington Post — _The Washington Post_
+- `9h ago` After the interest rate decision, BTC fell below $64,000, with $270 million institutional funds moving unusually at midnight - Bitget — _Bitget_
+- `9h ago` Trump faults Fed after decision to hold interest rates steady - thehansindia.com — _thehansindia.com_
 
 ## Oil
 
-- `29m ago` Oil prices slip as tankers continue to ply the Middle East despite escalating US-Iran war - The Business Times — _The Business Times_
-- `50m ago` Oil Prices Jump 7% as Middle East Conflict Escalates - Business Post Nigeria — _Business Post Nigeria_
-- `4h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - litefinance.org — _litefinance.org_
-- `5h ago` Oil prices slip as tankers continue to ply Middle East conflict zones - Crypto Briefing — _Crypto Briefing_
-- `7h ago` Goldman Lowers Oil Price Forecasts on Deal to Reopen Strait of Hormuz - EnergyNow.com — _EnergyNow.com_
-- `7h ago` Oil Prices Rise After Reports Container Ships in Hormuz Hit by Gunfire - EnergyNow.com — _EnergyNow.com_
+- `1h ago` Oil Prices Jump 7% as Middle East Conflict Escalates - Business Post Nigeria — _Business Post Nigeria_
+- `2h ago` Iran Says Two Oil Tankers Ditched Attempt to Transit Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `2h ago` Oil (USCrude) Price Forecast for Today, Tomorrow, Next Week, and Next 30 Days - LiteFinance — _LiteFinance_
+- `2h ago` Iraq Oil Exports Drop to 530,000 bpd in May-June 2026 Amid Hormuz Closure - News and Statistics - IndexBox — _IndexBox_
+- `4h ago` Iran war shows China role in setting the price of oil - Crypto Briefing — _Crypto Briefing_
+- `4h ago` Attacks and threats around the Strait of Hormuz, red sea, black sea and sea of azov are disrupting commercial shipping routes - Crypto Briefing — _Crypto Briefing_
 
 ## Chips
 
-- `2h ago` Intel Stock Crashes 40% After Earnings Miss: What Investors Need to Know - Intellectia AI — _Intellectia AI_
-- `2h ago` Best AI Memory Stocks to Buy in 2026 (Micron, SK Hynix, Samsung & More) - mitrade.com — _mitrade.com_
-- `7h ago` Arm stock drops post-earnings despite profit beat as stock-based compensation weighs - TechStock² — _TechStock²_
-- `10h ago` AMD, Intel stocks continue slide as chip sell-off deepens - Invezz — _Invezz_
-- `11h ago` Nvidia, Micron, AMD sink after SK Hynix results fail to impress, AI trade unwinds - Yahoo Finance — _Yahoo Finance_
-- `11h ago` Semiconductor Crash: 3 Stocks to Buy Now While They Are Still on Sale - The Motley Fool — _The Motley Fool_
+- `31m ago` Nvidia vs. AMD vs. Intel: Which Stock Is the Better Buy for the Server CPU Boom? - The Motley Fool — _The Motley Fool_
+- `1h ago` Nvidia pullback sparks new questions for AI investors - Rolling Out — _Rolling Out_
+- `1h ago` Top Chip Analyst: Semiconductor Oversupply Is Nearly Impossible Before 2028. Why He’s Bullish on Memory - 24/7 Wall St. — _24/7 Wall St._
+- `1h ago` AMD stock tumbles amid broad semiconductor selloff over AI financing fears - eciks.org — _eciks.org_
+- `1h ago` NVIDIA stock falls 3.5% as chip sector sheds $1 trillion - eciks.org — _eciks.org_
+- `1h ago` AMD stock falls 5.7% amid broader chip sector selloff - eciks.org — _eciks.org_
 
 ## Earnings
 
-- `3h ago` US Stocks Move on Earnings; Microsoft, Coca‑Cola Shine - HDFC Sky — _HDFC Sky_
-- `5h ago` Earnings today: Starbucks posts 7.9% comp growth, Microsoft and Meta report - eciks.org — _eciks.org_
-- `6h ago` Closing Bell Movers: Microsoft jumps, Meta slips after earnings - TipRanks — _TipRanks_
-- `9h ago` Nvidia Partner SK Hynix Misses Q2 Sales Target But Profit Surprises - Investor's Business Daily — _Investor's Business Daily_
-- `9h ago` Vertiv, SoFi, GE HealthCare, Micron, SK Hynix, Garmin, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
-- `9h ago` 12 Consumer Discretionary Stocks Moving In Wednesday's After-Market Session - Benzinga — _Benzinga_
+- `6m ago` Apple Stock Sits at Record Highs: Can Q3 Earnings Drive the Next Breakout? - Benzinga — _Benzinga_
+- `31m ago` Why Teladoc Health Stock Is Dropping Thursday Following Soft Q3 Outlook - Benzinga — _Benzinga_
+- `40m ago` Pagaya Stock Rises After Q2 Double Beat, Record Net Income and Network Volume - Benzinga — _Benzinga_
+- `1h ago` Mastercard Earnings Rise as Firm Expands Beyond Payments Network - Bloomberg — _Bloomberg_
+- `1h ago` Today's Pre-Market Movers and Top Ratings | SKHY, MU, MSFT and More - Moomoo — _Moomoo_
+- `1h ago` Microsoft rally offsets Fed jitters; Quanta, Huntington Ingalls gain - Investing.com — _Investing.com_
 

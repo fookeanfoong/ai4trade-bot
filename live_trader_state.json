@@ -383,9 +383,36 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-30T13:32:22Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG CVX conf 0.63 0.701754 sh @ $190.00 [broker] notional $133 risk $3.33 | stop $185.25 T1 $195.7 T2 $201.4"
+      ]
     }
   ],
   "last_key": null,
-  "positions": {},
+  "positions": {
+    "CVX": {
+      "ticker": "CVX",
+      "side": "long",
+      "qty": 0.701754,
+      "entry": 190.0,
+      "stop": 185.25,
+      "t1": 195.7,
+      "t2": 201.4,
+      "half_taken": false,
+      "peak_price": 190.0,
+      "armed": false,
+      "confidence": 0.63,
+      "entry_chg_3d_pct": 0.17,
+      "notional_usd": 133.33,
+      "book_risk_usd": 3.33,
+      "opened_at": "2026-07-30T13:32:21Z",
+      "price_src": "broker"
+    }
+  },
   "benched": {}
 }
