@@ -1,10 +1,10 @@
-# Market News Digest — 2026-07-30T17:57:08+00:00
+# Market News Digest — 2026-07-30T18:02:30+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `41m ago` **[Musk]** Elon Musk has a crazy prediction about AI in two years - Teslarati — _Teslarati_
-- `54m ago` **[Musk]** Tesla hits 10 million EVs, edging toward Elon Musk payout - NewsBytes — _NewsBytes_
+- `47m ago` **[Musk]** Elon Musk has a crazy prediction about AI in two years - Teslarati — _Teslarati_
+- `59m ago` **[Musk]** Tesla hits 10 million EVs, edging toward Elon Musk payout - NewsBytes — _NewsBytes_
 - `1h ago` **[Market]** Why is US Stock Market Up Today? Dow Jones Climbs 300 Points, Nasdaq Rally as Microsoft Surges & Meta Slides 8.5% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
 - `1h ago` **[Trump]** Why the GOP’s anti-Fauci crusade is awkward for Trump - CNN — _CNN_
 - `1h ago` **[Musk]** Tesla reaches ten million electric cars, edges toward Musk’s targets - Межа. Новини України. — _Межа. Новини України._
@@ -18,9 +18,9 @@ _Freshness: only headlines from the last 24h; newest first._
 
 ## Market
 
-- `27m ago` Stock Market Today: Microsoft Sparks Chip Rebound, SanDisk Up 24% - Microsoft (NASDAQ:MSFT), State Street - Benzinga — _Benzinga_
-- `48m ago` US Stock Market Technical Analysis | July 30, 2026 - FXDailyReport.Com — _FXDailyReport.Com_
-- `48m ago` Jersey Mike's stock falls 2% in public market debut after pricing shares at $23 - CNBC — _CNBC_
+- `33m ago` Stock Market Today: Microsoft Sparks Chip Rebound, SanDisk Up 24% - Microsoft (NASDAQ:MSFT), State Street - Benzinga — _Benzinga_
+- `53m ago` US Stock Market Technical Analysis | July 30, 2026 - FXDailyReport.Com — _FXDailyReport.Com_
+- `53m ago` Jersey Mike's stock falls 2% in public market debut after pricing shares at $23 - cnbc.com — _cnbc.com_
 - `1h ago` Why is US Stock Market Up Today? Dow Jones Climbs 300 Points, Nasdaq Rally as Microsoft Surges & Meta Slides 8.5% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
 - `1h ago` US Stock Market Live: Nasdaq Surges, AI Strength Outpaces Broader Weakness - TechStock² — _TechStock²_
 - `1h ago` S&P 500 Today: S&P 500 Index Trading Up Today +0.93% Amid Big Tech Earnings, Fed Rate – Check Market Trends, Key Drivers & What This Means for Investors - The Sunday Guardian — _The Sunday Guardian_
@@ -30,15 +30,15 @@ _Freshness: only headlines from the last 24h; newest first._
 - `1h ago` Why the GOP’s anti-Fauci crusade is awkward for Trump - CNN — _CNN_
 - `2h ago` Trump says he’s open to temporarily withdrawing Blanche nomination amid GOP resistance - CNN — _CNN_
 - `7h ago` US-Iran war: Trump, team under scrutiny over allegations of playing the stock market; here’s what’s happening - Business Today — _Business Today_
-- `7h ago` Dow, S&P 500, Nasdaq Futures Slip As Trump Threatens ‘Much Higher Level’ Of Bombing In Iran Deal Failure: SNAP, ARM, ROOT, PSKY Stocks In Focus Today - Stocktwits — _Stocktwits_
-- `8h ago` Most Americans say Iran war is not worth it as Trump's ratings slide - India Today — _India Today_
-- `8h ago` 'Too bad for Republican Party...': Trump reacts to Thune saying there's no path for SAVE America Act - The Economic Times — _The Economic Times_
+- `8h ago` Investing and thinking beyond Trump, Iran and oil prices: 5 large-caps from different sectors with upside - The Economic Times — _The Economic Times_
+- `9h ago` OPINION | Silent copper grab: How Trump is reshaping the global market - News24 — _News24_
+- `9h ago` Trump reacts to Fauci hearing on the Hill - CNN — _CNN_
 
 ## Musk
 
-- `41m ago` Elon Musk has a crazy prediction about AI in two years - Teslarati — _Teslarati_
-- `54m ago` Tesla hits 10 million EVs, edging toward Elon Musk payout - NewsBytes — _NewsBytes_
-- `56m ago` SpaceX Stock Is Tumbling. Baron and ARK Are Feeling the Pain. - Barron's — _Barron's_
+- `47m ago` Elon Musk has a crazy prediction about AI in two years - Teslarati — _Teslarati_
+- `59m ago` Tesla hits 10 million EVs, edging toward Elon Musk payout - NewsBytes — _NewsBytes_
+- `1h ago` SpaceX Stock Is Tumbling. Baron and ARK Are Feeling the Pain. - Barron's — _Barron's_
 - `1h ago` Tesla reaches ten million electric cars, edges toward Musk’s targets - Межа. Новини України. — _Межа. Новини України._
 - `1h ago` Elon Musk returns to politics with plan to boost Republican turnout - The Telegraph — _The Telegraph_
 - `1h ago` The Madness Of King Elon The First - CleanTechnica — _CleanTechnica_
@@ -46,11 +46,11 @@ _Freshness: only headlines from the last 24h; newest first._
 ## Fed
 
 - `4h ago` SPY US chicago Fed labor market indicators (Jul) 4.13% (Prev. 4.19%) - Crypto Briefing — _Crypto Briefing_
+- `7h ago` The Federal Reserve Just Changed How It Talks About The Economy. Here's What's Different Under Kevin Warsh - ibtimes.com — _ibtimes.com_
+- `8h ago` Why Trump’s pressure on the Fed still isn’t working - bostonglobe.com — _bostonglobe.com_
+- `8h ago` US Borrowing Costs Climb to Highest Since 2007 After Fed Holds Interest Rates - Arbiterz — _Arbiterz_
 - `8h ago` Fed holds rates steady despite three dissenters favoring hike - Long Island Business News — _Long Island Business News_
-- `8h ago` What to Look for Ahead of Sept. Federal Reserve Board Meeting - Southeast AgNET — _Southeast AgNET_
-- `9h ago` https://youtu.be/a7toaymwNlI?si=KsGIBQuni54PVr55 #gold #silver #usfed #goldmarket The US Federal Reserve has decided to keep interest rates unchanged, but policymakers have indicated that future decisions will depend on incoming economic data, infl - facebook.com — _facebook.com_
-- `12h ago` A divided Fed holds interest rates steady despite stubborn inflation - The Washington Post — _The Washington Post_
-- `13h ago` After the interest rate decision, BTC fell below $64,000, with $270 million institutional funds moving unusually at midnight - Bitget — _Bitget_
+- `9h ago` What to Look for Ahead of Sept. Federal Reserve Board Meeting - Southeast AgNET — _Southeast AgNET_
 
 ## Oil
 
@@ -72,10 +72,10 @@ _Freshness: only headlines from the last 24h; newest first._
 
 ## Earnings
 
-- `51m ago` 7 Consumer Discretionary Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
-- `51m ago` 12 Industrials Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
+- `56m ago` 7 Consumer Discretionary Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
+- `56m ago` 12 Information Technology Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
+- `56m ago` 12 Industrials Stocks Moving In Thursday's Intraday Session - Benzinga — _Benzinga_
 - `1h ago` Super Micro Stock Rises Thursday: What's Happening? - Benzinga — _Benzinga_
 - `1h ago` Sandisk, SpaceX, Micron, Samsung, Microsoft, Meta, Lam Research, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
 - `2h ago` What's Going On With Applied Digital Stock Today? - Benzinga — _Benzinga_
-- `3h ago` Plug Power Stock Jumps as Microsoft Earnings Spotlight AI Energy Demand - Benzinga — _Benzinga_
 
