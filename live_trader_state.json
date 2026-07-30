@@ -375,11 +375,17 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-30T06:45:17Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "market closed \u2014 no orders this run"
+      ]
     }
   ],
   "last_key": null,
   "positions": {},
-  "benched": {
-    "JPM": "2026-07-29"
-  }
+  "benched": {}
 }
