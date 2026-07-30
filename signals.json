@@ -1,24 +1,36 @@
 {
-  "updated_at": "2026-07-29",
+  "updated_at": "2026-07-30",
   "valid_for": "2026-07-30",
-  "generator": "generate_signals.py (algorithmic)",
-  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
+  "generator": "Claude premarket curation (news-driven)",
+  "note": "盘前人工复核:中东升级(油价冲击)+ 韩国半导体崩盘,两股相反力量。仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
+  "data_quality_flags": [
+    "quotes.json 陈旧(updated_at=None),盘中由 quotes.py 刷新;能源 +14~15%、USO +21% 是油价冲击的真实方向,但具体数字以盘中刷新为准。",
+    "QQQ 显示 -8.6%:韩国/中国芯片设备引发的半导体系统性杀跌,方向可信但幅度以刷新为准。"
+  ],
+  "market_context": {
+    "two_forces": "能源上涨(中东 Hormuz 供给冲击,Brent ~$108/+15%)对撞 科技/半导体下杀(韩国 KOSPI 崩盘 + 中国自产 DUV 设备威胁三星/海力士)。SPY -1.6%、QQQ -8.6%,整体 risk-off。",
+    "energy_long": "CVX 做多:Hormuz(全球 20% 原油)供给冲击是本板上最强、最基本面的催化;能源是这场危机里唯一受益、上涨的资产,天然对冲了正在杀跌的半导体(独立催化、真分散)。3 日仅 -1.5%(周一崩盘已回补,多日维度不算追高)。只开 1 份、紧止损。",
+    "risk_acknowledged": "诚实说:这是在 +14% 当日大涨后入场,且地缘催化很脆(一条停火头条就能像周一那样反转 -10%)。所以只 1 份小仓 + 2.5% 紧止损兜底;若 SPY 实时跌破 -2% regime 线,护栏会自动挡住这笔多单,我们就继续空仓——都能接受。",
+    "no_semis_short": "NVDA/AMD 方向对(半导体在崩),但 NVDA 3日 -8%、AMD 3日 -18%,都远超『不追空』阈值——追刀+轧空风险,不做。算法给的 NVDA 空单因此被否。",
+    "reentry_plan": "若中东升级持续、能源回踩企稳,再考虑加第二个能源名或维持;若出现停火头条,止损兜底、立即重估。"
+  },
   "signals": [
     {
-      "sector_or_ticker": "NVDA",
-      "direction": "bearish",
-      "confidence": 0.68,
+      "sector_or_ticker": "CVX",
+      "direction": "bullish",
+      "confidence": 0.63,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
+      "max_chase_3d_pct": 6.0,
       "already_priced_in": false,
-      "auto_generated": true,
+      "auto_generated": false,
       "reasoning": {
-        "en": "Auto: NVDA 3-day trend -8.1% (today -2.5%), aligned down. Momentum + trend filter; algorithmic, not analyst-reviewed.",
-        "zh": "自动:NVDA 三日趋势 -8.1%(当日 -2.5%),方向下跌一致。动量+趋势过滤生成,非人工分析。"
+        "en": "Long CVX on the Middle East supply shock — Strait of Hormuz (20% of world oil) re-escalating, Brent ~$108 (+15%). Energy is the one asset RISING on the very crisis that's crashing semis/tech (QQQ -8.6%), so it's a genuine hedge and diversifier, not correlated with the sell-off. 3-day change is only -1.5% (round-tripped Monday's ceasefire crash), so it's not multi-day-extended despite today's pop. HONEST risk: entering after a ~+14% intraday move on a fragile geopolitical catalyst that reversed violently just Monday — so ONE small slice, tight 2.5% stop, and the regime guard (SPY < -2%) is the backstop that keeps us flat if this turns into a full risk-off cascade.",
+        "zh": "做多 CVX,押中东供给冲击——Hormuz(全球 20% 原油)重新升级,Brent ~$108(+15%)。能源是这场正在杀跌半导体/科技(QQQ -8.6%)的危机里唯一上涨的资产,是真正的对冲、与抛售不相关。3 日仅 -1.5%(周一停火崩盘已回补),多日维度不算追高。诚实的风险:是在当日 ~+14% 大涨后入场,地缘催化很脆(周一刚反转过)——所以只 1 份小仓、2.5% 紧止损,若 SPY 跌破 -2% 则 regime 护栏自动让我们空仓。"
       }
     }
   ]
