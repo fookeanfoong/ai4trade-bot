@@ -44,6 +44,15 @@
       "exit": 355.99,
       "qty": 0.372356,
       "closed_at": "2026-07-29T13:33:03Z"
+    },
+    {
+      "ticker": "CVX",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 190.0,
+      "exit": 194.99,
+      "qty": 0.701754,
+      "closed_at": "2026-07-31T13:32:58Z"
     }
   ],
   "runs": [
@@ -425,28 +434,20 @@
       "actions": [
         "market closed \u2014 no orders this run"
       ]
+    },
+    {
+      "ran_at": "2026-07-31T13:32:59Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "CLOSE CVX long (SIGNAL_INVALIDATED_EXIT) @ ~$194.99 [broker]",
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "last_key": null,
-  "positions": {
-    "CVX": {
-      "ticker": "CVX",
-      "side": "long",
-      "qty": 0.701754,
-      "entry": 190.0,
-      "stop": 185.25,
-      "t1": 195.7,
-      "t2": 201.4,
-      "half_taken": false,
-      "peak_price": 191.48,
-      "armed": true,
-      "confidence": 0.63,
-      "entry_chg_3d_pct": 0.17,
-      "notional_usd": 133.33,
-      "book_risk_usd": 3.33,
-      "opened_at": "2026-07-30T13:32:21Z",
-      "price_src": "broker"
-    }
-  },
-  "benched": {}
+  "positions": {},
+  "benched": {
+    "CVX": "2026-07-31"
+  }
 }
