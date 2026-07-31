@@ -1,0 +1,60 @@
+name: deploy-site
+
+# Redeploys the signal PWA (ai4trade-bot on Vercel) once every US trading-day
+# morning, AFTER the premarket pipeline has refreshed signals.json /
+# pwa/data/signals.json. This is the "publish" step that was missing: the bot
+# commits fresh signals to the repo daily, but the live site only updates when
+# a Vercel deploy is triggered.
+#
+# WHY a Vercel Deploy Hook (not push-auto-deploy):
+#   - The trading pipeline pushes to main many times a day (every ~5 min during
+#     the session). Deploying on every push would blow through Vercel's free
+#     deployment limits, so we deploy exactly ONCE each weekday morning here.
+#
+# SETUP (one-time, in GitHub repo settings):
+#   Settings -> Secrets and variables -> Actions -> New repository secret
+#     Name:  VERCEL_DEPLOY_HOOK
+#     Value: the Deploy Hook URL from Vercel
+#            (Vercel -> ai4trade-bot project -> Settings -> Git -> Deploy Hooks)
+#   The URL is a rebuild token, so it lives in a secret and is never committed.
+#
+# Runs 13:15 UTC on weekdays = ~09:15 ET, before the US open (09:30 ET), by
+# which time the premarket signal refresh has already committed today's signal.
+# Adjust the cron if you want it earlier/later. You can also trigger it by hand
+# from the Actions tab (workflow_dispatch).
+
+on:
+  schedule:
+    - cron: "15 13 * * 1-5"
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel redeploy
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK secret is not set — skipping."
+            echo "Add it in Settings -> Secrets and variables -> Actions. See this workflow's header."
+            exit 0
+          fi
+          echo "Triggering Vercel deploy hook…"
+          # Retry a few times on transient network errors.
+          for i in 1 2 3 4; do
+            code=$(curl -sS -o /tmp/resp.json -w "%{http_code}" -X POST "$HOOK" || echo 000)
+            echo "attempt $i -> HTTP $code"
+            if [ "$code" = "200" ] || [ "$code" = "201" ]; then
+              echo "Deploy triggered:"; cat /tmp/resp.json; echo; exit 0
+            fi
+            sleep $((2 ** i))
+          done
+          echo "::error::Failed to trigger Vercel deploy hook after retries."
+          cat /tmp/resp.json 2>/dev/null || true
+          exit 1
