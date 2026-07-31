@@ -118,3 +118,15 @@
   (pretty numbers ≠ edge; EV = win%×odds −(1−win%) discipline is already encoded in our
   stops/targets/sizing). Built a clearly-labeled demo terminal for the user as a teaching
   toy; it is NOT part of the trading system.
+
+## 2026-07-31 — Alpaca paper Week 2 review — net +$0.69 (1W/2L), discipline held through a chaotic tape
+- HEALTH: system clean. 25 runs Mon–Fri, entries/exits fired every day via the open-kick, 0 broker/data errors, quotes errors {} all week, runs updating through Fri close. Nothing broken.
+- Closed this week: NVDA -$2.04 (trail-lock, weekend gap on the Korea semis breakdown — a laggard cut, not a bad entry), JPM -$0.78 (deliberate flat before the FOMC, ~breakeven), CVX +$3.50 (Mideast/Hormuz oil supply-shock long, banked near T1 before the weekend). NET +$0.69.
+- WHY the two losses — NOT a param failure: NVDA was a carried-over laggard cut on a genuine sector breakdown (Korea/China-DUV semis crash); JPM was a deliberate risk-management exit before a binary Fed. Neither was chop-between-stop-and-T1, wrong-regime, or a chased entry. The losers were tiny (-$2.04, -$0.78) and the winner (+$3.50) more than covered them — that's the payoff shape we want (small losses, bigger wins).
+- WHAT WORKED (process, regime-dependent so don't extrapolate):
+  1. Guards earned their keep in a two-crisis week: no-chase kept us out of AMD (which was down 9%→18%/3d); regime-awareness kept us defensive through the Korea semis crash; flat-into-Fed and flat-into-weekend avoided two un-manageable binary events.
+  2. Energy long re-engaged ONLY when the catalyst flipped back (Mideast escalation, oil supply shock) AND 3d wasn't extended (CVX 3d ~flat, round-tripped Monday's crash) — symmetric with sitting out energy on Monday's oil crash. Consistent logic, not hindsight.
+  3. Banking CVX before the weekend captured +$3.50 (rallied to ~T1 at the open) AND removed un-manageable weekend headline risk. Locking > hoping.
+- HONEST cost of the discipline: skipping the AMD short (no-chase) missed a would-be winner (AMD fell another ~8%). Stand by the rule (protects against squeezes on average); one favorable instance is not a reason to loosen no-chase. Logged, no change.
+- CHANGE: NONE. Only 3 closed trades this week (~6 since inception) = far too small to tune; the losses were deliberate/well-managed, not systematic; net positive. Adjusting generate_signals/live_trader thresholds on this would be overfitting. Keep the discipline, accumulate trades.
+- GATE to any real-money talk: still 2 of 4 weeks, ~6 of 20+ trades, net-positive (+$19.0 cumulative), 0 data errors. Nowhere near ready — keep paper. Cumulative +$19.0 is still FLATTERED by Week 1's energy trend; Week 2 being ~flat in a Korea-crash + Fed + Mideast tape (survived with a small gain, no blowup) is the more honest read of the process.
