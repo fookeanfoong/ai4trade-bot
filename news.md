@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-31T13:32:55+00:00
+# Market News Digest — 2026-07-31T18:07:54+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `4m ago` **[Musk]** Musk Calls WSJ Report on Tesla China Sale Plans ‘Absurd Fake News’ - bloomingbit — _bloomingbit_
-- `25m ago` **[Trump]** Few signs of talks between US and Iran as Trump hears from different corners on path forward - cnn.com — _cnn.com_
-- `25m ago` **[Musk]** Could Tesla and SpaceX ever merge? Elon Musk weighs in after explosive report - The Independent — _The Independent_
-- `1h ago` **[Market]** Stock Market Today: S&P 500, Dow, Nasdaq 100 Futures Gain Amid Cooler June PCE Inflation Data and Slower - Benzinga — _Benzinga_
-- `1h ago` **[Musk]** Tesla Stock in Focus -- Musk Dismisses Report on China Business Sale - TradingView — _TradingView_
-- `1h ago` **[Oil]** Oil Prices Inch Higher as Iran Strikes U.S. Bases in Kuwait and Bahrain - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `1h ago` **[Trump]** Trump defends DOJ weaponization fund and attacks Cornyn, further imperiling Blanche nomination - cnn.com — _cnn.com_
-- `1h ago` **[Fed]** Fed officials split on rate hike at July FOMC meeting - Crypto Briefing — _Crypto Briefing_
-- `1h ago` **[Fed]** Kashkari dissents at FOMC meeting, favors 0% rate hike amid inflation concerns - Crypto Briefing — _Crypto Briefing_
-- `1h ago` **[Oil]** Oil prices dip amid Strait of Hormuz tensions, supply disruption fears ease - Crypto Briefing — _Crypto Briefing_
-- `1h ago` **[Fed]** Cleveland Fed’s Hammack backs 25 bps rate hike to combat inflation - Crypto Briefing — _Crypto Briefing_
-- `1h ago` **[Musk]** Tesla Just Built Its 10 Millionth EV. Musk Still Needs 10 Million More - Men's Journal — _Men's Journal_
+- `1m ago` **[Trump]** Trump Accounts Direct $1.5 Billion to S&P 500 ETF; Fee Impact Minimal - TechStock² — _TechStock²_
+- `13m ago` **[Trump]** Trump Looks to Monetize His Market-Moving Social Media Posts – But Critics Cry Foul | National News | U.S. News - U.S. News & World Report — _U.S. News & World Report_
+- `18m ago` **[Market]** US stocks swing as Amazon leaps, Apple sinks and rising oil prices add to worries about inflation - AP News — _AP News_
+- `23m ago` **[Trump]** Trump: Anti-weaponization fund is 'dead' - CNN — _CNN_
+- `48m ago` **[Musk]** Elon Musk Denies 'Fake' Reports of Tesla China Sale - Not a Tesla App — _Not a Tesla App_
+- `1h ago` **[Market]** Why is US Stock Market Down Today? Dow Jones Gains 250 Points, Nasdaq Rally as Amazon Surges 14% & Apple Drops 9% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
+- `1h ago` **[Musk]** Tesla and SpaceX Merger Speculation Heats Up and Elon Musk Tries to Cool It Off - Barron's — _Barron's_
+- `1h ago` **[Trump]** Trump: Anti-weaponization fund is ‘dead’ but ‘I wish it weren’t’ - CNN — _CNN_
+- `1h ago` **[Musk]** Musk denies Tesla eyeing sale of China unit - AzerNews — _AzerNews_
+- `1h ago` **[Musk]** Elon Musk Responds to Major Tesla Report - TradingView — _TradingView_
+- `1h ago` **[Oil]** Oil Price Forecast — WTI ($85.41) and Brent ($90.36) Jump After Iran Hits Two Tankers — $93 Break or $80 Retest - TradingNEWS — _TradingNEWS_
+- `1h ago` **[Chips]** 3 big market moves sparked by Citadel’s deal with Situational Awareness - Business Insider — _Business Insider_
 
 ## Market
 
-- `55m ago` Tim Cook's last dance, oil majors earnings, IPO avoidance and more in Morning Squawk - CNBC — _CNBC_
-- `1h ago` Stock Market Today: S&P 500, Dow, Nasdaq 100 Futures Gain Amid Cooler June PCE Inflation Data and Slower - Benzinga — _Benzinga_
-- `1h ago` US stock market today: S&P 500, Nasdaq futures extend rally on strong tech earnings; Amazon up 13% - livemint.com — _livemint.com_
-- `2h ago` US Stock Market Technical Analysis | July 31, 2026 - FXDailyReport.Com — _FXDailyReport.Com_
-- `3h ago` Teetering US stock market faces jobs report, big earnings week - SRN News — _SRN News_
-- `3h ago` Teetering US stock market faces jobs report, big earnings week - TradingView — _TradingView_
+- `18m ago` US stocks swing as Amazon leaps, Apple sinks and rising oil prices add to worries about inflation - AP News — _AP News_
+- `25m ago` Stock Market Today: Amazon Jumps 15%, Apple Wipes Out $475 Billion - inkl — _inkl_
+- `1h ago` Why is US Stock Market Down Today? Dow Jones Gains 250 Points, Nasdaq Rally as Amazon Surges 14% & Apple Drops 9% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
+- `1h ago` S&P 500 Today: Index Falls -0.29% as Apple, Micron, Boeing & Qualcomm Crash Before Fed Decision & Inflation – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
+- `2h ago` Nasdaq Today: Nasdaq Falls -0.14% as Netflix, Apple, Micron & Qualcomm Crash Amid Fed Rate Decisons – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
+- `2h ago` US stock market erase early gains as bond yields surge to multi-decade high levels, NASDAQ falls 400 pts from day's high - Upstox — _Upstox_
 
 ## Trump
 
-- `25m ago` Few signs of talks between US and Iran as Trump hears from different corners on path forward - cnn.com — _cnn.com_
-- `1h ago` Trump defends DOJ weaponization fund and attacks Cornyn, further imperiling Blanche nomination - cnn.com — _cnn.com_
-- `1h ago` Beyond Trump Account S&P 500 fund: How to increase odds of lifetime financial security for children - CNBC — _CNBC_
-- `1h ago` Microsoft Sparks a Rally, Trump Promises Peace, Truth About Traders - TheStreet Pro — _TheStreet Pro_
-- `2h ago` Trump's Tariffs Will Cost Each American Household $900 in 2026 - Yahoo Finance — _Yahoo Finance_
-- `2h ago` AI Weekly: Trump mulls AI controls, semiconductor stocks slump - Reuters — _Reuters_
+- `1m ago` Trump Accounts Direct $1.5 Billion to S&P 500 ETF; Fee Impact Minimal - TechStock² — _TechStock²_
+- `13m ago` Trump Looks to Monetize His Market-Moving Social Media Posts – But Critics Cry Foul | National News | U.S. News - U.S. News & World Report — _U.S. News & World Report_
+- `23m ago` Trump: Anti-weaponization fund is 'dead' - CNN — _CNN_
+- `1h ago` Trump: Anti-weaponization fund is ‘dead’ but ‘I wish it weren’t’ - CNN — _CNN_
+- `1h ago` Trump says migrant surge in Spain should be ‘talking point’ for midterms - CNN — _CNN_
+- `1h ago` Australia, Brazil, Chile, and New Zealand Object to Trump's New Tariffs, Adding Trade War Uncertainty That Investors Should Watch - The Motley Fool — _The Motley Fool_
 
 ## Musk
 
-- `4m ago` Musk Calls WSJ Report on Tesla China Sale Plans ‘Absurd Fake News’ - bloomingbit — _bloomingbit_
-- `18m ago` I asked ChatGPT if Tesla stock will crash again. It said… - The Twelfth Magpie — _The Twelfth Magpie_
-- `20m ago` Tesla AI boss reveals how big Optimus is going to get - Teslarati — _Teslarati_
-- `25m ago` Could Tesla and SpaceX ever merge? Elon Musk weighs in after explosive report - The Independent — _The Independent_
-- `52m ago` Tesla China sale looks best on paper - Breakingviews — _Breakingviews_
-- `1h ago` Tesla Stock in Focus -- Musk Dismisses Report on China Business Sale - TradingView — _TradingView_
+- `48m ago` Elon Musk Denies 'Fake' Reports of Tesla China Sale - Not a Tesla App — _Not a Tesla App_
+- `1h ago` Tesla and SpaceX Merger Speculation Heats Up and Elon Musk Tries to Cool It Off - Barron's — _Barron's_
+- `1h ago` Musk denies Tesla eyeing sale of China unit - AzerNews — _AzerNews_
+- `1h ago` Elon Musk Responds to Major Tesla Report - TradingView — _TradingView_
+- `1h ago` Elon Musk Says Money Won’t Exist by 2036, Then He Launched a Payments App. - International Business Times — _International Business Times_
+- `1h ago` Elon Musk Reportedly Wants A Tesla-SpaceX Merger, And Selling Tesla China Could Be The First Step Toward Making That Happen - Jalopnik — _Jalopnik_
 
 ## Fed
 
-- `1h ago` Fed officials split on rate hike at July FOMC meeting - Crypto Briefing — _Crypto Briefing_
-- `1h ago` Kashkari dissents at FOMC meeting, favors 0% rate hike amid inflation concerns - Crypto Briefing — _Crypto Briefing_
-- `1h ago` Cleveland Fed’s Hammack backs 25 bps rate hike to combat inflation - Crypto Briefing — _Crypto Briefing_
-- `2h ago` Why corporate bosses are worried about new Kevin Warsh’s stance on interest rates - New York Post — _New York Post_
-- `3h ago` Sterling Today: Pound Slips As Dollar Steadies After Post-FOMC Rout - Bitcoin World — _Bitcoin World_
-- `3h ago` Fed Chairman Warsh Navigates Deep Policy Split Amid Sticky Inflation - News and Statistics - IndexBox — _IndexBox_
+- `1h ago` Interest Rate Predictions for the Next 2 Years: 2026-2028 - Norada Real Estate Investments — _Norada Real Estate Investments_
+- `1h ago` Federal Reserve officials warn against holding interest rates steady as inflation drags on - Crypto Briefing — _Crypto Briefing_
+- `2h ago` This “Trump Myth” Will Cost You - dailyreckoning.com — _dailyreckoning.com_
+- `2h ago` EUR/USD Weekly Forecast: US Dollar Slides As Warsh Withdraws From Fed Race - Bitcoin World — _Bitcoin World_
+- `3h ago` Federal Reserve holds interest rates steady despite rising inflation - Scripps News — _Scripps News_
+- `3h ago` Treasury yields rise as Fed officials back rate hike - Crypto Briefing — _Crypto Briefing_
 
 ## Oil
 
-- `1h ago` Oil Prices Inch Higher as Iran Strikes U.S. Bases in Kuwait and Bahrain - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `1h ago` Oil prices dip amid Strait of Hormuz tensions, supply disruption fears ease - Crypto Briefing — _Crypto Briefing_
-- `2h ago` Oil prices seen gaining as Middle East supply disruptions persist - KLSE Screener — _KLSE Screener_
-- `2h ago` Oil prices seen gaining as Middle East supply disruptions persist: Reuters poll - Reuters — _Reuters_
-- `3h ago` ADNOC Buys Five Supertankers as Hormuz Crisis Tightens Shipping - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `4h ago` BMI Raises Oil Price Forecast To US$86, Clouded For 2027 On OPEC+ Policy - BusinessToday Malaysia — _BusinessToday Malaysia_
+- `1h ago` Oil Price Forecast — WTI ($85.41) and Brent ($90.36) Jump After Iran Hits Two Tankers — $93 Break or $80 Retest - TradingNEWS — _TradingNEWS_
+- `1h ago` WTI Oil rises as geopolitical risks keep supply concerns alive - FXStreet — _FXStreet_
+- `5h ago` Oil Prices Inch Higher as Iran Strikes U.S. Bases in Kuwait and Bahrain - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `5h ago` Oil prices dip amid Strait of Hormuz tensions, supply disruption fears ease - Crypto Briefing — _Crypto Briefing_
+- `6h ago` IRAN’S “CROWN JEWEL” – Kharg Island, Struck by US, is Key Hub for Iran Oil Exports - EnergyNow.com — _EnergyNow.com_
+- `6h ago` Goldman Sachs Flags Two‑Way Risks to Their 2026 Oil Price Outlook - EnergyNow.com — _EnergyNow.com_
 
 ## Chips
 
-- `1h ago` AMD Stock Price Reclaims $500: New All-Time High Soon? - Watcher Guru — _Watcher Guru_
-- `2h ago` AMD Stock Gains as Strong AI Chip Demand and Data Center Growth Lift Investor Confidence - chshyd.in — _chshyd.in_
-- `3h ago` Micron, SanDisk, AMD, Nvidia Jump Pre-Market but July Chip Stocks Set for Worst Month Since 2002 - TradingKey — _TradingKey_
-- `4h ago` Nasdaq, S&P 500 Futures Rise As Amazon Reignites AI Trade, Apple Slides: Why TSLA, SPCX, RDDT, SMCI, BE, RKLB Are In Focus - TradingView — _TradingView_
-- `4h ago` MU, SKHY, NVDA, AMD, INTC Extend Rally Premarket, But Chip Stocks Still On Track For Worst Month Since 2002 - Yahoo Finance — _Yahoo Finance_
-- `5h ago` AMD Sinks 8%, Marvell Sinks 7%, Intel Fall 6% as AI Chip Trade Narrows to NVIDIA - aol.com — _aol.com_
+- `1h ago` NXP in talks to buy chip developer Ambarella, FT reports - AOL.com — _AOL.com_
+- `1h ago` 3 big market moves sparked by Citadel’s deal with Situational Awareness - Business Insider — _Business Insider_
+- `2h ago` AMD is Down 10% Over a Month: Did Microsoft's Catalyst Just Spark the 155% Upside Expected By Wall Street Pro? - 24/7 Wall St. — _24/7 Wall St._
+- `2h ago` Nvidia CEO Huang: Chips Industry Must Grow 10x Over The Next Decade To Power 100 Billion AI Agents - AOL.com — _AOL.com_
+- `3h ago` AMD Stock Is Up Big, and Wall Street Is Underestimating It - 24/7 Wall St. — _24/7 Wall St._
+- `4h ago` Dow climbs 200 points at open as Amazon joins Microsoft in reviving AI optimism - Invezz — _Invezz_
 
 ## Earnings
 
-- `27m ago` Morning Movers: Amazon jumps after quarterly results while Apple slips - TipRanks — _TipRanks_
-- `58m ago` Coinbase Stock Sinks as Q2 Revenue Falls Short of Estimate - Benzinga — _Benzinga_
-- `1h ago` Today's Pre-Market Movers and Top Ratings | SKHY, MU, AMZN and More - Moomoo — _Moomoo_
-- `1h ago` 10 Consumer Discretionary Stocks Moving In Friday's Pre-Market Session - Benzinga — _Benzinga_
-- `1h ago` AbbVie Sales Beat Estimates as Botox Shows Signs of Revival - Bloomberg.com — _Bloomberg.com_
-- `2h ago` Nasdaq Futures Rally on Upbeat Amazon Earnings and Chip Stock Strength - barchart.com — _barchart.com_
+- `1h ago` 12 Consumer Discretionary Stocks Moving In Friday's Intraday Session - Benzinga — _Benzinga_
+- `1h ago` 12 Industrials Stocks Moving In Friday's Intraday Session - Benzinga — _Benzinga_
+- `1h ago` Apple, Amazon, Reddit, Micron, SK Hynix, Roblox, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `2h ago` SPX Technologies Stock Jumps After Surprising Q2 Results - Benzinga — _Benzinga_
+- `2h ago` Ford Motor Stock Dips Friday: What's Driving the Post-Earnings Reset? - Benzinga — _Benzinga_
+- `3h ago` Tempus AI Stock Slides Friday: What's Driving the Post-Earnings Reset? - Benzinga — _Benzinga_
 
