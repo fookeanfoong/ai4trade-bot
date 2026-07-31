@@ -1,81 +1,81 @@
-# Market News Digest — 2026-07-31T18:11:43+00:00
+# Market News Digest — 2026-07-31T21:53:41+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `5m ago` **[Trump]** Trump Accounts Direct $1.5 Billion to S&P 500 ETF; Fee Impact Minimal - TechStock² — _TechStock²_
-- `17m ago` **[Trump]** Trump Looks to Monetize His Market-Moving Social Media Posts – But Critics Cry Foul | National News | U.S. News - U.S. News & World Report — _U.S. News & World Report_
-- `22m ago` **[Market]** US stocks swing as Amazon leaps, Apple sinks and rising oil prices add to worries about inflation - AP News — _AP News_
-- `27m ago` **[Trump]** Trump: Anti-weaponization fund is 'dead' - CNN — _CNN_
-- `52m ago` **[Musk]** Elon Musk Denies 'Fake' Reports of Tesla China Sale - Not a Tesla App — _Not a Tesla App_
-- `1h ago` **[Market]** Why is US Stock Market Down Today? Dow Jones Gains 250 Points, Nasdaq Rally as Amazon Surges 14% & Apple Drops 9% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
+- `30m ago` **[Musk]** Elon Musk Has Missed His Own Robotaxi Timelines Four Times Since 2025. Should Investors Still Believe the Next One? - The Motley Fool — _The Motley Fool_
+- `33m ago` **[Musk]** Musk Dismisses Report That Tesla Plans To Sell Its China Business, but Hear Me Out - autoevolution — _autoevolution_
+- `40m ago` **[Market]** US stocks rise to finish a wild July as Amazon soars, Apple sinks and inflation worries worsen - crossroadstoday.com — _crossroadstoday.com_
+- `42m ago` **[Fed]** Fed chief Warsh faces hard choice on inflation after bond market’s ‘red flag’ - Virginia Business — _Virginia Business_
+- `48m ago` **[Trump]** A Supreme Court Ruling Against Trump's Tariffs Could Trigger Up to $175 Billion in Refunds, a Potential Tailwind for Import-Heavy Retailers - The Motley Fool — _The Motley Fool_
+- `52m ago` **[Musk]** Elon Musk denies reports that Tesla would cease its activities in China - marketscreener.com — _marketscreener.com_
+- `53m ago` **[Trump]** Trump, under pressure on Iran, takes his Cabinet to the woods - CNN — _CNN_
 - `1h ago` **[Musk]** Tesla and SpaceX Merger Speculation Heats Up and Elon Musk Tries to Cool It Off - Barron's — _Barron's_
-- `1h ago` **[Trump]** Trump: Anti-weaponization fund is ‘dead’ but ‘I wish it weren’t’ - CNN — _CNN_
-- `1h ago` **[Musk]** Musk denies Tesla eyeing sale of China unit - AzerNews — _AzerNews_
-- `1h ago` **[Musk]** Elon Musk Responds to Major Tesla Report - TradingView — _TradingView_
-- `1h ago` **[Oil]** Oil Price Forecast — WTI ($85.41) and Brent ($90.36) Jump After Iran Hits Two Tankers — $93 Break or $80 Retest - TradingNEWS — _TradingNEWS_
-- `1h ago` **[Chips]** 3 big market moves sparked by Citadel’s deal with Situational Awareness - Business Insider — _Business Insider_
+- `1h ago` **[Trump]** Trump: Spain migrant crisis should be US midterm 'talking point' - CNN — _CNN_
+- `1h ago` **[Musk]** Tesla Breaking Off Its China Business? Musk Calls It 'Absurdly Fake News' - InsideEVs — _InsideEVs_
+- `1h ago` **[Market]** U.S. stocks rally to finish a wild July as Amazon soars, Apple sinks and inflation worries worsen - BNN Bloomberg — _BNN Bloomberg_
+- `1h ago` **[Oil]** Free Press Opinion: Iran war, other factors weakening OPEC - Chattanooga Times Free Press — _Chattanooga Times Free Press_
 
 ## Market
 
-- `22m ago` US stocks swing as Amazon leaps, Apple sinks and rising oil prices add to worries about inflation - AP News — _AP News_
-- `28m ago` Stock Market Today: Amazon Jumps 15%, Apple Wipes Out $475 Billion - inkl — _inkl_
-- `1h ago` Why is US Stock Market Down Today? Dow Jones Gains 250 Points, Nasdaq Rally as Amazon Surges 14% & Apple Drops 9% Ahead Fed Decision & Inflation Amid Middle East Tensions | What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` S&P 500 Today: Index Falls -0.29% as Apple, Micron, Boeing & Qualcomm Crash Before Fed Decision & Inflation – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` Nasdaq Today: Nasdaq Falls -0.14% as Netflix, Apple, Micron & Qualcomm Crash Amid Fed Rate Decisons – Check Key Drivers, Daily Performance, Top Gainers-Losers & What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` US stock market erase early gains as bond yields surge to multi-decade high levels, NASDAQ falls 400 pts from day's high - Upstox — _Upstox_
+- `40m ago` US stocks rise to finish a wild July as Amazon soars, Apple sinks and inflation worries worsen - crossroadstoday.com — _crossroadstoday.com_
+- `1h ago` Dow Jones Future Today Live: Dow Rises 0.5% as Amazon Surges 13%, Tech Stocks Lead Wall Street Higher & Oil Prices Higher Amid Middle East Tensions – Here’s What Investors Should Know - The Sunday Guardian — _The Sunday Guardian_
+- `1h ago` U.S. stocks rally to finish a wild July as Amazon soars, Apple sinks and inflation worries worsen - BNN Bloomberg — _BNN Bloomberg_
+- `1h ago` Google (GOOGL) Live Share Price, Invest from India - indmoney.com — _indmoney.com_
+- `2h ago` Dow Jones, Nasdaq, US Stock Market Today Updates: Check Latest Move in Futures, Nasdaq Jumps 1.6% as AMD, Intel, Meta & Amazon Surge While Apple, Micron & Boeing Crash | Why Are Stocks Up Today - The Sunday Guardian — _The Sunday Guardian_
+- `4h ago` Stock Market Today: Stock Market News And Analysis - Investor's Business Daily — _Investor's Business Daily_
 
 ## Trump
 
-- `5m ago` Trump Accounts Direct $1.5 Billion to S&P 500 ETF; Fee Impact Minimal - TechStock² — _TechStock²_
-- `17m ago` Trump Looks to Monetize His Market-Moving Social Media Posts – But Critics Cry Foul | National News | U.S. News - U.S. News & World Report — _U.S. News & World Report_
-- `27m ago` Trump: Anti-weaponization fund is 'dead' - CNN — _CNN_
-- `1h ago` Trump: Anti-weaponization fund is ‘dead’ but ‘I wish it weren’t’ - CNN — _CNN_
-- `1h ago` Trump says migrant surge in Spain should be ‘talking point’ for midterms - CNN — _CNN_
-- `1h ago` Australia, Brazil, Chile, and New Zealand Object to Trump's New Tariffs, Adding Trade War Uncertainty That Investors Should Watch - The Motley Fool — _The Motley Fool_
+- `48m ago` A Supreme Court Ruling Against Trump's Tariffs Could Trigger Up to $175 Billion in Refunds, a Potential Tailwind for Import-Heavy Retailers - The Motley Fool — _The Motley Fool_
+- `53m ago` Trump, under pressure on Iran, takes his Cabinet to the woods - CNN — _CNN_
+- `1h ago` Trump: Spain migrant crisis should be US midterm 'talking point' - CNN — _CNN_
+- `2h ago` Fact check: Trump baselessly claims Walz is ‘behind’ cyberattack, repeats debunked claims at Cabinet meeting - CNN — _CNN_
+- `3h ago` 'US doing amazing job': Trump delivers strong message on Iran, says 'they're doing very poorly' - The Economic Times — _The Economic Times_
+- `3h ago` Trump Accounts Direct $1.5 Billion to S&P 500 ETF; Fee Impact Minimal - TechStock² — _TechStock²_
 
 ## Musk
 
-- `52m ago` Elon Musk Denies 'Fake' Reports of Tesla China Sale - Not a Tesla App — _Not a Tesla App_
+- `30m ago` Elon Musk Has Missed His Own Robotaxi Timelines Four Times Since 2025. Should Investors Still Believe the Next One? - The Motley Fool — _The Motley Fool_
+- `33m ago` Musk Dismisses Report That Tesla Plans To Sell Its China Business, but Hear Me Out - autoevolution — _autoevolution_
+- `52m ago` Elon Musk denies reports that Tesla would cease its activities in China - marketscreener.com — _marketscreener.com_
 - `1h ago` Tesla and SpaceX Merger Speculation Heats Up and Elon Musk Tries to Cool It Off - Barron's — _Barron's_
-- `1h ago` Musk denies Tesla eyeing sale of China unit - AzerNews — _AzerNews_
-- `1h ago` Elon Musk Responds to Major Tesla Report - TradingView — _TradingView_
-- `1h ago` Elon Musk Says Money Won’t Exist by 2036, Then He Launched a Payments App. - International Business Times — _International Business Times_
-- `1h ago` Elon Musk Reportedly Wants A Tesla-SpaceX Merger, And Selling Tesla China Could Be The First Step Toward Making That Happen - jalopnik.com — _jalopnik.com_
+- `1h ago` Tesla Breaking Off Its China Business? Musk Calls It 'Absurdly Fake News' - InsideEVs — _InsideEVs_
+- `2h ago` SpaceX and Tesla Are Considering a Mega Merger -- Here's What Investors Need to Know - The Motley Fool — _The Motley Fool_
 
 ## Fed
 
-- `1h ago` Interest Rate Predictions for the Next 2 Years: 2026-2028 - Norada Real Estate Investments — _Norada Real Estate Investments_
-- `1h ago` Federal Reserve officials warn against holding interest rates steady as inflation drags on - Crypto Briefing — _Crypto Briefing_
-- `2h ago` This “Trump Myth” Will Cost You - dailyreckoning.com — _dailyreckoning.com_
-- `2h ago` EUR/USD Weekly Forecast: US Dollar Slides As Warsh Withdraws From Fed Race - Bitcoin World — _Bitcoin World_
-- `3h ago` Federal Reserve holds interest rates steady despite rising inflation - Scripps News — _Scripps News_
-- `3h ago` Treasury yields rise as Fed officials back rate hike - Crypto Briefing — _Crypto Briefing_
+- `42m ago` Fed chief Warsh faces hard choice on inflation after bond market’s ‘red flag’ - Virginia Business — _Virginia Business_
+- `2h ago` Fed Regional Bank Presidents Push for Rate Hikes, Making September FOMC Policy Shift Increasingly Plausible - finance.biggo.com — _finance.biggo.com_
+- `2h ago` Forex Today: US Dollar Holds Steady After Fed Volatility, Focus Shifts to BoE and US GDP - CryptoRank — _CryptoRank_
+- `2h ago` Americans feel the sting of high prices every day, so why does the Fed need so many ways to measure inflation? - Brooklyn Eagle — _Brooklyn Eagle_
+- `3h ago` Analysis: Markets heard a dovish Kevin Warsh. The Fed chairman's own words suggest a rate hike - CNBC — _CNBC_
+- `5h ago` Fed hawks are on the war path, sending mortgage rates higher - HousingWire — _HousingWire_
 
 ## Oil
 
-- `1h ago` Oil Price Forecast — WTI ($85.41) and Brent ($90.36) Jump After Iran Hits Two Tankers — $93 Break or $80 Retest - TradingNEWS — _TradingNEWS_
-- `2h ago` WTI Oil rises as geopolitical risks keep supply concerns alive - FXStreet — _FXStreet_
-- `5h ago` Oil Prices Inch Higher as Iran Strikes U.S. Bases in Kuwait and Bahrain - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `5h ago` Oil prices dip amid Strait of Hormuz tensions, supply disruption fears ease - Crypto Briefing — _Crypto Briefing_
-- `6h ago` IRAN’S “CROWN JEWEL” – Kharg Island, Struck by US, is Key Hub for Iran Oil Exports - EnergyNow.com — _EnergyNow.com_
-- `6h ago` Goldman Sachs Flags Two‑Way Risks to Their 2026 Oil Price Outlook - EnergyNow.com — _EnergyNow.com_
+- `1h ago` Free Press Opinion: Iran war, other factors weakening OPEC - Chattanooga Times Free Press — _Chattanooga Times Free Press_
+- `3h ago` Exxon and Chevron's $26.5 Billion Quarter Draws Trump's Ire - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `4h ago` Oil prices seen gaining as Middle East supply disruptions persist: Reuters poll - Reuters — _Reuters_
+- `5h ago` Oil Price Forecast — WTI ($85.41) and Brent ($90.36) Jump After Iran Hits Two Tankers — $93 Break or $80 Retest - TradingNEWS — _TradingNEWS_
+- `5h ago` WTI Oil rises as geopolitical risks keep supply concerns alive - FXStreet — _FXStreet_
+- `9h ago` Oil Prices Inch Higher as Iran Strikes U.S. Bases in Kuwait and Bahrain - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
 
 ## Chips
 
-- `1h ago` NXP in talks to buy chip developer Ambarella, FT reports - AOL.com — _AOL.com_
-- `1h ago` 3 big market moves sparked by Citadel’s deal with Situational Awareness - Business Insider — _Business Insider_
-- `2h ago` AMD is Down 10% Over a Month: Did Microsoft's Catalyst Just Spark the 155% Upside Expected By Wall Street Pro? - 24/7 Wall St. — _24/7 Wall St._
-- `2h ago` Nvidia CEO Huang: Chips Industry Must Grow 10x Over The Next Decade To Power 100 Billion AI Agents - AOL.com — _AOL.com_
-- `3h ago` AMD Stock Is Up Big, and Wall Street Is Underestimating It - 24/7 Wall St. — _24/7 Wall St._
-- `4h ago` Dow climbs 200 points at open as Amazon joins Microsoft in reviving AI optimism - Invezz — _Invezz_
+- `1h ago` Semiconductor ETFs Draw Cash This Week as Chip Stocks Rally - ETF Database — _ETF Database_
+- `1h ago` Michael Burry Just Turned His Guns on Nvidia, Micron and SOXX — ETF Investors Are Watching the Fallout - tradingview.com — _tradingview.com_
+- `2h ago` AMD Stock Gains as Amazon Expands AI Spending to $220 Billion - tradingview.com — _tradingview.com_
+- `3h ago` Prediction: AMD Stock Could Double by 2028. Here's Why - AOL.com — _AOL.com_
+- `3h ago` 1 AI Stock I’d Buy Before It Hits Another All-Time High - AOL.com — _AOL.com_
+- `4h ago` AMD, Micron, Nvidia: Buy Or Sell (Do This Now) Shane Mosley Jr (xeCPY63hZD) - Mshale — _Mshale_
 
 ## Earnings
 
-- `4m ago` Linde, Arista Networks among market cap stock movers on Friday - Investing.com — _Investing.com_
-- `1h ago` 12 Consumer Discretionary Stocks Moving In Friday's Intraday Session - Benzinga — _Benzinga_
-- `1h ago` 12 Industrials Stocks Moving In Friday's Intraday Session - Benzinga — _Benzinga_
-- `1h ago` Apple, Amazon, Reddit, Micron, SK Hynix, Roblox, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
-- `2h ago` SPX Technologies Stock Jumps After Surprising Q2 Results - Benzinga — _Benzinga_
-- `2h ago` Ford Motor Stock Dips Friday: What's Driving the Post-Earnings Reset? - Benzinga — _Benzinga_
+- `47m ago` Amazon, Apple, Microsoft, Micron, Roblox, Reddit, SK Hynix, and More Stocks That Explain Today’s Market - Barron's — _Barron's_
+- `1h ago` S&P 500 Top Stock Gainers Today, 7/31/26 - TipRanks — _TipRanks_
+- `3h ago` Corning Inc Stock (GLW) Moved Up by 4.64% on Jul 31: Key Drivers Unveiled - tradingkey.com — _tradingkey.com_
+- `3h ago` Trane Technologies PLC Stock (TT) Moved Up by 3.79% on Jul 31: Key Drivers Unveiled - tradingkey.com — _tradingkey.com_
+- `3h ago` Linde, Arista Networks among market cap stock movers on Friday - Investing.com — _Investing.com_
+- `4h ago` Applovin Corp Stock (APP) Moved Down by 3.28% on Jul 31: What Investors Need To Know - tradingkey.com — _tradingkey.com_
 
