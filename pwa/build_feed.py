@@ -122,6 +122,7 @@ def main() -> None:
     feed = {
         "updated_at": src.get("updated_at"),
         "valid_for": src.get("valid_for"),
+        "built_for_day": src.get("valid_for"),  # 每交易日必变一次:触发 Vercel 生产部署一次(盘中内容不变则仍跳过)
         "disclaimer": DISCLAIMER,
         "signals": signals,
     }
