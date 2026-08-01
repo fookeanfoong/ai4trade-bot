@@ -1,0 +1,37 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        mavenCentral()
+        // Huawei AppGallery Connect / HMS Core Maven repository.
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.1'
+        classpath 'com.google.gms:google-services:4.4.0'
+
+        // AppGallery Connect plugin — required by HMS Push / IAP / Analytics.
+        // Applied in app/build.gradle only when agconnect-services.json exists.
+        classpath 'com.huawei.agconnect:agcp:1.9.1.301'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+apply from: "variables.gradle"
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        // Huawei HMS Core SDK repository — needed by all modules pulling HMS deps.
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
