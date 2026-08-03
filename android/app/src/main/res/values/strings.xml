@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI4Trade Signals</string>
+    <string name="offline_title">无法连接</string>
+    <string name="offline_body">请检查网络后重试。所有信息仅供参考，不构成投资建议。</string>
+    <string name="retry">重试</string>
+</resources>

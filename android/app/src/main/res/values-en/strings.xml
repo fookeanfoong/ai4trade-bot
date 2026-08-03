@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="offline_title">Can\'t connect</string>
+    <string name="offline_body">Check your connection and try again. Information is for reference only, not investment advice.</string>
+    <string name="retry">Retry</string>
+</resources>

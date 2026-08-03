@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Optional signing config. Provide a keystore via android/keystore.properties
+// (git-ignored) or via env vars in CI. If absent, the release build falls back
+// to the debug keystore so the project still builds for testing.
+def keystorePropsFile = rootProject.file('keystore.properties')
+def keystoreProps = new Properties()
+if (keystorePropsFile.exists()) {
+    keystoreProps.load(new FileInputStream(keystorePropsFile))
+}
+def envStoreFile = System.getenv('KEYSTORE_FILE')
+
+android {
+    namespace 'com.ai4trade.signals'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.ai4trade.signals'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+        resConfigs 'en', 'zh'
+    }
+
+    signingConfigs {
+        release {
+            if (keystoreProps.getProperty('storeFile')) {
+                storeFile rootProject.file(keystoreProps.getProperty('storeFile'))
+                storePassword keystoreProps.getProperty('storePassword')
+                keyAlias keystoreProps.getProperty('keyAlias')
+                keyPassword keystoreProps.getProperty('keyPassword')
+            } else if (envStoreFile) {
+                storeFile file(envStoreFile)
+                storePassword System.getenv('KEYSTORE_PASSWORD')
+                keyAlias System.getenv('KEY_ALIAS')
+                keyPassword System.getenv('KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            def hasSigning = keystoreProps.getProperty('storeFile') || envStoreFile
+            signingConfig hasSigning ? signingConfigs.release : signingConfigs.debug
+            // Trivial WebView shell — keep R8 off so the build is predictable.
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix '.debug'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.webkit:webkit:1.11.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+}
