@@ -6,6 +6,8 @@ name: Build Huawei Android app
 on:
   push:
     tags: [ 'android-v*' ]
+    # Temporary: verify the build on the packaging branch. Remove once green.
+    branches: [ 'claude/huawei-app-packaging-release-thagz4' ]
   workflow_dispatch:
 
 jobs:
