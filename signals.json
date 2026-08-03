@@ -1,25 +1,18 @@
 {
-  "updated_at": "2026-07-31",
+  "updated_at": "2026-08-03",
   "valid_for": "2026-08-03",
-  "generator": "generate_signals.py (algorithmic)",
-  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
+  "generator": "Claude premarket curation (news-driven)",
+  "note": "盘前人工复核:中东降温使能源逻辑反转,无高信心方向,主动空仓观望。仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
-  "signals": [
-    {
-      "sector_or_ticker": "NVDA",
-      "direction": "bullish",
-      "confidence": 0.62,
-      "timeframe": "1-3 days",
-      "entry_mode": "market",
-      "stop_pct": 0.025,
-      "t1_pct": 0.03,
-      "t2_pct": 0.06,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "reasoning": {
-        "en": "Auto: NVDA 3-day trend +1.9% (today +0.3%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
-        "zh": "自动:NVDA 三日趋势 +1.9%(当日 +0.3%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
-      }
-    }
-  ]
+  "intentional_flat": true,
+  "data_quality_flags": [
+    "quotes.json 陈旧(updated_at=None):能源仍显示 +12~18%、QQQ -6.57% 等,都是上周五的旧行情;今日油价因中东降温回落,能源会反向,以盘中刷新为准。"
+  ],
+  "market_context": {
+    "middle_east": "周末中东降温:Trump 取消『大规模』打击、伊朗谈判今日(周一)开始,油价回落(WTI ~$79.8)。上周做多能源的逻辑就此反转——也正好印证了周五『落袋过周末』是对的(躲开了这条周末反转头条)。",
+    "regime": "大盘因中东缓和小幅 risk-on(SPX +0.6%、道指 +0.56%),但属『松一口气』式反弹,非强趋势。",
+    "decision": "0 仓,空仓观望。理由:①能源(我们的强项)刚被降温反转,不做多;也不追空——今天正在谈判,是个盘中二元头条,一旦谈崩油价又冲回,做空会被轧。②半导体有韩国芯片冲击的阴影、且 AMD 周二财报=整组的雷,算法给的 NVDA 多单信心不足,回避。③没有任何干净、独立、方向明确的强催化。宁可空仓等一个清楚的机会,也不硬凑。",
+    "watch_next": "①中东谈判结果(谈崩→能源可能重新做多;谈成→油继续跌);②周二 AMD 财报后半导体方向或更清晰,再考虑。"
+  },
+  "signals": []
 }
