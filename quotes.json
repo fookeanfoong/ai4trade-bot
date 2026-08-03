@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-03T20:38:48Z",
+  "fetched_at": "2026-08-03T21:48:57Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
@@ -46,7 +46,7 @@
       "change_pct": -6.41,
       "chg_3d_pct": 12.82,
       "chg_5d_pct": -2.08,
-      "volume": 23661865,
+      "volume": 24086408,
       "market_time": 1785787201
     },
     "TSLA": {
@@ -70,7 +70,7 @@
       "change_pct": 13.11,
       "chg_3d_pct": -1.08,
       "chg_5d_pct": 0.19,
-      "volume": 10477930,
+      "volume": 14453456,
       "market_time": 1785787459
     },
     "OXY": {
@@ -118,7 +118,7 @@
       "change_pct": 15.27,
       "chg_3d_pct": -0.55,
       "chg_5d_pct": -1.7,
-      "volume": 1755849,
+      "volume": 2102033,
       "market_time": 1785787203
     },
     "PSX": {
