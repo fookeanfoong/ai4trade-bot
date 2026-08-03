@@ -1,0 +1,11 @@
+{
+  "modelVersion": "5.0.0",
+  "name": "moheng",
+  "version": "1.0.0",
+  "description": "墨衡 · 企业软件选型",
+  "main": "",
+  "author": "moheng",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {}
+}

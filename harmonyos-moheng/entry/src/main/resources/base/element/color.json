@@ -1,0 +1,15 @@
+{
+  "color": [
+    { "name": "paper", "value": "#F2F3F0" },
+    { "name": "paper_2", "value": "#FBFBF9" },
+    { "name": "ink", "value": "#1B1F2A" },
+    { "name": "ink_soft", "value": "#5A6172" },
+    { "name": "ink_faint", "value": "#949AA6" },
+    { "name": "zhu", "value": "#C8442E" },
+    { "name": "zhu_dim", "value": "#E8CFC8" },
+    { "name": "jade", "value": "#2E6B5E" },
+    { "name": "jade_dim", "value": "#D7E3DE" },
+    { "name": "rule", "value": "#D6D9D2" },
+    { "name": "hint_bg", "value": "#E5E6E1" }
+  ]
+}

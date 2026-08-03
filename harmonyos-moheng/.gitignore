@@ -1,0 +1,12 @@
+# DevEco Studio / hvigor build artifacts
+/build
+/entry/build
+/.hvigor
+/.cxx
+/oh_modules
+/entry/oh_modules
+/.idea
+local.properties
+*.log
+.DS_Store
+# 图标由 tools/make_icons.py 生成，但已随包提交，故不忽略 media

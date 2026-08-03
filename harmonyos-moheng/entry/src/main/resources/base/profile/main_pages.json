@@ -1,0 +1,9 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/Survey",
+    "pages/Results",
+    "pages/Compare",
+    "pages/About"
+  ]
+}
