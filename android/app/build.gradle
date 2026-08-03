@@ -66,6 +66,11 @@ android {
 }
 
 dependencies {
+    // Align every transitive kotlin-stdlib* to one version so the old
+    // kotlin-stdlib-jdk7/jdk8 artifacts (merged into stdlib since 1.8) don't
+    // collide with the newer stdlib pulled by AndroidX (checkDuplicateClasses).
+    implementation platform('org.jetbrains.kotlin:kotlin-bom:1.9.24')
+
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.webkit:webkit:1.11.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
