@@ -523,6 +523,12 @@
       "actions": [
         "ENTRY LONG JPM conf 0.61 0.373504 sh @ $356.98 [broker] notional $133 risk $3.33 | stop $348.06 T1 $367.69 T2 $378.4"
       ]
+    },
+    {
+      "ran_at": "2026-08-04T14:33:30Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": []
     }
   ],
   "last_key": null,
@@ -536,8 +542,8 @@
       "t1": 367.69,
       "t2": 378.4,
       "half_taken": false,
-      "peak_price": 356.98,
-      "armed": false,
+      "peak_price": 359.66,
+      "armed": true,
       "confidence": 0.61,
       "entry_chg_3d_pct": 1.83,
       "notional_usd": 133.33,
