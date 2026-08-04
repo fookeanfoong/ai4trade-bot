@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-04T20:39:07Z",
+  "fetched_at": "2026-08-04T21:56:50Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
@@ -22,7 +22,7 @@
       "change_pct": 1.58,
       "chg_3d_pct": 5.9,
       "chg_5d_pct": 7.16,
-      "volume": 57034214,
+      "volume": 58988820,
       "market_time": 1785873600
     },
     "NVDA": {
@@ -34,7 +34,7 @@
       "change_pct": 8.78,
       "chg_3d_pct": 8.66,
       "chg_5d_pct": 7.58,
-      "volume": 123233837,
+      "volume": 130429698,
       "market_time": 1785873600
     },
     "AMD": {
@@ -58,7 +58,7 @@
       "change_pct": -16.8,
       "chg_3d_pct": 5.99,
       "chg_5d_pct": 6.48,
-      "volume": 32280329,
+      "volume": 32958176,
       "market_time": 1785873601
     },
     "XOM": {
@@ -70,7 +70,7 @@
       "change_pct": 12.31,
       "chg_3d_pct": -1.92,
       "chg_5d_pct": 0.6,
-      "volume": 11187185,
+      "volume": 14030598,
       "market_time": 1785873808
     },
     "OXY": {
@@ -94,7 +94,7 @@
       "change_pct": 12.53,
       "chg_3d_pct": -0.99,
       "chg_5d_pct": 1.5,
-      "volume": 9444233,
+      "volume": 9447158,
       "market_time": 1785873814
     },
     "VLO": {
@@ -154,7 +154,7 @@
       "change_pct": 6.89,
       "chg_3d_pct": 1.9,
       "chg_5d_pct": 0.06,
-      "volume": 8392056,
+      "volume": 8473316,
       "market_time": 1785873602
     },
     "USO": {
