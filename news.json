@@ -1,13 +1,58 @@
 {
-  "fetched_at": "2026-08-04T15:02:16+00:00",
+  "fetched_at": "2026-08-04T15:27:38+00:00",
   "max_age_hours": 24,
   "movers": [
+    {
+      "title": "Why Tesla Might Be the Better Elon Musk Stock to Buy on the Way Down - 24/7 Wall St.",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOazVwMThxMU5VaWcwMXVIS25BYjJTSjg1aU5fTDV2dllCR2tUMEkzcHZwQ2ZFNzRMdmtkcVpUbk5waGJrSXlpZVN4cmlWc0dBbzlLaHFXU1Z0ek04NDZJQnZwQWk3Sm01WGRKTWdzOGx3bEZVRjVFWGhBSEhZNWRNdUUwZ2xPVDFiMVc1UHRFbEVjUlJzSDhpUkY0TWszTUlpNERFalZ1empNVlEwXzlBb3Fn?oc=5",
+      "pub": "Tue, 04 Aug 2026 15:22:06 GMT",
+      "source": "24/7 Wall St.",
+      "age": "5m ago",
+      "_sort": 1785856926.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "US statement on Strait of Hormuz: Chances of a deal strengthened, oil prices crashed - Haberler.com",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQanpabzBxSFFxcTB4R2FrdmJzb1pfSlRmSFFDOXdOR3YwVGFmSDZEVnpQUGQ4SjVaQUdLMVZmTTEtenJRSGE0RWRIUURkLTNIOWlqYk5aYzRfVGlLaWhFallMc0NoS0tSVDl2TWFRYkptR0E1Qm9hNDhzR1Q4OXpWYUxJTmstYm1WOGxr?oc=5",
+      "pub": "Tue, 04 Aug 2026 15:22:01 GMT",
+      "source": "Haberler.com",
+      "age": "5m ago",
+      "_sort": 1785856921.0,
+      "bucket": "Oil"
+    },
+    {
+      "title": "Elon Musk spends half his time talking robots and AI on Tesla earnings calls - TechCrunch",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQUnRZNjk2dnhpdVNDajZEVG1ybWhWYXlVTmhYNWFDZFRWaGVTNEF2Tm40VmNwczZMemZOa3NGekdhd1dZM2JHdEtfc3JiVEJwMUhtNU4yRUNkVkU4TnJpT0ZCOHVlbmVQLWZNV29aQll3STFNa1FHWnMxSURwaGVMMFpBQWkwSGx1Wm1BVUNWZEp4MS00SDQ4R0FYdjZwRnBPZlcxSGdhN3Fic0h5UHFzcA?oc=5",
+      "pub": "Tue, 04 Aug 2026 15:20:06 GMT",
+      "source": "TechCrunch",
+      "age": "7m ago",
+      "_sort": 1785856806.0,
+      "bucket": "Musk"
+    },
+    {
+      "title": "Warsh Wanted \u2018Regime Change.\u2019 Markets Are Demanding a Reset. - nytimes.com",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPUkpFcHlLWDFHdmNMVmxnNmtIdXUtLWJ4MjF5ejRpRFViQU5kWGZaZmNWU19Ua2t1R3hLXy1QVTVsOWlJUkQtTmp1NjAxbDhGQUpNU3BMblgyRTlHNDFOUlBIT2tPbWZKSzE3UTFSQjBfbWc2OUdRa1ZDaXRWVnR4em5ta09pQVdMQXl0Xw?oc=5",
+      "pub": "Tue, 04 Aug 2026 15:11:04 GMT",
+      "source": "nytimes.com",
+      "age": "16m ago",
+      "_sort": 1785856264.0,
+      "bucket": "Fed"
+    },
+    {
+      "title": "Trump administration claims Hormuz deal is close as Iran denies negotiations - The Washington Post",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOS3pHS3hBZFk1RUVqUE92R21Cdl8wME1BUF9zTkZ3MkhkbEVTal9RWFNaOUJnTVUzNGdOQ1hudC14R3pCclJpQ2tOSGNvZ1dPUFQ4amZUZkVuZVZOUC1iWTJTNWV0dk8zY0VSMEQzMFFZTC1oZzNvTEt1bjR3bVdDY0d0RUdrLXRWbnBzMVh2NmJRUTNjMGptN0ZZV3Y2LThjMnl0dkVnNDVCYy1mTUdNQW44SzNSeF9rVUVmSnQ0UHpsN21ZQncw?oc=5",
+      "pub": "Tue, 04 Aug 2026 15:04:17 GMT",
+      "source": "The Washington Post",
+      "age": "23m ago",
+      "_sort": 1785855857.0,
+      "bucket": "Trump"
+    },
     {
       "title": "Fed Officials Are Not In Full Sync About The Level Of Interest Rates. One Of Them Says The Current One is Sufficient - International Business Times",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNRFFXbjFWQ2J3YllCc2FMTjI1Vmhzd3RrNzQ1YXg1eWZfMS0wbW1NOUp6ME1NN3gyZ0J3U2hSY1J2bWN2eENCSG5XbWFRWU9BVy13Z2h2Ny0yNkh2dlZoZlNjSUFlRWVYaWh3eGkyTm1xNVV3YVBiQm0tUFliZmY4U3Bod2FTdDlNd3l5VVRJUS1ZRnQxSEtiaklTREl6QTRQMktTcEFLaEl0VVF1RV8yVG9WaG0wdnc?oc=5",
       "pub": "Tue, 04 Aug 2026 14:39:42 GMT",
       "source": "International Business Times",
-      "age": "22m ago",
+      "age": "47m ago",
       "_sort": 1785854382.0,
       "bucket": "Fed"
     },
@@ -16,18 +61,9 @@
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPT3lJSmVyR201d1A0anlFcU13c21OdTNnOXdCbG1YZWtWeUpYNTVhYjI4dGN2RGxNVGZlang3WGphNDNBeUwwMEptMmE2WFM3WEtpaWlqb2JHcTlJdWw0bjV4RVhoLUNPSlpCeVh1U0lzbWd4Q1BPa1cxVlFzMXUtc0RFTHFpSWxmNFd0ejdvejU2UFFtVUtUMnFWZENiVjM1QWc?oc=5",
       "pub": "Tue, 04 Aug 2026 14:35:52 GMT",
       "source": "GuruFocus",
-      "age": "26m ago",
+      "age": "51m ago",
       "_sort": 1785854152.0,
       "bucket": "Musk"
-    },
-    {
-      "title": "The Fed Held Interest Rates Steady for a 2nd Straight Meeting Under Kevin Warsh, With 3 Officials Dissenting. Here's What Investors Should Expect Next. - AOL.com",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBaS2RvOXRqYnhLTm5reDJqX0ItSHB0WGpQRnN4RWVTUUY1SDlsWTlEUzFlYlV5RUJNLWx0S09YMHJETXdYZ0hXVVYwcEM5MVRtVUIxdVpNNllhalRqbWlTd2pJU1ZTMVFTSVJIVXJYOTJVaHpyRVpleFBGY2F1WWc?oc=5",
-      "pub": "Tue, 04 Aug 2026 13:58:33 GMT",
-      "source": "AOL.com",
-      "age": "1h ago",
-      "_sort": 1785851913.0,
-      "bucket": "Fed"
     },
     {
       "title": "'AI Will Deliver Free Goods': Elon Musk Mocks NYC Mayor Zohran Mamdani Over Grocery Stores - International Business Times UK",
@@ -39,11 +75,29 @@
       "bucket": "Musk"
     },
     {
+      "title": "US Stock Market Today: Dow Hits Record, Nasdaq Spikes 1.4% On Talks Of Hormuz Breakthrough - NDTV Profit",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQZVoxM3BZM3BrbW1WTDBEWDZJUUdDTDhNZ2NxOTFscjB2T0ZzbllaN0gwVXBBVlI1dEtwcWlQYUV3dXpZTXNFb00zdGdQMEtVRk9xcHYyUHZPTTZlYm5fOW1VRC1mUk9tM2Q3TWpCZFN5VTNEU1JGVkJUeUJURlRmMk5qREtaa1FVWDZrRmNZTEY0dE41QlhQY0h0U3IxOGVqSEhYMzVoRzVHUmdvQzhkVG9yVDFjb3hOSlN3U2xKanlEM0lYWWcyZm91WdIB0wFBVV95cUxOcE1JazUzSjd1YnF1Vll6aW02MmQxdEg2RWFkQ1FsRzVmZm45ajZfcF9sbUdkd3hJeXRnOEFCd1QzSHdGSkQ0b29iaU9vakZXOWRad1hxLS02REFteGtSWmJTYUJrSF93RjZtUTZnYy1YYUhmSE9DemFfSkJnTFk5UXlNSmRacTVoWWRSYmpMam9tU09YUzVqbzdZZ2lveG45bmpyeWtMbmJLOGlPMmI3N00zdTBHUjBzZXAxWmk1dnFJM3FQSDZtLXNaTW5HZWhvYWNJ?oc=5",
+      "pub": "Tue, 04 Aug 2026 13:41:05 GMT",
+      "source": "NDTV Profit",
+      "age": "1h ago",
+      "_sort": 1785850865.0,
+      "bucket": "Market"
+    },
+    {
+      "title": "US Dollar Under Pressure As FOMC Fallout Weighs, MUFG Warns - bitcoinworld.co.in",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE54dS03RE9KVHl2M3ZERGtjWURjQ2FsT09UQUpOa0ExQk5lZE45R3BOWWVPSU5ackZGSkplZ3BnMW1WT3FPdFdWRFY0dmZFcnI2Ym0xNF8tRDJXZGRlNUxZWUxLLWNNUQ?oc=5",
+      "pub": "Tue, 04 Aug 2026 13:40:11 GMT",
+      "source": "bitcoinworld.co.in",
+      "age": "1h ago",
+      "_sort": 1785850811.0,
+      "bucket": "Fed"
+    },
+    {
       "title": "Donald Trump's Decision to Halt Iran Strikes Sent Meta Shares Up Nearly 7% in a Single Day. Here's Why Geopolitical Risk Is Still a Wildcard for Tech Stocks. - The Motley Fool",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZHI2WXF3VXlhZTl0RXdBajA5N2xuZTdJNU41enZuX2F2cno1Q3V3NndfY2VtX0U0bnZfaVU4aXBkR0daVjM4OFRrWEVEelZfeFNwWThHLUxSXzE2QzVNa1JJc1VkUFZObElYTTgweExJbm9vT3NDOTI0cVhBWFUyYkxNY3RYMVVudERJbkpGUlZtYVgxZXliWA?oc=5",
       "pub": "Tue, 04 Aug 2026 13:24:35 GMT",
       "source": "The Motley Fool",
-      "age": "1h ago",
+      "age": "2h ago",
       "_sort": 1785849875.0,
       "bucket": "Trump"
     },
@@ -52,7 +106,7 @@
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOOHZHel9ISGVfdHFSa3FPU0ExWGd6VmNUcnFIOVFia1FfbjNWWnVKTFBfTlE5TFkyYjNURkJIRV9wd1VXOTFMUGc5Tjh2NzEwZGJOcTUyR1JzMkFBcHhuS0t5WEVERFQ0UVNZSDYtbVU5SW9BbHJCYW9zdXo2SnV3bHc5ZUg?oc=5",
       "pub": "Tue, 04 Aug 2026 13:21:01 GMT",
       "source": "AOL.com",
-      "age": "1h ago",
+      "age": "2h ago",
       "_sort": 1785849661.0,
       "bucket": "Musk"
     },
@@ -61,7 +115,7 @@
       "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPZkxVWTlBWmNNX0JWQ1JSMktGYjNJcDM5QWprQ1J0ZkViakRJWmdvUi1zOUMySXJMNFB1cGZOTmdoWUo5VXhOTUlVRXM4OUxlVjNJSjhkTzBveHNxYzQ2RUM4Q1oxYTBFdzgwTlVNbzJRNldPSW5XNTY0SGoyQWdub09WNGkyRkVTdGpReDhIWndCMV9iZkhoXy1FVXF5dnpnQWEzMlhuS3JqdXVFU2lzMWNoMFBHTVBVWUNuNkc2dWxYcktiMGpZUUYxTmp6RVJvaXc0Z3gtdk12SWFQZUtEZC1GWTNISjlGRTFCcU9YOHgyTEgt0gH0AUFVX3lxTE9mTFVZOUFaY01fQlZDUlIyS0ZiM0lwMzlBamtDUnRmRWJqRElaZ29SLXM5QzJJckw0UHVwZk5OZ2hZSjlVeE5NSVVFczg5TGVWM0lKOGRPMG94c3FjNDZFQzhDWjFhMEV3ODBOVU1vMlE2V09Jblc1NjRIajJBZ25vT1Y0aTJGRVN0alF4OEhad0IxX2JmSGhfLUVVcXl2emdBYTMyWG5Lcmp1dUVTaXMxY2gwUEdNUFVZQ242RzZ1bFhyS2IwallRRjFOanpFUm9pdzRneC12TXZJYVBlS0RkLUZZM0hKOUZFMUJxT1g4eDJMSC0?oc=5",
       "pub": "Tue, 04 Aug 2026 13:19:56 GMT",
       "source": "Business Today",
-      "age": "1h ago",
+      "age": "2h ago",
       "_sort": 1785849596.0,
       "bucket": "Musk"
     },
@@ -70,7 +124,7 @@
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWGlzcGxvZXd5OXBISDJrOG5GSjB0OWNDVnFhMHh6bGFjelN1MXdrdDE0TkhMTERSM3E0Y3RhTFNSMEwzN1VMY3NQY1BFMHA2aFV3UllpZWdUN2o4clR2aVlhVnhTb3ByWVFwbVpjTkkxTmtLQ1hHSkhYTjhBUXF1YzVFaHRtQWpXNkNTQ1AxdWZWZXhoM2dzc2UyakVBWkY1RlB6NGs2cUxYMkF6UEhSYlNiM3BqYkZuUzFoTQ?oc=5",
       "pub": "Tue, 04 Aug 2026 13:07:54 GMT",
       "source": "TipRanks",
-      "age": "1h ago",
+      "age": "2h ago",
       "_sort": 1785848874.0,
       "bucket": "Musk"
     },
@@ -102,20 +156,20 @@
       "bucket": "Musk"
     },
     {
-      "title": "SpaceX Could Burn Through Billions More as Elon Musk Ramps Up AI Spending With Tesla: Analyst Says Free Cash Flow is 'Just Not Part of the Story' - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQd0RoaWdTRVltdVJJS1Q5N0cxNjZQV2o4WkxjRkNRMWZQQlJUV19JbU1aSXk5c1oyci0wT05KYzNDSXFnN3FOX3NLY2NVSkN5RldYODNiRU55SzNiUXoxWTlJeWVHRXZUQmd1WEhPcU5UdWlLVHpscm9qODB2ZWNPVXJZNWY0NmNBSTBzUmxWcWNVN1hMT095VUt3Zw?oc=5",
-      "pub": "Tue, 04 Aug 2026 12:31:17 GMT",
-      "source": "Yahoo Finance",
+      "title": "Scott Bessent frames Fed strategy under Kevin Warsh as detox - cryptobriefing.com",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoem1KZ3hUbWNpa2JfcmkyaEd0Q1BtNGQxUlZyQ0NZS1pGbmVxWnpMRE41aUo1LVNaOEM2UEZoMnZDRFFka2tjdC1XSVpFY3dCZUVUWFJjY1lHUjZSWjRQSEVEM1ZkbzExZ0ZFbg?oc=5",
+      "pub": "Tue, 04 Aug 2026 12:32:35 GMT",
+      "source": "cryptobriefing.com",
       "age": "2h ago",
-      "_sort": 1785846677.0,
-      "bucket": "Musk"
+      "_sort": 1785846755.0,
+      "bucket": "Fed"
     },
     {
       "title": "President Trump gives Iran \"last chance\" to make a deal - CNN",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPd2NRWXFySFVtakhvT0RlS1NiTzQ5OXBMMkJWLVFzWjUtWUF3czhZX0NFSTl1dDQwZGc4S2NDSUh0bTREcExPdVVCRVFvU0k5UzE2QkFHWFMxM0VOcldvc0hwQkZEMFk4QnBUUXg3aFR3bzI4Y1JkOHluVWVyZzFjWlEtTjdFT0VvbXNNM09pZ0lSM3ZsMWZTX1RRcFU1TTRoMHc?oc=5",
       "pub": "Tue, 04 Aug 2026 12:18:35 GMT",
       "source": "CNN",
-      "age": "2h ago",
+      "age": "3h ago",
       "_sort": 1785845915.0,
       "bucket": "Trump"
     },
@@ -124,7 +178,7 @@
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPTlBQdlhuZkkwdEN0ZlRHQWJ3VFBfd3MzRS16SnpvXzZOd1QtdU05TDNuMzR6QkY2SGFmWHl4c1BPTmdoaWFoZGxOam0tQUFOOHZIa3ZwTld3cjlvZENoZkkxRk9nUXFsYWJFYXhlMlZZbmFUUDVzZWxwdElBMVhER3hwRy1uek9tQzJ0bmV3cGNCTzlZeFdrMkJycC1FdGw5NWZzcmhlbGVrbjhPRl9ZUWltOGZXRWs?oc=5",
       "pub": "Tue, 04 Aug 2026 12:09:29 GMT",
       "source": "FXStreet",
-      "age": "2h ago",
+      "age": "3h ago",
       "_sort": 1785845369.0,
       "bucket": "Oil"
     },
@@ -174,10 +228,10 @@
       "bucket": "Market"
     },
     {
-      "title": "Elon Musk Hurts Tesla More Than China Ties Hurt BYD, Survey Finds - InsideEVs",
+      "title": "Elon Musk Hurts Tesla More Than China Ties Hurt BYD, Survey Finds - insideevs.com",
       "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5lbE05WHdDMTVUcVhZdlphclFvY25xZDRBRUJMRnN0bXhrS1Zhd0lCUVNCWWxzeWZVS2VMM05wLVB5Y2FuQWNROG44QVBJYlV3TG1MVDQ0b3dSb0EtSHJwVF9IYjBlZzZvS0FyczRUVzM1UFE?oc=5",
       "pub": "Tue, 04 Aug 2026 11:59:00 GMT",
-      "source": "InsideEVs",
+      "source": "insideevs.com",
       "age": "3h ago",
       "_sort": 1785844740.0,
       "bucket": "Musk"
@@ -201,13 +255,13 @@
       "bucket": "Market"
     },
     {
-      "title": "AI-linked chip stocks rebound; Powell Industries tumbles premarket By Investing.com - Investing.com South Africa",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOVVlJbkFucG1nMU9HLWpWUHg1eTJsTGgtaUJXT2FJWHhla0NSZkV0dXVCWUl2NGhhOUxHbm9uem1wSUdPTXpvWUtodVZkSGJ4M2lkQldwc2RKUXhVejdHMy0wNlppZnFZMDVibjJpY1Vzd1RUeVFxbk9NOWRzX0ZVeWNha1llYzJrYllPSDFNVUUxdTJLMmxldkNPZzBONk9JTUZjM1liSy0xeE11bTNGd3dzeUNqOTMyVl9VdFhOaGFseXUzRzRlQ3dpWXo?oc=5",
-      "pub": "Tue, 04 Aug 2026 11:49:25 GMT",
-      "source": "Investing.com South Africa",
+      "title": "Tesla\u2019s China Business Could Complicate Elon Musk\u2019s Potential SpaceX Merger - \u041c\u0435\u0436\u0430. \u041d\u043e\u0432\u0438\u043d\u0438 \u0423\u043a\u0440\u0430\u0457\u043d\u0438.",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBxWWdzbUFSM2xCb283Q3RmTF9Vd2gzMXlsdVpGZkw5V2tpQl9TdkZ0T2EteTBQQzlyVTJCcHFCd0JMdE1QZm91SHR3aXpDSHZDZ1F4UkFKRnNYX2ptaGdfSzM2MGNvYXVsM0lRbg?oc=5",
+      "pub": "Tue, 04 Aug 2026 11:34:09 GMT",
+      "source": "\u041c\u0435\u0436\u0430. \u041d\u043e\u0432\u0438\u043d\u0438 \u0423\u043a\u0440\u0430\u0457\u043d\u0438.",
       "age": "3h ago",
-      "_sort": 1785844165.0,
-      "bucket": "Earnings"
+      "_sort": 1785843249.0,
+      "bucket": "Musk"
     },
     {
       "title": "The Federal Reserve goes Wacko - Financial Times",
@@ -219,12 +273,21 @@
       "bucket": "Fed"
     },
     {
+      "title": "AI-linked chip stocks rebound; Powell Industries tumbles premarket - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPQlNHakl0cjRGV3RFbjkzaUF1Vy12ZVFfQy1SNFBKQ3QyVURsaF96S0dQT1V3OU81aGROcVVpYzNDdmt1V0FoVGgtV3RnLUJGd2xvTTg2XzllNlA1SEY0cmNUYVFMbC04SzN2blhGekJUWXJtQk5XTDlqZ1JaYU9UQ0tIX0lrUUtXVHBXNzhsYmVDUjFoTG5WejQ4SkR0aDBpcEEzbVNEUjVkZ1hwLXRKWmwwU2RTYzViWXZsMkpR?oc=5",
+      "pub": "Tue, 04 Aug 2026 11:22:22 GMT",
+      "source": "Investing.com",
+      "age": "4h ago",
+      "_sort": 1785842542.0,
+      "bucket": "Earnings"
+    },
+    {
       "title": "SpaceX's earnings mean Wall Street gets to grill Elon Musk. These are the big questions they want answered. - Business Insider",
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxONkp4RjBUaHVlNnhNZ2d6Qkk1eGtYXzU2VGYtdlNOVDBpTGhEcDVGRGp6dER1X2J5Qkk0dzNFaXJTb2tIWEl6a2JEY1pKY2h1ZzF1RHRvdEF4Q21wM1VqX3lrY3V0a19ncjI5TEJSdURRaVlaaFoybVBRR1JFaXB2bE9fZnZDQm91MEFoUmNqaw?oc=5",
-      "pub": "Tue, 04 Aug 2026 10:38:00 GMT",
+      "pub": "Tue, 04 Aug 2026 10:38:28 GMT",
       "source": "Business Insider",
       "age": "4h ago",
-      "_sort": 1785839880.0,
+      "_sort": 1785839908.0,
       "bucket": "Musk"
     },
     {
@@ -232,7 +295,7 @@
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPak5XcGxWUXBlNVhTbFd3RkFvM2dzMUdvcm84a3Nzc2hxLVJYMU1zOHBsYlY0eV90Z2NlY0xDajNSdUxweFJ6WVprRjNzOHVrT0cwbXM0LUZvRHRmdF9VMEN0NUZpZ1VjYjFNeEdiSHZ1SHpyZ2otTVhyLXVsb09yVm1NUUhQM2dMMUNkQjFCalh1a2Y3bjlqX1ZNOHFVRDM5Ylh2clBwd0JmTUFtcmZUeUUyRnhsRXNjeUE?oc=5",
       "pub": "Tue, 04 Aug 2026 10:13:30 GMT",
       "source": "EnergyNow.com",
-      "age": "4h ago",
+      "age": "5h ago",
       "_sort": 1785838410.0,
       "bucket": "Oil"
     },
@@ -241,18 +304,9 @@
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1BT3E0UXgzRlVCSnVtSjM1cXM3TjdIUHpXYnVSOVFvc2taVEE5cXByWVV4UTFJamRYdm1NUEc1UHZBTlZKVlpGaFR1ZE9yemtWV3R4eHdtd2RPbDJXcWVWX3FQc0w1ZHpMWS0wQjBDZkJvQ0VLU2VnRUp3?oc=5",
       "pub": "Tue, 04 Aug 2026 10:05:39 GMT",
       "source": "EnergyNow",
-      "age": "4h ago",
+      "age": "5h ago",
       "_sort": 1785837939.0,
       "bucket": "Oil"
-    },
-    {
-      "title": "Elon Musk Net Worth Today: $725.9B Before SpaceX Earnings - FinanceFeeds",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNThVNVdtR2otUWlpRDlVVms3dDhBVzFzaE80dmJ1N2FmZ21pS2JCb1JZZ0xnbGlvbFB1N0xReEc4VkNOT2JpNkxSSUMzVDM0WUV4T2J5Vl9mQUN5YXJCWHpRRHpSeWRyQ1Jhbko0NGFPRDBlai1sbVBXUVAzVkZnYVBzTEtEYkFy?oc=5",
-      "pub": "Tue, 04 Aug 2026 09:58:22 GMT",
-      "source": "FinanceFeeds",
-      "age": "5h ago",
-      "_sort": 1785837502.0,
-      "bucket": "Musk"
     },
     {
       "title": "Nvidia Shares Hover Around $201, Forward Valuation Falls 22% Even as Estimates Rise - TechStock\u00b2",
@@ -277,7 +331,7 @@
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5xZlpkZXlxME1laGp1ZHRXNV9MXzNBMS12UHpzZnd0UlVNRkdNbTdfZER2WVpqX0ZIQkV5aW9fdkQxbVBXa0pfVFRJaWUyV2g2U3NZUm5aOXVNVWtQcDJHZUJyYkNLUGtyVmFvRHNqWQ?oc=5",
       "pub": "Tue, 04 Aug 2026 09:23:25 GMT",
       "source": "sekbernews.id",
-      "age": "5h ago",
+      "age": "6h ago",
       "_sort": 1785835405.0,
       "bucket": "Fed"
     },
@@ -286,7 +340,7 @@
       "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNRXJZXzZzQ250R0hrcUJZb1AyRkRhcHE0dDFZQlpsUHhWeHRJMkFocDNBUXlhWnB5UFlBU0cxOVRJX0RnR2tZblNOQjBaVkV3MGJodU1lQ3BrSThTZWlfc0dsSnFiTk9SNUJhZzl5UW8wWWZPOXpZbkQxQkRwWDlmWjc2U2JQVlZ5Wm5fMThKSUg2YkJ4Mnc?oc=5",
       "pub": "Tue, 04 Aug 2026 09:22:00 GMT",
       "source": "independent.co.uk",
-      "age": "5h ago",
+      "age": "6h ago",
       "_sort": 1785835320.0,
       "bucket": "Musk"
     },
@@ -295,7 +349,7 @@
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOcWx2MHllemJiSm91RVVNNFZVdWtQU3E4TTZzT0RmcjZlYXE2SXVhbVJjTlhiMjExV3V4ZHlsSlZUWk5ydE9mWEhORDlRa1h0VzRUV01wcDVyTEwyOHZBV05ZUUctOGFaUUgwal9YSDhtTDNKRjBuMUstSlAxN3lPMm9qdkZZU2lTM2I5aXQzTUNDTDhJbkdmc0w5UGpGSDN6LW9sQzNRQ1N1ekR6aU9sWnlsQU10OVMxWkg0TWFWMA?oc=5",
       "pub": "Tue, 04 Aug 2026 09:17:13 GMT",
       "source": "Investing.com UK",
-      "age": "5h ago",
+      "age": "6h ago",
       "_sort": 1785835033.0,
       "bucket": "Market"
     },
@@ -304,7 +358,7 @@
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNSmhtdjg5YmhySTlMeG9zSWRyTVItdmx5Y3ExbTFEazdxdTBGMmpQbC1pS1FYa0h0VTdqZ0hmekJ5V2xDUXNQOTVuZEttdnA1UDNRRlVmV0FmZ3FXMm9JakxmLVhXX2lLRl82XzFkNTRlQ214QWk4b3B2RzVseFY4TGRNbXdfaWtfenc?oc=5",
       "pub": "Tue, 04 Aug 2026 09:07:30 GMT",
       "source": "ibtimes.com.au",
-      "age": "5h ago",
+      "age": "6h ago",
       "_sort": 1785834450.0,
       "bucket": "Musk"
     },
@@ -372,10 +426,10 @@
       "bucket": "Trump"
     },
     {
-      "title": "Gautam Mukunda: Elon Musk surprisingly doesn't understand abundance - thederrick.com",
+      "title": "Gautam Mukunda: Elon Musk surprisingly doesn't understand abundance - The Derrick",
       "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQVEQ3Nm9qQnRhdnB6SWZVZktDVGVkTnhmMFNBNkJoSjJTbzA2SVR4V0VxV3d6c0NLYzQzc2NlSWJaelQ0Y2RiTkRNMG5MbXJEZFU0VWlKT0s5d2xoN0xLM2VwRnBVWHVWeXo3MVlCdmktalpsZnBaZGpoWVJYaW9wc3htRnZIUHU2UHJqVkNFekxPdmIxN1ZWZWVwdDFMTkYzZnVLMEdrdjdWUVN4WW1LSlFuLTVGQVRhcnVzUFJfQ1RuSk1Zc1BwVmtUYXFvRFR5MnFkOW9tTGxURjBjRXpTMHFLdDZ5Y1g2NlRlRVp4dU1Xb0k?oc=5",
       "pub": "Tue, 04 Aug 2026 08:00:00 GMT",
-      "source": "thederrick.com",
+      "source": "The Derrick",
       "age": "7h ago",
       "_sort": 1785830400.0,
       "bucket": "Musk"
@@ -399,20 +453,11 @@
       "bucket": "Oil"
     },
     {
-      "title": "Elon Musk Begins Construction of Advanced Technology Chip Fab in Texas - Zamin.uz",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPam1obTlxeDVHV1U0S29DdG5IaHlIQVFycXVHRnBodlF1Mll6SF82N0JnRmZLaVpTQXBPWXd4d1JfU0s2YWkybC1vWHlvd1lRUVlya3dpQWZqdGR5bnN0UnppSGdROHppN2ZuNThMVjkwS2JsRkFPOXFUTUhVSGZXc2laVmMydUlvMHZOMFl6aFZtbmE5cUZ0X2VBZG1abkdBSktmYkdqRUtxRzF0dVlzOVZPNA?oc=5",
-      "pub": "Tue, 04 Aug 2026 07:28:18 GMT",
-      "source": "Zamin.uz",
-      "age": "7h ago",
-      "_sort": 1785828498.0,
-      "bucket": "Musk"
-    },
-    {
       "title": "Trump Says US-Iran Talks Continue as Tehran Denies Negotiations - \u041c\u0435\u0436\u0430. \u041d\u043e\u0432\u0438\u043d\u0438 \u0423\u043a\u0440\u0430\u0457\u043d\u0438.",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAwQ0p6UDNTa1EzRmxOSW5tZVdRVGZiUXNFY3N6Q3poM1h5QzdHNHUzZ28tLTN6VVk2STdXYmNBLXF5UUFBS05pSHBHZXlzTzA4ZG93R3ZVdFJVeGhuaEVaSUR2N3hodlU?oc=5",
       "pub": "Tue, 04 Aug 2026 07:19:53 GMT",
       "source": "\u041c\u0435\u0436\u0430. \u041d\u043e\u0432\u0438\u043d\u0438 \u0423\u043a\u0440\u0430\u0457\u043d\u0438.",
-      "age": "7h ago",
+      "age": "8h ago",
       "_sort": 1785827993.0,
       "bucket": "Trump"
     },
@@ -421,7 +466,7 @@
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOVDkyM1dfNzhVYTVieUk5VmxNaUR5cnNDZmZ5SUozcmFHZzdoS2JtZmU0OEItNXpGVWQyeHg2VzN5RnhFZE1VR0k1bXJvRmtLRENJVTNDVXVxLTlJRjZveEhWUzhqcGJ4aURMMy1wa1hJWnFUWHBFVG9aNFY2SC04TVIyV2RrS1kxeEJGeUdtbw?oc=5",
       "pub": "Tue, 04 Aug 2026 07:18:20 GMT",
       "source": "EnergyNow",
-      "age": "7h ago",
+      "age": "8h ago",
       "_sort": 1785827900.0,
       "bucket": "Oil"
     },
@@ -448,7 +493,7 @@
       "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE00Mk9kcjNCbEFXalVmQWlDekJ5NTdQZWdOWjU0SnVvVHBtdmp6aHRqTzhMWl84SDlIZGx1Tjl6SmNUcmxUUTNKSXlJa1RFc3FPWUpjZW9CS0pGT0hFTjRwQl9BenlvQVVoSkZfUkRKdERaZ9IBd0FVX3lxTE5SOFhqVXRxaWhqUXhrS1BzdjJIMzdTSGhaLS02TTFHMTBQZlM4cERqN3ljekNBU0FlWHpLYVczeXVqeEJaazlQQWM0ZGxnaGxzRzdFZ1Q1blZKYzBTcXI0OW42ODVpVS1mR0pQcnJtbi1zTHFENXlN?oc=5",
       "pub": "Tue, 04 Aug 2026 06:07:12 GMT",
       "source": "CNBC",
-      "age": "8h ago",
+      "age": "9h ago",
       "_sort": 1785823632.0,
       "bucket": "Trump"
     },
@@ -480,6 +525,15 @@
       "bucket": "Oil"
     },
     {
+      "title": "The future belongs to relentless builders. Elon Musk would give everything for America \ud83c\uddfa\ud83c\uddf8 #Tesla #Innovation #USA - NewsBreak: Local News & Alerts",
+      "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNQWNmVXhVcExESlhtVVZCdDQ4LVc3LW9JNkkta2xyY2p0cHpSMWFSQnVuRU1kbnE5LXA5R25kVmJVNXZ2Y3Jlbm5fbTdSV2dERkc3cFZjeG02NDhKMU9hTTUzOFU3VHA4ekRfWmxzaU5LU0wyTmpsQkR2bGVGQTlsNzNiTzZ3dENpYWVJNVllSElvNWtPTjY4TGgxYW91N0JiamdoVVhESkRoQ2gyd1NfbldMR0JEX2lsYUFjZXNSRlRmWTNUQ0NjRlk1Q0hvUzZIUEJuNzZGSy1HMG0zSUhSYmw3eV9oUmNwdUg3dHdtenlEZlVGTlB5UnBuNA?oc=5",
+      "pub": "Tue, 04 Aug 2026 04:38:54 GMT",
+      "source": "NewsBreak: Local News & Alerts",
+      "age": "10h ago",
+      "_sort": 1785818334.0,
+      "bucket": "Musk"
+    },
+    {
       "title": "TSLA Stock Rises Marginally Premarket: Elon Musk\u2019s FSD Ambitions In Europe Hang In Balance Ahead Of EU Regulatory Hearing - Stocktwits",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNdUxkUTRIZUVmMm4tY2JRZFFNbExLS05ZWk83WVZ1RzlUcHBEM0tkc1o0eEtKcEZyXzQ5ZFZaaktTSzRrSENwTDB3YVJXeHdITHRqTjE4WWZFdHo4di1QRDBnbnF6eXJHOUt3M3p4WlgwOC1oWkhXN0E4Rm5HZjdUQnlLR1hjaUh0dmNHMzlpZ3R6WFpUMGdvNDQ5V3NaQnY5WnFlakxmS1RELWtyN3ZfczY0M2l3Smc4?oc=5",
       "pub": "Tue, 04 Aug 2026 04:37:29 GMT",
@@ -502,7 +556,7 @@
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5ob0FnLXdYaFZMdENoYXJWZzFRS2Nod1NxWFlUQkRhcDBRVUpEZTBFVlMzcURDSTg4XzhQMmpiY2dsX0U5SHd3ZDdLZDdlVUQzWTk1SDNTUkFyNEJzOU90QjVFSG9RNHBDTzczN0ZtXzRKRmdqYkpj?oc=5",
       "pub": "Tue, 04 Aug 2026 04:21:27 GMT",
       "source": "EBC Financial Group",
-      "age": "10h ago",
+      "age": "11h ago",
       "_sort": 1785817287.0,
       "bucket": "Oil"
     },
@@ -511,7 +565,7 @@
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPcGZYUUZIMGtDRmYxNl9ROXkxNkxrQ3pEZXBsY0sxV2toNmFpNThHOTVKeHlibUlWam1nZVBFT3pqYS01VFNOc2tlUHNYSkFmcDYxMzQ2OTlGN0dqbTYxRVYzMmZGLXB4NTh1QUswWXZXY0V0SVVWZy1EemllSlZPclhrcTIyczRpMkpHMkx1LWtvaE96X0h6OWdHRWgzd29ja2tWV1hsN2JTYkJBeUgyUnpFZVR1dHhLVlhlMg?oc=5",
       "pub": "Tue, 04 Aug 2026 04:11:12 GMT",
       "source": "Benzinga",
-      "age": "10h ago",
+      "age": "11h ago",
       "_sort": 1785816672.0,
       "bucket": "Musk"
     },
@@ -534,28 +588,28 @@
       "bucket": "Trump"
     },
     {
-      "title": "Trump calls Iran 'duplicitous', says deal or 'total surrender' is the only way - Mid-Day",
+      "title": "Trump calls Iran 'duplicitous', says deal or 'total surrender' is the only way - mid-day.com",
       "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPaDB1aXZET0pZWWw2eWg4VEMwQjBFajQwU29JdF9UUENFYkxxZlJvSzUwMGo0ZXV5UnpvdHFOSmZmNEJlcE1USGdvN2FWZENXUUo3bGRlcWZ5WDRxOEFlN3ZFaHRpSGgyZVA3RDVlVGFmdU5hLVNmeHBmSDB6Ti1lajQ1Q2x6dUtxUnVIVVRlMGRnblU5Y09KaVhkMmxyRlZPeTR5ZVgycGpfTTAwYnVBZGgxeGFMcnFHOWZzanB5dzBscFdSbkZfX1Bsck5SMmvSAc8BQVVfeXFMT2gwdWl2RE9KWVlsNnloOFRDMEIwRWo0MFNvSXRfVFBDRWJMcWZSb0s1MDBqNGV1eVJ6b3RxTkpmZjRCZXBNVEhnbzdhVmRDV1FKN2xkZXFmeVg0cThBZTd2RWh0aUhoMmVQN0Q1ZVRhZnVOYS1TZnhwZkgwek4tZWo0NUNsenVLcVJ1SFVUZTBkZ25VOWNPSmlYZDJsckZWT3k0eWVYMnBqX00wMGJ1QWRoMXhhTHJxRzlmc2pweXcwbHBXUm5GX19QbHJOUjJr?oc=5",
       "pub": "Tue, 04 Aug 2026 03:38:00 GMT",
-      "source": "Mid-Day",
+      "source": "mid-day.com",
       "age": "11h ago",
       "_sort": 1785814680.0,
       "bucket": "Trump"
     },
     {
-      "title": "Trump says Hormuz could reopen 'by tomorrow' as Iran denies US talks - Mid-Day",
+      "title": "Trump says Hormuz could reopen 'by tomorrow' as Iran denies US talks - mid-day.com",
       "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNOWhFX2Zia19nTVVqTUFndkExYU01ZzhFTTRUN3FnT3F5NEtmOU9kVTZCelprYm5DZkxmT3BfbWpaQjMzVGh1c1FfTkNTcEdLdkV4TWJCcG02d2JCc1dQX0V4S2x5aVFEV2JmcjZqOHFZNmVidTdYVk1hMkY1LVNnQ0hTMWhJTjNGNDBtQ3l5Nm1mVE9LeWswVXNYLVFTeDNJc3VUaXh3QjRubFl4X01ia2RDdHhKa2Z2ajAwZ2hkblI3LV9XZkHSAcYBQVVfeXFMTTloRV9mYmtfZ01Vak1BZ3ZBMWFNNWc4RU00VDdxZ09xeTRLZjlPZFU2Qnpaa2JuQ2ZMZk9wX21qWkIzM1RodXNRX05DU3BHS3ZFeE1iQnBtNndiQnNXUF9FeEtseWlRRFdiZnI2ajhxWTZlYnU3WFZNYTJGNS1TZ0NIUzFoSU4zRjQwbUN5eTZtZlRPS3lrMFVzWC1RU3gzSXN1VGl4d0I0bmxZeF9NYmtkQ3R4SmtmdmowMGdoZG5SNy1fV2ZB?oc=5",
       "pub": "Tue, 04 Aug 2026 03:35:00 GMT",
-      "source": "Mid-Day",
+      "source": "mid-day.com",
       "age": "11h ago",
       "_sort": 1785814500.0,
       "bucket": "Trump"
     },
     {
-      "title": "Trump says Iran talks are underway, calls it Tehran's 'last chance' - Mid-Day",
+      "title": "Trump says Iran talks are underway, calls it Tehran's 'last chance' - mid-day.com",
       "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPZEdYTVV6anZvamdSeXlmYThwbDFjVWNPTzdUY19kREkzNGhKTU9nM2w0SnU0NTR2Mng1WnJIcjBCX3BXa3hoeHp1aUtDTEMwRHVYZmN3UG10QVU3Qk1TSlJSLTFIX0pNRXBDbXdnelNWeXljenN5Ym9CUTI3cHl1b2h3Wk0wTVRqRkZJUFVvQkNTNjZhMjhlN1loTXlzdWdnaVZUbTlqbllGSzV2bmlDWjk3YjVrSFg3UDRaX2pTdnNyQdIBwgFBVV95cUxPZEdYTVV6anZvamdSeXlmYThwbDFjVWNPTzdUY19kREkzNGhKTU9nM2w0SnU0NTR2Mng1WnJIcjBCX3BXa3hoeHp1aUtDTEMwRHVYZmN3UG10QVU3Qk1TSlJSLTFIX0pNRXBDbXdnelNWeXljenN5Ym9CUTI3cHl1b2h3Wk0wTVRqRkZJUFVvQkNTNjZhMjhlN1loTXlzdWdnaVZUbTlqbllGSzV2bmlDWjk3YjVrSFg3UDRaX2pTdnNyQQ?oc=5",
       "pub": "Tue, 04 Aug 2026 03:32:00 GMT",
-      "source": "Mid-Day",
+      "source": "mid-day.com",
       "age": "11h ago",
       "_sort": 1785814320.0,
       "bucket": "Trump"
@@ -583,25 +637,16 @@
       "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPQ2h4eFJVTlNTNmxjY3AwaVktZjBKcHgyNEVSUmJTVEVsREdONEtDN1U1V1VqRG0tQXlQdWhBX2ZudG01NnhjQkQxNTBOOUlUYVlvZEN3aTdwX25MVnctV2tvVHZWeFJDMXNIUG5WdUVJWG9kS2JrZk1nQVdILWYyLS1DTjJ0Y2xuZlpHTWpCb3JzUk83amx0YUItemNpT3NZM3EyTEFsRQ?oc=5",
       "pub": "Tue, 04 Aug 2026 03:27:29 GMT",
       "source": "EnergyNow.com",
-      "age": "11h ago",
+      "age": "12h ago",
       "_sort": 1785814049.0,
       "bucket": "Oil"
-    },
-    {
-      "title": "Tesla-SpaceX Merger Is Coming: Biographer Tells Investors, \u2018You\u2019re Investing In Elon Musk, Not Procter & Gamble\u2019 - Stocktwits",
-      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQd2tmSnYycjFJcktBU2d3RjNnTDB6eERnSzJNT0xidEthbEJLYnpGNi1uLXJabDVkeHJJZmVjcnE1eUdoS216LWd0d2ZjLWxnSWZ1YTFqdmViSlJldEVlWS1pckZEald4Q0RoM0s5OHM1SUUzZ3hFeTh2YktNcjJSWUdHekpLeWc1MXNKSDA0eFl6V3QwdkZodDRPX0Vndk03Z3J3YmVLN2NkT096SVh3b0JQRHlBZTlLUmFwbnhqbGcyMHl2Z1pvTUlSZjhabUp1ZmpRVUJxSFpudW5YTmlBV0FjRTYxZw?oc=5",
-      "pub": "Tue, 04 Aug 2026 03:13:51 GMT",
-      "source": "Stocktwits",
-      "age": "11h ago",
-      "_sort": 1785813231.0,
-      "bucket": "Musk"
     },
     {
       "title": "Oil Prices Flat After Iran Says Dozens of Vessels are Crossing Hormuz - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRHRlT1VGMFB1d0txZ1NNN09lRktZLTh3OExQOUQwRDhiVGRQN1NlWGVjMXlKU2pZTDlCYktPTEFZbndtdVF3aFd6YTZ6SXlxVkZFTUw5T0I1dXEyVzVUVXFKbVJCYXBUbFRablNqdGRvYlZkZ0xOVWVxMi1XLWhKVVZfZE1WNVJBRmlYMlFPa2N3c190M2VFclB5eTM3ZjlCSGc?oc=5",
       "pub": "Tue, 04 Aug 2026 03:06:04 GMT",
       "source": "EnergyNow.com",
-      "age": "11h ago",
+      "age": "12h ago",
       "_sort": 1785812764.0,
       "bucket": "Oil"
     },
@@ -642,20 +687,11 @@
       "bucket": "Market"
     },
     {
-      "title": "Abby Phillip rolls the tape: Trump denies knowing Reflecting Pool contractor - CNN",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQZWs2bGVKbjU4RnUzbmI3STR3YnZwbUdoYjFNYjZEaUVmVTVKZFpFdjNVRnd6TmI1RS1sRzZ5UTEzSkhZOHEwWHJQSGliTUFhQVU1cnRIQXltZGhMbnZVem5vMS1Ob01LZHZFUE9YSzV0bERVZTJycnZ5ZnUtbnBlV3g3aXlCNmZmek9oSVh2cDljOXhZcXlQNWprN0IxYmpVNjhQVC14RWhkWTBoT01J?oc=5",
-      "pub": "Tue, 04 Aug 2026 02:44:15 GMT",
-      "source": "CNN",
-      "age": "12h ago",
-      "_sort": 1785811455.0,
-      "bucket": "Trump"
-    },
-    {
       "title": "Indian Stock Market Today: Sensex, Nifty Likely to Open Muted Amid US-Iran Talks Uncertainty, RBI Policy in Focus - Legal Parivar",
       "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOVHZBaWYzNzdLam93MHFVdXF1b1AySEZEOE5uUHRKMDNKWmppNlFtTTF0Y01fa19lUlAtWUVKTnJqZ2U0Q1RIZUhuejVDZ0ZEdWdqWHktODJwMUZITXJabmRhcXRnV2RVZ0Z3eUZwRTdFMUdnNXJzUExpSTJMLUtKcXhoYlRmS0lQREVMYUhpSE44VWYyUjhUR21oSE44Mks3V3VmbXdMU3RFVXFmdXR3U21RaEhlVHE1M0VRNWJWcnRNZkl6OUowWUlBNHllTlNDX2k4R1Nhemo?oc=5",
       "pub": "Tue, 04 Aug 2026 02:26:21 GMT",
       "source": "Legal Parivar",
-      "age": "12h ago",
+      "age": "13h ago",
       "_sort": 1785810381.0,
       "bucket": "Market"
     },
@@ -664,7 +700,7 @@
       "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE52U1V3djNiSUJoYUJzSGtzazVoU2ZMSHc0dHdRNEhEQVZHd2Y4YWdhMFNvQ0lWM0Myei1NZjdfRG9zM1JZcGd3ZWE3VXdnT3RIaDFIMnVseVo?oc=5",
       "pub": "Tue, 04 Aug 2026 02:24:00 GMT",
       "source": "\u0e27\u0e32\u0e23\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e40\u0e07\u0e34\u0e19\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23",
-      "age": "12h ago",
+      "age": "13h ago",
       "_sort": 1785810240.0,
       "bucket": "Trump"
     },
@@ -673,7 +709,7 @@
       "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQWmJNaXE3VEQxcVR0TVNMZ093QlVpcnRtVlpjOE01elFMLUstR3Q5eHdIQjRpZnpqaGlHcUIwM2dMdFFKN3FsTFBJa0NnOVhaZTVrdDFxdFF5a0VQTlVaRXR3dG5HZHJXb01jZlhrc05kV2tkLWdvU2RJMkFxbUVjRWc3d0pTRU1maV8yT1BKdFRiVGFJMmZQcEZGUTFYYkw4U3BCQk9zeWpIUVQ5LXNJR1ZKUGhJaDZabXJDUFgzdHZmQVNtNm1FdGxFVWhXMmVYV3pfZ3JRNNIB3AFBVV95cUxQaUhubDRrZXNQMHRDZEFZR2xmcXJpdklaWThpNkdPNEE5cEtYNi1SWnZfay1Sa0ZhQzRrTks1clR4NWNPbGZ4SDlyeS1nSXNlVTVQZW9IQ3U3aDVzYlVCXzl0MW0yNDV0YzNvNWxlVzcyODQ0bVY4RWx6TEJyblo2MWpIa1dMR0tRaXRlM2NYNTQ3Ty1ac1dLV2gzWWlqdF9sc2FtRUxNUkFyeWNMay0waFJ0c2pEMGZFU3l3c1FiUXpuRm1jdGctTkhiem02cDAzdXIwcEhDQXd1V1BH?oc=5",
       "pub": "Tue, 04 Aug 2026 02:23:55 GMT",
       "source": "Business Standard",
-      "age": "12h ago",
+      "age": "13h ago",
       "_sort": 1785810235.0,
       "bucket": "Trump"
     },
@@ -682,7 +718,7 @@
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdHRDWXFVc3ZxOXE0eldNbUJYN1pLZmFZVjVGcmNCR3lTWERjYy02UUE5UWRzanppeGFjODNUU25JY19COFNwc2Rqd1V3alZsSXRiWGdJYVJ4bWV0Mk91bnpybUlxWFVqVkZLb193UkplME10Vkc1aEMwRjdRd3FLbnhTWWJkLVQtVXZtREVDdHJkTnE4bjQtdjdVcWE2ZUtOczdCc25iUm5NYk9WdTdhZE9OYUg1QjVJTDBzNU1ycTJ4TDU4Nkd5Z1lva0bSAdIBQVVfeXFMTVBvNVJzOERJZ1gwV2JfcFlkeGR4ZGE0cVZxMm10Wk5KTC1oelZ4dnJxOG9kVnVIa0I1RkN0YVZoMkcwQUJrVV9aX0xpZTZBN0xERG81NXE4ZDNnZlJRWHU5aW5nNU9RRHVfeUhBNzR4aVFBY0pmOGVISmZEXzI1SkFfZGRNNTlGYXhKZUsxN2dOdmNlQVpnLWU2eDdlM0stazRudVQ3b1pBMVBpQWhRZ0ozdmtTU0k2UDhqS3M5RF82WXV5enJnck1NaDBWTkdrRDZB?oc=5",
       "pub": "Tue, 04 Aug 2026 02:15:48 GMT",
       "source": "Business Standard",
-      "age": "12h ago",
+      "age": "13h ago",
       "_sort": 1785809748.0,
       "bucket": "Trump"
     },
@@ -691,7 +727,7 @@
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQXQycloyMG9YbzRHb05xMUx1QVpUWDZmRTQ3X2ZyTGlfb0YxWDItOEhSeVFnT0VCWlFPbEhCdk5UbGpqUi14bHBvUE1ubnlaTjYwUWc2cEJ2UUhndHpxSGNRUmNHY1dmTHlCNlJBTEdwMTRLcGNfMGVuZjhwNGhES2JpTkxfc21sWG5POTdvcHJyNXoxeGY5YnVIOHFZQQ?oc=5",
       "pub": "Tue, 04 Aug 2026 02:15:34 GMT",
       "source": "newskarnataka.com",
-      "age": "12h ago",
+      "age": "13h ago",
       "_sort": 1785809734.0,
       "bucket": "Musk"
     },
@@ -700,15 +736,15 @@
       "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUnhudXEzMWhDRk1jUnNTNnh5cWE1QUpnMlp3cFdNQ0xaRXVGS1lMbjRrb2RoOGJJZzF3RlAwRmVVOEZhRHFJeU9GRU1mbVRtVEZUeU1GZkVjSmNPRzlMdHVVZDd5b2lzcVdYSHZkemxxY28ta0t0SWpEQ0ViMk10RUxWX3g0eVNQQUJHaXBJb3JiSnk4bm9lZ2Y1b1RrWk9oT3JjeFhmMTFCdG5hTDRESjAyWUZqdnZCQ3FYSWFsTFI5eHVvR3o1ZEtXZDM3NVllNVlZRG930gHbAUFVX3lxTFBUOG1DaG9HWTRoWG40VkJ2ZXFCZmVwOVUwNGFJVjlfLWhtdWxWeUZCWGFmM2ktMnQzWHJZWXBjS24zYjRfaU1HaVBoc3VCQ3N1RnZxQ1duZW1oYnFLYjhwbFh2OWM3eWxTbGttVk5JVDdvZ3g4VUl2S05tWFRWOHdlaEZXVGw5UTBwNy1iZ1U5VmxjaGNHbjhKVHFPb216a2tCR1lsLXlsczVaWGd0Nk1GVXVnWGZoWkpuZ0JHNTFCR1F0Y1BsQnQxdllHcUFReFNNWW1ZaGl3Si1TYw?oc=5",
       "pub": "Tue, 04 Aug 2026 02:15:06 GMT",
       "source": "Business Standard",
-      "age": "12h ago",
+      "age": "13h ago",
       "_sort": 1785809706.0,
       "bucket": "Trump"
     },
     {
-      "title": "U.S. stock market rises on Iran talks, tech giants surge, South Korean chip stocks plunge - kucoin.com",
+      "title": "U.S. stock market rises on Iran talks, tech giants surge, South Korean chip stocks plunge - KuCoin",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQc3FrTU1hT1ZPQ0xkLXphS1ZzRndEb1NpVTF6YXZfZGZPNlh4emdSaE52eGZaZmRYRGZrU1JOemljWktNZXZzclQ3VFNwa3R4N1dSajBoUmlrQ0dFd3lSRWNyZ1E5c2xEcTNmNmtJLWY0T0RPRXliSlVmWURWOHVPQnoxMFNHbjNHQm1EUTVxMDVXVEY1NkZtdlA3SktBMEg5Z0xSaUZVeWNNalM5TG9aRjdZa0E3WGhjaTduaQ?oc=5",
       "pub": "Tue, 04 Aug 2026 01:52:19 GMT",
-      "source": "kucoin.com",
+      "source": "KuCoin",
       "age": "13h ago",
       "_sort": 1785808339.0,
       "bucket": "Market"
@@ -777,11 +813,20 @@
       "bucket": "Trump"
     },
     {
-      "title": "After Iran denied holding talks with the U.S., Trump accused Tehran of duplicity and insisted negotiations were ongoing, expecting the Strait of Hormuz to reopen by Tuesday at the latest. - \u5bcc\u9014\u725b\u725b",
+      "title": "Watch Trump Gives Iran 'Last Chance'; SpaceX, AMD Earnings Ahead | Bloomberg Brief 08/04/2026 - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPa21KUUtnMzNmbFQxZUNKOTBCTG93NjFQT05wX2h4a2NZNHllZkxNNVIxVEdiZVlBeWljcHY4RUJfaXVtTEIxZzVrdmpMbFdlYndQdEtaZWF4WjFfMFhndWVLQWJ1aUlra2x4akh6NURmVFY1Wko4Z0NHamI3QUYxX3AxeXpNSGNs?oc=5",
+      "pub": "Tue, 04 Aug 2026 00:00:00 GMT",
+      "source": "Bloomberg.com",
+      "age": "15h ago",
+      "_sort": 1785801600.0,
+      "bucket": "Trump"
+    },
+    {
+      "title": "After Iran denied holding talks with the U.S., Trump accused Tehran of duplicity and insisted negotiations were ongoing, expecting the Strait of Hormuz to reopen by Tuesday at the latest. - news.futunn.com",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPcFA1T1FvTV9jMFRTUWhLU3lXTHVxYm1obDVFTDdzeURDTTBwME9zMDVQUHVzMWZPd1dJUm9aWGxCWXZpOTIwSl9aVk9YdlM4TTFCS2h3MVdPSDdfQUtYZUZwYlI1Q1UtaU1LcnlraDdPTmFvdXc0UzlnZ3VzRk1BU3NKTVNNTUl5N0tVZzJ1ZU5RWVJhNFR5ZUZ2NGVPc0U?oc=5",
       "pub": "Mon, 03 Aug 2026 23:17:00 GMT",
-      "source": "\u5bcc\u9014\u725b\u725b",
-      "age": "15h ago",
+      "source": "news.futunn.com",
+      "age": "16h ago",
       "_sort": 1785799020.0,
       "bucket": "Trump"
     },
@@ -790,16 +835,25 @@
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQYjVaa21OUnhBbE1PRFNpaU1PUllfMENBVDBIZTlHbEZMME81XzdURFd1QlhqQzZYQ2NIcUNlam9LQkdfUHBJVTlpV3kzZmQ4VDlRU2JfX2ZCLTZCd1dXazFBbTdZdDBHY1JtOW9yM29nWmliVFkyOWZoTjlncDRVd3dVRUtCU254aUR3azdnX08tYXdDb085eVJON1E3QzFCeEV3d2FKYU1VX1dTMHBv0gGvAUFVX3lxTFBiNVprbU5SeEFsTU9EU2lpTU9SWV8wQ0FUMEhlOUdsRkwwTzVfN1REV3VCWGpDNlhDY0hxQ2Vqb0tCR19QcElVOWlXeTNmZDhUOVFTYl9fZkItNkJ3V1drMUFtN1l0MEdjUm05b3Izb2daaWJUWTI5ZmhOOWdwNFV3d1VFS0JTbnhpRHdrN2dfTy1hd0NvTzl5Uk43UTdDMUJ4RXd3YUphTVVfV1MwcG8?oc=5",
       "pub": "Mon, 03 Aug 2026 23:10:33 GMT",
       "source": "thehansindia.com",
-      "age": "15h ago",
+      "age": "16h ago",
       "_sort": 1785798633.0,
       "bucket": "Oil"
+    },
+    {
+      "title": "Elon Musk Is Still Saying Crazy Things About \"Era of Abundance,\" Among Other Things - cleantechnica.com",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZlQ5Ti1vNUZwRTFfbTByRm1mc09saHpfZlFOYnVMUXVmMWx2Slk4TWxiM1c3dDc0d0xjelNKWm1NRUNPTjhralR2cFV0SGFSVU9LcDY1TXBaNGZiU3JLSnA2VThYSzNreXoxWjBkeU5pMFFBcGt4WWVGSlRiaWxrQzlCMGIxY1RLRkVqSURuZG1Nc2loVndpSk1GSUZ5aFUxdUxOci1VOVRabWMteDJXclFxcDBWOHB0anc?oc=5",
+      "pub": "Mon, 03 Aug 2026 23:08:39 GMT",
+      "source": "cleantechnica.com",
+      "age": "16h ago",
+      "_sort": 1785798519.0,
+      "bucket": "Musk"
     },
     {
       "title": "Trump Gives Iran 'Last Chance' Before Decapitation - \uc870\uc120\uc77c\ubcf4",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQY0dZTUZjSF80NGtjUWhfSmZsT21rZm9vNDNMUGJjZml4amRDNEpJeV9OeWNWNU5vTldfbEU1cGVZVWNzSGpTRzN6QVFITHh5N3R4UHU5VjBTRk5wN0NRWlZraWZUSWNMaXBRLWZFVkJYZFJadF9qLVZjcjJpUUMyRDFZVGI?oc=5",
       "pub": "Mon, 03 Aug 2026 23:06:45 GMT",
       "source": "\uc870\uc120\uc77c\ubcf4",
-      "age": "15h ago",
+      "age": "16h ago",
       "_sort": 1785798405.0,
       "bucket": "Trump"
     },
@@ -853,7 +907,7 @@
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQc2d6NUFOclFucUtZODNBTGl5ZVVFMGN0ZHlPNmRocXRHZmpkcHQ2Ty00T2RoWXZaMnNzdHZOaTFPaUZ1WXY5bHc2d2plS25GTlIxb1FsODRiQjlPcU42ODdkeldYYlk1bHJXX3Jpbjh4UFZYd1EyS2NRN19scVk1SU9CQV9ua3dRREp3RDhKeE9YVnRj?oc=5",
       "pub": "Mon, 03 Aug 2026 22:13:40 GMT",
       "source": "Bloomberg.com",
-      "age": "16h ago",
+      "age": "17h ago",
       "_sort": 1785795220.0,
       "bucket": "Market"
     },
@@ -871,7 +925,7 @@
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPXzRPbjNFSi12TjRUUkhSc1BzbDRxTTZSVV8xR3BiVFFuMUVveUtTYkpFSnpDQm45M0V1TkRUQVZQNGl6OWNnLTJxaGVTYU8yRmh6dE8tTjBZYWQ1UTVIUHFIQTRpSU4xQjA4RzEyOXlaS1EtSjh3R1pyR2xRWEJSam9qQnJVcXFHN3VlSjF2RjcxcWFBeE1EckZHWVZGWUFf?oc=5",
       "pub": "Mon, 03 Aug 2026 21:16:18 GMT",
       "source": "TipRanks",
-      "age": "17h ago",
+      "age": "18h ago",
       "_sort": 1785791778.0,
       "bucket": "Trump"
     },
@@ -880,7 +934,7 @@
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5QQXdnaUxQd0MzT1dLeGFiUUJrMHRJOWhzM3VHaGNIYlRJcXE4ZU84cWtmWkE4aHdzWjBzV010QTdMQ0pTMVN4TTU2S2FNTXhWWFpBUTU2X3E3V24zSzBWNEVTWFFtSk5BMzBsaUkzbw?oc=5",
       "pub": "Mon, 03 Aug 2026 21:09:19 GMT",
       "source": "Newsmax",
-      "age": "17h ago",
+      "age": "18h ago",
       "_sort": 1785791359.0,
       "bucket": "Trump"
     },
@@ -889,7 +943,7 @@
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBtcWJKcFdjUVlHaDhfX3BCbTlhQ1IyOW50OC1qUzgxcWlscE9maDVWcDNad054T0FjS1BxMG1CVEdQdkhJTEwzdlo0M0lIZWxPS0lIV3BEWQ?oc=5",
       "pub": "Mon, 03 Aug 2026 21:08:28 GMT",
       "source": "\ud5e4\ub7f4\ub4dc\uacbd\uc81c",
-      "age": "17h ago",
+      "age": "18h ago",
       "_sort": 1785791308.0,
       "bucket": "Oil"
     },
@@ -898,7 +952,7 @@
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQTk55UElsVlJ5MjAyZTNEV0ptdmRlOXIzaDlwVHNMRU1jemIyZnpoR3NZNjhMbW5IMk12amVGVXMxbmgxbnMtUE5oT2ljbURVR2cxRzVJODNlNEZqaUFtaGl0NktnUWZNcEl3MXlZeEk4V3pFTjNQTmtTRkNhNDBpZlR6QnpwUmFmcVo4d1pyWQ?oc=5",
       "pub": "Mon, 03 Aug 2026 21:02:22 GMT",
       "source": "EnergyNow",
-      "age": "17h ago",
+      "age": "18h ago",
       "_sort": 1785790942.0,
       "bucket": "Oil"
     },
@@ -1006,7 +1060,7 @@
       "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYTltRnRMSnRzWFdXUmhMTzNLZWxVNjJPNkZIVDhzZGl3ZWlTeDV6Q3hCUjU1XzFqb1hjekdoYXc5QTBMQWN6RHdsSVRRWVpobUVTQ1Zlb18tSFpJUWJNaG5IR1VxdU9sdEtobHFVbTNWWktCZmRMQ0Y3dlRuLWJOc0pZMTlEYXJ0TkV3ZWktSVhoUTIyUl9PU0dHYWLSAZwBQVVfeXFMTWE5bUZ0TEp0c1hXV1JoTE8zS2VsVTYyTzZGSFQ4c2Rpd2VpU3g1ekN4QlI1NV8xam9YY3pHaGF3OUEwTEFjekR3bElUUVlaaG1FU0NWZW9fLUhaSVFiTWhuSEdVcXVPbHRLaGxxVW0zVlpLQmZkTENGN3ZUbi1iTnNKWTE5RGFydE5Fd2VpLUlYaFEyMlJfT1NHR2Fi?oc=5",
       "pub": "Mon, 03 Aug 2026 20:16:00 GMT",
       "source": "Chosunbiz",
-      "age": "18h ago",
+      "age": "19h ago",
       "_sort": 1785788160.0,
       "bucket": "Earnings"
     },
@@ -1015,7 +1069,7 @@
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOOW5QNm9SWjFYSE1WSGZuQ1hDbHAxZmJobEduR01saWMtNHJGeHc4eGRYNFJJQkVmcnZPQkdOSG1BLTViV3VIMzFFdHhndElCQ1BHRF8zUjFFb2tyQ1gzMEx3Tl9fQ0p1Q3BUVVc2b3hBWE56OUl3UEpDZE93Yy04SzRWSV91TU1tZnU2SnNQdmM2RFNMSVdlS21xUEMtWTdVbmdr?oc=5",
       "pub": "Mon, 03 Aug 2026 20:09:23 GMT",
       "source": "Kiplinger",
-      "age": "18h ago",
+      "age": "19h ago",
       "_sort": 1785787763.0,
       "bucket": "Trump"
     },
@@ -1024,7 +1078,7 @@
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOd3BwYWN6c3FWWmhDOEMyWlFXdUMxZGFLOGNlYVhVLWZRS3luV0tYdl94UEM2dnhhR0NWdHRTb3ZpMUFNLW90WlRMUHlCYUFzTEl5ajIwbjNPYVhWMjZmVkRjM2l6UU95VHMzVE53MWpKM1hFYkliY045bjJlcGhOa21sVXBvbXpkeFVLLVo1eW5iMktFb01xdmRscWo4RXp1YUxhSWE1N2d6a09fWHl3LTBtLVBGVFNGcXdudUsxVQ?oc=5",
       "pub": "Mon, 03 Aug 2026 20:03:45 GMT",
       "source": "TipRanks",
-      "age": "18h ago",
+      "age": "19h ago",
       "_sort": 1785787425.0,
       "bucket": "Musk"
     },
@@ -1033,16 +1087,16 @@
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1vb1VLMjE3X3ZJVVZnQXhMd1cwZXBVcENsMC1zRXBpOGNJYlAtN1VkcVlZbVFnM05tVUxwSGt0RjdpYVA4NXZWclBOVFB5Y2NLMmNneWlVQWVPbER1a2VqQVVQVHU?oc=5",
       "pub": "Mon, 03 Aug 2026 20:03:33 GMT",
       "source": "\uc544\uc2dc\uc544\uacbd\uc81c",
-      "age": "18h ago",
+      "age": "19h ago",
       "_sort": 1785787413.0,
       "bucket": "Trump"
     },
     {
-      "title": "US stocks: Dow closes at record high on Iran talks optimism - economictimes.com",
+      "title": "US stocks: Dow closes at record high on Iran talks optimism - The Economic Times",
       "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOS1hYWEFpeG8ta3lKRFpjbmJOTHAwSmFHSm9CcXkzLXJoMXdvNDRfUmo2LTFOb1NHV1lUa19PRTZzcEJHaVpfZGRRQzk4QjM5NnMzSHZIbTg3SHlLZHN4VldkakJTMjlJd3hqSnFEZ1FWWHZIZlh6dlBzd09YSWxWWm9zenJyR0hhVWpqUkZCYWlhVFNWX3RkNFBhdncyT1M4QUd1VGlXcU5PaEVYNm9nYy1rM2JUMDRFQ3ozU2pCX3FzandXamN3eGJpNExHOTdv0gHWAUFVX3lxTE1iWDBFd0lmeC16M0tMME1aUDhRTHc2QnRXWnRiUlJTUzVPQzI5RktiTGQ4TnlfX2RzaGFFSzg1YzlQNHNjTjFBcGdSU2tkR1V2WEE3aVhTV2pua21GUlYtSXdFbHQ5MFRySUlYbmFZN2VkT3M0V1c0b2dNY0IxT2F4ZWpyWEk3SlFUZk4wUjJ6ckRfMmkwdzVJcFFjNU8xOTI4UTBEalJ6ZjdOWTN1Tmd3NVRrWUx0MDJxOWhwQ216U0oxNjRLbUF4WHNlR2VVWUlJckJJLVE?oc=5",
       "pub": "Mon, 03 Aug 2026 20:02:38 GMT",
-      "source": "economictimes.com",
-      "age": "18h ago",
+      "source": "The Economic Times",
+      "age": "19h ago",
       "_sort": 1785787358.0,
       "bucket": "Market"
     },
@@ -1105,7 +1159,7 @@
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBQQVZDYTJNci0xekdjNkJPRUpXdWo0S1BEMHdJd1VkSDJCQUFzUmVXRHFVUUJFdTVVYWQwVWJESUlqTzBQNFpYVEc1Y3FYY25Sa0E3LTgxYTM4eC1JU1ZLbE0zVVRZeFZpN2JUNldTWFBKX3Btd1Nr?oc=5",
       "pub": "Mon, 03 Aug 2026 19:19:08 GMT",
       "source": "AOL.com",
-      "age": "19h ago",
+      "age": "20h ago",
       "_sort": 1785784748.0,
       "bucket": "Musk"
     },
@@ -1114,7 +1168,7 @@
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOVy1vbHVPc1pVNXoya2lZeGJCZzloeG1WamtXQ2tReHhRSzVIOFlzY1Vvd285U2xTckhBakVoUDk0Q3p2dFNxVEZOZVJnaDFYbTFwR0tFWlZPMEREUVJSVi1ETk5VbjlDRFZ4bTVxYUdTQWg2dFFpNWJnbHZVcjh4bnRIWXp2QzlnTGxR?oc=5",
       "pub": "Mon, 03 Aug 2026 19:15:53 GMT",
       "source": "NewsBreak: Local News & Alerts",
-      "age": "19h ago",
+      "age": "20h ago",
       "_sort": 1785784553.0,
       "bucket": "Musk"
     },
@@ -1123,7 +1177,7 @@
       "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPZjEyTWg1Nk9KcnZyRV9yLWk5QXl5VV9hR3ZxTUFnajk0NW5BSk16a3JDaEwyOEtVSGlMOF8waDZsUkVMZWVfSFQ3c2o0OHY3UV9xdXZ0cmNnSmVTLVdGRnJwUThjSnJVYnh1NUJjR0s2dnVpQTYtQXhOS1Q5eXc5M2gyWDI5SDBUaXRSMHcyRXlGSmNRTjZPRmdIN2R0R2ZfWnhOM2ltQlQzaWtEVVd5VS1JUjROQjRYSG0tcGVNYVZlVExXbVBoNDlVQ2dnN3pr?oc=5",
       "pub": "Mon, 03 Aug 2026 19:14:52 GMT",
       "source": "TradingView",
-      "age": "19h ago",
+      "age": "20h ago",
       "_sort": 1785784492.0,
       "bucket": "Oil"
     },
@@ -1132,7 +1186,7 @@
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNVE0ySVA3ckxMVExGUkFjZU9SSnZZMVNqVG84NjRlTThyYkt0M3dVSHozNHcwczdTR1lQWXpCeUFNd1lEVFYxbnFXTnIwQmwtVmRSSU1Fa1ZMc2E1TzRCempKMFJmdzk3dkRaUG5SdV9SdlZxeXc3ZDEyZy1jdS01d1hhdHc?oc=5",
       "pub": "Mon, 03 Aug 2026 19:05:06 GMT",
       "source": "CNN",
-      "age": "19h ago",
+      "age": "20h ago",
       "_sort": 1785783906.0,
       "bucket": "Trump"
     },
@@ -1168,7 +1222,7 @@
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQVHl5OGJHalFWTEM0d0l2LXRjLVJ6QTVjV0t3a3J6YkxkMF9fT2ZGU2VkNGl2NGpEc0NxMjV0SkRHMDhQUWJVTXZUOTVFeVdfb1I4dDBzV25yNWc2UlRsaGpIb1h0dXZIcVMyUXNQZ0FUd01vMmVPQmd2NDBkMy0tV2E1TGs2emp0Xy1iMHA0Z21ISDNpSTFOQzRKRjZGSGhZQ21vY2R0dzZfbEVnOWh4VzhtRnVoWnRJRXMwblQ0VFdJRzVKWnAyOExR?oc=5",
       "pub": "Mon, 03 Aug 2026 18:24:30 GMT",
       "source": "Stocktwits",
-      "age": "20h ago",
+      "age": "21h ago",
       "_sort": 1785781470.0,
       "bucket": "Musk"
     },
@@ -1177,7 +1231,7 @@
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA5UUxEeTUwaVBERUFDbmJjV2hmb0p4MmpOVnluSnA4YjVzY0diUDU2LXVGVkxBMzdoRXFmT2MtcDBRQWJlTW5VMWdTb0lmdVJlUFUyOHYtdjRXSURCTi1lRXBrZC0?oc=5",
       "pub": "Mon, 03 Aug 2026 18:05:36 GMT",
       "source": "\uc544\uc2dc\uc544\uacbd\uc81c",
-      "age": "20h ago",
+      "age": "21h ago",
       "_sort": 1785780336.0,
       "bucket": "Trump"
     },
@@ -1200,21 +1254,21 @@
       "bucket": "Trump"
     },
     {
+      "title": "UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWmRBSENoNE50ZGdvZFpqT0pjS3FRZGRJMzRPU0tNSjJEdFpkQjRoOXR2ZlhVWVcxd2V6MC1RUERscnh3bHNVWnlfTVNzUWtSUlZrZWhVOUU2RUxfR1ZaYU50cUJDLVRMQzJpT1NOT0VWclhxXzYya09oMUVJYUJJMUJIcWV6dWlUUHRhOWRhcDRWSVc5RlpRdG1pdTFPVFRFNFRUT2pyWQ?oc=5",
+      "pub": "Mon, 03 Aug 2026 17:34:08 GMT",
+      "source": "EnergyNow",
+      "age": "21h ago",
+      "_sort": 1785778448.0,
+      "bucket": "Oil"
+    },
+    {
       "title": "Trump Warns Iran on Hormuz Tolls as Energy Crunch Prompts Japan to Release More Oil - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQRjVXTTBQYkI3cU9lcjZDSW9mWFBNZDRfSy0ySzNHdlhQa0JjaGRGOU9iekhlYmNHaVVLMXI3SDhlVkU4WXdraDg1cGwzY2NiaHB1UXRZbGFHa3NiTWRjOWIxc3ZkZ1hMMV9ZY2MxTEpKTEZaM1NRRGwxRFdZZm05dFZPSWp1TWMzUjFhbWhxYUZxbmlfajdZclloVFgwZTM5TlBWM1ZRUmRKZUhTNXNSNEh0OGk?oc=5",
       "pub": "Mon, 03 Aug 2026 17:33:08 GMT",
       "source": "EnergyNow.com",
       "age": "21h ago",
       "_sort": 1785778388.0,
-      "bucket": "Oil"
-    },
-    {
-      "title": "UAE Crude Output Falls by More Than Half as Hormuz Closure Forces Shut-Ins - EnergyNow.com",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb2k4RHBPd0V4OEFXVEw5T2hxMy1UaDZOU1dfcXluNnM0NzY4RlZjSzhNekFzWUNCUFJYY0pBT0FWOXBtQzZ3VXRBYjdEeXlRMm1Na0hyRkZQUnNZdTNRYTdxMWItS0h6ZnB3Ny1sTFhGQWRCd0xvSktGcGp1NHJZTzV4czZxZkprQnVWMHRmcmxqM3hIMENydDd5R1ViLS0ySGM1c2tkMVI?oc=5",
-      "pub": "Mon, 03 Aug 2026 17:32:36 GMT",
-      "source": "EnergyNow.com",
-      "age": "21h ago",
-      "_sort": 1785778356.0,
       "bucket": "Oil"
     },
     {
@@ -1231,7 +1285,7 @@
       "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE11d2pGWmE5dG4wUHBnbnQ1Z29EYUpuUnQ4czJYU3R6VFFJdlpVY3YwNS1McEJhT2lteTBxYzZkeUkzQ3N6RGpRV3llU1hkUUxSNTNlVngwc0FwQnc?oc=5",
       "pub": "Mon, 03 Aug 2026 17:24:53 GMT",
       "source": "Fox Business",
-      "age": "21h ago",
+      "age": "22h ago",
       "_sort": 1785777893.0,
       "bucket": "Trump"
     },
@@ -1240,7 +1294,7 @@
       "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9tNC1rN2FabGdUeXRJV1haS3dRaFVzMlcxa2hsdkN0MzgxdlpSd0pzdy1kNHJadzYyT0ZZYmh1S3E3Y1ZpcExVdWNYSDFlM2RKc05SMkNtQVpaWlljUDh5eHZmenVtVV9EQ0RCYlVCa2xpZG03NXhibw?oc=5",
       "pub": "Mon, 03 Aug 2026 17:24:08 GMT",
       "source": "Stocks Down Under",
-      "age": "21h ago",
+      "age": "22h ago",
       "_sort": 1785777848.0,
       "bucket": "Trump"
     },
@@ -1249,7 +1303,7 @@
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPS3dqSktSM3ZGZG92VlIxX1prOVE2LW5iV2pvSmxCeEdVMTV6RFNwazlmQXlCeW9EenVjLWQ1b293YThtMUstMUpDZmFDSjk1SDA2TDFfUm43UDEyNmNldWI0NV9nQWFCZURsb3RXRUZPMnRKR0EycTQ0MlVBOXlhTTR6UWlEVDh4?oc=5",
       "pub": "Mon, 03 Aug 2026 17:08:29 GMT",
       "source": "Traders Union",
-      "age": "21h ago",
+      "age": "22h ago",
       "_sort": 1785776909.0,
       "bucket": "Musk"
     },
@@ -1258,7 +1312,7 @@
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOdnpFbnE0aGpOaXZiM3JFcS0xZG5CZlJDc25kZVZveWo4cUdaOWRhc1piOWNBT2dQVTBiYXpSN0FWTFhBN2xGckplV2dyN0JoSlZ3eXpYMmtCN0hXNTVuRU1ZbEZQZjhrN21KYnBVcTdEaDdkSFBEa0l5bGliMG1tVEFzZ1g3cUFaQm41MkFBRUJ0S24wblZwME9JM2RGUlRKV0RIbnBMbE14U3VkOUIwWDYxMUwzQWZrVHZ2Rg?oc=5",
       "pub": "Mon, 03 Aug 2026 17:05:47 GMT",
       "source": "Benzinga",
-      "age": "21h ago",
+      "age": "22h ago",
       "_sort": 1785776747.0,
       "bucket": "Market"
     },
@@ -1267,17 +1321,8 @@
       "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQR04tY095aHVqa2NSWVRPT091cVRwY2hxbHNsU0NnZGw0ZTBNYVQ0WUcyM1FyN0JoM0pvSjFsclU2LTZhaWJnZmZteUN5bk9zZDlfRExIck1odURZQmZSZ09yaHRNYWowYkg5S01KR2VPMnRybS1xZEtMVXVGcHp5NFI0aDhoUEpfeC1jSHA5X3gtejdiTlBDaHZPZXFUVXZSRHc4NVVUbExPUzdKVmlzMDV5TmR6bGxvbWgwNnhMTVNMOXVwUG9FZloxcHc1blEwMUdWenBIWmhjaTFUd3lHdnpFemRrOWxWZVJGcnBCWklsYzA?oc=5",
       "pub": "Mon, 03 Aug 2026 17:04:40 GMT",
       "source": "WBFF",
-      "age": "21h ago",
+      "age": "22h ago",
       "_sort": 1785776680.0,
-      "bucket": "Fed"
-    },
-    {
-      "title": "Yen Spark, Fed Confusion, Reactive Energy - SilverSeek",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBaWDdfWUVuWVA4NktGdW4xMmZUQzZMa2xJY2dUVk1vSW9RN3JrMU5nU0xXdHNDdEdwWXIyQ1VVYWJ3NzBvSlFZVjBYX25vMnhRUlBHOXVzY0taY0Q2S3VXb1Naemd0NnhNWGtGc3VwYVNuNnFpd3ZvNFF3?oc=5",
-      "pub": "Mon, 03 Aug 2026 17:04:19 GMT",
-      "source": "SilverSeek",
-      "age": "21h ago",
-      "_sort": 1785776659.0,
       "bucket": "Fed"
     },
     {
@@ -1290,13 +1335,13 @@
       "bucket": "Musk"
     },
     {
-      "title": "Elon Musk is looking for trades workers to build AI data centers \u2014 and his famous 3-bullet-point requirement applies - africa.businessinsider.com",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPcHNsdXlyemxmNnl5d1BxQ2d6dmRHcHQ0cDNQeFJGeVBlSWR6VmJ1RVVZS1oxc01nc19JdVNJRnFzNGVZQUExekh5cWY0UlBRU1JyQnBvMEZXNXhBUE9Yc0FpQnE2d3I0eXcwbkRoWTJjc0lRQWZDM1BZWEx5eFRaX1I3TERreE1DclNhajdMclZNbnhqT09sNjZwLW9VVlQyc1Jpdy1YTHlZeGRVYl9LTGN0ek9jY1dQank0YVNESUpmMjgxY3RpMw?oc=5",
-      "pub": "Mon, 03 Aug 2026 16:54:42 GMT",
-      "source": "africa.businessinsider.com",
+      "title": "Yen Spark, Fed confusion, Reactive Energy - GoldSeek",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5EaE5FTWtzN2x0anNveFpmSzhpWV8td3dISi1lVWJCaUZMMFdtU1NyS0c4X3hoNUZmWEZvSnNXMGRCZ0NURnlwTUtpWTVmSDlnejFJaGxhYVFCZDdoZnAybzh6ZGp4RXZrZy1RenphTGtxVkRUM0NF?oc=5",
+      "pub": "Mon, 03 Aug 2026 16:46:34 GMT",
+      "source": "GoldSeek",
       "age": "22h ago",
-      "_sort": 1785776082.0,
-      "bucket": "Musk"
+      "_sort": 1785775594.0,
+      "bucket": "Fed"
     },
     {
       "title": "Economic black holes, the Powell era, and disposable diapers - American Economic Association",
@@ -1330,7 +1375,7 @@
       "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPRUF3NE05ZDh5ZjVEU3prcUhKWEtZUHcxSEVPd0tfWldyS1NzZFJqU3FpM1pKOVREUWtIbWo5b1ZuRzBBZE00Nks4Qmh0SmZ2QVVOOUdqSmJiYkxzSGpBNkpLMFFuSVJjZTJ6RFhhRWVNT29iQTk4Nzdjc0g2Sko3bXY5YWlmQlBUbDFxVDZIZEtRMENrd0xONDJVUGZGdEpOSFFyMzRnWUxfbFhEaTFWamFlSFM0WlgzUWxOVUtKR2llX2o2XzZmbklGRDMydGtQ?oc=5",
       "pub": "Mon, 03 Aug 2026 16:17:33 GMT",
       "source": "TipRanks",
-      "age": "22h ago",
+      "age": "23h ago",
       "_sort": 1785773853.0,
       "bucket": "Market"
     },
@@ -1339,7 +1384,7 @@
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPYkpGUGR4aTEzcXN6UVJyNEU5SE5DVkM4bEswbUZLVDBRZ3NISmE0ZG1udWtLZTBVYlA5alpLUU1wa01XQVRZeDhRMnhWQjJJUzFUUll3WnQwc1VVT0I3VU1pSXVaWXo3Q0xUZkc1bWtNTXZFQWFYT0xoU2pOQWFaVGZpQkhlQy1FTThCd21MQ3JPMDhBWEluTWdNa2sxY0hickp4R0tOSzA1TG9uOWp0cE13?oc=5",
       "pub": "Mon, 03 Aug 2026 16:15:46 GMT",
       "source": "24/7 Wall St.",
-      "age": "22h ago",
+      "age": "23h ago",
       "_sort": 1785773746.0,
       "bucket": "Trump"
     },
@@ -1348,7 +1393,7 @@
       "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1rMEFMejM5YW1OVFhqRUk3b2hxN2h3ZkxGWWQ2MWliR1RCQ2Z0elRmaHhVd3BPUXJXbHpKYnRNUDVkbFdwUGNVZTg1NzZVU0FJekJsYVEzOFhQVHYyVUVwUnhhMndnV3NkbldVQVNGd0RaSU5DRDVnNQ?oc=5",
       "pub": "Mon, 03 Aug 2026 16:13:40 GMT",
       "source": "Daily Times",
-      "age": "22h ago",
+      "age": "23h ago",
       "_sort": 1785773620.0,
       "bucket": "Oil"
     },
@@ -1357,7 +1402,7 @@
       "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNdHVDUXUzcUhnYkNHenBvbzdLVXNSd0ZVSHdSbDVPMjBOUlJvaVVvLVFHMlpKb0Z4VGlQa0k4SEpXSVhvR2lObGZZbk81bXZVWlJfUS1OYzY1eS05Q1V2Ti1tNS1OUllCY1Vxalk5QTBuVC1iUEpPYUxHbTlEMFpPZFZmVko0VHV4OTRBNVVTb2x6NWdUcHBVcFA3dXZsSldRazlkN1NELXFiOXJlSlpuUXQzTmNPNWVkRHBIdmZsUFpQZ1U1akcyZjBNNDdYWEtqMlloTmdqZEJBN0hpLThtZlQ3YWNITWM?oc=5",
       "pub": "Mon, 03 Aug 2026 16:13:00 GMT",
       "source": "primetimer.com",
-      "age": "22h ago",
+      "age": "23h ago",
       "_sort": 1785773580.0,
       "bucket": "Musk"
     },
@@ -1366,7 +1411,7 @@
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFB2ZEdsUmh4bldwV0JaQmlXdF9YYzFBR3RDZE1Fa3pfRnZ6S0RDcmhGeTQ0V3ZRTGxlS09wWkt2VHRKM004RG9Wb3NtTXJUdXBvZVlnM3lranhFV21tUTNEVVhpUjJscGxZdy00c3lsalpiNkpzZEI0azhNYw?oc=5",
       "pub": "Mon, 03 Aug 2026 16:02:19 GMT",
       "source": "CNN",
-      "age": "22h ago",
+      "age": "23h ago",
       "_sort": 1785772939.0,
       "bucket": "Trump"
     },
@@ -1425,26 +1470,25 @@
       "bucket": "Market"
     },
     {
-      "title": "Oil prices tumbled in early Asia trade after US President Donald Trump announced fresh talks with Iran to end the Middle East war and reopen the Strait of Hormuz. | via ANC 24/7 Link to full story in the comment section. - facebook.com",
-      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQMzFLQlZlNmZzNjBrN1JGNTY5X3ZQOW1qTU9EMkotNG1DT1RaZlY5Rk1VUFA1VFUzWmxtOUhqOGFrbGd0a3RHUVNuY1BRXzFMTDN4Y190cmNIWGhLYTlSVHFhVnhUX1hvbmNRRF9BNEM0MFdJS0hROVVFT2tydWJsTkcwdlRmNVoyN0VFdDFObUFhbDR3QU5hRXNQSFFrVTY2bkRMQ2I1N0RSWG5PMnNHeG03cWo4emVQbmtxUXdUQ3d4RXowd3NlbjhxOS16TXpSZGVvZ0NaSQ?oc=5",
-      "pub": "Mon, 03 Aug 2026 15:24:04 GMT",
-      "source": "facebook.com",
+      "title": "Why Jerome Powell Staying At The Fed Could Matter More Than Who Replaces Him - Stocktwits",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPMXlGZDdrUG1GdTlTampTc1pfQnlyX0tOa1R5MDQ3elJJWDl4cnRyZ0JWS3lRUW5uUUlDeG1Mc3NxSlVmTFlYakllQmh1MUJzSnRfS0J1REV2ZFJ6M19IUFBJbkliN1FrRl9PYmdFS3UweVlKb2tqSWEwQ0tqbERLT3ZocThqLVZEQlFGd2lZQURJTGZDUHl3WnNFc3dKNTg3dmZGN3ZiSzBXSFM2aWdmRDhza3lfRXJGQ1drSmg2RXctRTlybUNKaFp2MXJLYVZoVERyQy1VVQ?oc=5",
+      "pub": "Mon, 03 Aug 2026 15:40:31 GMT",
+      "source": "Stocktwits",
       "age": "23h ago",
-      "_sort": 1785770644.0,
-      "bucket": "Oil"
-    },
-    {
-      "title": "US Stock Market Today LIVE: Dow Surges Over 600 Points, Nasdaq Gains 1.47% as Crude Oil Prices Fall; Gold & Silver Rise After Trump Halts Iran Strike Amid Fed Decision | What Investors Should Watch - The Sunday Guardian",
-      "link": "https://news.google.com/rss/articles/CBMi1wJBVV95cUxOeHg2TFhYYm9xN3Nlakl0Zi1rRWdCSTVLQmJZSVlsYjAtQTBOMGRqVldQQUM0MTdVZVJseGtYQjhkeDRXTHlCMlhNekNzTVpKeXloQl9nU3VMcTNMb2Y0cFh5RWdjQmZadlJmOVBxZ2pDWjRHaE4zQjE3aW8yTkhjUUVoU01neXppQzRSOUpiZEFjaWVDVGhGS3p3UkRRNS1zOFY0S3BZNFBRaDAxekU2ejJKNGtTbFRnVjZJWWhCNWJlLTNzYnBEdGtTY1VDWU1YMXYxQms5QzZEMTZFWDNvZHYzVFAyWXotaTZCWUEtbUtRX1VnOWZMZXhBZEtSNFNwdnNLTVpEX1BfTEVYdXVycTJkXzBZdHJ0VFZ0VnZjQmF0dDQxa1JyUkttMU9KTHhzSlJmbW84aERpTl9xVzcxWUg1eVhxMEVvXzJRRkpNNmJya1ZJNWJ30gHcAkFVX3lxTE4taWpCUVEtY25GSHNpM2VfSHd3cU5FTF81NU1KR3FZVW1YQ2dpaUxvNkN1RkMwa0drbkotTDdRNEdnU2ZlT2dGNGxrbzRjWHJGV2pQeWZFVmhDd0RvZXZmR0RKMW9DVEstZl9qbzJpSWdqUThOdXhxZG1hVGZjem1PUzZCZ1Bub0lRdnVrSUx2SVdBbG9fc1VDNGtyaHVUVGpaejNORmVOTV9ZYWl2ajBpOUV5NnE2am5kOG1YbTZFX2RLSGRNcGhSbVhjamExTTRHVk10Q0w0dk1QRklkYkRJaEhaUEkzNmlOakZTd1hpbUNoNDhpZldSVWxGNEhwM3JDM09qbkpMdE9kb01pcFVDMFQ1UW5NQXdvSnZ6Z1Z5UUN4aHhtVzE0Smw1ZE5tT2d0dENFRy1xRTQwTEN5YmYwRlVXOVplZUxFc05Yb2ZwYmx4SGVPbjY1ZFhMbw?oc=5",
-      "pub": "Mon, 03 Aug 2026 15:12:30 GMT",
-      "source": "The Sunday Guardian",
-      "age": "23h ago",
-      "_sort": 1785769950.0,
-      "bucket": "Market"
+      "_sort": 1785771631.0,
+      "bucket": "Fed"
     }
   ],
   "sections": {
     "Market": [
+      {
+        "title": "US stock market today: Dow Jones and S&P500 hit record highs as crude oil plunges 5%; NASDAQ 100 jumps 500 pts - Dailyhunt",
+        "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQaFl0OTBBUVUtckp0SllDUWtFcFExTGpxekFXWk1qTDhCMEYtUFBPRlRsQVJ0TWQ0VGNScm9NTWhqMkRMdDRvM3NpWUpqcVA0V2dlZFNqcjNzeHFVbWxnM2JzVnA0dFJvWWVQWF91Y2dzd09SRFBmQjZVUTRTRk1RWFRidER0b0pyUmNLNm0ydndxeVNaNThVZUlUS1hvb3Zra2xDMERJaml5ZXFOcDJ1Y1lzNDRJTTFQVW5nOUpHc2VtNWhhWXpLNElCMVdVQXJPTzB4UWRESG02ZXNfaHFIQ2dGUHBtUzFNdGdLbWMwNVZJLVB4ajlidEJzLW1DdU9EVDd5eHFrWEJfd0pZZjlJX3FHcFpOUQ?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:18:47 GMT",
+        "source": "Dailyhunt",
+        "age": "8m ago",
+        "_sort": 1785856727.0
+      },
       {
         "title": "US stocks flirt with a record as profits keep piling up and oil prices ease - reflector.com",
         "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPZng3ZzVTX3hLV0RSekhkNm1qYzQzUjFsaEZQNVFhWWVHbm1yc2tSU2NtWFg0N2FQRkZWRGxqeU5IMExrZ0NZbGZsaWFHajZXQnJJcGFEbFNGNDh1TGZEblVOczMtRzdoUlhHd0N4SWdkRDVYOXoyN2I5a3l5THlTQ18wSXFwelRUTzFrMzZwREpZVDN0NTU2WXhrVm15Ukw0eEFSSnFWZTl1ZXZJV29IdGRWOGpxa1BFTS1JTnpaOEFUWnNYTndnQ1Q3M0t1NUtUTTE5SmgwV01KUVJ0SjZkd3N2bnF3Wmp4aWRKYlMyZ2JfV1VZQnlCVQ?oc=5",
@@ -1454,53 +1498,53 @@
         "_sort": 1785851602.0
       },
       {
+        "title": "The S&P 500 is back near record highs. Here\u2019s why - CNN",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9sNTR6eTFUS1JYX1lnaWVIZGxJeVhmbENJMHN3SUc4TTlSaHpweUdwNUNLejJtSmIwb0x0SEQxalc2OVN1X2s1WFhPSWt2X2VrcFFVeXhVVVpxYVVnaUFjRDR3SUFxbzA?oc=5",
+        "pub": "Tue, 04 Aug 2026 13:42:29 GMT",
+        "source": "CNN",
+        "age": "1h ago",
+        "_sort": 1785850949.0
+      },
+      {
+        "title": "US Stock Market Today: Dow Hits Record, Nasdaq Spikes 1.4% On Talks Of Hormuz Breakthrough - NDTV Profit",
+        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQZVoxM3BZM3BrbW1WTDBEWDZJUUdDTDhNZ2NxOTFscjB2T0ZzbllaN0gwVXBBVlI1dEtwcWlQYUV3dXpZTXNFb00zdGdQMEtVRk9xcHYyUHZPTTZlYm5fOW1VRC1mUk9tM2Q3TWpCZFN5VTNEU1JGVkJUeUJURlRmMk5qREtaa1FVWDZrRmNZTEY0dE41QlhQY0h0U3IxOGVqSEhYMzVoRzVHUmdvQzhkVG9yVDFjb3hOSlN3U2xKanlEM0lYWWcyZm91WdIB0wFBVV95cUxOcE1JazUzSjd1YnF1Vll6aW02MmQxdEg2RWFkQ1FsRzVmZm45ajZfcF9sbUdkd3hJeXRnOEFCd1QzSHdGSkQ0b29iaU9vakZXOWRad1hxLS02REFteGtSWmJTYUJrSF93RjZtUTZnYy1YYUhmSE9DemFfSkJnTFk5UXlNSmRacTVoWWRSYmpMam9tU09YUzVqbzdZZ2lveG45bmpyeWtMbmJLOGlPMmI3N00zdTBHUjBzZXAxWmk1dnFJM3FQSDZtLXNaTW5HZWhvYWNJ?oc=5",
+        "pub": "Tue, 04 Aug 2026 13:41:05 GMT",
+        "source": "NDTV Profit",
+        "age": "1h ago",
+        "_sort": 1785850865.0
+      },
+      {
+        "title": "Did Palantir's Big Q2 Beat Slay Worries Over OpenAI, Anthropic? - Investor's Business Daily",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQYXJZY2NfRXhvNU1HREdCZjlqOE9NdFVYNUxSMTVaYVlYS3gwOHdNR3kteUN4cVVwMkpVTTJCU3lkSWVuS0YzaFFLckI1WVFlWkRRZVBTLXFaaXhqV2djdW1DRXloUjVvS3BkS2RBRVpxYmR6Nzd1akhPRndVN19BS3Btb2J2Uk5DMG9ycEV0SXg?oc=5",
+        "pub": "Tue, 04 Aug 2026 13:35:00 GMT",
+        "source": "Investor's Business Daily",
+        "age": "1h ago",
+        "_sort": 1785850500.0
+      },
+      {
         "title": "Stock Market Today: S&P 500, Dow and Nasdaq Futures Gain as Scott Bessent Says Hormuz Deal Could Come Soo - Benzinga",
         "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPNkFXN3lRQlJPbEVUX1ZBYlBqcjVhd19UZU9GY1hTLVAyWG9hLUM3em1fcUcyNVZIM1JKbm5nMVVZZFBGZVRrblVtV2lFYVZfdDZkTTg3OXN1dnFzTVZiSHJSbkhkLVoyZzNiZmZMUTZQLTJYQkE5V0YyZS0teTdmOUtsbFpOQllUUnVtaWJjcnRTTUtrQVd4RWN5aF9Nd3ZjQmJUVTktWnNSV2NuVHhEV01wb0tzSmJrOC1TbGdHcUh0NnRhYlNHNHFlaWxuTEQxb1dHNTJZbEVLYVNBZk1aZlFNSWpfekhqU3JNUDBQZlBIYzlGYzlkcnZTcW0?oc=5",
         "pub": "Tue, 04 Aug 2026 12:57:00 GMT",
         "source": "Benzinga",
         "age": "2h ago",
         "_sort": 1785848220.0
-      },
-      {
-        "title": "US Stock Market Today: S&P 500 Futures Rise 0.2% & Nasdaq Futures Surge 1% amid Caterpillar, Palantir Earnings Boost; Check What Investors Need to Know - The Sunday Guardian",
-        "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOYy1tdExlSnpvNlQyTTZwZmFpcEQtQ1dIT3lqcGxCcUtNS1pnUXNkaEFTUVdPdDd6SHAtMTJOdEFHQTktdEQ4dVVNalRuYTR2QzkwQjlpb25ZYWNVZmlEeDdkMk9ienU4Q2pYX2VwN21uWkFwUG5XQkFHNUxGcWw1eER5Uzc5czhkMTJwaHIyTVNxNXRpMFNaclpsMDd6VEZ1YzdSZDc1WFR6UW9qRTEzQ1VJWTNmeW1KWmhTYUJLSkdpTjgxRjBQdDE5ck1xWWRQU2hDTEFGclJFc3pKajJlZGFtS1FpUVViLUpvZ0pIc2x2dHBnUl9hOFhnRkF1YzY2X2NRczdwMXZHVFNlMnk2S0QtdWJwRGdIX3fSAZ8CQVVfeXFMTm5FR1U3YmVSZGlETHlsQXh5N2VjSGhLRFNlN1psbkVtZWQwSUJ3dnVraGZaOG1CZWFzaU9wdW9lOVVEdW5sQnhzOVd0WFlGcHNoMHlMWkZxVmdla0xEMlU0U2VBR1pVNHZWX2R4b0ZUN29PTUJpdXRILWVLNVNaUk5ZOWhhdUhENkVpcV9yT0EycjQySnZzOTlZZnpTcXpjU1o2TFpnOU5tQkFTbkhKdWRoSnpZNG14UW5oSmtVcUhxcmVHVmtpQ1cxcndhZzJJRkxObnNKeTN5dFVyVERXLWN1TDZPcHd2WWhfM2xNVEROdzNFWVdSTF9NZWlpOWNTZF9fR21uSVBZMHg3MFNZTENMOW43X3pTeV9SLVBFV28?oc=5",
-        "pub": "Tue, 04 Aug 2026 12:45:26 GMT",
-        "source": "The Sunday Guardian",
-        "age": "2h ago",
-        "_sort": 1785847526.0
-      },
-      {
-        "title": "\u3010US Pre-Market\u3011PLTR Surges 16%, Storage Stocks Rally as Micron Rises Nearly 5%; AMD, SpaceX Earnings Ahead - tradingkey.com",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNSHRJUExIVVpJR1gweVh5c044UllQd1I2akNJeW1BSWJIWk5OVHh3OXVoWEZMeERCUVFEM24xR1p6cXUxQXBMeWp1YlJZN3k1MmFUQmRUZG03MktNYlhpX044Y1B3S0pib3hxdjZ4eU9mSlVYQ19KVFc3Mm9Cb3FkbmdMTjFsalJNcURrMG02clA3QUU2d1hoYlVLNzdGbVp6MXZ6bC12V2o0bXA3Q0pUZXZfSjMxenliRUo3M1kwYnIyN3FD?oc=5",
-        "pub": "Tue, 04 Aug 2026 12:08:17 GMT",
-        "source": "tradingkey.com",
-        "age": "2h ago",
-        "_sort": 1785845297.0
-      },
-      {
-        "title": "Why Is Stock Market Falling Today? Nifty Crashes 480 Pts, Sensex Down 1,600 Amid Iran-US War, Hormuz Blockade - Goodreturns",
-        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOYzBqVi1Sdk5tbU16UXpHVkdTTGw5c3dvLUktODdwa0c1S1Y3ak1zcm5reUotSm9UODJOejlGYUExVUlCVlRwd0s0bHpKY1RFSm10U25IWC1KaHY2dmduQmJTemNEaWUza2hzMmxrQTctMDJ5cUVYS1AzNXN4SmpYdFVUSDN4b1JHY2dKbjFYUUlQV3ZqcXZGc3BCNFlBcGJPTTZ3NXVoZkNuNlZtVGNRS1NNRkV3UnhjajB3ZktEc2kzUGNKWGdncnoyWUczZXRiZE5IVDd6RkZCZw?oc=5",
-        "pub": "Tue, 04 Aug 2026 12:00:18 GMT",
-        "source": "Goodreturns",
-        "age": "3h ago",
-        "_sort": 1785844818.0
-      },
-      {
-        "title": "Stock Market Opens Strong: Nifty Up 1.5%, Sensex Rallies 1,516 Pts; Rupee Recovers as Trump Delays Iran Strike - Goodreturns",
-        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOcm00Zl9MbkdZSWxpRF9NVm41U0xDRUpqaHRVWDN3MjNYeUJZYTQ4WExLQVJ4N1lyRXlnTGhqeDVBNk5OOWctVXgxRzZGdGEteFM0OUtrYlU0ajRCajJKWVdwWHduWHRISGRVNkpTMnFBYmREdi1jTW81b3JtRVJscUpNcGJzSGdnNVU4REFBWDVoZHNtSFY3VDBMaS0xb1hKX3ZQZ2ktOTdqenV6TFFTcV94R240c25YTXlZTU5RSVZ6ZG1hY19nVnFJQV9IcWl4Ym5UZ1d6WQ?oc=5",
-        "pub": "Tue, 04 Aug 2026 11:59:14 GMT",
-        "source": "Goodreturns",
-        "age": "3h ago",
-        "_sort": 1785844754.0
       }
     ],
     "Trump": [
+      {
+        "title": "Trump administration claims Hormuz deal is close as Iran denies negotiations - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOS3pHS3hBZFk1RUVqUE92R21Cdl8wME1BUF9zTkZ3MkhkbEVTal9RWFNaOUJnTVUzNGdOQ1hudC14R3pCclJpQ2tOSGNvZ1dPUFQ4amZUZkVuZVZOUC1iWTJTNWV0dk8zY0VSMEQzMFFZTC1oZzNvTEt1bjR3bVdDY0d0RUdrLXRWbnBzMVh2NmJRUTNjMGptN0ZZV3Y2LThjMnl0dkVnNDVCYy1mTUdNQW44SzNSeF9rVUVmSnQ0UHpsN21ZQncw?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:04:17 GMT",
+        "source": "The Washington Post",
+        "age": "23m ago",
+        "_sort": 1785855857.0
+      },
       {
         "title": "Donald Trump's Decision to Halt Iran Strikes Sent Meta Shares Up Nearly 7% in a Single Day. Here's Why Geopolitical Risk Is Still a Wildcard for Tech Stocks. - The Motley Fool",
         "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZHI2WXF3VXlhZTl0RXdBajA5N2xuZTdJNU41enZuX2F2cno1Q3V3NndfY2VtX0U0bnZfaVU4aXBkR0daVjM4OFRrWEVEelZfeFNwWThHLUxSXzE2QzVNa1JJc1VkUFZObElYTTgweExJbm9vT3NDOTI0cVhBWFUyYkxNY3RYMVVudERJbkpGUlZtYVgxZXliWA?oc=5",
         "pub": "Tue, 04 Aug 2026 13:24:35 GMT",
         "source": "The Motley Fool",
-        "age": "1h ago",
+        "age": "2h ago",
         "_sort": 1785849875.0
       },
       {
@@ -1508,7 +1552,7 @@
         "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPd2NRWXFySFVtakhvT0RlS1NiTzQ5OXBMMkJWLVFzWjUtWUF3czhZX0NFSTl1dDQwZGc4S2NDSUh0bTREcExPdVVCRVFvU0k5UzE2QkFHWFMxM0VOcldvc0hwQkZEMFk4QnBUUXg3aFR3bzI4Y1JkOHluVWVyZzFjWlEtTjdFT0VvbXNNM09pZ0lSM3ZsMWZTX1RRcFU1TTRoMHc?oc=5",
         "pub": "Tue, 04 Aug 2026 12:18:35 GMT",
         "source": "CNN",
-        "age": "2h ago",
+        "age": "3h ago",
         "_sort": 1785845915.0
       },
       {
@@ -1534,23 +1578,39 @@
         "source": "CNN",
         "age": "7h ago",
         "_sort": 1785830425.0
-      },
-      {
-        "title": "Trump Says US-Iran Talks Continue as Tehran Denies Negotiations - \u041c\u0435\u0436\u0430. \u041d\u043e\u0432\u0438\u043d\u0438 \u0423\u043a\u0440\u0430\u0457\u043d\u0438.",
-        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAwQ0p6UDNTa1EzRmxOSW5tZVdRVGZiUXNFY3N6Q3poM1h5QzdHNHUzZ28tLTN6VVk2STdXYmNBLXF5UUFBS05pSHBHZXlzTzA4ZG93R3ZVdFJVeGhuaEVaSUR2N3hodlU?oc=5",
-        "pub": "Tue, 04 Aug 2026 07:19:53 GMT",
-        "source": "\u041c\u0435\u0436\u0430. \u041d\u043e\u0432\u0438\u043d\u0438 \u0423\u043a\u0440\u0430\u0457\u043d\u0438.",
-        "age": "7h ago",
-        "_sort": 1785827993.0
       }
     ],
     "Musk": [
+      {
+        "title": "Why Tesla Might Be the Better Elon Musk Stock to Buy on the Way Down - 24/7 Wall St.",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOazVwMThxMU5VaWcwMXVIS25BYjJTSjg1aU5fTDV2dllCR2tUMEkzcHZwQ2ZFNzRMdmtkcVpUbk5waGJrSXlpZVN4cmlWc0dBbzlLaHFXU1Z0ek04NDZJQnZwQWk3Sm01WGRKTWdzOGx3bEZVRjVFWGhBSEhZNWRNdUUwZ2xPVDFiMVc1UHRFbEVjUlJzSDhpUkY0TWszTUlpNERFalZ1empNVlEwXzlBb3Fn?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:22:06 GMT",
+        "source": "24/7 Wall St.",
+        "age": "5m ago",
+        "_sort": 1785856926.0
+      },
+      {
+        "title": "Elon Musk spends half his time talking robots and AI on Tesla earnings calls - TechCrunch",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQUnRZNjk2dnhpdVNDajZEVG1ybWhWYXlVTmhYNWFDZFRWaGVTNEF2Tm40VmNwczZMemZOa3NGekdhd1dZM2JHdEtfc3JiVEJwMUhtNU4yRUNkVkU4TnJpT0ZCOHVlbmVQLWZNV29aQll3STFNa1FHWnMxSURwaGVMMFpBQWkwSGx1Wm1BVUNWZEp4MS00SDQ4R0FYdjZwRnBPZlcxSGdhN3Fic0h5UHFzcA?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:20:06 GMT",
+        "source": "TechCrunch",
+        "age": "7m ago",
+        "_sort": 1785856806.0
+      },
+      {
+        "title": "How SpaceX crashed to earth - oligarchwatch.substack.com",
+        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1jSDJuRVpXN3dJNnhtSU5wZGdtZmhrNEhOOVFNbGlEMXZjVmZYc0FpbDVtRTQ3RnhXUlh5Rl95SUtVLXpOZ2Y5TUlBTENzMFM4ajJVMWJxWTFablNBcnNzbzAzbkdNNDhxMkFOQjk3Tzh4Zw?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:03:14 GMT",
+        "source": "oligarchwatch.substack.com",
+        "age": "24m ago",
+        "_sort": 1785855794.0
+      },
       {
         "title": "Tesla's China Business Could Complicate Musk's Biggest Deal Yet - GuruFocus",
         "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPT3lJSmVyR201d1A0anlFcU13c21OdTNnOXdCbG1YZWtWeUpYNTVhYjI4dGN2RGxNVGZlang3WGphNDNBeUwwMEptMmE2WFM3WEtpaWlqb2JHcTlJdWw0bjV4RVhoLUNPSlpCeVh1U0lzbWd4Q1BPa1cxVlFzMXUtc0RFTHFpSWxmNFd0ejdvejU2UFFtVUtUMnFWZENiVjM1QWc?oc=5",
         "pub": "Tue, 04 Aug 2026 14:35:52 GMT",
         "source": "GuruFocus",
-        "age": "26m ago",
+        "age": "51m ago",
         "_sort": 1785854152.0
       },
       {
@@ -1558,7 +1618,7 @@
         "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQdWU3eTd4VE9pZVoyOEdDLW4tZFl6V2ZncUppWERieTB5eXdXVzFPSUthS1JncUl3ZFdLOF9NYWZ5Y1FyZ1pGSWxpRVJlTGhiT1ZjR3V1MEl0cnN3azdSSkw5SHlNeS1ZRHljWjczcW1oUkQySFVZNjU3WmNXbnFqVFFxRzZ5OXp0ZndyNi1mejdWdzdERkY2ZDVoVDBObnBsR0wtdEQxbnBsTkdtN0lwYlp1akZlY093VEl2c09kVWtrMGJwQVhoa2R4RDZaODB4aXJnN3h6anZWS0k?oc=5",
         "pub": "Tue, 04 Aug 2026 14:21:22 GMT",
         "source": "marketscreener.com",
-        "age": "40m ago",
+        "age": "1h ago",
         "_sort": 1785853282.0
       },
       {
@@ -1568,48 +1628,40 @@
         "source": "24/7 Wall St.",
         "age": "1h ago",
         "_sort": 1785851795.0
-      },
-      {
-        "title": "'AI Will Deliver Free Goods': Elon Musk Mocks NYC Mayor Zohran Mamdani Over Grocery Stores - International Business Times UK",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNc3JmMW9kSXJVSjZ5NmlzTmpIU3ZFZTNsR1d3Ul9Hblhfc2praTk5MngyQ3ItZFpHSGxnYnF4aFpJUS1ZV05Uamk2MHF3TFpxRHdYR0xXbzMwSmx1dnhPNS1rVUlSRUxkWEZYeWxOdnJ0akd1WW1qMzV6LTREVVZZcXExUzlTMjM3OEhnZFc2VjFkRnZ2N2tRQ1BwTlpnQlZUOU1KVXV5MWU0N0JBamNDUjJnWE9iM0g1NG1fWWhn?oc=5",
-        "pub": "Tue, 04 Aug 2026 13:41:18 GMT",
-        "source": "International Business Times UK",
-        "age": "1h ago",
-        "_sort": 1785850878.0
-      },
-      {
-        "title": "Elon Musk's solar ambitions have shifted from powering homes to powering Tesla's AI era - AOL.com",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOOHZHel9ISGVfdHFSa3FPU0ExWGd6VmNUcnFIOVFia1FfbjNWWnVKTFBfTlE5TFkyYjNURkJIRV9wd1VXOTFMUGc5Tjh2NzEwZGJOcTUyR1JzMkFBcHhuS0t5WEVERFQ0UVNZSDYtbVU5SW9BbHJCYW9zdXo2SnV3bHc5ZUg?oc=5",
-        "pub": "Tue, 04 Aug 2026 13:21:01 GMT",
-        "source": "AOL.com",
-        "age": "1h ago",
-        "_sort": 1785849661.0
-      },
-      {
-        "title": "SpaceX investors set to question Elon Musk over growing Tesla ties as merger speculation grows - Business Today",
-        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPZkxVWTlBWmNNX0JWQ1JSMktGYjNJcDM5QWprQ1J0ZkViakRJWmdvUi1zOUMySXJMNFB1cGZOTmdoWUo5VXhOTUlVRXM4OUxlVjNJSjhkTzBveHNxYzQ2RUM4Q1oxYTBFdzgwTlVNbzJRNldPSW5XNTY0SGoyQWdub09WNGkyRkVTdGpReDhIWndCMV9iZkhoXy1FVXF5dnpnQWEzMlhuS3JqdXVFU2lzMWNoMFBHTVBVWUNuNkc2dWxYcktiMGpZUUYxTmp6RVJvaXc0Z3gtdk12SWFQZUtEZC1GWTNISjlGRTFCcU9YOHgyTEgt0gH0AUFVX3lxTE9mTFVZOUFaY01fQlZDUlIyS0ZiM0lwMzlBamtDUnRmRWJqRElaZ29SLXM5QzJJckw0UHVwZk5OZ2hZSjlVeE5NSVVFczg5TGVWM0lKOGRPMG94c3FjNDZFQzhDWjFhMEV3ODBOVU1vMlE2V09Jblc1NjRIajJBZ25vT1Y0aTJGRVN0alF4OEhad0IxX2JmSGhfLUVVcXl2emdBYTMyWG5Lcmp1dUVTaXMxY2gwUEdNUFVZQ242RzZ1bFhyS2IwallRRjFOanpFUm9pdzRneC12TXZJYVBlS0RkLUZZM0hKOUZFMUJxT1g4eDJMSC0?oc=5",
-        "pub": "Tue, 04 Aug 2026 13:19:56 GMT",
-        "source": "Business Today",
-        "age": "1h ago",
-        "_sort": 1785849596.0
       }
     ],
     "Fed": [
+      {
+        "title": "Warsh Wanted \u2018Regime Change.\u2019 Markets Are Demanding a Reset. - nytimes.com",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPUkpFcHlLWDFHdmNMVmxnNmtIdXUtLWJ4MjF5ejRpRFViQU5kWGZaZmNWU19Ua2t1R3hLXy1QVTVsOWlJUkQtTmp1NjAxbDhGQUpNU3BMblgyRTlHNDFOUlBIT2tPbWZKSzE3UTFSQjBfbWc2OUdRa1ZDaXRWVnR4em5ta09pQVdMQXl0Xw?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:11:04 GMT",
+        "source": "nytimes.com",
+        "age": "16m ago",
+        "_sort": 1785856264.0
+      },
       {
         "title": "Fed Officials Are Not In Full Sync About The Level Of Interest Rates. One Of Them Says The Current One is Sufficient - International Business Times",
         "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNRFFXbjFWQ2J3YllCc2FMTjI1Vmhzd3RrNzQ1YXg1eWZfMS0wbW1NOUp6ME1NN3gyZ0J3U2hSY1J2bWN2eENCSG5XbWFRWU9BVy13Z2h2Ny0yNkh2dlZoZlNjSUFlRWVYaWh3eGkyTm1xNVV3YVBiQm0tUFliZmY4U3Bod2FTdDlNd3l5VVRJUS1ZRnQxSEtiaklTREl6QTRQMktTcEFLaEl0VVF1RV8yVG9WaG0wdnc?oc=5",
         "pub": "Tue, 04 Aug 2026 14:39:42 GMT",
         "source": "International Business Times",
-        "age": "22m ago",
+        "age": "47m ago",
         "_sort": 1785854382.0
       },
       {
-        "title": "The Fed Held Interest Rates Steady for a 2nd Straight Meeting Under Kevin Warsh, With 3 Officials Dissenting. Here's What Investors Should Expect Next. - AOL.com",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBaS2RvOXRqYnhLTm5reDJqX0ItSHB0WGpQRnN4RWVTUUY1SDlsWTlEUzFlYlV5RUJNLWx0S09YMHJETXdYZ0hXVVYwcEM5MVRtVUIxdVpNNllhalRqbWlTd2pJU1ZTMVFTSVJIVXJYOTJVaHpyRVpleFBGY2F1WWc?oc=5",
-        "pub": "Tue, 04 Aug 2026 13:58:33 GMT",
-        "source": "AOL.com",
+        "title": "US Dollar Under Pressure As FOMC Fallout Weighs, MUFG Warns - bitcoinworld.co.in",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE54dS03RE9KVHl2M3ZERGtjWURjQ2FsT09UQUpOa0ExQk5lZE45R3BOWWVPSU5ackZGSkplZ3BnMW1WT3FPdFdWRFY0dmZFcnI2Ym0xNF8tRDJXZGRlNUxZWUxLLWNNUQ?oc=5",
+        "pub": "Tue, 04 Aug 2026 13:40:11 GMT",
+        "source": "bitcoinworld.co.in",
         "age": "1h ago",
-        "_sort": 1785851913.0
+        "_sort": 1785850811.0
+      },
+      {
+        "title": "Scott Bessent frames Fed strategy under Kevin Warsh as detox - cryptobriefing.com",
+        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoem1KZ3hUbWNpa2JfcmkyaEd0Q1BtNGQxUlZyQ0NZS1pGbmVxWnpMRE41aUo1LVNaOEM2UEZoMnZDRFFka2tjdC1XSVpFY3dCZUVUWFJjY1lHUjZSWjRQSEVEM1ZkbzExZ0ZFbg?oc=5",
+        "pub": "Tue, 04 Aug 2026 12:32:35 GMT",
+        "source": "cryptobriefing.com",
+        "age": "2h ago",
+        "_sort": 1785846755.0
       },
       {
         "title": "Words & Phrases - The Contrarian",
@@ -1626,31 +1678,23 @@
         "source": "Norada Real Estate Investments",
         "age": "3h ago",
         "_sort": 1785843672.0
-      },
-      {
-        "title": "U.S.-Japan Joint Intervention in the Foreign Exchange Market: Policy Motivations and Medium- to Long-Term Impacts - Moomoo",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNWnlLbGlYRnByMlhGclZFRVIyMjR3WFBHVFFFdDVDWjg0bXRQNjhXZF9xZnlLZTFRRTZfV1J5ODlxeWdEZmVOelpXZm5kLVA4NHY3M1d3clNnZVNiZlQwUWtYazR4c0xtOEUtRHJCcXlXZC1kSzY5ejczWFhobF9lc1c0eE4zMURPMlE4T05QT3VWX1dtcGpseWlGTFFJZEdCUFVpa0Q4cVN2emc?oc=5",
-        "pub": "Tue, 04 Aug 2026 11:35:53 GMT",
-        "source": "Moomoo",
-        "age": "3h ago",
-        "_sort": 1785843353.0
-      },
-      {
-        "title": "Why Is HOOD\u2019s Stock Falling Today? Robinhood CFO Says The Quarter Was \u2018Strange\u2019 But The Retail Is Healthy - Stocktwits",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPNUYyQWRLakJ2Z2gxbjlkcjdQUFhjTGRudEktVzdEcXVRc2RWc2p6bGNiU1VhMm1sTkRjOXZNU0RZU0JDZENhczd5bFFNYk1naGxhcXNrWHJueTdicGFWRGYwNzNEaFBEUllhdWhZUmY3NmdIdmRwMTBzRFVyUzdjLS1wQmE5dERsUEVYS24zNTFSaGNDRlNCWk1PZl95ajVVcWtrTkdzZHdXV1RhUkt1NmZRa044YVNIYmZkTE50dFBOVmFWWk5qMA?oc=5",
-        "pub": "Tue, 04 Aug 2026 11:33:53 GMT",
-        "source": "Stocktwits",
-        "age": "3h ago",
-        "_sort": 1785843233.0
       }
     ],
     "Oil": [
+      {
+        "title": "US statement on Strait of Hormuz: Chances of a deal strengthened, oil prices crashed - Haberler.com",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQanpabzBxSFFxcTB4R2FrdmJzb1pfSlRmSFFDOXdOR3YwVGFmSDZEVnpQUGQ4SjVaQUdLMVZmTTEtenJRSGE0RWRIUURkLTNIOWlqYk5aYzRfVGlLaWhFallMc0NoS0tSVDl2TWFRYkptR0E1Qm9hNDhzR1Q4OXpWYUxJTmstYm1WOGxr?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:22:01 GMT",
+        "source": "Haberler.com",
+        "age": "5m ago",
+        "_sort": 1785856921.0
+      },
       {
         "title": "US Treasury Secretary Bessent says Hormuz deal nears as Oil prices tumble - FXStreet",
         "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPTlBQdlhuZkkwdEN0ZlRHQWJ3VFBfd3MzRS16SnpvXzZOd1QtdU05TDNuMzR6QkY2SGFmWHl4c1BPTmdoaWFoZGxOam0tQUFOOHZIa3ZwTld3cjlvZENoZkkxRk9nUXFsYWJFYXhlMlZZbmFUUDVzZWxwdElBMVhER3hwRy1uek9tQzJ0bmV3cGNCTzlZeFdrMkJycC1FdGw5NWZzcmhlbGVrbjhPRl9ZUWltOGZXRWs?oc=5",
         "pub": "Tue, 04 Aug 2026 12:09:29 GMT",
         "source": "FXStreet",
-        "age": "2h ago",
+        "age": "3h ago",
         "_sort": 1785845369.0
       },
       {
@@ -1684,23 +1728,23 @@
         "source": "EnergyNow",
         "age": "3h ago",
         "_sort": 1785844715.0
-      },
-      {
-        "title": "Iran War Upends IEA\u2019s Oil Market Outlook as Global Supply and Demand to Contract in 2026 - EnergyNow.com",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPak5XcGxWUXBlNVhTbFd3RkFvM2dzMUdvcm84a3Nzc2hxLVJYMU1zOHBsYlY0eV90Z2NlY0xDajNSdUxweFJ6WVprRjNzOHVrT0cwbXM0LUZvRHRmdF9VMEN0NUZpZ1VjYjFNeEdiSHZ1SHpyZ2otTVhyLXVsb09yVm1NUUhQM2dMMUNkQjFCalh1a2Y3bjlqX1ZNOHFVRDM5Ylh2clBwd0JmTUFtcmZUeUUyRnhsRXNjeUE?oc=5",
-        "pub": "Tue, 04 Aug 2026 10:13:30 GMT",
-        "source": "EnergyNow.com",
-        "age": "4h ago",
-        "_sort": 1785838410.0
       }
     ],
     "Chips": [
+      {
+        "title": "US markets today: Dow, S&P 500, Nasdaq futures indicate positive open; SpaceX, AMD, Pfizer, other earnings in focus - Dailyhunt",
+        "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxQZTc2YnhlS20tQVBGQnpKT18zYVFiTHZzazE1V2lmSXEtOHdldWhOMjNZUjgxQ1F2Z0RwOUI4TldtUHFTWFBaY0xXNTdJc0kzYmEtRGdDVWlEdVhxajh5alFKNHI1THBhX2locWlpVVpDVXYtTXJYWnZrbmNyb3oweXl4NnZnXzhpYm9vTFJzMVZReVRaSnBlSU5TU0JrMzJLUjlObjJwZkVhMWgzbE5GYWZzSU8yS2FPTHRvMXdyR3NjWjNNZGpLeXZCUnJtUmJSNGM1VENPUzFiZG84MUV2eFlCeHVJdDZqTjRCNjl6c3U1R3BZNmlDeDdaNml2WjhkLWd3VFV5RUk3YzhKWVRiZXlNck5PSkE?oc=5",
+        "pub": "Tue, 04 Aug 2026 15:08:47 GMT",
+        "source": "Dailyhunt",
+        "age": "18m ago",
+        "_sort": 1785856127.0
+      },
       {
         "title": "Hyperscaler $1.2T AI Capex Bet Could Drive Next Semiconductor ETF Rally - VanEck Semiconductor ETF (NASDA - Benzinga",
         "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNckY5UThzSkZuTnlobmlSUHlGdG1CYTVtSXItdDZrWDltWVRFcWN0aTctcWIwSGNiUm9MaGE1WWM5U2J3a084UUZWdUdhdWJrSjNEc3NHTkM4dXltMExXWXBBX05sZUc0OTRVbGZCS1dhLTg2b1ZKSTNpX2NlRVIyV3dtNXBTVlZSSjJZVmp3Mi02WmxvdWgzZGp0NkhjMGdsckhnckpldzRTci1CSXE3X0wzd0hTNE8ycmFpd1d2NFVBaERkcmFLS3dfQ25uSFVCc0FlVW1YaEYzdEk?oc=5",
         "pub": "Tue, 04 Aug 2026 14:51:31 GMT",
         "source": "Benzinga",
-        "age": "10m ago",
+        "age": "36m ago",
         "_sort": 1785855091.0
       },
       {
@@ -1734,14 +1778,6 @@
         "source": "TipRanks",
         "age": "1h ago",
         "_sort": 1785850991.0
-      },
-      {
-        "title": "AMD Stock Jumps Over 5% Ahead of Its Highly Anticipated Q2 AI Chip Earnings Report Tuesday Afternoon - ibtimes.com.au",
-        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQVl9EZFVSam9OejFtcllRcGUtZWdrLUpaZjI5NF80cy1oVmpnRG1qakxNUVM0dndhUUZvRG5RcERab2lHMXBiMkoyWjlDUkhEYUs5b0VZUUt3T3V6MEZzaU03dUF1RE1vc0xOTnhGY0dVa2ZkSjFFSV9FUDZUeVlNRk1lbw?oc=5",
-        "pub": "Tue, 04 Aug 2026 13:41:32 GMT",
-        "source": "ibtimes.com.au",
-        "age": "1h ago",
-        "_sort": 1785850892.0
       }
     ],
     "Earnings": [
@@ -1750,7 +1786,7 @@
         "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxONEF0TEFENkFxQUgzczZVTkMzczVmSkhQZlk0dkR1aUdVSkt5aTloZTB5b1FTYnZORzlPalBvSFRDSHJMMFNUbHZ3NXZYSllzTnM4SWNzSVpmMHRSNWVfM3ZkYjFXOGpUbkEtc2I0RWpiZFRvenhVSTR0UWVfWEZKaWMwSzRXeW1MYWF3Ui0wVFlWcThNOGpqLXg1aGkyY0R4UWdxNmU2QTBjUlJBSG1TM3ZiNWZON2hGdUhkU2Z3R1JIVzhmV0xabDE2V25lMWtucHlJbnhMcURrdw?oc=5",
         "pub": "Tue, 04 Aug 2026 14:43:47 GMT",
         "source": "Benzinga",
-        "age": "18m ago",
+        "age": "43m ago",
         "_sort": 1785854627.0
       },
       {
@@ -1758,7 +1794,7 @@
         "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPMGNjckNpbEJ5dEtfV1c0R0lMQWtKN01BNjU4My1McEJfOWNIRXR2ZVItN1I3OHNrZlQ0MTdJTTFsd1hWWVM3OEd6cFN2OEhsQy1sVE02UHhZWjBTbDFLd3FwUW41WnRwU3RQR3JZZnU5blFVM2h5Wno4ZkdTRW1VTDhGS1BGWG5yWEttOEFwS2Y0M2xCdTVGU2Q3NEpldm1IQmNvZFdmQ0ZnZ3o4OHNxZDdnd1pFZWJpNzExMmJLcw?oc=5",
         "pub": "Tue, 04 Aug 2026 14:38:26 GMT",
         "source": "Investing.com Canada",
-        "age": "23m ago",
+        "age": "49m ago",
         "_sort": 1785854306.0
       },
       {
@@ -1766,15 +1802,23 @@
         "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA2Z21xaHFyaGdaRkEyTUhQQU44Z1dwaTlXa0JNNXk5ZGlFcDlablM4MVptamt4ZkpYa0lTeVJTT1pwcVpFa0NTVUVxQVJwRVBpY1lPMFNNTk9pbV8zYXVmVVp2UHQ?oc=5",
         "pub": "Tue, 04 Aug 2026 14:37:00 GMT",
         "source": "Barron's",
-        "age": "25m ago",
+        "age": "50m ago",
         "_sort": 1785854220.0
+      },
+      {
+        "title": "Biggest stock movers Tuesday: PLTR, SNAP, W, MRVL, and more - Seeking Alpha",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQYlFlaGpZTkNxblotZU94QUtDaW93X0JpaE9nWHNUNDd3RUU4am5tS0Uzb3pRTnA5TlZ2bFh1OTI4OS1LUDhlemJaNmtDekxaVjF4c2hiVUVFa0wwcm1YTmxHRjRlcllTYUVrMWFDR3hGc2ttR1M5aGlRVzZHVmpoWXlHTW1zVmozZ1NaVEtB?oc=5",
+        "pub": "Tue, 04 Aug 2026 14:23:00 GMT",
+        "source": "Seeking Alpha",
+        "age": "1h ago",
+        "_sort": 1785853380.0
       },
       {
         "title": "S&P 500 Posts a New Record High on Strong Tech Earnings - Barchart.com",
         "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNSkNENGt5WkZQM3c5cnpzMXpFenpXdjRPSkt1c0FNVVlXNGZvSDNnSDZyMld3ZHFxZkZla2xDQW16UFJiRmpJazVGZjd4Q3dIQ3c2TG9lajlfcWZwNWdvYnktUGkxUnBHMTNFN0RqamFFcDFOc2RWbUthRDhoR2hjVTU0bzF4S1UtMVNLNzV3OWJ0YzFxV2ZvNjV3Q01YSkYz?oc=5",
         "pub": "Tue, 04 Aug 2026 14:16:55 GMT",
         "source": "Barchart.com",
-        "age": "45m ago",
+        "age": "1h ago",
         "_sort": 1785853015.0
       },
       {
@@ -1782,16 +1826,8 @@
         "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNUHlxbmQzUGdXbEhtaVdIdDc4S2VidWNvN0hTRkpYSlJCRWM4R05IM19qRDdPQmxWcWtuRnVJblQ0NkluZGxzUldfU2hUTGFGTTVBWDM3djJibXhzUEdQT3NvT0w5Y1RxY2duYlRXaVU2WUZ6OEdlanpfX0ktam43U3JqM2YtQ3Q5a01Uc3ZTekxPUEtmbFZEUWNRUmZid1NHd3J0Y3hrRmRoUTJBdmp0SU9URVhXdzdoTWpPS1paODh3aVhhUkhvU3RmTDF4T1d5NkdTbUZpaw?oc=5",
         "pub": "Tue, 04 Aug 2026 13:23:31 GMT",
         "source": "Benzinga",
-        "age": "1h ago",
+        "age": "2h ago",
         "_sort": 1785849811.0
-      },
-      {
-        "title": "AI-linked chip stocks rebound; Powell Industries tumbles premarket By Investing.com - Investing.com South Africa",
-        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOVVlJbkFucG1nMU9HLWpWUHg1eTJsTGgtaUJXT2FJWHhla0NSZkV0dXVCWUl2NGhhOUxHbm9uem1wSUdPTXpvWUtodVZkSGJ4M2lkQldwc2RKUXhVejdHMy0wNlppZnFZMDVibjJpY1Vzd1RUeVFxbk9NOWRzX0ZVeWNha1llYzJrYllPSDFNVUUxdTJLMmxldkNPZzBONk9JTUZjM1liSy0xeE11bTNGd3dzeUNqOTMyVl9VdFhOaGFseXUzRzRlQ3dpWXo?oc=5",
-        "pub": "Tue, 04 Aug 2026 11:49:25 GMT",
-        "source": "Investing.com South Africa",
-        "age": "3h ago",
-        "_sort": 1785844165.0
       }
     ]
   },
