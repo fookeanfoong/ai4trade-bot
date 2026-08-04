@@ -1,24 +1,40 @@
 {
   "updated_at": "2026-08-04",
-  "valid_for": "2026-08-04",
-  "built_for_day": "2026-08-04",
+  "valid_for": "2026-08-05",
+  "built_for_day": "2026-08-05",
   "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
   "signals": [
     {
-      "ticker": "JPM",
+      "ticker": "AMD",
       "direction": "bullish",
-      "confidence": 0.61,
+      "confidence": 0.67,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
       "reasoning": {
-        "en": "Long JPM as measured participation in a strong risk-on melt-up (S&P ~0.3% from ATH, broad AI strength led by Palantir's +16% blowout, falling yields + lower oil). JPM is the clean pick: a financial with NO exposure to tonight's AMD earnings (a binary semis event), and 3d is only +2.3% so it isn't chase-extended. Modest conviction — today's +5.4% single-day pop is a bit hot, so the execution-time no-chase guard (live 3d) is the backstop: if it's ripping too hard at the open it won't fill. Deliberately NOT chasing NVDA (+8.75%/3d, and a semi into AMD's print).",
-        "zh": "做多 JPM,作为强 risk-on 融涨(标普距新高 ~0.3%、AI 普涨、Palantir +16% 领涨、利率降油价跌)里的一次有节制的参与。JPM 是最干净的选择:金融股、不吃今晚 AMD 财报(半导体二元事件)的雷,且 3 日仅 +2.3%、不算追高。信心中等——当日 +5.4% 略急,所以执行时的不追高护栏(用实时 3 日)是最后一道闸:开盘若猛拉就不成交。刻意不追 NVDA(3日 +8.75%,还是半导体、要过 AMD 财报)。"
+        "en": "Auto: AMD 3-day trend +6.8% (today +0.1%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:AMD 三日趋势 +6.8%(当日 +0.1%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
       },
       "tradable": true,
-      "ref_price": 352.64
+      "ref_price": 518.58
+    },
+    {
+      "ticker": "JPM",
+      "direction": "bullish",
+      "confidence": 0.62,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "reasoning": {
+        "en": "Auto: JPM 3-day trend +1.9% (today +6.9%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:JPM 三日趋势 +1.9%(当日 +6.9%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      },
+      "tradable": true,
+      "ref_price": 357.52
     }
   ]
 }

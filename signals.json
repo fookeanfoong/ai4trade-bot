@@ -1,39 +1,40 @@
 {
   "updated_at": "2026-08-04",
-  "valid_for": "2026-08-04",
-  "generator": "Claude premarket curation (news-driven)",
-  "note": "盘前人工复核:AI/风险偏好强反弹,取 1 只非半导体分散仓参与,避开今晚 AMD 财报。仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
+  "valid_for": "2026-08-05",
+  "generator": "generate_signals.py (algorithmic)",
+  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
-  "data_quality_flags": [
-    "quotes.json 陈旧(updated_at=None):能源仍显示 +13~14%(上周五旧行情),今日油价其实在跌(中东降温),以盘中刷新为准。"
-  ],
-  "market_context": {
-    "regime": "强 risk-on:标普距历史新高约 0.3%,周一纳指 +2.1%;Palantir 财报炸裂盘前 +16% 带动整个 AI 板块;利率回落 + 油价走低助攻。",
-    "event_today": "AMD 今晚盘后财报(指引 Q2 营收同比 +46%)——半导体全组的二元事件。所以今天回避一切半导体持仓,别拿着 NVDA 之类过财报。",
-    "picks": "取 1 只:JPM 做多。它是非半导体(不吃今晚 AMD 财报的雷)、3 日仅 +2.3%(没触发不追高)、顺着风险偏好大势的分散仓。信心中等——当日 +5.4% 有点急,所以把执行时的不追高护栏当最后一道闸。",
-    "excluded": {
-      "NVDA": "算法给的多单,但 3 日已 +8.75%,触发『不追高』(>6% 不追);且是半导体、要过今晚 AMD 财报=二元事件,双重回避。",
-      "AMD": "今晚盘后财报,二元事件,盘前不入。",
-      "energy_CVX_OXY_XOM": "中东降温、油价在跌,上周做多逻辑已反转;报价还是旧的,回避。",
-      "TSLA": "仍在大跌区间,不接刀。"
-    }
-  },
   "signals": [
     {
-      "sector_or_ticker": "JPM",
+      "sector_or_ticker": "AMD",
       "direction": "bullish",
-      "confidence": 0.61,
+      "confidence": 0.67,
       "timeframe": "1-3 days",
       "entry_mode": "market",
       "stop_pct": 0.025,
       "t1_pct": 0.03,
       "t2_pct": 0.06,
-      "max_chase_3d_pct": 6.0,
       "already_priced_in": false,
-      "auto_generated": false,
+      "auto_generated": true,
       "reasoning": {
-        "en": "Long JPM as measured participation in a strong risk-on melt-up (S&P ~0.3% from ATH, broad AI strength led by Palantir's +16% blowout, falling yields + lower oil). JPM is the clean pick: a financial with NO exposure to tonight's AMD earnings (a binary semis event), and 3d is only +2.3% so it isn't chase-extended. Modest conviction — today's +5.4% single-day pop is a bit hot, so the execution-time no-chase guard (live 3d) is the backstop: if it's ripping too hard at the open it won't fill. Deliberately NOT chasing NVDA (+8.75%/3d, and a semi into AMD's print).",
-        "zh": "做多 JPM,作为强 risk-on 融涨(标普距新高 ~0.3%、AI 普涨、Palantir +16% 领涨、利率降油价跌)里的一次有节制的参与。JPM 是最干净的选择:金融股、不吃今晚 AMD 财报(半导体二元事件)的雷,且 3 日仅 +2.3%、不算追高。信心中等——当日 +5.4% 略急,所以执行时的不追高护栏(用实时 3 日)是最后一道闸:开盘若猛拉就不成交。刻意不追 NVDA(3日 +8.75%,还是半导体、要过 AMD 财报)。"
+        "en": "Auto: AMD 3-day trend +6.8% (today +0.1%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:AMD 三日趋势 +6.8%(当日 +0.1%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
+      }
+    },
+    {
+      "sector_or_ticker": "JPM",
+      "direction": "bullish",
+      "confidence": 0.62,
+      "timeframe": "1-3 days",
+      "entry_mode": "market",
+      "stop_pct": 0.025,
+      "t1_pct": 0.03,
+      "t2_pct": 0.06,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "reasoning": {
+        "en": "Auto: JPM 3-day trend +1.9% (today +6.9%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
+        "zh": "自动:JPM 三日趋势 +1.9%(当日 +6.9%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
       }
     }
   ]
