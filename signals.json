@@ -1,18 +1,8 @@
 {
   "updated_at": "2026-08-05",
-  "valid_for": "2026-08-05",
-  "generator": "Claude premarket curation (news-driven)",
-  "note": "盘前人工复核:大盘创新高但严重超买,不追顶,主动空仓等回调/催化。仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
+  "valid_for": "2026-08-06",
+  "generator": "generate_signals.py (algorithmic)",
+  "note": "算法根据公开行情自动生成,仅供学习/研究参考,不构成投资建议或收益承诺。市场有风险,盈亏自负。",
   "regime_max_drop_pct": 2.0,
-  "intentional_flat": true,
-  "data_quality_flags": [
-    "quotes.json 陈旧(updated_at=None):能源仍显示 +12%(旧行情,油价其实在跌);SPY 当日 +3.56% 等数字疑似累积/异常,以盘中刷新为准。趋势方向(创新高、超买)可信。"
-  ],
-  "market_context": {
-    "regime": "标普周二创两个月新高(收 7,737),道指首破 54,000;Palantir +26%、Caterpillar +5.8% 等 AI/数据中心强预期领涨。趋势很强。",
-    "warning": "但已严重超买:标普 RSI 74.5(>70)、空头持仓创纪录 3.79%、多家机构点名『across-the-board overbought、反转风险上升』。经典的『动量强但随时可能急跌』时刻。",
-    "decision": "0 仓,空仓不追顶。①NVDA(3日+8.7%)、AMD(3日+6.8%)都过了不追高阈值、且是财报后的高位;②JPM 3日虽只 +1.9% 不被机械护栏挡,但当日 +6.9% 是盘中追涨、且是在 RSI 74 的历史高位开新多单=接顶,我的判断在这里覆盖机械信号;③没有干净的空单——不逆势去空一个还在创新高的强趋势(轧空风险)。宁可守住 +$20,等回调给个好入场,或等清楚的新催化。",
-    "note_on_yesterday": "昨天 JPM 做多赢 $1.5 是趋势里较早的位置;今天同样的融涨已走到『超买+创新高』,是更差的入场点——所以今天比昨天更该忍手。"
-  },
   "signals": []
 }
