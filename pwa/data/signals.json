@@ -1,40 +1,7 @@
 {
-  "updated_at": "2026-08-04",
+  "updated_at": "2026-08-05",
   "valid_for": "2026-08-05",
   "built_for_day": "2026-08-05",
   "disclaimer": "以下内容由模拟交易机器人根据公开新闻与行情自动生成,仅供学习/研究参考,不构成任何投资建议或收益承诺。市场有风险,任何操作都可能造成本金亏损,盈亏目标不代表实际结果。请自行判断并为自己的决定负责。",
-  "signals": [
-    {
-      "ticker": "AMD",
-      "direction": "bullish",
-      "confidence": 0.67,
-      "timeframe": "1-3 days",
-      "entry_mode": "market",
-      "stop_pct": 0.025,
-      "t1_pct": 0.03,
-      "t2_pct": 0.06,
-      "reasoning": {
-        "en": "Auto: AMD 3-day trend +6.8% (today +0.1%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
-        "zh": "自动:AMD 三日趋势 +6.8%(当日 +0.1%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
-      },
-      "tradable": true,
-      "ref_price": 518.58
-    },
-    {
-      "ticker": "JPM",
-      "direction": "bullish",
-      "confidence": 0.62,
-      "timeframe": "1-3 days",
-      "entry_mode": "market",
-      "stop_pct": 0.025,
-      "t1_pct": 0.03,
-      "t2_pct": 0.06,
-      "reasoning": {
-        "en": "Auto: JPM 3-day trend +1.9% (today +6.9%), aligned up. Momentum + trend filter; algorithmic, not analyst-reviewed.",
-        "zh": "自动:JPM 三日趋势 +1.9%(当日 +6.9%),方向上涨一致。动量+趋势过滤生成,非人工分析。"
-      },
-      "tradable": true,
-      "ref_price": 357.52
-    }
-  ]
+  "signals": []
 }
