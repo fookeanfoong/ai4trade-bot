@@ -1,16 +1,16 @@
 {
-  "fetched_at": "2026-08-05T20:16:51Z",
+  "fetched_at": "2026-08-05T21:38:26Z",
   "quotes": {
     "SPY": {
       "symbol": "SPY",
-      "last": 769.77,
+      "last": 769.79,
       "prev_close": 744.78,
       "day_high": 776.85,
       "day_low": 769.52,
       "change_pct": 3.36,
-      "chg_3d_pct": 3.04,
+      "chg_3d_pct": 3.05,
       "chg_5d_pct": 5.53,
-      "volume": 43789419,
+      "volume": 44246082,
       "market_time": 1785960000
     },
     "QQQ": {
@@ -22,7 +22,7 @@
       "change_pct": 0.66,
       "chg_3d_pct": 4.26,
       "chg_5d_pct": 8.4,
-      "volume": 30756730,
+      "volume": 32662387,
       "market_time": 1785960000
     },
     "NVDA": {
@@ -34,7 +34,7 @@
       "change_pct": 12.52,
       "chg_3d_pct": 9.2,
       "chg_5d_pct": 15.37,
-      "volume": 154681869,
+      "volume": 156378175,
       "market_time": 1785960000
     },
     "AMD": {
@@ -63,15 +63,15 @@
     },
     "XOM": {
       "symbol": "XOM",
-      "last": 151.61,
+      "last": 151.63,
       "prev_close": 137.09,
       "day_high": 155.04,
       "day_low": 151.15,
-      "change_pct": 10.59,
-      "chg_3d_pct": -2.46,
-      "chg_5d_pct": -3.28,
-      "volume": 9033629,
-      "market_time": 1785960000
+      "change_pct": 10.61,
+      "chg_3d_pct": -2.45,
+      "chg_5d_pct": -3.27,
+      "volume": 12188198,
+      "market_time": 1785960215
     },
     "OXY": {
       "symbol": "OXY",
@@ -94,8 +94,8 @@
       "change_pct": 10.17,
       "chg_3d_pct": -5.29,
       "chg_5d_pct": -2.84,
-      "volume": 6227606,
-      "market_time": 1785960000
+      "volume": 8247100,
+      "market_time": 1785960229
     },
     "VLO": {
       "symbol": "VLO",
@@ -106,7 +106,7 @@
       "change_pct": 12.93,
       "chg_3d_pct": -3.36,
       "chg_5d_pct": 0.36,
-      "volume": 2222132,
+      "volume": 3131755,
       "market_time": 1785960002
     },
     "MPC": {
@@ -118,7 +118,7 @@
       "change_pct": 11.79,
       "chg_3d_pct": -5.92,
       "chg_5d_pct": -3.55,
-      "volume": 1997285,
+      "volume": 2706482,
       "market_time": 1785960003
     },
     "PSX": {
@@ -130,7 +130,7 @@
       "change_pct": 14.81,
       "chg_3d_pct": -4.31,
       "chg_5d_pct": -2.06,
-      "volume": 2740748,
+      "volume": 3380818,
       "market_time": 1785960003
     },
     "XLE": {
@@ -142,7 +142,7 @@
       "change_pct": 7.69,
       "chg_3d_pct": -3.76,
       "chg_5d_pct": -2.28,
-      "volume": 30518032,
+      "volume": 33184020,
       "market_time": 1785960000
     },
     "JPM": {
