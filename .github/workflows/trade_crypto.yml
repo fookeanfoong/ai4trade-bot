@@ -68,7 +68,7 @@ jobs:
           BASE_SLICES: "2"              # aggressive: 1 signal deploys ~half the book (not 1/3)
           LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable) — 1x max
           ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.0006 BTC) — required for BTC/ETH
-          MAX_POSITIONS: "5"
+          MAX_POSITIONS: "8"            # hold up to 8 coins at once (multi-position)
           ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
         run: python live_trader.py
 

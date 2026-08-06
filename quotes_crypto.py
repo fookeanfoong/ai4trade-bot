@@ -32,7 +32,7 @@ QUOTES_JSON = ROOT / "quotes_crypto.json"
 QUOTES_MD = ROOT / "quotes_crypto.md"
 
 # Liquid majors — scalping needs tight spreads / real volume.
-WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE"]
+WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK"]
 
 INTERVAL = "5m"
 RANGE = "1d"          # a full day of 5m bars; we analyse the most recent window

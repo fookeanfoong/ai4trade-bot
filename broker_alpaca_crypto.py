@@ -189,11 +189,26 @@ class AlpacaCryptoBroker:
         return self._market(symbol, OrderSide.SELL, qty)
 
     def close(self, symbol: str):
-        """Liquidate the entire position for symbol (robust full exit)."""
+        """Liquidate the entire position for symbol.
+
+        We do NOT use close_position(): Alpaca's DELETE /positions/{sym} endpoint
+        is unreliable for crypto pairs ("BTC/USD" 404s with Not Found). Instead we
+        market-SELL the exact held quantity via the same order path entries use
+        (that path is proven to accept the pair format). If the broker turns out
+        to be flat for this symbol, return cleanly so the caller drops its stale
+        local plan instead of retrying a phantom close every run."""
+        bare = to_bare(symbol)
         try:
-            return self.client.close_position(to_pair(symbol))
+            held = {to_bare(p.symbol): abs(float(p.qty))
+                    for p in self.client.get_all_positions()}
         except Exception as e:
-            raise BrokerError(f"close_position {symbol} failed: {e}")
+            raise BrokerError(f"positions() lookup for close {bare} failed: {e}")
+        qty = held.get(bare, 0.0)
+        if qty <= 1e-12:
+            # Already flat on the broker — nothing to sell. Signal success so the
+            # engine clears the stale local position (no infinite phantom-close).
+            return {"status": "already_flat", "symbol": bare}
+        return self._market(symbol, OrderSide.SELL, qty)
 
 
 def describe_config() -> str:
