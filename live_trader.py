@@ -102,16 +102,21 @@ ALLOW_FRACTIONAL = ((_frac.lower() in ("yes", "true")) if _frac is not None
 
 
 def round_price(x: float) -> float:
-    """Round a PRICE to a sensible number of decimals for its magnitude. Stocks
-    (>= $1) keep 2 decimals — identical to the old round(x, 2). Low-priced crypto
-    (DOGE ~$0.07, etc.) needs more, or the stop/T1/T2 collapse onto the entry."""
+    """Round a PRICE to enough decimals to resolve a sub-1% move at its magnitude.
+    stop/T1/T2 are internal thresholds compared to the live price (all orders are
+    MARKET, so these values are never submitted), so extra precision is safe. A
+    coarse rounding collapses close targets onto the entry: DOGE ~$0.07 needs many
+    decimals, and even $1–$3 coins (XRP ~$1.05) need >2 or a +0.8% target rounds
+    back to the entry. High-priced names (BTC/ETH, >= $100) keep 2 decimals."""
     ax = abs(x)
-    if ax >= 1:
+    if ax >= 100:
         d = 2
+    elif ax >= 1:
+        d = 4
     elif ax >= 0.01:
-        d = 5
+        d = 6
     elif ax >= 0.0001:
-        d = 7
+        d = 8
     else:
         d = 9
     return round(x, d)
