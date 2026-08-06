@@ -18,24 +18,6 @@
       "opened_at": "2026-08-06T13:59:41Z",
       "price_src": "broker"
     },
-    "XRP": {
-      "ticker": "XRP",
-      "side": "long",
-      "qty": 27.314941,
-      "entry": 1.046,
-      "stop": 1.04,
-      "t1": 1.05,
-      "t2": 1.05,
-      "half_taken": false,
-      "peak_price": 1.046,
-      "armed": false,
-      "confidence": 0.69,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 28.57,
-      "book_risk_usd": 2.29,
-      "opened_at": "2026-08-06T14:16:51Z",
-      "price_src": "broker"
-    },
     "ETH": {
       "ticker": "ETH",
       "side": "long",
@@ -81,13 +63,31 @@
       "t1": 73.49,
       "t2": 74.75,
       "half_taken": false,
-      "peak_price": 73.28,
+      "peak_price": 73.33,
       "armed": false,
       "confidence": 0.62,
       "entry_chg_3d_pct": null,
       "notional_usd": 28.57,
       "book_risk_usd": 2.29,
       "opened_at": "2026-08-06T14:16:52Z",
+      "price_src": "broker"
+    },
+    "AVAX": {
+      "ticker": "AVAX",
+      "side": "long",
+      "qty": 5.191299,
+      "entry": 6.421,
+      "stop": 6.3953,
+      "t1": 6.4281,
+      "t2": 6.4679,
+      "half_taken": false,
+      "peak_price": 6.421,
+      "armed": false,
+      "confidence": 0.69,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 33.33,
+      "book_risk_usd": 2.67,
+      "opened_at": "2026-08-06T14:31:29Z",
       "price_src": "broker"
     }
   },
@@ -100,6 +100,15 @@
       "exit": 0.07,
       "qty": 1455.0,
       "closed_at": "2026-08-06T14:16:51Z"
+    },
+    {
+      "ticker": "XRP",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 1.046,
+      "exit": 1.041,
+      "qty": 27.314941,
+      "closed_at": "2026-08-06T14:31:29Z"
     }
   ],
   "runs": [
@@ -142,10 +151,21 @@
         "ENTRY LONG SOL conf 0.62 0.389894 sh @ $73.28 [broker] notional $29 risk $2.29 | stop $72.84 T1 $73.49 T2 $74.75",
         "total exposure ~$214 at 1.0x cap \u2014 no new entries"
       ]
+    },
+    {
+      "ran_at": "2026-08-06T14:31:29Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "CLOSE XRP long (SIGNAL_INVALIDATED_EXIT) @ ~$1.04 [broker]",
+        "ENTRY LONG AVAX conf 0.69 5.1913 sh @ $6.42 [broker] notional $33 risk $2.67 | stop $6.3953 T1 $6.4281 T2 $6.4679",
+        "total exposure ~$219 at 1.0x cap \u2014 no new entries"
+      ]
     }
   ],
   "benched": {
-    "DOGE": "2026-08-06"
+    "DOGE": "2026-08-06",
+    "XRP": "2026-08-06"
   },
   "last_key": null
 }

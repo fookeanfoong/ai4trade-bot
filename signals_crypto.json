@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T10:16:49-04:00",
+  "updated_at": "2026-08-06T10:31:27-04:00",
   "valid_for": "2026-08-06",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
@@ -7,7 +7,7 @@
   "regime_max_drop_pct": 5.0,
   "signals": [
     {
-      "sector_or_ticker": "XRP",
+      "sector_or_ticker": "AVAX",
       "direction": "bullish",
       "confidence": 0.69,
       "timeframe": "5m scalp",
@@ -15,21 +15,21 @@
       "setup": "oversold_bounce",
       "stop_pct": 0.004,
       "t1_pct": 0.0011,
-      "t2_pct": 0.0069,
-      "rr": 1.73,
+      "t2_pct": 0.0073,
+      "rr": 1.84,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 40.2,
-        "pct_b": 0.218,
+        "rsi": 41.2,
+        "pct_b": 0.242,
         "trend": "down",
-        "support": 1.0417,
-        "resistance": 1.0506,
+        "support": 6.386,
+        "resistance": 6.449,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "oversold bounce long on XRP (5m): RSI 40.2, %B 0.218, trend down, vol× None. Stop below support $1.0417; targets +0.1%/+0.7%, R:R 1.73. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "XRP 5分钟超卖反弹:RSI 40.2,%B 0.218,趋势down,量比None。止损设在支撑 $1.0417 下方,目标 +0.1%/+0.7%,盈亏比 1.73。算法剥头皮、按风险定量(非全仓)。"
+        "en": "oversold bounce long on AVAX (5m): RSI 41.2, %B 0.242, trend down, vol× None. Stop below support $6.386; targets +0.1%/+0.7%, R:R 1.84. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "AVAX 5分钟超卖反弹:RSI 41.2,%B 0.242,趋势down,量比None。止损设在支撑 $6.386 下方,目标 +0.1%/+0.7%,盈亏比 1.84。算法剥头皮、按风险定量(非全仓)。"
       }
     },
     {
@@ -39,23 +39,23 @@
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.0097,
-      "t1_pct": 0.0029,
+      "stop_pct": 0.0075,
+      "t1_pct": 0.0055,
       "t2_pct": 0.02,
-      "rr": 2.07,
+      "rr": 2.66,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 60.1,
-        "pct_b": 0.747,
+        "rsi": 47.6,
+        "pct_b": 0.527,
         "trend": "up",
         "support": 1890.52,
-        "resistance": 1909.98,
+        "resistance": 1910.6,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on ETH (5m): RSI 60.1, %B 0.747, trend up, vol× None. Stop below support $1890.52; targets +0.3%/+2.0%, R:R 2.07. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ETH 5分钟顺势做多:RSI 60.1,%B 0.747,趋势up,量比None。止损设在支撑 $1890.52 下方,目标 +0.3%/+2.0%,盈亏比 2.07。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on ETH (5m): RSI 47.6, %B 0.527, trend up, vol× None. Stop below support $1890.52; targets +0.5%/+2.0%, R:R 2.66. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "ETH 5分钟顺势做多:RSI 47.6,%B 0.527,趋势up,量比None。止损设在支撑 $1890.52 下方,目标 +0.5%/+2.0%,盈亏比 2.66。算法剥头皮、按风险定量(非全仓)。"
       }
     },
     {
@@ -65,23 +65,23 @@
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.0108,
-      "t1_pct": 0.0012,
+      "stop_pct": 0.0098,
+      "t1_pct": 0.0029,
       "t2_pct": 0.02,
-      "rr": 1.85,
+      "rr": 2.03,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 60.3,
-        "pct_b": 0.861,
+        "rsi": 53.5,
+        "pct_b": 0.679,
         "trend": "up",
         "support": 8.077,
         "resistance": 8.178,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on LINK (5m): RSI 60.3, %B 0.861, trend up, vol× None. Stop below support $8.077; targets +0.1%/+2.0%, R:R 1.85. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "LINK 5分钟顺势做多:RSI 60.3,%B 0.861,趋势up,量比None。止损设在支撑 $8.077 下方,目标 +0.1%/+2.0%,盈亏比 1.85。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on LINK (5m): RSI 53.5, %B 0.679, trend up, vol× None. Stop below support $8.077; targets +0.3%/+2.0%, R:R 2.03. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "LINK 5分钟顺势做多:RSI 53.5,%B 0.679,趋势up,量比None。止损设在支撑 $8.077 下方,目标 +0.3%/+2.0%,盈亏比 2.03。算法剥头皮、按风险定量(非全仓)。"
       }
     },
     {
@@ -91,23 +91,23 @@
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.0058,
-      "t1_pct": 0.002,
+      "stop_pct": 0.0045,
+      "t1_pct": 0.003,
       "t2_pct": 0.02,
-      "rr": 3.46,
+      "rr": 4.42,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 50.5,
-        "pct_b": 0.672,
+        "rsi": 43.2,
+        "pct_b": 0.486,
         "trend": "flat",
         "support": 64091.3203,
-        "resistance": 64613.4805,
+        "resistance": 64588.6094,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on BTC (5m): RSI 50.5, %B 0.672, trend flat, vol× None. Stop below support $64091.3; targets +0.2%/+2.0%, R:R 3.46. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "BTC 5分钟顺势做多:RSI 50.5,%B 0.672,趋势flat,量比None。止损设在支撑 $64091.3 下方,目标 +0.2%/+2.0%,盈亏比 3.46。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on BTC (5m): RSI 43.2, %B 0.486, trend flat, vol× None. Stop below support $64091.3; targets +0.3%/+2.0%, R:R 4.42. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "BTC 5分钟顺势做多:RSI 43.2,%B 0.486,趋势flat,量比None。止损设在支撑 $64091.3 下方,目标 +0.3%/+2.0%,盈亏比 4.42。算法剥头皮、按风险定量(非全仓)。"
       }
     },
     {
@@ -117,49 +117,23 @@
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.006,
-      "t1_pct": 0.0029,
+      "stop_pct": 0.0046,
+      "t1_pct": 0.0039,
       "t2_pct": 0.02,
-      "rr": 3.33,
+      "rr": 4.31,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 48.7,
-        "pct_b": 0.614,
+        "rsi": 42.3,
+        "pct_b": 0.446,
         "trend": "flat",
         "support": 72.79,
         "resistance": 73.49,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on SOL (5m): RSI 48.7, %B 0.614, trend flat, vol× None. Stop below support $72.79; targets +0.3%/+2.0%, R:R 3.33. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "SOL 5分钟顺势做多:RSI 48.7,%B 0.614,趋势flat,量比None。止损设在支撑 $72.79 下方,目标 +0.3%/+2.0%,盈亏比 3.33。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
-      "sector_or_ticker": "AVAX",
-      "direction": "bullish",
-      "confidence": 0.62,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.0063,
-      "t1_pct": 0.0018,
-      "t2_pct": 0.02,
-      "rr": 3.16,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 47.4,
-        "pct_b": 0.639,
-        "trend": "flat",
-        "support": 6.386,
-        "resistance": 6.449,
-        "vol_ratio": null
-      },
-      "reasoning": {
-        "en": "momentum long long on AVAX (5m): RSI 47.4, %B 0.639, trend flat, vol× None. Stop below support $6.386; targets +0.2%/+2.0%, R:R 3.16. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "AVAX 5分钟顺势做多:RSI 47.4,%B 0.639,趋势flat,量比None。止损设在支撑 $6.386 下方,目标 +0.2%/+2.0%,盈亏比 3.16。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on SOL (5m): RSI 42.3, %B 0.446, trend flat, vol× None. Stop below support $72.79; targets +0.4%/+2.0%, R:R 4.31. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "SOL 5分钟顺势做多:RSI 42.3,%B 0.446,趋势flat,量比None。止损设在支撑 $72.79 下方,目标 +0.4%/+2.0%,盈亏比 4.31。算法剥头皮、按风险定量(非全仓)。"
       }
     },
     {
@@ -169,23 +143,23 @@
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.0096,
-      "t1_pct": 0.002,
+      "stop_pct": 0.0083,
+      "t1_pct": 0.0033,
       "t2_pct": 0.02,
-      "rr": 2.08,
+      "rr": 2.4,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 49.7,
-        "pct_b": 0.667,
+        "rsi": 43.9,
+        "pct_b": 0.552,
         "trend": "flat",
         "support": 0.0682,
         "resistance": 0.0692,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on DOGE (5m): RSI 49.7, %B 0.667, trend flat, vol× None. Stop below support $0.0682; targets +0.2%/+2.0%, R:R 2.08. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "DOGE 5分钟顺势做多:RSI 49.7,%B 0.667,趋势flat,量比None。止损设在支撑 $0.0682 下方,目标 +0.2%/+2.0%,盈亏比 2.08。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on DOGE (5m): RSI 43.9, %B 0.552, trend flat, vol× None. Stop below support $0.0682; targets +0.3%/+2.0%, R:R 2.4. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "DOGE 5分钟顺势做多:RSI 43.9,%B 0.552,趋势flat,量比None。止损设在支撑 $0.0682 下方,目标 +0.3%/+2.0%,盈亏比 2.4。算法剥头皮、按风险定量(非全仓)。"
       }
     }
   ]
