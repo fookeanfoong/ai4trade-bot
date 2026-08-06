@@ -1,0 +1,16 @@
+{
+  "positions": {},
+  "trade_log": [],
+  "runs": [
+    {
+      "ran_at": "2026-08-06T13:19:57Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
+    }
+  ],
+  "benched": {},
+  "last_key": null
+}

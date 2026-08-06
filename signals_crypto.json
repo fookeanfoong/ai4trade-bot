@@ -1,8 +1,8 @@
 {
-  "updated_at": null,
-  "valid_for": null,
-  "generator": "generate_signals_crypto.py (algorithmic, long-only)",
-  "note": "Seed file. Regenerated each run on GitHub Actions from quotes_crypto.json.",
+  "updated_at": "2026-08-06T09:19:55-04:00",
+  "valid_for": "2026-08-06",
+  "generator": "generate_signals_crypto.py (5m scalp, long-only)",
+  "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 5.0,
   "signals": []
