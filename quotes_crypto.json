@@ -1,5 +1,6 @@
 {
   "fetched_at": null,
+  "interval": "5m",
   "quotes": {},
   "errors": {},
   "note": "Seed file. Populated on the GitHub Actions runner by quotes_crypto.py (the sandbox egress proxy blocks Yahoo)."

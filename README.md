@@ -26,9 +26,10 @@ State is committed back to the repo each run, so it persists across the stateles
 
 ## Crypto twin (24/7)
 
-There's a parallel **crypto** book (BTC/ETH/SOL/...) that runs 24/7 alongside
-this stock bot and shares the same execution engine and Alpaca account, without
-touching the stock state. See **[SETUP_CRYPTO.md](SETUP_CRYPTO.md)**.
+There's a parallel **crypto scalping** book (BTC/ETH/SOL/...) that runs 24/7 on
+the 5-minute timeframe (RSI / Bollinger Bands / volume / support-resistance),
+alongside this stock bot. It shares the same execution engine and Alpaca account
+without touching the stock state. See **[SETUP_CRYPTO.md](SETUP_CRYPTO.md)**.
 
 ## One-time deploy (~5 min)
 

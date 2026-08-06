@@ -6,10 +6,11 @@ name: ai4trade-bot-crypto
 # *_FILE / REPORTS_SUBDIR overrides), so it never touches the stock book's state.
 on:
   schedule:
-    # Every 15 min, 24/7. Tighten toward */5 for faster scalps (more Actions
-    # minutes) or loosen to */30 to save minutes. GitHub crons can be delayed
-    # under load, which is fine — the bot is idempotent and self-gates on state.
-    - cron: "*/15 * * * *"
+    # SCALPING cadence: every 5 min (GitHub's minimum), 24/7, to match the 5m
+    # analysis timeframe. This burns Actions minutes fast (~288 runs/day) — if
+    # that matters, loosen to */10 or */15. GitHub crons can be delayed under
+    # load, which is fine — the bot is idempotent and self-gates on state.
+    - cron: "*/5 * * * *"
   push:
     branches: ["main"]
     paths:
@@ -42,11 +43,11 @@ jobs:
         if: ${{ env.ALPACA_API_KEY_ID != '' }}
         run: pip install --quiet -r requirements-alpaca.txt
 
-      - name: Fetch live crypto quotes
+      - name: Fetch 5m crypto technicals (RSI / Bollinger / vol / S-R)
         continue-on-error: true
         run: python quotes_crypto.py
 
-      - name: Generate today's crypto signals (algorithmic, long-only)
+      - name: Generate scalp setups (5m, long-only) — regenerated every run
         continue-on-error: true
         run: python generate_signals_crypto.py
 
