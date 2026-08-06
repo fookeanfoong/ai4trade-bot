@@ -42,10 +42,13 @@ except ImportError:
     ZoneInfo = None
 
 ROOT = Path(__file__).resolve().parent
-SIGNALS_FILE = ROOT / "signals.json"
-QUOTES_FILE = ROOT / "quotes.json"
-STATE_FILE = ROOT / "live_trader_state.json"
-REPORTS_DIR = ROOT / "reports" / "live_trader"
+# File paths are env-overridable so the SAME engine can drive a parallel book
+# (e.g. a 24/7 crypto twin) without duplicating this logic. Defaults are the
+# original stock paths, so the stock bot behaves exactly as before.
+SIGNALS_FILE = ROOT / os.environ.get("SIGNALS_FILE", "signals.json")
+QUOTES_FILE = ROOT / os.environ.get("QUOTES_FILE", "quotes.json")
+STATE_FILE = ROOT / os.environ.get("STATE_FILE", "live_trader_state.json")
+REPORTS_DIR = ROOT / "reports" / os.environ.get("REPORTS_SUBDIR", "live_trader")
 
 # --- Book & risk config (env-overridable). Mirrors signal_sim.py's discipline. ---
 BROKER_NAME = os.environ.get("BROKER", "alpaca").lower()
@@ -80,6 +83,15 @@ SPLIT_FACTORS = (2, 3, 4, 5, 6, 7, 8, 10, 15, 20)
 # override with a top-level "regime_max_drop_pct".
 REGIME_MAX_DROP_PCT = float(os.environ.get("REGIME_MAX_DROP_PCT", "2.0"))
 
+# Broad-market benchmark(s) for the regime guard. Stocks use SPY (then QQQ);
+# a crypto twin sets REGIME_SYMBOLS=BTC so the guard reads BTC's own day change.
+REGIME_SYMBOLS = [s.strip().upper() for s in
+                  os.environ.get("REGIME_SYMBOLS", "SPY,QQQ").split(",") if s.strip()]
+
+# 24/7 market (crypto): skip the weekday gate and the broker's stock-hours clock.
+# Default off -> stocks still gate on NY weekdays + regular trading hours.
+MARKET_24_7 = os.environ.get("MARKET_24_7", "false").lower() in ("yes", "true")
+
 # Fractional shares: default on for Alpaca (supports ~$1 slices), off otherwise.
 _frac = os.environ.get("ALLOW_FRACTIONAL")
 ALLOW_FRACTIONAL = (_frac.lower() in ("yes", "true")) if _frac is not None else (BROKER_NAME == "alpaca")
@@ -87,7 +99,13 @@ ALLOW_FRACTIONAL = (_frac.lower() in ("yes", "true")) if _frac is not None else 
 
 # ----------------------------- broker factory ------------------------------
 def get_broker():
-    """Return (broker_or_None, available, describe_fn, BrokerError)."""
+    """Return (broker_or_None, available, describe_fn, BrokerError).
+    BROKER=alpaca_crypto selects the 24/7 crypto adapter; anything else = stocks."""
+    if BROKER_NAME in ("alpaca_crypto", "alpaca-crypto", "crypto"):
+        from broker_alpaca_crypto import (AlpacaCryptoBroker, BrokerError,
+                                          describe_config, ALPACA_AVAILABLE)
+        return (AlpacaCryptoBroker() if ALPACA_AVAILABLE else None,
+                ALPACA_AVAILABLE, describe_config, BrokerError)
     from broker_alpaca import AlpacaBroker, BrokerError, describe_config, ALPACA_AVAILABLE
     return (AlpacaBroker() if ALPACA_AVAILABLE else None, ALPACA_AVAILABLE, describe_config, BrokerError)
 
@@ -153,8 +171,9 @@ def signal_expired(doc: dict, today: str) -> bool:
 
 
 def broad_market_chg(qmap: dict):
-    """Same-day % change of the broad market (SPY, else QQQ) for the regime guard."""
-    for sym in ("SPY", "QQQ"):
+    """Same-day % change of the broad-market benchmark for the regime guard.
+    Stocks: SPY then QQQ. Crypto twin: BTC (via REGIME_SYMBOLS)."""
+    for sym in REGIME_SYMBOLS:
         q = qmap.get(sym)
         if q and q.get("change_pct") is not None:
             return sym, float(q["change_pct"])
@@ -548,7 +567,8 @@ def run_test_order(broker, symbol: str, qty: float) -> int:
 
 
 def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
-    if not is_weekday_ny():
+    # Crypto trades 24/7; stocks skip weekends.
+    if not MARKET_24_7 and not is_weekday_ny():
         print("Weekend — skipping.")
         return 0
 
@@ -577,7 +597,7 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
                 pass
             _finish(state, actions, acct, describe, dry, persist=True)
             return 0
-        if broker.is_market_open() is False:
+        if not MARKET_24_7 and broker.is_market_open() is False:
             actions.append("market closed — no orders this run")
             broker.disconnect()
             _finish(state, actions, acct, describe, dry, persist=True)
