@@ -33,20 +33,22 @@ NY = ZoneInfo("America/New_York")
 REGIME_SYMBOL = "BTC"
 REGIME_MAX_DROP = 5.0      # BTC 当天跌超过这个 % 就不开新多
 
-# Overbought / no-chase gates.
-RSI_OVERBOUGHT = 68.0
-PCTB_OVERBOUGHT = 0.85
-# Oversold-bounce (setup A) triggers.
-RSI_OVERSOLD = 40.0
-PCTB_LOW = 0.20
-# Trend-pullback (setup B) band.
-RSI_TREND_LO, RSI_TREND_HI = 45.0, 66.0
-PCTB_PULLBACK_LO, PCTB_PULLBACK_HI = 0.30, 0.70
+# AGGRESSIVE crypto profile (intentionally looser than the stock book): trades
+# in flat tape too, chases a bit harder, takes lower R:R. Every trade still
+# carries a hard stop below support — aggressive, not suicidal.
+# Overbought / no-chase gates (relaxed).
+RSI_OVERBOUGHT = 75.0
+PCTB_OVERBOUGHT = 0.92
+# Oversold-bounce (setup A) triggers (relaxed).
+RSI_OVERSOLD = 48.0
+PCTB_LOW = 0.32
+# Momentum-long (setup B): any up-OR-flat, non-overbought tape with RSI >= this.
+RSI_MOMO_MIN = 40.0
 
 STOP_BUFFER = 0.0015       # place stop a touch below support/swing
-STOP_MIN, STOP_MAX = 0.004, 0.03   # clamp scalp stop distance (0.4%–3%)
-MIN_RR = 1.2               # reward(to T2):risk floor
-MAX_NAMES = 4
+STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
+MIN_RR = 1.0               # reward(to T2):risk floor (aggressive)
+MAX_NAMES = 5
 
 DISCLAIMER = ("算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。"
               "已按风险定量(非全仓),加密波动极大,盈亏自负。")
@@ -90,29 +92,30 @@ def build_setup(tkr, q, regime_today):
 
     setup = None
     conf = 0.60
-    # --- Setup A: oversold bounce at support -------------------------------
+    # --- Setup A: oversold bounce (mean-revert) ----------------------------
     if rsi <= RSI_OVERSOLD and pctb <= PCTB_LOW:
         setup = "oversold_bounce"
         conf = 0.64
         if vol_ratio and vol_ratio >= 1.2:
-            conf += 0.04
-        if (last - support) / last <= 0.006:   # hugging support
-            conf += 0.04
+            conf += 0.05
+        if (last - support) / last <= 0.008:   # hugging support
+            conf += 0.05
         target2 = max(sma20 or 0, bb_upper or 0, resistance or 0)
-        target1 = sma20 or (last * 1.006)
-    # --- Setup B: trend pullback continuation ------------------------------
-    elif trend == "up" and RSI_TREND_LO <= rsi <= RSI_TREND_HI \
-            and PCTB_PULLBACK_LO <= pctb <= PCTB_PULLBACK_HI:
-        setup = "trend_pullback"
-        conf = 0.63
+        target1 = sma20 or (last * 1.008)
+    # --- Setup B: momentum long (aggressive) -------------------------------
+    #     Any up-OR-flat, non-overbought tape is tradable long — this is what
+    #     keeps the crypto book active in chop instead of sitting flat.
+    elif trend in ("up", "flat") and rsi >= RSI_MOMO_MIN:
+        setup = "momentum_long"
+        conf = 0.62
+        if trend == "up":
+            conf += 0.04
         if vol_ratio and vol_ratio >= 1.0:
             conf += 0.03
-        if rsi <= 58:
-            conf += 0.03
-        target2 = max(bb_upper or 0, resistance or 0)
-        target1 = bb_upper or (last * 1.006)
+        target2 = max(bb_upper or 0, resistance or 0, last * 1.02)
+        target1 = bb_upper or (last * 1.008)
     else:
-        return None   # no clean setup — say so upstream
+        return None   # only skip clear downtrends / overbought
 
     # Stop just below support; clamp the distance to a scalp-sized band.
     stop_price = support * (1 - STOP_BUFFER)
@@ -152,7 +155,7 @@ def build_setup(tkr, q, regime_today):
                    f"trend {trend}, vol× {vol_ratio}. Stop below support ${support:g}; "
                    f"targets +{t1_pct*100:.1f}%/+{t2_pct*100:.1f}%, R:R {rr}. "
                    f"Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed."),
-            "zh": (f"{tkr} 5分钟{('超卖反弹' if setup=='oversold_bounce' else '趋势回踩续涨')}做多:"
+            "zh": (f"{tkr} 5分钟{('超卖反弹' if setup=='oversold_bounce' else '顺势做多')}:"
                    f"RSI {rsi},%B {pctb},趋势{trend},量比{vol_ratio}。止损设在支撑 ${support:g} 下方,"
                    f"目标 +{t1_pct*100:.1f}%/+{t2_pct*100:.1f}%,盈亏比 {rr}。算法剥头皮、按风险定量(非全仓)。"),
         },
