@@ -657,6 +657,14 @@
       "actions": [
         "no actionable signal (direction, confidence>=0.6, not priced-in)"
       ]
+    },
+    {
+      "ran_at": "2026-08-06T14:54:00Z",
+      "broker": "alpaca",
+      "dry_run": false,
+      "actions": [
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "last_key": null,
