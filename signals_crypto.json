@@ -1,9 +1,62 @@
 {
-  "updated_at": "2026-08-06T09:19:55-04:00",
+  "updated_at": "2026-08-06T09:47:04-04:00",
   "valid_for": "2026-08-06",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 5.0,
-  "signals": []
+  "signals": [
+    {
+      "sector_or_ticker": "BTC",
+      "direction": "bullish",
+      "confidence": 0.62,
+      "timeframe": "5m scalp",
+      "entry_mode": "market",
+      "setup": "momentum_long",
+      "stop_pct": 0.0069,
+      "t1_pct": 0.0014,
+      "t2_pct": 0.02,
+      "rr": 2.88,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "ta": {
+        "rsi": 50.9,
+        "pct_b": 0.509,
+        "trend": "flat",
+        "support": 64432.8984,
+        "resistance": 64944.1602,
+        "vol_ratio": null
+      },
+      "reasoning": {
+        "en": "momentum long long on BTC (5m): RSI 50.9, %B 0.509, trend flat, vol× None. Stop below support $64432.9; targets +0.1%/+2.0%, R:R 2.88. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "BTC 5分钟顺势做多:RSI 50.9,%B 0.509,趋势flat,量比None。止损设在支撑 $64432.9 下方,目标 +0.1%/+2.0%,盈亏比 2.88。算法剥头皮、按风险定量(非全仓)。"
+      }
+    },
+    {
+      "sector_or_ticker": "DOGE",
+      "direction": "bullish",
+      "confidence": 0.62,
+      "timeframe": "5m scalp",
+      "entry_mode": "market",
+      "setup": "momentum_long",
+      "stop_pct": 0.0069,
+      "t1_pct": 0.0017,
+      "t2_pct": 0.02,
+      "rr": 2.88,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "ta": {
+        "rsi": 46.2,
+        "pct_b": 0.329,
+        "trend": "flat",
+        "support": 0.0694,
+        "resistance": 0.0701,
+        "vol_ratio": null
+      },
+      "reasoning": {
+        "en": "momentum long long on DOGE (5m): RSI 46.2, %B 0.329, trend flat, vol× None. Stop below support $0.0694; targets +0.2%/+2.0%, R:R 2.88. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "DOGE 5分钟顺势做多:RSI 46.2,%B 0.329,趋势flat,量比None。止损设在支撑 $0.0694 下方,目标 +0.2%/+2.0%,盈亏比 2.88。算法剥头皮、按风险定量(非全仓)。"
+      }
+    }
+  ]
 }
