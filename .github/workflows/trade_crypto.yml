@@ -1,0 +1,85 @@
+name: ai4trade-bot-crypto
+
+# The 24/7 crypto twin of trade.yml. Crypto never closes, so this runs every day,
+# all hours. The engine (live_trader.py) is reused unchanged — the crypto book is
+# selected entirely through env vars (BROKER, MARKET_24_7, REGIME_SYMBOLS, and the
+# *_FILE / REPORTS_SUBDIR overrides), so it never touches the stock book's state.
+on:
+  schedule:
+    # SCALPING cadence: every 5 min (GitHub's minimum), 24/7, to match the 5m
+    # analysis timeframe. This burns Actions minutes fast (~288 runs/day) — if
+    # that matters, loosen to */10 or */15. GitHub crons can be delayed under
+    # load, which is fine — the bot is idempotent and self-gates on state.
+    - cron: "*/5 * * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - ".trigger-crypto"    # reliable kick: touch this file to fire a run
+  workflow_dispatch:
+
+concurrency:
+  group: ai4trade-bot-crypto   # separate group so it never blocks the stock book
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  trade-crypto:
+    runs-on: ubuntu-latest
+    env:
+      ALPACA_API_KEY_ID: ${{ secrets.ALPACA_API_KEY_ID }}
+      ALPACA_API_SECRET_KEY: ${{ secrets.ALPACA_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install --quiet pytz
+
+      - name: Install Alpaca SDK (only if key is set)
+        if: ${{ env.ALPACA_API_KEY_ID != '' }}
+        run: pip install --quiet -r requirements-alpaca.txt
+
+      - name: Fetch 5m crypto technicals (RSI / Bollinger / vol / S-R)
+        continue-on-error: true
+        run: python quotes_crypto.py
+
+      - name: Generate scalp setups (5m, long-only) — regenerated every run
+        continue-on-error: true
+        run: python generate_signals_crypto.py
+
+      - name: Alpaca crypto paper trade (real execution, cloud, only if key is set)
+        if: ${{ env.ALPACA_API_KEY_ID != '' }}
+        continue-on-error: true
+        env:
+          BROKER: alpaca_crypto
+          ALPACA_PAPER: "true"          # fake money until you flip to false + confirm
+          MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
+          REGIME_SYMBOLS: "BTC"         # BTC is the crypto book's regime benchmark
+          SIGNALS_FILE: "signals_crypto.json"
+          QUOTES_FILE: "quotes_crypto.json"
+          STATE_FILE: "live_trader_crypto_state.json"
+          REPORTS_SUBDIR: "live_trader_crypto"
+          BOOK_EQUITY: "200"
+          RISK_PCT: "0.05"
+          LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable)
+          MAX_POSITIONS: "5"
+          ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
+        run: python live_trader.py
+
+      - name: Commit crypto state + reports
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "crypto $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

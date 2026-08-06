@@ -1,0 +1,9 @@
+{
+  "updated_at": null,
+  "valid_for": null,
+  "generator": "generate_signals_crypto.py (algorithmic, long-only)",
+  "note": "Seed file. Regenerated each run on GitHub Actions from quotes_crypto.json.",
+  "regime_symbol": "BTC",
+  "regime_max_drop_pct": 5.0,
+  "signals": []
+}
