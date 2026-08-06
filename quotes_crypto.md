@@ -1,4 +1,4 @@
-# Crypto Technicals (5m) — 2026-08-06T13:47:04Z
+# Crypto Technicals (5m) — 2026-08-06T13:59:39Z
 
 | Symbol | Last | Day% | RSI | %B | Trend | Vol× | Support | Resist |
 |--------|------|------|-----|----|-------|------|---------|--------|
