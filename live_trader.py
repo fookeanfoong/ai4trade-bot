@@ -92,9 +92,29 @@ REGIME_SYMBOLS = [s.strip().upper() for s in
 # Default off -> stocks still gate on NY weekdays + regular trading hours.
 MARKET_24_7 = os.environ.get("MARKET_24_7", "false").lower() in ("yes", "true")
 
-# Fractional shares: default on for Alpaca (supports ~$1 slices), off otherwise.
+# Fractional shares: default on for any Alpaca broker (stocks support ~$1 slices;
+# crypto is inherently fractional — you buy 0.0006 BTC, never a whole coin).
+# Without this, a $100 slice can't size a single unit of a high-priced name
+# (BTC/ETH) and the entry is refused.
 _frac = os.environ.get("ALLOW_FRACTIONAL")
-ALLOW_FRACTIONAL = (_frac.lower() in ("yes", "true")) if _frac is not None else (BROKER_NAME == "alpaca")
+ALLOW_FRACTIONAL = ((_frac.lower() in ("yes", "true")) if _frac is not None
+                    else BROKER_NAME in ("alpaca", "alpaca_crypto", "alpaca-crypto", "crypto"))
+
+
+def round_price(x: float) -> float:
+    """Round a PRICE to a sensible number of decimals for its magnitude. Stocks
+    (>= $1) keep 2 decimals — identical to the old round(x, 2). Low-priced crypto
+    (DOGE ~$0.07, etc.) needs more, or the stop/T1/T2 collapse onto the entry."""
+    ax = abs(x)
+    if ax >= 1:
+        d = 2
+    elif ax >= 0.01:
+        d = 5
+    elif ax >= 0.0001:
+        d = 7
+    else:
+        d = 9
+    return round(x, d)
 
 
 # ----------------------------- broker factory ------------------------------
@@ -422,9 +442,9 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         ]
 
     entry = last
-    stop = round(entry * (1 - stop_pct * s), 2)
-    t1 = round(entry * (1 + t1_pct * s), 2)
-    t2 = round(entry * (1 + t2_pct * s), 2)
+    stop = round_price(entry * (1 - stop_pct * s))
+    t1 = round_price(entry * (1 + t1_pct * s))
+    t2 = round_price(entry * (1 + t2_pct * s))
     notional = shares * entry
     slice_risk = per_position_book * RISK_PER_TRADE_PCT
 
