@@ -1,81 +1,81 @@
-# Market News Digest — 2026-08-05T22:42:35+00:00
+# Market News Digest — 2026-08-06T13:36:26+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `37m ago` **[Fed]** What Warsh’s comms experiment means for South Africa - Financial Mail — _Financial Mail_
-- `1h ago` **[Trump]** Trump’s investment accounts show stock trades in companies awarded immigration contracts - Scripps News — _Scripps News_
-- `1h ago` **[Trump]** Trump on board Marine One during air safety incident - CNN — _CNN_
-- `1h ago` **[Musk]** SpaceX has solved Starship’s biggest challenge, Elon Musk says - teslarati.com — _teslarati.com_
-- `2h ago` **[Market]** U.S. stocks hold near records on hopes of an agreement with Iran - BNN Bloomberg — _BNN Bloomberg_
-- `2h ago` **[Trump]** Stock Market Today: SPY, QQQ Lose Steam on AI Jitters as Trump Calls for Hormuz Deal - TipRanks — _TipRanks_
-- `2h ago` **[Trump]** Trump says Exxon and Chevron are 'making too much money' on high oil prices amid Iran war - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
-- `2h ago` **[Fed]** CDX: Credit Spreads Are Flashing A Warning - Real Investment Advice — _Real Investment Advice_
-- `2h ago` **[Oil]** Oil Prices Fall as Supply Concerns Ease on Hopes for US-Iran Talks - EnergyNow.com — _EnergyNow.com_
-- `2h ago` **[Oil]** Hormuz Reopening Could be OPEC’s Undoing: Bousso - EnergyNow.com — _EnergyNow.com_
-- `2h ago` **[Trump]** Trump's new gold statues in DC: Classy or tacky? - CNN — _CNN_
-- `2h ago` **[Market]** S&P 500 and Nasdaq end lower as chip rally fizzles out and U.S.-Iran tensions rise - Investing.com — _Investing.com_
+- `5m ago` **[Trump]** Trump officials say they’re strengthening Head Start with proposed rule. Critics say they’ll gut it - CNN — _CNN_
+- `22m ago` **[Chips]** AMD Shares Fall 8% as Elon Musk Commits to Nvidia Chips for SpaceX - WSJ — _WSJ_
+- `42m ago` **[Market]** U.S. futures mixed with Iran uncertainty hanging over markets; lockup period for SpaceX shares expires - ctvnews.ca — _ctvnews.ca_
+- `1h ago` **[Trump]** Mother of immigrant who died in ICE custody sends message to Trump - CNN — _CNN_
+- `1h ago` **[Musk]** Elon Musk's Tesla Suffered Its Worst Week Since 2022, Wiping Out $130 Billion of His Fortune. Is the Stock Still a Buy? - The Motley Fool — _The Motley Fool_
+- `2h ago` **[Musk]** Could Elon Musk replace your bank? Here's how X Money works - KRCR — _KRCR_
+- `2h ago` **[Fed]** July jobs report expected to show moderate US payroll increase - Crypto Briefing — _Crypto Briefing_
+- `2h ago` **[Oil]** Trump blasts big oil profits. His Iran War helped create them. - Houston Chronicle — _Houston Chronicle_
+- `2h ago` **[Trump]** Trump touts stock market records as rally broadens beyond tech - foxbusiness.com — _foxbusiness.com_
+- `2h ago` **[Fed]** Kevin Warsh to stick with lean Fed messaging despite market backlash - Financial Times — _Financial Times_
+- `3h ago` **[Musk]** A 2020 clip of Elon Musk's truly cringeworthy dancing has been giving people the ick all over again - 17 slick takedowns - The Poke — _The Poke_
+- `3h ago` **[Musk]** Elon Musk Loses $87 Billion In A Single Day As SpaceX Stock Craters After Earnings - 24/7 Wall St. — _24/7 Wall St._
 
 ## Market
 
-- `35m ago` Asian Stocks Set for Declines as AI Rally Cools: Markets Wrap - Bloomberg.com — _Bloomberg.com_
-- `2h ago` U.S. stocks hold near records on hopes of an agreement with Iran - BNN Bloomberg — _BNN Bloomberg_
-- `2h ago` US stocks: Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq - The Economic Times — _The Economic Times_
-- `2h ago` Dow Jones, Nasdaq, US Stock Market Today Live Updates: Check Latest Move in Futures, DJIA Jumps 400 Points as Nvidia & Micron Leads While Gold Surges 3% as Dollar Weakens | Why Are Stocks Up Today - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` S&P 500 and Nasdaq end lower as chip rally fizzles out and U.S.-Iran tensions rise - Investing.com — _Investing.com_
-- `3h ago` US stocks hold near records on hopes of an agreement with Iran - thecanadianpressnews.ca — _thecanadianpressnews.ca_
+- `42m ago` U.S. futures mixed with Iran uncertainty hanging over markets; lockup period for SpaceX shares expires - ctvnews.ca — _ctvnews.ca_
+- `51m ago` US markets today: Dow, S&P 500, Nasdaq futures indicate mix open; Sandisk, SpaceX, Cloudflare others in focus - Upstox — _Upstox_
+- `1h ago` 9am Markets Update - RTE.ie — _RTE.ie_
+- `2h ago` U.S. Stock Futures Mixed as Nasdaq Slips on AI Anxiety - WSJ — _WSJ_
+- `2h ago` Share Market Today: Nifty 50, Bank Nifty | Aug 06, 2026 - Liquide Blog — _Liquide Blog_
+- `3h ago` BAC|Bank of America Corp|Price:63.215|Chg%:+0.315 - TradingKey — _TradingKey_
 
 ## Trump
 
-- `1h ago` Trump’s investment accounts show stock trades in companies awarded immigration contracts - Scripps News — _Scripps News_
-- `1h ago` Trump on board Marine One during air safety incident - CNN — _CNN_
-- `2h ago` Stock Market Today: SPY, QQQ Lose Steam on AI Jitters as Trump Calls for Hormuz Deal - TipRanks — _TipRanks_
-- `2h ago` Trump says Exxon and Chevron are 'making too much money' on high oil prices amid Iran war - ABC News - Breaking News, Latest News and Videos — _ABC News - Breaking News, Latest News and Videos_
-- `2h ago` Trump's new gold statues in DC: Classy or tacky? - CNN — _CNN_
-- `5h ago` Trump Hails Record Stock Market, Says All-Time High Proves 'America Is Winning' - HOKANEWS.COM — _HOKANEWS.COM_
+- `5m ago` Trump officials say they’re strengthening Head Start with proposed rule. Critics say they’ll gut it - CNN — _CNN_
+- `1h ago` Mother of immigrant who died in ICE custody sends message to Trump - CNN — _CNN_
+- `2h ago` Trump touts stock market records as rally broadens beyond tech - foxbusiness.com — _foxbusiness.com_
+- `4h ago` Doonesbury Comic Strips by Garry Trudeau - August 04, 1991 - The Washington Post — _The Washington Post_
+- `5h ago` 100% tariffs: Why India may ignore Trump threat and continue buying Russian crude oil - The Times of India — _The Times of India_
+- `5h ago` Norway business leaders and government meet about Trump's tariffs - intrafish.com — _intrafish.com_
 
 ## Musk
 
-- `1h ago` SpaceX has solved Starship’s biggest challenge, Elon Musk says - teslarati.com — _teslarati.com_
-- `2h ago` SpaceX And Tesla Earnings Have A Similar Theme: Capex Spending - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` Musk Says These Tesla Products Will 'Dramatically' Increase Starlink Demand - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` Tesla-SpaceX Merger Speculation Heats Up As Analysts Clash Ahead Of SpaceX IPO - Stocktwits — _Stocktwits_
-- `3h ago` Elon Musk Predicts ‘Money Won’t Matter in 2036.’ Is This His Worst Prediction Yet or Prophetic? - AOL.com — _AOL.com_
-- `3h ago` Elon Musk Predicts 'Money Won't Matter in 2036.' Is This His Worst Prediction Yet or Prophetic? - 24/7 Wall St. — _24/7 Wall St._
+- `1h ago` Elon Musk's Tesla Suffered Its Worst Week Since 2022, Wiping Out $130 Billion of His Fortune. Is the Stock Still a Buy? - The Motley Fool — _The Motley Fool_
+- `2h ago` Could Elon Musk replace your bank? Here's how X Money works - KRCR — _KRCR_
+- `3h ago` A 2020 clip of Elon Musk's truly cringeworthy dancing has been giving people the ick all over again - 17 slick takedowns - The Poke — _The Poke_
+- `3h ago` Tesla China Sales, Giga Shanghai & News - CnEVPost — _CnEVPost_
+- `3h ago` Gary Black Says Uber, Not Tesla or Waymo, Has the Best Shot at Bringing Robotaxis to the Masses - Benzinga — _Benzinga_
+- `3h ago` Elon Musk Loses $87 Billion In A Single Day As SpaceX Stock Craters After Earnings - 24/7 Wall St. — _24/7 Wall St._
 
 ## Fed
 
-- `37m ago` What Warsh’s comms experiment means for South Africa - Financial Mail — _Financial Mail_
-- `2h ago` CDX: Credit Spreads Are Flashing A Warning - Real Investment Advice — _Real Investment Advice_
-- `2h ago` Interest Rate Predictions for the Next 2 Years: 2026-2028 - Norada Real Estate Investments — _Norada Real Estate Investments_
-- `3h ago` Kevin Warsh Has a Problem - Foreign Policy — _Foreign Policy_
-- `4h ago` Why Is the U.S. Treasury Intervening in Currency Markets and What Does It Mean for Investors? - The Motley Fool — _The Motley Fool_
-- `5h ago` Jim Cramer Is Selling His Bitcoin Over Quantum Threat—Crypto Twitter Is Thrilled - Decrypt — _Decrypt_
+- `2h ago` China’s state iron ore buyer tells steel mills to stop negotiating with Rio Tinto - Crypto Briefing — _Crypto Briefing_
+- `2h ago` July jobs report expected to show moderate US payroll increase - Crypto Briefing — _Crypto Briefing_
+- `2h ago` Kevin Warsh to stick with lean Fed messaging despite market backlash - Financial Times — _Financial Times_
+- `5h ago` Kevin Warsh Has a Problem - Foreign Policy — _Foreign Policy_
+- `7h ago` QQQ quarterly outlook report - invesco.com — _invesco.com_
+- `9h ago` How Long Can the Fed Hold On? - Forex Factory — _Forex Factory_
 
 ## Oil
 
-- `2h ago` Oil Prices Fall as Supply Concerns Ease on Hopes for US-Iran Talks - EnergyNow.com — _EnergyNow.com_
-- `2h ago` Hormuz Reopening Could be OPEC’s Undoing: Bousso - EnergyNow.com — _EnergyNow.com_
-- `3h ago` Progress Toward Reopening the Strait of Hormuz Weighs on Oil Prices - Barchart.com — _Barchart.com_
-- `3h ago` Hormuz Crisis Is Rewriting the Global LPG Trade - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
-- `4h ago` WTI holds near three-week low as traders await Hormuz agreement - FXStreet — _FXStreet_
-- `5h ago` Trump Demands Lower Gas Prices as Oil Profits and Pump Costs Fuel a National Showdown - NewsBreak: Local News & Alerts — _NewsBreak: Local News & Alerts_
+- `2h ago` Trump blasts big oil profits. His Iran War helped create them. - Houston Chronicle — _Houston Chronicle_
+- `3h ago` How the UAE Has Kept Its Oil Flowing Through Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `4h ago` Oil prices slip as Iran cites progress with Oman on Hormuz agreement - The Daily Star — _The Daily Star_
+- `7h ago` WTI Price Forecast: Downside likely towards $67 on Hormuz reopening hopes - FXStreet — _FXStreet_
+- `8h ago` Iran and Oman Near Landmark Deal to Manage Strait of Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `8h ago` Sinopec boosts Russian oil imports amid Middle East supply disruptions - Crypto Briefing — _Crypto Briefing_
 
 ## Chips
 
-- `2h ago` AI Rally Splits Sharply: AMD Plunges 7.8%, Dragging Down Philadelphia Semiconductor Index; Nvidia Rises for Fifth Straight Day, Market Cap Nears $5.8 Trillion - finance.biggo.com — _finance.biggo.com_
-- `4h ago` Top AI Semiconductor Stocks 2026: Investment Guide & Analysis - intellectia.ai — _intellectia.ai_
-- `5h ago` Why Nvidia (NVDA) Stock Is Up Today - StockStory — _StockStory_
-- `5h ago` AMD Stock Drops Despite 132% Gains as Su Dismisses Musk Drama - The Tech Buzz — _The Tech Buzz_
-- `5h ago` Nvidia Just Won a Major SpaceX AI Deal. Stock Jumps as AMD Sinks - GuruFocus — _GuruFocus_
-- `5h ago` AMD vs. NVDA vs. INTC: CPU and GPU Market Shares Rise and Fall in the July 2026 Steam Hardware Survey - TipRanks — _TipRanks_
+- `22m ago` AMD Shares Fall 8% as Elon Musk Commits to Nvidia Chips for SpaceX - WSJ — _WSJ_
+- `2h ago` Is the AI trade unwinding (again)? - Investors' Chronicle — _Investors' Chronicle_
+- `3h ago` Why Nvidia, Micron, AMD stocks are down pre-market after SanDisk shock - Invezz — _Invezz_
+- `4h ago` Equities: Nvidia stands out as broader tech mood cools – Deutsche Bank - FXStreet — _FXStreet_
+- `5h ago` AMD Stock Forecast: $650 Bull vs $430 Bear After Q2 Beat - FinanceFeeds — _FinanceFeeds_
+- `5h ago` AI Stocks Market Analysis August 2026: Top Picks & Investment Strategy - Intellectia AI — _Intellectia AI_
 
 ## Earnings
 
-- `59m ago` After-hours movers track earnings guidance pressure across U.S. tech and consumer stocks - Traders Union — _Traders Union_
-- `1h ago` Intel, Micron among mega-cap stock movers on Friday - Investing.com — _Investing.com_
-- `1h ago` After-Hours Stock Movers: WDC, SNDK, FIG, APP, HUBS, SOUN, DASH, XYZ, Z, FLNC - Investing.com — _Investing.com_
-- `2h ago` Western Digital Stock Slumps After Earnings. Here Are The Numbers To Know. - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` Bed Bath & Beyond Shares Fall Following Q2 Earnings Miss, Restructuring Plans - Benzinga — _Benzinga_
-- `3h ago` Vroom Stock Rallies as Q2 Earnings Mark Profitability Milestone - Benzinga — _Benzinga_
+- `15m ago` Hertz Stock Rallies Following Strong Q2 Earnings Beat - Benzinga — _Benzinga_
+- `20m ago` Sunrun Shares Fall as Guidance Cut Offsets Q2 Earnings Beat - Benzinga — _Benzinga_
+- `1h ago` Premarket movers reflect earnings, guidance and regulatory shifts across U.S. sectors - Traders Union — _Traders Union_
+- `1h ago` Keurig Dr Pepper rises after reporting first earnings with JDE Peet's included (KDP:NASDAQ) - Seeking Alpha — _Seeking Alpha_
+- `2h ago` Six Flags Shares Slide After Attendance, Revenue Miss Estimates - Bloomberg.com — _Bloomberg.com_
+- `3h ago` Why Is Western Digital Stock Sinking Thursday? - Benzinga — _Benzinga_
 
