@@ -48,7 +48,7 @@ RSI_MOMO_MIN = 40.0
 STOP_BUFFER = 0.0015       # place stop a touch below support/swing
 STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
 MIN_RR = 1.0               # reward(to T2):risk floor (aggressive)
-MAX_NAMES = 5
+MAX_NAMES = 8              # hold up to this many coins at once (multi-position)
 
 DISCLAIMER = ("算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。"
               "已按风险定量(非全仓),加密波动极大,盈亏自负。")
