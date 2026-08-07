@@ -27,6 +27,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 QUOTES = os.path.join(ROOT, "quotes_crypto.json")
+NEWS = os.path.join(ROOT, "news_crypto.json")
 OUT = os.path.join(ROOT, "signals_crypto.json")
 NY = ZoneInfo("America/New_York")
 
@@ -83,16 +84,30 @@ def _clamp(x, lo, hi):
     return max(lo, min(hi, x))
 
 
-def assess_regime(quotes):
-    """看 BTC 判断全场风险状态。
+def assess_regime(quotes, news=None):
+    """看 BTC 价格 + 新闻,判断全场风险状态。
 
     返回 (risk_off: bool, panic: bool, reason: str)。
     risk_off -> 不开新仓;panic -> 引擎清仓走人。
+
+    价格和新闻的分工:
+      - 价格是事实,可以单独触发清仓。
+      - 新闻是启发式的、会误判,所以**单独出现时只停止开新仓,不清仓**。
+      - 两者同时告警 -> 升级为清仓:重大利空叠加真实下跌,基本就是真崩。
     """
     btc = quotes.get(REGIME_SYMBOL) or {}
     day = btc.get("change_pct")
     hour = btc.get("chg_1h_pct")
     from_high = btc.get("drop_from_high_pct")
+
+    news = news or {}
+    news_off = bool(news.get("news_risk_off"))
+    news_reason = news.get("reason") or ""
+
+    # 新闻 + 价格双确认 -> 清仓。单看新闻永远不清仓(误判代价太大)。
+    if news_off and from_high is not None and from_high <= -CRASH_FAST_DROP:
+        return True, True, (f"重大利空 + {REGIME_SYMBOL} 已从高点跌 {from_high:.1f}% "
+                            f"— 双重确认,清仓离场 | {news_reason}")
 
     if from_high is not None and from_high <= -PANIC_FLATTEN_DROP:
         return True, True, (f"{REGIME_SYMBOL} 距近期高点已跌 {from_high:.1f}% "
@@ -109,6 +124,9 @@ def assess_regime(quotes):
     if day is not None and day <= -REGIME_MAX_DROP:
         return True, False, (f"{REGIME_SYMBOL} 当日跌 {day:.1f}% "
                              f"(≥{REGIME_MAX_DROP}%) — 大盘走弱,暂停开新仓")
+    # 价格还没出事,但新闻已经在响 -> 只停手观望,不动已有仓位。
+    if news_off:
+        return True, False, f"新闻风控:{news_reason}"
     return False, False, ""
 
 
@@ -218,7 +236,8 @@ def main():
 
     quotes = load(QUOTES, {}).get("quotes", {})
     regime_today = (quotes.get(REGIME_SYMBOL) or {}).get("change_pct")
-    risk_off, panic, regime_reason = assess_regime(quotes)
+    news = load(NEWS, {})
+    risk_off, panic, regime_reason = assess_regime(quotes, news)
 
     cands = []
     for tkr, q in quotes.items():
@@ -236,6 +255,9 @@ def main():
         "regime_symbol": REGIME_SYMBOL,
         "regime_max_drop_pct": REGIME_MAX_DROP,
         "regime_day_pct": regime_today,
+        "news_risk_off": bool(news.get("news_risk_off")),
+        "news_hits": news.get("hit_count"),
+        "news_degraded": bool(news.get("degraded")),
         "risk_off": risk_off,
         "panic_flatten": panic,
         "regime_reason": regime_reason,
