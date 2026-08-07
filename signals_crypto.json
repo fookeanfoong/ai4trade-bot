@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-07T15:31:14-04:00",
+  "updated_at": "2026-08-07T16:17:33-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 0.99,
+  "regime_day_pct": 1.05,
   "news_risk_off": false,
   "news_hits": 0,
   "news_degraded": false,
@@ -14,55 +14,55 @@
   "regime_reason": "",
   "signals": [
     {
-      "sector_or_ticker": "DOGE",
-      "direction": "bullish",
-      "confidence": 0.66,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.0072,
-      "t1_pct": 0.0014,
-      "t2_pct": 0.02,
-      "rr": 2.77,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 56.5,
-        "pct_b": 0.738,
-        "trend": "up",
-        "support": 0.0694,
-        "resistance": 0.0701,
-        "vol_ratio": null
-      },
-      "reasoning": {
-        "en": "momentum long long on DOGE (5m): RSI 56.5, %B 0.738, trend up, vol× None. Stop below support $0.0694; targets +0.1%/+2.0%, R:R 2.77. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "DOGE 5分钟顺势做多:RSI 56.5,%B 0.738,趋势up,量比None。止损设在支撑 $0.0694 下方,目标 +0.1%/+2.0%,盈亏比 2.77。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
       "sector_or_ticker": "ETH",
       "direction": "bullish",
       "confidence": 0.66,
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.0077,
-      "t1_pct": 0.0008,
+      "stop_pct": 0.0079,
+      "t1_pct": 0.003,
       "t2_pct": 0.02,
-      "rr": 2.59,
+      "rr": 2.53,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 62.8,
-        "pct_b": 0.876,
+        "rsi": 58.1,
+        "pct_b": 0.636,
         "trend": "up",
         "support": 1904.34,
-        "resistance": 1923.87,
+        "resistance": 1919.2,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on ETH (5m): RSI 62.8, %B 0.876, trend up, vol× None. Stop below support $1904.34; targets +0.1%/+2.0%, R:R 2.59. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ETH 5分钟顺势做多:RSI 62.8,%B 0.876,趋势up,量比None。止损设在支撑 $1904.34 下方,目标 +0.1%/+2.0%,盈亏比 2.59。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on ETH (5m): RSI 58.1, %B 0.636, trend up, vol× None. Stop below support $1904.34; targets +0.3%/+2.0%, R:R 2.53. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "ETH 5分钟顺势做多:RSI 58.1,%B 0.636,趋势up,量比None。止损设在支撑 $1904.34 下方,目标 +0.3%/+2.0%,盈亏比 2.53。算法剥头皮、按风险定量(非全仓)。"
+      }
+    },
+    {
+      "sector_or_ticker": "BTC",
+      "direction": "bullish",
+      "confidence": 0.66,
+      "timeframe": "5m scalp",
+      "entry_mode": "market",
+      "setup": "momentum_long",
+      "stop_pct": 0.0086,
+      "t1_pct": 0.0021,
+      "t2_pct": 0.02,
+      "rr": 2.33,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "ta": {
+        "rsi": 61.3,
+        "pct_b": 0.677,
+        "trend": "up",
+        "support": 64474.6016,
+        "resistance": 64993.9805,
+        "vol_ratio": null
+      },
+      "reasoning": {
+        "en": "momentum long long on BTC (5m): RSI 61.3, %B 0.677, trend up, vol× None. Stop below support $64474.6; targets +0.2%/+2.0%, R:R 2.33. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "BTC 5分钟顺势做多:RSI 61.3,%B 0.677,趋势up,量比None。止损设在支撑 $64474.6 下方,目标 +0.2%/+2.0%,盈亏比 2.33。算法剥头皮、按风险定量(非全仓)。"
       }
     }
   ]

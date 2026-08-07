@@ -1,5 +1,28 @@
 {
-  "positions": {},
+  "positions": {
+    "BTC": {
+      "ticker": "BTC",
+      "side": "long",
+      "qty": 0.00154,
+      "entry": 64916.179,
+      "stop": 64357.9,
+      "t1": 292122.81,
+      "t2": 292122.81,
+      "half_taken": false,
+      "peak_price": 64916.179,
+      "armed": false,
+      "confidence": 0.66,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 99.97,
+      "book_risk_usd": 8.0,
+      "single_exit": false,
+      "run_mode": true,
+      "trail_floor": 65567.07,
+      "opened_at": "2026-08-07T20:17:34Z",
+      "opened_ny_date": "2026-08-07",
+      "price_src": "broker"
+    }
+  },
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -434,6 +457,15 @@
       "actions": [
         "DOGE: benched today (already exited once) \u2014 no re-entry until tomorrow",
         "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T20:17:35Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow",
+        "ENTRY LONG BTC conf 0.66 0.00154 sh @ $64916.18 [broker] notional $100 risk $8.00 | stop $64357.9 T1 $292122.81 T2 $292122.81 | net-target $0.50 (band $0.50-$1.00, vol span 0.65%) = gross +1.00% -> exit $65567.1 = net $+0.5000 after 0.25%/side (FLOOR \u2014 trails from here, upside open) | TA t2 was +2.00%"
       ]
     }
   ],
