@@ -35,7 +35,8 @@ jobs:
     env:
       # Job-level so the trade step's `if:` can see it — a step cannot test its
       # own `env:` block, that is evaluated before the step env exists.
-      AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
+      ALPACA_API_KEY_ID: ${{ secrets.ALPACA_API_KEY_ID }}
+      ALPACA_API_SECRET_KEY: ${{ secrets.ALPACA_API_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -44,6 +45,10 @@ jobs:
 
       - name: Install deps
         run: pip install --quiet pytz
+
+      - name: Install Alpaca SDK (only if key is set)
+        if: ${{ env.ALPACA_API_KEY_ID != '' }}
+        run: pip install --quiet -r requirements-alpaca.txt
 
       - name: Fetch 5m crypto technicals (RSI / Bollinger / vol / S-R)
         continue-on-error: true
@@ -57,12 +62,12 @@ jobs:
         continue-on-error: true
         run: python generate_signals_crypto.py
 
-      - name: AI-Trader (ai4trade.ai) trade — SIMULATED platform book
-        if: ${{ env.AI4TRADE_TOKEN != '' }}
+      - name: Alpaca crypto paper trade (real execution path, cloud)
+        if: ${{ env.ALPACA_API_KEY_ID != '' }}
         continue-on-error: true
         env:
-          BROKER: ai4trade
-          AI4TRADE_MARKET: "crypto"
+          BROKER: alpaca_crypto
+          ALPACA_PAPER: "true"          # fake money until you flip to false + confirm
           # One-shot housekeeping: set from the "Run workflow" button to close
           # everything (e.g. after a config change). Empty on scheduled runs.
           FLATTEN_ALL: ${{ inputs.flatten }}
@@ -70,39 +75,30 @@ jobs:
           REGIME_SYMBOLS: "BTC"         # BTC is the market: if BTC flushes, nothing else is safe
           SIGNALS_FILE: "signals_crypto.json"
           QUOTES_FILE: "quotes_crypto.json"
-          # Separate ledger from the Alpaca book: the two brokers hold different
-          # positions, and one engine reconciling against the wrong one would
-          # close positions it does not own.
-          STATE_FILE: "live_trader_ai4trade_state.json"
-          REPORTS_SUBDIR: "live_trader_ai4trade"
-          # The platform grants $100,000 simulated cash; this book deliberately
-          # trades only $200 of it, matching the size actually being learned on.
-          # (The platform also charges a 0.1% fee the skill document never
-          # mentions, debited from the same cash — see FEE_RATE below.)
+          STATE_FILE: "live_trader_crypto_state.json"
+          REPORTS_SUBDIR: "live_trader_crypto"
           BOOK_EQUITY: "200"
           RISK_PCT: "0.08"
           BASE_SLICES: "1"              # concentrate: a lone signal takes the whole book
-          LEVERAGE_CAP: "1.0"
-          ALLOW_FRACTIONAL: "yes"
+          LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable) — 1x max
+          ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.006 ETH)
           MAX_POSITIONS: "2"            # 1 coin at $200, or 2 at $100 each
-          ENABLE_SHORT: "no"            # platform supports short/cover; keep this book long-only
-          # --- Net-dollar target ------------------------------------------
-          # Fee measured from a live rejection: $50.00 on a $49,995.17 trade =
-          # 0.1% per side. Targets must clear it or the book repeats the Alpaca
-          # mistake of banking "wins" that cost more in fees than they earned.
+          ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
+          # --- Net-dollar floor, uncapped upside ---------------------------
+          # Alpaca crypto takes ~0.25% per side, 2.5x the platform's 0.1%, so
+          # the same $0.50 floor needs a bigger move: 0.75% on a $200 position,
+          # 1.00% on $100. With RUN_WINNERS that is a FLOOR, not an exit — a
+          # trailing stop arms there and the trade can only close higher.
           NET_PROFIT_MODE: "yes"
-          FEE_RATE: "0.001"
-          # With RUN_WINNERS these are the FLOOR, not the exit: once the trade
-          # clears this much net, a trailing stop arms and can never give the
-          # money back. Upside is uncapped from there.
-          NET_TARGET_MIN_USD: "0.50"    # quiet coin: locks in at +0.45%
-          NET_TARGET_MAX_USD: "1.00"    # volatile coin: locks in at +0.70%
+          FEE_RATE: "0.0025"            # Alpaca crypto taker ≈ 0.25% per side
+          NET_TARGET_MIN_USD: "0.50"
+          NET_TARGET_MAX_USD: "1.00"
           RUN_WINNERS: "yes"            # let profit run past the floor
           TRAIL_GIVEBACK_PCT: "0.006"   # give a winner 0.6% of room before taking it
-          VOL_SPAN_LO: "0.015"          # BB width <=1.5% of price => use the floor
-          VOL_SPAN_HI: "0.050"          # BB width >=5% of price   => use the ceiling
-          MIN_RR_NET: "1.0"             # stop distance <= target distance (at least 1:1)
-          MAX_TARGET_MOVE_PCT: "0.035"  # don't open trades whose target needs >3.5%
+          VOL_SPAN_LO: "0.015"
+          VOL_SPAN_HI: "0.050"
+          MIN_RR_NET: "1.0"             # stop distance <= floor distance (at least 1:1)
+          MAX_TARGET_MOVE_PCT: "0.035"
         run: python live_trader.py
 
       - name: Commit crypto state + reports
