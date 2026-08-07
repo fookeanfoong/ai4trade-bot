@@ -33,8 +33,9 @@ jobs:
   trade-crypto:
     runs-on: ubuntu-latest
     env:
-      ALPACA_API_KEY_ID: ${{ secrets.ALPACA_API_KEY_ID }}
-      ALPACA_API_SECRET_KEY: ${{ secrets.ALPACA_API_SECRET_KEY }}
+      # Job-level so the trade step's `if:` can see it — a step cannot test its
+      # own `env:` block, that is evaluated before the step env exists.
+      AI4TRADE_TOKEN: ${{ secrets.AI4TRADE_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -44,10 +45,6 @@ jobs:
       - name: Install deps
         run: pip install --quiet pytz
 
-      - name: Install Alpaca SDK (only if key is set)
-        if: ${{ env.ALPACA_API_KEY_ID != '' }}
-        run: pip install --quiet -r requirements-alpaca.txt
-
       - name: Fetch 5m crypto technicals (RSI / Bollinger / vol / S-R)
         continue-on-error: true
         run: python quotes_crypto.py
@@ -56,42 +53,40 @@ jobs:
         continue-on-error: true
         run: python generate_signals_crypto.py
 
-      - name: Alpaca crypto paper trade (real execution, cloud, only if key is set)
-        if: ${{ env.ALPACA_API_KEY_ID != '' }}
+      - name: AI-Trader (ai4trade.ai) trade — SIMULATED platform book
+        if: ${{ env.AI4TRADE_TOKEN != '' }}
         continue-on-error: true
         env:
-          BROKER: alpaca_crypto
+          BROKER: ai4trade
+          AI4TRADE_MARKET: "crypto"
           # One-shot housekeeping: set from the "Run workflow" button to close
           # everything (e.g. after a config change). Empty on scheduled runs.
           FLATTEN_ALL: ${{ inputs.flatten }}
-          ALPACA_PAPER: "true"          # fake money until you flip to false + confirm
           MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
           REGIME_SYMBOLS: "BTC"         # BTC is the market: if BTC flushes, nothing else is safe
           SIGNALS_FILE: "signals_crypto.json"
           QUOTES_FILE: "quotes_crypto.json"
-          STATE_FILE: "live_trader_crypto_state.json"
-          REPORTS_SUBDIR: "live_trader_crypto"
-          BOOK_EQUITY: "200"
-          RISK_PCT: "0.08"              # aggressive: bigger risk per scalp (vs 0.05 stock)
+          # Separate ledger from the Alpaca book: the two brokers hold different
+          # positions, and one engine reconciling against the wrong one would
+          # close positions it does not own.
+          STATE_FILE: "live_trader_ai4trade_state.json"
+          REPORTS_SUBDIR: "live_trader_ai4trade"
+          # The platform grants $100,000 simulated cash on registration.
+          BOOK_EQUITY: "100000"
+          RISK_PCT: "0.08"
           BASE_SLICES: "1"              # concentrate: a lone signal takes the whole book
-          LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable) — 1x max
-          ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.006 ETH)
-          MAX_POSITIONS: "2"            # concentrated: 1 coin at $200, or 2 at $100 each
-          ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
-          # --- Net-dollar target -----------------------------------------
-          # Sell once the position is up enough that, AFTER both sides' fees,
-          # $0.50-$1.00 lands in the account. One target, full exit. Each coin
-          # picks its point in the band from its Bollinger width: a quiet coin
-          # takes the $0.50 floor (0.75% on a $200 position) because it isn't
-          # going to deliver more, a volatile one holds out for $1.00 (1.00%).
-          # Concentrating the book is what keeps those moves small — the same
-          # $1.00 needs 1.50% at $100 and 2.51% split four ways.
-          # The target price is rounded UP to the coin's tick, so a $0.07 name
-          # like DOGE can never have rounding shave it below the floor.
+          LEVERAGE_CAP: "1.0"
+          ALLOW_FRACTIONAL: "yes"
+          MAX_POSITIONS: "2"            # 1 coin at $100k, or 2 at $50k each
+          ENABLE_SHORT: "no"            # platform supports short/cover; keep this book long-only
+          # --- Net-dollar target ------------------------------------------
+          # The platform charges no trading fee, so FEE_RATE is 0 and the target
+          # is pure price movement. Scaled to the $100k book, $250-$500 is the
+          # same 0.5%-1.0% shape the $200 Alpaca book ran at $0.50-$1.00.
           NET_PROFIT_MODE: "yes"
-          FEE_RATE: "0.0025"            # Alpaca crypto taker ≈ 0.25% per side
-          NET_TARGET_MIN_USD: "0.50"    # quiet coin: net $0.50, take it and go
-          NET_TARGET_MAX_USD: "1.00"    # volatile coin: hold out for net $1.00
+          FEE_RATE: "0.0"
+          NET_TARGET_MIN_USD: "250"     # quiet coin: 0.5% of a $50k position
+          NET_TARGET_MAX_USD: "500"     # volatile coin: 1.0%
           VOL_SPAN_LO: "0.015"          # BB width <=1.5% of price => use the floor
           VOL_SPAN_HI: "0.050"          # BB width >=5% of price   => use the ceiling
           MIN_RR_NET: "1.0"             # stop distance <= target distance (at least 1:1)
