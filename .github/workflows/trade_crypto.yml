@@ -16,6 +16,11 @@ on:
     paths:
       - ".trigger-crypto"    # reliable kick: touch this file to fire a run
   workflow_dispatch:
+    inputs:
+      flatten:
+        description: "Close every open crypto position and open nothing this run"
+        type: boolean
+        default: false
 
 concurrency:
   group: ai4trade-bot-crypto   # separate group so it never blocks the stock book
@@ -56,6 +61,9 @@ jobs:
         continue-on-error: true
         env:
           BROKER: alpaca_crypto
+          # One-shot housekeeping: set from the "Run workflow" button to close
+          # everything (e.g. after a config change). Empty on scheduled runs.
+          FLATTEN_ALL: ${{ inputs.flatten }}
           ALPACA_PAPER: "true"          # fake money until you flip to false + confirm
           MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
           REGIME_SYMBOLS: "BTC"         # BTC is the market: if BTC flushes, nothing else is safe

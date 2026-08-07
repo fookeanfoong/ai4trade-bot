@@ -91,6 +91,8 @@ MAX_TARGET_MOVE_PCT = float(os.environ.get("MAX_TARGET_MOVE_PCT", "0.03"))
 # 目标变小之后,止损必须跟着收紧,否则「赚 1% 亏 1.65%」——那要 62% 胜率才不亏。
 # 这里强制:止损距离 <= 目标距离 / MIN_RR_NET。1.0 = 至少一赔一。
 MIN_RR_NET = float(os.environ.get("MIN_RR_NET", "1.0"))
+# 一次性清仓开关(换配置时用):清掉所有持仓、本轮不开新仓。见 flatten_all()。
+FLATTEN_ALL = os.environ.get("FLATTEN_ALL", "false").lower() in ("yes", "true")
 
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
@@ -489,24 +491,30 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
 
 
 # ------------------------------ entry (one signal) -------------------------
-def panic_flatten(broker, state, qmap, dry: bool, reason: str) -> list:
-    """崩盘熔断:信号层判定大盘正在跳水时,不管盈亏一律清仓离场。
+def flatten_all(broker, state, qmap, dry: bool, reason: str,
+                action: str = "CRASH_FLATTEN", bench: bool = True,
+                banner: str = "PANIC FLATTEN") -> list:
+    """不管盈亏,一律市价清仓。
 
-    加密的跳水是「一根 5 分钟 K 线砸 10%」那种,等止损一个个被打穿往往已经滑价很多。
-    这一层是在止损之上的总闸:先出来,明天再说。当天不再开新仓(全部 benched)。"""
-    lines = [f"PANIC FLATTEN: {reason}"]
+    两个用途:
+      - 崩盘熔断(默认):加密跳水是「一根 5 分钟 K 线砸 10%」那种,等止损一个个被
+        打穿往往已经滑价很多。这一层是止损之上的总闸,清完还把名字 bench 到明天。
+      - 手动清仓(bench=False):换配置时把旧仓位收干净。这种情况**不** bench,
+        否则新配置当天就没法交易了。"""
+    lines = [f"{banner}: {reason}"]
     now = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
     for sym in list(state.get("positions", {}).keys()):
         p = state["positions"][sym]
         last, src = get_price(broker, sym, qmap)
         ref = last if last is not None else p["entry"]
         ok = _send(broker, dry, lines,
-                   f"CLOSE {sym} {p['side']} (CRASH_FLATTEN) @ ~${ref:.2f} [{src if last else 'entry'}]",
+                   f"CLOSE {sym} {p['side']} ({action}) @ ~${ref:.2f} [{src if last else 'entry'}]",
                    lambda s=sym: broker.close(s))
         if ok:
-            _log_trade(state, p, "CRASH_FLATTEN", ref, p["qty"], now)
+            _log_trade(state, p, action, ref, p["qty"], now)
             state["positions"].pop(sym, None)
-            state.setdefault("benched", {})[sym] = ny_today_str()
+            if bench:
+                state.setdefault("benched", {})[sym] = ny_today_str()
     return lines
 
 
@@ -792,9 +800,23 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
         if doc.get("panic_flatten"):
             reason = doc.get("regime_reason") or "crash guard triggered"
             if state.get("positions"):
-                actions += panic_flatten(broker, state, qmap, dry, reason)
+                actions += flatten_all(broker, state, qmap, dry, reason)
             else:
                 actions.append(f"PANIC GUARD: {reason} — already flat, no new entries")
+            _finish(state, actions, acct, describe, dry, persist=not dry)
+            return 0
+
+        # 0b) Manual flatten (FLATTEN_ALL=yes). One-shot housekeeping for a config
+        #     change: close everything and open nothing this run. Deliberately does
+        #     NOT bench the names, so the new config can trade them straight away.
+        if FLATTEN_ALL:
+            if state.get("positions"):
+                actions += flatten_all(
+                    broker, state, qmap, dry,
+                    "FLATTEN_ALL requested — closing every open position",
+                    action="MANUAL_FLATTEN", bench=False, banner="FLATTEN")
+            else:
+                actions.append("FLATTEN_ALL: already flat, nothing to close")
             _finish(state, actions, acct, describe, dry, persist=not dry)
             return 0
 
