@@ -70,37 +70,45 @@ and fee rate `f` per side, the gross move `g` that nets `N` dollars is:
 net = V*g - V*f*(2+g)     =>     g = (N + 2*f*V) / (V * (1-f))
 ```
 
-### One flat target, concentrated book
+### The band, and why concentration sets it
 
-The target is **$1.00 net**, floor and ceiling alike (`NET_TARGET_MIN_USD` =
-`NET_TARGET_MAX_USD` = 1.00), so the volatility scaling between them is
-currently a no-op. It stays in the code because widening the band is a config
-change, not a code change.
+The target is a **range**, `NET_TARGET_MIN_USD`..`NET_TARGET_MAX_USD`
+($0.50–$1.00). Each coin's place in it comes from its own Bollinger width — a
+quiet coin takes the floor because it isn't going to deliver more, a volatile
+one holds out:
 
-What makes $1.00 reachable is **concentration**, not the target itself. A dollar
-target gets harder as the book splits thinner — the same $1.00 is a bigger
-fraction of a smaller position:
+| BB width | Net target |
+|---|---|
+| ≤ `VOL_SPAN_LO` (1.5%) | $0.50 |
+| between | linear |
+| ≥ `VOL_SPAN_HI` (5%) | $1.00 |
 
-| Names | Notional each | Move needed for $1.00 |
-|---|---|---|
-| **1** | **$200** | **1.00%** |
-| **2** | **$100** | **1.50%** |
-| 3 | $67 | 2.00% |
-| 4 | $50 | 2.51% |
-| 5 | $40 | 3.01% |
+A dollar target is a fraction of notional, so the move it demands shrinks as
+the book concentrates. This is why `MAX_NAMES=2` / `MAX_POSITIONS=2` /
+`BASE_SLICES=1`:
 
-`MAX_NAMES=2` / `MAX_POSITIONS=2` / `BASE_SLICES=1` follow from this table: a
-lone signal takes the whole $200 and needs only a 1.00% move, two split it and
-need 1.50%. Splitting four ways would demand 2.51% inside a 5-minute bar, which
-mostly means sitting in trades that never finish.
+| Names | Notional each | Move for $0.50 | Move for $1.00 |
+|---|---|---|---|
+| **1** | **$200** | **0.75%** | **1.00%** |
+| **2** | **$100** | **1.00%** | **1.50%** |
+| 3 | $67 | 1.25% | 2.00% |
+| 4 | $50 | 1.50% | 2.51% |
 
-Worked example at `f=0.25%`:
+Split four ways the ceiling target would need 2.51% inside a 5-minute bar,
+which mostly means sitting in trades that never finish.
 
-| Case | Notional | Gross needed | Stop | Realized net |
+Note the floor is bounded from below by costs, not by preference: a round trip
+already spends ~0.50% on fees, so targets much under $0.50 on a $200 position
+converge on trading for the exchange. The first 12 trades, averaging $0.14,
+are what that looks like.
+
+Worked example on a concentrated $200 position at `f=0.25%`:
+
+| BB width | Net target | Gross needed | Stop | Realized net |
 |---|---|---|---|---|
-| 1 coin (ETH) | $200 | +1.00% | 1.00% | **+$1.0002** |
-| 2 coins (DOGE) | $100 | +1.50% | 1.50% | **+$1.0005** |
-| 2 coins (XRP) | $100 | +1.50% | 1.50% | **+$1.0011** |
+| 1.2% | $0.50 | +0.75% | 0.75% | **+$0.5004** |
+| 3.0% | $0.71 | +0.86% | 0.86% | **+$0.7146** |
+| 6.0% | $1.00 | +1.00% | 1.00% | **+$1.0002** |
 
 ### Price precision
 
