@@ -1,5 +1,26 @@
 {
-  "positions": {},
+  "positions": {
+    "ADA": {
+      "ticker": "ADA",
+      "side": "long",
+      "qty": 249426.319465,
+      "entry": 0.20046,
+      "stop": 0.199458,
+      "t1": 0.201463,
+      "t2": 0.201463,
+      "half_taken": false,
+      "peak_price": 0.20046,
+      "armed": false,
+      "confidence": 0.69,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 50000.0,
+      "book_risk_usd": 4000.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T13:01:40Z",
+      "opened_ny_date": "2026-08-07",
+      "price_src": "quotes.json"
+    }
+  },
   "trade_log": [],
   "runs": [
     {
@@ -18,6 +39,15 @@
       "actions": [
         "ORDER FAILED (ENTRY LONG XRP conf 0.66 48202.1 sh @ $1.04 [quotes.json] notional $50000 risk $4000.00 | stop $1.0321 T1 $1.0425 T2 $1.0425 | net-target $250.00 (band $250.00-$500.00, vol span 0.75%) = gross +0.50% -> exit $1.0425 = net $+250.6507 after 0.00%/side (full exit) | stop tightened 0.71%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"executed_at must be in UTC format (ending with Z or +00:00). Got: 2026-08-07T13:00:33\"}",
         "ORDER FAILED (ENTRY LONG SOL conf 0.66 676.956 sh @ $73.86 [quotes.json] notional $50000 risk $4000.00 | stop $73.4907 T1 $74.2294 T2 $74.2294 | net-target $250.00 (band $250.00-$500.00, vol span 0.76%) = gross +0.50% -> exit $74.2294 = net $+250.0677 after 0.00%/side (full exit) | stop tightened 1.00%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"executed_at must be in UTC format (ending with Z or +00:00). Got: 2026-08-07T13:00:33\"}"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T13:01:42Z",
+      "broker": "ai4trade",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG ADA conf 0.69 249426 sh @ $0.20 [quotes.json] notional $50000 risk $4000.00 | stop $0.199458 T1 $0.201463 T2 $0.201463 | net-target $250.00 (band $250.00-$500.00, vol span 1.15%) = gross +0.50% -> exit $0.201463 = net $+250.1746 after 0.00%/side (full exit) | stop tightened 0.53%->0.50% for 1:1 | TA t2 was +1.37%",
+        "ORDER FAILED (ENTRY LONG XRP conf 0.66 48253.2 sh @ $1.04 [quotes.json] notional $50000 risk $4000.00 | stop $1.031 T1 $1.0414 T2 $1.0414 | net-target $250.00 (band $250.00-$500.00, vol span 0.75%) = gross +0.50% -> exit $1.0414 = net $+250.9168 after 0.00%/side (full exit) | stop tightened 0.60%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"Insufficient cash. Required: $50045.17 (trade: $49995.17 + fee: $50.00), Available: $49959.99\"}"
       ]
     }
   ],

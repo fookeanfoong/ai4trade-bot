@@ -1,15 +1,41 @@
 {
-  "updated_at": "2026-08-07T09:00:31-04:00",
+  "updated_at": "2026-08-07T09:01:39-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 1.53,
+  "regime_day_pct": 1.43,
   "risk_off": false,
   "panic_flatten": false,
   "regime_reason": "",
   "signals": [
+    {
+      "sector_or_ticker": "ADA",
+      "direction": "bullish",
+      "confidence": 0.69,
+      "timeframe": "5m scalp",
+      "entry_mode": "market",
+      "setup": "oversold_bounce",
+      "stop_pct": 0.0053,
+      "t1_pct": 0.0037,
+      "t2_pct": 0.0137,
+      "rr": 2.59,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "ta": {
+        "rsi": 39.8,
+        "pct_b": 0.159,
+        "trend": "down",
+        "support": 0.1997,
+        "resistance": 0.2032,
+        "vol_ratio": null
+      },
+      "reasoning": {
+        "en": "oversold bounce long on ADA (5m): RSI 39.8, %B 0.159, trend down, vol× None. Stop below support $0.1997; targets +0.4%/+1.4%, R:R 2.59. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "ADA 5分钟超卖反弹:RSI 39.8,%B 0.159,趋势down,量比None。止损设在支撑 $0.1997 下方,目标 +0.4%/+1.4%,盈亏比 2.59。算法剥头皮、按风险定量(非全仓)。"
+      }
+    },
     {
       "sector_or_ticker": "XRP",
       "direction": "bullish",
@@ -17,49 +43,23 @@
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.0071,
-      "t1_pct": 0.0015,
+      "stop_pct": 0.006,
+      "t1_pct": 0.0027,
       "t2_pct": 0.02,
-      "rr": 2.82,
+      "rr": 3.32,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 58.9,
-        "pct_b": 0.792,
+        "rsi": 54.0,
+        "pct_b": 0.644,
         "trend": "up",
         "support": 1.0315,
         "resistance": 1.0407,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on XRP (5m): RSI 58.9, %B 0.792, trend up, vol× None. Stop below support $1.0315; targets +0.2%/+2.0%, R:R 2.82. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "XRP 5分钟顺势做多:RSI 58.9,%B 0.792,趋势up,量比None。止损设在支撑 $1.0315 下方,目标 +0.2%/+2.0%,盈亏比 2.82。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
-      "sector_or_ticker": "SOL",
-      "direction": "bullish",
-      "confidence": 0.66,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.01,
-      "t1_pct": 0.002,
-      "t2_pct": 0.02,
-      "rr": 2.0,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 59.0,
-        "pct_b": 0.739,
-        "trend": "up",
-        "support": 73.23,
-        "resistance": 74.14,
-        "vol_ratio": null
-      },
-      "reasoning": {
-        "en": "momentum long long on SOL (5m): RSI 59.0, %B 0.739, trend up, vol× None. Stop below support $73.23; targets +0.2%/+2.0%, R:R 2.0. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "SOL 5分钟顺势做多:RSI 59.0,%B 0.739,趋势up,量比None。止损设在支撑 $73.23 下方,目标 +0.2%/+2.0%,盈亏比 2.0。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on XRP (5m): RSI 54.0, %B 0.644, trend up, vol× None. Stop below support $1.0315; targets +0.3%/+2.0%, R:R 3.32. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "XRP 5分钟顺势做多:RSI 54.0,%B 0.644,趋势up,量比None。止损设在支撑 $1.0315 下方,目标 +0.3%/+2.0%,盈亏比 3.32。算法剥头皮、按风险定量(非全仓)。"
       }
     }
   ]
