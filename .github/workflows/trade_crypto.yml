@@ -70,14 +70,13 @@ jobs:
           ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.006 ETH)
           MAX_POSITIONS: "4"            # diversified: up to 4 different coins at once (~$50 each)
           ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
-          # --- Net-dollar profit targets ---------------------------------
-          # Exit on DOLLARS EARNED AFTER FEES, not on a percentage. At ~$50 a
-          # name this puts T1 near +1.5% and T2 near +2.5%; anything needing
-          # more than MAX_TARGET_MOVE_PCT is skipped as unreachable.
+          # --- Net-return target -----------------------------------------
+          # Exit at +0.53% AFTER both sides' fees — one target, full exit.
+          # At 0.25%/side that means a gross move of +1.03%, of which ~0.50%
+          # goes to the exchange. Independent of position size.
           NET_PROFIT_MODE: "yes"
           FEE_RATE: "0.0025"            # Alpaca crypto taker ≈ 0.25% per side
-          NET_T1_USD: "0.50"            # half out once the position clears $0.50 net
-          NET_T2_USD: "1.00"            # rest out at $1.00 net
+          NET_TARGET_PCT: "0.0053"      # net +0.53% after fees, then close
           MAX_TARGET_MOVE_PCT: "0.035"  # don't open trades whose target needs >3.5%
         run: python live_trader.py
 

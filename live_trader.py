@@ -68,14 +68,17 @@ MAX_POSITIONS = max(1, int(os.environ.get("MAX_POSITIONS", "20")))   # hard safe
 # (前 12 笔里有 5 笔净利 < $0.10)。现在改成「按美金定目标」:先算出「扣完两边手续费
 # 还能净赚 X 美金」需要涨多少,再把 T1/T2 摆在那里。达不到就不开单——省得给交易所打工。
 #
-# 数学(f = 单边费率, V = 仓位名义金额, g = 涨幅):
-#   买入费 = V*f,  卖出费 = V*(1+g)*f,  净利 = V*g - V*f*(2+g)
-#   => g = (net + 2*f*V) / (V * (1-f))
+# 目标按「净收益率」定:扣掉两边手续费之后,这一单还赚 NET_TARGET_PCT。
+#
+# 数学(f = 单边费率, g = 毛涨幅, r = 净收益率):
+#   买入费 = V*f,  卖出费 = V*(1+g)*f
+#   净利/V = g - f*(2+g) = r   =>   g = (r + 2f) / (1 - f)
+# 注意 V 被约掉了——净收益率的目标与仓位大小无关,这也是它比「净赚 X 美金」
+# 好用的地方:不管本金多少、分几个币,涨幅门槛都一样。
+# f=0.25% 时:净 +0.53% 需要毛涨 +1.03%(其中约 0.50% 是拿去交手续费的)。
 NET_PROFIT_MODE = os.environ.get("NET_PROFIT_MODE", "false").lower() in ("yes", "true")
 FEE_RATE = float(os.environ.get("FEE_RATE", "0.0025"))      # Alpaca 加密吃单约 0.25%/边
-NET_T1_USD = float(os.environ.get("NET_T1_USD", "0.50"))    # T1:平一半
-NET_T2_USD = float(os.environ.get("NET_T2_USD", "1.20"))    # T2:清剩下的
-# 两段加起来落在「每个币净赚 $0.5~1」区间(约 $0.85)。
+NET_TARGET_PCT = float(os.environ.get("NET_TARGET_PCT", "0.0053"))   # 扣费后 +0.53%
 MAX_TARGET_MOVE_PCT = float(os.environ.get("MAX_TARGET_MOVE_PCT", "0.03"))
 
 MIN_CONFIDENCE = 0.6
@@ -296,12 +299,12 @@ def size_shares(entry: float, stop_pct: float, per_position_book: float) -> floa
     return round(shares, 6)
 
 
-def gross_move_for_net(net_usd: float, notional: float) -> float | None:
-    """涨幅 g:让 `notional` 的仓位走完一轮买卖后,扣掉两边手续费净赚 `net_usd`。
-    仓位越大,同样的美金目标需要的涨幅越小(手续费是按比例收的)。"""
-    if notional <= 0 or FEE_RATE >= 1:
+def gross_move_for_net_pct(net_pct: float) -> float | None:
+    """毛涨幅 g:走完一轮买卖、扣掉两边手续费后,净收益率正好是 `net_pct`。
+    与仓位大小无关(名义金额在推导中约掉了)。"""
+    if FEE_RATE >= 1:
         return None
-    return (net_usd + 2.0 * FEE_RATE * notional) / (notional * (1.0 - FEE_RATE))
+    return (net_pct + 2.0 * FEE_RATE) / (1.0 - FEE_RATE)
 
 
 def total_notional(state: dict) -> float:
@@ -367,12 +370,12 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
 
     # update peak + arm trailing
     #
-    # 在「按美金定目标」模式下,追踪止盈只有在价格已经越过 T1(= 净赚 $NET_T1_USD 的
-    # 价位)之后才启动。否则 0.4% 的默认触发线会在净利还不够付手续费时就把单子平掉——
-    # 这正是之前一堆「赚 $0.02」的废单的成因。
+    # 单一目标的仓位:追踪止盈的触发线抬到目标价本身。默认 0.4% 的触发线会在净利
+    # 还不够付手续费时就把单子平掉——这正是之前一堆「赚 $0.02」废单的成因。
+    # 门槛设在目标价 = 让这单只有两个结局:达标离场,或者打止损。
     arm_px = p["entry"] * (1 + TRAIL_ARM_PCT)
-    if NET_PROFIT_MODE and side == 1:
-        arm_px = max(arm_px, p["t1"])
+    if p.get("single_exit") and side == 1:
+        arm_px = max(arm_px, p["t2"])
     if side == 1:
         p["peak_price"] = max(p["peak_price"], last)
         if not p["armed"] and p["peak_price"] >= arm_px:
@@ -401,7 +404,11 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
         return lines
 
     # 4. T1 — sell half, move stop to breakeven.
+    #    单一目标的仓位(按净收益率定的)跳过这一段:目标价一到就整仓离场,
+    #    分两段只会让一半仓位在目标之上继续暴露风险。
     t1_hit = (last >= p["t1"]) if side == 1 else (last <= p["t1"])
+    if p.get("single_exit"):
+        t1_hit = False
     if not p["half_taken"] and t1_hit:
         half = p["qty"] / 2
         if not ALLOW_FRACTIONAL:
@@ -502,25 +509,24 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
     notional = shares * entry
     slice_risk = per_position_book * RISK_PER_TRADE_PCT
 
-    # 按美金定目标:把 T1/T2 推到「净赚 $X」的价位。技术目标只当下限——永远不在
-    # 净利还没盖过手续费的地方离场。目标离谱到够不着(>MAX_TARGET_MOVE_PCT)就不开这单。
+    # 按净收益率定目标:一个价位,到了就整仓走人(不再分两段)。技术目标常在 +3%,
+    # 干等它等于把已经到手的利润又赔回去——「够了就跑」优先。
     net_note = ""
+    single_exit = False
     if NET_PROFIT_MODE and side == "long":
-        g1 = gross_move_for_net(NET_T1_USD, notional)
-        g2 = gross_move_for_net(NET_T2_USD, notional)
-        if g1 is None or g2 is None:
-            return [f"{sym}: cannot size a net-profit target on ${notional:.0f} notional"]
-        if g2 > MAX_TARGET_MOVE_PCT:
+        g = gross_move_for_net_pct(NET_TARGET_PCT)
+        if g is None or g <= 0:
+            return [f"{sym}: cannot build a net-{NET_TARGET_PCT*100:.2f}% target at fee {FEE_RATE}"]
+        if g > MAX_TARGET_MOVE_PCT:
             return [
-                f"{sym}: skipped — netting ${NET_T2_USD:.2f} on ${notional:.0f} needs "
-                f"+{g2*100:.2f}% (cap {MAX_TARGET_MOVE_PCT*100:.1f}%); fees would eat the trade"
+                f"{sym}: skipped — netting +{NET_TARGET_PCT*100:.2f}% needs a +{g*100:.2f}% move "
+                f"(cap {MAX_TARGET_MOVE_PCT*100:.1f}%); fees would eat the trade"
             ]
-        # 「赚够就跑」:目标就是美金价位本身,不再等技术目标。技术目标往往在 +3%,
-        # 干等它等于把已经到手的 $0.5 又赔回去——落袋为安优先。
         ta_t2 = t2_pct
-        t1_pct, t2_pct = g1, g2
-        net_note = (f" | net-target T1 ${NET_T1_USD:.2f} (+{t1_pct*100:.2f}%) "
-                    f"T2 ${NET_T2_USD:.2f} (+{t2_pct*100:.2f}%) @ fee {FEE_RATE*100:.2f}%/side"
+        t1_pct = t2_pct = g
+        single_exit = True
+        net_note = (f" | net-target +{NET_TARGET_PCT*100:.2f}% after fees "
+                    f"= gross +{g*100:.2f}% @ fee {FEE_RATE*100:.2f}%/side (full exit)"
                     f" | TA t2 was +{ta_t2*100:.2f}%")
 
     stop = round_price(entry * (1 - stop_pct * s))
@@ -542,6 +548,7 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         "confidence": sig.get("confidence"), "entry_chg_3d_pct": chg_3d,
         "notional_usd": round(notional, 2),
         "book_risk_usd": round(slice_risk, 2),
+        "single_exit": single_exit,
         "opened_at": now, "price_src": src,
     }
     return lines

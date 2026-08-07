@@ -52,40 +52,44 @@ entire capital"**:
   exposure stays within the book.
 - **Dynamic scalp stops**: the stop is placed just below the setup's support
   (clamped to 0.4%–3%), not a fixed percentage — tight, chart-based risk.
-- **Net-dollar profit targets** (`NET_PROFIT_MODE=yes`): exits are priced in
-  **dollars earned after fees**, not percentages. See below.
+- **Net-return target** (`NET_PROFIT_MODE=yes`): one exit, priced at a
+  **return after fees**, not a raw percentage. See below.
 - **Crash circuit breaker**: a fast-drop guard on top of the per-name stops.
 
-## Net-dollar targets (why percentage targets failed)
+## Net-return target (why raw percentage targets failed)
 
 The first 12 crypto trades averaged **$0.14** each — five of them netted under
-$0.10. A +0.6% target on a $30 position is $0.18 gross, and Alpaca's ~0.25%
-per-side taker fee eats ~$0.15 of it. The book was trading for the exchange.
+$0.10. A +0.6% target is +0.6% *gross*, and Alpaca's ~0.25% per-side taker fee
+takes ~0.5% of the round trip. Most of those "wins" were losses after costs.
 
-So targets are now solved backwards from the money. For a position of notional
-`V`, fee rate `f` per side, the gross move `g` that nets `N` dollars is:
+So the target is now stated as the number that actually matters — the return
+left **after both sides' fees**. For fee rate `f` per side, the gross move `g`
+that nets `r` is:
 
 ```
-net = V*g - V*f*(2+g)     =>     g = (N + 2*f*V) / (V * (1-f))
+net/V = g - f*(2+g) = r     =>     g = (r + 2f) / (1 - f)
 ```
 
-At the configured `BOOK_EQUITY=200` split across 4 names (~$50 each) and
-`f=0.25%`:
+Notional `V` cancels, so the threshold is the same whatever the book size or
+how many coins it's split across. At the configured `NET_TARGET_PCT=0.0053`
+and `f=0.25%`:
 
-| Target | Net after fees | Required move |
-|--------|----------------|---------------|
-| `NET_T1_USD` — sell half, stop → breakeven | $0.50 | **+1.50%** |
-| `NET_T2_USD` — close the rest | $1.00 | **+2.51%** |
+| | Value |
+|---|---|
+| Target net return | **+0.53%** |
+| Required gross move | **+1.03%** |
+| Of which goes to fees | ~0.50% |
 
-Two consequences worth stating plainly:
+Three consequences worth stating plainly:
 
-- **Position count is capped at 4 by this math, not by preference.** Split the
-  same $200 across 6 names and each is ~$33, where netting $1.00 needs a +3.5%
-  move — so the book would sit in trades it can't finish. Fewer, larger slices
-  make the dollar target reachable.
-- **Trades whose target needs more than `MAX_TARGET_MOVE_PCT` (3.5%) are
-  skipped**, and the trailing stop no longer arms until price clears T1. Both
-  exist to stop the engine banking sub-fee "wins".
+- **One target, full exit.** Positions opened this way carry `single_exit`, so
+  the T1 half-sell is skipped — the whole position closes at the target rather
+  than leaving half exposed above it. Each trade ends at target or at stop.
+- **The trailing stop arms at the target**, not at the default +0.4%. That
+  0.4% arm was what closed positions below fee cost.
+- **Trades needing more than `MAX_TARGET_MOVE_PCT` (3.5%) are skipped.** At
+  `f=0.25%` the +0.53% target needs only +1.03%, so this never binds — it is a
+  guard for higher fee rates or larger targets.
 
 ## Crash circuit breaker
 
