@@ -356,6 +356,14 @@
         "ENTRY LONG AVAX conf 0.66 15.5378 sh @ $6.44 [broker] notional $100 risk $8.00 | stop $6.3864 T1 $6.5005 T2 $6.5005 | net-target $0.50 (band $0.50-$1.00, vol span 0.83%) = gross +1.00% -> exit $6.5005 = net $+0.5009 after 0.25%/side (full exit) | TA t2 was +2.00%",
         "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T11:10:51Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "benched": {
