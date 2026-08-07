@@ -58,17 +58,17 @@ jobs:
           BROKER: alpaca_crypto
           ALPACA_PAPER: "true"          # fake money until you flip to false + confirm
           MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
-          REGIME_SYMBOLS: "BTC"         # BTC is the crypto book's regime benchmark
+          REGIME_SYMBOLS: "ETH"         # focused on ETH — use ETH's own day change as the risk-off filter
           SIGNALS_FILE: "signals_crypto.json"
           QUOTES_FILE: "quotes_crypto.json"
           STATE_FILE: "live_trader_crypto_state.json"
           REPORTS_SUBDIR: "live_trader_crypto"
           BOOK_EQUITY: "200"
           RISK_PCT: "0.08"              # aggressive: bigger risk per scalp (vs 0.05 stock)
-          BASE_SLICES: "2"              # aggressive: 1 signal deploys ~half the book (not 1/3)
+          BASE_SLICES: "1"              # focused: the single ETH signal deploys the whole book
           LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable) — 1x max
-          ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.0006 BTC) — required for BTC/ETH
-          MAX_POSITIONS: "8"            # hold up to 8 coins at once (multi-position)
+          ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.006 ETH)
+          MAX_POSITIONS: "1"            # focused: ETH only, one position
           ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
         run: python live_trader.py
 
