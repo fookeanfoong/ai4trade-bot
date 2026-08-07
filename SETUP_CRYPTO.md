@@ -56,53 +56,65 @@ entire capital"**:
   **return after fees**, not a raw percentage. See below.
 - **Crash circuit breaker**: a fast-drop guard on top of the per-name stops.
 
-## Net-return target (why raw percentage targets failed)
+## Net-dollar target (why raw percentage targets failed)
 
 The first 12 crypto trades averaged **$0.14** each — five of them netted under
 $0.10. A +0.6% target is +0.6% *gross*, and Alpaca's ~0.25% per-side taker fee
 takes ~0.5% of the round trip. Most of those "wins" were losses after costs.
 
-So the target is now stated as the number that actually matters — the return
-left **after both sides' fees**. For fee rate `f` per side, the gross move `g`
-that nets `r` is:
+So the exit is stated as the number that actually matters: **how many dollars
+land in the account after both sides' fees**. For a position of notional `V`
+and fee rate `f` per side, the gross move `g` that nets `N` dollars is:
 
 ```
-net/V = g - f*(2+g) = r     =>     g = (r + 2f) / (1 - f)
+net = V*g - V*f*(2+g)     =>     g = (N + 2*f*V) / (V * (1-f))
 ```
-
-Notional `V` cancels, so the threshold is the same whatever the book size or
-how many coins it's split across.
 
 ### Each coin picks its own point in the band
 
-The target is a **range**, `NET_TARGET_MIN_PCT`..`NET_TARGET_MAX_PCT`
-(0.5%–1.0%), not one fixed number. Each coin's place in it comes from its own
+The target is a **range**, `NET_TARGET_MIN_USD`..`NET_TARGET_MAX_USD`
+($0.50–$1.00), not one fixed number. Each coin's place in it comes from its own
 Bollinger width as a fraction of price — a quiet coin takes the floor and banks
 it, a volatile one holds out for more:
 
 | BB width | Net target | Meaning |
 |---|---|---|
-| ≤ `VOL_SPAN_LO` (1.5%) | +0.5% | dead tape — take the floor |
+| ≤ `VOL_SPAN_LO` (1.5%) | $0.50 | dead tape — take the floor |
 | between | linear | |
-| ≥ `VOL_SPAN_HI` (5%) | +1.0% | volatile — ask for more |
+| ≥ `VOL_SPAN_HI` (5%) | $1.00 | volatile — ask for more |
 
 Worked example at `f=0.25%`, ~$50 a name:
 
 | Coin | BB width | Net target | Gross needed | Stop | Realized net |
 |---|---|---|---|---|---|
-| BTC | 1.2% | +0.50% | +1.00% | 1.00% | **+0.500%** |
-| ETH | 2.5% | +0.64% | +1.15% | 1.15% | **+0.643%** |
-| XRP | 3.5% | +0.79% | +1.29% | 1.29% | **+0.788%** |
-| DOGE | 6.0% | +1.00% | +1.50% | 1.50% | **+1.001%** |
+| BTC | 1.2% | $0.50 | +1.50% | 1.50% | **+$0.5000** |
+| ETH | 2.5% | $0.64 | +1.79% | 1.79% | **+$0.6430** |
+| XRP | 3.5% | $0.79 | +2.08% | 2.08% | **+$0.7862** |
+| DOGE | 6.0% | $1.00 | +2.51% | 2.51% | **+$1.0004** |
+
+### Position size sets the difficulty
+
+Unlike a percentage target, a dollar target gets **harder as the book splits
+thinner** — the same $0.50 is a bigger fraction of a smaller position:
+
+| Names | Notional each | Move for $0.50 | Move for $1.00 |
+|---|---|---|---|
+| 1 | $200 | 0.75% | 1.00% |
+| 2 | $100 | 1.00% | 1.50% |
+| 3 | $67 | 1.25% | 2.00% |
+| **4** | **$50** | **1.50%** | **2.51%** |
+| 5 | $40 | 1.75% | 3.01% |
+
+`MAX_POSITIONS=4` is chosen here: at 5 names the $1.00 target needs a 3.0% move
+inside a 5-minute bar, which mostly means sitting in trades that never finish.
 
 ### Price precision
 
 Target prices are rounded **up** to the coin's tick (`ceil_price`), never
 nearest. Rounding a target down silently shaves the net below the promised
-floor, and the coins where that bites are the many-decimal ones: at $1.03 XRP
-loses 0.498% instead of 0.507%, and it only gets worse further down. Rounding
-up can overshoot (DOGE lands at 1.001%, just past the 1.0% ceiling) but can
-never undershoot.
+floor, and the coins where that bites are the many-decimal ones: at $1.03, XRP
+would lose ~0.01% of the round trip to a downward round. Rounding up can only
+overshoot, never undershoot.
 
 ### Consequences
 
@@ -111,15 +123,13 @@ never undershoot.
   exposed above it. Each trade ends at target or at stop.
 - **The stop tightens to match the target** (`MIN_RR_NET=1.0`). This matters:
   the signal layer computes R:R against its *technical* target (often +3%), but
-  the engine now exits at ~+1%. Left alone that is a 1% reward against a 1.65%
-  stop — a 0.61 R:R needing a **62% win rate** just to break even. Capping stop
-  distance at target distance restores at least 1:1. The trade-off is a tighter
-  stop, so expect more stop-outs.
+  the engine now exits at 1.5%–2.5%. Capping stop distance at target distance
+  keeps every trade at least 1:1. The trade-off is a tighter stop, so expect
+  more stop-outs.
 - **The trailing stop arms at the target**, not at the default +0.4%. That
   0.4% arm was what closed positions below fee cost.
-- **Trades needing more than `MAX_TARGET_MOVE_PCT` (3.5%) are skipped.** At
-  these settings the targets need 1.0%–1.5%, so this never binds — it is a
-  guard for higher fee rates or larger targets.
+- **Trades needing more than `MAX_TARGET_MOVE_PCT` (3.5%) are skipped** as
+  unreachable rather than opened and left hanging.
 
 ## Crash circuit breaker
 
