@@ -1,47 +1,25 @@
 {
-  "positions": {
-    "ADA": {
+  "positions": {},
+  "trade_log": [
+    {
       "ticker": "ADA",
       "side": "long",
-      "qty": 249426.319465,
+      "action": "MANUAL_FLATTEN",
       "entry": 0.20046,
-      "stop": 0.199458,
-      "t1": 0.201463,
-      "t2": 0.201463,
-      "half_taken": false,
-      "peak_price": 0.20048,
-      "armed": false,
-      "confidence": 0.69,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 50000.0,
-      "book_risk_usd": 4000.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T13:01:40Z",
-      "opened_ny_date": "2026-08-07",
-      "price_src": "quotes.json"
+      "exit": 0.2006,
+      "qty": 249426.319465,
+      "closed_at": "2026-08-07T13:16:56Z"
     },
-    "XRP": {
+    {
       "ticker": "XRP",
       "side": "long",
-      "qty": 47233.468286,
+      "action": "MANUAL_FLATTEN",
       "entry": 1.0374,
-      "stop": 1.03,
-      "t1": 1.0448,
-      "t2": 1.0448,
-      "half_taken": false,
-      "peak_price": 1.0374,
-      "armed": false,
-      "confidence": 0.66,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 49000.0,
-      "book_risk_usd": 3920.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T13:09:06Z",
-      "opened_ny_date": "2026-08-07",
-      "price_src": "quotes.json"
+      "exit": 1.037,
+      "qty": 47233.468286,
+      "closed_at": "2026-08-07T13:16:56Z"
     }
-  },
-  "trade_log": [],
+  ],
   "runs": [
     {
       "ran_at": "2026-08-07T12:59:41Z",
@@ -76,6 +54,16 @@
       "dry_run": false,
       "actions": [
         "ENTRY LONG XRP conf 0.66 47233.5 sh @ $1.04 [quotes.json] notional $49000 risk $3920.00 | stop $1.03 T1 $1.0448 T2 $1.0448 | net-target $250.00 (band $250.00-$500.00, vol span 0.78%) = gross +0.71% -> exit $1.0448 = net $+251.1781 after 0.10%/side (full exit) | stop tightened 0.73%->0.71% for 1:1 | TA t2 was +2.00%"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T13:16:59Z",
+      "broker": "ai4trade",
+      "dry_run": false,
+      "actions": [
+        "FLATTEN: FLATTEN_ALL requested \u2014 closing every open position",
+        "CLOSE ADA long (MANUAL_FLATTEN) @ ~$0.20 [quotes.json]",
+        "CLOSE XRP long (MANUAL_FLATTEN) @ ~$1.04 [quotes.json]"
       ]
     }
   ],
