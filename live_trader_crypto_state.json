@@ -494,6 +494,14 @@
       "actions": [
         "AVAX: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T22:30:59Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "DOGE: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "benched": {
