@@ -3,17 +3,17 @@
     "ETH": {
       "ticker": "ETH",
       "side": "long",
-      "qty": 0.105511,
+      "qty": 0.052755,
       "entry": 1895.53,
-      "stop": 1887.95,
+      "stop": 1895.53,
       "t1": 1898.56,
       "t2": 1933.44,
-      "half_taken": false,
-      "peak_price": 1895.53,
-      "armed": false,
+      "half_taken": true,
+      "peak_price": 1904.0,
+      "armed": true,
       "confidence": 0.62,
       "entry_chg_3d_pct": null,
-      "notional_usd": 200.0,
+      "notional_usd": 100.0,
       "book_risk_usd": 16.0,
       "opened_at": "2026-08-07T05:22:47Z",
       "price_src": "broker"
@@ -127,6 +127,15 @@
       "exit": 72.73,
       "qty": 0.194947,
       "closed_at": "2026-08-07T00:33:42Z"
+    },
+    {
+      "ticker": "ETH",
+      "side": "long",
+      "action": "T1_HALF",
+      "entry": 1895.53,
+      "exit": 1898.56,
+      "qty": 0.052755,
+      "closed_at": "2026-08-07T06:44:28Z"
     }
   ],
   "runs": [
@@ -230,6 +239,14 @@
       "dry_run": false,
       "actions": [
         "ENTRY LONG ETH conf 0.62 0.105511 sh @ $1895.53 [broker] notional $200 risk $16.00 | stop $1887.95 T1 $1898.56 T2 $1933.44"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T06:44:28Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "T1 sell half ETH @ $1898.56, stop->BE"
       ]
     }
   ],

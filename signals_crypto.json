@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T01:22:45-04:00",
+  "updated_at": "2026-08-07T02:44:27-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
@@ -9,27 +9,27 @@
     {
       "sector_or_ticker": "ETH",
       "direction": "bullish",
-      "confidence": 0.62,
+      "confidence": 0.66,
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
-      "stop_pct": 0.004,
-      "t1_pct": 0.0016,
+      "stop_pct": 0.0068,
+      "t1_pct": 0.0019,
       "t2_pct": 0.02,
-      "rr": 5.0,
+      "rr": 2.95,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 44.0,
-        "pct_b": 0.345,
-        "trend": "flat",
+        "rsi": 61.6,
+        "pct_b": 0.738,
+        "trend": "up",
         "support": 1892.73,
-        "resistance": 1906.86,
+        "resistance": 1906.0601,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on ETH (5m): RSI 44.0, %B 0.345, trend flat, vol× None. Stop below support $1892.73; targets +0.2%/+2.0%, R:R 5.0. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ETH 5分钟顺势做多:RSI 44.0,%B 0.345,趋势flat,量比None。止损设在支撑 $1892.73 下方,目标 +0.2%/+2.0%,盈亏比 5.0。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on ETH (5m): RSI 61.6, %B 0.738, trend up, vol× None. Stop below support $1892.73; targets +0.2%/+2.0%, R:R 2.95. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "ETH 5分钟顺势做多:RSI 61.6,%B 0.738,趋势up,量比None。止损设在支撑 $1892.73 下方,目标 +0.2%/+2.0%,盈亏比 2.95。算法剥头皮、按风险定量(非全仓)。"
       }
     }
   ]
