@@ -62,9 +62,10 @@ RSI_MOMO_MIN = 40.0
 STOP_BUFFER = 0.0015       # place stop a touch below support/swing
 STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
 MIN_RR = 1.0               # reward(to T2):risk floor (aggressive)
-# 分散但不过度:$200 本金分 4 个币 = 每个约 $50。再多分,单笔仓位太小,
-# 「净赚 $0.5」需要的涨幅会被手续费推到够不着的位置(5 个币要 1.75%,6 个要 2.0%)。
-MAX_NAMES = 4
+# 集中而非分散:美金目标下,仓位越大门槛越低。$200 押 1 个币,净赚 $1 只要涨
+# 1.00%;分 2 个要 1.50%;分 4 个就要 2.51% —— 5 分钟内基本等不到。
+# 所以这里只挑最强的 1-2 个,把火力集中在最好的机会上。
+MAX_NAMES = 2
 
 DISCLAIMER = ("算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。"
               "已按风险定量(非全仓),加密波动极大,盈亏自负。")

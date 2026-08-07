@@ -70,43 +70,37 @@ and fee rate `f` per side, the gross move `g` that nets `N` dollars is:
 net = V*g - V*f*(2+g)     =>     g = (N + 2*f*V) / (V * (1-f))
 ```
 
-### Each coin picks its own point in the band
+### One flat target, concentrated book
 
-The target is a **range**, `NET_TARGET_MIN_USD`..`NET_TARGET_MAX_USD`
-($0.50–$1.00), not one fixed number. Each coin's place in it comes from its own
-Bollinger width as a fraction of price — a quiet coin takes the floor and banks
-it, a volatile one holds out for more:
+The target is **$1.00 net**, floor and ceiling alike (`NET_TARGET_MIN_USD` =
+`NET_TARGET_MAX_USD` = 1.00), so the volatility scaling between them is
+currently a no-op. It stays in the code because widening the band is a config
+change, not a code change.
 
-| BB width | Net target | Meaning |
+What makes $1.00 reachable is **concentration**, not the target itself. A dollar
+target gets harder as the book splits thinner — the same $1.00 is a bigger
+fraction of a smaller position:
+
+| Names | Notional each | Move needed for $1.00 |
 |---|---|---|
-| ≤ `VOL_SPAN_LO` (1.5%) | $0.50 | dead tape — take the floor |
-| between | linear | |
-| ≥ `VOL_SPAN_HI` (5%) | $1.00 | volatile — ask for more |
+| **1** | **$200** | **1.00%** |
+| **2** | **$100** | **1.50%** |
+| 3 | $67 | 2.00% |
+| 4 | $50 | 2.51% |
+| 5 | $40 | 3.01% |
 
-Worked example at `f=0.25%`, ~$50 a name:
+`MAX_NAMES=2` / `MAX_POSITIONS=2` / `BASE_SLICES=1` follow from this table: a
+lone signal takes the whole $200 and needs only a 1.00% move, two split it and
+need 1.50%. Splitting four ways would demand 2.51% inside a 5-minute bar, which
+mostly means sitting in trades that never finish.
 
-| Coin | BB width | Net target | Gross needed | Stop | Realized net |
-|---|---|---|---|---|---|
-| BTC | 1.2% | $0.50 | +1.50% | 1.50% | **+$0.5000** |
-| ETH | 2.5% | $0.64 | +1.79% | 1.79% | **+$0.6430** |
-| XRP | 3.5% | $0.79 | +2.08% | 2.08% | **+$0.7862** |
-| DOGE | 6.0% | $1.00 | +2.51% | 2.51% | **+$1.0004** |
+Worked example at `f=0.25%`:
 
-### Position size sets the difficulty
-
-Unlike a percentage target, a dollar target gets **harder as the book splits
-thinner** — the same $0.50 is a bigger fraction of a smaller position:
-
-| Names | Notional each | Move for $0.50 | Move for $1.00 |
-|---|---|---|---|
-| 1 | $200 | 0.75% | 1.00% |
-| 2 | $100 | 1.00% | 1.50% |
-| 3 | $67 | 1.25% | 2.00% |
-| **4** | **$50** | **1.50%** | **2.51%** |
-| 5 | $40 | 1.75% | 3.01% |
-
-`MAX_POSITIONS=4` is chosen here: at 5 names the $1.00 target needs a 3.0% move
-inside a 5-minute bar, which mostly means sitting in trades that never finish.
+| Case | Notional | Gross needed | Stop | Realized net |
+|---|---|---|---|---|
+| 1 coin (ETH) | $200 | +1.00% | 1.00% | **+$1.0002** |
+| 2 coins (DOGE) | $100 | +1.50% | 1.50% | **+$1.0005** |
+| 2 coins (XRP) | $100 | +1.50% | 1.50% | **+$1.0011** |
 
 ### Price precision
 
