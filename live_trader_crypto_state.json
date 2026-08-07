@@ -1,78 +1,5 @@
 {
-  "positions": {
-    "BTC": {
-      "ticker": "BTC",
-      "side": "long",
-      "qty": 0.000776,
-      "entry": 64466.616,
-      "stop": 64466.616,
-      "t1": 64556.87,
-      "t2": 65755.95,
-      "half_taken": true,
-      "peak_price": 64812.6,
-      "armed": true,
-      "confidence": 0.62,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 50.03,
-      "book_risk_usd": 8.0,
-      "opened_at": "2026-08-06T13:59:41Z",
-      "price_src": "broker"
-    },
-    "ETH": {
-      "ticker": "ETH",
-      "side": "long",
-      "qty": 0.007489,
-      "entry": 1907.5,
-      "stop": 1907.5,
-      "t1": 1913.03,
-      "t2": 1945.65,
-      "half_taken": true,
-      "peak_price": 1917.132,
-      "armed": true,
-      "confidence": 0.66,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 14.29,
-      "book_risk_usd": 2.29,
-      "opened_at": "2026-08-06T14:16:51Z",
-      "price_src": "broker"
-    },
-    "LINK": {
-      "ticker": "LINK",
-      "side": "long",
-      "qty": 1.758198,
-      "entry": 8.1252,
-      "stop": 8.1252,
-      "t1": 8.13,
-      "t2": 8.29,
-      "half_taken": true,
-      "peak_price": 8.235,
-      "armed": true,
-      "confidence": 0.66,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 14.29,
-      "book_risk_usd": 2.29,
-      "opened_at": "2026-08-06T14:16:52Z",
-      "price_src": "broker"
-    },
-    "SOL": {
-      "ticker": "SOL",
-      "side": "long",
-      "qty": 0.194947,
-      "entry": 73.28,
-      "stop": 73.28,
-      "t1": 73.49,
-      "t2": 74.75,
-      "half_taken": true,
-      "peak_price": 73.5844,
-      "armed": true,
-      "confidence": 0.62,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 14.29,
-      "book_risk_usd": 2.29,
-      "opened_at": "2026-08-06T14:16:52Z",
-      "price_src": "broker"
-    }
-  },
+  "positions": {},
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -145,6 +72,42 @@
       "exit": 6.4679,
       "qty": 2.595649,
       "closed_at": "2026-08-06T15:33:29Z"
+    },
+    {
+      "ticker": "BTC",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 64466.616,
+      "exit": 64211.1,
+      "qty": 0.000776,
+      "closed_at": "2026-08-07T00:33:41Z"
+    },
+    {
+      "ticker": "ETH",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 1907.5,
+      "exit": 1901.57,
+      "qty": 0.007489,
+      "closed_at": "2026-08-07T00:33:42Z"
+    },
+    {
+      "ticker": "LINK",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 8.1252,
+      "exit": 8.1629,
+      "qty": 1.758198,
+      "closed_at": "2026-08-07T00:33:42Z"
+    },
+    {
+      "ticker": "SOL",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 73.28,
+      "exit": 72.73,
+      "qty": 0.194947,
+      "closed_at": "2026-08-07T00:33:42Z"
     }
   ],
   "runs": [
@@ -213,12 +176,28 @@
         "AVAX: benched today (already exited once) \u2014 no re-entry until tomorrow",
         "DOGE: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T00:33:42Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "CLOSE BTC long (SIGNAL_INVALIDATED_EXIT) @ ~$64211.10 [broker]",
+        "CLOSE ETH long (SIGNAL_INVALIDATED_EXIT) @ ~$1901.57 [broker]",
+        "CLOSE LINK long (SIGNAL_INVALIDATED_EXIT) @ ~$8.16 [broker]",
+        "CLOSE SOL long (SIGNAL_INVALIDATED_EXIT) @ ~$72.73 [broker]",
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "benched": {
     "DOGE": "2026-08-06",
     "XRP": "2026-08-06",
-    "AVAX": "2026-08-06"
+    "AVAX": "2026-08-06",
+    "BTC": "2026-08-06",
+    "ETH": "2026-08-06",
+    "LINK": "2026-08-06",
+    "SOL": "2026-08-06"
   },
   "last_key": null
 }
