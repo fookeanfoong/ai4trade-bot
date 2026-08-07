@@ -1,21 +1,79 @@
 {
   "positions": {
-    "ETH": {
-      "ticker": "ETH",
+    "XRP": {
+      "ticker": "XRP",
       "side": "long",
-      "qty": 0.052755,
-      "entry": 1895.53,
-      "stop": 1895.53,
-      "t1": 1898.56,
-      "t2": 1933.44,
-      "half_taken": true,
-      "peak_price": 1904.0,
-      "armed": true,
+      "qty": 48.603618,
+      "entry": 1.02873,
+      "stop": 1.0145,
+      "t1": 1.0394,
+      "t2": 1.0394,
+      "half_taken": false,
+      "peak_price": 1.02873,
+      "armed": false,
+      "confidence": 0.66,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 50.0,
+      "book_risk_usd": 4.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T08:01:41Z",
+      "price_src": "broker"
+    },
+    "DOGE": {
+      "ticker": "DOGE",
+      "side": "long",
+      "qty": 721.176036,
+      "entry": 0.0693312,
+      "stop": 0.068804,
+      "t1": 0.070047,
+      "t2": 0.070047,
+      "half_taken": false,
+      "peak_price": 0.0693312,
+      "armed": false,
       "confidence": 0.62,
       "entry_chg_3d_pct": null,
-      "notional_usd": 100.0,
-      "book_risk_usd": 16.0,
-      "opened_at": "2026-08-07T05:22:47Z",
+      "notional_usd": 50.0,
+      "book_risk_usd": 4.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T08:01:41Z",
+      "price_src": "broker"
+    },
+    "SOL": {
+      "ticker": "SOL",
+      "side": "long",
+      "qty": 0.687096,
+      "entry": 72.77,
+      "stop": 72.1733,
+      "t1": 73.5214,
+      "t2": 73.5214,
+      "half_taken": false,
+      "peak_price": 72.77,
+      "armed": false,
+      "confidence": 0.62,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 50.0,
+      "book_risk_usd": 4.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T08:01:41Z",
+      "price_src": "broker"
+    },
+    "LINK": {
+      "ticker": "LINK",
+      "side": "long",
+      "qty": 6.109482,
+      "entry": 8.184,
+      "stop": 8.1005,
+      "t1": 8.2685,
+      "t2": 8.2685,
+      "half_taken": false,
+      "peak_price": 8.184,
+      "armed": false,
+      "confidence": 0.62,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 50.0,
+      "book_risk_usd": 4.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T08:01:41Z",
       "price_src": "broker"
     }
   },
@@ -136,6 +194,15 @@
       "exit": 1898.56,
       "qty": 0.052755,
       "closed_at": "2026-08-07T06:44:28Z"
+    },
+    {
+      "ticker": "ETH",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 1895.53,
+      "exit": 1904.9,
+      "qty": 0.052755,
+      "closed_at": "2026-08-07T08:01:41Z"
     }
   ],
   "runs": [
@@ -248,8 +315,22 @@
       "actions": [
         "T1 sell half ETH @ $1898.56, stop->BE"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T08:01:41Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "CLOSE ETH long (SIGNAL_INVALIDATED_EXIT) @ ~$1904.90 [broker]",
+        "ENTRY LONG XRP conf 0.66 48.6036 sh @ $1.03 [broker] notional $50 risk $4.00 | stop $1.0145 T1 $1.0394 T2 $1.0394 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%",
+        "ENTRY LONG DOGE conf 0.62 721.176 sh @ $0.07 [broker] notional $50 risk $4.00 | stop $0.068804 T1 $0.070047 T2 $0.070047 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%",
+        "ENTRY LONG SOL conf 0.62 0.687096 sh @ $72.77 [broker] notional $50 risk $4.00 | stop $72.1733 T1 $73.5214 T2 $73.5214 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%",
+        "ENTRY LONG LINK conf 0.62 6.10948 sh @ $8.18 [broker] notional $50 risk $4.00 | stop $8.1005 T1 $8.2685 T2 $8.2685 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%"
+      ]
     }
   ],
-  "benched": {},
+  "benched": {
+    "ETH": "2026-08-07"
+  },
   "last_key": null
 }
