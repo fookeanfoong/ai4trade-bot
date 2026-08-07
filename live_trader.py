@@ -181,6 +181,11 @@ def ceil_price(x: float) -> float:
 def get_broker():
     """Return (broker_or_None, available, describe_fn, BrokerError).
     BROKER=alpaca_crypto selects the 24/7 crypto adapter; anything else = stocks."""
+    if BROKER_NAME in ("ai4trade", "ai4trade.ai", "clawtrader"):
+        from broker_ai4trade import (AI4TradeBroker, BrokerError, describe_config,
+                                     AI4TRADE_AVAILABLE)
+        return (AI4TradeBroker() if AI4TRADE_AVAILABLE else None,
+                AI4TRADE_AVAILABLE, describe_config, BrokerError)
     if BROKER_NAME in ("alpaca_crypto", "alpaca-crypto", "crypto"):
         from broker_alpaca_crypto import (AlpacaCryptoBroker, BrokerError,
                                           describe_config, ALPACA_AVAILABLE)
