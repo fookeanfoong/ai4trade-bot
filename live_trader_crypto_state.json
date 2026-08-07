@@ -1,25 +1,5 @@
 {
-  "positions": {
-    "AVAX": {
-      "ticker": "AVAX",
-      "side": "long",
-      "qty": 15.537794,
-      "entry": 6.43592,
-      "stop": 6.3864,
-      "t1": 6.5005,
-      "t2": 6.5005,
-      "half_taken": false,
-      "peak_price": 6.43592,
-      "armed": false,
-      "confidence": 0.66,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 100.0,
-      "book_risk_usd": 8.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T10:13:44Z",
-      "price_src": "broker"
-    }
-  },
+  "positions": {},
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -200,6 +180,15 @@
       "exit": 0.0696,
       "qty": 1440.903504,
       "closed_at": "2026-08-07T10:13:43Z"
+    },
+    {
+      "ticker": "AVAX",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 6.43592,
+      "exit": 6.4428,
+      "qty": 15.537794,
+      "closed_at": "2026-08-07T12:53:29Z"
     }
   ],
   "runs": [
@@ -371,6 +360,15 @@
       "dry_run": false,
       "actions": [
         "ADA: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T12:53:29Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "FLATTEN: FLATTEN_ALL requested \u2014 closing every open position",
+        "CLOSE AVAX long (MANUAL_FLATTEN) @ ~$6.44 [broker]"
       ]
     }
   ],

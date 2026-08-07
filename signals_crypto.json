@@ -1,65 +1,65 @@
 {
-  "updated_at": "2026-08-07T07:59:00-04:00",
+  "updated_at": "2026-08-07T08:53:27-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 1.11,
+  "regime_day_pct": 1.6,
   "risk_off": false,
   "panic_flatten": false,
   "regime_reason": "",
   "signals": [
     {
-      "sector_or_ticker": "ADA",
+      "sector_or_ticker": "XRP",
       "direction": "bullish",
-      "confidence": 0.69,
+      "confidence": 0.66,
       "timeframe": "5m scalp",
       "entry_mode": "market",
-      "setup": "oversold_bounce",
-      "stop_pct": 0.0083,
-      "t1_pct": 0.0041,
-      "t2_pct": 0.0095,
-      "rr": 1.14,
+      "setup": "momentum_long",
+      "stop_pct": 0.0084,
+      "t1_pct": 0.0009,
+      "t2_pct": 0.02,
+      "rr": 2.37,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 42.6,
-        "pct_b": -0.051,
-        "trend": "flat",
-        "support": 0.1999,
-        "resistance": 0.2032,
+        "rsi": 62.0,
+        "pct_b": 0.879,
+        "trend": "up",
+        "support": 1.0304,
+        "resistance": 1.0407,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "oversold bounce long on ADA (5m): RSI 42.6, %B -0.051, trend flat, vol× None. Stop below support $0.1999; targets +0.4%/+1.0%, R:R 1.14. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ADA 5分钟超卖反弹:RSI 42.6,%B -0.051,趋势flat,量比None。止损设在支撑 $0.1999 下方,目标 +0.4%/+1.0%,盈亏比 1.14。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on XRP (5m): RSI 62.0, %B 0.879, trend up, vol× None. Stop below support $1.0304; targets +0.1%/+2.0%, R:R 2.37. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "XRP 5分钟顺势做多:RSI 62.0,%B 0.879,趋势up,量比None。止损设在支撑 $1.0304 下方,目标 +0.1%/+2.0%,盈亏比 2.37。算法剥头皮、按风险定量(非全仓)。"
       }
     },
     {
-      "sector_or_ticker": "AVAX",
+      "sector_or_ticker": "LINK",
       "direction": "bullish",
       "confidence": 0.66,
       "timeframe": "5m scalp",
       "entry_mode": "market",
       "setup": "momentum_long",
       "stop_pct": 0.0098,
-      "t1_pct": 0.0011,
+      "t1_pct": 0.0017,
       "t2_pct": 0.02,
       "rr": 2.03,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 61.1,
-        "pct_b": 0.795,
+        "rsi": 61.2,
+        "pct_b": 0.827,
         "trend": "up",
-        "support": 6.406,
-        "resistance": 6.47,
+        "support": 8.192,
+        "resistance": 8.298,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "momentum long long on AVAX (5m): RSI 61.1, %B 0.795, trend up, vol× None. Stop below support $6.406; targets +0.1%/+2.0%, R:R 2.03. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "AVAX 5分钟顺势做多:RSI 61.1,%B 0.795,趋势up,量比None。止损设在支撑 $6.406 下方,目标 +0.1%/+2.0%,盈亏比 2.03。算法剥头皮、按风险定量(非全仓)。"
+        "en": "momentum long long on LINK (5m): RSI 61.2, %B 0.827, trend up, vol× None. Stop below support $8.192; targets +0.2%/+2.0%, R:R 2.03. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "LINK 5分钟顺势做多:RSI 61.2,%B 0.827,趋势up,量比None。止损设在支撑 $8.192 下方,目标 +0.2%/+2.0%,盈亏比 2.03。算法剥头皮、按风险定量(非全仓)。"
       }
     }
   ]
