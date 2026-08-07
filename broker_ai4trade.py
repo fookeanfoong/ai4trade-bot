@@ -166,7 +166,9 @@ class AI4TradeBroker:
             body["executed_at"] = "now"
         else:
             body["price"] = float(ref_price)
-            body["executed_at"] = dt.datetime.utcnow().isoformat(timespec="seconds")
+            # 必须带 Z。skill 文档的示例("2026-03-05T12:00:00")是错的,真实 API 会回
+            # 400: "executed_at must be in UTC format (ending with Z or +00:00)"。
+            body["executed_at"] = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
         resp = _request("POST", "/signals/realtime", body)
         if resp.get("success") is False:
             raise BrokerError(f"realtime {action} {symbol} rejected: {resp}")
