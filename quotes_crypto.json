@@ -1,25 +1,29 @@
 {
-  "fetched_at": "2026-08-07T01:22:35Z",
+  "fetched_at": "2026-08-07T03:36:11Z",
   "interval": "5m",
   "quotes": {
     "ETH": {
       "symbol": "ETH",
-      "last": 1901.41,
+      "last": 1898.78,
       "prev_close": 1902.2021,
-      "change_pct": -0.04,
-      "chg_1h_pct": 0.04,
-      "bars_5m": 18,
+      "change_pct": -0.18,
+      "chg_1h_pct": -0.11,
+      "bars_5m": 45,
       "chg_3d_pct": null,
       "chg_5d_pct": null,
-      "rsi": 45.7,
-      "support": 1898.11,
-      "resistance": 1905.8199,
-      "ema9": 1901.9587,
-      "ema21": 1901.945,
+      "rsi": 43.9,
+      "support": 1896.51,
+      "resistance": 1906.86,
+      "ema9": 1899.2281,
+      "ema21": 1899.9843,
       "trend": "flat",
       "vol_last": 0,
-      "vol_avg": 15304078.22,
-      "vol_ratio": null
+      "vol_avg": 21200384.0,
+      "vol_ratio": null,
+      "sma20": 1900.064,
+      "bb_upper": 1903.0939,
+      "bb_lower": 1897.0341,
+      "pct_b": 0.288
     }
   },
   "errors": {}
