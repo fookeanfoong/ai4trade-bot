@@ -1,24 +1,24 @@
 {
   "positions": {
-    "BTC": {
-      "ticker": "BTC",
+    "LINK": {
+      "ticker": "LINK",
       "side": "long",
-      "qty": 0.00154,
-      "entry": 64916.179,
-      "stop": 64357.9,
-      "t1": 292122.81,
-      "t2": 292122.81,
+      "qty": 12.172558,
+      "entry": 8.2152,
+      "stop": 8.1585,
+      "t1": 36.9684,
+      "t2": 36.9684,
       "half_taken": false,
-      "peak_price": 64916.179,
+      "peak_price": 8.2152,
       "armed": false,
-      "confidence": 0.66,
+      "confidence": 0.62,
       "entry_chg_3d_pct": null,
-      "notional_usd": 99.97,
+      "notional_usd": 100.0,
       "book_risk_usd": 8.0,
       "single_exit": false,
       "run_mode": true,
-      "trail_floor": 65567.07,
-      "opened_at": "2026-08-07T20:17:34Z",
+      "trail_floor": 8.2976,
+      "opened_at": "2026-08-07T21:04:29Z",
       "opened_ny_date": "2026-08-07",
       "price_src": "broker"
     }
@@ -230,6 +230,15 @@
       "exit": 1.0249,
       "qty": 97.18173,
       "closed_at": "2026-08-07T17:27:27Z"
+    },
+    {
+      "ticker": "BTC",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 64916.179,
+      "exit": 64891.971,
+      "qty": 0.00154,
+      "closed_at": "2026-08-07T21:04:29Z"
     }
   ],
   "runs": [
@@ -467,6 +476,16 @@
         "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow",
         "ENTRY LONG BTC conf 0.66 0.00154 sh @ $64916.18 [broker] notional $100 risk $8.00 | stop $64357.9 T1 $292122.81 T2 $292122.81 | net-target $0.50 (band $0.50-$1.00, vol span 0.65%) = gross +1.00% -> exit $65567.1 = net $+0.5000 after 0.25%/side (FLOOR \u2014 trails from here, upside open) | TA t2 was +2.00%"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T21:04:29Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "CLOSE BTC long (SIGNAL_INVALIDATED_EXIT) @ ~$64891.97 [broker]",
+        "XRP: benched today (already exited once) \u2014 no re-entry until tomorrow",
+        "ENTRY LONG LINK conf 0.62 12.1726 sh @ $8.22 [broker] notional $100 risk $8.00 | stop $8.1585 T1 $36.9684 T2 $36.9684 | net-target $0.50 (band $0.50-$1.00, vol span 0.38%) = gross +1.00% -> exit $8.2976 = net $+0.5005 after 0.25%/side (FLOOR \u2014 trails from here, upside open) | TA t2 was +2.00%"
+      ]
     }
   ],
   "benched": {
@@ -474,10 +493,12 @@
     "ADA": "2026-08-07",
     "DOGE": "2026-08-07",
     "AVAX": "2026-08-07",
-    "XRP": "2026-08-07"
+    "XRP": "2026-08-07",
+    "BTC": "2026-08-07"
   },
   "last_key": null,
   "day_trades": [
+    "2026-08-07",
     "2026-08-07",
     "2026-08-07"
   ]
