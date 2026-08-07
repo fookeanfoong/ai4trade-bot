@@ -52,8 +52,8 @@ entire capital"**:
   exposure stays within the book.
 - **Dynamic scalp stops**: the stop is placed just below the setup's support
   (clamped to 0.4%–3%), not a fixed percentage — tight, chart-based risk.
-- **Net-return target** (`NET_PROFIT_MODE=yes`): one exit, priced at a
-  **return after fees**, not a raw percentage. See below.
+- **Net-dollar target** (`NET_PROFIT_MODE=yes`): one exit, priced at the
+  **dollars that land after fees**, not a raw percentage. See below.
 - **Crash circuit breaker**: a fast-drop guard on top of the per-name stops.
 
 ## Net-dollar target (why raw percentage targets failed)
