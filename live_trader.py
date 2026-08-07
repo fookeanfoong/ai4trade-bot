@@ -106,8 +106,13 @@ DAY_TRADE_LIMIT = int(os.environ.get("DAY_TRADE_LIMIT", "3"))
 
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
-TRAIL_ARM_PCT = 0.004
-TRAIL_GIVEBACK_PCT = 0.0025
+TRAIL_ARM_PCT = float(os.environ.get("TRAIL_ARM_PCT", "0.004"))
+TRAIL_GIVEBACK_PCT = float(os.environ.get("TRAIL_GIVEBACK_PCT", "0.0025"))
+# 「让利润奔跑」:开启后,净赚 NET_TARGET 的价位不再是**离场点**,而是
+#   (a) 追踪止盈的启动点,以及 (b) 之后绝不跌破的地板。
+# 于是这笔单的结局变成:要么打止损,要么至少锁住 NET_TARGET、上不封顶。
+# 关闭时(默认)行为不变:到价整仓离场。
+RUN_WINNERS = os.environ.get("RUN_WINNERS", "false").lower() in ("yes", "true")
 ENABLE_SHORT = os.environ.get("ENABLE_SHORT", "false").lower() in ("yes", "true")
 
 # Stock-split (corporate action) recognition. A split changes the broker's share
@@ -490,6 +495,9 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
     arm_px = p["entry"] * (1 + TRAIL_ARM_PCT)
     if p.get("single_exit") and side == 1:
         arm_px = max(arm_px, p["t2"])
+    # 让利润奔跑:到达「净赚保底」的价位才启动追踪,启动后就再也不会低于它离场。
+    if p.get("run_mode") and p.get("trail_floor") and side == 1:
+        arm_px = float(p["trail_floor"])
     if side == 1:
         p["peak_price"] = max(p["peak_price"], last)
         if not p["armed"] and p["peak_price"] >= arm_px:
@@ -502,7 +510,8 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
     # 2. Trailing profit-lock (floored at breakeven).
     if p["armed"]:
         if side == 1:
-            trail = max(p["peak_price"] * (1 - TRAIL_GIVEBACK_PCT), p["entry"])
+            floor_px = float(p.get("trail_floor") or 0) or p["entry"]
+            trail = max(p["peak_price"] * (1 - TRAIL_GIVEBACK_PCT), floor_px)
             hit = last <= trail
         else:
             trail = min(p["peak_price"] * (1 + TRAIL_GIVEBACK_PCT), p["entry"])
@@ -668,11 +677,15 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         net_note = (f" | net-target ${want_usd:.2f} (band ${NET_TARGET_MIN_USD:.2f}-"
                     f"${NET_TARGET_MAX_USD:.2f}, vol span {span_txt}) "
                     f"= gross +{g*100:.2f}% -> exit ${net_target_px:g} "
-                    f"= net ${actual:+.4f} after {FEE_RATE*100:.2f}%/side (full exit)"
+                    f"= net ${actual:+.4f} after {FEE_RATE*100:.2f}%/side "
+                    f"({'FLOOR — trails from here, upside open' if RUN_WINNERS else 'full exit'})"
                     f"{stop_note} | TA t2 was +{ta_t2*100:.2f}%")
 
     stop = round_price(entry * (1 - stop_pct * s))
-    if net_target_px is not None:
+    if net_target_px is not None and RUN_WINNERS:
+        # 目标价当地板:T1/T2 推到够不着的地方,交给追踪止盈决定何时走。
+        t1 = t2 = round_price(entry * (1 + MAX_TARGET_MOVE_PCT * 100))
+    elif net_target_px is not None:
         t1 = t2 = net_target_px
     else:
         t1 = round_price(entry * (1 + t1_pct * s))
@@ -693,7 +706,9 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         "confidence": sig.get("confidence"), "entry_chg_3d_pct": chg_3d,
         "notional_usd": round(notional, 2),
         "book_risk_usd": round(slice_risk, 2),
-        "single_exit": single_exit,
+        "single_exit": single_exit and not RUN_WINNERS,
+        "run_mode": bool(net_target_px is not None and RUN_WINNERS),
+        "trail_floor": net_target_px if RUN_WINNERS else None,
         "opened_at": now, "opened_ny_date": ny_today_str(), "price_src": src,
     }
     return lines

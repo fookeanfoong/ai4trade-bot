@@ -49,6 +49,10 @@ jobs:
         continue-on-error: true
         run: python quotes_crypto.py
 
+      - name: Crash-news sentinel (free Google News RSS, no key)
+        continue-on-error: true
+        run: python news_crypto.py
+
       - name: Generate scalp setups (5m, long-only) — regenerated every run
         continue-on-error: true
         run: python generate_signals_crypto.py
@@ -71,16 +75,16 @@ jobs:
           # close positions it does not own.
           STATE_FILE: "live_trader_ai4trade_state.json"
           REPORTS_SUBDIR: "live_trader_ai4trade"
-          # The platform grants $100,000 simulated cash, but charges a 0.1% fee
-          # the skill document never mentions, and it is debited from the same
-          # cash. Two $50k positions came to exactly $100k and the second was
-          # rejected for $45 of headroom. Book 98k so fees always fit.
-          BOOK_EQUITY: "98000"
+          # The platform grants $100,000 simulated cash; this book deliberately
+          # trades only $200 of it, matching the size actually being learned on.
+          # (The platform also charges a 0.1% fee the skill document never
+          # mentions, debited from the same cash — see FEE_RATE below.)
+          BOOK_EQUITY: "200"
           RISK_PCT: "0.08"
           BASE_SLICES: "1"              # concentrate: a lone signal takes the whole book
           LEVERAGE_CAP: "1.0"
           ALLOW_FRACTIONAL: "yes"
-          MAX_POSITIONS: "2"            # 1 coin at $100k, or 2 at $50k each
+          MAX_POSITIONS: "2"            # 1 coin at $200, or 2 at $100 each
           ENABLE_SHORT: "no"            # platform supports short/cover; keep this book long-only
           # --- Net-dollar target ------------------------------------------
           # Fee measured from a live rejection: $50.00 on a $49,995.17 trade =
@@ -88,8 +92,13 @@ jobs:
           # mistake of banking "wins" that cost more in fees than they earned.
           NET_PROFIT_MODE: "yes"
           FEE_RATE: "0.001"
-          NET_TARGET_MIN_USD: "250"     # quiet coin: ~0.5% net of a $49k position
-          NET_TARGET_MAX_USD: "500"     # volatile coin: 1.0%
+          # With RUN_WINNERS these are the FLOOR, not the exit: once the trade
+          # clears this much net, a trailing stop arms and can never give the
+          # money back. Upside is uncapped from there.
+          NET_TARGET_MIN_USD: "0.50"    # quiet coin: locks in at +0.45%
+          NET_TARGET_MAX_USD: "1.00"    # volatile coin: locks in at +0.70%
+          RUN_WINNERS: "yes"            # let profit run past the floor
+          TRAIL_GIVEBACK_PCT: "0.006"   # give a winner 0.6% of room before taking it
           VOL_SPAN_LO: "0.015"          # BB width <=1.5% of price => use the floor
           VOL_SPAN_HI: "0.050"          # BB width >=5% of price   => use the ceiling
           MIN_RR_NET: "1.0"             # stop distance <= target distance (at least 1:1)
