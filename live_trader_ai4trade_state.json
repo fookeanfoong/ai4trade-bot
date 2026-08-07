@@ -10,6 +10,15 @@
         "ORDER FAILED (ENTRY LONG XRP conf 0.66 48202.1 sh @ $1.04 [quotes.json] notional $50000 risk $4000.00 | stop $1.0321 T1 $1.0425 T2 $1.0425 | net-target $250.00 (band $250.00-$500.00, vol span 0.75%) = gross +0.50% -> exit $1.0425 = net $+250.6507 after 0.00%/side (full exit) | stop tightened 0.72%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"executed_at must be in UTC format (ending with Z or +00:00). Got: 2026-08-07T12:59:39\"}",
         "ORDER FAILED (ENTRY LONG SOL conf 0.66 677.14 sh @ $73.84 [quotes.json] notional $50000 risk $4000.00 | stop $73.4708 T1 $74.2092 T2 $74.2092 | net-target $250.00 (band $250.00-$500.00, vol span 0.75%) = gross +0.50% -> exit $74.2092 = net $+250.0000 after 0.00%/side (full exit) | stop tightened 0.97%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"executed_at must be in UTC format (ending with Z or +00:00). Got: 2026-08-07T12:59:40\"}"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T13:00:34Z",
+      "broker": "ai4trade",
+      "dry_run": false,
+      "actions": [
+        "ORDER FAILED (ENTRY LONG XRP conf 0.66 48202.1 sh @ $1.04 [quotes.json] notional $50000 risk $4000.00 | stop $1.0321 T1 $1.0425 T2 $1.0425 | net-target $250.00 (band $250.00-$500.00, vol span 0.75%) = gross +0.50% -> exit $1.0425 = net $+250.6507 after 0.00%/side (full exit) | stop tightened 0.71%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"executed_at must be in UTC format (ending with Z or +00:00). Got: 2026-08-07T13:00:33\"}",
+        "ORDER FAILED (ENTRY LONG SOL conf 0.66 676.956 sh @ $73.86 [quotes.json] notional $50000 risk $4000.00 | stop $73.4907 T1 $74.2294 T2 $74.2294 | net-target $250.00 (band $250.00-$500.00, vol span 0.76%) = gross +0.50% -> exit $74.2294 = net $+250.0677 after 0.00%/side (full exit) | stop tightened 1.00%->0.50% for 1:1 | TA t2 was +2.00%): POST /signals/realtime -> HTTP 400 {\"detail\":\"executed_at must be in UTC format (ending with Z or +00:00). Got: 2026-08-07T13:00:33\"}"
+      ]
     }
   ],
   "benched": {},
