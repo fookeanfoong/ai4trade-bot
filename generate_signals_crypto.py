@@ -47,6 +47,8 @@ CRASH_1H_DROP = 2.5        # BTC 近 1 小时跌幅 % 阈值
 NAME_CRASH_DROP = 6.0      # 单币距近 4h 高点回撤 % 阈值(只拉黑该币)
 # 更狠的一档:BTC 崩到这个程度,引擎会直接清仓离场(见 live_trader.py)。
 PANIC_FLATTEN_DROP = 7.0
+# 有重大利空新闻时,价格只要跌到这个幅度就提前停手(没新闻时要跌到 CRASH_FAST_DROP)。
+NEWS_CONFIRM_DROP = 1.5
 
 # AGGRESSIVE crypto profile (intentionally looser than the stock book): trades
 # in flat tape too, chases a bit harder, takes lower R:R. Every trade still
@@ -104,10 +106,17 @@ def assess_regime(quotes, news=None):
     news_off = bool(news.get("news_risk_off"))
     news_reason = news.get("reason") or ""
 
-    # 新闻 + 价格双确认 -> 清仓。单看新闻永远不清仓(误判代价太大)。
+    # 新闻只作为「价格信号的放大器」,自己永远不能停手或清仓。
+    # 第一版让新闻单独触发 risk-off,结果哨兵连续两小时把机器人锁死——
+    # 加密永远有负面标题,「有坏消息」不是可交易的信息,「坏消息 + 价格真的在跌」才是。
+    #   坏消息 + 已跌 NEWS_CONFIRM_DROP%  -> 暂停开新仓(比纯价格阈值更早一步)
+    #   坏消息 + 已跌 CRASH_FAST_DROP%    -> 清仓
     if news_off and from_high is not None and from_high <= -CRASH_FAST_DROP:
         return True, True, (f"重大利空 + {REGIME_SYMBOL} 已从高点跌 {from_high:.1f}% "
                             f"— 双重确认,清仓离场 | {news_reason}")
+    if news_off and from_high is not None and from_high <= -NEWS_CONFIRM_DROP:
+        return True, False, (f"重大利空 + {REGIME_SYMBOL} 已从高点跌 {from_high:.1f}% "
+                             f"(≥{NEWS_CONFIRM_DROP}%) — 提前停手 | {news_reason}")
 
     if from_high is not None and from_high <= -PANIC_FLATTEN_DROP:
         return True, True, (f"{REGIME_SYMBOL} 距近期高点已跌 {from_high:.1f}% "
@@ -124,9 +133,6 @@ def assess_regime(quotes, news=None):
     if day is not None and day <= -REGIME_MAX_DROP:
         return True, False, (f"{REGIME_SYMBOL} 当日跌 {day:.1f}% "
                              f"(≥{REGIME_MAX_DROP}%) — 大盘走弱,暂停开新仓")
-    # 价格还没出事,但新闻已经在响 -> 只停手观望,不动已有仓位。
-    if news_off:
-        return True, False, f"新闻风控:{news_reason}"
     return False, False, ""
 
 
