@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-07T12:25:01-04:00",
+  "updated_at": "2026-08-07T12:28:21-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 0.96,
+  "regime_day_pct": 0.94,
   "news_risk_off": false,
   "news_hits": 0,
   "news_degraded": false,
@@ -14,6 +14,32 @@
   "regime_reason": "",
   "signals": [
     {
+      "sector_or_ticker": "XRP",
+      "direction": "bullish",
+      "confidence": 0.69,
+      "timeframe": "5m scalp",
+      "entry_mode": "market",
+      "setup": "oversold_bounce",
+      "stop_pct": 0.004,
+      "t1_pct": 0.0008,
+      "t2_pct": 0.0138,
+      "rr": 3.46,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "ta": {
+        "rsi": 41.8,
+        "pct_b": 0.283,
+        "trend": "down",
+        "support": 1.025,
+        "resistance": 1.0406,
+        "vol_ratio": null
+      },
+      "reasoning": {
+        "en": "oversold bounce long on XRP (5m): RSI 41.8, %B 0.283, trend down, vol× None. Stop below support $1.025; targets +0.1%/+1.4%, R:R 3.46. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "XRP 5分钟超卖反弹:RSI 41.8,%B 0.283,趋势down,量比None。止损设在支撑 $1.025 下方,目标 +0.1%/+1.4%,盈亏比 3.46。算法剥头皮、按风险定量(非全仓)。"
+      }
+    },
+    {
       "sector_or_ticker": "ETH",
       "direction": "bullish",
       "confidence": 0.69,
@@ -21,48 +47,22 @@
       "entry_mode": "market",
       "setup": "oversold_bounce",
       "stop_pct": 0.004,
-      "t1_pct": 0.0013,
-      "t2_pct": 0.0131,
-      "rr": 3.27,
+      "t1_pct": 0.0015,
+      "t2_pct": 0.0111,
+      "rr": 2.77,
       "already_priced_in": false,
       "auto_generated": true,
       "ta": {
-        "rsi": 42.8,
-        "pct_b": 0.287,
+        "rsi": 42.0,
+        "pct_b": 0.243,
         "trend": "flat",
         "support": 1909.4301,
-        "resistance": 1938.88,
+        "resistance": 1934.73,
         "vol_ratio": null
       },
       "reasoning": {
-        "en": "oversold bounce long on ETH (5m): RSI 42.8, %B 0.287, trend flat, vol× None. Stop below support $1909.43; targets +0.1%/+1.3%, R:R 3.27. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ETH 5分钟超卖反弹:RSI 42.8,%B 0.287,趋势flat,量比None。止损设在支撑 $1909.43 下方,目标 +0.1%/+1.3%,盈亏比 3.27。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
-      "sector_or_ticker": "AVAX",
-      "direction": "bullish",
-      "confidence": 0.69,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "oversold_bounce",
-      "stop_pct": 0.0041,
-      "t1_pct": 0.0015,
-      "t2_pct": 0.0132,
-      "rr": 3.19,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 40.5,
-        "pct_b": 0.201,
-        "trend": "down",
-        "support": 6.405,
-        "resistance": 6.507,
-        "vol_ratio": null
-      },
-      "reasoning": {
-        "en": "oversold bounce long on AVAX (5m): RSI 40.5, %B 0.201, trend down, vol× None. Stop below support $6.405; targets +0.2%/+1.3%, R:R 3.19. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "AVAX 5分钟超卖反弹:RSI 40.5,%B 0.201,趋势down,量比None。止损设在支撑 $6.405 下方,目标 +0.2%/+1.3%,盈亏比 3.19。算法剥头皮、按风险定量(非全仓)。"
+        "en": "oversold bounce long on ETH (5m): RSI 42.0, %B 0.243, trend flat, vol× None. Stop below support $1909.43; targets +0.1%/+1.1%, R:R 2.77. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "ETH 5分钟超卖反弹:RSI 42.0,%B 0.243,趋势flat,量比None。止损设在支撑 $1909.43 下方,目标 +0.1%/+1.1%,盈亏比 2.77。算法剥头皮、按风险定量(非全仓)。"
       }
     }
   ]
