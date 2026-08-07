@@ -78,9 +78,32 @@ jobs:
           ALPACA_PAPER: "true"     # fake money until you flip this to false + confirm
           BOOK_EQUITY: "200"
           RISK_PCT: "0.05"
-          LEVERAGE_CAP: "2.0"
-          MAX_POSITIONS: "20"      # safety ceiling only; actual count = # of signals kept (conviction)
-          ENABLE_SHORT: "yes"      # 允许做空(sell-to-open);纸上账户可做空,真钱现金户不行(需 >=$2k 保证金户)
+          # No margin. This book now holds overnight (see PDT below), and a gap
+          # down hits a leveraged position twice as hard — 2x is for same-day
+          # risk you can stop out of, which is exactly what PDT takes away.
+          LEVERAGE_CAP: "1.0"
+          BASE_SLICES: "2"         # concentrate: 1 name takes $200, 2 split $100 each
+          MAX_POSITIONS: "2"       # dollar targets need size to stay reachable
+          ENABLE_SHORT: "no"       # long-only while holding overnight (shorts gap against you without limit)
+          # --- Net-dollar target (same method as the crypto book) ----------
+          # Sell once the position is up enough that, after costs, $0.50-$1.00
+          # lands in the account. US stocks are commission-free, so FEE_RATE
+          # only covers SEC/TAF plus a spread buffer — which is why the moves
+          # needed here (0.35%-0.60% on $200) are far smaller than crypto's.
+          NET_PROFIT_MODE: "yes"
+          FEE_RATE: "0.0005"       # ~0.05%/side: SEC+TAF are tiny; rest is spread buffer
+          NET_TARGET_MIN_USD: "0.50"
+          NET_TARGET_MAX_USD: "1.00"
+          MIN_RR_NET: "1.0"        # stop distance <= target distance
+          MAX_TARGET_MOVE_PCT: "0.035"
+          # --- PDT guard ---------------------------------------------------
+          # Under $25k equity, FINRA allows only 3 same-day round trips per 5
+          # business days. Profit exits therefore always wait for the next
+          # session — held overnight, the rule does not apply at all and the
+          # number of trades is unlimited. A hard stop may still spend one of
+          # the 3 slots, because eating a blown stop costs more than the slot.
+          NO_DAY_TRADE: "yes"
+          DAY_TRADE_LIMIT: "3"
         run: python live_trader.py
 
       - name: Commit state + reports

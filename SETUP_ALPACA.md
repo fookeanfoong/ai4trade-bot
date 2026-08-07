@@ -18,6 +18,53 @@ IB Gateway)。所以 paper(和以后真钱)的交易可以**直接跑在 GitHub 
    - `API Secret Key`(只显示一次,记下来)
 3. **不要把 key 贴进聊天或提交进 Git。** 下一步把它们存进 GitHub Secrets。
 
+## Net-dollar target + PDT guard
+
+The stock book runs the same net-dollar exit as the crypto twin: sell once the
+position is up enough that, after costs, **$0.50–$1.00** lands in the account
+(`NET_PROFIT_MODE=yes`). US stocks are commission-free, so `FEE_RATE=0.0005`
+only covers SEC/TAF plus a spread buffer — which makes the required moves much
+smaller than crypto's:
+
+| Notional | Move for $0.50 | Move for $1.00 |
+|---|---|---|
+| $200 (1 name) | 0.35% | 0.60% |
+| $100 (2 names) | 0.60% | 1.10% |
+
+`quotes.json` carries no Bollinger bands, so the volatility scaling has nothing
+to read and every stock takes the **$0.50 floor**. That is the intended
+fallback — pick the conservative end when the data to justify more is missing.
+
+### PDT guard (`NO_DAY_TRADE=yes`)
+
+Under $25,000 equity, FINRA allows only **3 same-day round trips per 5 business
+days**; exceeding it restricts the account for 90 days. So this book does not
+day trade:
+
+| Situation | Behaviour |
+|---|---|
+| Opened today, target hit | **Hold overnight** — sell next session |
+| Opened today, stop hit, slots left | Close, and spend one of the 3 slots |
+| Opened today, stop hit, 0 slots left | Hold overnight (forced) |
+| Opened an earlier day | Close freely — not a day trade |
+
+Held overnight the rule does not apply at all, so the **number of trades is
+unlimited**. Only the same-day round trip is scarce, and it is reserved for
+stops: eating a blown stop costs more than the slot does.
+
+Two consequences follow from holding overnight:
+
+- `LEVERAGE_CAP=1.0`, down from 2.0. A gap down hits a leveraged position twice
+  as hard, and 2x is for same-day risk you can stop out of — which is exactly
+  what the PDT guard takes away.
+- `ENABLE_SHORT=no`. A short that gaps against you overnight has no bounded
+  loss.
+
+Day trades are counted in `live_trader_state.json` under `day_trades`, over a
+rolling 5-business-day window (weekends excluded, holidays deliberately not —
+counting a holiday inside the window is the safe direction to err).
+
+
 ## 第二步(你来做):把 key 存进 GitHub Secrets
 
 仓库页面 → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**,

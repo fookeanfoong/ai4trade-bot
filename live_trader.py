@@ -94,6 +94,16 @@ MIN_RR_NET = float(os.environ.get("MIN_RR_NET", "1.0"))
 # 一次性清仓开关(换配置时用):清掉所有持仓、本轮不开新仓。见 flatten_all()。
 FLATTEN_ALL = os.environ.get("FLATTEN_ALL", "false").lower() in ("yes", "true")
 
+# --- PDT 保护(美股专用) -----------------------------------------------------
+# FINRA 规定:账户权益不足 $25,000 时,5 个交易日内最多做 3 笔「日内交易」
+# (同一天买进又卖出)。超了账户会被限制 90 天。加密没有这条,所以默认关闭。
+#
+# 策略:止盈永远不当天平——多等一晚,PDT 就完全不适用,次数不受限。
+# 止损例外:硬止损可以动用有限的日内额度,因为「守不住止损」的代价
+# 比「用掉一个额度」大得多。额度用完了,连止损也只能等到明天。
+NO_DAY_TRADE = os.environ.get("NO_DAY_TRADE", "false").lower() in ("yes", "true")
+DAY_TRADE_LIMIT = int(os.environ.get("DAY_TRADE_LIMIT", "3"))
+
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
 TRAIL_ARM_PCT = 0.004
@@ -231,6 +241,48 @@ def ny_today_str() -> str:
     if ZoneInfo:
         return dt.datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     return (dt.datetime.utcnow() - dt.timedelta(hours=4)).strftime("%Y-%m-%d")
+
+
+def recent_business_days(n: int) -> set:
+    """最近 n 个交易日(含今天)的 NY 日期。用来数 PDT 的 5 日滚动窗口。
+    只按周末过滤,不含节假日——宁可数得保守一点(把节假日也算进窗口),
+    也不要因为漏算而超限。"""
+    days, d = [], dt.date.fromisoformat(ny_today_str())
+    while len(days) < max(1, n):
+        if d.weekday() < 5:
+            days.append(d.isoformat())
+        d -= dt.timedelta(days=1)
+    return set(days)
+
+
+def day_trades_used(state: dict) -> int:
+    """滚动窗口内已用掉的日内交易次数。"""
+    window = recent_business_days(5)
+    return sum(1 for x in state.get("day_trades", []) if x in window)
+
+
+def pdt_blocks_exit(state: dict, p: dict, is_stop: bool, sym: str, lines: list) -> bool:
+    """现在平掉这个仓位会不会构成「当天买当天卖」?会的话就别平。
+
+    止盈一律推到明天(反正 PDT 只管当天一进一出,隔夜就完全不受限);
+    止损可以动用剩余额度,额度用尽才被迫等到明天。"""
+    if not NO_DAY_TRADE:
+        return False
+    if p.get("opened_ny_date") != ny_today_str():
+        return False   # 不是今天开的仓 —— 今天卖不算日内交易
+    used = day_trades_used(state)
+    if is_stop and used < DAY_TRADE_LIMIT:
+        return False   # 花一个额度守住止损,值得
+    why = (f"stop, but {used}/{DAY_TRADE_LIMIT} day trades already used this week"
+           if is_stop else "profit exit — worth waiting a night to avoid a day trade")
+    lines.append(f"{sym}: PDT guard — opened today, holding overnight ({why})")
+    return True
+
+
+def note_day_trade(state: dict, p: dict) -> None:
+    """当天开、当天平 = 一笔日内交易,记账。"""
+    if p.get("opened_ny_date") == ny_today_str():
+        state.setdefault("day_trades", []).append(ny_today_str())
 
 
 def signal_expired(doc: dict, today: str) -> bool:
@@ -411,6 +463,7 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
         ok = _send(broker, dry, lines, f"CLOSE {sym} {p['side']} ({action}) @ ~${ref_price:.2f} [{src}]",
                    lambda: broker.close(sym))
         if ok:
+            note_day_trade(state, p)
             _log_trade(state, p, action, ref_price, p["qty"], now)
             state["positions"].pop(sym, None)
             # Bench this name for the rest of the day: no same-day re-entry
@@ -420,7 +473,8 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
 
     # 1. Signal invalidation -> exit at market.
     if not signal_still_valid(sym, p["side"], signals):
-        close_all("SIGNAL_INVALIDATED_EXIT", last)
+        if not pdt_blocks_exit(state, p, is_stop=False, sym=sym, lines=lines):
+            close_all("SIGNAL_INVALIDATED_EXIT", last)
         return lines
 
     # update peak + arm trailing
@@ -449,13 +503,15 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
             trail = min(p["peak_price"] * (1 + TRAIL_GIVEBACK_PCT), p["entry"])
             hit = last >= trail
         if hit:
-            close_all("TRAIL_LOCK_EXIT", last)
+            if not pdt_blocks_exit(state, p, is_stop=False, sym=sym, lines=lines):
+                close_all("TRAIL_LOCK_EXIT", last)
             return lines
 
     # 3. Hard stop.
     stop_hit = (last <= p["stop"]) if side == 1 else (last >= p["stop"])
     if stop_hit:
-        close_all("STOP_EXIT" if not p["half_taken"] else "BE_STOP_EXIT", p["stop"])
+        if not pdt_blocks_exit(state, p, is_stop=True, sym=sym, lines=lines):
+            close_all("STOP_EXIT" if not p["half_taken"] else "BE_STOP_EXIT", p["stop"])
         return lines
 
     # 4. T1 — sell half, move stop to breakeven.
@@ -463,6 +519,8 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
     #    分两段只会让一半仓位在目标之上继续暴露风险。
     t1_hit = (last >= p["t1"]) if side == 1 else (last <= p["t1"])
     if p.get("single_exit"):
+        t1_hit = False
+    if t1_hit and pdt_blocks_exit(state, p, is_stop=False, sym=sym, lines=lines):
         t1_hit = False
     if not p["half_taken"] and t1_hit:
         half = p["qty"] / 2
@@ -485,7 +543,8 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
     # 5. T2 — close remainder.
     t2_hit = (last >= p["t2"]) if side == 1 else (last <= p["t2"])
     if sym in state["positions"] and p["qty"] > 1e-9 and t2_hit:
-        close_all("T2_EXIT", p["t2"])
+        if not pdt_blocks_exit(state, p, is_stop=False, sym=sym, lines=lines):
+            close_all("T2_EXIT", p["t2"])
 
     return lines
 
@@ -630,7 +689,7 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         "notional_usd": round(notional, 2),
         "book_risk_usd": round(slice_risk, 2),
         "single_exit": single_exit,
-        "opened_at": now, "price_src": src,
+        "opened_at": now, "opened_ny_date": ny_today_str(), "price_src": src,
     }
     return lines
 
