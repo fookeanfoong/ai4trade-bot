@@ -1,5 +1,24 @@
 {
-  "positions": {},
+  "positions": {
+    "ETH": {
+      "ticker": "ETH",
+      "side": "long",
+      "qty": 0.105511,
+      "entry": 1895.53,
+      "stop": 1887.95,
+      "t1": 1898.56,
+      "t2": 1933.44,
+      "half_taken": false,
+      "peak_price": 1895.53,
+      "armed": false,
+      "confidence": 0.62,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 200.0,
+      "book_risk_usd": 16.0,
+      "opened_at": "2026-08-07T05:22:47Z",
+      "price_src": "broker"
+    }
+  },
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -204,16 +223,16 @@
       "actions": [
         "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T05:22:47Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG ETH conf 0.62 0.105511 sh @ $1895.53 [broker] notional $200 risk $16.00 | stop $1887.95 T1 $1898.56 T2 $1933.44"
+      ]
     }
   ],
-  "benched": {
-    "DOGE": "2026-08-06",
-    "XRP": "2026-08-06",
-    "AVAX": "2026-08-06",
-    "BTC": "2026-08-06",
-    "ETH": "2026-08-06",
-    "LINK": "2026-08-06",
-    "SOL": "2026-08-06"
-  },
+  "benched": {},
   "last_key": null
 }
