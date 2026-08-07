@@ -5,16 +5,20 @@ name: ai4trade-bot
 # DENSE (every 5 min, the GitHub minimum) to raise the odds one fires near the open,
 # AND a claude-code-remote "market-open kick" routine dispatches this workflow at the
 # open as a reliable backstop if GitHub drops the whole window.
+# PAUSED. The stock book is switched off at the owner's request — the crypto
+# book now trades the ai4trade.ai platform and is the only scheduled trader.
+# The schedule and push triggers below are commented out rather than deleted, so
+# turning this back on is uncommenting them. workflow_dispatch stays live, so the
+# book can still be run by hand from the Actions tab (e.g. to flatten).
 on:
-  schedule:
-    - cron: "32,37,47,57 12 * * 1-5"   # premarket (multiple, ~08:3x ET)
-    - cron: "*/5 13-21 * * 1-5"        # every 5 min across the session (covers EDT+EST)
-    - cron: "7 20 * * 6"               # Sat weekly review
-  push:
-    branches: ["main"]                  # only main, so branch pushes don't fire redundant runs
-    paths:
-      - ".trigger"                      # reliable kick: a routine touches this file to fire a run
-                                        # (push events are prompt; bot state-commits never touch it, so no loop)
+  # schedule:
+  #   - cron: "32,37,47,57 12 * * 1-5"   # premarket (multiple, ~08:3x ET)
+  #   - cron: "*/5 13-21 * * 1-5"        # every 5 min across the session (covers EDT+EST)
+  #   - cron: "7 20 * * 6"               # Sat weekly review
+  # push:
+  #   branches: ["main"]
+  #   paths:
+  #     - ".trigger"
   workflow_dispatch:
     inputs:
       mode:
