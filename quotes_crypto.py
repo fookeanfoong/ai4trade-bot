@@ -32,7 +32,7 @@ QUOTES_JSON = ROOT / "quotes_crypto.json"
 QUOTES_MD = ROOT / "quotes_crypto.md"
 
 # Liquid majors — scalping needs tight spreads / real volume.
-WATCHLIST = ["ETH"]   # focused: ETH only (no diversification)
+WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK"]
 
 INTERVAL = "5m"
 RANGE = "1d"          # a full day of 5m bars; we analyse the most recent window
@@ -140,6 +140,7 @@ def analyze(bare: str) -> dict:
         "prev_close": prev,
         "change_pct": _pct(last, prev),        # day change — used by the regime guard
         "chg_1h_pct": _pct(last, closes[-13]) if len(closes) >= 13 else None,
+        "chg_15m_pct": _pct(last, closes[-4]) if len(closes) >= 4 else None,
         "bars_5m": len(closes),
         # daily-momentum fields intentionally null: this is an intraday book, so
         # the engine's multi-day no-chase guard is skipped (chase is enforced by
@@ -171,8 +172,18 @@ def analyze(bare: str) -> dict:
     vol_avg = (sum(vols[-20:]) / len(vols[-20:])) if len(vols) >= 1 else None
     vol_ratio = round(vol_last / vol_avg, 2) if (vol_last and vol_avg) else None
 
+    # Crash telemetry: how far price has fallen from the highest high in the
+    # analysis window. A flash-crash shows up here long before the day-change
+    # figure catches up, so the risk-off guard keys off this.
+    win_high = max(win_h) if win_h else None
+    drop_from_high = None
+    if win_high and last:
+        drop_from_high = round((last - win_high) / win_high * 100, 2)
+
     out.update({
         "rsi": rsi(closes),
+        "window_high": round(win_high, 4) if win_high else None,
+        "drop_from_high_pct": drop_from_high,
         "support": support,
         "resistance": resistance,
         "ema9": round(e9, 4) if e9 is not None else None,

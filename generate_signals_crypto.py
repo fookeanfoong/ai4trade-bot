@@ -30,8 +30,22 @@ QUOTES = os.path.join(ROOT, "quotes_crypto.json")
 OUT = os.path.join(ROOT, "signals_crypto.json")
 NY = ZoneInfo("America/New_York")
 
-REGIME_SYMBOL = "ETH"     # 只做 ETH:用 ETH 自身当天走势做 risk-off 过滤
-REGIME_MAX_DROP = 5.0      # ETH 当天跌超过这个 % 就不开新多
+REGIME_SYMBOL = "BTC"      # 用 BTC 当大盘:BTC 崩,全场 risk-off
+REGIME_MAX_DROP = 4.0      # BTC 当天跌超过这个 % 就不开新多
+
+# --- 崩盘熔断 (crash circuit breaker) ---------------------------------------
+# 加密每年都会来几次「毫无预警的跳水」(例如 BTC 从高位直接砸到 3 万区间)。
+# 单看「当日涨跌幅」发现得太晚——日内从高点砸下来的那一段,day% 可能还是正的。
+# 所以熔断改看三个更快的信号,任一触发就 risk-off(不开新仓):
+#   1. BTC 从近 4 小时最高点回落超过 CRASH_FAST_DROP%   → 正在跳水
+#   2. BTC 最近 1 小时跌超过 CRASH_1H_DROP%            → 急跌
+#   3. BTC 当日跌超过 REGIME_MAX_DROP%                 → 慢性熊
+# 另外单币自己从高点砸超过 NAME_CRASH_DROP% 也单独拉黑(别接飞刀)。
+CRASH_FAST_DROP = 3.0      # BTC 距近 4h 高点回撤 % 阈值
+CRASH_1H_DROP = 2.5        # BTC 近 1 小时跌幅 % 阈值
+NAME_CRASH_DROP = 6.0      # 单币距近 4h 高点回撤 % 阈值(只拉黑该币)
+# 更狠的一档:BTC 崩到这个程度,引擎会直接清仓离场(见 live_trader.py)。
+PANIC_FLATTEN_DROP = 7.0
 
 # AGGRESSIVE crypto profile (intentionally looser than the stock book): trades
 # in flat tape too, chases a bit harder, takes lower R:R. Every trade still
@@ -48,7 +62,9 @@ RSI_MOMO_MIN = 40.0
 STOP_BUFFER = 0.0015       # place stop a touch below support/swing
 STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
 MIN_RR = 1.0               # reward(to T2):risk floor (aggressive)
-MAX_NAMES = 1              # focused: ETH only
+# 分散但不过度:$200 本金分 4 个币 = 每个约 $50。再多分,单笔仓位太小,
+# 「净赚 $0.5」需要的涨幅会被手续费推到够不着的位置(5 个币要 1.75%,6 个要 2.0%)。
+MAX_NAMES = 4
 
 DISCLAIMER = ("算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。"
               "已按风险定量(非全仓),加密波动极大,盈亏自负。")
@@ -66,7 +82,36 @@ def _clamp(x, lo, hi):
     return max(lo, min(hi, x))
 
 
-def build_setup(tkr, q, regime_today):
+def assess_regime(quotes):
+    """看 BTC 判断全场风险状态。
+
+    返回 (risk_off: bool, panic: bool, reason: str)。
+    risk_off -> 不开新仓;panic -> 引擎清仓走人。
+    """
+    btc = quotes.get(REGIME_SYMBOL) or {}
+    day = btc.get("change_pct")
+    hour = btc.get("chg_1h_pct")
+    from_high = btc.get("drop_from_high_pct")
+
+    if from_high is not None and from_high <= -PANIC_FLATTEN_DROP:
+        return True, True, (f"{REGIME_SYMBOL} 距近期高点已跌 {from_high:.1f}% "
+                            f"(≥{PANIC_FLATTEN_DROP}%) — 疑似崩盘,清仓离场")
+    if day is not None and day <= -PANIC_FLATTEN_DROP:
+        return True, True, (f"{REGIME_SYMBOL} 当日跌 {day:.1f}% "
+                            f"(≥{PANIC_FLATTEN_DROP}%) — 疑似崩盘,清仓离场")
+    if from_high is not None and from_high <= -CRASH_FAST_DROP:
+        return True, False, (f"{REGIME_SYMBOL} 正从高点跳水 {from_high:.1f}% "
+                             f"(≥{CRASH_FAST_DROP}%) — 暂停开新仓")
+    if hour is not None and hour <= -CRASH_1H_DROP:
+        return True, False, (f"{REGIME_SYMBOL} 近1小时急跌 {hour:.1f}% "
+                             f"(≥{CRASH_1H_DROP}%) — 暂停开新仓")
+    if day is not None and day <= -REGIME_MAX_DROP:
+        return True, False, (f"{REGIME_SYMBOL} 当日跌 {day:.1f}% "
+                             f"(≥{REGIME_MAX_DROP}%) — 大盘走弱,暂停开新仓")
+    return False, False, ""
+
+
+def build_setup(tkr, q, risk_off):
     """Return a long scalp setup dict, or None if there's no good trade."""
     last = q.get("last")
     rsi = q.get("rsi")
@@ -83,8 +128,12 @@ def build_setup(tkr, q, regime_today):
     # No-chase / overbought: never open a new long at the top.
     if rsi >= RSI_OVERBOUGHT or pctb >= PCTB_OVERBOUGHT:
         return None
-    # Regime: don't buy into a BTC risk-off flush.
-    if regime_today is not None and regime_today <= -REGIME_MAX_DROP:
+    # Regime: don't buy into a market-wide flush.
+    if risk_off:
+        return None
+    # Per-name falling knife: this coin itself is collapsing off its highs.
+    name_drop = q.get("drop_from_high_pct")
+    if name_drop is not None and name_drop <= -NAME_CRASH_DROP:
         return None
     # Need room above support to justify a long.
     if last <= support:
@@ -168,10 +217,11 @@ def main():
 
     quotes = load(QUOTES, {}).get("quotes", {})
     regime_today = (quotes.get(REGIME_SYMBOL) or {}).get("change_pct")
+    risk_off, panic, regime_reason = assess_regime(quotes)
 
     cands = []
     for tkr, q in quotes.items():
-        s = build_setup(tkr, q, regime_today)
+        s = build_setup(tkr, q, risk_off)
         if s:
             cands.append(s)
     cands.sort(key=lambda s: (s["confidence"], s["rr"]), reverse=True)
@@ -184,11 +234,17 @@ def main():
         "note": DISCLAIMER,
         "regime_symbol": REGIME_SYMBOL,
         "regime_max_drop_pct": REGIME_MAX_DROP,
+        "regime_day_pct": regime_today,
+        "risk_off": risk_off,
+        "panic_flatten": panic,
+        "regime_reason": regime_reason,
         "signals": signals,
     }
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
+    if risk_off:
+        print(f"RISK-OFF: {regime_reason}")
     if signals:
         names = ", ".join(f"{s['sector_or_ticker']}({s['setup']} {s['confidence']} rr{s['rr']})"
                           for s in signals)
