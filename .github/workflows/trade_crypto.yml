@@ -65,22 +65,23 @@ jobs:
           REPORTS_SUBDIR: "live_trader_crypto"
           BOOK_EQUITY: "200"
           RISK_PCT: "0.08"              # aggressive: bigger risk per scalp (vs 0.05 stock)
-          BASE_SLICES: "3"              # 1-3 names each get 1/3 of the book; 4 names split evenly
+          BASE_SLICES: "1"              # concentrate: a lone signal takes the whole book
           LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable) — 1x max
           ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.006 ETH)
-          MAX_POSITIONS: "4"            # diversified: up to 4 different coins at once (~$50 each)
+          MAX_POSITIONS: "2"            # concentrated: 1 coin at $200, or 2 at $100 each
           ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
           # --- Net-dollar target -----------------------------------------
           # Sell once the position is up enough that, AFTER both sides' fees,
-          # $0.50-$1.00 lands in the account. One target, full exit. Each coin
-          # picks its point in that band from its Bollinger width: quiet tape
-          # takes the $0.50 floor, volatile tape holds out for $1.00.
+          # $1.00 lands in the account. One target, full exit. Concentrating
+          # the book is what makes this reachable: at $200 on one coin it needs
+          # a 1.00% move, at $100 on two it needs 1.50%. (Split four ways it
+          # would need 2.51%, which a 5-minute bar rarely delivers.)
           # The target price is rounded UP to the coin's tick, so a $0.07 name
-          # like DOGE can never have rounding shave it below the floor.
+          # like DOGE can never have rounding shave it below the target.
           NET_PROFIT_MODE: "yes"
           FEE_RATE: "0.0025"            # Alpaca crypto taker ≈ 0.25% per side
-          NET_TARGET_MIN_USD: "0.50"    # quiet coin: net $0.50, take it and go
-          NET_TARGET_MAX_USD: "1.00"    # volatile coin: hold out for net $1.00
+          NET_TARGET_MIN_USD: "1.00"    # floor and ceiling are both $1.00:
+          NET_TARGET_MAX_USD: "1.00"    # one flat target, no volatility scaling
           VOL_SPAN_LO: "0.015"          # BB width <=1.5% of price => use the floor
           VOL_SPAN_HI: "0.050"          # BB width >=5% of price   => use the ceiling
           MIN_RR_NET: "1.0"             # stop distance <= target distance (at least 1:1)
