@@ -486,6 +486,14 @@
         "XRP: benched today (already exited once) \u2014 no re-entry until tomorrow",
         "ENTRY LONG LINK conf 0.62 12.1726 sh @ $8.22 [broker] notional $100 risk $8.00 | stop $8.1585 T1 $36.9684 T2 $36.9684 | net-target $0.50 (band $0.50-$1.00, vol span 0.38%) = gross +1.00% -> exit $8.2976 = net $+0.5005 after 0.25%/side (FLOOR \u2014 trails from here, upside open) | TA t2 was +2.00%"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T21:52:44Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "AVAX: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "benched": {
