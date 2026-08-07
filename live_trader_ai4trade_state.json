@@ -81,6 +81,14 @@
       "actions": [
         "RISK-OFF: \u65b0\u95fb\u98ce\u63a7:21 \u6761 6h \u5185\u7684\u91cd\u5927\u8d1f\u9762\u65b0\u95fb (\u9608\u503c 2) \u2014 Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com; Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex \u2014 no new entries"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T15:30:09Z",
+      "broker": "ai4trade",
+      "dry_run": false,
+      "actions": [
+        "RISK-OFF: \u65b0\u95fb\u98ce\u63a7:21 \u6761 6h \u5185\u7684\u91cd\u5927\u8d1f\u9762\u65b0\u95fb (\u9608\u503c 2) \u2014 XRP Prints 2,809% Liquidation Imbalance as Bulls Get Caught Off Guard - U.Today; Coldcard overhauls data retention policy, prepares for \u2018legal obligations\u2019 from $100M expl \u2014 no new entries"
+      ]
     }
   ],
   "benched": {},

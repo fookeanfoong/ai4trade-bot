@@ -1,18 +1,45 @@
 {
-  "updated_at": "2026-08-07T14:31:28+00:00",
+  "updated_at": "2026-08-07T15:30:05+00:00",
   "window_hours": 6.0,
   "halt_threshold": 2,
   "hit_count": 21,
   "news_risk_off": true,
-  "reason": "21 条 6h 内的重大负面新闻 (阈值 2) — Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com; Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex",
+  "reason": "21 条 6h 内的重大负面新闻 (阈值 2) — XRP Prints 2,809% Liquidation Imbalance as Bulls Get Caught Off Guard - U.Today; Coldcard overhauls data retention policy, prepares for ‘legal obligations’ from $100M expl",
   "headlines": [
+    {
+      "title": "XRP Prints 2,809% Liquidation Imbalance as Bulls Get Caught Off Guard - U.Today",
+      "matched": [
+        "liquidation"
+      ],
+      "published": "2026-08-07T15:07:28+00:00",
+      "age_min": 22,
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR1kyaVk5V1FyaU9PLVF1aEZMdnRxUWdwZDdfQ0psRnJsNDgxU2U0dUpZUlhOMmdoV2lndm9wTmg0UDMyR3R3ck9ndTRIY294VmZPSFdCSlQ3V1BOMjM4clVoWGRHSTloRjY3aVpwRzNuVVRldjBYb1A5TGNoSWdZM2FJNjk1Q0dUbkdn0gGQAUFVX3lxTE90VUlTbmhkTEUyWnp0RVJFWG1YbzlPZThWbkgycHlud21Gc2tlaFZ3ZGRRRWRDN2RvaVk3VE83aGZLTks0NGlzUkkwdWFXS05jeGF5X0dCa2ZWUXZtMEFYZlJiQVU5UTc2RUZwY1dmY1JxUl9wbXgwQWFKVkJzYTk3Y3Ffb0VrQTlsNmt2Q0RFbQ?oc=5"
+    },
+    {
+      "title": "Coldcard overhauls data retention policy, prepares for ‘legal obligations’ from $100M exploit - Cryptopolitan",
+      "matched": [
+        "exploit"
+      ],
+      "published": "2026-08-07T15:00:44+00:00",
+      "age_min": 29,
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1INzM3MTVwWW81QlhTT0RZTnJRZ3p6anNtdGQ1a1VFNGNFYklPWWhaSGtlOXhEZ251TGs1OEJVVmlPQS1QX0x3andUS1BDQ3RjM1dCeUVIdVZaMm8yTW93cHpZNHpsZzlKQml6ekxndkhCMHVyR0xhTThCRQ?oc=5"
+    },
+    {
+      "title": "Russian Security Forces Dismantle Nine Crypto Exchanges in Major Fraud Investigation - Blockonomi",
+      "matched": [
+        "fraud"
+      ],
+      "published": "2026-08-07T14:22:22+00:00",
+      "age_min": 67,
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOMXdXUWp3ZHJXMUNjZzBhZmRDaUp5R1dKSWtrM0tTa1NybDQtalNfOWpqdVNIRWk4aEJBYVpQdk5rVWJrRnZvWlRHSGhnQi1scDRpdlFtNVJNNFJsT2hlb1kwOGRYaE1LYldvYm1aWmZacTh3OWR3Yk1RTVJKamRVWE9zX3pvRE1ZWFppYlYtSXhnVjBFM0RPWTBrdWk4NmdvOE1OMmpYQkdJOUE1?oc=5"
+    },
     {
       "title": "Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com",
       "matched": [
         "hack"
       ],
       "published": "2026-08-07T14:10:46+00:00",
-      "age_min": 20,
+      "age_min": 79,
       "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9WM0Z3UmV1MWpRbzRrRjg0d2RUWktfTmRHcURiQVpJaVFib0NwWTVmaWdYTmJTOFYwNFdQSDFrRjlxWDlYMk9vWldiblpSQUpuS19wTHlBQ2hHc3BveExSNUd2Y2N0dFRfWkRlMWNjNFpfZHpZdUJMaTlCdGZZLUE?oc=5"
     },
     {
@@ -21,7 +48,7 @@
         "hack"
       ],
       "published": "2026-08-07T12:47:00+00:00",
-      "age_min": 104,
+      "age_min": 163,
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNYTQteXU4ZWd0UXk4eXVyRzdmOGdSR0loakdtOTdrZ0otbTJiekdWUWZjbWxBSm9lY0F4M2wxamM5WDlpaXNMaUczYXZpWUJ5UHdkZndaajA1WDNORzl1WnFmV09oNnlnTEtBQUlpVHlKS2U4eDNVS0ZMOW5jdHAyTWJIS09lN21pNzJuMTZsYW9LY2F3YklPTWdPUWJVZkdPS1VjM0NycDlMdw?oc=5"
     },
     {
@@ -30,7 +57,7 @@
         "hack"
       ],
       "published": "2026-08-07T12:28:45+00:00",
-      "age_min": 122,
+      "age_min": 181,
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR2tsRFBvSnl5M2NvcFdpVjdocVhmRjBiTlcwWGhnRThXR3NiTld2Mm95U3Jac1EwajR2d2pITFhNbm5RcmFTSFlpOVNEcjdveGoyRkFWT2lNWmdjeVJsWjB4NGR3bW9BaC02alQ4SUFJenVONjVIZkFZWDI0Mkp4V3IxNEpHaDQ1V1p1dUM4Z3U4UVo5?oc=5"
     },
     {
@@ -39,7 +66,7 @@
         "exploit"
       ],
       "published": "2026-08-07T12:26:00+00:00",
-      "age_min": 125,
+      "age_min": 184,
       "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZlFUeVppel9kazU1c0RwTEw2aW8wWU1ONTZ4c3ZZTm43TGEzZlEzWEtya3F6VnRIZWM2QmZfcFk5elNkRG4tVzNNT3l0aHpLbldtN3VHVFozTVZ6UmNMN0p5VFdGcF96V01iaS0tTjhDV1doM0M4eE9rb3NvaDdwRWRxVQ?oc=5"
     },
     {
@@ -48,7 +75,7 @@
         "exploit"
       ],
       "published": "2026-08-07T12:03:55+00:00",
-      "age_min": 147,
+      "age_min": 206,
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOMXVTSWRwZUxvTVJpeGRaTEhMamJFS0FZZkRRdTJQam9HT09GSnE5aWlzQWR1MDZ2YUZocWE0NVdqWmU1ejQ5ZGFpUlJPWG54WnF0cWlPb0F6dDRmNVlEd0MyRmZxOHZzcWQtdkZNcFZ3cDEzUWtHU2dJRTYyTGxiU0M0VVY5RUpfUnVkYVRCb2hGZw?oc=5"
     },
     {
@@ -57,7 +84,7 @@
         "crash"
       ],
       "published": "2026-08-07T11:45:12+00:00",
-      "age_min": 166,
+      "age_min": 224,
       "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPb2Fpc094bGJQLXBkUWtFWk9EWThHX3ZXVzZ0eE1xTkZnaDUwWUhaVnVFOV9qMUJHS1MtaGRnc2NzZEo2OHIwZjgxb3g5OExpajhGdDFJZUR3VFNXdzhNWTNIdXlublVfOWpfcjBaRGJfQVMzTnI5VmRsQWhUT0hxOUI5M0ZTOUFfRzg5c1dxai1hVUxzWnlua0Nud1dJTjlxODRZTzlGdE1YdlJTYS1zZzhfMk1iMExtbWxmN2REZElpRy1vZUEyYk1DV2s0UQ?oc=5"
     },
     {
@@ -66,7 +93,7 @@
         "crash"
       ],
       "published": "2026-08-07T11:42:27+00:00",
-      "age_min": 169,
+      "age_min": 227,
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOUU8wY2dxNkpuZzNCREV0QnZyZFRVclQxUFlUbGFQY0JOUEJpbjB3REYxSEp0eG1pU01GdUI5cTZkZnpxczRYLTBJaURuRkg2dXhBY0l3Y1N5ZTlQSldYMVJUaVZ6X2djeUlaQnNkQk9zaElUT0NXQ2c2QkxPWnVySW5qRjJ0TnVGd2FZdXBqb1ZKWUh1UXJ6NQ?oc=5"
     },
     {
@@ -75,26 +102,8 @@
         "liquidation"
       ],
       "published": "2026-08-07T11:40:12+00:00",
-      "age_min": 171,
+      "age_min": 229,
       "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1ZODNaSXBEY2Z5cDFwRUpOcVAxZU1McGNJSW4tNUhuX3czYXNibWxsa3JMUXFKLTdEYXNNcGtsSGdiSXJ1YjZKZjdFMERkWVBqZ3g1S0xhNUZYWk9GN1N3bk4xOFlVQU9sczVSTWtFX3M?oc=5"
-    },
-    {
-      "title": "5 Lessons From a 13 Year Bitcoin Holder Who Lost Everything in the Coldcard Hack - Coin Edition",
-      "matched": [
-        "hack"
-      ],
-      "published": "2026-08-07T11:32:53+00:00",
-      "age_min": 178,
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdXpvdkRPUnhrYUlHYmpORUFPeFFQNllfdjBtcDVRN1BZU2xwanpQUmtFSURIRi1kRWp2bDUwcTdTOGc0WkxKSkhDLU5Ja1VWM3Fla0RhODFwTFFJX2FCaWNlcXctMGhSdXN0WTlSbEYtak80RXFQTWxHZHdnV0V1amhnVEk2UmhZT01oNGRZOUpsMmJjWGJZT01Hb0trZ0dkNHhWTDJOVnQ?oc=5"
-    },
-    {
-      "title": "MEV Bot Operator Jaredfromsubway Loses $505K in Trading Blunder After $7.7M Exploit - Cryptonews.net",
-      "matched": [
-        "exploit"
-      ],
-      "published": "2026-08-07T11:16:49+00:00",
-      "age_min": 194,
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1EUkhFYmplZkplSnE1VnpVWU1UMm94NmJVdzNlenlNTDF5ck9fNG5xenE1WlFoN21xc1p0UmVaYzM2azIycG1vaHd5WjdGWG14eWlhWHdmSFpTZw?oc=5"
     },
     {
       "title": "OKX schedules delisting of GODS, PRCL and DUCK spot trading pairs - Cryptonews.net",
@@ -102,7 +111,7 @@
         "delisting"
       ],
       "published": "2026-08-07T11:17:25+00:00",
-      "age_min": 194,
+      "age_min": 252,
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9aRU5KOGdoQVhuMkU1d0R2eFJ3ODRhX1VneXE4UHB4QUxPa0NCTF9XME5zSkxsLU1PLVVzQjRjcHhzcVpfbmlRLUFnQjlUdkNqcnFXdmpiaw?oc=5"
     },
     {
@@ -111,7 +120,7 @@
         "hack"
       ],
       "published": "2026-08-07T11:13:29+00:00",
-      "age_min": 197,
+      "age_min": 256,
       "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxON2tTUHppOHk2c0xQYWZLVlhZV2U3TE5MU3U0c002WmZuNVlLa09uTm1tSks3V0p3LUZSZHRsVjlWenQxcHRPMXFCdTR4OGdhVzIxS293NUpWNUtpbzBnLXpvT0ZDNUVJSS02aXlLeWxOUDMtRVBjWTNPaEFGVV9OU1M1MjZsaUk5Y3ozbm0tWFZkbkVaYzdXOUFOcjM3NmhWSkIxT0Nlcm9mc0FSTlE?oc=5"
     },
     {
@@ -120,7 +129,7 @@
         "exploit"
       ],
       "published": "2026-08-07T10:52:16+00:00",
-      "age_min": 219,
+      "age_min": 277,
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5fY0RHYkt6b3ZfaVk0dDVud0NBcHByelVSeldHR0R5UWt5MlNTX0hVZW44NW1FbmVBcjR4MzJhSFhLalZqVGhIbFFwX3lqN01WclVOTzd3WEcxUQ?oc=5"
     },
     {
@@ -131,17 +140,8 @@
         "crashes"
       ],
       "published": "2026-08-07T10:38:49+00:00",
-      "age_min": 232,
+      "age_min": 291,
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQdmx1emFpUzhEWFczMkJ6TVBpXzB6U2YwQnpvRkU2U29ETUJDNlcwU2tUTklxRVFnYXI5X2VNUTdvN0FZa3I3TlRucmxCbFRaUGJGdkozcG1ZVEdlb3VOdXdvZ0hSVllzTEowZlVYdkc4T3Z6RUNxZVZoMUNVc0J4VDY5RXU5MWZmcmREMWUxUkQxbWFELUYwUmxlWVEtLUNudjNwb0Rxb05CandqY0hhUE1R?oc=5"
-    },
-    {
-      "title": "FSB Raids Moscow City Crypto Exchanges Accused of Laundering Stolen Cash - The Moscow Times",
-      "matched": [
-        "stolen"
-      ],
-      "published": "2026-08-07T10:10:14+00:00",
-      "age_min": 261,
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPWko1OVl4Rkp2R1dJYVpsY3hQNGJ0WGx4TXI2bTR3LUU5b1VDUXhfYjJTYkk5ZDZmbHJlOVpJRjJ1ODdlVUNkZHprN0lFMlY3Ml90YWNlNmdoMmdZRFU3aGNtd0dIWS1scjJjTUVOa3NRRmc1QlVMYVdGWFNHOVlDTW9WazJteEUyNnY5VnVuMzZiLWI0YkhHMmRrSk9mWWlqX0Z6T1B1c0VYVGtOWGJiNzUzd2dham5GQVJGU3h3?oc=5"
     }
   ],
   "errors": {},
