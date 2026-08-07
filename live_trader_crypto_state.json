@@ -417,6 +417,15 @@
         "AVAX: benched today (already exited once) \u2014 no re-entry until tomorrow",
         "XRP: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T18:25:35Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow",
+        "DOGE: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "benched": {
