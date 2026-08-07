@@ -1,5 +1,44 @@
 {
-  "positions": {},
+  "positions": {
+    "ADA": {
+      "ticker": "ADA",
+      "side": "long",
+      "qty": 499.750125,
+      "entry": 0.2001,
+      "stop": 0.198799,
+      "t1": 0.202107,
+      "t2": 0.202107,
+      "half_taken": false,
+      "peak_price": 0.2001,
+      "armed": false,
+      "confidence": 0.69,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 100.0,
+      "book_risk_usd": 8.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T09:12:55Z",
+      "price_src": "broker"
+    },
+    "DOGE": {
+      "ticker": "DOGE",
+      "side": "long",
+      "qty": 1440.903504,
+      "entry": 0.0694009,
+      "stop": 0.068707,
+      "t1": 0.070097,
+      "t2": 0.070097,
+      "half_taken": false,
+      "peak_price": 0.0694009,
+      "armed": false,
+      "confidence": 0.66,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 100.0,
+      "book_risk_usd": 8.0,
+      "single_exit": true,
+      "opened_at": "2026-08-07T09:12:56Z",
+      "price_src": "broker"
+    }
+  },
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -297,6 +336,15 @@
         "CLOSE DOGE long (MANUAL_FLATTEN) @ ~$0.07 [broker]",
         "CLOSE SOL long (MANUAL_FLATTEN) @ ~$72.90 [broker]",
         "CLOSE LINK long (MANUAL_FLATTEN) @ ~$8.21 [broker]"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T09:12:56Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG ADA conf 0.69 499.75 sh @ $0.20 [broker] notional $100 risk $8.00 | stop $0.198799 T1 $0.202107 T2 $0.202107 | net-target $0.50 (band $0.50-$1.00, vol span 1.45%) = gross +1.00% -> exit $0.202107 = net $+0.5005 after 0.25%/side (full exit) | TA t2 was +1.70%",
+        "ENTRY LONG DOGE conf 0.66 1440.9 sh @ $0.07 [broker] notional $100 risk $8.00 | stop $0.068707 T1 $0.070097 T2 $0.070097 | net-target $0.50 (band $0.50-$1.00, vol span 0.29%) = gross +1.00% -> exit $0.070097 = net $+0.5005 after 0.25%/side (full exit) | TA t2 was +2.00%"
       ]
     }
   ],
