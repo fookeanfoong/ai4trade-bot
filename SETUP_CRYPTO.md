@@ -52,6 +52,62 @@ entire capital"**:
   exposure stays within the book.
 - **Dynamic scalp stops**: the stop is placed just below the setup's support
   (clamped to 0.4%–3%), not a fixed percentage — tight, chart-based risk.
+- **Net-return target** (`NET_PROFIT_MODE=yes`): one exit, priced at a
+  **return after fees**, not a raw percentage. See below.
+- **Crash circuit breaker**: a fast-drop guard on top of the per-name stops.
+
+## Net-return target (why raw percentage targets failed)
+
+The first 12 crypto trades averaged **$0.14** each — five of them netted under
+$0.10. A +0.6% target is +0.6% *gross*, and Alpaca's ~0.25% per-side taker fee
+takes ~0.5% of the round trip. Most of those "wins" were losses after costs.
+
+So the target is now stated as the number that actually matters — the return
+left **after both sides' fees**. For fee rate `f` per side, the gross move `g`
+that nets `r` is:
+
+```
+net/V = g - f*(2+g) = r     =>     g = (r + 2f) / (1 - f)
+```
+
+Notional `V` cancels, so the threshold is the same whatever the book size or
+how many coins it's split across. At the configured `NET_TARGET_PCT=0.0053`
+and `f=0.25%`:
+
+| | Value |
+|---|---|
+| Target net return | **+0.53%** |
+| Required gross move | **+1.03%** |
+| Of which goes to fees | ~0.50% |
+
+Three consequences worth stating plainly:
+
+- **One target, full exit.** Positions opened this way carry `single_exit`, so
+  the T1 half-sell is skipped — the whole position closes at the target rather
+  than leaving half exposed above it. Each trade ends at target or at stop.
+- **The trailing stop arms at the target**, not at the default +0.4%. That
+  0.4% arm was what closed positions below fee cost.
+- **Trades needing more than `MAX_TARGET_MOVE_PCT` (3.5%) are skipped.** At
+  `f=0.25%` the +0.53% target needs only +1.03%, so this never binds — it is a
+  guard for higher fee rates or larger targets.
+
+## Crash circuit breaker
+
+Crypto drops without warning (the BTC-to-$30k kind). Day-change alone finds out
+too late — mid-flush the day figure can still be green. So the guard reads three
+faster signals off BTC, any one of which halts new entries:
+
+| Trigger | Threshold | Action |
+|---------|-----------|--------|
+| BTC off its 4h high | ≥ 3% | `risk_off` — no new entries |
+| BTC 1-hour drop | ≥ 2.5% | `risk_off` — no new entries |
+| BTC day drop | ≥ 4% | `risk_off` — no new entries |
+| BTC off 4h high **or** day drop | ≥ 7% | `panic_flatten` — **close everything** |
+
+A single coin that has fallen ≥6% off its own 4h high is skipped individually
+(no catching that knife) even when BTC looks fine. Panic-flatten runs *before*
+position management, dumps every open name at market, and benches them all for
+the rest of the day.
 
 > **Not "all-in".** The referenced prompt says to *deploy the entire capital* and
 > *never refuse* — this book ignores both. Every scalp is risk-sized with a real

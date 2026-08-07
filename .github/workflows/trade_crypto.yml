@@ -58,18 +58,26 @@ jobs:
           BROKER: alpaca_crypto
           ALPACA_PAPER: "true"          # fake money until you flip to false + confirm
           MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
-          REGIME_SYMBOLS: "ETH"         # focused on ETH — use ETH's own day change as the risk-off filter
+          REGIME_SYMBOLS: "BTC"         # BTC is the market: if BTC flushes, nothing else is safe
           SIGNALS_FILE: "signals_crypto.json"
           QUOTES_FILE: "quotes_crypto.json"
           STATE_FILE: "live_trader_crypto_state.json"
           REPORTS_SUBDIR: "live_trader_crypto"
           BOOK_EQUITY: "200"
           RISK_PCT: "0.08"              # aggressive: bigger risk per scalp (vs 0.05 stock)
-          BASE_SLICES: "1"              # focused: the single ETH signal deploys the whole book
+          BASE_SLICES: "3"              # 1-3 names each get 1/3 of the book; 4 names split evenly
           LEVERAGE_CAP: "1.0"           # Alpaca crypto is cash-only (non-marginable) — 1x max
           ALLOW_FRACTIONAL: "yes"       # crypto is fractional (buy 0.006 ETH)
-          MAX_POSITIONS: "1"            # focused: ETH only, one position
+          MAX_POSITIONS: "4"            # diversified: up to 4 different coins at once (~$50 each)
           ENABLE_SHORT: "no"            # Alpaca crypto has no shorting — long only
+          # --- Net-return target -----------------------------------------
+          # Exit at +0.53% AFTER both sides' fees — one target, full exit.
+          # At 0.25%/side that means a gross move of +1.03%, of which ~0.50%
+          # goes to the exchange. Independent of position size.
+          NET_PROFIT_MODE: "yes"
+          FEE_RATE: "0.0025"            # Alpaca crypto taker ≈ 0.25% per side
+          NET_TARGET_PCT: "0.0053"      # net +0.53% after fees, then close
+          MAX_TARGET_MOVE_PCT: "0.035"  # don't open trades whose target needs >3.5%
         run: python live_trader.py
 
       - name: Commit crypto state + reports

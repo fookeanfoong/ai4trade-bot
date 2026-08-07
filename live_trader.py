@@ -62,6 +62,25 @@ LEVERAGE_CAP = float(os.environ.get("LEVERAGE_CAP", "2.0"))   # real US margin ~
 # so total notional stays within BOOK*LEVERAGE_CAP no matter the count (even 10+).
 BASE_SLICES = max(1, int(os.environ.get("BASE_SLICES", "3")))
 MAX_POSITIONS = max(1, int(os.environ.get("MAX_POSITIONS", "20")))   # hard safety ceiling
+
+# --- Net-dollar profit targets (crypto scalping) ----------------------------
+# 之前的问题:目标是「百分比」,在 $30 的仓位上 +0.6% 只有 $0.18,手续费一扣基本白干
+# (前 12 笔里有 5 笔净利 < $0.10)。现在改成「按美金定目标」:先算出「扣完两边手续费
+# 还能净赚 X 美金」需要涨多少,再把 T1/T2 摆在那里。达不到就不开单——省得给交易所打工。
+#
+# 目标按「净收益率」定:扣掉两边手续费之后,这一单还赚 NET_TARGET_PCT。
+#
+# 数学(f = 单边费率, g = 毛涨幅, r = 净收益率):
+#   买入费 = V*f,  卖出费 = V*(1+g)*f
+#   净利/V = g - f*(2+g) = r   =>   g = (r + 2f) / (1 - f)
+# 注意 V 被约掉了——净收益率的目标与仓位大小无关,这也是它比「净赚 X 美金」
+# 好用的地方:不管本金多少、分几个币,涨幅门槛都一样。
+# f=0.25% 时:净 +0.53% 需要毛涨 +1.03%(其中约 0.50% 是拿去交手续费的)。
+NET_PROFIT_MODE = os.environ.get("NET_PROFIT_MODE", "false").lower() in ("yes", "true")
+FEE_RATE = float(os.environ.get("FEE_RATE", "0.0025"))      # Alpaca 加密吃单约 0.25%/边
+NET_TARGET_PCT = float(os.environ.get("NET_TARGET_PCT", "0.0053"))   # 扣费后 +0.53%
+MAX_TARGET_MOVE_PCT = float(os.environ.get("MAX_TARGET_MOVE_PCT", "0.03"))
+
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
 TRAIL_ARM_PCT = 0.004
@@ -280,6 +299,14 @@ def size_shares(entry: float, stop_pct: float, per_position_book: float) -> floa
     return round(shares, 6)
 
 
+def gross_move_for_net_pct(net_pct: float) -> float | None:
+    """毛涨幅 g:走完一轮买卖、扣掉两边手续费后,净收益率正好是 `net_pct`。
+    与仓位大小无关(名义金额在推导中约掉了)。"""
+    if FEE_RATE >= 1:
+        return None
+    return (net_pct + 2.0 * FEE_RATE) / (1.0 - FEE_RATE)
+
+
 def total_notional(state: dict) -> float:
     return sum(float(p.get("notional_usd", 0) or 0) for p in state.get("positions", {}).values())
 
@@ -342,9 +369,16 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
         return lines
 
     # update peak + arm trailing
+    #
+    # 单一目标的仓位:追踪止盈的触发线抬到目标价本身。默认 0.4% 的触发线会在净利
+    # 还不够付手续费时就把单子平掉——这正是之前一堆「赚 $0.02」废单的成因。
+    # 门槛设在目标价 = 让这单只有两个结局:达标离场,或者打止损。
+    arm_px = p["entry"] * (1 + TRAIL_ARM_PCT)
+    if p.get("single_exit") and side == 1:
+        arm_px = max(arm_px, p["t2"])
     if side == 1:
         p["peak_price"] = max(p["peak_price"], last)
-        if not p["armed"] and p["peak_price"] >= p["entry"] * (1 + TRAIL_ARM_PCT):
+        if not p["armed"] and p["peak_price"] >= arm_px:
             p["armed"] = True
     else:
         p["peak_price"] = min(p["peak_price"], last)
@@ -370,7 +404,11 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
         return lines
 
     # 4. T1 — sell half, move stop to breakeven.
+    #    单一目标的仓位(按净收益率定的)跳过这一段:目标价一到就整仓离场,
+    #    分两段只会让一半仓位在目标之上继续暴露风险。
     t1_hit = (last >= p["t1"]) if side == 1 else (last <= p["t1"])
+    if p.get("single_exit"):
+        t1_hit = False
     if not p["half_taken"] and t1_hit:
         half = p["qty"] / 2
         if not ALLOW_FRACTIONAL:
@@ -398,6 +436,27 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
 
 
 # ------------------------------ entry (one signal) -------------------------
+def panic_flatten(broker, state, qmap, dry: bool, reason: str) -> list:
+    """崩盘熔断:信号层判定大盘正在跳水时,不管盈亏一律清仓离场。
+
+    加密的跳水是「一根 5 分钟 K 线砸 10%」那种,等止损一个个被打穿往往已经滑价很多。
+    这一层是在止损之上的总闸:先出来,明天再说。当天不再开新仓(全部 benched)。"""
+    lines = [f"PANIC FLATTEN: {reason}"]
+    now = dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"
+    for sym in list(state.get("positions", {}).keys()):
+        p = state["positions"][sym]
+        last, src = get_price(broker, sym, qmap)
+        ref = last if last is not None else p["entry"]
+        ok = _send(broker, dry, lines,
+                   f"CLOSE {sym} {p['side']} (CRASH_FLATTEN) @ ~${ref:.2f} [{src if last else 'entry'}]",
+                   lambda s=sym: broker.close(s))
+        if ok:
+            _log_trade(state, p, "CRASH_FLATTEN", ref, p["qty"], now)
+            state["positions"].pop(sym, None)
+            state.setdefault("benched", {})[sym] = ny_today_str()
+    return lines
+
+
 def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_position_book=None) -> list:
     lines = []
     sym = sig["sector_or_ticker"]
@@ -447,16 +506,38 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         ]
 
     entry = last
+    notional = shares * entry
+    slice_risk = per_position_book * RISK_PER_TRADE_PCT
+
+    # 按净收益率定目标:一个价位,到了就整仓走人(不再分两段)。技术目标常在 +3%,
+    # 干等它等于把已经到手的利润又赔回去——「够了就跑」优先。
+    net_note = ""
+    single_exit = False
+    if NET_PROFIT_MODE and side == "long":
+        g = gross_move_for_net_pct(NET_TARGET_PCT)
+        if g is None or g <= 0:
+            return [f"{sym}: cannot build a net-{NET_TARGET_PCT*100:.2f}% target at fee {FEE_RATE}"]
+        if g > MAX_TARGET_MOVE_PCT:
+            return [
+                f"{sym}: skipped — netting +{NET_TARGET_PCT*100:.2f}% needs a +{g*100:.2f}% move "
+                f"(cap {MAX_TARGET_MOVE_PCT*100:.1f}%); fees would eat the trade"
+            ]
+        ta_t2 = t2_pct
+        t1_pct = t2_pct = g
+        single_exit = True
+        net_note = (f" | net-target +{NET_TARGET_PCT*100:.2f}% after fees "
+                    f"= gross +{g*100:.2f}% @ fee {FEE_RATE*100:.2f}%/side (full exit)"
+                    f" | TA t2 was +{ta_t2*100:.2f}%")
+
     stop = round_price(entry * (1 - stop_pct * s))
     t1 = round_price(entry * (1 + t1_pct * s))
     t2 = round_price(entry * (1 + t2_pct * s))
-    notional = shares * entry
-    slice_risk = per_position_book * RISK_PER_TRADE_PCT
 
     fn = (lambda: broker.buy(sym, shares, entry)) if side == "long" \
         else (lambda: broker.sell(sym, shares, entry))
     desc = (f"ENTRY {side.upper()} {sym} conf {sig.get('confidence')} {shares:g} sh @ ${entry:.2f} "
-            f"[{src}] notional ${notional:.0f} risk ${slice_risk:.2f} | stop ${stop} T1 ${t1} T2 ${t2}")
+            f"[{src}] notional ${notional:.0f} risk ${slice_risk:.2f} | stop ${stop} T1 ${t1} T2 ${t2}"
+            f"{net_note}")
     if not _send(broker, dry, lines, desc, fn):
         return lines
 
@@ -467,6 +548,7 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         "confidence": sig.get("confidence"), "entry_chg_3d_pct": chg_3d,
         "notional_usd": round(notional, 2),
         "book_risk_usd": round(slice_risk, 2),
+        "single_exit": single_exit,
         "opened_at": now, "price_src": src,
     }
     return lines
@@ -632,6 +714,17 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
         if connected:
             actions += reconcile(broker, state, BrokerError)
 
+        # 0) Crash circuit breaker — checked BEFORE anything else. If the signal
+        #    layer flagged a market-wide flush, dump everything and sit out.
+        if doc.get("panic_flatten"):
+            reason = doc.get("regime_reason") or "crash guard triggered"
+            if state.get("positions"):
+                actions += panic_flatten(broker, state, qmap, dry, reason)
+            else:
+                actions.append(f"PANIC GUARD: {reason} — already flat, no new entries")
+            _finish(state, actions, acct, describe, dry, persist=not dry)
+            return 0
+
         # 1) Manage every open position independently (a name may exit here).
         for tkr in list(state["positions"].keys()):
             actions += manage_position(broker, state, tkr, signals, qmap, dry)
@@ -645,7 +738,10 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
         else:
             picks = actionable_signals(signals)
             if not picks:
-                actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
+                if doc.get("risk_off"):
+                    actions.append(f"RISK-OFF: {doc.get('regime_reason')} — no new entries")
+                else:
+                    actions.append("no actionable signal (direction, confidence>=0.6, not priced-in)")
             else:
                 # Book splits across however many names were kept (conviction-based
                 # count). Up to BASE_SLICES => fixed 1/BASE_SLICES each; more => the
