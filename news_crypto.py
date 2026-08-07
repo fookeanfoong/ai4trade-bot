@@ -4,9 +4,8 @@
 价格护栏(generate_signals_crypto.py 里的 CRASH_* 阈值)看的是已经发生的下跌;
 这个模块看的是**为什么**在跌。两者互补:
 
-  - 价格是事实,新闻是噪音。所以新闻单独出现时,只「停止开新仓」,不清仓。
-  - 新闻 + 价格同时告警,才升级为清仓。交易所被黑 / 监管禁令这类消息一旦
-    伴随实际下跌,那基本就是真崩,不是标题党。
+  - 新闻**永远不能单独停手或清仓**,只能让价格阈值提前生效。加密媒体每天都有
+    负面标题,「有坏消息」不是可交易的信息;「坏消息 + 价格真的在跌」才是。
 
 数据源用免费的 Google News RSS(和 news.py 同一套路,不需要 API key)。
 只认「新鲜」新闻:超过 NEWS_MAX_AGE_HOURS 的一律忽略——三天前的黑客事件
@@ -37,7 +36,7 @@ BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 # 一天前的消息早就反映在价格里了。
 NEWS_MAX_AGE_HOURS = float(os.environ.get("NEWS_MAX_AGE_HOURS", "6"))
 # 命中多少条「严重」新闻就进入 risk-off(暂停开新仓)。
-NEWS_HALT_HITS = int(os.environ.get("NEWS_HALT_HITS", "2"))
+NEWS_HALT_HITS = int(os.environ.get("NEWS_HALT_HITS", "3"))
 
 QUERIES = [
     "bitcoin crash OR plunge OR selloff when:1d",
@@ -47,16 +46,17 @@ QUERIES = [
     "ethereum OR solana OR xrp plunge OR liquidation when:1d",
 ]
 
-# 严重词:出现即计一分。刻意不含 "falls"/"dips"/"down" 这类日常波动词——
-# 那些每天都有,会让哨兵永远处于告警状态,等于没有哨兵。
+# 严重词。第一版把 "hack"/"crash"/"plunge"/"liquidation"/"lawsuit"/"ban" 都算进来,
+# 结果 6 小时内轻松命中 20+ 条,哨兵永久卡在告警状态——加密媒体每天都在用这些词,
+# 连「Coldcard Hack Boosts Inflows to Bitcoin ETFs」(其实是利好)都被算成利空。
+# 现在只保留「几乎不可能出现在中性报道里」的词组:
 SEVERE = [
-    "hack", "hacked", "exploit", "stolen", "breach", "drained",
-    "insolvency", "insolvent", "bankruptcy", "bankrupt", "halts withdrawals",
-    "withdrawals halted", "freeze withdrawals", "collapse", "collapses",
-    "crash", "crashes", "plunge", "plunges", "plummet", "tumbles",
-    "liquidation", "liquidations", "flash crash", "capitulation",
-    "ban", "bans", "crackdown", "lawsuit", "indicted", "fraud", "ponzi",
-    "delisting", "delisted", "depeg", "depegs", "depegged",
+    "hacked for", "exploited for", "stolen funds", "funds drained",
+    "insolvency", "insolvent", "bankruptcy", "files for chapter 11",
+    "halts withdrawals", "withdrawals halted", "freezes withdrawals",
+    "suspends withdrawals", "depeg", "depegs", "depegged",
+    "flash crash", "capitulation", "exchange collapse", "ponzi",
+    "trading halted", "emergency shutdown", "rug pull",
 ]
 
 
