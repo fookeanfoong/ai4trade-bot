@@ -1,41 +1,22 @@
 {
   "positions": {
-    "ADA": {
-      "ticker": "ADA",
+    "AVAX": {
+      "ticker": "AVAX",
       "side": "long",
-      "qty": 499.750125,
-      "entry": 0.2001,
-      "stop": 0.198799,
-      "t1": 0.202107,
-      "t2": 0.202107,
+      "qty": 15.537794,
+      "entry": 6.43592,
+      "stop": 6.3864,
+      "t1": 6.5005,
+      "t2": 6.5005,
       "half_taken": false,
-      "peak_price": 0.2001,
-      "armed": false,
-      "confidence": 0.69,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 100.0,
-      "book_risk_usd": 8.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T09:12:55Z",
-      "price_src": "broker"
-    },
-    "DOGE": {
-      "ticker": "DOGE",
-      "side": "long",
-      "qty": 1440.903504,
-      "entry": 0.0694009,
-      "stop": 0.068707,
-      "t1": 0.070097,
-      "t2": 0.070097,
-      "half_taken": false,
-      "peak_price": 0.0694009,
+      "peak_price": 6.43592,
       "armed": false,
       "confidence": 0.66,
       "entry_chg_3d_pct": null,
       "notional_usd": 100.0,
       "book_risk_usd": 8.0,
       "single_exit": true,
-      "opened_at": "2026-08-07T09:12:56Z",
+      "opened_at": "2026-08-07T10:13:44Z",
       "price_src": "broker"
     }
   },
@@ -201,6 +182,24 @@
       "exit": 8.21,
       "qty": 6.109482,
       "closed_at": "2026-08-07T08:41:54Z"
+    },
+    {
+      "ticker": "ADA",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 0.2001,
+      "exit": 0.2016,
+      "qty": 499.750125,
+      "closed_at": "2026-08-07T10:13:43Z"
+    },
+    {
+      "ticker": "DOGE",
+      "side": "long",
+      "action": "SIGNAL_INVALIDATED_EXIT",
+      "entry": 0.0694009,
+      "exit": 0.0696,
+      "qty": 1440.903504,
+      "closed_at": "2026-08-07T10:13:43Z"
     }
   ],
   "runs": [
@@ -346,10 +345,23 @@
         "ENTRY LONG ADA conf 0.69 499.75 sh @ $0.20 [broker] notional $100 risk $8.00 | stop $0.198799 T1 $0.202107 T2 $0.202107 | net-target $0.50 (band $0.50-$1.00, vol span 1.45%) = gross +1.00% -> exit $0.202107 = net $+0.5005 after 0.25%/side (full exit) | TA t2 was +1.70%",
         "ENTRY LONG DOGE conf 0.66 1440.9 sh @ $0.07 [broker] notional $100 risk $8.00 | stop $0.068707 T1 $0.070097 T2 $0.070097 | net-target $0.50 (band $0.50-$1.00, vol span 0.29%) = gross +1.00% -> exit $0.070097 = net $+0.5005 after 0.25%/side (full exit) | TA t2 was +2.00%"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T10:13:44Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "CLOSE ADA long (SIGNAL_INVALIDATED_EXIT) @ ~$0.20 [broker]",
+        "CLOSE DOGE long (SIGNAL_INVALIDATED_EXIT) @ ~$0.07 [broker]",
+        "ENTRY LONG AVAX conf 0.66 15.5378 sh @ $6.44 [broker] notional $100 risk $8.00 | stop $6.3864 T1 $6.5005 T2 $6.5005 | net-target $0.50 (band $0.50-$1.00, vol span 0.83%) = gross +1.00% -> exit $6.5005 = net $+0.5009 after 0.25%/side (full exit) | TA t2 was +2.00%",
+        "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "benched": {
-    "ETH": "2026-08-07"
+    "ETH": "2026-08-07",
+    "ADA": "2026-08-07",
+    "DOGE": "2026-08-07"
   },
   "last_key": null
 }
