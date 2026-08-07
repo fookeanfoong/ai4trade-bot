@@ -1,81 +1,81 @@
-# Market News Digest — 2026-08-06T15:18:59+00:00
+# Market News Digest — 2026-08-07T00:31:54+00:00
 _Freshness: only headlines from the last 24h; newest first._
 
 ## 🔴 MARKET MOVERS (react to these)
 
-- `17m ago` **[Musk]** Musk’s SpaceX And Tesla Plan A Texas Terafab For AI Chips - Finimize — _Finimize_
-- `23m ago` **[Musk]** Tesla or SpaceX: Which Musk-Led Company is a Better Investment Now? - Zacks Investment Research — _Zacks Investment Research_
-- `37m ago` **[Fed]** Bessent and Warsh Called 'Double Whammy to Global Markets' as 30-Year Treasury Yields Soar - 24/7 Wall St. — _24/7 Wall St._
-- `53m ago` **[Musk]** Elon Musk’s DOGE made big errors in claims of government savings, GAO finds - The Washington Post — _The Washington Post_
-- `56m ago` **[Musk]** Elon Musk vows to ‘come after’ lefties — like ex-Mamdani volunteer who called tech titan ‘valid military target’ - New York Post — _New York Post_
-- `1h ago` **[Fed]** Trump Maintains Regular Contact With Fed Chair Warsh: Report - Newsmax — _Newsmax_
-- `1h ago` **[Fed]** Trump said to call Warsh in latest signal of push to remake Fed - Moneyweb — _Moneyweb_
-- `1h ago` **[Fed]** July Jobs Report Preview: ADP Miss Puts Variable-Rate Borrowers on Rate-Hike Watch - Tech Times — _Tech Times_
-- `1h ago` **[Trump]** Trump's stock market MELT UP: Record highs explained - Fox News — _Fox News_
-- `1h ago` **[Trump]** Trump officials say they’re strengthening Head Start with proposed rule. Critics say they’ll gut it - CNN — _CNN_
-- `1h ago` **[Trump]** U.S. Refinery Stocks Near Buy Points After Trump's Iran Comments - Investor's Business Daily — _Investor's Business Daily_
-- `2h ago` **[Chips]** AMD Shares Fall 8% as Elon Musk Commits to Nvidia Chips for SpaceX - WSJ — _WSJ_
+- `30m ago` **[Earnings]** Tech Futures Rise, Five Big Software Winners - Investor's Business Daily — _Investor's Business Daily_
+- `54m ago` **[Trump]** Trump signs new executive orders targeting birthright citizenship again - CNN — _CNN_
+- `1h ago` **[Trump]** Trump's stop and start rhetoric on the war with Iran - CNN — _CNN_
+- `2h ago` **[Fed]** Yardeni urges Fed hawkish shift amid inflation, gold price odds fall - Crypto Briefing — _Crypto Briefing_
+- `2h ago` **[Market]** Asian Stocks to Slip on Iran Concerns, Oil Climbs: Markets Wrap - Bloomberg.com — _Bloomberg.com_
+- `2h ago` **[Oil]** Oil settles up US$3 as Iran reviews bill to ban US, Israeli vessels from Hormuz - The Business Times — _The Business Times_
+- `2h ago` **[Market]** Stock futures are little changed as traders await big jobs report: Live updates - CNBC — _CNBC_
+- `2h ago` **[Trump]** Trump Imposes Tariffs on Polysilicon... Korean Companies on High Alert - 아시아경제 — _아시아경제_
+- `2h ago` **[Trump]** Trump again tries to curb birthright citizenship and ‘birth tourism’ through executive action - CNN — _CNN_
+- `2h ago` **[Oil]** Oil Jumps 7% to Above $100 Ahead of US Blockade on Strait of Hormuz - EnergyNow.com — _EnergyNow.com_
+- `3h ago` **[Musk]** Elon Musk's Terafab AI chip megafactory project has commenced, with an initial investment of USD 16.8 billion and a potential total investment exceeding USD 100 billion. - 富途牛牛 — _富途牛牛_
+- `3h ago` **[Market]** S&P 500 and Nasdaq end lower as chip rally fizzles out and U.S.-Iran tensions rise - Investing.com — _Investing.com_
 
 ## Market
 
-- `23m ago` U.S. stocks are off to a mixed start as more earnings reports roll in - post-gazette.com — _post-gazette.com_
-- `40m ago` Stock Market Today: Nasdaq Recovers From Early Losses, Oil price at $ 76 - eurasiabusinessnews.com — _eurasiabusinessnews.com_
-- `53m ago` US stock market today: Wall Street mixed as earnings reports drive key indices - The Times of India — _The Times of India_
-- `1h ago` US Stock Market Today: Nasdaq Falls As SanDisk Shares Crash; S&P 500, Dow Little Changed - NDTV Profit — _NDTV Profit_
-- `1h ago` US Stock Market Today: S&P 500 Futures Hold Steady & Nasdaq Futures Slip ahead of Wall Street Open as Investors Weigh Tech Weakness| Here’s What Investors Should Watch - The Sunday Guardian — _The Sunday Guardian_
-- `2h ago` Sector & Industry Performance - Bloomberg.com — _Bloomberg.com_
+- `2h ago` Asian Stocks to Slip on Iran Concerns, Oil Climbs: Markets Wrap - Bloomberg.com — _Bloomberg.com_
+- `2h ago` Stock futures are little changed as traders await big jobs report: Live updates - CNBC — _CNBC_
+- `2h ago` Why did stocks fall today? Dow drops 464 points - Rolling Out — _Rolling Out_
+- `2h ago` Chicago livestock futures fall with US stock market dip - TradingView — _TradingView_
+- `3h ago` S&P 500 and Nasdaq end lower as chip rally fizzles out and U.S.-Iran tensions rise - Investing.com — _Investing.com_
+- `3h ago` Canadian, U.S. markets edge lower as oil rises, driving inflationary fears - BNN Bloomberg — _BNN Bloomberg_
 
 ## Trump
 
-- `1h ago` Trump's stock market MELT UP: Record highs explained - Fox News — _Fox News_
-- `1h ago` Trump officials say they’re strengthening Head Start with proposed rule. Critics say they’ll gut it - CNN — _CNN_
-- `1h ago` U.S. Refinery Stocks Near Buy Points After Trump's Iran Comments - Investor's Business Daily — _Investor's Business Daily_
-- `3h ago` Mother of immigrant who died in ICE custody sends message to Trump - CNN — _CNN_
-- `4h ago` Trump touts stock market records as rally broadens beyond tech - Fox Business — _Fox Business_
-- `6h ago` Doonesbury Comic Strips by Garry Trudeau - August 04, 1991 - The Washington Post — _The Washington Post_
+- `54m ago` Trump signs new executive orders targeting birthright citizenship again - CNN — _CNN_
+- `1h ago` Trump's stop and start rhetoric on the war with Iran - CNN — _CNN_
+- `2h ago` Trump Imposes Tariffs on Polysilicon... Korean Companies on High Alert - 아시아경제 — _아시아경제_
+- `2h ago` Trump again tries to curb birthright citizenship and ‘birth tourism’ through executive action - CNN — _CNN_
+- `3h ago` FACT FOCUS: Trump boasts about the economy but there’s more to the story - AP News — _AP News_
+- `4h ago` Is Trump's new 'Truth API' insider trading? | About That - cbc.ca — _cbc.ca_
 
 ## Musk
 
-- `6m ago` SpaceX, Tesla to Initially Spend $16.8 Billion on Terafab Chip Plant in Texas - GV Wire — _GV Wire_
-- `16m ago` SpaceX, Tesla to Build Chip Plant in Texas to Meet Compute Demand - WSJ — _WSJ_
-- `17m ago` Musk’s SpaceX And Tesla Plan A Texas Terafab For AI Chips - Finimize — _Finimize_
-- `23m ago` Tesla or SpaceX: Which Musk-Led Company is a Better Investment Now? - Zacks Investment Research — _Zacks Investment Research_
-- `52m ago` SpaceX says Terafab to be built in Texas with initial investment of $16.8 billion - Reuters — _Reuters_
-- `53m ago` Elon Musk’s DOGE made big errors in claims of government savings, GAO finds - The Washington Post — _The Washington Post_
+- `2h ago` SpaceX makes Terafab official, confirms initial $16.8 billion investment - Austin American-Statesman — _Austin American-Statesman_
+- `2h ago` Tesla’s mysterious Robovan makes a sneak peek with Optimus in Terafab video - Teslarati — _Teslarati_
+- `3h ago` Elon Musk's Terafab AI chip megafactory project has commenced, with an initial investment of USD 16.8 billion and a potential total investment exceeding USD 100 billion. - 富途牛牛 — _富途牛牛_
+- `3h ago` SpaceX, Tesla plan $16.8B Texas chip facility to cut foreign reliance - Interesting Engineering — _Interesting Engineering_
+- `4h ago` Tesla approves $29 billion pay package for Elon Musk - The Detroit News — _The Detroit News_
+- `4h ago` SpaceX Bought $295 Million Worth Of Tesla Megapacks In Q2 - Investor's Business Daily — _Investor's Business Daily_
 
 ## Fed
 
-- `37m ago` Bessent and Warsh Called 'Double Whammy to Global Markets' as 30-Year Treasury Yields Soar - 24/7 Wall St. — _24/7 Wall St._
-- `1h ago` Trump Maintains Regular Contact With Fed Chair Warsh: Report - Newsmax — _Newsmax_
-- `1h ago` Trump said to call Warsh in latest signal of push to remake Fed - Moneyweb — _Moneyweb_
-- `1h ago` Returning to Camp Kotok - The Big Picture — _The Big Picture_
-- `1h ago` July Jobs Report Preview: ADP Miss Puts Variable-Rate Borrowers on Rate-Hike Watch - Tech Times — _Tech Times_
-- `3h ago` Daily: Gold’s rally has support - UBS — _UBS_
+- `2h ago` Yardeni urges Fed hawkish shift amid inflation, gold price odds fall - Crypto Briefing — _Crypto Briefing_
+- `4h ago` Interest Rate Predictions for the Next 2 Years: 2026-2028 - Norada Real Estate Investments — _Norada Real Estate Investments_
+- `4h ago` Analysis: Trump treats Fed Chairman Kevin Warsh as an ally. That creates economic risks - CNBC — _CNBC_
+- `5h ago` Trump Is Still in the Honeymoon Phase With New Fed Chair - New York Magazine — _New York Magazine_
+- `5h ago` Fed’s Lisa Cook ready to hike rates if ‘too high’ inflation stays elevated - New York Post — _New York Post_
+- `6h ago` Markets Question Fed’s Inflation Resolve After July FOMC Meeting - Bitcoin World — _Bitcoin World_
 
 ## Oil
 
-- `2h ago` Goldman Lowers Oil Price Forecasts on Deal to Reopen Strait of Hormuz - EnergyNow.com — _EnergyNow.com_
-- `4h ago` Trump blasts big oil profits. His Iran War helped create them. - Houston Chronicle — _Houston Chronicle_
-- `5h ago` How the UAE Has Kept Its Oil Flowing Through Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
+- `2h ago` Oil settles up US$3 as Iran reviews bill to ban US, Israeli vessels from Hormuz - The Business Times — _The Business Times_
+- `2h ago` Oil Jumps 7% to Above $100 Ahead of US Blockade on Strait of Hormuz - EnergyNow.com — _EnergyNow.com_
+- `4h ago` US Seeks International Help to Reopen Strait of Hormuz as Crude Prices Surge - EnergyNow — _EnergyNow_
+- `5h ago` Crude Prices Finish Sharply Higher on Doubts About Strait of Hormuz Reopening - Barchart.com — _Barchart.com_
+- `5h ago` Oman-Iran plan blocks US, Israeli ships as Hormuz risks rise - TMGM trading — _TMGM trading_
 - `6h ago` Oil prices slip as Iran cites progress with Oman on Hormuz agreement - The Daily Star — _The Daily Star_
-- `9h ago` WTI Price Forecast: Downside likely towards $67 on Hormuz reopening hopes - FXStreet — _FXStreet_
-- `10h ago` Iran and Oman Near Landmark Deal to Manage Strait of Hormuz - Crude Oil Prices Today | OilPrice.com — _Crude Oil Prices Today | OilPrice.com_
 
 ## Chips
 
-- `2h ago` AMD Shares Fall 8% as Elon Musk Commits to Nvidia Chips for SpaceX - WSJ — _WSJ_
-- `2h ago` Should You Really Invest in a Semiconductor ETF Right Now? Here's My Honest Take. - AOL.com — _AOL.com_
-- `2h ago` In July, the domestic exchange-traded fund (ETF) market was all "all blue" market. Nearly eight out - 매일경제 — _매일경제_
-- `4h ago` Why Nvidia, Micron and AMD are down pre-market after SanDisk shock - Invezz — _Invezz_
-- `4h ago` Why Nvidia, Micron, AMD stocks are down pre-market after SanDisk shock - Invezz — _Invezz_
-- `4h ago` Is the AI trade unwinding (again)? - Investors' Chronicle — _Investors' Chronicle_
+- `2h ago` Semiconductor Stocks Are Down 22%. Here's the 1 Chip Stock I'd Buy Right Now. - AOL.com — _AOL.com_
+- `3h ago` Advanced Micro Devices (NASDAQ:AMD) Shares Up 1.5% on Analyst Upgrade - MarketBeat — _MarketBeat_
+- `3h ago` Nvidia dominates AI chips, but BofA sees AMD closing in - thestreet.com — _thestreet.com_
+- `4h ago` 【US Pre-Market】Memory Chip Stocks Tumble as AI Capital Spending Concerns Rise; Western Digital Falls Over 16%, SanDisk Drops Over 10% - tradingkey.com — _tradingkey.com_
+- `4h ago` AMD buys chip startup that hardwires AI models into its silicon - CNBC — _CNBC_
+- `5h ago` Nasdaq Slides as AI Expectations Reset, Nvidia Surges While AMD Plunges - BBN Times — _BBN Times_
 
 ## Earnings
 
-- `11m ago` Dutch Bros Stock Drops: What's Going On? - Benzinga — _Benzinga_
-- `18m ago` The S&P 500 Hits Yet Another Record High. So What? - Bloomberg.com — _Bloomberg.com_
-- `24m ago` Biggest stock movers Thursday: APP, CLS, DDOG, SNDK, and more - Seeking Alpha — _Seeking Alpha_
-- `26m ago` Celestica Stock Drops After Raising $3 Billion via Equity - Benzinga — _Benzinga_
-- `37m ago` Redwire Stock Surges Thursday: What's Happening? - Benzinga — _Benzinga_
-- `1h ago` D-Wave Quantum Stock Drops After Q2 Earnings Miss - Benzinga — _Benzinga_
+- `30m ago` Tech Futures Rise, Five Big Software Winners - Investor's Business Daily — _Investor's Business Daily_
+- `3h ago` 12 Communication Services Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `3h ago` 12 Health Care Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `3h ago` 12 Information Technology Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `3h ago` 12 Industrials Stocks Moving In Thursday's After-Market Session - Benzinga — _Benzinga_
+- `3h ago` Why Sharon AI (SHAZ) Stock Is Down After Q2 Earnings - Benzinga — _Benzinga_
 
