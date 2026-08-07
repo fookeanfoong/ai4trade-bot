@@ -78,8 +78,19 @@ MAX_POSITIONS = max(1, int(os.environ.get("MAX_POSITIONS", "20")))   # hard safe
 # f=0.25% 时:净 +0.53% 需要毛涨 +1.03%(其中约 0.50% 是拿去交手续费的)。
 NET_PROFIT_MODE = os.environ.get("NET_PROFIT_MODE", "false").lower() in ("yes", "true")
 FEE_RATE = float(os.environ.get("FEE_RATE", "0.0025"))      # Alpaca 加密吃单约 0.25%/边
-NET_TARGET_PCT = float(os.environ.get("NET_TARGET_PCT", "0.0053"))   # 扣费后 +0.53%
+# 目标是个区间,不是一个死数:每个币按自己的波动率在 [MIN, MAX] 里挑。
+# 布林带宽度(上轨-下轨,占价格的比例)= 这个币最近的波动幅度。
+#   带宽 <= VOL_SPAN_LO(死水行情) -> 用下限 0.5%,别贪,先落袋
+#   带宽 >= VOL_SPAN_HI(大波动)   -> 用上限 1.0%,波动大就多要一点
+#   中间线性插值
+NET_TARGET_MIN_PCT = float(os.environ.get("NET_TARGET_MIN_PCT", "0.005"))   # 扣费后 +0.5%
+NET_TARGET_MAX_PCT = float(os.environ.get("NET_TARGET_MAX_PCT", "0.010"))   # 扣费后 +1.0%
+VOL_SPAN_LO = float(os.environ.get("VOL_SPAN_LO", "0.015"))   # 布林带宽 1.5%
+VOL_SPAN_HI = float(os.environ.get("VOL_SPAN_HI", "0.050"))   # 布林带宽 5%
 MAX_TARGET_MOVE_PCT = float(os.environ.get("MAX_TARGET_MOVE_PCT", "0.03"))
+# 目标变小之后,止损必须跟着收紧,否则「赚 1% 亏 1.65%」——那要 62% 胜率才不亏。
+# 这里强制:止损距离 <= 目标距离 / MIN_RR_NET。1.0 = 至少一赔一。
+MIN_RR_NET = float(os.environ.get("MIN_RR_NET", "1.0"))
 
 MIN_CONFIDENCE = 0.6
 MAX_CHASE_3D_PCT = 6.0
@@ -120,6 +131,20 @@ ALLOW_FRACTIONAL = ((_frac.lower() in ("yes", "true")) if _frac is not None
                     else BROKER_NAME in ("alpaca", "alpaca_crypto", "alpaca-crypto", "crypto"))
 
 
+def price_decimals(x: float) -> int:
+    """Decimals needed to resolve a sub-1% move at this price magnitude."""
+    ax = abs(x)
+    if ax >= 100:
+        return 2
+    if ax >= 1:
+        return 4
+    if ax >= 0.01:
+        return 6
+    if ax >= 0.0001:
+        return 8
+    return 9
+
+
 def round_price(x: float) -> float:
     """Round a PRICE to enough decimals to resolve a sub-1% move at its magnitude.
     stop/T1/T2 are internal thresholds compared to the live price (all orders are
@@ -127,18 +152,17 @@ def round_price(x: float) -> float:
     coarse rounding collapses close targets onto the entry: DOGE ~$0.07 needs many
     decimals, and even $1–$3 coins (XRP ~$1.05) need >2 or a +0.8% target rounds
     back to the entry. High-priced names (BTC/ETH, >= $100) keep 2 decimals."""
-    ax = abs(x)
-    if ax >= 100:
-        d = 2
-    elif ax >= 1:
-        d = 4
-    elif ax >= 0.01:
-        d = 6
-    elif ax >= 0.0001:
-        d = 8
-    else:
-        d = 9
-    return round(x, d)
+    return round(x, price_decimals(x))
+
+
+def ceil_price(x: float) -> float:
+    """Round a price UP to its tick. Profit targets use this instead of
+    round_price: rounding a target DOWN silently shaves the net return below the
+    floor we promised, and on a $0.07 coin one tick is a meaningful slice of a
+    0.5% move. Rounding up can only ever overshoot the target, never undershoot."""
+    d = price_decimals(x)
+    scale = 10 ** d
+    return math.ceil(x * scale) / scale
 
 
 # ----------------------------- broker factory ------------------------------
@@ -305,6 +329,31 @@ def gross_move_for_net_pct(net_pct: float) -> float | None:
     if FEE_RATE >= 1:
         return None
     return (net_pct + 2.0 * FEE_RATE) / (1.0 - FEE_RATE)
+
+
+def net_pct_at(entry: float, exit_price: float) -> float:
+    """这一轮买卖实际到手的净收益率(两边手续费都扣掉)。用它复核取整之后的真实数字。"""
+    if entry <= 0:
+        return 0.0
+    g = exit_price / entry - 1.0
+    return g - FEE_RATE * (2.0 + g)
+
+
+def pick_net_target(q: dict, last: float) -> tuple:
+    """按这个币自己的波动率,在 [NET_TARGET_MIN_PCT, NET_TARGET_MAX_PCT] 里挑目标。
+
+    返回 (目标净收益率, 布林带宽 或 None)。拿不到带宽就退回下限——
+    信息不足时要保守,先把 0.5% 收进口袋。"""
+    lo, hi = NET_TARGET_MIN_PCT, NET_TARGET_MAX_PCT
+    bbu, bbl = q.get("bb_upper"), q.get("bb_lower")
+    if not (bbu and bbl and last and last > 0):
+        return lo, None
+    span = (bbu - bbl) / last
+    if VOL_SPAN_HI <= VOL_SPAN_LO:
+        return lo, span
+    f = (span - VOL_SPAN_LO) / (VOL_SPAN_HI - VOL_SPAN_LO)
+    f = max(0.0, min(1.0, f))
+    return lo + f * (hi - lo), span
 
 
 def total_notional(state: dict) -> float:
@@ -513,25 +562,45 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
     # 干等它等于把已经到手的利润又赔回去——「够了就跑」优先。
     net_note = ""
     single_exit = False
+    net_target_px = None
     if NET_PROFIT_MODE and side == "long":
-        g = gross_move_for_net_pct(NET_TARGET_PCT)
+        r, span = pick_net_target(q or {}, entry)
+        g = gross_move_for_net_pct(r)
         if g is None or g <= 0:
-            return [f"{sym}: cannot build a net-{NET_TARGET_PCT*100:.2f}% target at fee {FEE_RATE}"]
+            return [f"{sym}: cannot build a net-{r*100:.2f}% target at fee {FEE_RATE}"]
         if g > MAX_TARGET_MOVE_PCT:
             return [
-                f"{sym}: skipped — netting +{NET_TARGET_PCT*100:.2f}% needs a +{g*100:.2f}% move "
+                f"{sym}: skipped — netting +{r*100:.2f}% needs a +{g*100:.2f}% move "
                 f"(cap {MAX_TARGET_MOVE_PCT*100:.1f}%); fees would eat the trade"
             ]
+        # 取整只能往上:往下取会把净收益悄悄削到承诺的下限以下,
+        # 在 $0.07 的币上一个最小价位就是 0.5% 涨幅里不小的一块。
+        net_target_px = ceil_price(entry * (1 + g))
+        actual = net_pct_at(entry, net_target_px)
         ta_t2 = t2_pct
-        t1_pct = t2_pct = g
         single_exit = True
-        net_note = (f" | net-target +{NET_TARGET_PCT*100:.2f}% after fees "
-                    f"= gross +{g*100:.2f}% @ fee {FEE_RATE*100:.2f}%/side (full exit)"
-                    f" | TA t2 was +{ta_t2*100:.2f}%")
+
+        # 止损跟着目标收紧。信号层的 R:R 是拿「技术目标」(常在 +3%)算的,而我们
+        # 现在在 +1% 就走人——不收紧的话,实际是赚 1% 亏 1.65%,要 62% 胜率才不亏。
+        rr_stop_cap = g / MIN_RR_NET if MIN_RR_NET > 0 else stop_pct
+        stop_note = ""
+        if stop_pct > rr_stop_cap:
+            stop_note = f" | stop tightened {stop_pct*100:.2f}%->{rr_stop_cap*100:.2f}% for {MIN_RR_NET:g}:1"
+            stop_pct = rr_stop_cap
+
+        span_txt = f"{span*100:.2f}%" if span is not None else "n/a"
+        net_note = (f" | net-target +{r*100:.2f}% (band {NET_TARGET_MIN_PCT*100:.1f}-"
+                    f"{NET_TARGET_MAX_PCT*100:.1f}%, vol span {span_txt}) "
+                    f"= gross +{g*100:.2f}% -> exit ${net_target_px:g} "
+                    f"= net +{actual*100:.3f}% after {FEE_RATE*100:.2f}%/side (full exit)"
+                    f"{stop_note} | TA t2 was +{ta_t2*100:.2f}%")
 
     stop = round_price(entry * (1 - stop_pct * s))
-    t1 = round_price(entry * (1 + t1_pct * s))
-    t2 = round_price(entry * (1 + t2_pct * s))
+    if net_target_px is not None:
+        t1 = t2 = net_target_px
+    else:
+        t1 = round_price(entry * (1 + t1_pct * s))
+        t2 = round_price(entry * (1 + t2_pct * s))
 
     fn = (lambda: broker.buy(sym, shares, entry)) if side == "long" \
         else (lambda: broker.sell(sym, shares, entry))
