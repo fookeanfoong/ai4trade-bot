@@ -1,5 +1,50 @@
 {
-  "positions": {},
+  "positions": {
+    "XRP": {
+      "ticker": "XRP",
+      "side": "long",
+      "qty": 97.418412,
+      "entry": 1.0265,
+      "stop": 1.0224,
+      "t1": 4.6193,
+      "t2": 4.6193,
+      "half_taken": false,
+      "peak_price": 1.0265,
+      "armed": false,
+      "confidence": 0.69,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 100.0,
+      "book_risk_usd": 8.0,
+      "single_exit": false,
+      "run_mode": true,
+      "trail_floor": 1.0337,
+      "opened_at": "2026-08-07T16:12:37Z",
+      "opened_ny_date": "2026-08-07",
+      "price_src": "quotes.json"
+    },
+    "DOGE": {
+      "ticker": "DOGE",
+      "side": "long",
+      "qty": 1429.388222,
+      "entry": 0.06996,
+      "stop": 0.069498,
+      "t1": 0.31482,
+      "t2": 0.31482,
+      "half_taken": false,
+      "peak_price": 0.06996,
+      "armed": false,
+      "confidence": 0.66,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 100.0,
+      "book_risk_usd": 8.0,
+      "single_exit": false,
+      "run_mode": true,
+      "trail_floor": 0.070451,
+      "opened_at": "2026-08-07T16:12:39Z",
+      "opened_ny_date": "2026-08-07",
+      "price_src": "quotes.json"
+    }
+  },
   "trade_log": [
     {
       "ticker": "ADA",
@@ -88,6 +133,15 @@
       "dry_run": false,
       "actions": [
         "RISK-OFF: \u65b0\u95fb\u98ce\u63a7:21 \u6761 6h \u5185\u7684\u91cd\u5927\u8d1f\u9762\u65b0\u95fb (\u9608\u503c 2) \u2014 XRP Prints 2,809% Liquidation Imbalance as Bulls Get Caught Off Guard - U.Today; Coldcard overhauls data retention policy, prepares for \u2018legal obligations\u2019 from $100M expl \u2014 no new entries"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T16:12:41Z",
+      "broker": "ai4trade",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG XRP conf 0.69 97.4184 sh @ $1.03 [quotes.json] notional $100 risk $8.00 | stop $1.0224 T1 $4.6193 T2 $4.6193 | net-target $0.50 (band $0.50-$1.00, vol span 0.39%) = gross +0.70% -> exit $1.0337 = net $+0.5007 after 0.10%/side (FLOOR \u2014 trails from here, upside open) | TA t2 was +1.37%",
+        "ENTRY LONG DOGE conf 0.66 1429.39 sh @ $0.07 [quotes.json] notional $100 risk $8.00 | stop $0.069498 T1 $0.31482 T2 $0.31482 | net-target $0.50 (band $0.50-$1.00, vol span 0.57%) = gross +0.70% -> exit $0.070451 = net $+0.5011 after 0.10%/side (FLOOR \u2014 trails from here, upside open) | TA t2 was +2.00%"
       ]
     }
   ],
