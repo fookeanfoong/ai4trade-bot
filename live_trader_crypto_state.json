@@ -364,6 +364,14 @@
       "actions": [
         "ETH: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T11:59:02Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ADA: benched today (already exited once) \u2014 no re-entry until tomorrow"
+      ]
     }
   ],
   "benched": {
