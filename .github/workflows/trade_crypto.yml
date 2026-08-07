@@ -71,8 +71,11 @@ jobs:
           # close positions it does not own.
           STATE_FILE: "live_trader_ai4trade_state.json"
           REPORTS_SUBDIR: "live_trader_ai4trade"
-          # The platform grants $100,000 simulated cash on registration.
-          BOOK_EQUITY: "100000"
+          # The platform grants $100,000 simulated cash, but charges a 0.1% fee
+          # the skill document never mentions, and it is debited from the same
+          # cash. Two $50k positions came to exactly $100k and the second was
+          # rejected for $45 of headroom. Book 98k so fees always fit.
+          BOOK_EQUITY: "98000"
           RISK_PCT: "0.08"
           BASE_SLICES: "1"              # concentrate: a lone signal takes the whole book
           LEVERAGE_CAP: "1.0"
@@ -80,12 +83,12 @@ jobs:
           MAX_POSITIONS: "2"            # 1 coin at $100k, or 2 at $50k each
           ENABLE_SHORT: "no"            # platform supports short/cover; keep this book long-only
           # --- Net-dollar target ------------------------------------------
-          # The platform charges no trading fee, so FEE_RATE is 0 and the target
-          # is pure price movement. Scaled to the $100k book, $250-$500 is the
-          # same 0.5%-1.0% shape the $200 Alpaca book ran at $0.50-$1.00.
+          # Fee measured from a live rejection: $50.00 on a $49,995.17 trade =
+          # 0.1% per side. Targets must clear it or the book repeats the Alpaca
+          # mistake of banking "wins" that cost more in fees than they earned.
           NET_PROFIT_MODE: "yes"
-          FEE_RATE: "0.0"
-          NET_TARGET_MIN_USD: "250"     # quiet coin: 0.5% of a $50k position
+          FEE_RATE: "0.001"
+          NET_TARGET_MIN_USD: "250"     # quiet coin: ~0.5% net of a $49k position
           NET_TARGET_MAX_USD: "500"     # volatile coin: 1.0%
           VOL_SPAN_LO: "0.015"          # BB width <=1.5% of price => use the floor
           VOL_SPAN_HI: "0.050"          # BB width >=5% of price   => use the ceiling
