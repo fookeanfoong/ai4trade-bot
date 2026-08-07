@@ -1,82 +1,5 @@
 {
-  "positions": {
-    "XRP": {
-      "ticker": "XRP",
-      "side": "long",
-      "qty": 48.603618,
-      "entry": 1.02873,
-      "stop": 1.0145,
-      "t1": 1.0394,
-      "t2": 1.0394,
-      "half_taken": false,
-      "peak_price": 1.02873,
-      "armed": false,
-      "confidence": 0.66,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 50.0,
-      "book_risk_usd": 4.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T08:01:41Z",
-      "price_src": "broker"
-    },
-    "DOGE": {
-      "ticker": "DOGE",
-      "side": "long",
-      "qty": 721.176036,
-      "entry": 0.0693312,
-      "stop": 0.068804,
-      "t1": 0.070047,
-      "t2": 0.070047,
-      "half_taken": false,
-      "peak_price": 0.0693312,
-      "armed": false,
-      "confidence": 0.62,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 50.0,
-      "book_risk_usd": 4.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T08:01:41Z",
-      "price_src": "broker"
-    },
-    "SOL": {
-      "ticker": "SOL",
-      "side": "long",
-      "qty": 0.687096,
-      "entry": 72.77,
-      "stop": 72.1733,
-      "t1": 73.5214,
-      "t2": 73.5214,
-      "half_taken": false,
-      "peak_price": 72.77,
-      "armed": false,
-      "confidence": 0.62,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 50.0,
-      "book_risk_usd": 4.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T08:01:41Z",
-      "price_src": "broker"
-    },
-    "LINK": {
-      "ticker": "LINK",
-      "side": "long",
-      "qty": 6.109482,
-      "entry": 8.184,
-      "stop": 8.1005,
-      "t1": 8.2685,
-      "t2": 8.2685,
-      "half_taken": false,
-      "peak_price": 8.184,
-      "armed": false,
-      "confidence": 0.62,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 50.0,
-      "book_risk_usd": 4.0,
-      "single_exit": true,
-      "opened_at": "2026-08-07T08:01:41Z",
-      "price_src": "broker"
-    }
-  },
+  "positions": {},
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -203,6 +126,42 @@
       "exit": 1904.9,
       "qty": 0.052755,
       "closed_at": "2026-08-07T08:01:41Z"
+    },
+    {
+      "ticker": "XRP",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 1.02873,
+      "exit": 1.0254,
+      "qty": 48.603618,
+      "closed_at": "2026-08-07T08:41:54Z"
+    },
+    {
+      "ticker": "DOGE",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 0.0693312,
+      "exit": 0.0694,
+      "qty": 721.176036,
+      "closed_at": "2026-08-07T08:41:54Z"
+    },
+    {
+      "ticker": "SOL",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 72.77,
+      "exit": 72.8971,
+      "qty": 0.687096,
+      "closed_at": "2026-08-07T08:41:54Z"
+    },
+    {
+      "ticker": "LINK",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 8.184,
+      "exit": 8.21,
+      "qty": 6.109482,
+      "closed_at": "2026-08-07T08:41:54Z"
     }
   ],
   "runs": [
@@ -326,6 +285,18 @@
         "ENTRY LONG DOGE conf 0.62 721.176 sh @ $0.07 [broker] notional $50 risk $4.00 | stop $0.068804 T1 $0.070047 T2 $0.070047 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%",
         "ENTRY LONG SOL conf 0.62 0.687096 sh @ $72.77 [broker] notional $50 risk $4.00 | stop $72.1733 T1 $73.5214 T2 $73.5214 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%",
         "ENTRY LONG LINK conf 0.62 6.10948 sh @ $8.18 [broker] notional $50 risk $4.00 | stop $8.1005 T1 $8.2685 T2 $8.2685 | net-target +0.53% after fees = gross +1.03% @ fee 0.25%/side (full exit) | TA t2 was +2.00%"
+      ]
+    },
+    {
+      "ran_at": "2026-08-07T08:41:55Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "FLATTEN: FLATTEN_ALL requested \u2014 closing every open position",
+        "CLOSE XRP long (MANUAL_FLATTEN) @ ~$1.03 [broker]",
+        "CLOSE DOGE long (MANUAL_FLATTEN) @ ~$0.07 [broker]",
+        "CLOSE SOL long (MANUAL_FLATTEN) @ ~$72.90 [broker]",
+        "CLOSE LINK long (MANUAL_FLATTEN) @ ~$8.21 [broker]"
       ]
     }
   ],
