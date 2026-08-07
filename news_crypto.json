@@ -1,18 +1,27 @@
 {
-  "updated_at": "2026-08-07T13:23:06+00:00",
+  "updated_at": "2026-08-07T14:31:28+00:00",
   "window_hours": 6.0,
   "halt_threshold": 2,
-  "hit_count": 20,
+  "hit_count": 21,
   "news_risk_off": true,
-  "reason": "20 条 6h 内的重大负面新闻 (阈值 2) — Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex; Coldcard Pauses Customer Data Deletion After Major Wallet Hack - Coinpaper",
+  "reason": "21 条 6h 内的重大负面新闻 (阈值 2) — Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com; Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex",
   "headlines": [
+    {
+      "title": "Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com",
+      "matched": [
+        "hack"
+      ],
+      "published": "2026-08-07T14:10:46+00:00",
+      "age_min": 20,
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9WM0Z3UmV1MWpRbzRrRjg0d2RUWktfTmRHcURiQVpJaVFib0NwWTVmaWdYTmJTOFYwNFdQSDFrRjlxWDlYMk9vWldiblpSQUpuS19wTHlBQ2hHc3BveExSNUd2Y2N0dFRfWkRlMWNjNFpfZHpZdUJMaTlCdGZZLUE?oc=5"
+    },
     {
       "title": "Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex",
       "matched": [
         "hack"
       ],
       "published": "2026-08-07T12:47:00+00:00",
-      "age_min": 36,
+      "age_min": 104,
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNYTQteXU4ZWd0UXk4eXVyRzdmOGdSR0loakdtOTdrZ0otbTJiekdWUWZjbWxBSm9lY0F4M2wxamM5WDlpaXNMaUczYXZpWUJ5UHdkZndaajA1WDNORzl1WnFmV09oNnlnTEtBQUlpVHlKS2U4eDNVS0ZMOW5jdHAyTWJIS09lN21pNzJuMTZsYW9LY2F3YklPTWdPUWJVZkdPS1VjM0NycDlMdw?oc=5"
     },
     {
@@ -21,7 +30,7 @@
         "hack"
       ],
       "published": "2026-08-07T12:28:45+00:00",
-      "age_min": 54,
+      "age_min": 122,
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOR2tsRFBvSnl5M2NvcFdpVjdocVhmRjBiTlcwWGhnRThXR3NiTld2Mm95U3Jac1EwajR2d2pITFhNbm5RcmFTSFlpOVNEcjdveGoyRkFWT2lNWmdjeVJsWjB4NGR3bW9BaC02alQ4SUFJenVONjVIZkFZWDI0Mkp4V3IxNEpHaDQ1V1p1dUM4Z3U4UVo5?oc=5"
     },
     {
@@ -30,7 +39,7 @@
         "exploit"
       ],
       "published": "2026-08-07T12:26:00+00:00",
-      "age_min": 57,
+      "age_min": 125,
       "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZlFUeVppel9kazU1c0RwTEw2aW8wWU1ONTZ4c3ZZTm43TGEzZlEzWEtya3F6VnRIZWM2QmZfcFk5elNkRG4tVzNNT3l0aHpLbldtN3VHVFozTVZ6UmNMN0p5VFdGcF96V01iaS0tTjhDV1doM0M4eE9rb3NvaDdwRWRxVQ?oc=5"
     },
     {
@@ -39,7 +48,7 @@
         "exploit"
       ],
       "published": "2026-08-07T12:03:55+00:00",
-      "age_min": 79,
+      "age_min": 147,
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOMXVTSWRwZUxvTVJpeGRaTEhMamJFS0FZZkRRdTJQam9HT09GSnE5aWlzQWR1MDZ2YUZocWE0NVdqWmU1ejQ5ZGFpUlJPWG54WnF0cWlPb0F6dDRmNVlEd0MyRmZxOHZzcWQtdkZNcFZ3cDEzUWtHU2dJRTYyTGxiU0M0VVY5RUpfUnVkYVRCb2hGZw?oc=5"
     },
     {
@@ -48,17 +57,17 @@
         "crash"
       ],
       "published": "2026-08-07T11:45:12+00:00",
-      "age_min": 97,
+      "age_min": 166,
       "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPb2Fpc094bGJQLXBkUWtFWk9EWThHX3ZXVzZ0eE1xTkZnaDUwWUhaVnVFOV9qMUJHS1MtaGRnc2NzZEo2OHIwZjgxb3g5OExpajhGdDFJZUR3VFNXdzhNWTNIdXlublVfOWpfcjBaRGJfQVMzTnI5VmRsQWhUT0hxOUI5M0ZTOUFfRzg5c1dxai1hVUxzWnlua0Nud1dJTjlxODRZTzlGdE1YdlJTYS1zZzhfMk1iMExtbWxmN2REZElpRy1vZUEyYk1DV2s0UQ?oc=5"
     },
     {
-      "title": "Bitcoin Price to $33,000? CLARITY Act’s September Delay Sparks Crash Warning - CCN.com",
+      "title": "Bitcoin Price to $33,000? CLARITY Act's September Delay Sparks Crash Warning - Yahoo Finance",
       "matched": [
         "crash"
       ],
-      "published": "2026-08-07T11:45:46+00:00",
-      "age_min": 97,
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNSEYwMjYxdlBreG5LbkpPMVpHN0tWSGpaUjd2dDFwd0JuWks3VDNvdC1KMURnNXBIc09vQ3M3UUYyb3BFNE13TXhZT0hNQThxRTM5WEwzMjFqOTdCb19HUG9HUTJtMjBObDhjbGM2eE82V3F1RHBYNUNDNmdFRVI1QWRMWnVPNlZLUkIxa3pLbUY3LTlfR1BUX3NrYXFQUHhoa3ZZ?oc=5"
+      "published": "2026-08-07T11:42:27+00:00",
+      "age_min": 169,
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOUU8wY2dxNkpuZzNCREV0QnZyZFRVclQxUFlUbGFQY0JOUEJpbjB3REYxSEp0eG1pU01GdUI5cTZkZnpxczRYLTBJaURuRkg2dXhBY0l3Y1N5ZTlQSldYMVJUaVZ6X2djeUlaQnNkQk9zaElUT0NXQ2c2QkxPWnVySW5qRjJ0TnVGd2FZdXBqb1ZKWUh1UXJ6NQ?oc=5"
     },
     {
       "title": "Bitcoin Faces $496M Long Liquidation Risk If Price Drops Below $63,660 - Bitcoin World",
@@ -66,17 +75,17 @@
         "liquidation"
       ],
       "published": "2026-08-07T11:40:12+00:00",
-      "age_min": 102,
+      "age_min": 171,
       "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1ZODNaSXBEY2Z5cDFwRUpOcVAxZU1McGNJSW4tNUhuX3czYXNibWxsa3JMUXFKLTdEYXNNcGtsSGdiSXJ1YjZKZjdFMERkWVBqZ3g1S0xhNUZYWk9GN1N3bk4xOFlVQU9sczVSTWtFX3M?oc=5"
     },
     {
-      "title": "OKX schedules delisting of GODS, PRCL and DUCK spot trading pairs - Cryptonews.net",
+      "title": "5 Lessons From a 13 Year Bitcoin Holder Who Lost Everything in the Coldcard Hack - Coin Edition",
       "matched": [
-        "delisting"
+        "hack"
       ],
-      "published": "2026-08-07T11:17:25+00:00",
-      "age_min": 125,
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9aRU5KOGdoQVhuMkU1d0R2eFJ3ODRhX1VneXE4UHB4QUxPa0NCTF9XME5zSkxsLU1PLVVzQjRjcHhzcVpfbmlRLUFnQjlUdkNqcnFXdmpiaw?oc=5"
+      "published": "2026-08-07T11:32:53+00:00",
+      "age_min": 178,
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdXpvdkRPUnhrYUlHYmpORUFPeFFQNllfdjBtcDVRN1BZU2xwanpQUmtFSURIRi1kRWp2bDUwcTdTOGc0WkxKSkhDLU5Ja1VWM3Fla0RhODFwTFFJX2FCaWNlcXctMGhSdXN0WTlSbEYtak80RXFQTWxHZHdnV0V1amhnVEk2UmhZT01oNGRZOUpsMmJjWGJZT01Hb0trZ0dkNHhWTDJOVnQ?oc=5"
     },
     {
       "title": "MEV Bot Operator Jaredfromsubway Loses $505K in Trading Blunder After $7.7M Exploit - Cryptonews.net",
@@ -84,8 +93,17 @@
         "exploit"
       ],
       "published": "2026-08-07T11:16:49+00:00",
-      "age_min": 126,
+      "age_min": 194,
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1EUkhFYmplZkplSnE1VnpVWU1UMm94NmJVdzNlenlNTDF5ck9fNG5xenE1WlFoN21xc1p0UmVaYzM2azIycG1vaHd5WjdGWG14eWlhWHdmSFpTZw?oc=5"
+    },
+    {
+      "title": "OKX schedules delisting of GODS, PRCL and DUCK spot trading pairs - Cryptonews.net",
+      "matched": [
+        "delisting"
+      ],
+      "published": "2026-08-07T11:17:25+00:00",
+      "age_min": 194,
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9aRU5KOGdoQVhuMkU1d0R2eFJ3ODRhX1VneXE4UHB4QUxPa0NCTF9XME5zSkxsLU1PLVVzQjRjcHhzcVpfbmlRLUFnQjlUdkNqcnFXdmpiaw?oc=5"
     },
     {
       "title": "Dice vs. Hackers: Why South Korean Bitcoiners Escaped the $130M Coldcard Wallet Hack - Coinpaper",
@@ -93,7 +111,7 @@
         "hack"
       ],
       "published": "2026-08-07T11:13:29+00:00",
-      "age_min": 129,
+      "age_min": 197,
       "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxON2tTUHppOHk2c0xQYWZLVlhZV2U3TE5MU3U0c002WmZuNVlLa09uTm1tSks3V0p3LUZSZHRsVjlWenQxcHRPMXFCdTR4OGdhVzIxS293NUpWNUtpbzBnLXpvT0ZDNUVJSS02aXlLeWxOUDMtRVBjWTNPaEFGVV9OU1M1MjZsaUk5Y3ozbm0tWFZkbkVaYzdXOUFOcjM3NmhWSkIxT0Nlcm9mc0FSTlE?oc=5"
     },
     {
@@ -102,7 +120,7 @@
         "exploit"
       ],
       "published": "2026-08-07T10:52:16+00:00",
-      "age_min": 150,
+      "age_min": 219,
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5fY0RHYkt6b3ZfaVk0dDVud0NBcHByelVSeldHR0R5UWt5MlNTX0hVZW44NW1FbmVBcjR4MzJhSFhLalZqVGhIbFFwX3lqN01WclVOTzd3WEcxUQ?oc=5"
     },
     {
@@ -113,7 +131,7 @@
         "crashes"
       ],
       "published": "2026-08-07T10:38:49+00:00",
-      "age_min": 164,
+      "age_min": 232,
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQdmx1emFpUzhEWFczMkJ6TVBpXzB6U2YwQnpvRkU2U29ETUJDNlcwU2tUTklxRVFnYXI5X2VNUTdvN0FZa3I3TlRucmxCbFRaUGJGdkozcG1ZVEdlb3VOdXdvZ0hSVllzTEowZlVYdkc4T3Z6RUNxZVZoMUNVc0J4VDY5RXU5MWZmcmREMWUxUkQxbWFELUYwUmxlWVEtLUNudjNwb0Rxb05CandqY0hhUE1R?oc=5"
     },
     {
@@ -122,27 +140,8 @@
         "stolen"
       ],
       "published": "2026-08-07T10:10:14+00:00",
-      "age_min": 192,
+      "age_min": 261,
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPWko1OVl4Rkp2R1dJYVpsY3hQNGJ0WGx4TXI2bTR3LUU5b1VDUXhfYjJTYkk5ZDZmbHJlOVpJRjJ1ODdlVUNkZHprN0lFMlY3Ml90YWNlNmdoMmdZRFU3aGNtd0dIWS1scjJjTUVOa3NRRmc1QlVMYVdGWFNHOVlDTW9WazJteEUyNnY5VnVuMzZiLWI0YkhHMmRrSk9mWWlqX0Z6T1B1c0VYVGtOWGJiNzUzd2dham5GQVJGU3h3?oc=5"
-    },
-    {
-      "title": "Coldcard Hack Rises to Third-Largest Crypto Attack: What On-Chain Forensics Reveal - coingabbar.com",
-      "matched": [
-        "hack"
-      ],
-      "published": "2026-08-07T10:09:28+00:00",
-      "age_min": 193,
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQQzRsYU8zM1Y3NF9JeVB0U1J2X0xzYk84WkM0UGpwT3phbkJOZURRUkxmaThQTF9zUzI0X1ktVXpFTERHTlIyUWxQbmpOSzJBR2JQZHpRUnpvcnE2Q0dodkstVW00bGo1dXYzdXAtU3ZJYVo1MjZvMjlLbTBUc2hUYTlwekhNTEJZUlcw?oc=5"
-    },
-    {
-      "title": "Monthly Crypto Hack Report: $247 Million Stolen in July - Coinpaper",
-      "matched": [
-        "hack",
-        "stolen"
-      ],
-      "published": "2026-08-07T10:03:16+00:00",
-      "age_min": 199,
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcFFhc01NYkdyMmFnaU9QSFJKZWtELTAxOWxOYWZRNzdZZXVDUTlSbHh6QldxTFJUdTZGMlZTVWdVd2I0N05xU1VSSFBBU3J2N1JXTG9GNXpKSlRBSmhDQUdDbkVIYVJsN2JLa3VfTm5WYXJpMkhvNTBTcUx6X0pIWmRlMThScG94?oc=5"
     }
   ],
   "errors": {},

@@ -73,6 +73,14 @@
       "actions": [
         "RISK-OFF: \u65b0\u95fb\u98ce\u63a7:20 \u6761 6h \u5185\u7684\u91cd\u5927\u8d1f\u9762\u65b0\u95fb (\u9608\u503c 2) \u2014 Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex; Coldcard Pauses Customer Data Deletion After Major Wallet Hack - Coinpaper \u2014 no new entries"
       ]
+    },
+    {
+      "ran_at": "2026-08-07T14:31:31Z",
+      "broker": "ai4trade",
+      "dry_run": false,
+      "actions": [
+        "RISK-OFF: \u65b0\u95fb\u98ce\u63a7:21 \u6761 6h \u5185\u7684\u91cd\u5927\u8d1f\u9762\u65b0\u95fb (\u9608\u503c 2) \u2014 Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com; Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex \u2014 no new entries"
+      ]
     }
   ],
   "benched": {},

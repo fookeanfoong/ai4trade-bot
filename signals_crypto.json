@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-08-07T09:23:08-04:00",
+  "updated_at": "2026-08-07T10:31:30-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 1.45,
+  "regime_day_pct": 1.27,
   "news_risk_off": true,
-  "news_hits": 20,
+  "news_hits": 21,
   "news_degraded": false,
   "risk_off": true,
   "panic_flatten": false,
-  "regime_reason": "新闻风控:20 条 6h 内的重大负面新闻 (阈值 2) — Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex; Coldcard Pauses Customer Data Deletion After Major Wallet Hack - Coinpaper",
+  "regime_reason": "新闻风控:21 条 6h 内的重大负面新闻 (阈值 2) — Coldcard Hack Sparks 210,000 BTC Shift From Long-Term Wallets - CCN.com; Coldcard Hack Boosts Inflows to Bitcoin ETFs After a Poor Run in July - CoinCodex",
   "signals": []
 }
