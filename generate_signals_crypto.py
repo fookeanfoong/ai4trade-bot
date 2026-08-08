@@ -64,7 +64,11 @@ RSI_MOMO_MIN = 40.0
 
 STOP_BUFFER = 0.0015       # place stop a touch below support/swing
 STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
-MIN_RR = 1.0               # reward(to T2):risk floor (aggressive)
+MIN_RR = 1.5               # reward(to T2):risk floor
+# 手续费是固定成本:一买一卖 0.5%。目标越小,手续费占毛利的比例越高
+# (\$100 仓位赚 \$0.50 净利,手续费就占毛利的 50%)。所以只在「图上确实有空间」
+# 的时候才开单——技术目标至少要有这么多,否则这笔交易本质上是在给交易所打工。
+MIN_TARGET_ROOM = 0.015    # T2 距入场至少 1.5%
 # 集中而非分散:美金目标下,仓位越大门槛越低。$200 押 1 个币,净赚 $1 只要涨
 # 1.00%;分 2 个要 1.50%;分 4 个就要 2.51% —— 5 分钟内基本等不到。
 # 所以这里只挑最强的 1-2 个,把火力集中在最好的机会上。
@@ -179,12 +183,12 @@ def build_setup(tkr, q, risk_off):
     # --- Setup B: momentum long (aggressive) -------------------------------
     #     Any up-OR-flat, non-overbought tape is tradable long — this is what
     #     keeps the crypto book active in chop instead of sitting flat.
-    elif trend in ("up", "flat") and rsi >= RSI_MOMO_MIN:
+    elif trend == "up" and rsi >= RSI_MOMO_MIN and (vol_ratio or 0) >= 1.0:
+        # 原来 "up" 或 "flat" 都做,且不要求成交量。结果是横盘噪音里也一直开单,
+        # 每单来回 0.5% 手续费——26 笔实盘胜率只有 12%。现在要求真的在涨、且有量。
         setup = "momentum_long"
-        conf = 0.62
-        if trend == "up":
-            conf += 0.04
-        if vol_ratio and vol_ratio >= 1.0:
+        conf = 0.64
+        if vol_ratio >= 1.3:
             conf += 0.03
         target2 = max(bb_upper or 0, resistance or 0, last * 1.02)
         target1 = bb_upper or (last * 1.008)
@@ -206,6 +210,8 @@ def build_setup(tkr, q, risk_off):
     rr = t2_pct / stop_pct if stop_pct > 0 else 0
     if rr < MIN_RR:
         return None   # not worth the risk
+    if t2_pct < MIN_TARGET_ROOM:
+        return None   # 空间不够覆盖手续费,不值得开
 
     conf = round(min(conf, 0.78), 2)
     rr = round(rr, 2)
@@ -251,13 +257,20 @@ def main():
         if s:
             cands.append(s)
     cands.sort(key=lambda s: (s["confidence"], s["rr"]), reverse=True)
-    signals = cands[:MAX_NAMES]
+    # 发布**全部**合格候选,不再截断到前 MAX_NAMES 名。
+    #
+    # 之前截断造成了最大的一类亏损:引擎的 signal_still_valid() 在「该币不在名单里」
+    # 时判定信号失效并平仓。于是一个持仓只要这一轮被别的币挤出前 2 名,就会被卖掉
+    # ——哪怕它自己什么问题都没有。26 笔实盘里有 12 笔死于此,是最大亏损来源。
+    # 「能开几个新仓」由引擎的 MAX_POSITIONS 控制,和「哪些还值得持有」是两件事。
+    signals = cands
 
     out = {
         "updated_at": now.isoformat(timespec="seconds"),
         "valid_for": target_str,
         "generator": "generate_signals_crypto.py (5m scalp, long-only)",
         "note": DISCLAIMER,
+        "max_new": MAX_NAMES,          # 引擎一轮最多开几个新仓(持有判断不受此限)
         "regime_symbol": REGIME_SYMBOL,
         "regime_max_drop_pct": REGIME_MAX_DROP,
         "regime_day_pct": regime_today,
