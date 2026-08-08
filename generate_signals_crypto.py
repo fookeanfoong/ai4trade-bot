@@ -201,7 +201,7 @@ def build_setup(tkr, q, risk_off):
         # 每单来回 0.5% 手续费——26 笔实盘胜率只有 12%。现在要求真的在涨、且有量。
         setup = "momentum_long"
         conf = 0.64
-        if vol_ratio >= 1.3:
+        if (vol_ratio or 0) >= 1.3:
             conf += 0.03
         target2 = max(bb_upper or 0, resistance or 0, last * 1.02)
         target1 = bb_upper or (last * 1.008)
