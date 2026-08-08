@@ -16,7 +16,9 @@
 import argparse
 import datetime as dt
 import importlib
+import math
 import os
+import statistics
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -95,7 +97,7 @@ def main() -> int:
     if errors:
         lines += ["> ⚠️ 取数失败：" + "；".join(f"{k}({v})" for k, v in errors.items()), ""]
 
-    lines += ["| 配置 | 笔数 | 毛利 | 手续费 | **净利** | 胜率 | 期望值/笔 |",
+    lines += ["| 配置 | 笔数 | 毛利 | 手续费 | **净利** | 胜率 | 期望值/笔 ± 95%区间 |",
               "|---|---:|---:|---:|---:|---:|---:|"]
 
     results = []
@@ -122,30 +124,51 @@ def main() -> int:
         fees = sum(t["fees"] for t in trades)
         net = sum(t["net"] for t in trades)
         wr = sum(1 for t in trades if t["net"] > 0) / n * 100
+        # 单笔盈亏波动很大,所以「期望值」本身带着不小的不确定性。
+        # 标准误 = 单笔标准差 / sqrt(笔数);95% 区间约为 ±1.96 个标准误。
+        # 不给出这个区间,就会把 286 笔上 +$2.36 的毛利当成发现——
+        # 那其实每笔不到一分钱,完全落在噪音里。
+        nets = [t["net"] for t in trades]
+        sd = statistics.stdev(nets) if n > 1 else 0.0
+        se = sd / math.sqrt(n) if n else 0.0
+        ci = 1.96 * se
         lines.append(f"| {name} | {n} | ${gross:+.2f} | ${fees:.2f} | "
-                     f"**${net:+.2f}** | {wr:.0f}% | ${net/n:+.4f} |")
-        results.append((name, n, gross, fees, net))
+                     f"**${net:+.2f}** | {wr:.0f}% | ${net/n:+.4f} ± {ci:.4f} |")
+        results.append((name, n, gross, fees, net, net / n, se))
 
     lines.append("")
     scored = [r for r in results if r[1] > 0]
     if scored:
-        best = max(scored, key=lambda r: r[4])
+        base = scored[0]                      # 第一个变体固定是「当前实盘配置」
+        best = max(scored, key=lambda r: r[5])
+        lines += ["## 结论", ""]
+
+        # 「最好的」和「当前的」之间的差,有没有超出噪音?
+        # 两个独立均值之差的标准误 = sqrt(se1^2 + se2^2)。
+        diff = best[5] - base[5]
+        diff_se = math.sqrt(best[6] ** 2 + base[6] ** 2)
+        significant = abs(diff) > 1.96 * diff_se and diff > 0
+        lines += [f"- 期望值最高：**{best[0]}**（${best[5]:+.4f}/笔）",
+                  f"- 当前实盘：{base[0]}（${base[5]:+.4f}/笔）",
+                  f"- 差距 ${diff:+.4f}/笔，噪音幅度 ±${1.96*diff_se:.4f}/笔", ""]
+        if significant:
+            lines += ["**这个差距超出了噪音范围，值得采用。**", ""]
+        else:
+            lines += ["**这个差距落在噪音范围内 —— 不要据此改配置。**", "",
+                      "  在同一段数据上试多个组合，总会有一个排第一。排第一不等于更好；"
+                      "  只有差距大到噪音解释不了，才算发现。换一段行情，"
+                      "  「赢家」很可能就换人了。", ""]
+
         pos_gross = [r for r in scored if r[2] > 0]
-        lines += ["## 怎么读这张表", "",
-                  f"- 净利最高：**{best[0]}**（{best[1]} 笔，净 ${best[4]:+.2f}）", ""]
         if pos_gross:
-            names = "、".join(f"{r[0]}（毛利 ${r[2]:+.2f}）" for r in pos_gross)
-            lines += [f"- **毛利为正的配置：{names}**", "",
-                      "  毛利为正才说明信号真的有方向性优势。只有净利改善、毛利仍为负，"
-                      "那只是交易变少了，不是判断变准了。", ""]
+            names = "、".join(f"{r[0]}（毛利 ${r[2]:+.2f}，{r[1]} 笔）" for r in pos_gross)
+            lines += [f"- 毛利为正：{names}", "",
+                      "  毛利为正才说明信号对方向有预测力。但要看**每笔多少**："
+                      "  几百笔上只赚一两块，等于每笔一分钱，和零没有区别。", ""]
         else:
             lines += ["- **没有任何一个配置的毛利为正。**", "",
-                      "  也就是说：换周期、关掉信号失效离场，都改变不了「这套信号"
-                      "对方向没有预测力」这个事实。手续费只是让亏损更快，不是亏损的原因。",
-                      "  继续在这个方向上调参数不会有结果，需要换信号本身。", ""]
-        lines += ["> ⚠️ 这是在同一段两个月行情上做的参数搜索，试的组合越多越容易"
-                  "挑中「碰巧好看」的那个。只有大幅领先才值得当成发现；"
-                  "小幅领先基本都是噪音。", ""]
+                      "  也就是说：这些调整都改变不了「信号对方向没有预测力」这个事实。"
+                      "  手续费只是让亏损更快，不是亏损的原因。", ""]
 
     text = "\n".join(lines)
     REPORT.parent.mkdir(parents=True, exist_ok=True)
