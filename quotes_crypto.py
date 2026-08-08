@@ -41,7 +41,25 @@ WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK"]
 # aggregating 5m — fewer requests and a longer usable history.
 INTERVAL = os.environ.get("CRYPTO_INTERVAL", "5m")
 RANGE = os.environ.get("CRYPTO_RANGE", "1d")
-ANALYSIS_BARS = 48    # ~4h of 5m bars for support/resistance + trend
+ANALYSIS_BARS = 48    # bars used for support/resistance + trend
+
+
+def _interval_minutes(iv: str) -> int:
+    """Minutes per bar, parsed from the Yahoo interval string ("5m", "1h", "1d")."""
+    iv = (iv or "5m").strip().lower()
+    try:
+        if iv.endswith("m"):
+            return max(1, int(iv[:-1]))
+        if iv.endswith("h"):
+            return max(1, int(iv[:-1])) * 60
+        if iv.endswith("d"):
+            return max(1, int(iv[:-1])) * 60 * 24
+    except ValueError:
+        pass
+    return 5
+
+
+BAR_MIN = _interval_minutes(INTERVAL)
 RSI_PERIOD = 14
 BB_PERIOD = 20
 BB_K = 2.0
@@ -106,6 +124,11 @@ def pct_b(price, upper, lower):
     return round((price - lower) / (upper - lower), 3)
 
 
+def _back(minutes: int) -> int:
+    """How many bars back `minutes` is, at the configured interval (min 1)."""
+    return max(1, round(minutes / BAR_MIN))
+
+
 def analyze(bare: str) -> dict:
     """Fetch 5m bars for one symbol and return price + technical indicators."""
     url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{yahoo_symbol(bare)}"
@@ -144,9 +167,16 @@ def analyze(bare: str) -> dict:
         "last": last,
         "prev_close": prev,
         "change_pct": _pct(last, prev),        # day change — used by the regime guard
-        "chg_1h_pct": _pct(last, closes[-13]) if len(closes) >= 13 else None,
-        "chg_15m_pct": _pct(last, closes[-4]) if len(closes) >= 4 else None,
-        "bars_5m": len(closes),
+        # Look-backs are expressed in MINUTES and converted to bars, not
+        # hard-coded bar counts. The old closes[-13] meant "65 minutes ago" only
+        # while bars were 5m; on 1h bars it silently became 13 HOURS ago, and the
+        # crash guard keys off chg_1h_pct to detect a fast drop — it would have
+        # been comparing against the wrong point entirely.
+        "chg_1h_pct": _pct(last, closes[-_back(60)]) if len(closes) > _back(60) else None,
+        "chg_15m_pct": (_pct(last, closes[-_back(15)])
+                        if len(closes) > _back(15) else None),
+        "bars": len(closes),
+        "bar_minutes": BAR_MIN,
         # daily-momentum fields intentionally null: this is an intraday book, so
         # the engine's multi-day no-chase guard is skipped (chase is enforced by
         # RSI/%B in the signal generator instead).
@@ -173,8 +203,16 @@ def analyze(bare: str) -> dict:
         else:
             trend = "flat"
 
-    vol_last = vols[-1] if vols else None
-    vol_avg = (sum(vols[-20:]) / len(vols[-20:])) if len(vols) >= 1 else None
+    # Volume ratio must come from the last COMPLETED bar, not the one still
+    # forming. The in-progress bar has accumulated only part of its volume — on
+    # 5m that was a small distortion, but on 1h bars it reads 0 for most of the
+    # hour, which made vol_ratio None and permanently blocked every momentum
+    # entry (the setup requires vol_ratio >= 1.0). Comparing a partial bar to an
+    # average of full bars is not a like-for-like ratio in any case.
+    done = vols[:-1] if len(vols) > 1 else vols
+    vol_last = done[-1] if done else None
+    ref = done[-20:] if done else []
+    vol_avg = (sum(ref) / len(ref)) if ref else None
     vol_ratio = round(vol_last / vol_avg, 2) if (vol_last and vol_avg) else None
 
     # Crash telemetry: how far price has fallen from the highest high in the
