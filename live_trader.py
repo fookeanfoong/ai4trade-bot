@@ -113,6 +113,10 @@ TRAIL_GIVEBACK_PCT = float(os.environ.get("TRAIL_GIVEBACK_PCT", "0.0025"))
 # 于是这笔单的结局变成:要么打止损,要么至少锁住 NET_TARGET、上不封顶。
 # 关闭时(默认)行为不变:到价整仓离场。
 RUN_WINNERS = os.environ.get("RUN_WINNERS", "false").lower() in ("yes", "true")
+# 最短持有时间(分钟)。刚开的仓在这段时间内不因「信号失效」被平掉——
+# 止损和目标照常生效,只挡掉「刚买完信号就抖没了」这种纯噪音离场。
+# 每次进出固定花掉 0.5% 手续费,所以churn 是这个策略最贵的失败模式。
+MIN_HOLD_MIN = float(os.environ.get("MIN_HOLD_MIN", "0"))
 ENABLE_SHORT = os.environ.get("ENABLE_SHORT", "false").lower() in ("yes", "true")
 
 # Stock-split (corporate action) recognition. A split changes the broker's share
@@ -327,6 +331,15 @@ def actionable_signals(signals: list) -> list:
     return picks
 
 
+def held_minutes(p: dict) -> float:
+    """这个仓位开了多久(分钟)。解析不了就当很久,让正常逻辑接管。"""
+    try:
+        t = dt.datetime.fromisoformat(str(p.get("opened_at", "")).replace("Z", ""))
+        return (dt.datetime.utcnow() - t).total_seconds() / 60.0
+    except Exception:
+        return 1e9
+
+
 def signal_still_valid(ticker: str, side: str, signals: list) -> bool:
     want = "bullish" if side == "long" else "bearish"
     for s in signals:
@@ -454,7 +467,8 @@ def _log_trade(state, p, action, exit_price, qty, when):
 
 
 # ------------------------------ exits (one position) -----------------------
-def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> list:
+def manage_position(broker, state, ticker: str, signals, qmap, dry: bool,
+                    regime_risk_off: bool = False) -> list:
     """Apply invalidation / trailing / stop / T1 / T2 to ONE tracked position."""
     lines = []
     p = state["positions"][ticker]
@@ -482,10 +496,23 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool) -> lis
         return ok
 
     # 1. Signal invalidation -> exit at market.
+    #    两道闸,都是为了不让「信号抖动」变成付费离场:
+    #    (a) 刚开的仓给它 MIN_HOLD_MIN 分钟站稳,期间只认止损和目标;
+    #    (b) risk-off 期间信号层本来就不产出任何 setup,那不代表这个币变坏了,
+    #        不能因此把所有持仓一次性平掉——停止开新仓已经是当轮的正确反应。
     if not signal_still_valid(sym, p["side"], signals):
-        if not pdt_blocks_exit(state, p, is_stop=False, sym=sym, lines=lines):
+        age = held_minutes(p)
+        if MIN_HOLD_MIN > 0 and age < MIN_HOLD_MIN:
+            lines.append(f"{sym}: signal gone but only {age:.0f}m old "
+                         f"(min hold {MIN_HOLD_MIN:.0f}m) — holding through the noise")
+        elif regime_risk_off:
+            lines.append(f"{sym}: no setups published (risk-off) — holding, "
+                         f"stop/target still active")
+        elif not pdt_blocks_exit(state, p, is_stop=False, sym=sym, lines=lines):
             close_all("SIGNAL_INVALIDATED_EXIT", last)
-        return lines
+            return lines
+        else:
+            return lines
 
     # update peak + arm trailing
     #
@@ -901,7 +928,8 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
 
         # 1) Manage every open position independently (a name may exit here).
         for tkr in list(state["positions"].keys()):
-            actions += manage_position(broker, state, tkr, signals, qmap, dry)
+            actions += manage_position(broker, state, tkr, signals, qmap, dry,
+                                       regime_risk_off=bool(doc.get("risk_off")))
 
         # 2) Open new names up to the cap (skip if signals expired).
         if expired:
@@ -920,7 +948,11 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
                 # Book splits across however many names were kept (conviction-based
                 # count). Up to BASE_SLICES => fixed 1/BASE_SLICES each; more => the
                 # book divides among all of them so total stays within the 2x cap.
-                pbook = slice_book(len(picks))
+                # 候选现在是「全部合格的币」,不再是前 N 名,所以不能拿它的长度
+                # 来切分资金——否则 6 个候选会把每仓切成 1/6。真正决定仓位大小的
+                # 是「最多同时持有几个」。
+                max_new = int(doc.get("max_new") or MAX_POSITIONS)
+                pbook = slice_book(min(max(len(picks), 1), MAX_POSITIONS, max_new))
                 exposure_cap = BOOK_EQUITY * LEVERAGE_CAP
                 for sig in picks:
                     tkr = sig["sector_or_ticker"]

@@ -98,6 +98,10 @@ jobs:
           VOL_SPAN_LO: "0.015"
           VOL_SPAN_HI: "0.050"
           MIN_RR_NET: "1.0"             # stop distance <= floor distance (at least 1:1)
+          # A fresh position gets 20 minutes before signal churn can close it.
+          # Stops and targets still apply — this only blocks the "bought it, the
+          # signal flickered, sold it" round trip that costs 0.5% every time.
+          MIN_HOLD_MIN: "20"
           MAX_TARGET_MOVE_PCT: "0.035"
         run: python live_trader.py
 
