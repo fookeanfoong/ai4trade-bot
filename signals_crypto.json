@@ -1,122 +1,17 @@
 {
-  "updated_at": "2026-08-08T16:33:24-04:00",
+  "updated_at": "2026-08-08T17:10:55-04:00",
   "valid_for": "2026-08-08",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "max_new": 2,
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 4.46,
+  "regime_day_pct": 4.44,
   "news_risk_off": false,
   "news_hits": 0,
   "news_degraded": false,
   "risk_off": false,
   "panic_flatten": false,
   "regime_reason": "",
-  "signals": [
-    {
-      "sector_or_ticker": "ETH",
-      "direction": "bullish",
-      "confidence": 0.67,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.0154,
-      "t1_pct": 0.0021,
-      "t2_pct": 0.02,
-      "rr": 1.3,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 54.8,
-        "pct_b": 0.614,
-        "trend": "up",
-        "support": 1892.87,
-        "resistance": 1940.65,
-        "vol_ratio": 2.43
-      },
-      "reasoning": {
-        "en": "momentum long long on ETH (5m): RSI 54.8, %B 0.614, trend up, vol× 2.43. Stop below support $1892.87; targets +0.2%/+2.0%, R:R 1.3. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ETH 5分钟顺势做多:RSI 54.8,%B 0.614,趋势up,量比2.43。止损设在支撑 $1892.87 下方,目标 +0.2%/+2.0%,盈亏比 1.3。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
-      "sector_or_ticker": "ADA",
-      "direction": "bullish",
-      "confidence": 0.67,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.0221,
-      "t1_pct": 0.0023,
-      "t2_pct": 0.0237,
-      "rr": 1.07,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 53.4,
-        "pct_b": 0.764,
-        "trend": "up",
-        "support": 0.1965,
-        "resistance": 0.2054,
-        "vol_ratio": 7.35
-      },
-      "reasoning": {
-        "en": "momentum long long on ADA (5m): RSI 53.4, %B 0.764, trend up, vol× 7.35. Stop below support $0.1965; targets +0.2%/+2.4%, R:R 1.07. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "ADA 5分钟顺势做多:RSI 53.4,%B 0.764,趋势up,量比7.35。止损设在支撑 $0.1965 下方,目标 +0.2%/+2.4%,盈亏比 1.07。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
-      "sector_or_ticker": "AVAX",
-      "direction": "bullish",
-      "confidence": 0.67,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.0274,
-      "t1_pct": 0.0035,
-      "t2_pct": 0.02,
-      "rr": 0.73,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 54.4,
-        "pct_b": 0.444,
-        "trend": "up",
-        "support": 6.358,
-        "resistance": 6.589,
-        "vol_ratio": 2.48
-      },
-      "reasoning": {
-        "en": "momentum long long on AVAX (5m): RSI 54.4, %B 0.444, trend up, vol× 2.48. Stop below support $6.358; targets +0.3%/+2.0%, R:R 0.73. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "AVAX 5分钟顺势做多:RSI 54.4,%B 0.444,趋势up,量比2.48。止损设在支撑 $6.358 下方,目标 +0.3%/+2.0%,盈亏比 0.73。算法剥头皮、按风险定量(非全仓)。"
-      }
-    },
-    {
-      "sector_or_ticker": "DOGE",
-      "direction": "bullish",
-      "confidence": 0.67,
-      "timeframe": "5m scalp",
-      "entry_mode": "market",
-      "setup": "momentum_long",
-      "stop_pct": 0.0328,
-      "t1_pct": 0.0052,
-      "t2_pct": 0.02,
-      "rr": 0.61,
-      "already_priced_in": false,
-      "auto_generated": true,
-      "ta": {
-        "rsi": 66.3,
-        "pct_b": 0.763,
-        "trend": "up",
-        "support": 0.0688,
-        "resistance": 0.0715,
-        "vol_ratio": 1.79
-      },
-      "reasoning": {
-        "en": "momentum long long on DOGE (5m): RSI 66.3, %B 0.763, trend up, vol× 1.79. Stop below support $0.0688; targets +0.5%/+2.0%, R:R 0.61. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
-        "zh": "DOGE 5分钟顺势做多:RSI 66.3,%B 0.763,趋势up,量比1.79。止损设在支撑 $0.0688 下方,目标 +0.5%/+2.0%,盈亏比 0.61。算法剥头皮、按风险定量(非全仓)。"
-      }
-    }
-  ]
+  "signals": []
 }
