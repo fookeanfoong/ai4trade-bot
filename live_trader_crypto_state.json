@@ -1,5 +1,66 @@
 {
-  "positions": {},
+  "positions": {
+    "AVAX": {
+      "ticker": "AVAX",
+      "side": "long",
+      "qty": 15.298941,
+      "entry": 6.5364,
+      "stop": 6.4645,
+      "t1": 29.4138,
+      "t2": 29.4138,
+      "half_taken": false,
+      "peak_price": 6.5364,
+      "armed": false,
+      "confidence": 0.67,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 100.0,
+      "book_risk_usd": 8.0,
+      "setup": "momentum_long",
+      "rr": 0.97,
+      "entry_ctx": {
+        "rsi": 60.3,
+        "pct_b": 0.834,
+        "trend": "up",
+        "vol_ratio": 2.03
+      },
+      "single_exit": false,
+      "run_mode": true,
+      "trail_floor": 6.6083,
+      "opened_at": "2026-08-08T04:42:09Z",
+      "opened_ny_date": "2026-08-08",
+      "price_src": "broker"
+    },
+    "BTC": {
+      "ticker": "BTC",
+      "side": "long",
+      "qty": 0.001538,
+      "entry": 65022.0,
+      "stop": 64435.64,
+      "t1": 292599.0,
+      "t2": 292599.0,
+      "half_taken": false,
+      "peak_price": 65022.0,
+      "armed": false,
+      "confidence": 0.64,
+      "entry_chg_3d_pct": null,
+      "notional_usd": 100.0,
+      "book_risk_usd": 8.0,
+      "setup": "momentum_long",
+      "rr": 1.27,
+      "entry_ctx": {
+        "rsi": 62.2,
+        "pct_b": 0.747,
+        "trend": "up",
+        "vol_ratio": 1.28
+      },
+      "single_exit": false,
+      "run_mode": true,
+      "trail_floor": 65608.36,
+      "opened_at": "2026-08-08T04:42:09Z",
+      "opened_ny_date": "2026-08-08",
+      "price_src": "broker"
+    }
+  },
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -549,18 +610,18 @@
       "actions": [
         "no actionable signal (direction, confidence>=0.6, not priced-in)"
       ]
+    },
+    {
+      "ran_at": "2026-08-08T04:42:10Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "ENTRY LONG AVAX conf 0.67 15.2989 sh @ $6.54 [broker] notional $100 risk $8.00 | stop $6.4645 T1 $29.4138 T2 $29.4138 | net-target $0.70 (band $0.50-$1.00, vol span 2.88%) = gross +1.10% -> exit $6.6083 = net $+0.6978 after 0.20%/side (FLOOR \u2014 trails from here, upside open) | stop tightened 2.66%->1.10% for 1:1 | TA t2 was +2.58%",
+        "ENTRY LONG BTC conf 0.64 0.001538 sh @ $65022.00 [broker] notional $100 risk $8.00 | stop $64435.64 T1 $292599.0 T2 $292599.0 | net-target $0.50 (band $0.50-$1.00, vol span 0.72%) = gross +0.90% -> exit $65608.4 = net $+0.5000 after 0.20%/side (FLOOR \u2014 trails from here, upside open) | stop tightened 1.58%->0.90% for 1:1 | TA t2 was +2.00%"
+      ]
     }
   ],
-  "benched": {
-    "ETH": "2026-08-07",
-    "ADA": "2026-08-07",
-    "DOGE": "2026-08-07",
-    "AVAX": "2026-08-07",
-    "XRP": "2026-08-07",
-    "BTC": "2026-08-07",
-    "LINK": "2026-08-07",
-    "SOL": "2026-08-07"
-  },
+  "benched": {},
   "last_key": null,
   "day_trades": [
     "2026-08-07",
