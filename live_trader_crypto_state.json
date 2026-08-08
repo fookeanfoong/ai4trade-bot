@@ -699,6 +699,14 @@
       "broker": "alpaca_crypto",
       "dry_run": false,
       "actions": []
+    },
+    {
+      "ran_at": "2026-08-08T15:11:54Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "benched": {},
