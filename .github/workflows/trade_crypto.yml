@@ -4,18 +4,21 @@ name: ai4trade-bot-crypto
 # all hours. The engine (live_trader.py) is reused unchanged — the crypto book is
 # selected entirely through env vars (BROKER, MARKET_24_7, REGIME_SYMBOLS, and the
 # *_FILE / REPORTS_SUBDIR overrides), so it never touches the stock book's state.
-# PAUSED. A 472-trade backtest over two months put this strategy at
-# -$0.44/trade expectancy, with GROSS P&L negative (-$17.64) before fees were
-# even counted. Live trading it only accumulates losses that the backtester can
-# now reproduce for free, so the schedule is off until a variant shows positive
-# expectancy. Uncomment to resume; workflow_dispatch still works for flattening.
+# LIVE AGAIN, on the least-bad configuration the backtest identified rather
+# than the one that was running before. Over the same 60 days: 5m lost $209 at a
+# 10% win rate, 1h with the signal-invalidation exit removed lost $118 at 45%.
+# Both are still losses — the point of running is to see whether live results
+# match the backtest, so read reports/analysis.md, not the balance.
+#
+# Every 15 min, not every 5: indicators only move once an hour now, so the extra
+# runs exist to check stops against live price, not to re-decide entries.
 on:
-  # schedule:
-  #   - cron: "*/5 * * * *"
-  # push:
-  #   branches: ["main"]
-  #   paths:
-  #     - ".trigger-crypto"
+  schedule:
+    - cron: "*/15 * * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - ".trigger-crypto"
   workflow_dispatch:
     inputs:
       flatten:
@@ -51,15 +54,18 @@ jobs:
         if: ${{ env.ALPACA_API_KEY_ID != '' }}
         run: pip install --quiet -r requirements-alpaca.txt
 
-      - name: Fetch 5m crypto technicals (RSI / Bollinger / vol / S-R)
+      - name: Fetch crypto technicals (timeframe from CRYPTO_INTERVAL)
         continue-on-error: true
+        env:
+          CRYPTO_INTERVAL: "1h"
+          CRYPTO_RANGE: "1mo"
         run: python quotes_crypto.py
 
       - name: Crash-news sentinel (free Google News RSS, no key)
         continue-on-error: true
         run: python news_crypto.py
 
-      - name: Generate scalp setups (5m, long-only) — regenerated every run
+      - name: Generate setups (long-only) — regenerated every run
         continue-on-error: true
         run: python generate_signals_crypto.py
 
@@ -72,6 +78,13 @@ jobs:
           # One-shot housekeeping: set from the "Run workflow" button to close
           # everything (e.g. after a config change). Empty on scheduled runs.
           FLATTEN_ALL: ${{ inputs.flatten }}
+          # 1h bars. The backtest is unambiguous that 5m is mostly noise: same
+          # logic, same window, 44% less loss and win rate 10% -> 45%.
+          CRYPTO_INTERVAL: "1h"
+          CRYPTO_RANGE: "1mo"
+          # Largest single loss bucket in the backtest: 375 of 472 exits,
+          # -$141.66. Stops and the trailing floor decide outcomes now.
+          DISABLE_SIGNAL_EXIT: "yes"
           MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
           REGIME_SYMBOLS: "BTC"         # BTC is the market: if BTC flushes, nothing else is safe
           SIGNALS_FILE: "signals_crypto.json"

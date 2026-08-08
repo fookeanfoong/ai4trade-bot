@@ -23,6 +23,7 @@ so nothing extra needs installing on the runner.
 
 import datetime as dt
 import json
+import os
 import sys
 from pathlib import Path
 from urllib import request as urlrequest
@@ -34,8 +35,12 @@ QUOTES_MD = ROOT / "quotes_crypto.md"
 # Liquid majors — scalping needs tight spreads / real volume.
 WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK"]
 
-INTERVAL = "5m"
-RANGE = "1d"          # a full day of 5m bars; we analyse the most recent window
+# Timeframe is env-driven. The 60-day backtest was clear that 5m is mostly
+# noise: on 1h bars the same logic lost 44% less and win rate went 10% -> 45%.
+# Yahoo serves 1h directly, so this asks for the bars it wants rather than
+# aggregating 5m — fewer requests and a longer usable history.
+INTERVAL = os.environ.get("CRYPTO_INTERVAL", "5m")
+RANGE = os.environ.get("CRYPTO_RANGE", "1d")
 ANALYSIS_BARS = 48    # ~4h of 5m bars for support/resistance + trend
 RSI_PERIOD = 14
 BB_PERIOD = 20
