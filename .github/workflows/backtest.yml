@@ -29,6 +29,10 @@ on:
         description: "Also compare timeframes and signal-exit on/off"
         type: string
         default: "true"
+      xsmom:
+        description: "Also run cross-sectional momentum vs buy-and-hold"
+        type: string
+        default: "true"
 
 permissions:
   contents: write
@@ -62,6 +66,13 @@ jobs:
             --fee "${{ inputs.fee }}" \
             --floor-usd "${{ inputs.floor_usd }}" \
             --min-hold "${{ inputs.min_hold }}"
+
+      - name: Cross-sectional momentum + buy-and-hold benchmark
+        if: ${{ inputs.xsmom == 'true' }}
+        run: |
+          python backtest_xsmom.py \
+            --days "${{ inputs.days }}" \
+            --fee "${{ inputs.fee }}"
 
       - name: Commit report
         if: always()
