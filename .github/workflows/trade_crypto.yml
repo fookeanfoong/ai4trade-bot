@@ -67,6 +67,11 @@ jobs:
 
       - name: Generate setups (long-only) — regenerated every run
         continue-on-error: true
+        env:
+          # The entry gates live in THIS script, so they must be set on THIS
+          # step. Setting them on the trade step below does nothing — that runs
+          # a different process, after signals have already been written.
+          ALLOW_FLAT_TREND: "yes"
         run: python generate_signals_crypto.py
 
       - name: Alpaca crypto paper trade (real execution path, cloud)
@@ -85,6 +90,9 @@ jobs:
           # Largest single loss bucket in the backtest: 375 of 472 exits,
           # -$141.66. Stops and the trailing floor decide outcomes now.
           DISABLE_SIGNAL_EXIT: "yes"
+          # NOTE: entry gates (ALLOW_FLAT_TREND etc.) belong on the signal
+          # generation step above, not here — this process only executes what
+          # signals_crypto.json already says.
           MARKET_24_7: "yes"            # crypto trades 24/7 — no weekday / market-hours gate
           REGIME_SYMBOLS: "BTC"         # BTC is the market: if BTC flushes, nothing else is safe
           SIGNALS_FILE: "signals_crypto.json"

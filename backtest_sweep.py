@@ -42,6 +42,10 @@ VARIANTS = [
     ("① 当前实盘(1h,不用信号失效离场)", BASE_1H, {}),
     ("② +允许横盘入场",                 BASE_1H, {"ALLOW_FLAT_TREND": "yes"}),
     ("③ +不要求成交量",                 BASE_1H, {"MIN_VOL_RATIO": "0"}),
+    # 完全不看量明确有害(毛利 -$18.23),但 1.0 也挡掉了 8 个币里的 4 个。
+    # 中间档没测过 —— 先放进扫描,别靠猜。
+    ("③b 量比门槛降到 0.8",             BASE_1H, {"MIN_VOL_RATIO": "0.8"}),
+    ("③c 量比门槛降到 0.6",             BASE_1H, {"MIN_VOL_RATIO": "0.6"}),
     ("④ +敢追高(RSI 85/%B 0.98)",       BASE_1H, {"RSI_OVERBOUGHT": "85", "PCTB_OVERBOUGHT": "0.98"}),
     ("⑤ +空间门槛降到 0.8%",            BASE_1H, {"MIN_TARGET_ROOM": "0.008"}),
     ("⑥ 全部放宽(最激进)",              BASE_1H, {"ALLOW_FLAT_TREND": "yes", "MIN_VOL_RATIO": "0",
