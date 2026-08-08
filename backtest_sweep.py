@@ -15,6 +15,8 @@
 
 import argparse
 import datetime as dt
+import importlib
+import os
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -27,17 +29,26 @@ import quotes_crypto as Q         # noqa: E402
 
 REPORT = ROOT / "reports" / "sweep.md"
 
-# 每个变体:(名字, 覆盖掉的参数)。刻意保持少而有针对性——
+# 每个变体:(名字, 回测参数, 信号层门槛覆盖)。刻意保持少而有针对性——
 # 组合爆炸只会让过拟合更严重。
+#
+# 「激进」不是一个刻度,而是几件不同的事:允许横盘入场、不要求成交量、
+# 容忍更高的 RSI/%B(敢追)、多开几个仓。分开测才知道哪一项值得放宽、
+# 哪一项一放就亏——合在一起调,只会得到一个说不清为什么的数字。
+BASE_1H = dict(tf=12, no_signal_exit=True)      # 目前实盘在用的配置
 VARIANTS = [
-    ("基准 5m",                    dict(tf=1)),
-    ("5m + 不用信号失效离场",       dict(tf=1, no_signal_exit=True)),
-    ("15m",                        dict(tf=3)),
-    ("15m + 不用信号失效离场",      dict(tf=3, no_signal_exit=True)),
-    ("30m",                        dict(tf=6)),
-    ("30m + 不用信号失效离场",      dict(tf=6, no_signal_exit=True)),
-    ("1h",                         dict(tf=12)),
-    ("1h + 不用信号失效离场",       dict(tf=12, no_signal_exit=True)),
+    ("① 当前实盘(1h,不用信号失效离场)", BASE_1H, {}),
+    ("② +允许横盘入场",                 BASE_1H, {"ALLOW_FLAT_TREND": "yes"}),
+    ("③ +不要求成交量",                 BASE_1H, {"MIN_VOL_RATIO": "0"}),
+    ("④ +敢追高(RSI 85/%B 0.98)",       BASE_1H, {"RSI_OVERBOUGHT": "85", "PCTB_OVERBOUGHT": "0.98"}),
+    ("⑤ +空间门槛降到 0.8%",            BASE_1H, {"MIN_TARGET_ROOM": "0.008"}),
+    ("⑥ 全部放宽(最激进)",              BASE_1H, {"ALLOW_FLAT_TREND": "yes", "MIN_VOL_RATIO": "0",
+                                                  "RSI_OVERBOUGHT": "85", "PCTB_OVERBOUGHT": "0.98",
+                                                  "MIN_TARGET_ROOM": "0.008"}),
+    ("⑦ 全部放宽 + 5m(最快最激进)",     dict(tf=1, no_signal_exit=True),
+                                        {"ALLOW_FLAT_TREND": "yes", "MIN_VOL_RATIO": "0",
+                                         "RSI_OVERBOUGHT": "85", "PCTB_OVERBOUGHT": "0.98",
+                                         "MIN_TARGET_ROOM": "0.008"}),
 ]
 
 
@@ -88,10 +99,17 @@ def main() -> int:
               "|---|---:|---:|---:|---:|---:|---:|"]
 
     results = []
-    for name, over in VARIANTS:
+    for name, over, gates in VARIANTS:
         args = base_args(a)
         for k, v in over.items():
             setattr(args, k, v)
+        # 信号层门槛靠环境变量 + reload 生效,这样回测走的仍然是实盘那份代码,
+        # 而不是回测里另写一套判定。
+        for k in ("ALLOW_FLAT_TREND", "MIN_VOL_RATIO", "RSI_OVERBOUGHT",
+                  "PCTB_OVERBOUGHT", "MIN_TARGET_ROOM", "RSI_MOMO_MIN"):
+            os.environ.pop(k, None)
+        os.environ.update(gates)
+        importlib.reload(BT.G)
         trades = []
         for sym, bars in raw.items():
             trades += BT.simulate(sym, BT.resample(bars, args.tf), args)

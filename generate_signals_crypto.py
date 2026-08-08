@@ -54,13 +54,19 @@ NEWS_CONFIRM_DROP = 1.5
 # in flat tape too, chases a bit harder, takes lower R:R. Every trade still
 # carries a hard stop below support — aggressive, not suicidal.
 # Overbought / no-chase gates (relaxed).
-RSI_OVERBOUGHT = 75.0
-PCTB_OVERBOUGHT = 0.92
+# 这些门槛做成可配置,是为了让回测能量出「激进多少代价多大」,
+# 而不是凭感觉调。默认值 = 目前实盘在用的值。
+RSI_OVERBOUGHT = float(os.environ.get("RSI_OVERBOUGHT", "75.0"))
+PCTB_OVERBOUGHT = float(os.environ.get("PCTB_OVERBOUGHT", "0.92"))
 # Oversold-bounce (setup A) triggers (relaxed).
 RSI_OVERSOLD = 48.0
 PCTB_LOW = 0.32
 # Momentum-long (setup B): any up-OR-flat, non-overbought tape with RSI >= this.
-RSI_MOMO_MIN = 40.0
+RSI_MOMO_MIN = float(os.environ.get("RSI_MOMO_MIN", "40.0"))
+# 顺势做多的成交量门槛。设 0 = 不看量。
+MIN_VOL_RATIO = float(os.environ.get("MIN_VOL_RATIO", "1.0"))
+# 允许在「横盘」里也做多(原本只做确认的上涨趋势)。
+ALLOW_FLAT_TREND = os.environ.get("ALLOW_FLAT_TREND", "false").lower() in ("yes", "true")
 
 STOP_BUFFER = 0.0015       # place stop a touch below support/swing
 STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
@@ -70,15 +76,15 @@ STOP_MIN, STOP_MAX = 0.004, 0.05   # clamp scalp stop distance (0.4%–5%)
 # 把止损收紧到目标距离,实际盈亏比至少 1:1。
 # 一度把这里调到 1.5,回测立刻显示上涨行情里一笔都开不出来:全被一个「不会被
 # 采用的止损」筛掉了。真正的风险回报由引擎保证,这里只负责判断「有没有 setup」。
-MIN_RR = 1.0
+MIN_RR = float(os.environ.get("MIN_RR", "1.0"))
 # 手续费是固定成本:一买一卖 0.5%。目标越小,手续费占毛利的比例越高
 # (\$100 仓位赚 \$0.50 净利,手续费就占毛利的 50%)。所以只在「图上确实有空间」
 # 的时候才开单——技术目标至少要有这么多,否则这笔交易本质上是在给交易所打工。
-MIN_TARGET_ROOM = 0.015    # T2 距入场至少 1.5%
+MIN_TARGET_ROOM = float(os.environ.get("MIN_TARGET_ROOM", "0.015"))
 # 集中而非分散:美金目标下,仓位越大门槛越低。$200 押 1 个币,净赚 $1 只要涨
 # 1.00%;分 2 个要 1.50%;分 4 个就要 2.51% —— 5 分钟内基本等不到。
 # 所以这里只挑最强的 1-2 个,把火力集中在最好的机会上。
-MAX_NAMES = 2
+MAX_NAMES = int(os.environ.get("MAX_NAMES", "2"))
 
 DISCLAIMER = ("算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。"
               "已按风险定量(非全仓),加密波动极大,盈亏自负。")
@@ -189,7 +195,8 @@ def build_setup(tkr, q, risk_off):
     # --- Setup B: momentum long (aggressive) -------------------------------
     #     Any up-OR-flat, non-overbought tape is tradable long — this is what
     #     keeps the crypto book active in chop instead of sitting flat.
-    elif trend == "up" and rsi >= RSI_MOMO_MIN and (vol_ratio or 0) >= 1.0:
+    elif (trend in (("up", "flat") if ALLOW_FLAT_TREND else ("up",))
+          and rsi >= RSI_MOMO_MIN and (vol_ratio or 0) >= MIN_VOL_RATIO):
         # 原来 "up" 或 "flat" 都做,且不要求成交量。结果是横盘噪音里也一直开单,
         # 每单来回 0.5% 手续费——26 笔实盘胜率只有 12%。现在要求真的在涨、且有量。
         setup = "momentum_long"
