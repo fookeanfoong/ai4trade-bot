@@ -675,6 +675,12 @@
       "actions": [
         "broker unavailable \u2014 no orders this run: {\"message\": \"service temporary unavailable.\"}\n"
       ]
+    },
+    {
+      "ran_at": "2026-08-08T12:03:20Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": []
     }
   ],
   "benched": {},
