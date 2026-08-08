@@ -31,8 +31,11 @@ import os
 
 try:
     from alpaca.trading.client import TradingClient           # type: ignore
-    from alpaca.trading.requests import MarketOrderRequest      # type: ignore
-    from alpaca.trading.enums import OrderSide, TimeInForce     # type: ignore
+    from alpaca.trading.requests import (MarketOrderRequest,     # type: ignore
+                                        LimitOrderRequest,
+                                        GetOrdersRequest)
+    from alpaca.trading.enums import (OrderSide, TimeInForce,    # type: ignore
+                                     QueryOrderStatus)
     from alpaca.data.historical import CryptoHistoricalDataClient  # type: ignore
     from alpaca.data.requests import CryptoLatestTradeRequest   # type: ignore
     ALPACA_AVAILABLE = True
@@ -43,6 +46,26 @@ except Exception as e:  # pragma: no cover - depends on host
 
 # Quote currency Alpaca settles crypto in. USD pairs cover BTC/ETH/SOL/... .
 QUOTE_CCY = os.environ.get("CRYPTO_QUOTE", "USD").upper()
+
+# --- Maker vs taker ---------------------------------------------------------
+# Alpaca crypto tier 1: 0.15% maker (resting limit) vs 0.25% taker (market).
+# https://alpaca.markets/support/crypto-maker-taker-gmt-faq
+#
+# Live attribution says the signals are marginally positive GROSS (+$2.60) but
+# fees were 3x that (-$7.74). Cutting the entry side to maker takes the round
+# trip from 0.50% to 0.40% — a real dent in the dominant cost.
+#
+# ENTRIES ONLY. Exits stay market on purpose: a stop that does not fill is not a
+# stop, and the whole point of the crash guard is that it gets you out. Saving
+# 0.10% is never worth an exit that hangs.
+#
+# The trade-off maker orders carry is fill uncertainty and adverse selection —
+# your buy rests, and it fills preferentially when the market is coming down at
+# you. A missed entry costs nothing, so this is the safe side to take it on.
+LIMIT_ENTRIES = os.environ.get("LIMIT_ENTRIES", "false").lower() in ("yes", "true")
+# Offset from last price for the resting buy, as a fraction. 0 = at last (best
+# fill odds); positive = below last (better price, fills less often).
+LIMIT_OFFSET_PCT = float(os.environ.get("LIMIT_OFFSET_PCT", "0.0"))
 
 
 def _env(name: str, default: str = "") -> str:
@@ -181,7 +204,41 @@ class AlpacaCryptoBroker:
         )
         return self.client.submit_order(req)
 
+    def _limit(self, symbol: str, side, qty: float, price: float):
+        req = LimitOrderRequest(
+            symbol=to_pair(symbol),
+            qty=round(float(qty), 9),
+            side=side,
+            limit_price=round(float(price), 9),
+            time_in_force=TimeInForce.GTC,   # crypto rejects DAY
+        )
+        return self.client.submit_order(req)
+
+    def cancel_stale_orders(self) -> int:
+        """Cancel every open crypto order and return how many.
+
+        Called at the top of each cycle. Resting limit entries that did not fill
+        must not survive into the next cycle: the engine re-decides from scratch
+        every run, and a stale order filling later would open a position nothing
+        is managing. Cheap insurance — with nothing resting it is a no-op."""
+        try:
+            orders = self.client.get_orders(
+                filter=GetOrdersRequest(status=QueryOrderStatus.OPEN))
+        except Exception:
+            return 0
+        n = 0
+        for o in orders:
+            try:
+                self.client.cancel_order_by_id(o.id)
+                n += 1
+            except Exception:
+                pass
+        return n
+
     def buy(self, symbol: str, qty: float, ref_price: float = 0.0):
+        if LIMIT_ENTRIES and ref_price and ref_price > 0:
+            return self._limit(symbol, OrderSide.BUY, qty,
+                               ref_price * (1.0 - LIMIT_OFFSET_PCT))
         return self._market(symbol, OrderSide.BUY, qty)
 
     def sell(self, symbol: str, qty: float, ref_price: float = 0.0):

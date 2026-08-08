@@ -459,10 +459,18 @@ def _send(broker, dry: bool, lines: list, desc: str, fn):
 
 
 def _log_trade(state, p, action, exit_price, qty, when):
+    """成交记录。带上 setup / 持仓时长 / 入场时的技术状态,否则事后无法归因——
+    「超卖反弹和顺势做多哪个赚钱」这种问题,不记就永远答不了。"""
     state["trade_log"].append({
         "ticker": p["ticker"], "side": p["side"], "action": action,
         "entry": p["entry"], "exit": round(exit_price, 4), "qty": round(qty, 6),
         "closed_at": when,
+        "setup": p.get("setup"),
+        "confidence": p.get("confidence"),
+        "rr": p.get("rr"),
+        "held_min": round(held_minutes(p), 1),
+        "entry_ctx": p.get("entry_ctx"),
+        "fee_rate": FEE_RATE,
     })
 
 
@@ -733,6 +741,12 @@ def open_from_signal(broker, state, sig, qmap, dry: bool, regime_max=None, per_p
         "confidence": sig.get("confidence"), "entry_chg_3d_pct": chg_3d,
         "notional_usd": round(notional, 2),
         "book_risk_usd": round(slice_risk, 2),
+        # 归因字段:没有这些就回答不了「哪个 setup 在赚钱」。
+        # 26 笔实盘之后想做归因分析时才发现根本没记,只能从头再来。
+        "setup": sig.get("setup"),
+        "rr": sig.get("rr"),
+        "entry_ctx": {k: (sig.get("ta") or {}).get(k)
+                      for k in ("rsi", "pct_b", "trend", "vol_ratio")},
         "single_exit": single_exit and not RUN_WINNERS,
         "run_mode": bool(net_target_px is not None and RUN_WINNERS),
         "trail_floor": net_target_px if RUN_WINNERS else None,
@@ -778,6 +792,13 @@ def reconcile(broker, state, BrokerError) -> list:
             continue
         old_qty = abs(float(p.get("qty", 0.0)))
         d = detect_split_divisor(old_qty, bqty)
+        if not d and old_qty > 0 and abs(bqty - old_qty) / old_qty > 0.01:
+            # 不是拆股,但数量对不上 >1% —— 多半是部分成交。券商是事实来源,
+            # 本地跟着改,否则平仓会按错误数量下单。
+            lines.append(f"reconcile: {tkr} qty {old_qty:g} -> {bqty:g} (broker is truth; "
+                         f"likely a partial fill)")
+            p["qty"] = round(bqty, 6)
+            p["notional_usd"] = round(bqty * float(p.get("entry") or 0), 2)
         if d:
             for key in ("entry", "stop", "t1", "t2", "peak_price"):
                 if p.get(key):
@@ -899,6 +920,18 @@ def run_cycle(broker, available, describe, BrokerError, dry: bool) -> int:
 
     try:
         if connected:
+            # Clear anything resting from last cycle BEFORE reconciling. With
+            # limit entries an unfilled order must not survive into a cycle that
+            # has already re-decided what to hold — it would fill into a position
+            # nothing is managing. No-op when nothing is resting.
+            cancel = getattr(broker, "cancel_stale_orders", None)
+            if callable(cancel):
+                try:
+                    n = cancel()
+                    if n:
+                        actions.append(f"cancelled {n} stale open order(s) from a previous cycle")
+                except Exception as e:
+                    actions.append(f"cancel_stale_orders failed (continuing): {e}")
             actions += reconcile(broker, state, BrokerError)
 
         # 0) Crash circuit breaker — checked BEFORE anything else. If the signal
