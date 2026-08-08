@@ -138,3 +138,25 @@
 - CRYPTO book (owner-built, now active on Alpaca crypto paper via ai4trade.ai): this week 24 legs, net +$3.23, 17/24 wins (71%). Churny (24 trades in days) — the owner already addressed the "fees eat tiny gains" problem (5 of the first 12 nets were < $0.10) by switching to fee-aware net-DOLLAR targets (only take a trade if, after both-side fees, $0.50-$1.00 lands), tightening stops to >=1:1 net RR, plus a PDT guard (hold overnight to dodge the <$25k 3-day-trade limit) and a run-winners trailing option. Sound fixes. Still new/tiny sample — do not extrapolate 71%.
 - CHANGE by me: NONE. The owner is actively developing the crypto book; my conservative weekly-tuner role defers to that. Stock params untouched (book paused anyway). Documented the pivot here.
 - STILL PAPER on both books. The real-money gate (4 weeks / 20+ trades / net-positive / no data errors) is not met on either as a standalone proven system — keep simulating.
+
+## 2026-08-08 — 把「四步波段流程」从提示词编成代码 (SWING_PLAYBOOK.md)
+- 起因:owner 给了一套常见的 4 步波段流程(system prompt → 选股 → 图表分析 → 出交易方案)。
+  提示词的问题是每次都要重讲、结果不可复现、也无法回溯。所以落成代码:
+  `swing_history.py`(runner 上抓 1 年日线)+ `swing_analysis.py`(筛选/评分/出方案)。
+- 编码的规则(都能追溯到本仓库的旧教训,不是抄来的):
+  1. **ADX 必须比 5 天前更高** —— 原流程只说「early signs of trend strength」,
+     没给可执行阈值。ADX 在升 = 趋势刚起来;ADX 在降 = 趋势已经走完,这正是
+     0胜9负那一批「买在动能末端」的翻版。
+  2. **不追高闸门**:距 SMA20 超过 2.5×ATR 就出局 —— Week 1 的 no-chase 规则复用。
+  3. **regime 读数**(SPY 对 50/200 日线)直接写进报告头部,risk-off 就写明空仓观望 ——
+     对应「在半导体熊市里买漂亮的半导体图」那一课。
+  4. **严格档不足 5 只时才放宽 ATR 带,并在报告里用 `*` 标记为二线** ——
+     宁可少给,也不为了凑够 5 只而假装筛出来了。
+- 仓位数学的诚实结果:$1,000 账户 + 2% 风险($20)+ 4-5% ATR 的票 => 通常只买得起
+  1-3 股,单笔盈利是几十美元级别。这不是 bug,是「小账户就该有小仓位」。想要更大
+  仓位得先有更大账户,而不是把止损放宽。
+- 验证:`swing_analysis.py --selftest` 用合成 K 线核对指标数学(SMA/EMA/RSI/ATR/ADX/MACD
+  都有可手算的期望值),另外用 13 只合成标的跑通了全流程 —— 下跌趋势、低流动性、
+  过闷、过野的标的都按预期被筛掉了。
+- 边界:这套东西**不下单、不碰券商**,只出 markdown 研究报告。也**没有**前向验证过。
+  上真钱的门槛不变:4 周 / 20 笔以上 / 净盈利 / 零数据错误。

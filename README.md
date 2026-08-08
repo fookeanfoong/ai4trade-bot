@@ -31,6 +31,24 @@ the 5-minute timeframe (RSI / Bollinger Bands / volume / support-resistance),
 alongside this stock bot. It shares the same execution engine and Alpaca account
 without touching the stock state. See **[SETUP_CRYPTO.md](SETUP_CRYPTO.md)**.
 
+## Swing research (manual, no broker)
+
+A separate, **research-only** track for multi-day / multi-week swing trades on a
+$1,000 account: screen for medium volatility (4-5% ATR) + real liquidity + *early*
+trend strength, score the survivors on a 100-point technical card, then build three
+technically distinct setups (breakout / 20-SMA pullback / Fib retracement) with
+entry, stop, target, share count, dollar P&L and R:R.
+
+```bash
+python swing_analysis.py --selftest   # indicator maths, runs anywhere
+python swing_analysis.py              # -> reports/swing/YYYY-MM-DD.md + swing_setups.json
+```
+
+Bars come from `swing_history.py`, which only works on the Actions runner (Yahoo is
+blocked from the Claude sandbox, same as `quotes.py`). Run it from the Actions tab:
+**swing-research** → *Run workflow*. It places no orders. Rules and reasoning:
+**[SWING_PLAYBOOK.md](SWING_PLAYBOOK.md)**.
+
 ## One-time deploy (~5 min)
 
 1. Create a **new GitHub repo** (private is fine), e.g. `ai4trade-bot`.

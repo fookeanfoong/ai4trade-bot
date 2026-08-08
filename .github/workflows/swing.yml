@@ -1,0 +1,76 @@
+name: swing-research
+
+# Swing-trade research (see SWING_PLAYBOOK.md). Fetches 1y of daily bars and
+# writes reports/swing/YYYY-MM-DD.md + swing_setups.json.
+#
+# MANUAL ONLY, on purpose. The stock book is paused (see trade.yml) and this is
+# research, not an order router — it never touches a broker. The schedule below
+# is left commented out so switching it on is uncommenting it, same convention
+# as trade.yml.
+on:
+  # schedule:
+  #   - cron: "45 11 * * 1-5"    # ~07:45 ET, well before the open
+  workflow_dispatch:
+    inputs:
+      account_usd:
+        description: "Account size used for position sizing"
+        required: false
+        default: "1000"
+      risk_pct:
+        description: "Percent of the account risked per trade"
+        required: false
+        default: "2"
+      atr_min:
+        description: "Minimum ATR(14) as % of price"
+        required: false
+        default: "4"
+      atr_max:
+        description: "Maximum ATR(14) as % of price"
+        required: false
+        default: "5"
+
+concurrency:
+  group: swing-research
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify indicator maths
+        run: python swing_analysis.py --selftest
+
+      # Yahoo is reachable from the runner but blocked from the Claude sandbox,
+      # so the bars have to be fetched (and committed) here.
+      - name: Fetch daily bars
+        run: python swing_history.py
+
+      - name: Screen, rank and build setups
+        env:
+          SWING_ACCOUNT_USD: ${{ inputs.account_usd || '1000' }}
+          SWING_RISK_PCT: ${{ inputs.risk_pct || '2' }}
+          SWING_ATR_MIN: ${{ inputs.atr_min || '4' }}
+          SWING_ATR_MAX: ${{ inputs.atr_max || '5' }}
+        run: python swing_analysis.py
+
+      - name: Commit research
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "swing research $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
