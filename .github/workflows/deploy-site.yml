@@ -23,9 +23,12 @@ name: deploy-site
 # Adjust the cron if you want it earlier/later. You can also trigger it by hand
 # from the Actions tab (workflow_dispatch).
 
+# PAUSED at the owner's request — only the crypto book runs now. The live site
+# stays up on Vercel; it just stops being redeployed on a timer. Uncomment the
+# schedule to resume, or trigger a one-off deploy from the Actions tab.
 on:
-  schedule:
-    - cron: "15 13 * * 1-5"
+  # schedule:
+  #   - cron: "15 13 * * 1-5"
   workflow_dispatch: {}
 
 concurrency:
