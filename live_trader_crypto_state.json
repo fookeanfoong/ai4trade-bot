@@ -39,7 +39,7 @@
       "t1": 292599.0,
       "t2": 292599.0,
       "half_taken": false,
-      "peak_price": 65030.5,
+      "peak_price": 65112.67,
       "armed": false,
       "confidence": 0.64,
       "entry_chg_3d_pct": null,
@@ -690,6 +690,12 @@
     },
     {
       "ran_at": "2026-08-08T13:59:59Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": []
+    },
+    {
+      "ran_at": "2026-08-08T14:42:29Z",
       "broker": "alpaca_crypto",
       "dry_run": false,
       "actions": []
