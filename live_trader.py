@@ -117,6 +117,10 @@ RUN_WINNERS = os.environ.get("RUN_WINNERS", "false").lower() in ("yes", "true")
 # 止损和目标照常生效,只挡掉「刚买完信号就抖没了」这种纯噪音离场。
 # 每次进出固定花掉 0.5% 手续费,所以churn 是这个策略最贵的失败模式。
 MIN_HOLD_MIN = float(os.environ.get("MIN_HOLD_MIN", "0"))
+# 彻底关掉「信号失效离场」,只留止损和追踪止盈决定生死。
+# 60 天回测:这条离场占了 375/472 笔、亏 $141.66,是最大的单一亏损来源;
+# 关掉之后胜率从 10% 升到 45%。它把「小亏很多次」变成了「按计划走完」。
+DISABLE_SIGNAL_EXIT = os.environ.get("DISABLE_SIGNAL_EXIT", "false").lower() in ("yes", "true")
 ENABLE_SHORT = os.environ.get("ENABLE_SHORT", "false").lower() in ("yes", "true")
 
 # Stock-split (corporate action) recognition. A split changes the broker's share
@@ -508,7 +512,9 @@ def manage_position(broker, state, ticker: str, signals, qmap, dry: bool,
     #    (a) 刚开的仓给它 MIN_HOLD_MIN 分钟站稳,期间只认止损和目标;
     #    (b) risk-off 期间信号层本来就不产出任何 setup,那不代表这个币变坏了,
     #        不能因此把所有持仓一次性平掉——停止开新仓已经是当轮的正确反应。
-    if not signal_still_valid(sym, p["side"], signals):
+    if DISABLE_SIGNAL_EXIT:
+        pass          # 只靠止损/追踪止盈离场
+    elif not signal_still_valid(sym, p["side"], signals):
         age = held_minutes(p)
         if MIN_HOLD_MIN > 0 and age < MIN_HOLD_MIN:
             lines.append(f"{sym}: signal gone but only {age:.0f}m old "
