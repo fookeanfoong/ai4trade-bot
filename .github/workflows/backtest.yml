@@ -1,0 +1,65 @@
+name: backtest
+
+# Manual only. Replays historical 5m bars through the SAME signal code the live
+# book uses and reports expectancy after fees, then commits reports/backtest.md.
+#
+# It lives in Actions rather than being run locally because the dev sandbox has
+# no route to Yahoo — the runner does. Nothing here touches a broker: no keys,
+# no orders, read-only market data.
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Days of 5m history (Yahoo caps 5m data at ~60)"
+        type: string
+        default: "60"
+      fee:
+        description: "Fee per side (0.0020 = blended maker-in/taker-out)"
+        type: string
+        default: "0.0020"
+      floor_usd:
+        description: "Net-dollar floor per trade"
+        type: string
+        default: "0.50"
+      min_hold:
+        description: "Minutes before a signal-gone exit may fire"
+        type: string
+        default: "20"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backtest
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run backtest
+        run: |
+          python backtest_crypto.py \
+            --days "${{ inputs.days }}" \
+            --fee "${{ inputs.fee }}" \
+            --floor-usd "${{ inputs.floor_usd }}" \
+            --min-hold "${{ inputs.min_hold }}"
+
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A reports/
+          if git diff --cached --quiet; then
+            echo "no change"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "backtest $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
