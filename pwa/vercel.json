@@ -1,1 +1,5 @@
-{"$schema": "https://openapi.vercel.sh/vercel.json", "ignoreCommand": "exit 1", "rewrites": [{ "source": "/ai-trader.html", "destination": "/" }]}
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "ignoreCommand": "exit 0",
+  "rewrites": [{ "source": "/ai-trader.html", "destination": "/" }]
+}
