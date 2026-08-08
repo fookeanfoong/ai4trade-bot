@@ -541,6 +541,14 @@
       "actions": [
         "LINK: benched today (already exited once) \u2014 no re-entry until tomorrow"
       ]
+    },
+    {
+      "ran_at": "2026-08-08T03:45:51Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "no actionable signal (direction, confidence>=0.6, not priced-in)"
+      ]
     }
   ],
   "benched": {
