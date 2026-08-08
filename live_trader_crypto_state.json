@@ -619,6 +619,12 @@
         "ENTRY LONG AVAX conf 0.67 15.2989 sh @ $6.54 [broker] notional $100 risk $8.00 | stop $6.4645 T1 $29.4138 T2 $29.4138 | net-target $0.70 (band $0.50-$1.00, vol span 2.88%) = gross +1.10% -> exit $6.6083 = net $+0.6978 after 0.20%/side (FLOOR \u2014 trails from here, upside open) | stop tightened 2.66%->1.10% for 1:1 | TA t2 was +2.58%",
         "ENTRY LONG BTC conf 0.64 0.001538 sh @ $65022.00 [broker] notional $100 risk $8.00 | stop $64435.64 T1 $292599.0 T2 $292599.0 | net-target $0.50 (band $0.50-$1.00, vol span 0.72%) = gross +0.90% -> exit $65608.4 = net $+0.5000 after 0.20%/side (FLOOR \u2014 trails from here, upside open) | stop tightened 1.58%->0.90% for 1:1 | TA t2 was +2.00%"
       ]
+    },
+    {
+      "ran_at": "2026-08-08T05:00:20Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": []
     }
   ],
   "benched": {},
