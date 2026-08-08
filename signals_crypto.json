@@ -1,17 +1,44 @@
 {
-  "updated_at": "2026-08-07T22:12:05-04:00",
+  "updated_at": "2026-08-07T22:44:13-04:00",
   "valid_for": "2026-08-07",
   "generator": "generate_signals_crypto.py (5m scalp, long-only)",
   "note": "算法根据 5 分钟行情自动生成的剥头皮信号,仅供学习/研究参考,不构成投资建议。已按风险定量(非全仓),加密波动极大,盈亏自负。",
   "max_new": 2,
   "regime_symbol": "BTC",
   "regime_max_drop_pct": 4.0,
-  "regime_day_pct": 4.18,
+  "regime_day_pct": 4.22,
   "news_risk_off": false,
   "news_hits": 0,
   "news_degraded": false,
   "risk_off": false,
   "panic_flatten": false,
   "regime_reason": "",
-  "signals": []
+  "signals": [
+    {
+      "sector_or_ticker": "LINK",
+      "direction": "bullish",
+      "confidence": 0.64,
+      "timeframe": "5m scalp",
+      "entry_mode": "market",
+      "setup": "oversold_bounce",
+      "stop_pct": 0.0164,
+      "t1_pct": 0.0031,
+      "t2_pct": 0.0185,
+      "rr": 1.13,
+      "already_priced_in": false,
+      "auto_generated": true,
+      "ta": {
+        "rsi": 47.6,
+        "pct_b": 0.314,
+        "trend": "down",
+        "support": 8.06,
+        "resistance": 8.333,
+        "vol_ratio": 0.47
+      },
+      "reasoning": {
+        "en": "oversold bounce long on LINK (5m): RSI 47.6, %B 0.314, trend down, vol× 0.47. Stop below support $8.06; targets +0.3%/+1.8%, R:R 1.13. Algorithmic scalp, risk-sized (not all-in), not analyst-reviewed.",
+        "zh": "LINK 5分钟超卖反弹:RSI 47.6,%B 0.314,趋势down,量比0.47。止损设在支撑 $8.06 下方,目标 +0.3%/+1.8%,盈亏比 1.13。算法剥头皮、按风险定量(非全仓)。"
+      }
+    }
+  ]
 }
