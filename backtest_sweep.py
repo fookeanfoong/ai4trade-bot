@@ -46,6 +46,9 @@ VARIANTS = [
     # 中间档没测过 —— 先放进扫描,别靠猜。
     ("③b 量比门槛降到 0.8",             BASE_1H, {"MIN_VOL_RATIO": "0.8"}),
     ("③c 量比门槛降到 0.6",             BASE_1H, {"MIN_VOL_RATIO": "0.6"}),
+    # 信号层的盈亏比是拿「支撑位止损」算的,而引擎会把止损收紧到目标距离,
+    # 那个止损根本不会被采用 —— 这个变体量「不再用假止损筛选」的效果。
+    ("③d 关掉信号层盈亏比门槛",         BASE_1H, {"MIN_RR": "0"}),
     ("④ +敢追高(RSI 85/%B 0.98)",       BASE_1H, {"RSI_OVERBOUGHT": "85", "PCTB_OVERBOUGHT": "0.98"}),
     ("⑤ +空间门槛降到 0.8%",            BASE_1H, {"MIN_TARGET_ROOM": "0.008"}),
     ("⑥ 全部放宽(最激进)",              BASE_1H, {"ALLOW_FLAT_TREND": "yes", "MIN_VOL_RATIO": "0",
