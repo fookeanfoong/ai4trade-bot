@@ -61,6 +61,22 @@ def fetch_bars(bare: str, days: int) -> list:
     return bars
 
 
+def resample(bars: list, factor: int) -> list:
+    """把 5m K 线聚合成更长周期。factor=3 -> 15m,12 -> 1h。
+
+    5 分钟级别的噪音大于信号是这套策略最可疑的地方,而拉长周期同时做两件事:
+    提高信噪比,并直接减少交易次数(手续费是按次收的)。"""
+    if factor <= 1:
+        return bars
+    out = []
+    for i in range(0, len(bars) - factor + 1, factor):
+        chunk = bars[i:i + factor]
+        out.append({"t": chunk[0]["t"], "o": chunk[0]["o"],
+                    "h": max(b["h"] for b in chunk), "l": min(b["l"] for b in chunk),
+                    "c": chunk[-1]["c"], "v": sum(b["v"] for b in chunk)})
+    return out
+
+
 def quote_at(bare: str, bars: list, i: int) -> dict:
     """重建「第 i 根 K 线收盘时 quotes_crypto.py 会算出什么」。
 
@@ -133,8 +149,9 @@ def simulate(sym: str, bars: list, args) -> list:
                     trades.append(close(pos, trail, "TRAIL", bar["t"], args.fee))
                     pos, benched_day = None, day
                     continue
-            # 信号失效离场,受最短持有时间保护(和实盘同一条规则)
-            if held_min >= args.min_hold:
+            # 信号失效离场,受最短持有时间保护(和实盘同一条规则)。
+            # --no-signal-exit 用来验证「80% 的交易死在这里」是不是真的有害。
+            if not args.no_signal_exit and held_min >= args.min_hold:
                 q = quote_at(sym, bars, i)
                 if q and G.build_setup(sym, q, False) is None:
                     trades.append(close(pos, nxt["o"], "SIGNAL_GONE", bar["t"], args.fee))
@@ -200,6 +217,11 @@ def main() -> int:
     ap.add_argument("--min-hold", type=float, default=20.0)
     ap.add_argument("--min-rr", type=float, default=1.0)
     ap.add_argument("--max-move", type=float, default=0.035)
+    ap.add_argument("--tf", type=int, default=1,
+                    help="聚合倍数:1=5m, 3=15m, 6=30m, 12=1h")
+    ap.add_argument("--no-signal-exit", action="store_true",
+                    help="关掉「信号失效」离场,只留止损和追踪止盈")
+    ap.add_argument("--label", default="", help="报告里的实验名")
     args = ap.parse_args()
 
     all_trades, errors, spans = [], {}, {}
@@ -209,6 +231,7 @@ def main() -> int:
         except Exception as e:
             errors[sym] = str(e)[:120]
             continue
+        bars = resample(bars, args.tf)
         if len(bars) < 60:
             errors[sym] = f"only {len(bars)} bars"
             continue
@@ -217,14 +240,16 @@ def main() -> int:
                       len(bars))
         all_trades += simulate(sym, bars, args)
 
-    lines = ["# 回测报告", "",
+    lines = [f"# 回测报告{(' — ' + args.label) if args.label else ''}", "",
              f"生成于 {dt.datetime.utcnow().isoformat(timespec='seconds')}Z", ""]
     if spans:
         s = next(iter(spans.values()))
         lines += [f"数据区间 {s[0]} ~ {s[1]}，每个币约 {s[2]} 根 5 分钟 K 线。",
                   f"参数：手续费 {args.fee*100:.2f}%/边 · 本金 ${args.book:.0f} · "
                   f"{args.names} 个仓 · 保底 ${args.floor_usd:.2f} · "
-                  f"回撤 {args.giveback*100:.1f}% · 最短持有 {args.min_hold:.0f}m", ""]
+                  f"回撤 {args.giveback*100:.1f}% · 最短持有 {args.min_hold:.0f}m",
+                  f"周期 **{5*args.tf} 分钟** · 信号失效离场 "
+                  f"**{'关闭' if args.no_signal_exit else '开启'}**", ""]
     if errors:
         lines += ["> ⚠️ 取数失败：" + "；".join(f"{k}（{v}）" for k, v in errors.items()), ""]
 
