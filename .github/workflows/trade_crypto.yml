@@ -89,8 +89,16 @@ jobs:
           # the same $0.50 floor needs a bigger move: 0.75% on a $200 position,
           # 1.00% on $100. With RUN_WINNERS that is a FLOOR, not an exit — a
           # trailing stop arms there and the trade can only close higher.
+          # Entries rest as limit orders to pay the 0.15% maker fee instead of
+          # the 0.25% taker fee; exits stay market so a stop always fills.
+          # Round trip 0.50% -> 0.40%. Live attribution showed gross +$2.60
+          # against $7.74 of fees, so cost is the thing worth attacking.
+          LIMIT_ENTRIES: "yes"
+          LIMIT_OFFSET_PCT: "0.0"       # rest at last price: best fill odds
           NET_PROFIT_MODE: "yes"
-          FEE_RATE: "0.0025"            # Alpaca crypto taker ≈ 0.25% per side
+          # Blended: maker in (0.15%) + taker out (0.25%) = 0.40% round trip,
+          # so 0.20% per side is what the target maths should assume.
+          FEE_RATE: "0.0020"
           NET_TARGET_MIN_USD: "0.50"
           NET_TARGET_MAX_USD: "1.00"
           RUN_WINNERS: "yes"            # let profit run past the floor
