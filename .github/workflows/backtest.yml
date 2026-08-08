@@ -25,6 +25,10 @@ on:
         description: "Minutes before a signal-gone exit may fire"
         type: string
         default: "20"
+      sweep:
+        description: "Also compare timeframes and signal-exit on/off"
+        type: string
+        default: "true"
 
 permissions:
   contents: write
@@ -42,9 +46,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run backtest
+      - name: Run backtest (current config)
         run: |
           python backtest_crypto.py \
+            --days "${{ inputs.days }}" \
+            --fee "${{ inputs.fee }}" \
+            --floor-usd "${{ inputs.floor_usd }}" \
+            --min-hold "${{ inputs.min_hold }}"
+
+      - name: Run variant sweep (same data, several configs)
+        if: ${{ inputs.sweep == 'true' }}
+        run: |
+          python backtest_sweep.py \
             --days "${{ inputs.days }}" \
             --fee "${{ inputs.fee }}" \
             --floor-usd "${{ inputs.floor_usd }}" \

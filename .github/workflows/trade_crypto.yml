@@ -4,17 +4,18 @@ name: ai4trade-bot-crypto
 # all hours. The engine (live_trader.py) is reused unchanged — the crypto book is
 # selected entirely through env vars (BROKER, MARKET_24_7, REGIME_SYMBOLS, and the
 # *_FILE / REPORTS_SUBDIR overrides), so it never touches the stock book's state.
+# PAUSED. A 472-trade backtest over two months put this strategy at
+# -$0.44/trade expectancy, with GROSS P&L negative (-$17.64) before fees were
+# even counted. Live trading it only accumulates losses that the backtester can
+# now reproduce for free, so the schedule is off until a variant shows positive
+# expectancy. Uncomment to resume; workflow_dispatch still works for flattening.
 on:
-  schedule:
-    # SCALPING cadence: every 5 min (GitHub's minimum), 24/7, to match the 5m
-    # analysis timeframe. This burns Actions minutes fast (~288 runs/day) — if
-    # that matters, loosen to */10 or */15. GitHub crons can be delayed under
-    # load, which is fine — the bot is idempotent and self-gates on state.
-    - cron: "*/5 * * * *"
-  push:
-    branches: ["main"]
-    paths:
-      - ".trigger-crypto"    # reliable kick: touch this file to fire a run
+  # schedule:
+  #   - cron: "*/5 * * * *"
+  # push:
+  #   branches: ["main"]
+  #   paths:
+  #     - ".trigger-crypto"
   workflow_dispatch:
     inputs:
       flatten:
