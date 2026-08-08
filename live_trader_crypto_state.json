@@ -667,6 +667,14 @@
       "broker": "alpaca_crypto",
       "dry_run": false,
       "actions": []
+    },
+    {
+      "ran_at": "2026-08-08T11:31:39Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "broker unavailable \u2014 no orders this run: {\"message\": \"service temporary unavailable.\"}\n"
+      ]
     }
   ],
   "benched": {},
