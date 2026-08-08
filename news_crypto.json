@@ -1,17 +1,11 @@
 {
-  "updated_at": "2026-08-08T13:13:16+00:00",
+  "updated_at": "2026-08-08T13:59:55+00:00",
   "window_hours": 6.0,
   "halt_threshold": 3,
   "hit_count": 0,
   "news_risk_off": false,
   "reason": "",
   "headlines": [],
-  "errors": {
-    "bitcoin crash OR plunge OR selloff when:1d": "HTTP Error 503: Service Unavailable",
-    "crypto exchange hack OR exploit OR stolen when:1d": "HTTP Error 503: Service Unavailable",
-    "crypto withdrawals halted OR insolvency OR bankruptcy when:1d": "HTTP Error 503: Service Unavailable",
-    "crypto ban OR crackdown OR SEC lawsuit when:1d": "HTTP Error 503: Service Unavailable",
-    "ethereum OR solana OR xrp plunge OR liquidation when:1d": "HTTP Error 503: Service Unavailable"
-  },
-  "degraded": true
+  "errors": {},
+  "degraded": false
 }
