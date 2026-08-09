@@ -31,6 +31,18 @@ the 5-minute timeframe (RSI / Bollinger Bands / volume / support-resistance),
 alongside this stock bot. It shares the same execution engine and Alpaca account
 without touching the stock state. See **[SETUP_CRYPTO.md](SETUP_CRYPTO.md)**.
 
+## Forex module (EUR/USD, signals only)
+
+A third, fully separate book: **OANDA + EUR/USD H4**, sized for a **$200** account.
+It codifies two setups — trend-following breakout-retest long, and counter-trend
+double-top short — and emits a signal only when a trigger **and** at least two
+confirmations line up. Everything else is `wait`.
+
+It **generates signals, it does not place orders.** Run it on a practice account
+for 20+ signals before wiring execution. Why OANDA and not any MT5 broker: OANDA
+sizes in *units* (1 minimum), so a 1% risk on $200 is actually expressible — at a
+0.01-lot minimum it is not. See **[SETUP_FOREX.md](SETUP_FOREX.md)**.
+
 ## One-time deploy (~5 min)
 
 1. Create a **new GitHub repo** (private is fine), e.g. `ai4trade-bot`.

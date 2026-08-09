@@ -1,0 +1,51 @@
+{
+  "_README": "高影响事件封锁表。generate_signals_forex.py 会在 impact=high 的事件前 FOREX_BLACKOUT_HOURS(默认12)小时内拒绝开新仓。时间一律 UTC。",
+  "_WARNING": "⚠️ 这些时间来自公开周报,且原文的『星期几』与真实日历对不上(2026-08-12 是周三、08-13 是周四,原文却写成周二/周三)。上线前务必到 ForexFactory / 你的券商日历核对一遍再用。verify=true 的条目 = 未核实。",
+  "_source": "LiteFinance / Lirunex 周度经济日历 2026-08-10~16",
+  "events": [
+    {
+      "name": "RBA 利率决议",
+      "time_utc": "2026-08-11T04:30:00Z",
+      "impact": "medium",
+      "affects": ["AUD_USD"],
+      "verify": true,
+      "note": "对 EUR/USD 只有间接的风险情绪传导"
+    },
+    {
+      "name": "美国 CPI + 核心 CPI",
+      "time_utc": "2026-08-12T12:30:00Z",
+      "impact": "high",
+      "affects": ["EUR_USD", "GBP_USD", "USD_JPY"],
+      "verify": true,
+      "note": "本周唯一能决定 1.1550 突破真假的事件。原文标为『周三』,周三=08-12。"
+    },
+    {
+      "name": "德国 HICP",
+      "time_utc": "2026-08-12T06:00:00Z",
+      "impact": "medium",
+      "affects": ["EUR_USD"],
+      "verify": true
+    },
+    {
+      "name": "美国 PPI",
+      "time_utc": "2026-08-13T12:30:00Z",
+      "impact": "medium",
+      "affects": ["EUR_USD"],
+      "verify": true
+    },
+    {
+      "name": "欧元区 Q2 GDP + 工业产出",
+      "time_utc": "2026-08-13T09:00:00Z",
+      "impact": "medium",
+      "affects": ["EUR_USD"],
+      "verify": true
+    },
+    {
+      "name": "美国 零售销售 + 费城联储制造业",
+      "time_utc": "2026-08-14T12:30:00Z",
+      "impact": "high",
+      "affects": ["EUR_USD"],
+      "verify": true
+    }
+  ]
+}

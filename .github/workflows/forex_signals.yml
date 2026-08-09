@@ -1,0 +1,71 @@
+name: forex-signals
+
+# 外汇信号引擎(EUR/USD H4)。**只生成信号,不下单** —— 执行路径要等模拟盘跑够
+# 20 笔、你自己看过 signals_forex.md 之后再接。
+#
+# 排程:每 4 小时,H4 K 线收盘后 5 分钟跑一次。必须等 K 线**收盘**,用未收盘那根
+# 的 close 算信号 = 未来函数,回测漂亮实盘打脸。
+# 外汇周末休市,脚本自己会判断(fx_market_open / OANDA tradeable),所以这里
+# 不做星期过滤,让它自己输出 wait 就好。
+on:
+  schedule:
+    - cron: "5 1,5,9,13,17,21 * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - ".trigger-forex"
+  workflow_dispatch:
+
+concurrency:
+  group: forex-signals          # 独立分组,不阻塞股票/加密两本账
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  signals:
+    runs-on: ubuntu-latest
+    env:
+      OANDA_TOKEN: ${{ secrets.OANDA_TOKEN }}
+      OANDA_ACCOUNT_ID: ${{ secrets.OANDA_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # broker_oanda.py 只用标准库(urllib),没有依赖要装。
+
+      - name: Generate forex signals
+        continue-on-error: true
+        env:
+          # practice = 模拟盘。要接真钱得同时改成 live 并设
+          # OANDA_I_UNDERSTAND_REAL_MONEY=yes —— 两道锁是故意的。
+          OANDA_ENV: "practice"
+          FOREX_PAIRS: "EUR_USD"
+          FOREX_GRANULARITY: "H4"
+          # 有券商连接时会用账户真实净值覆盖这个数;这里只是兜底。
+          FOREX_EQUITY_USD: "200"
+          # 1% = $2/笔。连亏 10 笔还剩 $180,仍在牌桌上。
+          # 脚本内有 2% 硬上限,调高也会被夹回来。
+          FOREX_RISK_PCT: "1.0"
+          FOREX_MIN_STOP_PIPS: "15"
+          FOREX_MAX_LEVERAGE: "20"
+          # 高影响事件(CPI/零售)前 12 小时不开新仓,见 forex_events.json
+          FOREX_BLACKOUT_HOURS: "12"
+        run: python generate_signals_forex.py
+
+      - name: Commit forex signals
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "forex signals $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

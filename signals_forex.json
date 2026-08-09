@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-08-09T00:28:26+00:00",
+  "error": "取数失败: 未配置 OANDA_TOKEN / OANDA_ACCOUNT_ID",
+  "decision": "wait",
+  "note": "拿不到可核实的行情就不产生信号 —— 宁可不交易,也不按猜测的价位下单。",
+  "pairs": [],
+  "equity_usd": 200.0,
+  "risk_pct": 1.0,
+  "risk_usd": 2.0,
+  "granularity": "H4",
+  "market_open": false,
+  "disclaimer": "研究用途,不构成投资建议。"
+}
