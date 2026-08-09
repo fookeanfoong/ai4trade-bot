@@ -1,66 +1,5 @@
 {
-  "positions": {
-    "AVAX": {
-      "ticker": "AVAX",
-      "side": "long",
-      "qty": 15.298941,
-      "entry": 6.5364,
-      "stop": 6.4645,
-      "t1": 29.4138,
-      "t2": 29.4138,
-      "half_taken": false,
-      "peak_price": 6.576,
-      "armed": false,
-      "confidence": 0.67,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 100.0,
-      "book_risk_usd": 8.0,
-      "setup": "momentum_long",
-      "rr": 0.97,
-      "entry_ctx": {
-        "rsi": 60.3,
-        "pct_b": 0.834,
-        "trend": "up",
-        "vol_ratio": 2.03
-      },
-      "single_exit": false,
-      "run_mode": true,
-      "trail_floor": 6.6083,
-      "opened_at": "2026-08-08T04:42:09Z",
-      "opened_ny_date": "2026-08-08",
-      "price_src": "broker"
-    },
-    "BTC": {
-      "ticker": "BTC",
-      "side": "long",
-      "qty": 0.001538,
-      "entry": 65022.0,
-      "stop": 64435.64,
-      "t1": 292599.0,
-      "t2": 292599.0,
-      "half_taken": false,
-      "peak_price": 65112.67,
-      "armed": false,
-      "confidence": 0.64,
-      "entry_chg_3d_pct": null,
-      "notional_usd": 100.0,
-      "book_risk_usd": 8.0,
-      "setup": "momentum_long",
-      "rr": 1.27,
-      "entry_ctx": {
-        "rsi": 62.2,
-        "pct_b": 0.747,
-        "trend": "up",
-        "vol_ratio": 1.28
-      },
-      "single_exit": false,
-      "run_mode": true,
-      "trail_floor": 65608.36,
-      "opened_at": "2026-08-08T04:42:09Z",
-      "opened_ny_date": "2026-08-08",
-      "price_src": "broker"
-    }
-  },
+  "positions": {},
   "trade_log": [
     {
       "ticker": "DOGE",
@@ -295,6 +234,46 @@
       "exit": 73.7512,
       "qty": 1.35591,
       "closed_at": "2026-08-07T23:48:39Z"
+    },
+    {
+      "ticker": "AVAX",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 6.5364,
+      "exit": 6.4646,
+      "qty": 15.298941,
+      "closed_at": "2026-08-09T00:13:58Z",
+      "setup": "momentum_long",
+      "confidence": 0.67,
+      "rr": 0.97,
+      "held_min": 1171.8,
+      "entry_ctx": {
+        "rsi": 60.3,
+        "pct_b": 0.834,
+        "trend": "up",
+        "vol_ratio": 2.03
+      },
+      "fee_rate": 0.002
+    },
+    {
+      "ticker": "BTC",
+      "side": "long",
+      "action": "MANUAL_FLATTEN",
+      "entry": 65022.0,
+      "exit": 64865.14,
+      "qty": 0.001538,
+      "closed_at": "2026-08-09T00:13:58Z",
+      "setup": "momentum_long",
+      "confidence": 0.64,
+      "rr": 1.27,
+      "held_min": 1171.8,
+      "entry_ctx": {
+        "rsi": 62.2,
+        "pct_b": 0.747,
+        "trend": "up",
+        "vol_ratio": 1.28
+      },
+      "fee_rate": 0.002
     }
   ],
   "runs": [
@@ -787,6 +766,16 @@
       "broker": "alpaca_crypto",
       "dry_run": false,
       "actions": []
+    },
+    {
+      "ran_at": "2026-08-09T00:13:58Z",
+      "broker": "alpaca_crypto",
+      "dry_run": false,
+      "actions": [
+        "FLATTEN: FLATTEN_ALL requested \u2014 closing every open position",
+        "CLOSE AVAX long (MANUAL_FLATTEN) @ ~$6.46 [broker]",
+        "CLOSE BTC long (MANUAL_FLATTEN) @ ~$64865.14 [broker]"
+      ]
     }
   ],
   "benched": {},
