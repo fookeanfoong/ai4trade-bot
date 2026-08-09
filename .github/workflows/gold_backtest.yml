@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Backtest across equity tiers
+      - name: Backtest — 固定紧止损(参考口径) vs ATR止损
         continue-on-error: true
         run: |
           set -e
@@ -38,25 +38,32 @@ jobs:
             echo "*生成于 $(date -u +%Y-%m-%dT%H:%MZ)*"
             echo
             echo "> ⚠️ Python 复刻的 **K线级** 回测，不等于 MT5 策略测试器。"
-            echo "> 同一根K线同时触及止损止盈时一律按**止损**计；点差按固定值扣，"
+            echo "> 同一根K线同时触及止损止盈时一律按**止损**计；点差按固定 \$0.30 扣，"
             echo "> 真实点差会在数据前后放大数倍；无滑点、无隔夜利息。"
             echo "> **结果是乐观上界，实盘只会更差。**"
             echo
+            echo "黄金 \"pip\" 口径：按通行的 \$0.10/pip，所以 30 pips = \$3.00 金价距离。"
+            echo "0.01 手 = 1 oz，故 \$3 止损 = \$3 风险 = \$200 的 1.5%。"
+            echo
           } > reports/gold_backtest.md
 
-          for EQ in 200 600 1000 2000; do
-            echo "--- equity=$EQ ---"
-            GOLD_EQUITY=$EQ python backtest_gold.py \
-              --symbol "GC=F" --interval 1h --range 2y \
-              --out "reports/_tier_$EQ.md" || true
-            {
-              echo
-              echo "## 本金 \$$EQ"
-              echo
-              tail -n +6 "reports/_tier_$EQ.md" 2>/dev/null || echo "(本档无输出)"
-            } >> reports/gold_backtest.md
-            rm -f "reports/_tier_$EQ.md"
-          done
+          run_one () {   # $1=标签 $2=本金 $3=固定止损(0=ATR) $4=RR
+            echo "--- $1 ---"
+            ARGS="--symbol GC=F --interval 1h --range 2y --rr $4 --out reports/_t.md"
+            if [ "$3" != "0" ]; then ARGS="$ARGS --fixed-stop $3"; fi
+            GOLD_EQUITY=$2 python backtest_gold.py $ARGS || true
+            { echo; echo "## $1"; echo; tail -n +6 reports/_t.md 2>/dev/null || echo "(无输出)"; } \
+              >> reports/gold_backtest.md
+            rm -f reports/_t.md
+          }
+
+          # 你的参考口径:$200 + 固定紧止损 + 1:1.5 / 1:2
+          run_one "\$200 · 固定\$2.5止损(25pips) · RR1:1.5" 200 2.5 1.5
+          run_one "\$200 · 固定\$3.0止损(30pips) · RR1:1.5" 200 3.0 1.5
+          run_one "\$200 · 固定\$3.0止损(30pips) · RR1:2"   200 3.0 2.0
+          run_one "\$200 · 固定\$4.0止损(40pips) · RR1:2"   200 4.0 2.0
+          # 对照:ATR止损在 $200 上是什么下场
+          run_one "\$200 · ATR止损(对照组)"                  200 0   1.5
 
       - name: Commit backtest report
         if: always()
