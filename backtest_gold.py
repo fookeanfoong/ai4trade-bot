@@ -48,6 +48,8 @@ SWING_WING     = 2
 CONTRACT_OZ    = 100.0     # XAUUSD 合约 100 oz
 MIN_LOT, LOT_STEP = 0.01, 0.01
 USE_BREAKEVEN  = True
+# >0 = 固定止损(美元金价距离),覆盖 ATR 模式。参考口径:30 "pips" = $3.00
+FIXED_STOP_USD = float(os.environ.get("GOLD_FIXED_STOP", "0"))
 
 
 # ------------------------------- 数据 ---------------------------------------
@@ -243,7 +245,14 @@ def run(bars):
         if d == 0:
             continue
 
-        dist = max(atr[i] * ATR_STOP_MULT, SPREAD_USD * MIN_STOP_SPRDX)
+        if FIXED_STOP_USD > 0:
+            # 固定紧止损模式(参考资料的口径:"25~30 pips",按 $0.10/pip = $2.5~3.0)。
+            # 和 ATR 模式是两条完全不同的路:ATR 止损在 $200 上超风险上限做不了,
+            # 固定 $3 止损风险只有 1.5% —— 但它只有黄金 H1 波动的 0.3 倍,
+            # 会不会被噪音扫穿是个实证问题,不是嘴上能定的。
+            dist = FIXED_STOP_USD
+        else:
+            dist = max(atr[i] * ATR_STOP_MULT, SPREAD_USD * MIN_STOP_SPRDX)
         lots, would_risk = lots_for(equity, dist)
         if lots <= 0:
             skipped_risk += 1
@@ -294,7 +303,14 @@ def main():
     ap.add_argument("--interval", default="1h")
     ap.add_argument("--range", dest="rng", default="2y")
     ap.add_argument("--out", default="reports/gold_backtest.md")
+    ap.add_argument("--fixed-stop", type=float, default=None,
+                    help="固定止损(金价美元距离),如 3.0 = 30pips@$0.10")
+    ap.add_argument("--rr", type=float, default=None, help="盈亏比,覆盖默认")
     a = ap.parse_args()
+
+    global FIXED_STOP_USD, REWARD_RISK
+    if a.fixed_stop is not None: FIXED_STOP_USD = a.fixed_stop
+    if a.rr is not None:         REWARD_RISK = a.rr
 
     try:
         bars = fetch(a.symbol, a.interval, a.rng)
@@ -306,7 +322,9 @@ def main():
         return 1
 
     trades, equity, dd, skipped = run(bars)
-    label = f"{a.symbol} · {a.interval} · {a.rng}"
+    stop_desc = (f"固定${FIXED_STOP_USD:.2f}" if FIXED_STOP_USD > 0
+                 else f"ATR×{ATR_STOP_MULT}")
+    label = f"{a.symbol} · {a.interval} · {a.rng} · 止损{stop_desc} · RR 1:{REWARD_RISK}"
     md = report(bars, trades, equity, dd, skipped, label)
 
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
