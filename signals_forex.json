@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-09T00:39:55+00:00",
-  "error": "取数失败: 未配置 OANDA_TOKEN / OANDA_ACCOUNT_ID",
+  "updated_at": "2026-08-09T01:09:41+00:00",
+  "error": "Yahoo 取数失败: <urlopen error Tunnel connection failed: 403 Forbidden>",
   "decision": "wait",
   "note": "拿不到可核实的行情就不产生信号 —— 宁可不交易,也不按猜测的价位下单。",
   "pairs": [],

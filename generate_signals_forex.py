@@ -42,6 +42,8 @@ EVENTS_FILE = "forex_events.json"
 PAIRS = [p.strip().upper() for p in
          os.environ.get("FOREX_PAIRS", "EUR_USD").split(",") if p.strip()]
 GRANULARITY = os.environ.get("FOREX_GRANULARITY", "H4")
+# yahoo = 免费行情,不需要券商账户(默认);oanda = 走 v20 API(需要 fxTrade 账户)
+DATA_SOURCE = os.environ.get("FOREX_DATA_SOURCE", "yahoo").lower()
 CANDLE_COUNT = int(os.environ.get("FOREX_CANDLE_COUNT", "300"))
 
 # --- 风险参数:整个系统里最重要的三行 ---------------------------------------
@@ -53,7 +55,9 @@ RR1 = 2.0                    # TP1 的回报风险比(用户要求 >= 1:2)
 RR2 = 3.5                    # TP2
 MIN_CONFIRMATIONS = 2        # 触发之外,还需要几个确认信号
 
-SWING_LOOKBACK = 60          # 找结构高低点的回溯根数
+# 找结构高低点的回溯根数。要随周期调:H4 的 60 根 = 10 天,H1 的 60 根只有
+# 2.5 天,太短找不出像样的结构,所以 H1 要开大。
+SWING_LOOKBACK = int(os.environ.get("FOREX_SWING_LOOKBACK", "60"))
 SWING_WING = 2               # 分型左右各几根
 BLACKOUT_HOURS = float(os.environ.get("FOREX_BLACKOUT_HOURS", "12"))
 
@@ -448,6 +452,55 @@ def size_plans(res, broker, equity):
         p["leverage"] = round(units * p["entry"] / equity, 1) if equity else None
         p["actual_risk_usd"] = round(units * dist, 2)
 
+        # ---- MT5 手数口径 --------------------------------------------------
+        # 手动执行是在 MT5 上点的,那边按「手」下单,不认单位数。
+        # 1 标准手 = 100,000 单位;最小 0.01 手 = 1,000 单位。
+        lots = int(units / 1000) / 100.0          # 向下取整到 0.01
+        p["mt5_lots"] = lots
+        min_lot_risk = 1000 * dist                # 0.01 手能亏多少(USD计价品种)
+        p["mt5_min_lot_risk_usd"] = round(min_lot_risk, 2)
+        p["mt5_min_lot_risk_pct"] = round(min_lot_risk / equity * 100, 2) if equity else None
+        if lots < 0.01:
+            # 算出来不足 0.01 手 —— MT5 下不了,只能要么放弃、要么就用 0.01 手。
+            # 判定标准是**硬上限(2%)**,不是这个方案的计划风险:按计划风险卡的话,
+            # 半仓的方案B几乎每次都会被拦(0.75% 也算超),工具就废了。
+            stop_pips = round(dist / (0.01 if inst.endswith("_JPY") else 0.0001), 1)
+            pct = (min_lot_risk / equity * 100) if equity else None
+            if pct is not None and pct > RISK_PCT_HARD_CAP:
+                p["mt5_blocked"] = (
+                    f"MT5 最小 0.01 手在 {stop_pips} pips 止损下要亏 "
+                    f"${round(min_lot_risk, 2)} = 本金的 {round(pct, 2)}%,"
+                    f"超过 {RISK_PCT_HARD_CAP}% 硬上限 —— **这笔在 MT5 上不该做**"
+                )
+            else:
+                p["mt5_note"] = (
+                    f"算出来是 {round(units / 100000, 4)} 手,不足 MT5 最小的 0.01 手。"
+                    f"用 0.01 手的话实际风险 ${round(min_lot_risk, 2)}"
+                    f"({round(pct, 2) if pct else '?'}% ,计划是 ${risk})—— "
+                    f"在 {RISK_PCT_HARD_CAP}% 硬上限内,可以做,但你要知道风险被放大了"
+                )
+
+
+def _bail(reason, now, equity, risk_pct):
+    """取不到行情时的统一出口:写一个诚实的『等待』,而不是半份猜出来的信号。"""
+    doc = {
+        "updated_at": now.isoformat(timespec="seconds"),
+        "error": reason,
+        "decision": "wait",
+        "note": "拿不到可核实的行情就不产生信号 —— 宁可不交易,也不按猜测的价位下单。",
+        "pairs": [], "equity_usd": equity, "risk_pct": risk_pct,
+        "risk_usd": round(equity * risk_pct / 100, 2),
+        "granularity": GRANULARITY, "market_open": fx_market_open(now),
+        "disclaimer": "研究用途,不构成投资建议。",
+    }
+    with open(OUT_JSON, "w") as f:
+        json.dump(doc, f, ensure_ascii=False, indent=2)
+    with open(OUT_MD, "w") as f:
+        f.write(f"# 外汇信号 — {doc['updated_at']}\n\n"
+                f"**决策:等待** — {reason}\n\n{doc['note']}\n")
+    print(f"[forex] {reason} -> decision=wait")
+    return 0
+
 
 def render_md(doc):
     L = [f"# 外汇信号 — {doc['updated_at']}", ""]
@@ -476,8 +529,13 @@ def render_md(doc):
                   f"- 触发:{p['trigger']}",
                   f"- 入场 **{p['entry']}** · 止损 **{p['stop']}**({p['stop_pips']} pips)"
                   f" · TP1 **{p['tp1']}**(1:{p['rr1']}) · TP2 **{p['tp2']}**(1:{p['rr2']})",
-                  f"- 仓位:**{p.get('units', '?')} 单位**(名义 ${p.get('notional_usd', '?')}"
+                  f"- 仓位:**MT5 {p.get('mt5_lots', '?')} 手**"
+                  f"({p.get('units', '?')} 单位 · 名义 ${p.get('notional_usd', '?')}"
                   f" · {p.get('leverage', '?')}x)· 风险 ${p.get('actual_risk_usd', p['risk_usd'])}",]
+            if p.get("mt5_blocked"):
+                L.append(f"  - ⛔ {p['mt5_blocked']}")
+            if p.get("mt5_note"):
+                L.append(f"  - ⚠️ {p['mt5_note']}")
             if p.get("size_capped"):
                 L.append(f"  - ⚠️ {p['size_capped']}")
             L += [
@@ -511,6 +569,17 @@ def main():
         with open(args.candles) as f:
             candle_src = json.load(f)
         market_open = fx_market_open(now)
+    elif DATA_SOURCE == "yahoo":
+        # 默认路线:免费行情,不需要任何券商账户。
+        # 马来西亚的 OANDA 账户会被分到 Global Markets(BVI),而官方文档明写
+        # v20 API 对该分支不开放 —— 所以行情必须和券商解耦。
+        try:
+            import fx_data
+            for inst in PAIRS:
+                candle_src[inst] = fx_data.candles(inst, GRANULARITY, CANDLE_COUNT)
+            market_open = fx_market_open(now)
+        except Exception as e:
+            return _bail(f"Yahoo 取数失败: {e}", now, equity, risk_pct)
     else:
         try:
             import broker_oanda
@@ -527,23 +596,7 @@ def main():
             if market_open is None:
                 market_open = fx_market_open(now)
         except Exception as e:
-            doc = {
-                "updated_at": now.isoformat(timespec="seconds"),
-                "error": f"取数失败: {e}",
-                "decision": "wait",
-                "note": "拿不到可核实的行情就不产生信号 —— 宁可不交易,也不按猜测的价位下单。",
-                "pairs": [], "equity_usd": EQUITY_USD, "risk_pct": risk_pct,
-                "risk_usd": round(EQUITY_USD * risk_pct / 100, 2),
-                "granularity": GRANULARITY, "market_open": fx_market_open(now),
-                "disclaimer": "研究用途,不构成投资建议。",
-            }
-            with open(OUT_JSON, "w") as f:
-                json.dump(doc, f, ensure_ascii=False, indent=2)
-            with open(OUT_MD, "w") as f:
-                f.write(f"# 外汇信号 — {doc['updated_at']}\n\n"
-                        f"**决策:等待** — {doc['error']}\n\n{doc['note']}\n")
-            print(f"[forex] {doc['error']} -> decision=wait")
-            return 0
+            return _bail(f"取数失败: {e}", now, equity, risk_pct)
 
     risk_usd = round(equity * risk_pct / 100, 2)
     blackouts = blackout(now, load_events())
