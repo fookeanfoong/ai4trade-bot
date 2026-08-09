@@ -65,6 +65,12 @@ jobs:
           # 对照:ATR止损在 $200 上是什么下场
           run_one "\$200 · ATR止损(对照组)"                  200 0   1.5
 
+      - name: Research — 周期 × 止损 网格,带样本外验证
+        continue-on-error: true
+        env:
+          GOLD_EQUITY: "200"
+        run: python gold_research.py
+
       - name: Commit backtest report
         if: always()
         run: |
