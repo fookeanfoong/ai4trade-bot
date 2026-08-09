@@ -1,0 +1,94 @@
+name: forex-signals
+
+# 外汇信号引擎(EUR/USD H4)。**只生成信号,不下单** —— 执行路径要等模拟盘跑够
+# 20 笔、你自己看过 signals_forex.md 之后再接。
+#
+# 排程:每 4 小时,H4 K 线收盘后 5 分钟跑一次。必须等 K 线**收盘**,用未收盘那根
+# 的 close 算信号 = 未来函数,回测漂亮实盘打脸。
+# 外汇周末休市,脚本自己会判断(fx_market_open / OANDA tradeable),所以这里
+# 不做星期过滤,让它自己输出 wait 就好。
+on:
+  schedule:
+    # H1 K 线每小时收盘,收盘后 5 分钟跑。必须等**收盘** —— 用未收盘那根的
+    # close 算信号 = 未来函数,回测漂亮实盘打脸。
+    - cron: "5 * * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - ".trigger-forex"
+  workflow_dispatch:
+
+concurrency:
+  group: forex-signals          # 独立分组,不阻塞股票/加密两本账
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  signals:
+    runs-on: ubuntu-latest
+    env:
+      OANDA_TOKEN: ${{ secrets.OANDA_TOKEN }}
+      OANDA_ACCOUNT_ID: ${{ secrets.OANDA_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # broker_oanda.py 只用标准库(urllib),没有依赖要装。
+
+      - name: Generate forex signals
+        continue-on-error: true
+        env:
+          # yahoo = 免费行情,不需要任何券商账户。
+          # 马来西亚开的 OANDA 会被分到 Global Markets(BVI),官方文档明写
+          # v20 REST API 对该分支**不开放** —— 所以行情必须和券商解耦。
+          FOREX_DATA_SOURCE: "yahoo"
+          OANDA_ENV: "practice"
+          FOREX_PAIRS: "EUR_USD"
+          # H1,不是 H4。这是被仓位数学逼出来的,不是偏好:
+          #   MT5 最小 0.01 手 = $0.10/点。$200 本金的 2% 硬上限 = $4 = 40 点。
+          #   H4 的止损通常 40~50 点 -> 0.01 手就要 2.3% 风险 -> 每笔都被拦死。
+          #   H1 的止损 15~20 点 -> 0.01 手 = $1.5~2.0 = 0.75~1.0% -> 成立。
+          FOREX_GRANULARITY: "H1"
+          # H1 的 60 根只有 2.5 天,找不出结构;开到 120 根 = 5 天。
+          FOREX_SWING_LOOKBACK: "120"
+          # 有券商连接时会用账户真实净值覆盖这个数;这里只是兜底。
+          FOREX_EQUITY_USD: "200"
+          # 1% = $2/笔。连亏 10 笔还剩 $180,仍在牌桌上。
+          # 脚本内有 2% 硬上限,调高也会被夹回来。
+          FOREX_RISK_PCT: "1.0"
+          FOREX_MIN_STOP_PIPS: "15"
+          FOREX_MAX_LEVERAGE: "20"
+          # 高影响事件(CPI/零售)前 12 小时不开新仓,见 forex_events.json
+          FOREX_BLACKOUT_HOURS: "12"
+        run: python generate_signals_forex.py
+
+      # 自动执行层。**当前路线(手动执行)下它是空转的** —— 没有 OANDA_TOKEN
+      # 它会直接报「未配置」然后退出,不做任何事。留着是因为如果哪天换到有
+      # REST API 的券商,把 FOREX_EXECUTE 改成 "yes" 就能接上,不用重写。
+      - name: Execute triggered plans (TP1 全平) — 手动路线下不动作
+        continue-on-error: true
+        env:
+          OANDA_ENV: "practice"
+          FOREX_EXECUTE: "no"
+          FOREX_MAX_OPEN: "2"           # 最多同时 2 个仓位
+          FOREX_MAX_PENDING: "2"        # 最多同时 2 张挂单
+          FOREX_ORDER_EXPIRY_HOURS: "24"  # 挂单 24h 不成交自动撤销
+        run: python live_trader_forex.py
+
+      - name: Commit forex signals
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "forex signals $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
