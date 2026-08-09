@@ -79,6 +79,15 @@ jobs:
           FOREX_ORDER_EXPIRY_HOURS: "24"  # 挂单 24h 不成交自动撤销
         run: python live_trader_forex.py
 
+      # 每小时重写当天的战报,所以这个文件全天都是最新的。
+      # 报的是「信号战绩(R)」和「如果照做的假设美元」,两者分开列 ——
+      # 机器人不下单,没有真实收益可报。
+      - name: Daily report
+        continue-on-error: true
+        env:
+          FOREX_EQUITY_USD: "200"
+        run: python forex_daily_report.py
+
       - name: Commit forex signals
         if: always()
         run: |
