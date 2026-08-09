@@ -205,6 +205,66 @@ def confirmation_edge(entries):
     return out
 
 
+# --------------------------- 毕业条件 ---------------------------------------
+# 什么时候这套规则才配得上真钱。
+#
+# **胜率不是判据。** 在 1:2 的赔率下(赢 +2R,输 -1R),盈亏平衡点只要 33.3%:
+#     期望 = 胜率×2 − (1−胜率)×1
+#     33.3% -> 0.00R   40% -> +0.20R   50% -> +0.50R   70% -> +1.10R
+# 70% 胜率 = 每笔期望 +1.1R,这在零售外汇里基本不存在。把门槛设在那里,等于
+# 永远不开户;或者更糟 —— 在前 10 笔里碰巧刷到 70%,然后拿真钱去赌一个噪声。
+#
+# 而且盯胜率会把人推向错误的方向:想提高胜率,最快的办法是把止盈拉近、止损放远。
+# 那样胜率立刻变漂亮,期望却变成负的。**能决定你是否赚钱的是期望,不是胜率。**
+GRAD_MIN_SAMPLE = int(os.environ.get("FOREX_GRAD_MIN_SAMPLE", "30"))
+GRAD_MIN_EXPECTANCY = float(os.environ.get("FOREX_GRAD_MIN_EXPECTANCY", "0.30"))
+
+
+def drawdown_r(entries):
+    """按结算时间排序走一遍权益曲线,返回 (最大回撤R, 最长连亏笔数)。
+
+    这是「你要能扛住多少」的数字。期望为正的系统照样会连亏 6 笔 ——
+    不知道这个数,第一次连亏就会把人吓停,而停在连亏之后正是最贵的时点。
+    """
+    closed = sorted([e for e in entries if e["state"] in ("won", "lost", "ambiguous")],
+                    key=lambda e: e.get("exit_time") or "")
+    peak = cum = 0.0
+    max_dd = 0.0
+    streak = worst_streak = 0
+    for e in closed:
+        cum += e.get("r_multiple") or 0
+        peak = max(peak, cum)
+        max_dd = max(max_dd, peak - cum)
+        if e["state"] == "won":
+            streak = 0
+        else:
+            streak += 1
+            worst_streak = max(worst_streak, streak)
+    return round(max_dd, 2), worst_streak
+
+
+def graduation(entries):
+    """这套规则够不够格拿真钱。返回逐条判定 + 是否全部通过。"""
+    s = stats(entries)
+    n, exp = s["closed"], s["expectancy_r"]
+    dd, streak = drawdown_r(entries)
+    checks = [
+        {"name": f"样本 ≥ {GRAD_MIN_SAMPLE} 笔",
+         "now": f"{n} 笔", "pass": n >= GRAD_MIN_SAMPLE,
+         "why": "少于这个数,胜率和期望都是噪声"},
+        {"name": f"每笔期望 ≥ +{GRAD_MIN_EXPECTANCY} R",
+         "now": f"{exp if exp is not None else '—'} R",
+         "pass": exp is not None and exp >= GRAD_MIN_EXPECTANCY,
+         "why": "**这才是唯一决定你赚不赚钱的指标**"},
+        {"name": "胜率 ≥ 40%（仅参考）",
+         "now": f"{s['win_rate'] if s['win_rate'] is not None else '—'}%",
+         "pass": s["win_rate"] is not None and s["win_rate"] >= 40,
+         "why": "1:2 赔率下 33.3% 就已盈亏平衡;胜率高低本身说明不了什么"},
+    ]
+    return {"checks": checks, "passed": all(c["pass"] for c in checks),
+            "max_dd_r": dd, "worst_losing_streak": streak}
+
+
 def render_learnings(journal, now=None):
     now = now or dt.datetime.now(dt.timezone.utc)
     entries = journal.get("entries", [])
@@ -235,6 +295,30 @@ def render_learnings(journal, now=None):
         else:
             L += [f"> 每笔期望 **{s['expectancy_r']} R** —— 这套规则目前是负期望。",
                   "> 不要加大仓位去摊平,那是加速归零。要么改规则,要么停手。", ""]
+
+    # 毕业条件 —— 什么时候这套规则配得上真钱
+    g = graduation(entries)
+    L += ["## 能开真钱账户了吗", "",
+          f"### {'✅ 三项全部达标' if g['passed'] else '❌ 还不行'}", "",
+          "| 条件 | 现状 | 达标 | 为什么 |", "|---|---|---|---|"]
+    for c in g["checks"]:
+        L.append(f"| {c['name']} | {c['now']} | {'✅' if c['pass'] else '❌'} | {c['why']} |")
+    L += ["",
+          f"- 历史最大回撤:**{g['max_dd_r']} R** · 最长连亏:**{g['worst_losing_streak']} 笔**",
+          "",
+          "> **为什么门槛不是「胜率 70%」:** 这套规则是 1:2 赔率(赢 +2R,输 −1R),",
+          "> 盈亏平衡点只要 **33.3%**。换算一下:",
+          ">",
+          "> | 胜率 | 33% | 40% | 50% | 60% | 70% |",
+          "> |---|---|---|---|---|---|",
+          "> | 每笔期望 | 0.00R | +0.20R | +0.50R | +0.80R | +1.10R |",
+          ">",
+          "> **70% 胜率 = 每笔期望 +1.1R,零售外汇里基本不存在。** 把门槛设在那儿",
+          "> 等于永远不开户;更糟的是,前 10 笔里碰巧刷到 70% 的概率并不低 ——",
+          "> 那时候你会拿真钱去赌一个噪声。",
+          ">",
+          "> 而且**盯胜率会把人推向错误的方向**:想让胜率好看,最快的办法是把止盈拉近、",
+          "> 止损放远。胜率立刻变漂亮,期望却变成负的。**决定你赚不赚钱的是期望。**", ""]
 
     # 分方案
     by_plan = {}
