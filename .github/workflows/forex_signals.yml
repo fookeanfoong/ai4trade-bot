@@ -56,6 +56,19 @@ jobs:
           FOREX_BLACKOUT_HOURS: "12"
         run: python generate_signals_forex.py
 
+      - name: Execute triggered plans (TP1 全平)
+        continue-on-error: true
+        env:
+          OANDA_ENV: "practice"
+          # ⬇⬇ 想让它真的挂单,把 "no" 改成 "yes"。这一个字就是自动交易的总开关。
+          #    保持 "no" 时它只打印「我本来会下什么单」,不碰账户。
+          #    建议先 dry-run 看几轮输出,确认方向/价位/仓位都对得上再打开。
+          FOREX_EXECUTE: "no"
+          FOREX_MAX_OPEN: "2"           # 最多同时 2 个仓位
+          FOREX_MAX_PENDING: "2"        # 最多同时 2 张挂单
+          FOREX_ORDER_EXPIRY_HOURS: "24"  # 挂单 24h 不成交自动撤销
+        run: python live_trader_forex.py
+
       - name: Commit forex signals
         if: always()
         run: |

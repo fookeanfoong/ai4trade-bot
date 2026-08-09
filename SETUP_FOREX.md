@@ -22,11 +22,29 @@
 
 ---
 
+## ⚠️ 必须是 fxTrade 账户,不是 MT4/MT5 账户
+
+OANDA 有两套互不相通的账户体系,这是最容易踩的坑:
+
+| | 账户号长相 | 能用 v20 API 吗 |
+|---|---|---|
+| **fxTrade / fxTrade Practice** | `101-011-1234567-001` | ✅ **本模块要的就是它** |
+| MT4 / MT5(`webmt5-globaldemo…`) | `1715551949`(纯数字) | ❌ v20 API 看不到这个账户 |
+
+v20 REST API 只服务 **v20 交易账户**。MT5 那套是独立的平台,没有 REST API ——
+要驱动它得用 `MetaTrader5` Python 包,而那个包**必须**有一台 Windows 机器常开着
+跑 MT5 桌面终端。GitHub Actions 是无头 Linux,跑不了,「你的电脑可以关机」这个
+前提直接没了。
+
+**所以:如果你手上是 MT5 demo,请另外去开一个 fxTrade Practice 账户。**
+入口:[oanda.com](https://www.oanda.com) → Try Demo / 免费模拟账户
+(注意选 **fxTrade**,不要选 MetaTrader)。
+
 ## 5 分钟接好
 
-1. 到 [oanda.com](https://www.oanda.com) 开一个 **practice(模拟)** 账户 —— 免费、免入金。
-2. 登录后:**Manage API Access** → 生成 Personal Access Token。
-3. 拿到账户号,形如 `101-011-1234567-001`(Account 页面能看到)。
+1. 开一个 **fxTrade Practice(模拟)** 账户 —— 免费、免入金。
+2. 登录 fxTrade 网页版 → **My Services → Manage API Access** → 生成 Personal Access Token。
+3. 拿到账户号,形如 `101-011-1234567-001`(开头是 `101-` = practice;`001-` = 真钱)。
 4. 本仓库 → **Settings → Secrets and variables → Actions → New repository secret**,
    加两个:
 
@@ -83,6 +101,30 @@ CPI/非农前的突破基本都是低质量突破 —— 方向对了都可能�
 > 把 `verify: true` 改掉。
 
 ---
+
+## 执行层(`live_trader_forex.py`)
+
+**出场策略:TP1 全平(吃小赢面广)。** 到 TP1 整仓走人,固定 1:2,不留尾仓、
+不移保本、不追 TP2。
+
+这个选择有个很大的架构红利:因为不需要「到 TP1 再动手」,**止损和止盈在挂单的
+同时就交给 OANDA**,变成券商侧的 GTC 委托。于是 GitHub Actions 挂了、runner 被
+回收、脚本再没跑过 —— 你的止损止盈**依然在券商那里活着**。换成「移保本+让利润跑」,
+出场就依赖机器人按时醒来,它不醒就是裸单。对跑在免费 CI 上的 $200 账户,这个
+差别比多赚的那点 R 重要得多。
+
+入场是**限价挂单**(回踩才进,不追价),24 小时不成交自动撤销 —— 挂了三天才等到的
+行情,和当初生成它的那根 K 线已经没关系了。
+
+**总开关**:`.github/workflows/forex_signals.yml` 里的 `FOREX_EXECUTE`。
+默认 `"no"` = 只打印「我本来会下什么单」;改成 `"yes"` 才真的挂单。
+
+| 护栏 | 默认 |
+|---|---|
+| `FOREX_MAX_OPEN` | 2 个持仓 |
+| `FOREX_MAX_PENDING` | 2 张挂单 |
+| `FOREX_ORDER_EXPIRY_HOURS` | 24h |
+| 幂等指纹 | 品种+方案+**K线时间** —— workflow 重跑不会下双倍仓位 |
 
 ## 接真钱之前
 

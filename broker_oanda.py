@@ -25,6 +25,7 @@ API 文档: https://developer.oanda.com/rest-live-v20/introduction/
 
 from __future__ import annotations
 
+import datetime as _dt
 import json
 import os
 import urllib.error
@@ -327,6 +328,72 @@ class OandaBroker:
         if resp.get("orderRejectTransaction") or resp.get("orderCancelTransaction"):
             raise BrokerError(f"订单被拒: {json.dumps(resp)[:400]}")
         return resp
+
+    def limit_bracket(self, symbol: str, units: int, price: float,
+                      stop_loss: float = 0.0, take_profit: float = 0.0,
+                      expiry_hours: float = 24.0):
+        """限价单 + 附带止损/止盈。方案 A/B 的入场都是「回踩挂单」,不是市价追。
+
+        带 GTD 到期时间:挂单没等到就自杀。一张挂了三天的单子等来的行情,
+        和当初生成它的那根 K 线已经没有关系了 —— 那是过期的判断,不是耐心。
+        """
+        inst = normalize(symbol)
+        units = int(units)
+        if units == 0:
+            raise BrokerError("units=0,不下单")
+        digits = 3 if inst.endswith("_JPY") else 5
+        expiry = (_dt.datetime.now(_dt.timezone.utc)
+                  + _dt.timedelta(hours=float(expiry_hours)))
+        order = {
+            "type": "LIMIT",
+            "instrument": inst,
+            "units": str(units),
+            "price": f"{float(price):.{digits}f}",
+            "timeInForce": "GTD",
+            "gtdTime": expiry.isoformat(timespec="seconds").replace("+00:00", "Z"),
+            "positionFill": "DEFAULT",
+        }
+        if stop_loss:
+            order["stopLossOnFill"] = {"price": f"{float(stop_loss):.{digits}f}",
+                                       "timeInForce": "GTC"}
+        if take_profit:
+            order["takeProfitOnFill"] = {"price": f"{float(take_profit):.{digits}f}",
+                                         "timeInForce": "GTC"}
+        resp = _request("POST", f"/accounts/{ACCOUNT_ID}/orders", {"order": order})
+        if resp.get("orderRejectTransaction") or resp.get("orderCancelTransaction"):
+            raise BrokerError(f"挂单被拒: {json.dumps(resp)[:400]}")
+        return resp
+
+    def orders(self) -> list:
+        """未成交的挂单。"""
+        doc = _request("GET", f"/accounts/{ACCOUNT_ID}/pendingOrders")
+        out = []
+        for o in doc.get("orders", []) or []:
+            out.append({
+                "id": str(o.get("id")),
+                "type": o.get("type"),
+                "symbol": normalize(o.get("instrument", "")),
+                "units": _f(o.get("units"), 0.0),
+                "price": _f(o.get("price")),
+                "gtd": o.get("gtdTime"),
+            })
+        return out
+
+    def order_state(self, order_id: str):
+        """单张挂单的真实状态:PENDING / FILLED / CANCELLED / TRIGGERED。
+
+        光看「它还在不在挂单列表里」是不够的 —— 一张成交后又被止盈平掉的单子,
+        既不在挂单列表、也不在持仓里,会被误记成「到期未成交」。历史记录失真,
+        事后复盘就会得出错误结论。
+        """
+        try:
+            doc = _request("GET", f"/accounts/{ACCOUNT_ID}/orders/{order_id}")
+            return str((doc.get("order") or {}).get("state", "")).upper() or None
+        except Exception:
+            return None
+
+    def cancel_order(self, order_id: str):
+        return _request("PUT", f"/accounts/{ACCOUNT_ID}/orders/{order_id}/cancel")
 
     def buy(self, symbol: str, qty: float, ref_price: float = 0.0):
         return self.market_bracket(symbol, abs(int(qty)))
