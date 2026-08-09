@@ -4,21 +4,28 @@ name: ai4trade-bot-crypto
 # all hours. The engine (live_trader.py) is reused unchanged — the crypto book is
 # selected entirely through env vars (BROKER, MARKET_24_7, REGIME_SYMBOLS, and the
 # *_FILE / REPORTS_SUBDIR overrides), so it never touches the stock book's state.
-# LIVE AGAIN, on the least-bad configuration the backtest identified rather
-# than the one that was running before. Over the same 60 days: 5m lost $209 at a
-# 10% win rate, 1h with the signal-invalidation exit removed lost $118 at 45%.
-# Both are still losses — the point of running is to see whether live results
-# match the backtest, so read reports/analysis.md, not the balance.
+# The config below is the least-bad one the backtest identified rather than the
+# one that was running before. Over the same 60 days: 5m lost $209 at a 10% win
+# rate, 1h with the signal-invalidation exit removed lost $118 at 45%. Both are
+# still losses — that is the honest reason this is now paused, and the reason to
+# read reports/analysis.md rather than the balance if it is ever switched back on.
 #
-# Every 15 min, not every 5: indicators only move once an hour now, so the extra
-# runs exist to check stops against live price, not to re-decide entries.
+# PAUSED 2026-08-09 at the owner's request ("把它关了"). The book was flattened
+# first — turning off the schedule with positions open would leave them with no
+# stop-loss and no trailing exit, which is worse than either running or being
+# flat. Nothing is scheduled now; the only way this workflow runs is the
+# "Run workflow" button below.
+#
+# To resume: uncomment the two triggers. The 15-minute cadence (not 5) was
+# deliberate — indicators only move once an hour on 1h bars, so the extra runs
+# exist to check stops against live price, not to re-decide entries.
 on:
-  schedule:
-    - cron: "*/15 * * * *"
-  push:
-    branches: ["main"]
-    paths:
-      - ".trigger-crypto"
+  # schedule:
+  #   - cron: "*/15 * * * *"
+  # push:
+  #   branches: ["main"]
+  #   paths:
+  #     - ".trigger-crypto"
   workflow_dispatch:
     inputs:
       flatten:
