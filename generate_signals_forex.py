@@ -9,18 +9,18 @@
 这是故意的:先让它在模拟盘上跑够 20 笔,你再决定要不要接真钱。
 
 方案 A(顺势做多 · 突破回踩)
-  触发: 最近一根 **已收盘** H4 收在阻力上方(带缓冲)
+  触发: 最近一根 **已收盘** K 线(周期见 FOREX_GRANULARITY)收在阻力上方
   确认: RSI>55 / 无顶背离 / EMA20>EMA50 且价格站上 EMA20 / MACD 柱连续两根走高
   入场: 回踩阻力(挂 Buy Limit)   止损: 结构低点下方   TP: 2R / 3.5R
 
 方案 B(逆势做空 · 双顶拒绝)
-  触发: 价格再上阻力区但 H4 收盘失败(长上影/收回区下方)
+  触发: 价格再上阻力区但收盘失败(长上影/收回区下方)
   确认: **RSI 顶背离(必需)** / MACD 柱缩短 / 阻力区被触及 >=2 次
   入场: 阻力下沿(挂 Sell Limit) 止损: 形态高点上方  TP: 2R / 3.5R
   仓位: 顺势方案的一半 —— 逆势本来就是低胜率高赔率的活
 
 用法:
-    python3 generate_signals_forex.py                    # 用 OANDA 实时 K 线
+    python3 generate_signals_forex.py                    # 用 Yahoo 免费行情
     python3 generate_signals_forex.py --candles f.json   # 用本地 K 线(离线自测)
     FOREX_PAIRS=EUR_USD,GBP_USD python3 generate_signals_forex.py
 
@@ -65,7 +65,14 @@ BLACKOUT_HOURS = float(os.environ.get("FOREX_BLACKOUT_HOURS", "12"))
 # 1) 止损下限:纯按 ATR 缩放,在低波动时段会算出 10 pips 的止损。EUR/USD 点差
 #    1~2 pips,10 pips 止损里有 20% 是点差,剩下的会被日内噪音随手扫掉。
 #    真实成本决定下限,不是波动率。
-MIN_STOP_PIPS = float(os.environ.get("FOREX_MIN_STOP_PIPS", "15"))
+#    20 点这个值是从 MT5 最小手数反推的,不是拍的:0.01 手固定 $0.10/点,
+#    所以在 $200 上「止损距离」直接就是「风险百分比」——
+#        15点=0.75%   20点=1.00%   40点=2.00%(硬上限)   231点(=价格2%)=11.6%
+#    取 20 点:正好用满 1% 的预算,比 15 点多 33% 的噪音容身空间。
+#    ⚠️ 不要按「价格百分比」设止损。外汇是杠杆的,0.01 手名义价值 ~$1156,
+#       在 $200 本金上已经是 5.8 倍杠杆 —— 价格动 2% 就是账户动 11.6%。
+#       杠杆放大的方向和直觉相反。
+MIN_STOP_PIPS = float(os.environ.get("FOREX_MIN_STOP_PIPS", "20"))
 SPREAD_STOP_MULT = 8.0       # 止损至少要有 8 倍点差的容身空间
 # 2) 杠杆上限:units = 风险 / 止损距离 —— 止损越窄,单位数越大。5 pips 的止损
 #    会算出 40000 单位($44k 名义),$200 本金上就是 200 倍杠杆,订单不是被拒
@@ -474,7 +481,7 @@ def size_plans(res, broker, equity):
                 )
             else:
                 p["mt5_note"] = (
-                    f"算出来是 {round(units / 100000, 4)} 手,不足 MT5 最小的 0.01 手。"
+                    f"算出来是 {units / 100000:.5f} 手,不足 MT5 最小的 0.01 手。"
                     f"用 0.01 手的话实际风险 ${round(min_lot_risk, 2)}"
                     f"({round(pct, 2) if pct else '?'}% ,计划是 ${risk})—— "
                     f"在 {RISK_PCT_HARD_CAP}% 硬上限内,可以做,但你要知道风险被放大了"
