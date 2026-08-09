@@ -69,8 +69,13 @@ input int    InpRSIPeriod        = 14;
 input double InpRSIBuyMax        = 70.0;   // 做多时 RSI 上限(不追超买)
 input double InpRSISellMin       = 30.0;   // 做空时 RSI 下限
 input int    InpATRPeriod        = 14;
-input double InpATRStopMult      = 1.2;    // 止损 = ATR × 这个倍数
-input double InpRewardRisk       = 1.5;    // 止盈 = 止损 × 这个倍数
+// ⬇ 默认值来自样本外验证,不是拍的。见 reports/gold_research.md:
+//   M15 + 固定$3止损 + RR1:2 是唯一在「前半段选参数、后半段只跑一次」
+//   之后仍然为正的配置(训练 41.4%/+0.098R,验证 40.5%/+0.091R)。
+//   H1 的十组配置前后两半一致为负 —— $3 在 H1 上只有 0.16×ATR,必被噪音扫。
+input double InpFixedStopUSD     = 3.0;    // >0 = 固定止损(金价美元距离);0 = 用ATR
+input double InpATRStopMult      = 1.2;    // InpFixedStopUSD=0 时才用
+input double InpRewardRisk       = 2.0;    // 止盈 = 止损 × 这个倍数
 input int    InpSwingLookback    = 100;    // 找结构的回溯根数
 input int    InpSwingWing        = 2;      // 分型左右各几根
 
@@ -163,7 +168,7 @@ void WarnIfUntradeable()
    double minLot  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
    double atr[];
    if(CopyBuffer(hATR, 0, 0, 2, atr) < 1) return;
-   double stopDist = atr[0] * InpATRStopMult;
+   double stopDist = (InpFixedStopUSD > 0) ? InpFixedStopUSD : atr[0] * InpATRStopMult;
    double risk     = MoneyForDistance(minLot, stopDist);
    double pct      = (eq > 0) ? risk / eq * 100.0 : 0.0;
 
@@ -458,8 +463,11 @@ void OpenTrade(int dir, double atr, double spread, string reason)
    // 那不是止损,那是给点差和噪音送钱。
    double stopsLevel = (double)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL)
                        * SymbolInfoDouble(_Symbol, SYMBOL_POINT);
-   double dist = MathMax(atr * InpATRStopMult,
-                 MathMax(spread * InpMinStopSpreadX, stopsLevel * 1.5));
+   // 固定止损模式:止损大小由验证结果决定,不随波动缩放。
+   // 但仍然不能低于点差倍数和券商最小止损距离 —— 那两个是硬成本,
+   // 再"验证过"的参数也不能穿过它们。
+   double base = (InpFixedStopUSD > 0) ? InpFixedStopUSD : atr * InpATRStopMult;
+   double dist = MathMax(base, MathMax(spread * InpMinStopSpreadX, stopsLevel * 1.5));
 
    double riskUsed = 0.0;
    double lots     = CalculateLots(dist, riskUsed);
