@@ -140,11 +140,12 @@ int OnInit()
    dayStartEquity = AccountInfoDouble(ACCOUNT_EQUITY);
    dayStamp       = TodayStamp();
 
-   PrintFormat("GoldScalper 启动 | %s %s | 净值 %.2f | 合约 %.0f | 最小手 %.2f | 点值 %.4f",
+   PrintFormat("GoldScalper 启动 | %s %s | 净值 %.2f | 合约 %.0f | 最小手 %.3f | 步长 %.3f | 点值 %.4f",
                _Symbol, EnumToString(InpTimeframe),
                AccountInfoDouble(ACCOUNT_EQUITY),
                SymbolInfoDouble(_Symbol, SYMBOL_TRADE_CONTRACT_SIZE),
                SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN),
+               SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP),
                SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_VALUE));
 
    // 小账户 + 黄金的现实检查:如果最小手数下、按 ATR 算出的止损已经超过风险
@@ -172,7 +173,7 @@ void WarnIfUntradeable()
    double risk     = MoneyForDistance(minLot, stopDist);
    double pct      = (eq > 0) ? risk / eq * 100.0 : 0.0;
 
-   PrintFormat("自检:最小手 %.2f × 止损 %.2f → 风险 $%.2f = 净值的 %.2f%%",
+   PrintFormat("自检:最小手 %.3f × 止损 %.2f → 风险 $%.2f = 净值的 %.3f%%",
                minLot, stopDist, risk, pct);
    if(pct > InpMaxRiskPercent)
       PrintFormat("⚠️ 警告:最小手数下的单笔风险(%.2f%%)已超过上限 %.2f%% —— "
@@ -448,7 +449,10 @@ double NormalizeLots(double lots)
    lots = MathFloor(lots / step) * step;            // 向下取整:宁可少冒风险
    if(lots < minL) lots = minL;
    if(lots > maxL) lots = maxL;
-   return NormalizeDouble(lots, 2);
+   // 按步长的小数位归一,不能写死 2 位:XAUUSD.sml 步长 0.001,
+   // 写死 2 位会把 0.006 手抹成 0.01,风险直接放大 66%。
+   int digits = (step >= 1.0) ? 0 : (int)MathCeil(-MathLog10(step));
+   return NormalizeDouble(lots, digits);
 }
 
 //+------------------------------------------------------------------+
