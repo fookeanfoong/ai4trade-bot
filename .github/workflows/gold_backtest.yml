@@ -1,0 +1,73 @@
+name: gold-backtest
+
+# GoldScalper 策略回测,跑在 Actions 上(这里能拿到 Yahoo 的真实黄金行情;
+# Claude 的沙箱拿不到,所以真实数字只能在这里产生)。
+#
+# 分多个本金档跑同一套规则 —— 因为在 $200 上这个策略**一笔都开不出来**
+# (最小 0.01 手 = 1oz,ATR 止损下的风险就超过 2% 上限)。
+# 用数据说明「黄金需要多少本金」,比用嘴说有力。
+on:
+  schedule:
+    - cron: "20 6 * * 1"      # 每周一
+  workflow_dispatch:
+
+concurrency:
+  group: gold-backtest
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Backtest across equity tiers
+        continue-on-error: true
+        run: |
+          set -e
+          mkdir -p reports
+          {
+            echo "# GoldScalper 回测（真实历史行情）"
+            echo
+            echo "*生成于 $(date -u +%Y-%m-%dT%H:%MZ)*"
+            echo
+            echo "> ⚠️ Python 复刻的 **K线级** 回测，不等于 MT5 策略测试器。"
+            echo "> 同一根K线同时触及止损止盈时一律按**止损**计；点差按固定值扣，"
+            echo "> 真实点差会在数据前后放大数倍；无滑点、无隔夜利息。"
+            echo "> **结果是乐观上界，实盘只会更差。**"
+            echo
+          } > reports/gold_backtest.md
+
+          for EQ in 200 600 1000 2000; do
+            echo "--- equity=$EQ ---"
+            GOLD_EQUITY=$EQ python backtest_gold.py \
+              --symbol "GC=F" --interval 1h --range 2y \
+              --out "reports/_tier_$EQ.md" || true
+            {
+              echo
+              echo "## 本金 \$$EQ"
+              echo
+              tail -n +6 "reports/_tier_$EQ.md" 2>/dev/null || echo "(本档无输出)"
+            } >> reports/gold_backtest.md
+            rm -f "reports/_tier_$EQ.md"
+          done
+
+      - name: Commit backtest report
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
+            git commit -m "gold backtest $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
