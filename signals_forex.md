@@ -1,4 +1,4 @@
-# 外汇信号 — 2026-08-09T01:09:41+00:00
+# 外汇信号 — 2026-08-09T01:17:05+00:00
 
 **决策:等待** — Yahoo 取数失败: <urlopen error Tunnel connection failed: 403 Forbidden>
 

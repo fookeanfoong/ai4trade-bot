@@ -615,6 +615,29 @@ def main():
     live = [p for r in results for p in r.get("plans", []) if p.get("status") == "triggered"]
     decision = "enter" if live else "wait"
 
+    # ---- 学习回路 ---------------------------------------------------------
+    # 执行是手动的,机器人看不到你做了什么。所以它追踪**自己发出的信号**的结局:
+    # 记下每个 triggered 信号,之后用后续 K 线回放判定成交/止盈/止损。
+    # 这样不需要你汇报任何东西,就能积累出「这套规则到底行不行」的证据。
+    try:
+        import forex_journal
+        jr = forex_journal.load()
+        newly = 0
+        for r in results:
+            if r.get("error"):
+                continue
+            for p in r.get("plans", []):
+                if p.get("status") == "triggered":
+                    if forex_journal.record(jr, r, p, r["last_candle_time"]):
+                        newly += 1
+        resolved = forex_journal.update(jr, candle_src, now)
+        st = forex_journal.stats(jr["entries"])
+        print(f"[journal] 新记录 {newly} · 本次判出结局 {resolved} · "
+              f"累计 {st['signals']} 个信号 / 已了结 {st['closed']} "
+              f"/ 胜率 {st['win_rate']}% / 累计 {st['total_r']}R")
+    except Exception as e:
+        print(f"[journal] 学习回路失败(不影响信号): {e}", file=sys.stderr)
+
     doc = {
         "updated_at": now.isoformat(timespec="seconds"),
         "granularity": GRANULARITY,
