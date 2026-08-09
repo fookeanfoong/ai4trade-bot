@@ -464,6 +464,13 @@ def size_plans(res, broker, equity):
         # 1 标准手 = 100,000 单位;最小 0.01 手 = 1,000 单位。
         lots = int(units / 1000) / 100.0          # 向下取整到 0.01
         p["mt5_lots"] = lots
+        if not inst.endswith("_USD"):
+            # 非美元计价(如 USD_JPY,报价货币是 JPY):dist 的单位不是美元,
+            # 直接乘 1000 会算出一个「日元当美元」的数 —— 看起来像风险,其实差 150 倍。
+            # 宁可说不知道,也不能给一个悄悄错掉的风险数字。
+            p["mt5_note"] = ("非美元计价品种,0.01 手的美元风险需要汇率换算,"
+                             "本地算不了 —— 请在 MT5 下单窗口自己确认风险金额")
+            continue
         min_lot_risk = 1000 * dist                # 0.01 手能亏多少(USD计价品种)
         p["mt5_min_lot_risk_usd"] = round(min_lot_risk, 2)
         p["mt5_min_lot_risk_pct"] = round(min_lot_risk / equity * 100, 2) if equity else None
