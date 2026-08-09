@@ -239,7 +239,7 @@ def build_plan_a(inst, candles, ind, levels, pip, risk_usd, floor_px=0.0):
 
     triggered = close > res + buffer_px
     conf = {
-        "H4收盘破阻力": triggered,
+        f"{GRANULARITY}收盘破阻力": triggered,
         "RSI>55": (ind["rsi"] or 0) > 55,
         "无顶背离": not ind["bear_div"],
         "EMA20>EMA50且站上EMA20": ind["ema20"] > ind["ema50"] and close > ind["ema20"],
@@ -255,7 +255,7 @@ def build_plan_a(inst, candles, ind, levels, pip, risk_usd, floor_px=0.0):
     return {
         "name": "方案A · 顺势做多(突破回踩)",
         "direction": "long",
-        "trigger": f"H4 收盘 > {round(res + buffer_px, 5)}",
+        "trigger": f"{GRANULARITY} 收盘 > {round(res + buffer_px, 5)}",
         "triggered": triggered,
         "entry": round(entry, 5), "stop": round(stop, 5),
         "tp1": round(entry + RR1 * risk_px, 5),
@@ -265,8 +265,8 @@ def build_plan_a(inst, candles, ind, levels, pip, risk_usd, floor_px=0.0):
         "risk_usd": round(risk_usd, 2),
         "size_factor": 1.0,
         "confirmations": conf,
-        "confirmed": sum(1 for k, v in conf.items() if v and k != "H4收盘破阻力"),
-        "invalidation": f"突破后 H4 收回 {round(res, 5)} 下方 = 假突破,撤单转看方案B",
+        "confirmed": sum(1 for k, v in conf.items() if v and k != f"{GRANULARITY}收盘破阻力"),
+        "invalidation": f"突破后 {GRANULARITY} 收回 {round(res, 5)} 下方 = 假突破,撤单转看方案B",
     }
 
 
@@ -295,7 +295,7 @@ def build_plan_b(inst, candles, ind, levels, pip, risk_usd, floor_px=0.0):
     return {
         "name": "方案B · 逆势做空(双顶拒绝)",
         "direction": "short",
-        "trigger": f"价格上探 {round(zone_lo, 5)}–{round(res, 5)} 后 H4 收盘失败(长上影/吞没)",
+        "trigger": f"价格上探 {round(zone_lo, 5)}–{round(res, 5)} 后 {GRANULARITY} 收盘失败(长上影/吞没)",
         "triggered": rejection,
         "entry": round(entry, 5), "stop": round(stop, 5),
         "tp1": round(entry - RR1 * risk_px, 5),
@@ -306,7 +306,7 @@ def build_plan_b(inst, candles, ind, levels, pip, risk_usd, floor_px=0.0):
         "size_factor": 0.5,
         "confirmations": conf,
         "confirmed": sum(1 for k, v in conf.items() if v and k != "阻力区拒绝K线"),
-        "invalidation": f"H4 收盘站上 {round(res + 0.30 * a, 5)} = 认错离场,翻回方案A",
+        "invalidation": f"{GRANULARITY} 收盘站上 {round(res + 0.30 * a, 5)} = 认错离场,翻回方案A",
         "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
     }
 
