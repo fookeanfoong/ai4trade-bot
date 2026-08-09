@@ -46,7 +46,10 @@ REWARD_RISK    = 1.5
 SWING_LOOKBACK = 100
 SWING_WING     = 2
 CONTRACT_OZ    = 100.0     # XAUUSD 合约 100 oz
-MIN_LOT, LOT_STEP = 0.01, 0.01
+# XAUUSD.sml 的最小手是 **0.001**(0.1盎司),不是标准合约的 0.01。
+# 之前按 0.01 算,得出"$200 做不了黄金"——对这个品种是错的。
+MIN_LOT  = float(os.environ.get("GOLD_MIN_LOT", "0.001"))
+LOT_STEP = float(os.environ.get("GOLD_LOT_STEP", "0.001"))
 USE_BREAKEVEN  = True
 # >0 = 固定止损(美元金价距离),覆盖 ATR 模式。参考口径:30 "pips" = $3.00
 FIXED_STOP_USD = float(os.environ.get("GOLD_FIXED_STOP", "0"))
@@ -155,7 +158,7 @@ def lots_for(equity, stop_dist):
     actual = lots * per_lot
     if actual > equity * MAX_RISK_PCT / 100.0:
         return 0.0, actual                     # 超上限 -> 这笔不做
-    return round(lots, 2), actual
+    return round(lots, 6), actual
 
 
 # ------------------------------- 回测 ---------------------------------------
