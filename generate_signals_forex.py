@@ -495,6 +495,32 @@ def size_plans(res, broker, equity):
                 )
 
 
+def _update_journal(results, candle_src, now):
+    """把本轮的 triggered 信号记进日志,并用最新 K 线判定旧条目的结局。
+
+    只在真实行情路径下调用 —— 离线自测(--candles)喂的是合成 K 线,
+    写进去就是往学习记录里掺假数据。
+    """
+    try:
+        import forex_journal
+        jr = forex_journal.load()
+        newly = 0
+        for r in results:
+            if r.get("error"):
+                continue
+            for p in r.get("plans", []):
+                if p.get("status") == "triggered":
+                    if forex_journal.record(jr, r, p, r["last_candle_time"]):
+                        newly += 1
+        resolved = forex_journal.update(jr, candle_src, now)
+        st = forex_journal.stats(jr["entries"])
+        print(f"[journal] 新记录 {newly} · 本次判出结局 {resolved} · "
+              f"累计 {st['signals']} 个信号 / 已了结 {st['closed']} "
+              f"/ 胜率 {st['win_rate']}% / 累计 {st['total_r']}R")
+    except Exception as e:
+        print(f"[journal] 学习回路失败(不影响信号): {e}", file=sys.stderr)
+
+
 def _bail(reason, now, equity, risk_pct):
     """取不到行情时的统一出口:写一个诚实的『等待』,而不是半份猜出来的信号。"""
     doc = {
@@ -633,24 +659,14 @@ def main():
     # 执行是手动的,机器人看不到你做了什么。所以它追踪**自己发出的信号**的结局:
     # 记下每个 triggered 信号,之后用后续 K 线回放判定成交/止盈/止损。
     # 这样不需要你汇报任何东西,就能积累出「这套规则到底行不行」的证据。
-    try:
-        import forex_journal
-        jr = forex_journal.load()
-        newly = 0
-        for r in results:
-            if r.get("error"):
-                continue
-            for p in r.get("plans", []):
-                if p.get("status") == "triggered":
-                    if forex_journal.record(jr, r, p, r["last_candle_time"]):
-                        newly += 1
-        resolved = forex_journal.update(jr, candle_src, now)
-        st = forex_journal.stats(jr["entries"])
-        print(f"[journal] 新记录 {newly} · 本次判出结局 {resolved} · "
-              f"累计 {st['signals']} 个信号 / 已了结 {st['closed']} "
-              f"/ 胜率 {st['win_rate']}% / 累计 {st['total_r']}R")
-    except Exception as e:
-        print(f"[journal] 学习回路失败(不影响信号): {e}", file=sys.stderr)
+    # --candles 是离线自测入口,喂的是合成 K 线。**绝不能写进真实日志** ——
+    # 一条编出来的交易混进学习记录,整个记录就不可信了,而这个记录的全部价值
+    # 就是诚实。这里用代码挡住,不靠人记得先设环境变量(我就忘过一次,
+    # 一条 2026-07-14 的合成信号因此进了 main)。
+    if args.candles:
+        print("[journal] 离线模式(--candles):跳过日志记录,避免污染真实学习记录")
+    else:
+        _update_journal(results, candle_src, now)
 
     doc = {
         "updated_at": now.isoformat(timespec="seconds"),
