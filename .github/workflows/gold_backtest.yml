@@ -1,4 +1,4 @@
-name: gold-backtest
+name: gold
 
 # GoldScalper 策略回测,跑在 Actions 上(这里能拿到 Yahoo 的真实黄金行情;
 # Claude 的沙箱拿不到,所以真实数字只能在这里产生)。
@@ -8,7 +8,8 @@ name: gold-backtest
 # 用数据说明「黄金需要多少本金」,比用嘴说有力。
 on:
   schedule:
-    - cron: "20 6 * * 1"      # 每周一
+    - cron: "20 6 * * 1"      # 每周一:重跑回测与参数研究
+    - cron: "0 6 * * 1-5"     # 工作日每天:开盘前的新闻简报 + 事件封锁检测
   workflow_dispatch:
 
 concurrency:
@@ -27,7 +28,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      # 每天都跑:开盘前的新闻简报 + 高影响事件检测。
+      # 机器只从这里取「今天该不该停手」,方向判断留给人。
+      - name: 黄金新闻简报 + 事件封锁检测
+        continue-on-error: true
+        run: python news_gold.py
+
+      # 回测/研究比较重,只在周一那次跑。
       - name: Backtest — 固定紧止损(参考口径) vs ATR止损
+        if: github.event.schedule != '0 6 * * 1-5' 
         continue-on-error: true
         run: |
           set -e
@@ -66,6 +75,7 @@ jobs:
           run_one "\$200 · ATR止损(对照组)"                  200 0   1.5
 
       - name: Research — 周期 × 止损 网格,带样本外验证
+        if: github.event.schedule != '0 6 * * 1-5'
         continue-on-error: true
         env:
           GOLD_EQUITY: "200"
@@ -81,6 +91,6 @@ jobs:
             echo "no changes"
           else
             git pull --rebase --autostash origin ${GITHUB_REF_NAME} || true
-            git commit -m "gold backtest $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "gold $(date -u +%Y-%m-%dT%H:%MZ)"
             git push
           fi
