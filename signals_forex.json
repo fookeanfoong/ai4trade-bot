@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T19:03:33+00:00",
+  "updated_at": "2026-08-10T19:57:44+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -24,7 +24,7 @@
         "ema20": 1.15525,
         "ema50": 1.15497,
         "ema200": 1.1518,
-        "atr14_pips": 6.6,
+        "atr14_pips": 6.7,
         "rsi_bearish_divergence": true
       },
       "levels": {
