@@ -51,8 +51,12 @@ EQUITY_USD = float(os.environ.get("FOREX_EQUITY_USD", "200"))
 RISK_PCT = float(os.environ.get("FOREX_RISK_PCT", "1.0"))
 RISK_PCT_HARD_CAP = 2.0      # 超过 2% 直接夹回来。小账户连亏 5 笔就该还在牌桌上。
 
-RR1 = 2.0                    # TP1 的回报风险比(用户要求 >= 1:2)
-RR2 = 3.5                    # TP2
+# TP1 的回报风险比。**1.5 来自样本外验证,不是拍的** ——
+# 见 reports/forex_research.md:EUR/USD 25点止损 + 1:1.5 是四个品种、
+# 八组参数里唯一训练与验证都为正的配置(+0.049R / +0.018R)。
+# 我原本写死的 1:2 没通过验证。
+RR1 = float(os.environ.get("FOREX_RR1", "1.5"))
+RR2 = float(os.environ.get("FOREX_RR2", "3.0"))   # TP2
 MIN_CONFIRMATIONS = 2        # 触发之外,还需要几个确认信号
 
 # 找结构高低点的回溯根数。要随周期调:H4 的 60 根 = 10 天,H1 的 60 根只有
