@@ -5,12 +5,11 @@ name: forex-signals
 # 排程:每小时,H1 K 线收盘后 5 分钟跑一次。
 # 外汇周末休市,脚本自己会判断(fx_market_open / OANDA tradeable),所以这里
 # 不做星期过滤,让它自己输出 wait 就好。
-# ⏸ 定时任务已按要求停用(专注黄金)。代码和手动触发保留 ——
-# 想恢复就把下面 schedule 这三行的注释去掉,它是目前唯一在仓位数学上
-# 真正适配 $200 的一套(20点止损 = 正好 1% 风险)。
 on:
-  # schedule:
-  #   - cron: "5 * * * *"
+  schedule:
+    - cron: "5 * * * *"       # 每小时:H1 收盘后 5 分钟出信号
+    - cron: "0 6 * * 1-5"     # 工作日:开盘前新闻简报 + 事件检测
+    - cron: "40 6 * * 1"      # 每周一:稳定性筛选 + 样本外验证回测
   push:
     branches: ["main"]
     paths:
@@ -37,6 +36,23 @@ jobs:
           python-version: "3.12"
 
       # broker_oanda.py 只用标准库(urllib),没有依赖要装。
+
+      # 每天开盘前:外汇新闻简报 + 高影响事件检测。
+      # 机器只取「今天该不该停手」,方向判断留给人。
+      - name: 外汇新闻简报 + 事件检测
+        continue-on-error: true
+        run: python news_forex.py
+
+      # 每周一:品种稳定性筛选 + 样本外验证。
+      # 这套外汇规则此前从未被回测过 —— 在没验证的规则上加杠杆
+      # 等于把未知数乘以 10,所以先补验证。
+      - name: 外汇研究 — 稳定性筛选 + 样本外验证
+        if: github.event.schedule == '40 6 * * 1' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        env:
+          FOREX_EQUITY_USD: "200"
+          FOREX_MAX_LEVERAGE: "10"
+        run: python backtest_forex.py
 
       - name: Generate forex signals
         continue-on-error: true
@@ -67,7 +83,10 @@ jobs:
           # 脚本内有 2% 硬上限,调高也会被夹回来。
           FOREX_RISK_PCT: "1.0"
           FOREX_MIN_STOP_PIPS: "20"
-          FOREX_MAX_LEVERAGE: "20"
+          # 杠杆上限 10x。注意:风险%定量下杠杆是**结果**不是输入 ——
+          # 20点止损+1%风险在 $200 上算出来本来就是约 5.8x,这个上限只是封顶。
+          # 它不会让你"用上"10倍,只是不让极窄止损把仓位吹大。
+          FOREX_MAX_LEVERAGE: "10"
           # 高影响事件(CPI/零售)前 12 小时不开新仓,见 forex_events.json
           FOREX_BLACKOUT_HOURS: "12"
         run: python generate_signals_forex.py
