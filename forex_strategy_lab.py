@@ -347,8 +347,6 @@ def main():
     return 0
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
 
 
 # ===========================================================================
@@ -493,3 +491,13 @@ def run_struct(bars, stop_fn, rr, spread_pips, equity0, **kw):
     tot = sum(t["r"] for t in trades)
     return {"n": n, "wr": round(wins / n * 100, 1), "exp": round(tot / n, 3),
             "net": round(equity - equity0, 2), "dd": round(dd, 2)}
+
+
+# 入口必须放在**文件最末尾**。
+# 踩过的坑:用 cat >> 追加新策略时,函数定义落在了这个 guard 后面。
+# Python 从上往下执行,走到 guard 就调用 main(),而 main() 里引用的
+# run_struct / entry_hammer_pullback 还没被定义 -> NameError。
+# 更糟的是 workflow 那步是 continue-on-error,**失败无声无息**,
+# 旧报告原样留着,看起来像"新策略没触发",其实是脚本根本没跑完。
+if __name__ == "__main__":
+    raise SystemExit(main())
