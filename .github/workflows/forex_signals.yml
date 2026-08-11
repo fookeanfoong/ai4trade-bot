@@ -54,6 +54,16 @@ jobs:
           FOREX_MAX_LEVERAGE: "10"
         run: python backtest_forex.py
 
+      # 入场逻辑实验室:测四种结构上不同的入场思路,不是同一逻辑的不同参数。
+      # 当前配置期望 +0.018R,确认它需要 18,000 笔 ≈ 20 年 ——
+      # 「继续观察」产生不了结论,所以直接换逻辑。
+      - name: 入场逻辑实验室（每周一）
+        if: github.event.schedule == '40 6 * * 1' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        env:
+          FOREX_EQUITY_USD: "200"
+        run: python forex_strategy_lab.py
+
       - name: Generate forex signals
         continue-on-error: true
         env:
