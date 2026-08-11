@@ -40,6 +40,7 @@ jobs:
       # 每天开盘前:外汇新闻简报 + 高影响事件检测。
       # 机器只取「今天该不该停手」,方向判断留给人。
       - name: 外汇新闻简报 + 事件检测
+        id: news
         continue-on-error: true
         run: python news_forex.py
 
@@ -47,6 +48,7 @@ jobs:
       # 这套外汇规则此前从未被回测过 —— 在没验证的规则上加杠杆
       # 等于把未知数乘以 10,所以先补验证。
       - name: 外汇研究 — 稳定性筛选 + 样本外验证
+        id: research
         if: github.event.schedule == '40 6 * * 1' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         env:
@@ -58,6 +60,7 @@ jobs:
       # 当前配置期望 +0.018R,确认它需要 18,000 笔 ≈ 20 年 ——
       # 「继续观察」产生不了结论,所以直接换逻辑。
       - name: 入场逻辑实验室（每周一）
+        id: lab
         if: github.event.schedule == '40 6 * * 1' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         env:
@@ -65,6 +68,7 @@ jobs:
         run: python forex_strategy_lab.py
 
       - name: Generate forex signals
+        id: signals
         continue-on-error: true
         env:
           # yahoo = 免费行情,不需要任何券商账户。
@@ -127,14 +131,46 @@ jobs:
       # 在几十笔样本上按近期表现改参数不是学习,是追噪音 ——
       # 每笔 R 的标准差 1.236,验证期望才 0.018,信号被噪音淹没 68 倍。
       - name: 策略健康监测
+        id: health
         continue-on-error: true
         run: python forex_health.py
 
       - name: Daily report
+        id: daily
         continue-on-error: true
         env:
           FOREX_EQUITY_USD: "200"
         run: python forex_daily_report.py
+
+      # 今天踩的坑:continue-on-error 让脚本崩溃**无声无息** ——
+      # 实验室因 NameError 从没跑完,旧报告原样留着,看起来像
+      # "新策略没触发"。用我的 bug 去否定一个想法,是最不该犯的错。
+      # 所以每轮把各步骤的 outcome 落盘,失败会出现在战报里,不会再被吞掉。
+      - name: 流水线状态（让失败可见）
+        if: always()
+        run: |
+          {
+            echo "# 流水线状态"
+            echo
+            echo "*$(date -u +%Y-%m-%dT%H:%MZ)*"
+            echo
+            echo "| 步骤 | 结果 |"
+            echo "|---|---|"
+            echo "| 新闻简报 | ${{ steps.news.outcome }} |"
+            echo "| 研究(周一) | ${{ steps.research.outcome }} |"
+            echo "| 实验室(周一) | ${{ steps.lab.outcome }} |"
+            echo "| 信号生成 | ${{ steps.signals.outcome }} |"
+            echo "| 健康监测 | ${{ steps.health.outcome }} |"
+            echo "| 战报 | ${{ steps.daily.outcome }} |"
+            echo
+            if [ "${{ steps.signals.outcome }}" != "success" ] || \
+               [ "${{ steps.health.outcome }}" != "success" ]; then
+              echo "> ⛔ **核心步骤失败** —— 信号或健康监测没跑完。"
+              echo "> 此时其他报告里的内容可能是**上一轮的陈旧数据**，不要当成今天的结论。"
+            else
+              echo "> 核心步骤正常。skipped = 该步骤今天不该跑（研究和实验室只在周一）。"
+            fi
+          } > reports/pipeline_status.md
 
       - name: Commit forex signals
         if: always()
