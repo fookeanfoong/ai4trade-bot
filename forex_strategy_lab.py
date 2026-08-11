@@ -268,6 +268,52 @@ def main():
                      f"{b['exp'] if b['exp'] is not None else '—'} | {v} |")
         L.append("")
 
+    # ---- 趋势回调模型(视频) ----------------------------------------
+    h_rrs = [1.5, 2.0, 2.5, 3.0]
+    h_wicks = [2.0, 2.5]
+    h_tests = len(h_rrs) * len(h_wicks)
+    h_fp = h_tests * 0.05
+    L += ["## 趋势回调模型（用户提供的教学视频，2026-08-11）", "",
+          "视频四步:①定方向 ②等回调到**水平支撑位** ③等**锤子线**"
+          "(下影线≥实体2倍) ④**止损放锤子线最低点下方**。", "",
+          "和上面 pullback 的本质区别:多了**形态确认**这道过滤,而且"
+          "**止损是结构位不是固定点数**。这不是参数微调,是不同的入场条件。", "",
+          f"这一节单独 {h_tests} 次检验(期望假阳性 {h_fp:.1f} 个)。", "",
+          "| 下影线倍数 | RR | 训练笔数 | 训练胜率 | 训练期望 | 验证笔数 | 验证胜率 | 验证期望 | 判定 |",
+          "|---|---|---|---|---|---|---|---|---|"]
+    h_surv = []
+    for wick, rr in itertools.product(h_wicks, h_rrs):
+        a = run_struct(tr_b, entry_hammer_pullback, rr, SPREAD, EQUITY, wick_ratio=wick)
+        b = run_struct(te_b, entry_hammer_pullback, rr, SPREAD, EQUITY, wick_ratio=wick)
+        if a["n"] < MIN_TRADES or b["n"] < MIN_TRADES:
+            v = "样本不足"
+        elif a["exp"] and b["exp"] and a["exp"] > 0 and b["exp"] >= MIN_TEST_EXP:
+            v = "✅ 通过"; h_surv.append((wick, rr, a, b))
+        elif a["exp"] and b["exp"] and a["exp"] > 0 and b["exp"] > 0:
+            v = f"⚠️ 正但太薄(<{MIN_TEST_EXP}R)"
+        elif a["exp"] and a["exp"] > 0:
+            v = "⚠️ 训练正/验证负=噪音"
+        else:
+            v = "❌"
+        L.append(f"| {wick}x | 1:{rr} | {a['n']} | "
+                 f"{a['wr'] if a['wr'] is not None else '—'}% | "
+                 f"{a['exp'] if a['exp'] is not None else '—'} | {b['n']} | "
+                 f"{b['wr'] if b['wr'] is not None else '—'}% | "
+                 f"{b['exp'] if b['exp'] is not None else '—'} | {v} |")
+    L.append("")
+    if h_surv:
+        L += [f"**{len(h_surv)} 组通过**(期望假阳性 {h_fp:.1f} 个):", ""]
+        for wick, rr, a, b in sorted(h_surv, key=lambda x: -x[3]["exp"]):
+            L.append(f"- 下影线{wick}x · 1:{rr} — 训练 {a['n']}笔/{a['wr']}%/{a['exp']}R，"
+                     f"验证 {b['n']}笔/{b['wr']}%/{b['exp']}R，回撤 ${b['dd']}")
+        if len(h_surv) <= h_fp:
+            L += ["", "> ⚠️ 通过数不超过期望假阳性数,和「靠运气蒙中」无法区分。**不要采用。**"]
+        L.append("")
+    else:
+        L += ["**这一节没有配置通过。**", "",
+              "锤子线过滤确实让胜率比裸回踩高(见上表),但**扣掉点差后仍不足以**"
+              "跨过 +0.10R 的门槛。形态过滤减少了交易次数,却没有按比例提高质量。", ""]
+
     L += ["## 结论", ""]
     if survivors:
         L += [f"**{len(survivors)} 组通过(期望假阳性 {exp_fp:.1f} 个,请对照着看):**", ""]
@@ -303,3 +349,126 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+# ===========================================================================
+# 趋势回调模型（来自用户提供的教学视频，2026-08-11）
+# ===========================================================================
+# 视频原话的四步:
+#   第一步 定方向  —— 先确认趋势
+#   第二步 等回调  —— "画一条支撑位",等价格回踩到那条水平结构位
+#   第三步 等信号  —— 锤子线,"下影线是实体的两倍长"
+#   第四步 设止损止盈 —— "止损放在锤子线最低点下方"
+#
+# 和上面那个 pullback 的**本质区别**(所以值得单独测):
+#   pullback: 价格进入均线区间就进 —— 没有形态确认,止损是固定点数
+#   本模型:   必须回到**水平结构位** + 必须出现**锤子线** 才进,
+#             止损跟着**锤子线低点**走,是结构止损不是固定止损
+#   那根锤子线是一个真实的额外过滤器,不是参数微调。
+#
+# 编码时必须补的地方(视频没说,我按最保守的方式定,并标出来):
+#   - "支撑位"用最近的分型低点,容差 0.5×ATR(视频是手画的,人画的没法编码)
+#   - 锤子线还要求收盘在K线上半部,否则长下影+收在低位是下跌延续,不是反转
+#   - 结构止损可能极窄,会被点差吃掉 -> 套用同一条下限:
+#     max(结构距离, 8×点差, 15点)。**"验证过的规则"也不能穿过硬成本。**
+HAMMER_MIN_STOP_PIPS = 15.0
+
+
+def entry_hammer_pullback(bars, i, ind, wick_ratio=2.0, zone_atr=0.5):
+    """返回 (方向, 止损价)。不符合就 (0, None)。"""
+    ef, es, et, rsi, macd_up, macd_dn, atr = ind
+    up = ef[i] > es[i] > et[i]
+    dn = ef[i] < es[i] < et[i]
+    if not (up or dn):
+        return 0, None                      # 第一步:没趋势就不做
+
+    res, sup = B.structure(bars, i)
+    if res is None or sup is None:
+        return 0, None
+
+    c = bars[i]
+    body = abs(c["c"] - c["o"])
+    if body <= 0:
+        return 0, None
+    upper = c["h"] - max(c["o"], c["c"])
+    lower = min(c["o"], c["c"]) - c["l"]
+    rng = c["h"] - c["l"]
+    if rng <= 0:
+        return 0, None
+    tol = atr[i] * zone_atr
+
+    if up:
+        # 第二步:回踩到支撑位附近
+        if c["l"] > sup + tol:
+            return 0, None
+        # 第三步:锤子线 —— 下影线 >= 2×实体,且收盘在上半部
+        if lower < wick_ratio * body:
+            return 0, None
+        if (c["c"] - c["l"]) / rng < 0.5:
+            return 0, None
+        return 1, c["l"]                    # 第四步:止损放锤子线最低点
+
+    # 下跌趋势:镜像(倒锤/流星,上影线 >= 2×实体,收在下半部)
+    if c["h"] < res - tol:
+        return 0, None
+    if upper < wick_ratio * body:
+        return 0, None
+    if (c["h"] - c["c"]) / rng < 0.5:
+        return 0, None
+    return -1, c["h"]
+
+
+def run_struct(bars, stop_fn, rr, spread_pips, equity0, **kw):
+    """结构止损版回测:止损距离由信号自己决定,不是固定点数。"""
+    closes = [b["c"] for b in bars]
+    ef = B.ema_series(closes, B.FAST); es = B.ema_series(closes, B.SLOW)
+    et = B.ema_series(closes, B.TREND); rsi = B.rsi_series(closes, B.RSI_P)
+    ml, ms = B.macd_series(closes); atr = B.atr_series(bars, B.ATR_P)
+    ind = (ef, es, et, rsi,
+           [ml[k] > ms[k] and ml[k] > 0 for k in range(len(ml))],
+           [ml[k] < ms[k] and ml[k] < 0 for k in range(len(ml))], atr)
+
+    equity, peak, dd = equity0, equity0, 0.0
+    trades, pos = [], None
+    spread_px = spread_pips * B.PIP
+    floor_px = max(HAMMER_MIN_STOP_PIPS * B.PIP, 8 * spread_px)
+    start = max(B.TREND, B.SWING_LOOKBACK + B.SWING_WING + 2, 25)
+
+    for i in range(start, len(bars) - 1):
+        if pos:
+            nb = bars[i + 1]
+            hit_sl = (nb["l"] <= pos["sl"]) if pos["d"] > 0 else (nb["h"] >= pos["sl"])
+            hit_tp = (nb["h"] >= pos["tp"]) if pos["d"] > 0 else (nb["l"] <= pos["tp"])
+            ex = pos["sl"] if (hit_sl and hit_tp) else (
+                 pos["tp"] if hit_tp else (pos["sl"] if hit_sl else None))
+            if ex is not None:
+                gross = (ex - pos["e"]) * pos["d"] * pos["lots"] * B.UNITS_PER_LOT
+                pnl = gross - spread_px * pos["lots"] * B.UNITS_PER_LOT
+                equity += pnl
+                peak = max(peak, equity); dd = max(dd, peak - equity)
+                trades.append({"win": pnl > 0,
+                               "r": pnl / pos["risk"] if pos["risk"] else 0})
+                pos = None
+            continue
+
+        if rsi[i] is None or not atr[i]:
+            continue
+        d, sl_price = stop_fn(bars, i, ind, **kw)
+        if d == 0:
+            continue
+        e = bars[i + 1]["o"] + spread_px * d / 2
+        dist = max(abs(e - sl_price), floor_px)     # 硬成本下限,规则再好也不能穿
+        stop_pips = dist / B.PIP
+        lots, _ = B.lots_for(equity, stop_pips, bars[i]["c"])
+        if lots <= 0:
+            continue
+        pos = {"d": d, "e": e, "sl": e - dist * d, "tp": e + dist * rr * d,
+               "lots": lots, "risk": lots * dist * B.UNITS_PER_LOT}
+
+    n = len(trades)
+    if n == 0:
+        return {"n": 0, "wr": None, "exp": None, "net": 0.0, "dd": 0.0}
+    wins = sum(1 for t in trades if t["win"])
+    tot = sum(t["r"] for t in trades)
+    return {"n": n, "wr": round(wins / n * 100, 1), "exp": round(tot / n, 3),
+            "net": round(equity - equity0, 2), "dd": round(dd, 2)}
