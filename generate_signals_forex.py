@@ -83,6 +83,24 @@ SPREAD_STOP_MULT = 8.0       # 止损至少要有 8 倍点差的容身空间
 #    就是一根针爆仓。风险模型必须让位给保证金现实。
 MAX_LEVERAGE = float(os.environ.get("FOREX_MAX_LEVERAGE", "20"))
 
+# --- 自动进化写出的配置 ------------------------------------------------------
+# forex_autoevolve.py 会在证据门槛内自动改这个文件。存在就覆盖上面的默认值,
+# 这样"自动换配置"才真的作用到运行中的引擎上,而不是只写在报告里。
+# halted=true 时引擎直接不出信号 —— 停手是自动的,复活必须人工。
+AUTO_HALTED, AUTO_HALT_REASON = False, None
+try:
+    with open(os.environ.get("FOREX_CONFIG", "forex_config.json")) as _f:
+        _cfg = json.load(_f)
+    PAIRS = [_cfg.get("pair", PAIRS[0])]
+    MIN_STOP_PIPS = float(_cfg.get("stop_pips", MIN_STOP_PIPS))
+    RR1 = float(_cfg.get("rr1", RR1))
+    AUTO_HALTED = bool(_cfg.get("halted"))
+    AUTO_HALT_REASON = _cfg.get("halt_reason")
+except FileNotFoundError:
+    pass
+except Exception as _e:
+    print(f"[config] 读取 forex_config.json 失败,沿用默认值: {_e}", file=sys.stderr)
+
 
 # ------------------------------- 指标 ---------------------------------------
 # 和 quotes_crypto.py 保持同一套实现口径(Wilder RSI、EMA 用首值播种)。
@@ -600,6 +618,9 @@ def main():
 
     now = (dt.datetime.fromisoformat(args.now.replace("Z", "+00:00"))
            if args.now else dt.datetime.now(dt.timezone.utc))
+    if AUTO_HALTED:
+        return _bail(f"已自动停手:{AUTO_HALT_REASON}(复活需人工确认)",
+                     now, EQUITY_USD, min(RISK_PCT, RISK_PCT_HARD_CAP))
     if now.tzinfo is None:
         now = now.replace(tzinfo=dt.timezone.utc)
     risk_pct = min(RISK_PCT, RISK_PCT_HARD_CAP)

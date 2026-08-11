@@ -67,6 +67,19 @@ jobs:
           FOREX_EQUITY_USD: "200"
         run: python forex_strategy_lab.py
 
+      # 自动进化:在证据门槛内自己换配置,并写进 reports/evolution_log.md。
+      # 用户已明确授权自动改策略。门槛和我手动决定时完全一致,一个字不放松:
+      # 两段都为正、验证段>=+0.10R、各>=30笔、通过组数>期望假阳性、
+      # 且比当前至少好 0.05R。健康监测报 HALT 时无条件停手(复活须人工)。
+      # **不会**按近期实盘表现调参数 —— 那是在噪音上拟合,一定变差。
+      - name: 自动进化（每周一）
+        id: evolve
+        if: github.event.schedule == '40 6 * * 1' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        env:
+          FOREX_EQUITY_USD: "200"
+        run: python forex_autoevolve.py
+
       - name: Generate forex signals
         id: signals
         continue-on-error: true
@@ -160,6 +173,7 @@ jobs:
             echo "| 研究(周一) | ${{ steps.research.outcome }} |"
             echo "| 实验室(周一) | ${{ steps.lab.outcome }} |"
             echo "| 信号生成 | ${{ steps.signals.outcome }} |"
+            echo "| 自动进化(周一) | ${{ steps.evolve.outcome }} |"
             echo "| 健康监测 | ${{ steps.health.outcome }} |"
             echo "| 战报 | ${{ steps.daily.outcome }} |"
             echo
