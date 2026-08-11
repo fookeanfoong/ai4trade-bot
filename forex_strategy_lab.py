@@ -374,6 +374,27 @@ if __name__ == "__main__":
 HAMMER_MIN_STOP_PIPS = 15.0
 
 
+def recent_structure(bars, i, lookback=60, wing=B.SWING_WING):
+    """**最近**的分型高低点,不是整段的极值。
+
+    这里踩过一个坑:第一版直接用了 B.structure(),它返回的是回溯段内的
+    最高高点和最低低点 —— 整段极值。上升趋势里价格几乎永远不会跌回 120 根
+    的最低点,所以"回踩到支撑位"这个条件恒为假,整个策略 0 笔成交,
+    在报告里会显示成"样本不足",看起来像策略不触发,其实是我写错了。
+
+    视频说的"画一条支撑位"指的是**刚刚那个回调低点**,所以要取最近的分型。
+    """
+    lo_i = max(wing + 1, i - lookback)
+    last_hi = last_lo = None
+    for j in range(lo_i, i - wing):
+        win = bars[j - wing:j + wing + 1]
+        if bars[j]["h"] >= max(b["h"] for b in win):
+            last_hi = bars[j]["h"]          # 一路覆盖 -> 留下最近的那个
+        if bars[j]["l"] <= min(b["l"] for b in win):
+            last_lo = bars[j]["l"]
+    return last_hi, last_lo
+
+
 def entry_hammer_pullback(bars, i, ind, wick_ratio=2.0, zone_atr=0.5):
     """返回 (方向, 止损价)。不符合就 (0, None)。"""
     ef, es, et, rsi, macd_up, macd_dn, atr = ind
@@ -382,7 +403,7 @@ def entry_hammer_pullback(bars, i, ind, wick_ratio=2.0, zone_atr=0.5):
     if not (up or dn):
         return 0, None                      # 第一步:没趋势就不做
 
-    res, sup = B.structure(bars, i)
+    res, sup = recent_structure(bars, i)
     if res is None or sup is None:
         return 0, None
 
