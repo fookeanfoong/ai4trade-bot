@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12T06:18:05+00:00",
+  "updated_at": "2026-08-12T07:37:15+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -8,7 +8,7 @@
   "blackouts": [
     {
       "name": "美国 CPI + 核心 CPI",
-      "in_hours": 6.2,
+      "in_hours": 4.9,
       "time_utc": "2026-08-12T12:30:00Z"
     }
   ],
@@ -17,19 +17,19 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-08-12T06:00:00Z",
-      "price": 1.1538,
+      "last_candle_time": "2026-08-12T07:00:00Z",
+      "price": 1.15407,
       "spread_pips": null,
       "min_stop_pips": 25.0,
-      "structure": "上升趋势 (HH/HL)",
-      "bias": "偏多",
+      "structure": "震荡区间",
+      "bias": "中性",
       "ema_stack": "均线缠绕(无排列)",
       "indicators": {
-        "rsi14": 40.5,
-        "macd": "死叉 / 柱=-5.8e-05",
-        "ema20": 1.15422,
+        "rsi14": 45.6,
+        "macd": "死叉 / 柱=-2.6e-05",
+        "ema20": 1.15423,
         "ema50": 1.15445,
-        "ema200": 1.15235,
+        "ema200": 1.15233,
         "atr14_pips": 4.5,
         "rsi_bearish_divergence": true
       },
@@ -58,9 +58,9 @@
             "RSI>55": false,
             "无顶背离": false,
             "EMA20>EMA50且站上EMA20": false,
-            "MACD柱连续两根走高": false
+            "MACD柱连续两根走高": true
           },
-          "confirmed": 0,
+          "confirmed": 1,
           "invalidation": "突破后 H1 收回 1.15821 下方 = 假突破,撤单转看方案B",
           "units": 800,
           "notional_usd": 926.46,
