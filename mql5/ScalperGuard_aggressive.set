@@ -1,0 +1,83 @@
+; ============================================================================
+; XAUUSD ScalperGuard —— 数据采集档（激进）
+;
+; 目的不是赚钱，是**先把成交样本跑出来**。没有样本就无从判断哪一环该改。
+; 只在 DEMO 上用。
+;
+; 用法：EA 属性对话框 -> 输入参数 -> 右下角「载入」-> 选本文件 -> 确定。
+; 退回保守档：同一个对话框点「重置」，即恢复代码里的默认值。
+;
+; 基准余额 $10,000（日内上限按余额比例设，与 $200 账户的 +$50/-$15 同口径）。
+; 换了余额记得重算：目标 = 余额×25%，上限 = 余额×7.5%。
+;
+; ⚠️ 这一档放宽的是**过滤器**，不是安全底线。以下四条没有动，也不要动：
+;      每单必带止损、止损只能往盈利方向移、禁止亏损加仓/马丁、真实账户闸门。
+; ============================================================================
+
+; --- 安全闸门：保持只跑 Demo ---
+InpAllowLiveAccount=false
+
+; --- 日内限额：按 $10,000 余额换算，否则一笔亏损就收工 ---
+InpRiskPctDefault=1.0
+InpRiskPctMax=2.0
+InpDailyProfitTarget=2500.0
+InpDailyMaxLoss=750.0
+InpConservativeAt=1000.0
+InpReducedAt=1500.0
+
+; --- 放宽停手条件：采样期要的是笔数 ---
+InpMaxTradesPerDay=20
+InpStopAfterConsecLoss=5
+InpObserveAfterConsecLoss=3
+
+; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
+InpSessionStartHour=0
+InpSessionEndHour=23
+InpFlatAllBeforeHour=23
+
+; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
+; 0.60 / 0.25 会让亚洲盘也能过。代价明确：$0.40 点差配 $3 止损 = 每笔先付掉
+; 13% 的风险额度。采样期接受，评估期必须把这笔成本从结果里扣回去。
+InpMaxSpreadUSD=0.60
+InpSpreadVsATRMax=0.25
+
+; --- 信号门槛 ---
+; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
+; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
+InpMinScore=4
+InpAdxMin=12.0
+InpMinRR=1.2
+
+; --- 波动率区间：放宽两头，别在安静时段直接哑火 ---
+InpAtrMinUSD=0.40
+InpAtrMaxUSD=15.00
+
+; --- 止损区间 ---
+InpSlMinUSD=1.20
+InpSlMaxUSD=8.00
+
+; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
+; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
+; 「在高频假突破/横盘的行情里做的单，表现是不是真的更差」。
+; 直接删掉这个闸门的话，这个问题永远没有答案。
+InpUseMarketQuality=false
+InpMinRangeATR=2.5
+InpMaxSmallBodyPct=70.0
+InpMaxFakeBreakouts=5
+
+; --- 持仓管理：维持原样，这些不是"过滤器"，是出场逻辑 ---
+InpMaxHoldMinutes=180
+InpExitOnMomentumFade=true
+InpTP1_R=1.0
+InpTP2_R=1.8
+InpPartialClosePct=50.0
+
+; --- 新闻过滤：保留 ---
+; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的
+; 样本质量。采样期留着，让样本干净。
+InpUseNewsFilter=true
+
+; --- 监控 ---
+InpPushNotify=true
+InpWriteStatusJson=true
+InpVerboseLog=true

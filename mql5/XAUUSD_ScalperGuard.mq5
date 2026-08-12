@@ -72,6 +72,16 @@ input int      InpMinScore           = 5;       // 最低确认分（满分 7）
 input double   InpAtrMinUSD          = 0.80;    // ATR 下限（低于 = 波动不足）
 input double   InpAtrMaxUSD          = 8.00;    // ATR 上限（高于 = 波动异常）
 
+input group "=== 市场质量闸门（横盘 / 假突破）==="
+// false = 不否决交易，但**仍然计算并随成交记录下来**。
+// 数据采集期这样设：让它开单，同时留下"当时行情质量如何"的标签，
+// 事后才能回答「在高频假突破的行情里做的单是不是真的更差」——
+// 直接关掉不记录的话，这个问题永远没有答案。
+input bool     InpUseMarketQuality   = true;    // 质量不合格时是否**拒绝**交易
+input double   InpMinRangeATR        = 2.5;     // 近 30 根区间至少 = ATR × 该值
+input double   InpMaxSmallBodyPct    = 70.0;    // 小实体 K 线占比上限 %
+input int      InpMaxFakeBreakouts   = 5;       // 近 25 根内失败突破次数上限
+
 input group "=== 止损 / 止盈 ==="
 input double   InpSlAtrMult          = 1.2;     // 止损 = swing 之外 + ATR * 该系数
 input double   InpSlMinUSD           = 1.20;    // 最小止损距离（美元）
@@ -121,6 +131,8 @@ bool     g_dayHaltLogged = false;
 double   g_spSum[24], g_spMin[24], g_spMax[24];
 long     g_spCnt[24], g_spOver[24];
 int      g_lastSpHour   = -1;
+// 开仓当时的市场质量结论。闸门关掉时这是唯一能事后复盘"该不该做这一单"的依据。
+string   g_quality      = "";
 
 // 每日统计（全部从成交历史推导，重启后不会丢）
 struct DayStats
@@ -506,12 +518,12 @@ bool MarketQualityOk(double atr, string &why)
       if(MathAbs(iClose(_Symbol, InpLTF, i) - iOpen(_Symbol, InpLTF, i)) < 0.25 * atr) smallBody++;
    }
    double range = hi - lo;
-   if(range < 2.5 * atr)
+   if(range < InpMinRangeATR * atr)
    {
-      why = StringFormat("横盘：%d 根 K 线区间仅 %.2f (< 2.5×ATR)", lookback, range);
+      why = StringFormat("横盘：%d 根 K 线区间仅 %.2f (< %.1f×ATR)", lookback, range, InpMinRangeATR);
       return false;
    }
-   if(smallBody > lookback * 0.7)
+   if(smallBody > lookback * InpMaxSmallBodyPct / 100.0)
    {
       why = StringFormat("横盘：%d/%d 根为小实体 K 线", smallBody, lookback);
       return false;
@@ -535,12 +547,14 @@ bool MarketQualityOk(double atr, string &why)
       if(h1 > priorHi && c1 < priorHi) fakes++;
       if(l1 < priorLo && c1 > priorLo) fakes++;
    }
-   if(fakes >= 5)
+   if(fakes >= InpMaxFakeBreakouts)
    {
       why = StringFormat("高频假突破：近 25 根内出现 %d 次失败突破", fakes);
       return false;
    }
 
+   why = StringFormat("质量正常（区间 %.2f=%.1f×ATR，小实体 %d/%d，假突破 %d）",
+                      range, atr > 0.0 ? range / atr : 0.0, smallBody, lookback, fakes);
    return true;
 }
 
@@ -1040,6 +1054,7 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
            sg.dir > 0 ? "BUY" : "SELL", lot, sg.entry, sg.sl, slDist, sg.tp2, sg.rr, sg.score,
            lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.note,
            ds.trades + 1, InpMaxTradesPerDay, ds.total));
+   LogLine("QUALITY", StringFormat("#开仓时行情质量：%s", g_quality));
 
    Push(StringFormat("开仓 %s %s手 @%.2f | SL %.2f | TP %.2f | 风险 $%.2f (%.2f%%) | 分数 %d/7 | %s",
         sg.dir > 0 ? "BUY" : "SELL", DoubleToString(lot, VolDigits()), sg.entry, sg.sl, sg.tp2,
@@ -1418,6 +1433,7 @@ void PublishStatus(DayStats &ds, string status)
       "  \"market\": {\"spread\":%.2f,\"max_spread\":%.2f,\"atr\":%.2f,\"bid\":%.2f,\"ask\":%.2f,"
       "\"spread_avg_hour\":%.2f,\"spread_over_pct_hour\":%.0f},\n"
       "  \"status\": \"%s\",\n"
+      "  \"last_quality\": \"%s\",\n"
       "  \"positions\": [%s]\n"
       "}\n",
       _Symbol, EnumToString(InpLTF),
@@ -1432,7 +1448,7 @@ void PublishStatus(DayStats &ds, string status)
       SpreadUSD(), InpMaxSpreadUSD, Buf(hAtrL, 0, 1),
       SymbolInfoDouble(_Symbol, SYMBOL_BID), SymbolInfoDouble(_Symbol, SYMBOL_ASK),
       SpreadAvgThisHour(), SpreadOverPctThisHour(),
-      JsonEsc(status), posJson);
+      JsonEsc(status), JsonEsc(g_quality), posJson);
 
    WriteUtf8("XAUUSD_ScalperGuard_status.json", json);
 }
@@ -1668,8 +1684,12 @@ void OnTick()
    if(atr < InpAtrMinUSD) { NoTrade(StringFormat("ATR %.2f 过低，波动不足", atr)); Panel(ds, "波动不足"); return; }
    if(atr > InpAtrMaxUSD) { NoTrade(StringFormat("ATR %.2f 过高，波动异常", atr)); Panel(ds, "波动异常"); return; }
 
-   // 市场质量：横盘 / 高频假突破
-   if(!MarketQualityOk(atr, why)) { NoTrade(why); Panel(ds, why); return; }
+   // 市场质量：横盘 / 高频假突破。
+   // InpUseMarketQuality=false 时不否决交易，但结论照样算、照样跟着成交记录下来。
+   string qWhy = "";
+   bool   qOk  = MarketQualityOk(atr, qWhy);
+   if(InpUseMarketQuality && !qOk) { NoTrade(qWhy); Panel(ds, qWhy); return; }
+   g_quality = (qOk ? "OK|" : "BAD|") + qWhy;
 
    //--------------------------------------------------------------
    // 4) 模式：盈利保护 + 观察模式
