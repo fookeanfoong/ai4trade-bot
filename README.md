@@ -43,6 +43,18 @@ for 20+ signals before wiring execution. Why OANDA and not any MT5 broker: OANDA
 sizes in *units* (1 minimum), so a 1% risk on $200 is actually expressible — at a
 0.01-lot minimum it is not. See **[SETUP_FOREX.md](SETUP_FOREX.md)**.
 
+## Gold EA (XAUUSD, MetaTrader 5)
+
+A fourth book, and the only one that **places its own orders**: an MQL5 expert
+advisor (`mql5/GoldScalper.mq5`) for XAUUSD M15 — breakout + trend-pullback, fixed
+$3 stop at 1:2 R:R, every order submitted with its stop-loss attached server-side.
+No martingale, no grid, no averaging down. Defaults come from walk-forward
+validation (`reports/gold_research.md`), not from curve-fitting.
+
+Unlike the other three, this one runs in **your MT5 terminal**, not on GitHub
+Actions — so it needs the terminal (or an MT5 VPS) left running. Install and
+deployment steps: **[SETUP_MT5_GOLD.md](SETUP_MT5_GOLD.md)**.
+
 ## One-time deploy (~5 min)
 
 1. Create a **new GitHub repo** (private is fine), e.g. `ai4trade-bot`.
