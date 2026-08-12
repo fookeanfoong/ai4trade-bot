@@ -1,0 +1,10 @@
+{
+  "pair": "EUR_USD",
+  "stop_pips": 25,
+  "rr1": 1.5,
+  "test_exp": 0.018,
+  "halted": false,
+  "halt_reason": null,
+  "adopted_at": null,
+  "history": []
+}
