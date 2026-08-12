@@ -95,6 +95,10 @@ input string   InpManualNewsTimes    = "";      // 手动黑名单时间 "HH:MM,
 input group "=== 加仓（默认关闭）==="
 input bool     InpAllowAddOn         = false;   // 允许加仓（必须满足全部条件）
 
+input group "=== 监控 ==="
+input bool     InpPushNotify        = true;    // 关键事件推送到手机（需在 工具->选项->通知 填 MetaQuotes ID）
+input bool     InpWriteStatusJson   = true;    // 每 30 秒把状态快照写入 Files\XAUUSD_ScalperGuard_status.json
+
 //==================================================================
 // 全局
 //==================================================================
@@ -333,8 +337,12 @@ void CloseAll(string reason)
       if(!pos.SelectByIndex(i)) continue;
       if(pos.Magic() != InpMagic || pos.Symbol() != _Symbol) continue;
       ulong tk = pos.Ticket();
+      double pnl = pos.Profit() + pos.Swap();
       if(trade.PositionClose(tk))
+      {
          LogLine("CLOSE", StringFormat("#%I64u 平仓：%s", tk, reason));
+         Push(StringFormat("平仓 #%I64u  盈亏 $%.2f  (%s)", tk, pnl, reason));
+      }
       else
          LogLine("ERROR", StringFormat("#%I64u 平仓失败 %d %s", tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    }
@@ -967,6 +975,10 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
            lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.note,
            ds.trades + 1, InpMaxTradesPerDay, ds.total));
 
+   Push(StringFormat("开仓 %s %s手 @%.2f | SL %.2f | TP %.2f | 风险 $%.2f (%.2f%%) | 分数 %d/7 | %s",
+        sg.dir > 0 ? "BUY" : "SELL", DoubleToString(lot, VolDigits()), sg.entry, sg.sl, sg.tp2,
+        lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.score, sg.note));
+
    // 强制校验：无止损绝不允许留仓
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
@@ -1047,6 +1059,7 @@ void ManagePositions(double atr)
       if(sl == 0.0)
       {
          LogLine("CRITICAL", StringFormat("#%I64u 检测到无止损，强制平仓", tk));
+         Push(StringFormat("⚠️ #%I64u 检测到无止损持仓，已强制平仓", tk));
          trade.PositionClose(tk);
          continue;
       }
@@ -1251,6 +1264,112 @@ void Panel(DayStats &ds, string status)
 }
 
 //==================================================================
+// 监控：手机推送 + 状态快照
+//==================================================================
+// 推送只发**状态变化**（开仓/平仓/熔断/异常），不发心跳。
+// 每次 NO-TRADE 都推一条的话，你会在半天内关掉通知 —— 那等于没有监控。
+void Push(string msg)
+{
+   if(!InpPushNotify) return;
+   if(MQLInfoInteger(MQL_TESTER)) return;        // 回测里不推送
+   SendNotification(StringFormat("[%s] %s", _Symbol, msg));
+}
+
+string JsonEsc(string s)
+{
+   StringReplace(s, "\\", "\\\\");
+   StringReplace(s, "\"", "\\\"");
+   StringReplace(s, "\n", " ");
+   StringReplace(s, "\r", " ");
+   return s;
+}
+
+// MQL5 的 FILE_TXT|FILE_ANSI 会把中文写坏，FILE_UNICODE 写的是 UTF-16，
+// JSON 解析器普遍不认。所以自己转 UTF-8 再按二进制写。
+bool WriteUtf8(string fname, string content)
+{
+   uchar bytes[];
+   int n = StringToCharArray(content, bytes, 0, -1, CP_UTF8);
+   if(n <= 1) return false;
+   n--;                                          // 去掉 StringToCharArray 补的结尾 0
+   int h = FileOpen(fname, FILE_WRITE|FILE_BIN);
+   if(h == INVALID_HANDLE) return false;
+   FileWriteArray(h, bytes, 0, n);
+   FileClose(h);
+   return true;
+}
+
+// 状态快照。这个文件是**任何看板的数据源** —— 本地网页、VPS、或者以后
+// 推到云端的接口，读的都是同一份结构，EA 这边不需要再改。
+void PublishStatus(DayStats &ds, string status)
+{
+   if(!InpWriteStatusJson) return;
+
+   string mode = "normal";
+   if(ds.total >= InpReducedAt)           mode = "reduced";
+   else if(ds.total >= InpConservativeAt) mode = "conservative";
+   bool observing = (ds.consecLoss >= InpObserveAfterConsecLoss);
+   bool halted    = (ds.total >= InpDailyProfitTarget) ||
+                    (ds.total <= -InpDailyMaxLoss) ||
+                    (ds.consecLoss >= InpStopAfterConsecLoss) ||
+                    (ds.trades >= InpMaxTradesPerDay);
+
+   string posJson = "";
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      if(!pos.SelectByIndex(i)) continue;
+      if(pos.Magic() != InpMagic || pos.Symbol() != _Symbol) continue;
+
+      bool   isBuy = (pos.PositionType() == POSITION_TYPE_BUY);
+      double cur   = isBuy ? SymbolInfoDouble(_Symbol, SYMBOL_BID)
+                           : SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+      double moved = isBuy ? (cur - pos.PriceOpen()) : (pos.PriceOpen() - cur);
+      // 用开仓时记下的初始 R，止损移到保本后仍以此为基准（和 ManagePositions 一致）
+      double R     = InitialR(pos.Ticket(), MathAbs(pos.PriceOpen() - pos.StopLoss()));
+
+      if(StringLen(posJson) > 0) posJson += ",";
+      posJson += StringFormat(
+         "{\"ticket\":%I64u,\"type\":\"%s\",\"volume\":%s,\"open\":%.2f,\"sl\":%.2f,\"tp\":%.2f,"
+         "\"price\":%.2f,\"profit\":%.2f,\"r\":%.2f,\"opened\":\"%s\"}",
+         pos.Ticket(), isBuy ? "buy" : "sell",
+         DoubleToString(pos.Volume(), VolDigits()), pos.PriceOpen(), pos.StopLoss(),
+         pos.TakeProfit(), cur, pos.Profit() + pos.Swap(),
+         R > 0.0 ? moved / R : 0.0,
+         TimeToString((datetime)pos.Time(), TIME_DATE|TIME_SECONDS));
+   }
+
+   string json = StringFormat(
+      "{\n"
+      "  \"schema\": 1,\n"
+      "  \"ea\": \"XAUUSD_ScalperGuard\",\n"
+      "  \"symbol\": \"%s\",\n"
+      "  \"timeframe\": \"%s\",\n"
+      "  \"server_time\": \"%s\",\n"
+      "  \"account\": {\"mode\":\"%s\",\"login\":%I64d,\"balance\":%.2f,\"equity\":%.2f,"
+      "\"leverage\":%d,\"currency\":\"%s\"},\n"
+      "  \"day\": {\"realized\":%.2f,\"floating\":%.2f,\"total\":%.2f,\"trades\":%d,\"max_trades\":%d,"
+      "\"consec_loss\":%d,\"target\":%.2f,\"max_loss\":%.2f,\"mode\":\"%s\",\"observing\":%s,\"halted\":%s},\n"
+      "  \"market\": {\"spread\":%.2f,\"max_spread\":%.2f,\"atr\":%.2f,\"bid\":%.2f,\"ask\":%.2f},\n"
+      "  \"status\": \"%s\",\n"
+      "  \"positions\": [%s]\n"
+      "}\n",
+      _Symbol, EnumToString(InpLTF),
+      TimeToString(TimeCurrent(), TIME_DATE|TIME_SECONDS),
+      AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_DEMO ? "demo" : "real",
+      AccountInfoInteger(ACCOUNT_LOGIN),
+      AccountInfoDouble(ACCOUNT_BALANCE), AccountInfoDouble(ACCOUNT_EQUITY),
+      (int)AccountInfoInteger(ACCOUNT_LEVERAGE), AccountInfoString(ACCOUNT_CURRENCY),
+      ds.realized, ds.floating, ds.total, ds.trades, InpMaxTradesPerDay, ds.consecLoss,
+      InpDailyProfitTarget, InpDailyMaxLoss, mode,
+      observing ? "true" : "false", halted ? "true" : "false",
+      SpreadUSD(), InpMaxSpreadUSD, Buf(hAtrL, 0, 1),
+      SymbolInfoDouble(_Symbol, SYMBOL_BID), SymbolInfoDouble(_Symbol, SYMBOL_ASK),
+      JsonEsc(status), posJson);
+
+   WriteUtf8("XAUUSD_ScalperGuard_status.json", json);
+}
+
+//==================================================================
 // OnInit
 //==================================================================
 int OnInit()
@@ -1380,6 +1499,7 @@ void OnTimer()
    CleanFlags();
    DayStats ds = GetDayStats();
    Panel(ds, g_lastNoTradeReason);
+   PublishStatus(ds, g_lastNoTradeReason);
 }
 
 //==================================================================
@@ -1412,6 +1532,7 @@ void OnTick()
       {
          LogLine("HALT", StringFormat("当日盈利 $%.2f >= 目标 $%.2f —— 停止交易，今天结束。",
                  ds.total, InpDailyProfitTarget));
+         Push(StringFormat("达到当日目标 +$%.2f，已平仓并停止交易", ds.total));
          g_dayHaltLogged = true;
       }
       Panel(ds, "已达当日目标，停止交易");
@@ -1425,6 +1546,7 @@ void OnTick()
       {
          LogLine("HALT", StringFormat("当日亏损 $%.2f <= -$%.2f —— 平仓并停止交易，今天结束。",
                  ds.total, InpDailyMaxLoss));
+         Push(StringFormat("触及当日亏损上限 $%.2f，已平仓并停止交易", ds.total));
          g_dayHaltLogged = true;
       }
       Panel(ds, "触及当日亏损上限，停止交易");
