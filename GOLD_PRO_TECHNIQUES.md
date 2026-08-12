@@ -1,0 +1,163 @@
+# 专业黄金交易技巧 — 哪些进了机器人，哪些没有
+
+调研范围：LBMA / ICE 官方文档、券商教育页、以及大量"机构黄金交易"类文章。
+
+**结论先说**：网上这类内容里，能进代码的比例大约一成。不是它们全错，
+而是**大部分无法机械判定**——需要人眼在图上标注，那就不是 EA 能执行的东西。
+
+---
+
+## 一、取舍标准
+
+| 类别 | 标准 | 处理 |
+|---|---|---|
+| ✅ 结构性事实 | 有官方来源、时间与规则可查 | 直接进代码 |
+| ⚠️ 可机械定义 | 能写成不含主观判断的 if 条件、可回测 | 做成**可开关的参数**，用数据验 |
+| ❌ 不可判定 / 无法证伪 | 需人工标注，或只有胜率宣称没有方法 | 不进代码 |
+
+---
+
+## 二、✅ 进了代码：结构性事实
+
+### LBMA 黄金定盘
+
+每日两次，**伦敦时间 10:30 与 15:00**，由 ICE Benchmark Administration 运营，
+15 家直接参与者以 30 秒一轮的方式竞价成交。
+下午那场同时覆盖伦敦与纽约两个中心，流动性更高，商业参与者更倾向在下午场成交。
+
+**为什么重要**：这不是"神奇时间点"，而是**机构订单流在此集中**。
+定盘本身不制造波动，但它创造了波动更容易发生的条件。
+
+夏令时换算（你的服务器 UTC+3）：
+
+| 事件 | 伦敦/纽约 | UTC（夏） | 你的服务器 |
+|---|---|---|---|
+| LBMA 上午定盘 | 10:30 London | 09:30 | **12:30** |
+| COMEX 场内开盘 | 08:20 ET | 12:20 | **15:20** |
+| 美国数据（多数） | 08:30 ET | 12:30 | **15:30** |
+| 纽约股市开盘 | 09:30 ET | 13:30 | **16:30** |
+| LBMA 下午定盘 | 15:00 London | 14:00 | **17:00** |
+
+冬令时全部 +1 小时。
+
+### 伦敦 / 纽约重叠时段
+
+多个独立来源一致指向 **UTC 12:00–16:00** 为波动与成交量的峰值窗口。
+
+> **但我没有直接采信。** 这些页面互相抄，且多数是券商招客文案。
+> 所以写了 `gold_session_profile.py`，把真实K线按 UTC 小时聚合自己算一遍，
+> 结果见 [`reports/gold_sessions.md`](reports/gold_sessions.md)。
+> **以那份表为准，不以本节为准。**
+
+---
+
+## 三、⚠️ 进了代码但默认可关：可机械定义的技巧
+
+这三条是那些文章里唯一能写成确定性条件的东西。全部由价格算出，
+不需要人工标注，也不涉及任何"smart money"叙事。
+
+### 1. 前一日高 / 低（PDH / PDL）
+
+引用频率最高的参考位。原因不神秘：**很多人把止损挂在它们外面**——
+做空的把止损放前日高之上，做多的放前日低之下。所以它们既是最可能被
+测试的目标位，也是最可能发生扫损的地方。
+
+实现：`GetKeyLevels()` 取 `iHigh/iLow(PERIOD_D1, 1)`。
+
+### 2. 亚洲盘区间高 / 低
+
+亚洲时段波动小，往往形成当日的初始区间，伦敦开盘后向某个方向突破。
+
+实现：`GetKeyLevels()` 扫最近一个**已完成**的亚洲盘时段
+（`InpAsiaStartHour`–`InpAsiaEndHour`，服务器时间）。
+取"已完成"而非"今天的"是因为——**没走完的区间会一直变宽，
+拿它当参考位等于参考一个还在变的数。**
+
+### 3. 流动性扫损后反手（入场 C）
+
+那些文章里唯一**能机械定义**的技巧：价格先刺穿一条众所周知的关键位
+（扫掉挂在那里的止损），然后收回来。刺穿失败 = 那个方向没有承接。
+
+实现 `SweepEntry()`，条件全部可判定：
+
+```
+上一根已收盘K线的最低价 < 关键位            （刺穿了）
+且 刺穿深度 ∈ [0.10×ATR, 1.50×ATR]         （太浅=噪音，太深=真跌破）
+且 收盘价 > 关键位                          （收回来了）
+且 是一根阳线
+且 H1 趋势向上                              （只做顺高周期的扫损）
+```
+
+上下限那条是关键：**没有深度限制的话，任何真突破都会被误判成扫损，
+然后你就在趋势的反方向反复接刀。**
+
+参数：`InpUseSweepEntry` / `InpSweepMinPenetration` / `InpSweepMaxPenetration`
+
+### 4. 整数关口
+
+$4400 / $4450 这类。客观、无争议，纳入关键位集合。
+参数：`InpUseRoundNumbers` / `InpRoundStep`
+
+---
+
+## 四、❌ 没进代码，以及为什么
+
+### Order Block（订单块）
+
+定义是"爆发性行情前的最后一根反向K线"。问题在于**"爆发性"没有阈值**——
+事后看图每一次都很明显，那是幸存者视角。要写成代码就必须自己定一个阈值，
+而那个阈值是我拍的，不是那套方法给的。**拍出来的阈值不是别人的技巧，是我的臆测。**
+
+### "Market Structure Shift" / Smart Money 叙事
+
+同上，且更严重：不同讲解者的定义互相矛盾。无法证伪的东西无法回测。
+
+### "机构最低要求 1:3 风险回报"
+
+出现在多篇文章里，但**没有一篇给出出处**。而且它和你要的快进快出直接矛盾：
+RR 1:3 意味着更低胜率、更长持仓。
+
+更要紧的是——**RR 门槛不该是信条，该是算出来的**。你的成本决定了保本线：
+
+| 打法 | 点差($0.26)占R | 保本胜率 |
+|---|---|---|
+| 1:3 | 5.2% | 26.3% |
+| 1:1.8 | 5.2% | 37.6% |
+| 1:1 | 5.2% | 52.6% |
+
+哪个更好取决于你的策略实际胜率落在哪，不取决于哪篇文章说了什么。
+
+### 任何带胜率宣称的策略
+
+"这招 90% 胜率"——没有样本量、没有时间区间、没有成本假设的胜率，是广告不是数据。
+
+---
+
+## 五、怎么验证这些是否真的有用
+
+`InpUseKeyLevels` / `InpUseSweepEntry` 默认开启，但**每笔成交都会记录**
+触发路径和止盈受限于哪条位置：
+
+```
+[OPEN]  BUY 0.05 手 @ 4413.98 | ... | 扫损反手：下破前日低 4408.20 后收回（刺穿 1.02=0.30ATR） | 止盈受限于整数关口 4450.00
+```
+
+跑够样本后按触发路径分组算期望值 —— **突破回踩 / 趋势回调 / 扫损反手
+哪一类真的赚钱**，用数据回答，不用文章回答。
+不赚钱的那一类，关掉对应开关即可。
+
+---
+
+## 来源
+
+- [LBMA Gold Price（定盘机制与时间）](https://www.lbma.org.uk/prices-and-data/lbma-gold-price)
+- [About LBMA Daily Auction Prices](https://www.lbma.org.uk/prices-and-data/about-lbma-daily-auction-prices)
+- [ICE Benchmark Administration — LBMA Gold & Silver Price](https://www.ice.com/iba/lbma-gold-silver-price)
+- [Has There Been a Decade of London PM Gold Fixing Manipulation?（LBMA Alchemist）](https://www.lbma.org.uk/alchemist/issue-73/has-there-been-a-decade-of-london-pm-gold-fixing-manipulation)
+- [Gold Trading Hours: COMEX Settlement, London Fix, and Key Market Times](https://tradersmastermind.com/gold-trading-hours-comex-london-fix/)
+- [Best Time to Trade Gold（Vantage）](https://www.vantagemarkets.com/en/academy/best-time-to-trade-gold-xau-usd/)
+- [XAUUSD liquidity mapping（Equiti）](https://www.equiti.com/sc-en/news/trading-ideas/xauusd-liquidity-mapping-path-of-liquidity/)
+- [Gold Scalping: 5-Minute Order Block Strategy（FXNX）](https://fxnx.com/en/blog/gold-scalping-5-minute-order-block-strategy-xauusd) — 属第四节"未采纳"
+
+> 后四条是券商 / 内容营销来源，仅用于了解流行讲法，**其结论未被采信**。
+> 时段类结论一律以 `reports/gold_sessions.md` 的实测数据为准。
