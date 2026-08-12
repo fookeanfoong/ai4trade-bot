@@ -1,14 +1,14 @@
 # 流水线状态
 
-*2026-08-12T08:28Z*
+*2026-08-12T10:12Z*
 
 | 步骤 | 结果 |
 |---|---|
 | 新闻简报 | success |
-| 研究(周一) | success |
-| 实验室(周一) | success |
+| 研究(周一) | skipped |
+| 实验室(周一) | skipped |
 | 信号生成 | success |
-| 自动进化(周一) | success |
+| 自动进化(周一) | skipped |
 | 健康监测 | success |
 | 战报 | success |
 
