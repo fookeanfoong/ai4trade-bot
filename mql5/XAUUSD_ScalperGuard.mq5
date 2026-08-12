@@ -45,6 +45,7 @@ input int      InpStopAfterConsecLoss= 3;       // 连亏 N 笔 -> 当天停止
 input int      InpObserveAfterConsecLoss = 2;   // 连亏 N 笔 -> 观察模式
 input double   InpMaxMarginPctPerPos = 35.0;    // 单仓占用保证金上限（占可用保证金 %）
 input bool     InpUseFloatingInLimits= true;    // 日盈亏统计是否包含浮动盈亏
+input bool     InpSmallAccountEscalate = true;  // 小账户救济：最小手开不了时，把风险上调至 InpRiskPctMax
 
 input group "=== 交易时段 / 点差 / 流动性 ==="
 input int      InpSessionStartHour   = 8;       // 交易时段开始（服务器时间，小时）
@@ -846,6 +847,93 @@ double CalcLot(double slDistUSD, double riskMoney, string &why)
 }
 
 //==================================================================
+// 小账户救济：把风险上调到规格自己的上限，而不是缩止损
+//==================================================================
+// 这里处理的是**颗粒度**问题，不是风控松紧问题：
+//   $200 账户的 1% = $2，而黄金 M5 的结构止损普遍 $3~$6（近期 M5 ATR ≈ $4）。
+//   0.01 手 = 1 盎司，没有比这更小的档位去承接这个差额，于是 CalcLot 一路拒单。
+//
+// 两个方向可以让它开得出单：把止损缩到 $2，或者把风险抬到 2%。
+// 前者是规格里明令禁止的（缩止损 = 让市场噪音替你决定出场），
+// 后者只是用掉规格自己写明的 1%~2% 区间的上半段。所以选后者。
+//
+// 代价要讲清楚：单笔亏损从 $2 变成最多 $4，日内 -$15 熔断从能扛 7.5 笔
+// 变成 3.75 笔 —— 但连亏 3 笔本来就停手（-$12），所以真正起作用的仍是连亏闸门。
+//
+// 只在「正常模式」下生效：保守 / 收紧 / 观察模式的降险优先级更高，
+// 那几档的存在意义就是在盈利或连亏之后主动缩手，不能被这里抬回去。
+double EscalateRiskForMinLot(double slDist, double riskPct, DayStats &ds, string &note)
+{
+   note = "";
+   if(!InpSmallAccountEscalate) return riskPct;
+   if(ds.consecLoss >= InpObserveAfterConsecLoss) return riskPct;   // 观察模式：不加码
+   if(ds.total >= InpConservativeAt)              return riskPct;   // 已进盈利保护档
+
+   double mppd   = MoneyPerLotPerDollar();
+   double lotMin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+   double bal    = AccountInfoDouble(ACCOUNT_BALANCE);
+   if(mppd <= 0.0 || lotMin <= 0.0 || bal <= 0.0 || slDist <= 0.0) return riskPct;
+
+   double needMoney = lotMin * slDist * mppd;          // 最小手在这个止损下的风险
+   double haveMoney = bal * riskPct / 100.0;
+   if(needMoney <= haveMoney) return riskPct;          // 本来就开得了，不动
+
+   if(needMoney > bal * InpRiskPctMax / 100.0)
+      return riskPct;                                  // 抬到上限也不够 -> 让 CalcLot 拒单并说明原因
+
+   // 留 0.1% 余量：CalcLot 里 FloorToStep 是向下取整，预算刚好等于 lotMin 的风险时
+   // 浮点误差可能把手数抹到 lotMin 以下，反而拒单。
+   // 但余量本身不能把结果顶出上限 —— 止损恰好等于 2% 额度时（$200 账户的 $4 止损就是
+   // 这个临界点）必须仍然能开，所以这里夹回 InpRiskPctMax，而不是判定超限。
+   double needPct = MathMin(InpRiskPctMax, (needMoney * 1.001) / bal * 100.0);
+
+   note = StringFormat("最小手 %s 在 $%.2f 止损下需 %.2f%% 风险($%.2f)，自 %.2f%% 上调（上限 %.2f%%）",
+                       DoubleToString(lotMin, VolDigits()), slDist, needPct, needMoney,
+                       riskPct, InpRiskPctMax);
+   return needPct;
+}
+
+//==================================================================
+// 启动提示：有没有颗粒度更细的黄金品种
+//==================================================================
+// 小账户的根本出路不是调参数，是换一个最小手数更小的品种。
+// 0.001 手 = 0.1 盎司，同样 $4 的止损只冒 $0.40 风险 —— 风控一点不用让步。
+// 这里只读不写，扫一遍经纪商的品种表，把更合适的那个报出来。
+void SuggestFinerGoldSymbol()
+{
+   double myMppd = MoneyPerLotPerDollar();
+   double myLot  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+   if(myMppd <= 0.0 || myLot <= 0.0) return;
+   double myRiskPerDollar = myLot * myMppd;     // 每 $1 止损距离、最小手要冒的风险
+
+   string best = "";
+   double bestRisk = myRiskPerDollar;
+   int    total = SymbolsTotal(false);          // false = 经纪商全部品种，不限于市场报价
+
+   for(int i = 0; i < total; i++)
+   {
+      string s = SymbolName(i, false);
+      if(s == _Symbol) continue;
+      if(StringFind(s, "XAU") < 0 && StringFind(s, "GOLD") < 0 && StringFind(s, "Gold") < 0) continue;
+
+      double lm = SymbolInfoDouble(s, SYMBOL_VOLUME_MIN);
+      double tv = SymbolInfoDouble(s, SYMBOL_TRADE_TICK_VALUE);
+      double ts = SymbolInfoDouble(s, SYMBOL_TRADE_TICK_SIZE);
+      if(lm <= 0.0 || tv <= 0.0 || ts <= 0.0) continue;
+
+      double risk = lm * (tv / ts);             // 每手每$1价值 = tickValue / tickSize
+      if(risk < bestRisk * 0.999) { bestRisk = risk; best = s; }
+   }
+
+   if(StringLen(best) > 0)
+      LogLine("HINT", StringFormat(
+         "发现颗粒度更细的品种：%s —— 每 $1 止损距离，最小手风险 $%.2f，而当前 %s 是 $%.2f（细 %.0f 倍）。"
+         "小账户把 EA 挂到 %s 的 M5 图表上，同样的止损只冒 1/%.0f 的风险，风控无需让步。",
+         best, bestRisk, _Symbol, myRiskPerDollar,
+         myRiskPerDollar / bestRisk, best, myRiskPerDollar / bestRisk));
+}
+
+//==================================================================
 // 开仓
 //==================================================================
 void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
@@ -1238,7 +1326,21 @@ int OnInit()
    if(slAtMinLot1 > 0 && slAtMinLot1 < InpSlMinUSD)
       LogLine("WARN", StringFormat(
          "按 1%% 风险，最小手数只允许 $%.2f 的止损，小于设定的最小止损 $%.2f。"
-         "多数信号会因风险超限被拒。", slAtMinLot1, InpSlMinUSD));
+         "多数信号会因风险超限被拒。%s", slAtMinLot1, InpSlMinUSD,
+         InpSmallAccountEscalate
+            ? StringFormat("小账户救济已开启：需要时会把单笔风险上调至 %.1f%%（对应止损 $%.2f）。",
+                           InpRiskPctMax, slAtMinLot2)
+            : "小账户救济已关闭（InpSmallAccountEscalate=false）。"));
+
+   // 抬到 2% 上限仍然接不住 M5 的结构止损 -> 这是账户规模问题，参数救不了
+   if(slAtMinLot2 > 0 && slAtMinLot2 < 3.0)
+      LogLine("WARN", StringFormat(
+         "即使按上限 %.1f%% 风险，最小手数也只允许 $%.2f 的止损。黄金 M5 的结构止损通常在 $3~$6，"
+         "本账户会持续拒单 —— 这是账户规模/最小手数问题，调参数解决不了。"
+         "出路：换最小手数更小的黄金品种，或把余额加到约 $%.0f。",
+         InpRiskPctMax, slAtMinLot2, 4.0 / (InpRiskPctMax / 100.0)));
+
+   SuggestFinerGoldSymbol();
 
    EventSetTimer(30);
    return INIT_SUCCEEDED;
@@ -1381,6 +1483,13 @@ void OnTick()
    // 只有满分信号 + 正常模式，才允许提高到 2%
    if(sg.score >= 7 && ds.consecLoss == 0 && ds.total < InpConservativeAt)
       riskPct = MathMin(InpRiskPctMax, 2.0);
+
+   // 小账户救济：最小手数在当前预算下开不了，但抬到 2% 上限就能开 -> 抬。
+   // 放在这里而不是更后面，是为了让下面两道**降险**闸门（加仓预算、当日剩余亏损额度）
+   // 依然能把它压回去 —— 上调只是解锁开仓，不是绕过任何一条上限。
+   string escNote = "";
+   riskPct = EscalateRiskForMinLot(MathAbs(sg.entry - sg.sl), riskPct, ds, escNote);
+   if(StringLen(escNote) > 0) LogLine("RISK", escNote);
 
    // 加仓闸门：有持仓时必须通过规则十四的全部条件
    if(HasOpenPosition())
