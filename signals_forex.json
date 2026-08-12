@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12T02:21:25+00:00",
+  "updated_at": "2026-08-12T04:51:02+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -8,7 +8,7 @@
   "blackouts": [
     {
       "name": "美国 CPI + 核心 CPI",
-      "in_hours": 10.1,
+      "in_hours": 7.6,
       "time_utc": "2026-08-12T12:30:00Z"
     }
   ],
@@ -17,7 +17,7 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-08-12T02:00:00Z",
+      "last_candle_time": "2026-08-12T04:00:00Z",
       "price": 1.15393,
       "spread_pips": null,
       "min_stop_pips": 25.0,
@@ -25,11 +25,11 @@
       "bias": "偏多",
       "ema_stack": "均线缠绕(无排列)",
       "indicators": {
-        "rsi14": 39.9,
-        "macd": "死叉 / 柱=-7e-06",
-        "ema20": 1.1544,
-        "ema50": 1.15455,
-        "ema200": 1.15224,
+        "rsi14": 41.4,
+        "macd": "死叉 / 柱=-3.9e-05",
+        "ema20": 1.15432,
+        "ema50": 1.15451,
+        "ema200": 1.15233,
         "atr14_pips": 4.8,
         "rsi_bearish_divergence": true
       },
@@ -93,7 +93,7 @@
             "阻力区被触及>=2次": false
           },
           "confirmed": 2,
-          "invalidation": "H1 收盘站上 1.15836 = 认错离场,翻回方案A",
+          "invalidation": "H1 收盘站上 1.15835 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 399,
           "notional_usd": 462.07,
