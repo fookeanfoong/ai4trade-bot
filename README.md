@@ -45,15 +45,27 @@ sizes in *units* (1 minimum), so a 1% risk on $200 is actually expressible — a
 
 ## Gold EA (XAUUSD, MetaTrader 5)
 
-A fourth book, and the only one that **places its own orders**: an MQL5 expert
-advisor (`mql5/GoldScalper.mq5`) for XAUUSD M15 — breakout + trend-pullback, fixed
-$3 stop at 1:2 R:R, every order submitted with its stop-loss attached server-side.
-No martingale, no grid, no averaging down. Defaults come from walk-forward
-validation (`reports/gold_research.md`), not from curve-fitting.
+A fourth book, and the only one that **places its own orders**:
+`mql5/XAUUSD_ScalperGuard.mq5`, an MQL5 expert advisor for XAUUSD M5 built
+risk-first — 17 entry checks on a 7-point score, H1+M5 trend agreement, ADX /
+range / fake-breakout market-quality gates, economic-calendar blackout, and hard
+daily circuit breakers (+$50 stop, −$15 stop-and-flatten, 3 consecutive losses,
+10 trades). No martingale, no grid, no averaging down, no naked positions — an
+order that cannot get a stop-loss attached is closed immediately.
 
-Unlike the other three, this one runs in **your MT5 terminal**, not on GitHub
-Actions — so it needs the terminal (or an MT5 VPS) left running. Install and
-deployment steps: **[SETUP_MT5_GOLD.md](SETUP_MT5_GOLD.md)**.
+Its daily P/L, trade count, and losing streak are **derived from deal history**,
+not from in-memory counters, so a restart cannot reset the day's limits.
+Defaults to **demo accounts only** (`InpAllowLiveAccount = false`).
+
+Rules-to-code map: [`mql5/README_ScalperGuard.md`](mql5/README_ScalperGuard.md).
+Unlike the other three books this one runs in **your MT5 terminal**, not on GitHub
+Actions, so it needs the terminal (or an MT5 VPS) left running. Deployment, the
+account-size math that decides whether it can trade at all, and the NO-TRADE
+decision tree: **[SETUP_MT5_GOLD.md](SETUP_MT5_GOLD.md)**.
+
+`mql5/GoldScalper.mq5` is an earlier, simpler M15 take on the same instrument.
+Don't run both on one account — separate magic numbers keep them from touching
+each other's orders, but neither one sees the other's risk.
 
 ## One-time deploy (~5 min)
 
