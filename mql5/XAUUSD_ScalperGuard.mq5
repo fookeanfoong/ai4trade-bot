@@ -1304,18 +1304,38 @@ int OnInit()
    double lotMin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
    double mppd   = MoneyPerLotPerDollar();
    double margin = 0.0;
-   OrderCalcMargin(ORDER_TYPE_BUY, _Symbol, lotMin, SymbolInfoDouble(_Symbol, SYMBOL_ASK), margin);
+   if(!OrderCalcMargin(ORDER_TYPE_BUY, _Symbol, lotMin, SymbolInfoDouble(_Symbol, SYMBOL_ASK), margin))
+   {
+      margin = 0.0;
+      LogLine("WARN", "启动自检：保证金试算失败，下面那个保证金数字不作数。"
+                      "真正的保证金闸门在 CalcLot() 里，每次开仓都会重算，不受影响。");
+   }
 
    double risk1 = bal * InpRiskPctDefault / 100.0;
    double risk2 = bal * InpRiskPctMax     / 100.0;
    double slAtMinLot1 = (mppd > 0 && lotMin > 0) ? risk1 / (lotMin * mppd) : 0.0;
    double slAtMinLot2 = (mppd > 0 && lotMin > 0) ? risk2 / (lotMin * mppd) : 0.0;
 
+   // 最小手数不能用 %.2f 打 —— 微型品种是 0.001，会显示成 0.00
    LogLine("INIT", StringFormat(
-      "%s | 账户 %s | 余额 $%.2f | 杠杆 1:%d | 最小手数 %.2f | 每手每$1波动=$%.2f | 最小手保证金 $%.2f | "
+      "%s | 账户 %s | 余额 $%.2f | 杠杆 1:%d | 最小手数 %s | 每手每$1波动=$%.2f | 最小手保证金 $%.2f | "
       "1%%风险($%.2f)对应最大止损 $%.2f/盎司；2%%风险($%.2f)对应 $%.2f/盎司",
       _Symbol, isDemo ? "DEMO" : "REAL", bal, (int)AccountInfoInteger(ACCOUNT_LEVERAGE),
-      lotMin, mppd, margin, risk1, slAtMinLot1, risk2, slAtMinLot2));
+      DoubleToString(lotMin, VolDigits()), mppd, margin, risk1, slAtMinLot1, risk2, slAtMinLot2));
+
+   // --- 日内上限 vs 账户规模的配错检查 ---
+   // +$50/-$15 是按 $200 账户定的（+25% / -7.5%）。原样搬到一个 $10,000 的
+   // 演示账户上，-$15 只有 0.15% —— 每一笔都会被「当日剩余亏损额度」闸门压到
+   // 极小手数，而且**一笔亏损就结束当天**。EA 不会报错，只会安静地几乎不干活，
+   // 所以这里必须开口说。
+   if(InpDailyMaxLoss < risk1)
+      LogLine("WARN", StringFormat(
+         "配置错配：当日亏损上限 $%.2f 小于单笔 %.1f%% 风险 $%.2f。"
+         "后果是每笔都被压到 %.3f%% 风险，且一笔亏损就触发当日停止 —— 一天基本只做一笔。"
+         "两个解法：把演示账户余额调成你真实计划的规模；或把日内上限按比例改成 "
+         "目标 +$%.0f / 上限 -$%.0f（即当前余额的 +25%% / -7.5%%，与 $200 账户的 +$50/-$15 同口径）。",
+         InpDailyMaxLoss, InpRiskPctDefault, risk1,
+         InpDailyMaxLoss / bal * 100.0, bal * 0.25, bal * 0.075));
 
    if(margin > bal * InpMaxMarginPctPerPos / 100.0)
       LogLine("WARN", StringFormat(
