@@ -61,6 +61,11 @@ input int      InpEmaFastHTF         = 50;      // HTF 快线 EMA
 input int      InpEmaSlowHTF         = 200;     // HTF 慢线 EMA
 input int      InpEmaFastLTF         = 20;      // LTF 快线 EMA
 input int      InpEmaSlowLTF         = 50;      // LTF 慢线 EMA
+// true  = M5 趋势要求「均线多头排列 **且** 收盘价站在慢线正确一侧」
+// false = 只看均线排列
+// 注意这条会和入场 B(趋势回调)打架:回调稍深跌破 EMA50 时,LtfTrend 返回 0,
+// 整个信号在 BuildSignal 开头就被"趋势不一致"毙掉 —— 而那正是回调入场想要的位置。
+input bool     InpLtfRequireCloseSide= true;    // M5 趋势是否要求收盘价站在慢线一侧
 input int      InpAtrPeriod          = 14;      // ATR 周期
 input int      InpRsiPeriod          = 14;      // RSI 周期
 input int      InpAdxPeriod          = 14;      // ADX 周期
@@ -142,6 +147,14 @@ long     g_spCnt[24], g_spOver[24];
 int      g_lastSpHour   = -1;
 // 开仓当时的市场质量结论。闸门关掉时这是唯一能事后复盘"该不该做这一单"的依据。
 string   g_quality      = "";
+
+// 拒绝原因分布。单行日志只能看到"最后一次因为什么没做",看不出**哪一道闸门
+// 才是主要瓶颈**。按类别计数后,每小时输出一次分布,下一步该松哪里一目了然。
+#define  RB_N 14
+string   g_rbName[RB_N] = {"趋势不一致","结构冲突","动量冲突","ADX不足","无有效触发",
+                           "RR不足","止损过宽","点差","时段","市场质量",
+                           "手数/保证金","波动率","新闻","其他"};
+long     g_rbHit[RB_N];
 
 // 每日统计（全部从成交历史推导，重启后不会丢）
 struct DayStats
@@ -238,9 +251,55 @@ void LogLine(string tag, string msg)
    Print("[", tag, "] ", msg);
 }
 
+int ReasonBucket(string w)
+{
+   if(StringFind(w, "趋势不一致") >= 0) return 0;
+   if(StringFind(w, "市场结构")   >= 0) return 1;
+   if(StringFind(w, "动量")       >= 0) return 2;
+   if(StringFind(w, "ADX")        >= 0) return 3;
+   if(StringFind(w, "触发")       >= 0 || StringFind(w, "影线") >= 0 ||
+      StringFind(w, "假突破迹象") >= 0 || StringFind(w, "swing") >= 0) return 4;
+   if(StringFind(w, "风险回报")   >= 0) return 5;
+   if(StringFind(w, "止损过宽")   >= 0) return 6;
+   if(StringFind(w, "点差")       >= 0) return 7;
+   if(StringFind(w, "时段")       >= 0 || StringFind(w, "周") >= 0) return 8;
+   if(StringFind(w, "横盘")       >= 0 || StringFind(w, "高频假突破") >= 0) return 9;
+   if(StringFind(w, "最小手")     >= 0 || StringFind(w, "保证金") >= 0 ||
+      StringFind(w, "额度")       >= 0 || StringFind(w, "加仓") >= 0) return 10;
+   if(StringFind(w, "ATR")        >= 0 || StringFind(w, "波动") >= 0) return 11;
+   if(StringFind(w, "数据窗口")   >= 0 || StringFind(w, "新闻") >= 0) return 12;
+   return 13;
+}
+
+void ReportReasons(string tag)
+{
+   long tot = 0;
+   for(int i = 0; i < RB_N; i++) tot += g_rbHit[i];
+   if(tot <= 0) return;
+
+   // 按次数从多到少排，最大的瓶颈排最前面
+   int idx[RB_N];
+   for(int i = 0; i < RB_N; i++) idx[i] = i;
+   for(int a2 = 0; a2 < RB_N - 1; a2++)
+      for(int b2 = 0; b2 < RB_N - 1 - a2; b2++)
+         if(g_rbHit[idx[b2]] < g_rbHit[idx[b2+1]])
+         { int t = idx[b2]; idx[b2] = idx[b2+1]; idx[b2+1] = t; }
+
+   string line = "";
+   for(int i = 0; i < RB_N; i++)
+   {
+      int k = idx[i];
+      if(g_rbHit[k] <= 0) continue;
+      line += StringFormat("%s×%d(%.0f%%)  ", g_rbName[k], (int)g_rbHit[k],
+                           100.0 * (double)g_rbHit[k] / (double)tot);
+   }
+   LogLine("REASONS", StringFormat("%s 共 %d 次未开仓 | %s", tag, (int)tot, line));
+}
+
 // NO-TRADE 原因去重，避免刷屏
 void NoTrade(string reason)
 {
+   g_rbHit[ReasonBucket(reason)]++;      // 计数在去重**之前**，否则统计会失真
    if(reason != g_lastNoTradeReason || TimeCurrent() - g_lastReasonLog > 900)
    {
       g_lastNoTradeReason = reason;
@@ -420,6 +479,7 @@ void TrackSpread()
    if(g_lastSpHour >= 0 && h != g_lastSpHour)
    {
       ReportSpreadHour(g_lastSpHour);
+      ReportReasons("本日累计");       // 拒绝原因分布,和点差画像一起每小时一次
       ResetSpreadHour(h);              // 新的一小时从头统计
    }
    g_lastSpHour = h;
@@ -677,8 +737,8 @@ int LtfTrend()
    double s = Buf(hEmaSlowL, 0, 1);
    double c = iClose(_Symbol, InpLTF, 1);
    if(f <= 0.0 || s <= 0.0) return 0;
-   if(f > s && c > s) return  1;
-   if(f < s && c < s) return -1;
+   if(f > s && (!InpLtfRequireCloseSide || c > s)) return  1;
+   if(f < s && (!InpLtfRequireCloseSide || c < s)) return -1;
    return 0;
 }
 
@@ -1588,6 +1648,7 @@ int OnInit()
 void OnDeinit(const int reason)
 {
    ReportSpreadHour(g_lastSpHour);      // 卸载前把当前这一小时的画像留下
+   ReportReasons("卸载前合计");
    EventKillTimer();
    IndicatorRelease(hEmaFastH); IndicatorRelease(hEmaSlowH);
    IndicatorRelease(hEmaFastL); IndicatorRelease(hEmaSlowL);
@@ -1621,6 +1682,8 @@ void OnTick()
    {
       lastDay = g_dayStart;
       g_dayHaltLogged = false;
+      ReportReasons("昨日合计");
+      for(int r = 0; r < RB_N; r++) g_rbHit[r] = 0;
       LogLine("DAY", StringFormat("新交易日 %s，余额 $%.2f",
               TimeToString(g_dayStart, TIME_DATE), AccountInfoDouble(ACCOUNT_BALANCE)));
    }

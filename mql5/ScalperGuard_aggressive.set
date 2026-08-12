@@ -41,6 +41,12 @@ InpFlatAllBeforeHour=23
 InpMaxSpreadUSD=0.60
 InpSpreadVsATRMax=0.25
 
+; --- M5 趋势判定：只看均线排列，不要求收盘价站在慢线一侧 ---
+; 实测拦路的是 "趋势不一致 HTF=1 LTF=0"：EMA20>EMA50(结构仍多头)但收盘跌破
+; EMA50 时 LtfTrend 返回 0。而那正是入场 B(趋势回调)想要的位置 —— 等于这个
+; 策略的回调入场被它自己的趋势过滤挡住了。
+InpLtfRequireCloseSide=false
+
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
