@@ -47,6 +47,17 @@ input double   InpMaxMarginPctPerPos = 35.0;    // 单仓占用保证金上限�
 input bool     InpUseFloatingInLimits= true;    // 日盈亏统计是否包含浮动盈亏
 input bool     InpSmallAccountEscalate = true;  // 小账户救济：最小手开不了时，把风险上调至 InpRiskPctMax
 
+input group "=== 固定金额目标（下注前就知道赚多少）==="
+// InpTargetProfitUSD > 0 时，止盈不再按 R 倍数摆，而是**直接摆在赚到这个金额
+// 的价位上**。EA 会按实际手数反算需要走多少美元金价，并写进日志。
+//
+// ⚠️ 必须和 InpRiskCapUSD 配套用，否则这是个陷阱：
+//    风险 $100（$10,000 的 1%）配 $10 目标 = RR 1:0.1 = 保本胜率 91%。
+//    要 RR 1:1 就把风险上限也设成 $10；要 1:2 就设 $5。
+//    OnInit 会把这三个数和保本胜率一起算给你看。
+input double   InpTargetProfitUSD    = 0.0;     // 每笔目标盈利($)，0=关闭，用 R 倍数止盈
+input double   InpRiskCapUSD         = 0.0;     // 每笔风险硬上限($)，0=只用风险%
+
 input group "=== 交易时段 / 点差 / 流动性 ==="
 input int      InpSessionStartHour   = 8;       // 交易时段开始（服务器时间，小时）
 input int      InpSessionEndHour     = 21;      // 交易时段结束（服务器时间，小时）
@@ -1156,7 +1167,9 @@ Signal BuildSignal(double atr, int minScore)
    if(gotLvl) trigNote += StringFormat(" | 止盈受限于%s %.2f", lvlName, lvl);
 
    double rr = (tp2 - entry) * dir / MathMax(slDist, _Point);
-   if(rr < InpMinRR)
+   // 固定金额目标模式下不查 RR:止盈由金额决定,RR 只是它的**结果**,
+   // 拿结果去否决前提会把所有信号挡光。风险由 InpRiskCapUSD 控,不靠 RR 门槛。
+   if(InpTargetProfitUSD <= 0.0 && rr < InpMinRR)
    {
       NoTrade(StringFormat("风险回报不足 RR=%.2f < %.2f（前方关键位太近）", rr, InpMinRR));
       return sg;
@@ -1180,6 +1193,11 @@ double CalcLot(double slDistUSD, double riskMoney, string &why)
 {
    double mppd = MoneyPerLotPerDollar();       // 每手每 $1 金价波动的美元盈亏
    if(mppd <= 0.0) { why = "无法获取合约规格"; return 0.0; }
+
+   // 美元硬上限:和风险%取更小的那个。设了 $10 目标却按 $100 风险开仓,
+   // 是这个功能最容易出的事故。
+   if(InpRiskCapUSD > 0.0 && riskMoney > InpRiskCapUSD)
+      riskMoney = InpRiskCapUSD;
 
    double lotMin  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
    double lotMax  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
@@ -1326,6 +1344,30 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
    trade.SetDeviationInPoints((int)MathMax(10.0, SpreadUSD() / _Point));
    trade.SetTypeFillingBySymbol(_Symbol);
 
+   // --- 固定金额止盈:按**实际手数**反算需要走多少美元金价 ---
+   // 必须放在 lot 算出来之后:手数是向下取整的,用理论手数反算会有偏差。
+   double targetNote = "";
+   if(InpTargetProfitUSD > 0.0)
+   {
+      double perDollar = lot * MoneyPerLotPerDollar();   // 这个手数下,金价每动$1的盈亏
+      if(perDollar > 0.0)
+      {
+         double tpDist = InpTargetProfitUSD / perDollar;
+         double minDist = StopsLevelUSD() + SpreadUSD();
+         if(tpDist < minDist)
+         {
+            // 目标太小,近到券商不接受挂单 —— 抬到最小距离并说明,不静默放行
+            LogLine("TARGET", StringFormat(
+               "目标 $%.2f 只需金价走 $%.2f，小于券商最小挂单距离 $%.2f，已抬至该距离（实际到手约 $%.2f）",
+               InpTargetProfitUSD, tpDist, minDist, minDist * perDollar));
+            tpDist = minDist;
+         }
+         sg.tp2 = Px((sg.dir > 0) ? sg.entry + tpDist : sg.entry - tpDist);
+         targetNote = StringFormat(" | 目标$%.2f=金价走$%.2f(每$1盈亏$%.2f)",
+                                   InpTargetProfitUSD, tpDist, perDollar);
+      }
+   }
+
    bool ok;
    // 订单备注只用 ASCII（部分经纪商会截断/乱码中文），中文原因写进日志
    string comment = StringFormat("SG s%d rr%.1f", sg.score, sg.rr);
@@ -1341,7 +1383,7 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
    LogLine("OPEN", StringFormat("%s %.2f 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
            sg.dir > 0 ? "BUY" : "SELL", lot, sg.entry, sg.sl, slDist, sg.tp2, sg.rr, sg.score,
            lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.note,
-           ds.trades + 1, InpMaxTradesPerDay, ds.total));
+           ds.trades + 1, InpMaxTradesPerDay, ds.total) + targetNote);
    LogLine("QUALITY", StringFormat("#开仓时行情质量：%s", g_quality));
 
    Push(StringFormat("开仓 %s %s手 @%.2f | SL %.2f | TP %.2f | 风险 $%.2f (%.2f%%) | 分数 %d/7 | %s",
@@ -1855,6 +1897,34 @@ int OnInit()
 
    SuggestFinerGoldSymbol();
 
+   // --- 固定金额目标的自检:把目标、风险、RR、保本胜率一次算清 ---
+   if(InpTargetProfitUSD > 0.0)
+   {
+      double effRisk = risk1;                                  // 按默认风险% 算出的美元风险
+      if(InpRiskCapUSD > 0.0) effRisk = MathMin(effRisk, InpRiskCapUSD);
+      double rr   = (effRisk > 0.0) ? InpTargetProfitUSD / effRisk : 0.0;
+      double be   = (rr > 0.0) ? 100.0 / (1.0 + rr) : 100.0;    // 不含成本的保本胜率
+      LogLine("TARGET", StringFormat(
+         "固定金额目标 $%.2f | 每笔实际风险 $%.2f | RR 1:%.2f | 保本胜率需 %.1f%%（未含点差）",
+         InpTargetProfitUSD, effRisk, rr, be));
+
+      if(rr < 0.5)
+         LogLine("WARN", StringFormat(
+            "目标/风险 = 1:%.2f —— 拿 $%.2f 去赚 $%.2f，保本胜率要 %.1f%%，"
+            "扣掉点差只会更高。把 InpRiskCapUSD 设成 $%.2f 可得 RR 1:1，设成 $%.2f 可得 1:2。",
+            rr, effRisk, InpTargetProfitUSD, be,
+            InpTargetProfitUSD, InpTargetProfitUSD / 2.0));
+
+      // 换算成"金价要走多少" —— 用最小手数举例,实际手数由每笔的止损距离决定
+      double mppdMin = lotMin * mppd;
+      if(mppdMin > 0.0)
+         LogLine("TARGET", StringFormat(
+            "参考:最小手 %s 时每 $1 金价波动盈亏 $%.2f，赚 $%.2f 需金价走 $%.2f。"
+            "实际手数按每笔止损距离反推，日志会逐笔写明。",
+            DoubleToString(lotMin, VolDigits()), mppdMin,
+            InpTargetProfitUSD, InpTargetProfitUSD / mppdMin));
+   }
+
    if(InpUseKeyLevels)
    {
       KeyLevels k0 = GetKeyLevels();
@@ -2009,7 +2079,8 @@ void OnTick()
    //--------------------------------------------------------------
    Signal sg = BuildSignal(atr, minScore);
    if(sg.dir == 0) { Panel(ds, g_lastNoTradeReason); return; }
-   if(sg.rr < minRRreq)
+   // 同上:固定金额目标模式下 RR 是结果不是前提,保守/收紧档的 RR 要求不适用
+   if(InpTargetProfitUSD <= 0.0 && sg.rr < minRRreq)
    {
       NoTrade(StringFormat("当前模式要求 RR >= %.2f，实际 %.2f", minRRreq, sg.rr));
       Panel(ds, "RR 不达标");

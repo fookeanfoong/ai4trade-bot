@@ -118,6 +118,16 @@ InpUseSweepEntry=true
 InpSweepMinPenetration=0.10
 InpSweepMaxPenetration=1.50
 
+; --- 固定金额目标（默认关闭）---
+; InpTargetProfitUSD > 0 = 止盈直接摆在"赚到这个金额"的价位,不再按 R 倍数。
+; 必须和 InpRiskCapUSD 配套,否则是陷阱:
+;   风险 $100 + 目标 $10 = RR 1:0.10 -> 保本胜率 90.9%
+;   风险 $10  + 目标 $10 = RR 1:1.00 -> 保本胜率 50.0%
+;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
+; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
+InpTargetProfitUSD=0.0
+InpRiskCapUSD=0.0
+
 ; --- 监控 ---
 InpPushNotify=true
 InpWriteStatusJson=true
