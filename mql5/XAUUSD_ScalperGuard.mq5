@@ -108,6 +108,10 @@ input double   InpBreakevenBufferATR = 0.05;    // 保本止损缓冲（ATR 倍�
 input double   InpTrailATRMult       = 1.0;     // TP1 后 ATR 追踪止损系数
 input int      InpMaxHoldMinutes     = 120;     // 单笔最长持仓分钟数（短线）
 input bool     InpExitOnMomentumFade = true;    // 动量衰竭提前离场
+// 这两个门槛原先写死在 ManagePositions 里,是「快进快出」最直接的两个旋钮:
+// 调低 = 更早落袋、持仓更短、胜率更高但每笔更小。
+input double   InpFadeExitMinR       = 0.45;    // 动量衰竭离场的最低盈利(R)
+input double   InpLevelExitMinR      = 0.70;    // 逼近关键位落袋的最低盈利(R)
 
 input group "=== 新闻过滤 ==="
 input bool     InpUseNewsFilter      = true;    // 启用经济日历过滤
@@ -1295,7 +1299,7 @@ void ManagePositions(double atr)
       }
 
       // --- 动量衰竭 / 反向信号 -> 提前锁利 ---
-      if(InpExitOnMomentumFade && rMult >= 0.45)
+      if(InpExitOnMomentumFade && rMult >= InpFadeExitMinR)
       {
          int mom = Momentum();
          int ltf = LtfTrend();
@@ -1313,7 +1317,7 @@ void ManagePositions(double atr)
       }
 
       // --- 逼近关键位且已有合理利润 -> 落袋 ---
-      if(rMult >= 0.7)
+      if(rMult >= InpLevelExitMinR)
       {
          double lv = 0.0;
          bool found = isBuy ? NearestResistance(cur, 0.0, lv) : NearestSupport(cur, 0.0, lv);
