@@ -116,6 +116,12 @@ datetime g_lastReasonLog = 0;
 string   g_logFile       = "XAUUSD_ScalperGuard_log.csv";
 bool     g_dayHaltLogged = false;
 
+// 点差画像：按服务器小时统计，用来回答「0.40 是常态还是尖峰」。
+// 放宽阈值等于把成本吞回自己身上；正确做法是找出点差天然合格的时段去交易。
+double   g_spSum[24], g_spMin[24], g_spMax[24];
+long     g_spCnt[24], g_spOver[24];
+int      g_lastSpHour   = -1;
+
 // 每日统计（全部从成交历史推导，重启后不会丢）
 struct DayStats
 {
@@ -363,13 +369,73 @@ bool SessionOk(string &why)
    return true;
 }
 
+//------------------------------------------------------------------
+// 点差画像
+//------------------------------------------------------------------
+void ResetSpreadHour(int h)
+{
+   if(h < 0 || h > 23) return;
+   g_spSum[h] = 0.0; g_spCnt[h] = 0; g_spOver[h] = 0;
+   g_spMin[h] = DBL_MAX; g_spMax[h] = 0.0;
+}
+
+void ReportSpreadHour(int h)
+{
+   if(h < 0 || h > 23 || g_spCnt[h] <= 0) return;
+   double avg     = g_spSum[h] / (double)g_spCnt[h];
+   double overPct = 100.0 * (double)g_spOver[h] / (double)g_spCnt[h];
+   LogLine("SPREAD", StringFormat(
+      "服务器 %02d:00-%02d:59 | 均 %.2f  最低 %.2f  最高 %.2f | 超过上限 %.2f 的时间占 %.0f%% | 样本 %d tick",
+      h, h, avg, g_spMin[h], g_spMax[h], InpMaxSpreadUSD, overPct, (int)g_spCnt[h]));
+}
+
+// 每个 tick 都记一笔。跨小时时把上一小时的画像打出来 —— 一天 24 行，不刷屏。
+void TrackSpread()
+{
+   MqlDateTime st; TimeToStruct(TimeCurrent(), st);
+   int h = st.hour;
+   if(h < 0 || h > 23) return;
+
+   if(g_lastSpHour >= 0 && h != g_lastSpHour)
+   {
+      ReportSpreadHour(g_lastSpHour);
+      ResetSpreadHour(h);              // 新的一小时从头统计
+   }
+   g_lastSpHour = h;
+
+   double sp = SpreadUSD();
+   if(sp <= 0.0) return;
+   g_spSum[h] += sp;
+   g_spCnt[h]++;
+   if(sp < g_spMin[h]) g_spMin[h] = sp;
+   if(sp > g_spMax[h]) g_spMax[h] = sp;
+   if(sp > InpMaxSpreadUSD) g_spOver[h]++;
+}
+
+double SpreadAvgThisHour()
+{
+   int h = g_lastSpHour;
+   if(h < 0 || h > 23 || g_spCnt[h] <= 0) return 0.0;
+   return g_spSum[h] / (double)g_spCnt[h];
+}
+
+double SpreadOverPctThisHour()
+{
+   int h = g_lastSpHour;
+   if(h < 0 || h > 23 || g_spCnt[h] <= 0) return 0.0;
+   return 100.0 * (double)g_spOver[h] / (double)g_spCnt[h];
+}
+
 bool SpreadOk(double atr, string &why)
 {
    double sp = SpreadUSD();
+   // 拒绝原因要带上「本小时是什么水平」，否则你没法判断该等还是该换时段
    if(sp > InpMaxSpreadUSD)
-   { why = StringFormat("点差过大 %.2f > %.2f", sp, InpMaxSpreadUSD); return false; }
+   { why = StringFormat("点差过大 %.2f > %.2f（本小时均 %.2f，超标时间占 %.0f%%）",
+                        sp, InpMaxSpreadUSD, SpreadAvgThisHour(), SpreadOverPctThisHour()); return false; }
    if(atr > 0.0 && sp / atr > InpSpreadVsATRMax)
-   { why = StringFormat("点差/ATR 异常 %.3f", sp / atr); return false; }
+   { why = StringFormat("点差/ATR 异常 %.3f > %.3f（点差 %.2f / ATR %.2f）",
+                        sp / atr, InpSpreadVsATRMax, sp, atr); return false; }
    return true;
 }
 
@@ -1349,7 +1415,8 @@ void PublishStatus(DayStats &ds, string status)
       "\"leverage\":%d,\"currency\":\"%s\"},\n"
       "  \"day\": {\"realized\":%.2f,\"floating\":%.2f,\"total\":%.2f,\"trades\":%d,\"max_trades\":%d,"
       "\"consec_loss\":%d,\"target\":%.2f,\"max_loss\":%.2f,\"mode\":\"%s\",\"observing\":%s,\"halted\":%s},\n"
-      "  \"market\": {\"spread\":%.2f,\"max_spread\":%.2f,\"atr\":%.2f,\"bid\":%.2f,\"ask\":%.2f},\n"
+      "  \"market\": {\"spread\":%.2f,\"max_spread\":%.2f,\"atr\":%.2f,\"bid\":%.2f,\"ask\":%.2f,"
+      "\"spread_avg_hour\":%.2f,\"spread_over_pct_hour\":%.0f},\n"
       "  \"status\": \"%s\",\n"
       "  \"positions\": [%s]\n"
       "}\n",
@@ -1364,6 +1431,7 @@ void PublishStatus(DayStats &ds, string status)
       observing ? "true" : "false", halted ? "true" : "false",
       SpreadUSD(), InpMaxSpreadUSD, Buf(hAtrL, 0, 1),
       SymbolInfoDouble(_Symbol, SYMBOL_BID), SymbolInfoDouble(_Symbol, SYMBOL_ASK),
+      SpreadAvgThisHour(), SpreadOverPctThisHour(),
       JsonEsc(status), posJson);
 
    WriteUtf8("XAUUSD_ScalperGuard_status.json", json);
@@ -1417,6 +1485,8 @@ int OnInit()
 
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetAsyncMode(false);
+
+   for(int i = 0; i < 24; i++) ResetSpreadHour(i);
 
    // --- 启动自检：这个账户 / 杠杆 到底做不做得了 ---
    double bal    = AccountInfoDouble(ACCOUNT_BALANCE);
@@ -1487,6 +1557,7 @@ int OnInit()
 
 void OnDeinit(const int reason)
 {
+   ReportSpreadHour(g_lastSpHour);      // 卸载前把当前这一小时的画像留下
    EventKillTimer();
    IndicatorRelease(hEmaFastH); IndicatorRelease(hEmaSlowH);
    IndicatorRelease(hEmaFastL); IndicatorRelease(hEmaSlowL);
@@ -1507,6 +1578,8 @@ void OnTimer()
 //==================================================================
 void OnTick()
 {
+   TrackSpread();                 // 点差画像:每 tick 记一笔,跨小时输出上一小时的统计
+
    double atr = Buf(hAtrL, 0, 1);
    if(atr <= 0.0) return;
 
