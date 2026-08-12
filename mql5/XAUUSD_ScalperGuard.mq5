@@ -82,11 +82,20 @@ input double   InpMinRangeATR        = 2.5;     // 近 30 根区间至少 = ATR 
 input double   InpMaxSmallBodyPct    = 70.0;    // 小实体 K 线占比上限 %
 input int      InpMaxFakeBreakouts   = 5;       // 近 25 根内失败突破次数上限
 
+input group "=== 入场触发灵敏度 ==="
+input double   InpTriggerTolATR      = 0.35;    // 回踩/回调的容差 = ATR × 该值
+input double   InpBarCloseStrength    = 0.55;   // 确认K线收盘位置要求（收在区间的前 N）
+input double   InpWickRejectPct       = 0.55;   // 影线占比超过该值即视为拒绝信号
+
 input group "=== 止损 / 止盈 ==="
 input double   InpSlAtrMult          = 1.2;     // 止损 = swing 之外 + ATR * 该系数
 input double   InpSlMinUSD           = 1.20;    // 最小止损距离（美元）
 input double   InpSlMaxUSD           = 6.00;    // 最大止损距离（美元）
 input double   InpMinRR              = 1.5;     // 最低风险回报比（到下一个关键位）
+// M5 上每隔几根就有一个小摆动高点。把**每一个**都当成硬顶去压缩 TP2，会算出
+// RR=0.04 这种数字 —— 那不是阻力，是噪音，价格照穿不误。
+// 只有距离 >= 该倍数 R 的关键位才算数，更近的一律忽略。
+input double   InpLevelIgnoreR        = 1.0;    // 压缩止盈时，忽略近于该倍数 R 的关键位
 input double   InpTP1_R              = 1.0;     // TP1 = 1R
 input double   InpTP2_R              = 1.8;     // TP2 = 1.8R
 input double   InpPartialClosePct    = 50.0;    // TP1 平仓比例 %
@@ -591,7 +600,9 @@ bool FindSwingLow(ENUM_TIMEFRAMES tf, int startShift, int lookback, int strength
 }
 
 // 最近的、位于 price 上方的 swing 高点（= 前方阻力）
-bool NearestResistance(double price, double &lvl)
+// minDist：小于这个距离的关键位视为噪音、直接跳过。传 0 = 取真正最近的那个
+// （持仓管理里的「逼近关键位就落袋」正需要最近的，所以那边传 0）。
+bool NearestResistance(double price, double minDist, double &lvl)
 {
    bool found = false; double best = 0.0;
    int str = InpSwingStrength + 1;
@@ -600,6 +611,7 @@ bool NearestResistance(double price, double &lvl)
    {
       double h = iHigh(_Symbol, InpLTF, i);
       if(h <= price + _Point) continue;
+      if(h - price < minDist) continue;
       bool ok = true;
       for(int k = 1; k <= str; k++)
          if(iHigh(_Symbol, InpLTF, i - k) >= h || iHigh(_Symbol, InpLTF, i + k) >= h) { ok = false; break; }
@@ -611,7 +623,7 @@ bool NearestResistance(double price, double &lvl)
 }
 
 // 最近的、位于 price 下方的 swing 低点（= 前方支撑）
-bool NearestSupport(double price, double &lvl)
+bool NearestSupport(double price, double minDist, double &lvl)
 {
    bool found = false; double best = 0.0;
    int str = InpSwingStrength + 1;
@@ -620,6 +632,7 @@ bool NearestSupport(double price, double &lvl)
    {
       double l = iLow(_Symbol, InpLTF, i);
       if(l >= price - _Point) continue;
+      if(price - l < minDist) continue;
       bool ok = true;
       for(int k = 1; k <= str; k++)
          if(iLow(_Symbol, InpLTF, i - k) <= l || iLow(_Symbol, InpLTF, i + k) <= l) { ok = false; break; }
@@ -705,8 +718,8 @@ bool WickRejection(int dir, int shift)
    double c = iClose(_Symbol, InpLTF, shift);
    double rng = h - l;
    if(rng <= 0.0) return false;
-   if(dir > 0) return ((h - MathMax(o, c)) / rng) > 0.55;
-   else        return ((MathMin(o, c) - l) / rng) > 0.55;
+   if(dir > 0) return ((h - MathMax(o, c)) / rng) > InpWickRejectPct;
+   else        return ((MathMin(o, c) - l) / rng) > InpWickRejectPct;
 }
 
 // 触发条件：突破回踩 或 趋势回调确认
@@ -722,7 +735,7 @@ bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
    double h1 = iHigh (_Symbol, InpLTF, 1);
    double l1 = iLow  (_Symbol, InpLTF, 1);
    double ema20 = Buf(hEmaFastL, 0, 1);
-   double tol   = 0.35 * atr;
+   double tol   = InpTriggerTolATR * atr;
 
    if(dir > 0)
    {
@@ -745,7 +758,7 @@ bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
       if(okL && ema20 > 0.0)
       {
          bool pulled = (l1 <= ema20 + tol) || (l1 <= swL + tol && swL < c1);
-         bool bull   = (c1 > o1) && ((c1 - l1) / MathMax(h1 - l1, _Point) > 0.55);
+         bool bull   = (c1 > o1) && ((c1 - l1) / MathMax(h1 - l1, _Point) > InpBarCloseStrength);
          if(pulled && bull)
          {
             if(WickRejection(1, 1)) { note = "回调K线上影线过长"; return false; }
@@ -773,7 +786,7 @@ bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
       if(okH && ema20 > 0.0)
       {
          bool pulled = (h1 >= ema20 - tol) || (h1 >= swH - tol && swH > c1);
-         bool bear   = (c1 < o1) && ((h1 - c1) / MathMax(h1 - l1, _Point) > 0.55);
+         bool bear   = (c1 < o1) && ((h1 - c1) / MathMax(h1 - l1, _Point) > InpBarCloseStrength);
          if(pulled && bear)
          {
             if(WickRejection(-1, 1)) { note = "反弹K线下影线过长"; return false; }
@@ -864,8 +877,9 @@ Signal BuildSignal(double atr, int minScore)
 
    double buffer = 0.15 * atr;
    double lvl = 0.0;
-   if(dir > 0 && NearestResistance(entry, lvl) && (lvl - buffer) < tp2) tp2 = lvl - buffer;
-   if(dir < 0 && NearestSupport   (entry, lvl) && (lvl + buffer) > tp2) tp2 = lvl + buffer;
+   double ignore = InpLevelIgnoreR * slDist;      // 近于此距离的关键位不当作硬顶
+   if(dir > 0 && NearestResistance(entry, ignore, lvl) && (lvl - buffer) < tp2) tp2 = lvl - buffer;
+   if(dir < 0 && NearestSupport   (entry, ignore, lvl) && (lvl + buffer) > tp2) tp2 = lvl + buffer;
 
    double rr = (tp2 - entry) * dir / MathMax(slDist, _Point);
    if(rr < InpMinRR)
@@ -1242,7 +1256,7 @@ void ManagePositions(double atr)
       if(rMult >= 0.7)
       {
          double lv = 0.0;
-         bool found = isBuy ? NearestResistance(cur, lv) : NearestSupport(cur, lv);
+         bool found = isBuy ? NearestResistance(cur, 0.0, lv) : NearestSupport(cur, 0.0, lv);
          if(found)
          {
             bool near = isBuy ? ((lv - cur) < 0.20 * atr) : ((cur - lv) < 0.20 * atr);
