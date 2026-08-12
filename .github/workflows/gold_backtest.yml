@@ -81,6 +81,13 @@ jobs:
           GOLD_EQUITY: "200"
         run: python gold_research.py
 
+      # 按小时的波动画像。网上"黄金最佳交易时段"的文章全是券商营销页、结论互抄,
+      # 与其信它们不如把真实K线按 UTC 小时聚合自己算 —— 这一步就是干这个的。
+      - name: Sessions — 按小时波动画像(验证"最佳时段"的说法)
+        if: github.event.schedule != '0 6 * * 1-5'
+        continue-on-error: true
+        run: python gold_session_profile.py --interval 1h --range 2y --server-offset 3
+
       - name: Commit backtest report
         if: always()
         run: |
