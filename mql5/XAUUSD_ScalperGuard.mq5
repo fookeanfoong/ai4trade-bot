@@ -87,6 +87,26 @@ input double   InpMinRangeATR        = 2.5;     // 近 30 根区间至少 = ATR 
 input double   InpMaxSmallBodyPct    = 70.0;    // 小实体 K 线占比上限 %
 input int      InpMaxFakeBreakouts   = 5;       // 近 25 根内失败突破次数上限
 
+input group "=== 机构参考位（前日高低 / 亚洲区间 / 整数关口）==="
+// 原策略只认 M5 分型摆动点。问题是 M5 上每隔几根就有一个,它们不是机构在看的位置。
+// 真正被反复测试的是这几条**客观可算**的线:前一日高低点、亚洲盘区间高低、整数关口。
+// 这三样都不需要人工标注,也不涉及任何"smart money"叙事 —— 纯粹是算出来的价格。
+input bool     InpUseKeyLevels       = true;    // 把前日高低/亚洲区间/整数关口纳入关键位
+input bool     InpUseRoundNumbers    = true;    // 整数关口（每 InpRoundStep 美元一条）
+input double   InpRoundStep          = 50.0;    // 整数关口间距（$4400/$4450…）
+// 亚洲盘区间的时间窗,用**服务器时间**。你的服务器是 UTC+3,所以 UTC 00:00-07:00
+// 对应服务器 03:00-10:00。换经纪商要重算。
+input int      InpAsiaStartHour      = 3;       // 亚洲盘开始（服务器时间）
+input int      InpAsiaEndHour        = 10;      // 亚洲盘结束（服务器时间）
+
+input group "=== 入场 C：流动性扫损后反手 ==="
+// 这是专业圈引用最多、且**唯一能机械定义**的那个技巧:价格先刺穿一条众所周知的
+// 关键位(扫掉挂在那里的止损),然后收回来。刺穿失败 = 那个方向没有承接。
+// 只做**顺 H1 趋势**的扫损 —— 逆着高周期做扫损反手是另一套东西,不在这里。
+input bool     InpUseSweepEntry      = true;    // 启用扫损反手入场
+input double   InpSweepMinPenetration= 0.10;    // 刺穿深度至少 = ATR × 该值（太浅算噪音）
+input double   InpSweepMaxPenetration= 1.50;    // 刺穿深度超过 = ATR × 该值 则算真突破，不反手
+
 input group "=== 入场触发灵敏度 ==="
 input double   InpTriggerTolATR      = 0.35;    // 回踩/回调的容差 = ATR × 该值
 input double   InpBarCloseStrength    = 0.55;   // 确认K线收盘位置要求（收在区间的前 N）
@@ -632,6 +652,174 @@ bool MarketQualityOk(double atr, string &why)
 }
 
 //==================================================================
+// 机构参考位：前日高低 / 亚洲盘区间 / 整数关口
+//==================================================================
+// 全部由价格算出,不需要人工标注、不涉及任何主观判断。
+// 这几条线的意义不在于"神奇",而在于**很多人把止损挂在它们外面** ——
+// 所以它们既是最可能被测试的目标位,也是最可能发生扫损的地方。
+struct KeyLevels
+{
+   double pdh, pdl;        // 前一日高 / 低
+   double asiaHi, asiaLo;  // 最近一个完整亚洲盘的高 / 低
+   bool   asiaOk;
+};
+
+KeyLevels GetKeyLevels()
+{
+   KeyLevels k;
+   k.pdh = iHigh(_Symbol, PERIOD_D1, 1);
+   k.pdl = iLow (_Symbol, PERIOD_D1, 1);
+   k.asiaHi = 0.0; k.asiaLo = 0.0; k.asiaOk = false;
+
+   // 亚洲盘区间:从最近的已收盘 K 线往回扫 48 小时,取**最近一个完整**亚洲盘。
+   // 用最近一个而不是"今天的",是因为今天的可能还没走完 —— 没走完的区间会
+   // 随着时间不断变宽,拿它当参考位等于参考一个还在变的数。
+   int    bars   = (int)MathMin(576, Bars(_Symbol, InpLTF) - 2);
+   string wantDay = "";
+   for(int i = 1; i <= bars; i++)
+   {
+      datetime bt = iTime(_Symbol, InpLTF, i);
+      if(bt == 0) continue;
+      MqlDateTime st; TimeToStruct(bt, st);
+      if(st.hour < InpAsiaStartHour || st.hour >= InpAsiaEndHour) continue;
+
+      string day = StringFormat("%04d-%02d-%02d", st.year, st.mon, st.day);
+      if(wantDay == "")
+      {
+         // 第一个命中的亚洲盘时段属于哪一天,就锁定哪一天
+         // 但若当前时间仍在该日的亚洲盘内,说明这段还没走完,跳到前一天
+         MqlDateTime now; TimeToStruct(TimeCurrent(), now);
+         string today = StringFormat("%04d-%02d-%02d", now.year, now.mon, now.day);
+         bool   inAsiaNow = (now.hour >= InpAsiaStartHour && now.hour < InpAsiaEndHour);
+         if(day == today && inAsiaNow) continue;      // 未完成,继续往回找
+         wantDay = day;
+      }
+      if(day != wantDay) break;                       // 已经翻到更早一天,收工
+
+      double h = iHigh(_Symbol, InpLTF, i);
+      double l = iLow (_Symbol, InpLTF, i);
+      if(!k.asiaOk) { k.asiaHi = h; k.asiaLo = l; k.asiaOk = true; }
+      else          { if(h > k.asiaHi) k.asiaHi = h; if(l < k.asiaLo) k.asiaLo = l; }
+   }
+   return k;
+}
+
+// 距 price 上方最近的整数关口
+double RoundAbove(double price)
+{
+   if(InpRoundStep <= 0.0) return 0.0;
+   return MathCeil(price / InpRoundStep + 1e-9) * InpRoundStep;
+}
+double RoundBelow(double price)
+{
+   if(InpRoundStep <= 0.0) return 0.0;
+   return MathFloor(price / InpRoundStep - 1e-9) * InpRoundStep;
+}
+
+// 把所有参考位汇总,取 price 上方 / 下方、且距离 >= minDist 的最近一条
+bool KeyLevelAbove(double price, double minDist, double &lvl, string &name)
+{
+   KeyLevels k = GetKeyLevels();
+   double cand[5]; string nm[5]; int n = 0;
+   if(k.pdh    > 0.0) { cand[n] = k.pdh;    nm[n] = "前日高";   n++; }
+   if(k.asiaOk)       { cand[n] = k.asiaHi; nm[n] = "亚洲高";   n++; }
+   if(InpUseRoundNumbers) { double r = RoundAbove(price); if(r > 0.0) { cand[n] = r; nm[n] = "整数关口"; n++; } }
+
+   bool found = false; double best = 0.0; string bn = "";
+   for(int i = 0; i < n; i++)
+   {
+      if(cand[i] <= price) continue;
+      if(cand[i] - price < minDist) continue;
+      if(!found || cand[i] < best) { best = cand[i]; bn = nm[i]; found = true; }
+   }
+   lvl = best; name = bn;
+   return found;
+}
+
+bool KeyLevelBelow(double price, double minDist, double &lvl, string &name)
+{
+   KeyLevels k = GetKeyLevels();
+   double cand[5]; string nm[5]; int n = 0;
+   if(k.pdl    > 0.0) { cand[n] = k.pdl;    nm[n] = "前日低";   n++; }
+   if(k.asiaOk)       { cand[n] = k.asiaLo; nm[n] = "亚洲低";   n++; }
+   if(InpUseRoundNumbers) { double r = RoundBelow(price); if(r > 0.0) { cand[n] = r; nm[n] = "整数关口"; n++; } }
+
+   bool found = false; double best = 0.0; string bn = "";
+   for(int i = 0; i < n; i++)
+   {
+      if(cand[i] >= price) continue;
+      if(price - cand[i] < minDist) continue;
+      if(!found || cand[i] > best) { best = cand[i]; bn = nm[i]; found = true; }
+   }
+   lvl = best; name = bn;
+   return found;
+}
+
+//==================================================================
+// 入场 C：流动性扫损后反手
+//==================================================================
+// 定义(全部可机械判定,无主观成分):
+//   上一根已收盘 K 线的最高价**刺穿**了某条关键位,但收盘又回到该位之下
+//   -> 那个方向的突破没有承接,挂在关键位上方的止损被扫了一遍
+//   -> 顺 H1 趋势方向反手
+// 刺穿深度设上下限:太浅是噪音,太深说明是真突破而不是扫损。
+bool SweepEntry(int dir, double atr, double &refLevel, string &note)
+{
+   if(!InpUseSweepEntry || !InpUseKeyLevels) return false;
+
+   double h1 = iHigh (_Symbol, InpLTF, 1);
+   double l1 = iLow  (_Symbol, InpLTF, 1);
+   double c1 = iClose(_Symbol, InpLTF, 1);
+   double o1 = iOpen (_Symbol, InpLTF, 1);
+   double minPen = InpSweepMinPenetration * atr;
+   double maxPen = InpSweepMaxPenetration * atr;
+
+   KeyLevels k = GetKeyLevels();
+   double cand[6]; string nm[6]; int n = 0;
+
+   if(dir > 0)
+   {
+      // 做多:要找**被向下刺穿又收回**的支撑
+      if(k.pdl > 0.0) { cand[n] = k.pdl;    nm[n] = "前日低"; n++; }
+      if(k.asiaOk)    { cand[n] = k.asiaLo; nm[n] = "亚洲低"; n++; }
+      if(InpUseRoundNumbers) { double r = RoundBelow(o1); if(r > 0.0) { cand[n] = r; nm[n] = "整数关口"; n++; } }
+
+      for(int i = 0; i < n; i++)
+      {
+         double lv = cand[i];
+         double pen = lv - l1;                       // 刺穿深度
+         if(pen < minPen || pen > maxPen) continue;  // 太浅=噪音,太深=真跌破
+         if(c1 <= lv) continue;                      // 必须收回该位之上
+         if(c1 <= o1) continue;                      // 且是一根阳线
+         refLevel = lv;
+         note = StringFormat("扫损反手：下破%s %.2f 后收回（刺穿 %.2f=%.2fATR）",
+                             nm[i], lv, pen, atr > 0 ? pen / atr : 0.0);
+         return true;
+      }
+   }
+   else if(dir < 0)
+   {
+      if(k.pdh > 0.0) { cand[n] = k.pdh;    nm[n] = "前日高"; n++; }
+      if(k.asiaOk)    { cand[n] = k.asiaHi; nm[n] = "亚洲高"; n++; }
+      if(InpUseRoundNumbers) { double r = RoundAbove(o1); if(r > 0.0) { cand[n] = r; nm[n] = "整数关口"; n++; } }
+
+      for(int i = 0; i < n; i++)
+      {
+         double lv = cand[i];
+         double pen = h1 - lv;
+         if(pen < minPen || pen > maxPen) continue;
+         if(c1 >= lv) continue;
+         if(c1 >= o1) continue;
+         refLevel = lv;
+         note = StringFormat("扫损反手：上破%s %.2f 后收回（刺穿 %.2f=%.2fATR）",
+                             nm[i], lv, pen, atr > 0 ? pen / atr : 0.0);
+         return true;
+      }
+   }
+   return false;
+}
+
+//==================================================================
 // 结构分析
 //==================================================================
 // 找最近的 swing high；shift 从 startShift 开始往回
@@ -895,7 +1083,10 @@ Signal BuildSignal(double atr, int minScore)
    if(adx >= InpAdxMin + 6.0) score++;            // 5 趋势强度
    double refLevel = 0.0; string trigNote = "";
    bool trig = EntryTrigger(dir, atr, refLevel, trigNote);
-   if(trig) score += 2;                           // 6-7 触发（突破回踩 / 回调确认）
+   // 入场 C：突破回踩/趋势回调都没触发时，再看有没有关键位被扫损后收回。
+   // 放在最后是因为它是**补充**路径，不该抢掉前两条的判定。
+   if(!trig) trig = SweepEntry(dir, atr, refLevel, trigNote);
+   if(trig) score += 2;                           // 6-7 触发（突破回踩 / 回调确认 / 扫损反手）
 
    if(!trig)
    {
@@ -941,9 +1132,28 @@ Signal BuildSignal(double atr, int minScore)
 
    double buffer = 0.15 * atr;
    double lvl = 0.0;
-   double ignore = InpLevelIgnoreR * slDist;      // 近于此距离的关键位不当作硬顶
-   if(dir > 0 && NearestResistance(entry, ignore, lvl) && (lvl - buffer) < tp2) tp2 = lvl - buffer;
-   if(dir < 0 && NearestSupport   (entry, ignore, lvl) && (lvl + buffer) > tp2) tp2 = lvl + buffer;
+   // 止盈的天花板取「M5 摆动点」与「机构参考位」中**更近**的那个 —— 更近的
+   // 才是先撞上的墙。两者都要越过 ignore 距离,近于此的一律当噪音跳过。
+   double ignore  = InpLevelIgnoreR * slDist;
+   string lvlName = "";
+   bool   gotLvl  = false;
+   double kl = 0.0; string kn = "";
+
+   if(dir > 0)
+   {
+      if(NearestResistance(entry, ignore, lvl)) { gotLvl = true; lvlName = "M5摆动高"; }
+      if(InpUseKeyLevels && KeyLevelAbove(entry, ignore, kl, kn))
+         if(!gotLvl || kl < lvl) { lvl = kl; lvlName = kn; gotLvl = true; }
+      if(gotLvl && (lvl - buffer) < tp2) tp2 = lvl - buffer;
+   }
+   else
+   {
+      if(NearestSupport(entry, ignore, lvl)) { gotLvl = true; lvlName = "M5摆动低"; }
+      if(InpUseKeyLevels && KeyLevelBelow(entry, ignore, kl, kn))
+         if(!gotLvl || kl > lvl) { lvl = kl; lvlName = kn; gotLvl = true; }
+      if(gotLvl && (lvl + buffer) > tp2) tp2 = lvl + buffer;
+   }
+   if(gotLvl) trigNote += StringFormat(" | 止盈受限于%s %.2f", lvlName, lvl);
 
    double rr = (tp2 - entry) * dir / MathMax(slDist, _Point);
    if(rr < InpMinRR)
@@ -1644,6 +1854,16 @@ int OnInit()
          InpRiskPctMax, slAtMinLot2, 4.0 / (InpRiskPctMax / 100.0)));
 
    SuggestFinerGoldSymbol();
+
+   if(InpUseKeyLevels)
+   {
+      KeyLevels k0 = GetKeyLevels();
+      LogLine("LEVELS", StringFormat(
+         "机构参考位 | 前日高 %.2f  前日低 %.2f | 亚洲盘(服务器%02d:00-%02d:00) %s | 整数关口每 $%.0f",
+         k0.pdh, k0.pdl, InpAsiaStartHour, InpAsiaEndHour,
+         k0.asiaOk ? StringFormat("高 %.2f  低 %.2f", k0.asiaHi, k0.asiaLo) : "数据不足",
+         InpRoundStep));
+   }
 
    EventSetTimer(30);
    return INIT_SUCCEEDED;

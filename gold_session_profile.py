@@ -106,8 +106,10 @@ def main():
                f"完整交易日 {full_days} 天\n")
     out.append("> 这张表不是从任何文章抄来的，是把真实K线按 UTC 小时聚合算出来的。\n")
 
-    out.append("\n| UTC | 服务器(+%d) | 平均波幅$ | 占全天% | 当日最高在此 | 当日最低在此 | 主导时段 |"
-               % a.server_offset)
+    # 用 f-string 而不是 % 格式化：表头里本来就有字面量 "%"，
+    # 和 %d 混在一起会被当成格式符（TypeError: not enough arguments）
+    out.append(f"\n| UTC | 服务器(+{a.server_offset}) | 平均波幅$ | 占全天% | "
+               f"当日最高在此 | 当日最低在此 | 主导时段 |")
     out.append("|---|---|---|---|---|---|---|")
     for h in range(24):
         v = per_hour.get(h)
