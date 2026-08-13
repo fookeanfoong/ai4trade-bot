@@ -19,8 +19,14 @@
 //|  默认只允许在 DEMO 账户运行（InpAllowLiveAccount = false）           |
 //+------------------------------------------------------------------+
 #property copyright "XAUUSD ScalperGuard"
-#property version   "1.00"
+#property version   "2.00"
 #property strict
+
+// 编译时间戳 + 版本号。MT5 加载的是 .ex5 不是 .mq5 —— 只更新源码而没按 F7,
+// 跑的就还是旧二进制。这一行让日志直接说清楚当前跑的是哪个 build,
+// 不用再靠"报错文案对不对得上"去猜。
+#define SG_VERSION "2.0"
+#define SG_BUILD   __DATE__ " " __TIME__
 
 #include <Trade\Trade.mqh>
 #include <Trade\PositionInfo.mqh>
@@ -117,6 +123,11 @@ input int      InpEmaSlowLTF         = 50;      // LTF 慢线 EMA
 // 注意这条会和入场 B(趋势回调)打架:回调稍深跌破 EMA50 时,LtfTrend 返回 0,
 // 整个信号在 BuildSignal 开头就被"趋势不一致"毙掉 —— 而那正是回调入场想要的位置。
 input bool     InpLtfRequireCloseSide= true;    // M5 趋势是否要求收盘价站在慢线一侧
+// H1 原本要三个条件同时成立:快线>慢线、收盘>快线、快线还在上行。
+// 实测 100% 的拒绝都是 "趋势不一致 HTF=0" —— 三条里缺任何一条 H1 就判"无趋势",
+// 整个信号在 BuildSignal 开头就被毙掉。这两个开关把后两条降为可选。
+input bool     InpHtfRequireCloseSide= true;    // H1 是否要求收盘价站在快线一侧
+input bool     InpHtfRequireSlope    = true;    // H1 是否要求快线本身还在同向移动
 input int      InpAtrPeriod          = 14;      // ATR 周期
 input int      InpRsiPeriod          = 14;      // RSI 周期
 input int      InpAdxPeriod          = 14;      // ADX 周期
@@ -1001,8 +1012,12 @@ int HtfTrend()
    double fPrev = Buf(hEmaFastH, 0, 4);
    double c = iClose(_Symbol, InpHTF, 1);
    if(f <= 0.0 || s <= 0.0) return 0;
-   if(f > s && c > f && f > fPrev) return  1;
-   if(f < s && c < f && f < fPrev) return -1;
+   bool upSide   = (!InpHtfRequireCloseSide || c > f);
+   bool downSide = (!InpHtfRequireCloseSide || c < f);
+   bool upSlope  = (!InpHtfRequireSlope     || f > fPrev);
+   bool downSlope= (!InpHtfRequireSlope     || f < fPrev);
+   if(f > s && upSide   && upSlope)   return  1;
+   if(f < s && downSide && downSlope) return -1;
    return 0;
 }
 
@@ -1260,8 +1275,12 @@ SetupScore ScoreSetupV2(int dir, double atr, bool fromSweep, bool nearKeyLevel,
    if(dir > 0 ? KeyLevelAbove(entry, 0.0, lv, nmA) : KeyLevelBelow(entry, 0.0, lv, nmB))
       sc.keyLevel++;
 
-   // --- Liquidity 0-2：本次是否由扫损触发 ---
-   if(fromSweep) sc.liquidity += 2;
+   // --- Liquidity 0-2 ---
+   // 只在"由扫损触发"时给分的话,非扫损路径这一维恒为 0,天花板掉到 8 分,
+   // 大量合格 setup 会因此掉进 C 级被拒 —— 评分本身就成了新的一道墙。
+   // 规格 §28 的 Liquidity 指的是"是否在流动性区域交易",扫损只是其中最强的一种。
+   if(fromSweep)           sc.liquidity += 2;   // 实际发生了扫损 = 最强
+   else if(nearKeyLevel)   sc.liquidity += 1;   // 在流动性池附近入场
 
    // --- Structure 0-2：M15 结构一致 + M5 出现 BOS/CHoCH ---
    if(MarketStructure(InpMTF) == dir) sc.structure++;
@@ -2157,7 +2176,11 @@ int OnInit()
    if(InpRiskPctDefault > InpRiskPctMax || InpRiskPctMax > 5.0 ||
       InpRiskPctAPlus > 5.0 || InpRiskPctA > 5.0 || InpRiskPctB > 5.0)
    {
-      Alert("风险参数非法：单笔风险上限不得超过 5%。");
+      Alert(StringFormat(
+         "风险参数非法（v%s）：默认 %.2f%% / 上限 %.2f%% / A+ %.2f%% —— 上限不得超过 5%%。",
+         SG_VERSION, InpRiskPctDefault, InpRiskPctMax, InpRiskPctAPlus));
+      Print("拒绝启动：风险参数超限。若你刚更新过源码，请确认已在 MetaEditor 按 F7 重新编译 ——"
+            " MT5 加载的是 .ex5，只换 .mq5 不重编译，跑的还是旧版本。");
       return INIT_PARAMETERS_INCORRECT;
    }
    if(!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))
@@ -2205,6 +2228,7 @@ int OnInit()
    double slAtMinLot2 = (mppd > 0 && lotMin > 0) ? risk2 / (lotMin * mppd) : 0.0;
 
    // 最小手数不能用 %.2f 打 —— 微型品种是 0.001，会显示成 0.00
+   LogLine("VERSION", StringFormat("ScalperGuard v%s | 编译于 %s", SG_VERSION, SG_BUILD));
    LogLine("INIT", StringFormat(
       "%s | 账户 %s | 余额 $%.2f | 杠杆 1:%d | 最小手数 %s | 每手每$1波动=$%.2f | 最小手保证金 $%.2f | "
       "1%%风险($%.2f)对应最大止损 $%.2f/盎司；2%%风险($%.2f)对应 $%.2f/盎司",

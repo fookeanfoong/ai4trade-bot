@@ -46,6 +46,11 @@ InpSpreadVsATRMax=0.25
 ; EMA50 时 LtfTrend 返回 0。而那正是入场 B(趋势回调)想要的位置 —— 等于这个
 ; 策略的回调入场被它自己的趋势过滤挡住了。
 InpLtfRequireCloseSide=false
+; H1 原本要三条同时成立:快线>慢线、收盘>快线、快线仍在同向移动。
+; 实测拦路的是 "趋势不一致 HTF=0" —— 缺任何一条 H1 就判无趋势,信号在第一步被毙。
+; 采样期只保留"快线>慢线"这一条,后两条关掉。
+InpHtfRequireCloseSide=false
+InpHtfRequireSlope=false
 
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
@@ -131,7 +136,9 @@ InpRiskCapUSD=0.0
 ; --- V2 评分与分级（规格 §28/§29）---
 ; 风险由 setup 质量给,不由"想赚多少"给。C 级(<5分)一律 NO TRADE。
 InpUseV2Scoring=true
-InpScoreMinB=5
+; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
+; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
+InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=1.5
