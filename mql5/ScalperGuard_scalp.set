@@ -24,7 +24,7 @@ InpAllowLiveAccount=false
 
 ; --- 日内限额：按 $10,000 余额换算，否则一笔亏损就收工 ---
 InpRiskPctDefault=1.0
-InpRiskPctMax=2.0
+InpRiskPctMax=5.0
 InpDailyProfitTarget=2500.0
 InpDailyMaxLoss=750.0
 InpConservativeAt=1000.0
@@ -137,6 +137,37 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
+
+; --- V2 评分与分级（规格 §28/§29）---
+; 风险由 setup 质量给,不由"想赚多少"给。C 级(<5分)一律 NO TRADE。
+InpUseV2Scoring=true
+InpScoreMinB=5
+InpScoreMinA=7
+InpScoreMinAPlus=9
+InpRiskPctB=1.5
+InpRiskPctA=3.0
+InpRiskPctAPlus=5.0
+
+; --- V2 结构位移 ---
+; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
+InpUseBOS=true
+InpBosBufferATR=0.05
+InpRequireMtfAgree=false
+
+; --- V2 波动率分档（规格 §13）---
+; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
+InpUseVolRegime=true
+InpAtrAvgPeriod=96
+InpVolHighMult=1.60
+InpVolExtremeMult=2.40
+InpVolHighSizeMult=0.60
+
+; --- V2 日内限额改百分比（规格 §21/§23）---
+; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
+InpDailyTargetPct=25.0
+InpDailyMaxLossPct=15.0
+InpConservativeAtPct=10.0
+InpReducedAtPct=15.0
 
 ; --- 监控 ---
 InpPushNotify=true

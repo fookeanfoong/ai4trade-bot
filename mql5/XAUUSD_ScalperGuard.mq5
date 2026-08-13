@@ -40,6 +40,12 @@ input double   InpDailyProfitTarget  = 50.0;    // 每日盈利目标 USD -> 停
 input double   InpDailyMaxLoss       = 15.0;    // 每日最大亏损 USD -> 停止交易
 input double   InpConservativeAt     = 20.0;    // 当日盈利达到该值 -> 保守模式
 input double   InpReducedAt          = 30.0;    // 当日盈利达到该值 -> 进一步收紧
+// 规格里的 +$50 / -$30 是按 $200 写的。搬到别的余额上会失真($10,000 账户的
+// -$30 只有 0.3%,一笔就熔断)。这四个 >0 时改用**余额百分比**,覆盖上面的绝对值。
+input double   InpDailyTargetPct     = 0.0;     // 每日目标 = 余额 %（0=用上面的绝对值）
+input double   InpDailyMaxLossPct    = 0.0;     // 每日亏损上限 = 余额 %（0=用绝对值）
+input double   InpConservativeAtPct  = 0.0;     // 保守模式触发 = 余额 %
+input double   InpReducedAtPct       = 0.0;     // 收紧模式触发 = 余额 %
 input int      InpMaxTradesPerDay    = 10;      // 每日最大交易笔数
 input int      InpStopAfterConsecLoss= 3;       // 连亏 N 笔 -> 当天停止
 input int      InpObserveAfterConsecLoss = 2;   // 连亏 N 笔 -> 观察模式
@@ -64,6 +70,40 @@ input int      InpSessionEndHour     = 21;      // 交易时段结束（服务�
 input int      InpFlatAllBeforeHour  = 22;      // 该小时后强制清仓（服务器时间）
 input double   InpMaxSpreadUSD       = 0.35;    // 最大允许点差（美元，黄金）
 input double   InpSpreadVsATRMax     = 0.12;    // 点差 / ATR 上限（点差异常过滤）
+
+input group "=== V2 评分与分级（10分制）==="
+// 规格 §28/§29:Trend 0-2 / KeyLevel 0-2 / Liquidity 0-2 / Structure 0-2
+//              / Momentum 0-1 / RR 0-1 = 满分 10
+// 分级决定风险上限,而不是反过来 —— 风险由 setup 质量给,不由"想赚多少"给。
+input bool     InpUseV2Scoring       = true;    // 启用 10 分制评分与分级
+input int      InpScoreMinB          = 5;       // < 该分数 = C 级 = NO TRADE
+input int      InpScoreMinA          = 7;       // >= 该分数 = A 级
+input int      InpScoreMinAPlus      = 9;       // >= 该分数 = A+ 级
+input double   InpRiskPctB           = 1.5;     // B 级(5-6分)风险上限 %
+input double   InpRiskPctA           = 3.0;     // A 级(7-8分)风险上限 %
+input double   InpRiskPctAPlus       = 5.0;     // A+级(9-10分)风险上限 %
+
+input group "=== V2 多周期 ==="
+input ENUM_TIMEFRAMES InpMTF         = PERIOD_M15;  // 中周期（找交易区域）
+input bool     InpRequireMtfAgree    = false;   // M15 结构必须与方向一致才给分以外，还否决
+
+input group "=== V2 结构位移 BOS / CHoCH ==="
+// ⚠️ 这里用的是**我给的机械定义**,不是什么权威定义 —— 各家讲法互相矛盾,
+//    所以必须把定义写死才能回测:
+//      BOS  = 收盘价越过最近一个**已确认**的摆动高(向上)或摆动低(向下)
+//      CHoCH= 在原本相反的结构里出现的第一次 BOS(即结构性质改变)
+//    "已确认"= 该摆动点右侧已经走出 InpSwingStrength 根K线。
+input bool     InpUseBOS             = true;    // 把 BOS/CHoCH 纳入结构评分
+input double   InpBosBufferATR       = 0.05;    // BOS 需越过摆动点的缓冲 = ATR × 该值
+
+input group "=== V2 波动率分档 ==="
+// 规格 §13:High 降仓,Extreme 等结构稳定。用 ATR 与其自身均值的比值分档,
+// 而不是拍绝对数 —— 金价从 $2000 涨到 $4400,绝对 ATR 早就不是一回事了。
+input bool     InpUseVolRegime       = true;
+input int      InpAtrAvgPeriod       = 96;      // ATR 均值回看根数（M5 下 96 根 = 8 小时）
+input double   InpVolHighMult        = 1.60;    // ATR / 均值 超过 = High
+input double   InpVolExtremeMult     = 2.40;    // 超过 = Extreme（停手）
+input double   InpVolHighSizeMult    = 0.60;    // High 档仓位乘数
 
 input group "=== 信号 / 结构 ==="
 input ENUM_TIMEFRAMES InpHTF         = PERIOD_H1;  // 高时间周期（趋势）
@@ -205,7 +245,10 @@ struct DayStats
 struct Signal
 {
    int      dir;         // +1 买 / -1 卖 / 0 无
-   int      score;       // 确认分
+   int      score;       // 确认分（V2 下为 10 分制总分）
+   string   grade;       // V2 分级 A+ / A / B / C
+   double   riskCapPct;  // 该分级允许的风险上限 %
+   string   scoreDetail; // 各维度得分明细
    double   entry;
    double   sl;
    double   tp1;
@@ -360,6 +403,36 @@ double Buf(int handle, int buffer, int shift)
    double a[];
    if(CopyBuffer(handle, buffer, shift, 1, a) != 1) return 0.0;
    return a[0];
+}
+
+//==================================================================
+// 日内限额：百分比优先
+//==================================================================
+// 规格 §21/§23 的 +$50 / -$30 是按 $200 账户写的。直接搬到别的余额上会失真,
+// 所以只要设了百分比就用百分比 —— 同一份规格在 $200 和 $10,000 上语义一致。
+double DailyTargetUSD()
+{
+   if(InpDailyTargetPct > 0.0)
+      return AccountInfoDouble(ACCOUNT_BALANCE) * InpDailyTargetPct / 100.0;
+   return InpDailyProfitTarget;
+}
+double DailyMaxLossUSD()
+{
+   if(InpDailyMaxLossPct > 0.0)
+      return AccountInfoDouble(ACCOUNT_BALANCE) * InpDailyMaxLossPct / 100.0;
+   return InpDailyMaxLoss;
+}
+double ConservativeAtUSD()
+{
+   if(InpConservativeAtPct > 0.0)
+      return AccountInfoDouble(ACCOUNT_BALANCE) * InpConservativeAtPct / 100.0;
+   return InpConservativeAt;
+}
+double ReducedAtUSD()
+{
+   if(InpReducedAtPct > 0.0)
+      return AccountInfoDouble(ACCOUNT_BALANCE) * InpReducedAtPct / 100.0;
+   return InpReducedAt;
 }
 
 //==================================================================
@@ -1062,12 +1135,163 @@ bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
 }
 
 //==================================================================
+// V2：波动率分档（规格 §13）
+//==================================================================
+// 用 ATR 与**它自己的均值**的比值分档,不用绝对数。
+// 金价从 $2000 到 $4400,同一个"$3 算不算大波动"早就不是一回事了。
+// 0=Low 1=Normal 2=High 3=Extreme
+int VolRegime(double atr, double &ratioOut)
+{
+   ratioOut = 1.0;
+   if(!InpUseVolRegime || atr <= 0.0) return 1;
+
+   double buf[];
+   int n = InpAtrAvgPeriod;
+   if(CopyBuffer(hAtrL, 0, 1, n, buf) < n) return 1;
+   double sum = 0.0;
+   for(int i = 0; i < n; i++) sum += buf[i];
+   double avg = sum / n;
+   if(avg <= 0.0) return 1;
+
+   double r = atr / avg;
+   ratioOut = r;
+   if(r >= InpVolExtremeMult) return 3;
+   if(r >= InpVolHighMult)    return 2;
+   if(r <= 0.60)              return 0;
+   return 1;
+}
+
+string VolRegimeName(int v)
+{
+   if(v == 0) return "Low";
+   if(v == 2) return "High";
+   if(v == 3) return "Extreme";
+   return "Normal";
+}
+
+//==================================================================
+// V2：BOS / CHoCH（规格 §8/§9）
+//==================================================================
+// ⚠️ 用的是**本文件给定的机械定义**,不是任何权威定义 —— 各家讲法互相矛盾,
+//    不写死就没法回测。定义:
+//      BOS(dir>0) = 最近一根已收盘K线的收盘价 > 最近一个**已确认**摆动高 + 缓冲
+//      BOS(dir<0) = 收盘价 < 最近一个已确认摆动低 - 缓冲
+//      CHoCH      = 该 BOS 的方向与当前 tf 的结构方向相反（性质改变）
+//    "已确认"= 摆动点右侧已走出 InpSwingStrength 根K线（FindSwingHigh/Low 保证）。
+bool StructureBreak(ENUM_TIMEFRAMES tf, int dir, double atr, bool &isChoch, string &note)
+{
+   isChoch = false; note = "";
+   if(!InpUseBOS) return false;
+
+   double sw; int at;
+   double c1  = iClose(_Symbol, tf, 1);
+   double buf = InpBosBufferATR * atr;
+
+   if(dir > 0)
+   {
+      if(!FindSwingHigh(tf, 1, InpStructureLookback, InpSwingStrength, sw, at)) return false;
+      if(c1 <= sw + buf) return false;
+   }
+   else if(dir < 0)
+   {
+      if(!FindSwingLow(tf, 1, InpStructureLookback, InpSwingStrength, sw, at)) return false;
+      if(c1 >= sw - buf) return false;
+   }
+   else return false;
+
+   int st = MarketStructure(tf);          // 当前结构方向
+   isChoch = (st != 0 && st != dir);      // 与结构反向 = 性质改变
+   note = StringFormat("%s %s %.2f", isChoch ? "CHoCH" : "BOS",
+                       dir > 0 ? "上破" : "下破", sw);
+   return true;
+}
+
+//==================================================================
+// V2：10 分制评分与分级（规格 §28/§29）
+//==================================================================
+struct SetupScore
+{
+   int    trend;      // 0-2
+   int    keyLevel;   // 0-2
+   int    liquidity;  // 0-2
+   int    structure;  // 0-2
+   int    momentum;   // 0-1
+   int    rr;         // 0-1
+   int    total;      // 0-10
+   string grade;      // A+ / A / B / C
+   double riskCapPct; // 该等级允许的风险上限
+   string detail;
+};
+
+string GradeOf(int total)
+{
+   if(total >= InpScoreMinAPlus) return "A+";
+   if(total >= InpScoreMinA)     return "A";
+   if(total >= InpScoreMinB)     return "B";
+   return "C";
+}
+
+double RiskCapForGrade(string g)
+{
+   if(g == "A+") return InpRiskPctAPlus;
+   if(g == "A")  return InpRiskPctA;
+   if(g == "B")  return InpRiskPctB;
+   return 0.0;                        // C 级不交易
+}
+
+// dir/atr 已定；sweptLevel!=0 表示本次触发来自扫损；rrVal 为实际风险回报
+SetupScore ScoreSetupV2(int dir, double atr, bool fromSweep, bool nearKeyLevel,
+                        double rrVal, double entry)
+{
+   SetupScore sc;
+   sc.trend = 0; sc.keyLevel = 0; sc.liquidity = 0;
+   sc.structure = 0; sc.momentum = 0; sc.rr = 0;
+
+   // --- Trend 0-2：H1 均线方向 + H1 摆动结构（HH/HL 或 LH/LL）---
+   int htf   = HtfTrend();
+   int htfSt = MarketStructure(InpHTF);
+   if(htf == dir)   sc.trend++;
+   if(htfSt == dir) sc.trend++;
+
+   // --- Key Level 0-2：入场是否贴着机构参考位 ---
+   if(nearKeyLevel) sc.keyLevel++;
+   double lv = 0.0; string nmA = "", nmB = "";
+   // 前方还有明确目标位 = 有去处,不是撞墙
+   if(dir > 0 ? KeyLevelAbove(entry, 0.0, lv, nmA) : KeyLevelBelow(entry, 0.0, lv, nmB))
+      sc.keyLevel++;
+
+   // --- Liquidity 0-2：本次是否由扫损触发 ---
+   if(fromSweep) sc.liquidity += 2;
+
+   // --- Structure 0-2：M15 结构一致 + M5 出现 BOS/CHoCH ---
+   if(MarketStructure(InpMTF) == dir) sc.structure++;
+   bool choch = false; string bnote = "";
+   if(StructureBreak(InpLTF, dir, atr, choch, bnote)) sc.structure++;
+
+   // --- Momentum 0-1 ---
+   if(Momentum() == dir) sc.momentum++;
+
+   // --- RR 0-1 ---
+   if(rrVal >= 1.5) sc.rr++;
+
+   sc.total = sc.trend + sc.keyLevel + sc.liquidity + sc.structure + sc.momentum + sc.rr;
+   sc.grade = GradeOf(sc.total);
+   sc.riskCapPct = RiskCapForGrade(sc.grade);
+   sc.detail = StringFormat("趋势%d/2 关键位%d/2 流动性%d/2 结构%d/2 动能%d/1 RR%d/1%s",
+                            sc.trend, sc.keyLevel, sc.liquidity, sc.structure,
+                            sc.momentum, sc.rr,
+                            StringLen(bnote) > 0 ? " | " + bnote : "");
+   return sc;
+}
+
+//==================================================================
 // 构建信号
 //==================================================================
 Signal BuildSignal(double atr, int minScore)
 {
    Signal sg;
    sg.dir = 0; sg.score = 0; sg.entry = 0; sg.sl = 0; sg.tp1 = 0; sg.tp2 = 0; sg.rr = 0; sg.note = "";
+   sg.grade = "C"; sg.riskCapPct = 0.0; sg.scoreDetail = "";
 
    int htf  = HtfTrend();
    int ltf  = LtfTrend();
@@ -1096,7 +1320,8 @@ Signal BuildSignal(double atr, int minScore)
    bool trig = EntryTrigger(dir, atr, refLevel, trigNote);
    // 入场 C：突破回踩/趋势回调都没触发时，再看有没有关键位被扫损后收回。
    // 放在最后是因为它是**补充**路径，不该抢掉前两条的判定。
-   if(!trig) trig = SweepEntry(dir, atr, refLevel, trigNote);
+   bool fromSweep = false;
+   if(!trig) { trig = SweepEntry(dir, atr, refLevel, trigNote); fromSweep = trig; }
    if(trig) score += 2;                           // 6-7 触发（突破回踩 / 回调确认 / 扫损反手）
 
    if(!trig)
@@ -1175,8 +1400,39 @@ Signal BuildSignal(double atr, int minScore)
       return sg;
    }
 
+   // --- V2：10 分制评分与分级（规格 §28/§29）---
+   // 必须放在 rr 算出来之后 —— RR 本身是评分的一个维度。
+   if(InpUseV2Scoring)
+   {
+      // 入场是否贴着机构参考位（0.5×ATR 以内算"在关键位上"）
+      double nearLv = 0.0; string nearNm = "";
+      bool nearKey = (dir > 0)
+                     ? KeyLevelBelow(entry, 0.0, nearLv, nearNm)
+                     : KeyLevelAbove(entry, 0.0, nearLv, nearNm);
+      if(nearKey) nearKey = (MathAbs(entry - nearLv) <= 0.5 * atr);
+
+      SetupScore v2 = ScoreSetupV2(dir, atr, fromSweep, nearKey, rr, entry);
+      sg.score       = v2.total;
+      sg.grade       = v2.grade;
+      sg.riskCapPct  = v2.riskCapPct;
+      sg.scoreDetail = v2.detail;
+
+      if(v2.grade == "C")
+      {
+         NoTrade(StringFormat("C 级 setup %d/10 不交易（%s）", v2.total, v2.detail));
+         sg.dir = 0;
+         return sg;
+      }
+      trigNote += StringFormat(" | %s级 %d/10", v2.grade, v2.total);
+   }
+   else
+   {
+      sg.grade      = "-";
+      sg.riskCapPct = InpRiskPctMax;
+   }
+
    sg.dir   = dir;
-   sg.score = score;
+   if(!InpUseV2Scoring) sg.score = score;
    sg.entry = entry;
    sg.sl    = Px(sl);
    sg.tp1   = Px(tp1);
@@ -1261,7 +1517,7 @@ double EscalateRiskForMinLot(double slDist, double riskPct, DayStats &ds, string
    note = "";
    if(!InpSmallAccountEscalate) return riskPct;
    if(ds.consecLoss >= InpObserveAfterConsecLoss) return riskPct;   // 观察模式：不加码
-   if(ds.total >= InpConservativeAt)              return riskPct;   // 已进盈利保护档
+   if(ds.total >= ConservativeAtUSD())            return riskPct;   // 已进盈利保护档
 
    double mppd   = MoneyPerLotPerDollar();
    double lotMin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
@@ -1646,14 +1902,108 @@ bool AddOnAllowed(int newDir, int newScore, DayStats &ds, double &allowedRiskPct
 }
 
 //==================================================================
+// V2：每 N 笔成交的统计（规格 §33）
+//==================================================================
+// 从成交历史按 position_id 聚合,和日内统计同源 —— 不依赖内存变量,
+// EA 重启/重挂都不会丢,也就绕不过去。
+long g_lastStatsAt = 0;
+
+void ReportTradeStats(int everyN)
+{
+   if(!HistorySelect(0, TimeCurrent() + 3600)) return;
+
+   ulong  pid[]; double pnl[]; datetime tm[];
+   int total = HistoryDealsTotal();
+   for(int i = 0; i < total; i++)
+   {
+      ulong tk = HistoryDealGetTicket(i);
+      if(tk == 0) continue;
+      if(HistoryDealGetInteger(tk, DEAL_MAGIC) != InpMagic)  continue;
+      if(HistoryDealGetString(tk, DEAL_SYMBOL) != _Symbol)   continue;
+      long en = HistoryDealGetInteger(tk, DEAL_ENTRY);
+      if(en != DEAL_ENTRY_OUT && en != DEAL_ENTRY_OUT_BY && en != DEAL_ENTRY_INOUT) continue;
+
+      double p = HistoryDealGetDouble(tk, DEAL_PROFIT)
+               + HistoryDealGetDouble(tk, DEAL_SWAP)
+               + HistoryDealGetDouble(tk, DEAL_COMMISSION);
+      ulong    id = (ulong)HistoryDealGetInteger(tk, DEAL_POSITION_ID);
+      datetime dt = (datetime)HistoryDealGetInteger(tk, DEAL_TIME);
+
+      int idx = -1;
+      for(int k = 0; k < ArraySize(pid); k++) if(pid[k] == id) { idx = k; break; }
+      if(idx < 0)
+      {
+         idx = ArraySize(pid);
+         ArrayResize(pid, idx + 1); ArrayResize(pnl, idx + 1); ArrayResize(tm, idx + 1);
+         pid[idx] = id; pnl[idx] = 0.0; tm[idx] = 0;
+      }
+      pnl[idx] += p;
+      if(dt > tm[idx]) tm[idx] = dt;
+   }
+
+   int n = ArraySize(pid);
+   if(n <= 0 || n % everyN != 0) return;
+   if(n == (int)g_lastStatsAt) return;          // 同一个笔数只报一次
+   g_lastStatsAt = n;
+
+   // 按时间排序,算最大回撤要按顺序累计
+   for(int a = 0; a < n - 1; a++)
+      for(int b = 0; b < n - 1 - a; b++)
+         if(tm[b] > tm[b+1])
+         {
+            datetime tt = tm[b];  tm[b]  = tm[b+1];  tm[b+1]  = tt;
+            double   pp = pnl[b]; pnl[b] = pnl[b+1]; pnl[b+1] = pp;
+            ulong    ii = pid[b]; pid[b] = pid[b+1]; pid[b+1] = ii;
+         }
+
+   int    wins = 0, losses = 0;
+   double gp = 0.0, gl = 0.0;
+   double eq = 0.0, peak = 0.0, maxDD = 0.0;
+   int    maxLossStreak = 0, curStreak = 0;
+   for(int i = 0; i < n; i++)
+   {
+      if(pnl[i] > 0) { wins++;   gp += pnl[i]; curStreak = 0; }
+      else           { losses++; gl += -pnl[i]; curStreak++;
+                       if(curStreak > maxLossStreak) maxLossStreak = curStreak; }
+      eq += pnl[i];
+      if(eq > peak) peak = eq;
+      if(peak - eq > maxDD) maxDD = peak - eq;
+   }
+   double winRate = 100.0 * wins / n;
+   double pf      = (gl > 0.0) ? gp / gl : (gp > 0.0 ? 999.0 : 0.0);
+   double avgWin  = (wins   > 0) ? gp / wins   : 0.0;
+   double avgLoss = (losses > 0) ? gl / losses : 0.0;
+
+   LogLine("STATS", StringFormat(
+      "累计 %d 笔 | 胜 %d 负 %d 胜率 %.1f%% | 毛盈 $%.2f 毛亏 $%.2f 净 $%.2f | "
+      "均盈 $%.2f 均亏 $%.2f | 盈亏比(PF) %.2f | 最大回撤 $%.2f | 最长连亏 %d 笔",
+      n, wins, losses, winRate, gp, gl, gp - gl, avgWin, avgLoss, pf, maxDD, maxLossStreak));
+
+   // 规格 §36：不能只说"市场不好",要指出可能的问题在哪
+   if(pf < 1.0 && n >= everyN)
+   {
+      string hint = "";
+      if(winRate >= 50.0 && avgLoss > avgWin * 1.5)
+         hint = "胜率不低但均亏远大于均盈 -> 止盈太近或止损太宽,先看 TP/SL 比例";
+      else if(winRate < 35.0)
+         hint = "胜率偏低 -> 入场太早或 setup 质量不够,考虑提高 InpScoreMinB";
+      else if(maxLossStreak >= 5)
+         hint = "连亏偏长 -> 可能在震荡市反复被扫,检查是否该开回市场质量闸门";
+      else
+         hint = "盈亏比 <1,先按触发路径分组看是哪一类在亏(日志里的 [OPEN] 备注)";
+      LogLine("STATS", StringFormat("⚠️ 当前为负期望。%s", hint));
+   }
+}
+
+//==================================================================
 // 面板
 //==================================================================
 void Panel(DayStats &ds, string status)
 {
    double bal = AccountInfoDouble(ACCOUNT_BALANCE);
    string mode = "正常";
-   if(ds.total >= InpReducedAt)      mode = "收紧（只做最高质量）";
-   else if(ds.total >= InpConservativeAt) mode = "保守";
+   if(ds.total >= ReducedAtUSD())      mode = "收紧（只做最高质量）";
+   else if(ds.total >= ConservativeAtUSD()) mode = "保守";
    if(ds.consecLoss >= InpObserveAfterConsecLoss) mode += " + 观察模式";
 
    string txt = StringFormat(
@@ -1668,7 +2018,7 @@ void Panel(DayStats &ds, string status)
       AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_DEMO ? "DEMO" : "REAL",
       _Symbol, bal, (int)AccountInfoInteger(ACCOUNT_LEVERAGE),
       ds.total, ds.realized, ds.floating,
-      InpDailyProfitTarget, InpDailyMaxLoss,
+      DailyTargetUSD(), DailyMaxLossUSD(),
       ds.trades, InpMaxTradesPerDay, ds.consecLoss,
       mode, SpreadUSD(), Buf(hAtrL, 0, 1), status);
    Comment(txt);
@@ -1717,11 +2067,11 @@ void PublishStatus(DayStats &ds, string status)
    if(!InpWriteStatusJson) return;
 
    string mode = "normal";
-   if(ds.total >= InpReducedAt)           mode = "reduced";
-   else if(ds.total >= InpConservativeAt) mode = "conservative";
+   if(ds.total >= ReducedAtUSD())           mode = "reduced";
+   else if(ds.total >= ConservativeAtUSD()) mode = "conservative";
    bool observing = (ds.consecLoss >= InpObserveAfterConsecLoss);
-   bool halted    = (ds.total >= InpDailyProfitTarget) ||
-                    (ds.total <= -InpDailyMaxLoss) ||
+   bool halted    = (ds.total >= DailyTargetUSD()) ||
+                    (ds.total <= -DailyMaxLossUSD()) ||
                     (ds.consecLoss >= InpStopAfterConsecLoss) ||
                     (ds.trades >= InpMaxTradesPerDay);
 
@@ -1773,7 +2123,7 @@ void PublishStatus(DayStats &ds, string status)
       AccountInfoDouble(ACCOUNT_BALANCE), AccountInfoDouble(ACCOUNT_EQUITY),
       (int)AccountInfoInteger(ACCOUNT_LEVERAGE), AccountInfoString(ACCOUNT_CURRENCY),
       ds.realized, ds.floating, ds.total, ds.trades, InpMaxTradesPerDay, ds.consecLoss,
-      InpDailyProfitTarget, InpDailyMaxLoss, mode,
+      DailyTargetUSD(), DailyMaxLossUSD(), mode,
       observing ? "true" : "false", halted ? "true" : "false",
       SpreadUSD(), InpMaxSpreadUSD, Buf(hAtrL, 0, 1),
       SymbolInfoDouble(_Symbol, SYMBOL_BID), SymbolInfoDouble(_Symbol, SYMBOL_ASK),
@@ -1802,9 +2152,12 @@ int OnInit()
    if(StringFind(_Symbol, "XAU") < 0 && StringFind(_Symbol, "GOLD") < 0 && StringFind(_Symbol, "Gold") < 0)
       Print("警告：当前图表 ", _Symbol, " 看起来不是黄金。本 EA 为 XAUUSD 设计。");
 
-   if(InpRiskPctDefault > InpRiskPctMax || InpRiskPctMax > 2.0)
+   // 上限从 2% 抬到 5%:V2 规格 §14/§29 明确要求 A+ setup 允许 5%。
+   // 仍是**硬上限** —— 任何路径(评分分级、小账户救济、远程指令)都不得越过。
+   if(InpRiskPctDefault > InpRiskPctMax || InpRiskPctMax > 5.0 ||
+      InpRiskPctAPlus > 5.0 || InpRiskPctA > 5.0 || InpRiskPctB > 5.0)
    {
-      Alert("风险参数非法：单笔风险上限不得超过 2%。");
+      Alert("风险参数非法：单笔风险上限不得超过 5%。");
       return INIT_PARAMETERS_INCORRECT;
    }
    if(!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))
@@ -1863,14 +2216,14 @@ int OnInit()
    // 演示账户上，-$15 只有 0.15% —— 每一笔都会被「当日剩余亏损额度」闸门压到
    // 极小手数，而且**一笔亏损就结束当天**。EA 不会报错，只会安静地几乎不干活，
    // 所以这里必须开口说。
-   if(InpDailyMaxLoss < risk1)
+   if(DailyMaxLossUSD() < risk1)
       LogLine("WARN", StringFormat(
          "配置错配：当日亏损上限 $%.2f 小于单笔 %.1f%% 风险 $%.2f。"
          "后果是每笔都被压到 %.3f%% 风险，且一笔亏损就触发当日停止 —— 一天基本只做一笔。"
          "两个解法：把演示账户余额调成你真实计划的规模；或把日内上限按比例改成 "
          "目标 +$%.0f / 上限 -$%.0f（即当前余额的 +25%% / -7.5%%，与 $200 账户的 +$50/-$15 同口径）。",
-         InpDailyMaxLoss, InpRiskPctDefault, risk1,
-         InpDailyMaxLoss / bal * 100.0, bal * 0.25, bal * 0.075));
+         DailyMaxLossUSD(), InpRiskPctDefault, risk1,
+         DailyMaxLossUSD() / bal * 100.0, bal * 0.25, bal * 0.075));
 
    if(margin > bal * InpMaxMarginPctPerPos / 100.0)
       LogLine("WARN", StringFormat(
@@ -1956,6 +2309,7 @@ void OnTimer()
    DayStats ds = GetDayStats();
    Panel(ds, g_lastNoTradeReason);
    PublishStatus(ds, g_lastNoTradeReason);
+   ReportTradeStats(10);                 // 规格 §33：每 10 笔出一次统计
 }
 
 //==================================================================
@@ -1985,13 +2339,13 @@ void OnTick()
    //--------------------------------------------------------------
    // 1) 硬性日内停止：先于一切逻辑
    //--------------------------------------------------------------
-   if(ds.total >= InpDailyProfitTarget)
+   if(ds.total >= DailyTargetUSD())
    {
       if(HasOpenPosition()) CloseAll(StringFormat("达到当日目标 +$%.2f", ds.total));
       if(!g_dayHaltLogged)
       {
          LogLine("HALT", StringFormat("当日盈利 $%.2f >= 目标 $%.2f —— 停止交易，今天结束。",
-                 ds.total, InpDailyProfitTarget));
+                 ds.total, DailyTargetUSD()));
          Push(StringFormat("达到当日目标 +$%.2f，已平仓并停止交易", ds.total));
          g_dayHaltLogged = true;
       }
@@ -1999,13 +2353,13 @@ void OnTick()
       return;
    }
 
-   if(ds.total <= -InpDailyMaxLoss)
+   if(ds.total <= -DailyMaxLossUSD())
    {
       if(HasOpenPosition()) CloseAll(StringFormat("触及当日最大亏损 $%.2f", ds.total));
       if(!g_dayHaltLogged)
       {
          LogLine("HALT", StringFormat("当日亏损 $%.2f <= -$%.2f —— 平仓并停止交易，今天结束。",
-                 ds.total, InpDailyMaxLoss));
+                 ds.total, DailyMaxLossUSD()));
          Push(StringFormat("触及当日亏损上限 $%.2f，已平仓并停止交易", ds.total));
          g_dayHaltLogged = true;
       }
@@ -2055,6 +2409,16 @@ void OnTick()
    if(atr < InpAtrMinUSD) { NoTrade(StringFormat("ATR %.2f 过低，波动不足", atr)); Panel(ds, "波动不足"); return; }
    if(atr > InpAtrMaxUSD) { NoTrade(StringFormat("ATR %.2f 过高，波动异常", atr)); Panel(ds, "波动异常"); return; }
 
+   // 规格 §13：Extreme 波动等结构稳定，High 波动继续做但降仓（降仓在下面按乘数生效）
+   double volRatio = 1.0;
+   int    vol      = VolRegime(atr, volRatio);
+   if(vol == 3)
+   {
+      NoTrade(StringFormat("波动 Extreme（ATR %.2f = 均值的 %.2f 倍），等结构稳定", atr, volRatio));
+      Panel(ds, "波动 Extreme");
+      return;
+   }
+
    // 市场质量：横盘 / 高频假突破。
    // InpUseMarketQuality=false 时不否决交易，但结论照样算、照样跟着成交记录下来。
    string qWhy = "";
@@ -2070,8 +2434,8 @@ void OnTick()
    double minRRreq = InpMinRR;
 
    if(ds.consecLoss >= InpObserveAfterConsecLoss) { minScore += 1; riskPct = MathMin(riskPct, 1.0); }
-   if(ds.total >= InpConservativeAt)              { minScore += 1; riskPct = MathMin(riskPct, 0.75); }
-   if(ds.total >= InpReducedAt)                   { minScore  = 7; riskPct = MathMin(riskPct, 0.5); minRRreq = 2.0; }
+   if(ds.total >= ConservativeAtUSD())            { minScore += 1; riskPct = MathMin(riskPct, 0.75); }
+   if(ds.total >= ReducedAtUSD())                 { minScore  = 7; riskPct = MathMin(riskPct, 0.5); minRRreq = 2.0; }
    if(minScore > 7) minScore = 7;
 
    //--------------------------------------------------------------
@@ -2087,9 +2451,29 @@ void OnTick()
       return;
    }
 
-   // 只有满分信号 + 正常模式，才允许提高到 2%
-   if(sg.score >= 7 && ds.consecLoss == 0 && ds.total < InpConservativeAt)
+   // --- 风险由 setup 分级给出（规格 §14/§29），不由"想赚多少"给 ---
+   if(InpUseV2Scoring && sg.riskCapPct > 0.0)
+   {
+      double capped = MathMin(sg.riskCapPct, InpRiskPctMax);   // 硬上限永远压得住分级
+      // 连亏观察档 / 盈利保护档只降不升 —— 分级再高也不能把这两档顶回去
+      if(ds.consecLoss >= InpObserveAfterConsecLoss) capped = MathMin(capped, 1.0);
+      if(ds.total >= ConservativeAtUSD())            capped = MathMin(capped, 0.75);
+      if(ds.total >= ReducedAtUSD())                 capped = MathMin(capped, 0.5);
+      riskPct = capped;
+      LogLine("GRADE", StringFormat("%s级 %d/10 -> 风险 %.2f%% | %s",
+              sg.grade, sg.score, riskPct, sg.scoreDetail));
+   }
+   else if(sg.score >= 7 && ds.consecLoss == 0 && ds.total < ConservativeAtUSD())
       riskPct = MathMin(InpRiskPctMax, 2.0);
+
+   // 规格 §13：High 波动降仓
+   if(vol == 2 && InpVolHighSizeMult > 0.0 && InpVolHighSizeMult < 1.0)
+   {
+      double before = riskPct;
+      riskPct *= InpVolHighSizeMult;
+      LogLine("RISK", StringFormat("波动 High（ATR %.2f = 均值 %.2f 倍），风险 %.2f%% -> %.2f%%",
+              atr, volRatio, before, riskPct));
+   }
 
    // 小账户救济：最小手数在当前预算下开不了，但抬到 2% 上限就能开 -> 抬。
    // 放在这里而不是更后面，是为了让下面两道**降险**闸门（加仓预算、当日剩余亏损额度）
@@ -2111,13 +2495,32 @@ void OnTick()
    }
 
    // 单笔风险不得让当日亏损突破 -15：剩余亏损额度更小时，按额度缩仓
-   double remainingLoss = InpDailyMaxLoss + ds.total;   // ds.total 为负时额度变小
+   double remainingLoss = DailyMaxLossUSD() + ds.total; // ds.total 为负时额度变小
    double riskMoney     = AccountInfoDouble(ACCOUNT_BALANCE) * riskPct / 100.0;
    if(remainingLoss < riskMoney)
    {
       if(remainingLoss <= 0.30) { NoTrade("当日剩余亏损额度不足，不开新仓"); Panel(ds, "额度不足"); return; }
       riskPct = remainingLoss / AccountInfoDouble(ACCOUNT_BALANCE) * 100.0;
       LogLine("RISK", StringFormat("剩余亏损额度 $%.2f，本笔风险下调至 %.2f%%", remainingLoss, riskPct));
+   }
+
+   // --- 规格 §38：开仓前输出完整决策块 ---
+   {
+      MqlDateTime st; TimeToStruct(TimeCurrent(), st);
+      string sess = (st.hour >= InpAsiaStartHour && st.hour < InpAsiaEndHour) ? "Asia"
+                  : (st.hour >= InpAsiaEndHour && st.hour < InpAsiaEndHour + 5) ? "London" : "New York";
+      KeyLevels kk = GetKeyLevels();
+      LogLine("DECISION", StringFormat(
+         "XAUUSD %.2f | %s | H1=%d M15=%d M5=%d | 前日高%.2f 低%.2f 亚洲高%.2f 低%.2f | "
+         "SWEEP=%s | MSS=%s | 动能=%s | ATR %.2f(%s) | ENTRY %.2f SL %.2f TP %.2f RR 1:%.2f | "
+         "%s级 %d/10 -> 风险 %.2f%% | %s",
+         sg.entry, sess, HtfTrend(), MarketStructure(InpMTF), MarketStructure(InpLTF),
+         kk.pdh, kk.pdl, kk.asiaOk ? kk.asiaHi : 0.0, kk.asiaOk ? kk.asiaLo : 0.0,
+         StringFind(sg.note, "扫损") >= 0 ? "YES" : "NO",
+         StringFind(sg.scoreDetail, "BOS") >= 0 || StringFind(sg.scoreDetail, "CHoCH") >= 0 ? "YES" : "NO",
+         Momentum() == sg.dir ? "Strong" : "Normal",
+         atr, VolRegimeName(vol), sg.entry, sg.sl, sg.tp2, sg.rr,
+         sg.grade, sg.score, riskPct, sg.note));
    }
 
    OpenTrade(sg, riskPct, ds);

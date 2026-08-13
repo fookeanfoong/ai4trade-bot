@@ -23,6 +23,7 @@ $Files = @{
     "XAUUSD_ScalperGuard.mq5"     = "Experts"
     "ScalperGuard_aggressive.set" = "Presets"
     "ScalperGuard_scalp.set"      = "Presets"
+    "ScalperGuard_v2_200.set"     = "Presets"
 }
 
 Write-Host ""
@@ -81,7 +82,7 @@ if ($okAll) {
     Write-Host "  2. 图表右键 -> 智能交易系统 -> 删除"
     Write-Host "  3. 重新拖 EA 上图 -> 勾【允许算法交易】-> 输入参数页点【载入】选 .set -> 确定"
     Write-Host ""
-    Write-Host "确认是新版：参数列表里能看到 InpTargetProfitUSD" -ForegroundColor Yellow
+    Write-Host "确认是新版：参数列表里能看到 InpUseV2Scoring" -ForegroundColor Yellow
 } else {
     Write-Host "有文件更新失败，别急着重编译 —— 先解决上面报红的那几条。" -ForegroundColor Red
     exit 1
