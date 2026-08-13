@@ -1702,7 +1702,7 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
 
    // --- 固定金额止盈:按**实际手数**反算需要走多少美元金价 ---
    // 必须放在 lot 算出来之后:手数是向下取整的,用理论手数反算会有偏差。
-   double targetNote = "";
+   string targetNote = "";
    if(InpTargetProfitUSD > 0.0)
    {
       double perDollar = lot * MoneyPerLotPerDollar();   // 这个手数下,金价每动$1的盈亏
@@ -1742,7 +1742,7 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
            ds.trades + 1, InpMaxTradesPerDay, ds.total) + targetNote);
    LogLine("QUALITY", StringFormat("#开仓时行情质量：%s", g_quality));
 
-   Push(StringFormat("开仓 %s %s手 @%.2f | SL %.2f | TP %.2f | 风险 $%.2f (%.2f%%) | 分数 %d/7 | %s",
+   Push(StringFormat("开仓 %s %s手 @%.2f | SL %.2f | TP %.2f | 风险 $%.2f (%.2f%%) | 分数 %d | %s",
         sg.dir > 0 ? "BUY" : "SELL", DoubleToString(lot, VolDigits()), sg.entry, sg.sl, sg.tp2,
         lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.score, sg.note));
 
