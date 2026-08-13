@@ -205,6 +205,28 @@ input string   InpManualNewsTimes    = "";      // 手动黑名单时间 "HH:MM,
 input group "=== 加仓（默认关闭）==="
 input bool     InpAllowAddOn         = false;   // 允许加仓（必须满足全部条件）
 
+input group "=== 多仓并行（规格 §30）==="
+// 与"加仓"是两回事:加仓 = 往同一笔盈利单上追;多仓 = 各自独立的 setup、
+// 各自独立的止损。后者不违反"禁止亏损加仓",前提是总风险有上限。
+input bool     InpAllowMultiPosition = false;   // 允许同时持有多笔独立仓位
+input int      InpMaxPositions       = 3;       // 最大同时持仓数
+input double   InpMaxCombinedRiskPct = 10.0;    // 所有持仓的在险金额合计上限（占净值 %）
+input bool     InpAllowHedge         = false;   // 允许反向持仓（规格 §31 默认禁止）
+
+input group "=== 宽松入场（路径 D，采样用）==="
+// 前三条路径(突破回踩/趋势回调/扫损反手)都要求特定形态,实测"无有效突破/回踩触发"
+// 长期是第一大拒绝原因。这条路径刻意放松:趋势和动量一致、价格没有过度偏离均线,
+// 顺势收盘即可入场。
+// **它一定会拉低平均质量** —— 所以单独标记路径,事后按路径分组对比期望值,
+// 如果它是亏的就关掉,而不是让它混在别的路径里污染统计。
+input bool     InpUseLooseEntry      = false;   // 启用宽松入场（路径 D）
+input double   InpLooseMaxDistATR    = 1.20;    // 价格偏离快线超过 ATR × 该值 = 追高，不做
+
+input group "=== 止损上限改为跟随 ATR ==="
+// 固定 $15 的上限是按 ATR≈3.4 定的。ATR 涨到 7 时结构止损普遍 17~18,
+// 于是全被"结构止损过宽"拒掉 —— 上限必须跟着波动走。
+input double   InpSlMaxATRMult       = 0.0;     // >0 时上限 = max(InpSlMaxUSD, ATR × 该值)
+
 input group "=== 监控 ==="
 input bool     InpPushNotify        = true;    // 关键事件推送到手机（需在 工具->选项->通知 填 MetaQuotes ID）
 input bool     InpWriteStatusJson   = true;    // 每 30 秒把状态快照写入 Files\XAUUSD_ScalperGuard_status.json
@@ -523,6 +545,32 @@ DayStats GetDayStats()
 
    s.total = s.realized + (InpUseFloatingInLimits ? s.floating : 0.0);
    return s;
+}
+
+int CountMyPositions()
+{
+   int n = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      if(!pos.SelectByIndex(i)) continue;
+      if(pos.Magic() == InpMagic && pos.Symbol() == _Symbol) n++;
+   }
+   return n;
+}
+
+// 现有持仓的方向（多仓下若方向不一致返回 0，用于禁止对冲）
+int MyPositionDir()
+{
+   int d = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      if(!pos.SelectByIndex(i)) continue;
+      if(pos.Magic() != InpMagic || pos.Symbol() != _Symbol) continue;
+      int cur = (pos.PositionType() == POSITION_TYPE_BUY) ? 1 : -1;
+      if(d == 0) d = cur;
+      else if(d != cur) return 0;
+   }
+   return d;
 }
 
 bool HasOpenPosition()
@@ -1304,6 +1352,35 @@ SetupScore ScoreSetupV2(int dir, double atr, bool fromSweep, bool nearKeyLevel,
 }
 
 //==================================================================
+// 入场 D：宽松顺势（采样用，质量最低的一条）
+//==================================================================
+// 条件只有三个:趋势方向已确定(调用处保证)、上一根收盘顺势、价格没有过度偏离快线。
+// 最后一条是唯一的纪律 —— 没有它就变成"暴涨之后追多",那是规格 §12 明令禁止的 FOMO。
+bool LooseEntry(int dir, double atr, string &note)
+{
+   if(!InpUseLooseEntry) return false;
+
+   double c1 = iClose(_Symbol, InpLTF, 1);
+   double o1 = iOpen (_Symbol, InpLTF, 1);
+   double ema = Buf(hEmaFastL, 0, 1);
+   if(ema <= 0.0 || atr <= 0.0) return false;
+
+   if(dir > 0 && c1 <= o1) return false;          // 顺势收盘
+   if(dir < 0 && c1 >= o1) return false;
+
+   double dist = MathAbs(c1 - ema);
+   if(dist > InpLooseMaxDistATR * atr)
+   {
+      note = StringFormat("宽松入场被拒：价格偏离快线 %.2f > %.2f×ATR（追高/追空）",
+                          dist, InpLooseMaxDistATR);
+      return false;
+   }
+
+   note = StringFormat("宽松顺势（偏离快线 %.2f = %.2fATR）", dist, dist / atr);
+   return true;
+}
+
+//==================================================================
 // 构建信号
 //==================================================================
 Signal BuildSignal(double atr, int minScore)
@@ -1341,6 +1418,8 @@ Signal BuildSignal(double atr, int minScore)
    // 放在最后是因为它是**补充**路径，不该抢掉前两条的判定。
    bool fromSweep = false;
    if(!trig) { trig = SweepEntry(dir, atr, refLevel, trigNote); fromSweep = trig; }
+   // 路径 D 放在最后:只有前三条形态都没出现时才用它兜底
+   if(!trig) trig = LooseEntry(dir, atr, trigNote);
    if(trig) score += 2;                           // 6-7 触发（突破回踩 / 回调确认 / 扫损反手）
 
    if(!trig)
@@ -1375,9 +1454,11 @@ Signal BuildSignal(double atr, int minScore)
       slDist = MathMax(InpSlMinUSD, MathMax(StopsLevelUSD() + SpreadUSD(), InpSlAtrMult * atr));
       sl = (dir > 0) ? entry - slDist : entry + slDist;
    }
-   if(slDist > InpSlMaxUSD)
+   double slMax = InpSlMaxUSD;
+   if(InpSlMaxATRMult > 0.0) slMax = MathMax(slMax, atr * InpSlMaxATRMult);
+   if(slDist > slMax)
    {
-      NoTrade(StringFormat("结构止损过宽 %.2f > %.2f USD", slDist, InpSlMaxUSD));
+      NoTrade(StringFormat("结构止损过宽 %.2f > %.2f USD（ATR %.2f）", slDist, slMax, atr));
       return sg;
    }
 
@@ -2401,10 +2482,23 @@ void OnTick()
    //--------------------------------------------------------------
    if(!IsNewBar(InpLTF)) return;
 
-   if(HasOpenPosition() && !InpAllowAddOn)
+   // --- 多仓闸门（规格 §30）---
+   // 加仓 = 往同一笔上追;多仓 = 各自独立的 setup + 各自独立的止损。
+   // 后者不违反"禁止亏损加仓",前提是**总在险金额有上限**,那才是真正该守的东西。
+   int nPos = CountMyPositions();
+   if(nPos > 0)
    {
-      Panel(ds, "持仓中，等待管理（默认禁止加仓）");
-      return;
+      if(!InpAllowMultiPosition && !InpAllowAddOn)
+      {
+         Panel(ds, "持仓中，等待管理（未开启多仓/加仓）");
+         return;
+      }
+      if(InpAllowMultiPosition && nPos >= InpMaxPositions)
+      {
+         NoTrade(StringFormat("已达最大同时持仓数 %d", InpMaxPositions));
+         Panel(ds, "持仓数上限");
+         return;
+      }
    }
 
    // 连亏保护
@@ -2506,15 +2600,53 @@ void OnTick()
    riskPct = EscalateRiskForMinLot(MathAbs(sg.entry - sg.sl), riskPct, ds, escNote);
    if(StringLen(escNote) > 0) LogLine("RISK", escNote);
 
-   // 加仓闸门：有持仓时必须通过规则十四的全部条件
-   if(HasOpenPosition())
+   // --- 已有持仓时的两道闸门 ---
+   if(nPos > 0)
    {
-      string addWhy = "";
-      if(!AddOnAllowed(sg.dir, sg.score, ds, riskPct, addWhy))
+      if(InpAllowMultiPosition)
       {
-         NoTrade(addWhy);
-         Panel(ds, addWhy);
-         return;
+         // 规格 §31：默认禁止对冲 —— 反向开仓是在掩盖错误，不是在管理风险
+         int pd = MyPositionDir();
+         if(!InpAllowHedge && pd != 0 && pd != sg.dir)
+         {
+            NoTrade(StringFormat("禁止对冲：已有%s仓，本信号为%s",
+                    pd > 0 ? "多" : "空", sg.dir > 0 ? "多" : "空"));
+            Panel(ds, "禁止对冲");
+            return;
+         }
+
+         // 规格 §30：所有持仓的在险金额合计不得超过净值的 InpMaxCombinedRiskPct
+         // OpenRiskUSD() 把已移到保本之外的仓位按 0 计 —— 那些确实不再有风险敞口。
+         double eq        = AccountInfoDouble(ACCOUNT_EQUITY);
+         double openRisk  = OpenRiskUSD();
+         double budget    = eq * InpMaxCombinedRiskPct / 100.0 - openRisk;
+         double thisRisk  = AccountInfoDouble(ACCOUNT_BALANCE) * riskPct / 100.0;
+         if(budget <= 0.0)
+         {
+            NoTrade(StringFormat("组合风险已用尽：在险 $%.2f 已达净值的 %.1f%%",
+                    openRisk, InpMaxCombinedRiskPct));
+            Panel(ds, "组合风险上限");
+            return;
+         }
+         if(thisRisk > budget)
+         {
+            double before = riskPct;
+            riskPct = budget / AccountInfoDouble(ACCOUNT_BALANCE) * 100.0;
+            LogLine("RISK", StringFormat(
+               "组合风险剩余 $%.2f（已在险 $%.2f / 上限 %.1f%%），本笔风险 %.2f%% -> %.2f%%",
+               budget, openRisk, InpMaxCombinedRiskPct, before, riskPct));
+         }
+      }
+      else
+      {
+         // 未开多仓 = 走原来的严格加仓闸门（规格十四的六项条件）
+         string addWhy = "";
+         if(!AddOnAllowed(sg.dir, sg.score, ds, riskPct, addWhy))
+         {
+            NoTrade(addWhy);
+            Panel(ds, addWhy);
+            return;
+         }
       }
    }
 

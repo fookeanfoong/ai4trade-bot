@@ -38,7 +38,7 @@ InpFlatAllBeforeHour=23
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
 ; 0.60 / 0.25 会让亚洲盘也能过。代价明确：$0.40 点差配 $3 止损 = 每笔先付掉
 ; 13% 的风险额度。采样期接受，评估期必须把这笔成本从结果里扣回去。
-InpMaxSpreadUSD=0.60
+InpMaxSpreadUSD=0.80
 InpSpreadVsATRMax=0.25
 
 ; --- M5 趋势判定：只看均线排列，不要求收盘价站在慢线一侧 ---
@@ -80,6 +80,9 @@ InpSlMinUSD=1.20
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
 InpSlMaxUSD=15.00
+; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
+; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
+InpSlMaxATRMult=3.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -165,6 +168,23 @@ InpDailyTargetPct=25.0
 InpDailyMaxLossPct=15.0
 InpConservativeAtPct=10.0
 InpReducedAtPct=15.0
+
+; --- 多仓并行（规格 §30）---
+; 加仓 = 往同一笔盈利单上追;多仓 = 各自独立的 setup + 各自独立止损。
+; 真正该守的不是"只能一笔",而是**总在险金额上限**。
+; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
+InpAllowMultiPosition=true
+InpMaxPositions=3
+InpMaxCombinedRiskPct=10.0
+; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
+InpAllowHedge=false
+
+; --- 宽松入场 路径D（采样用）---
+; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
+; 价格没过度偏离快线(防 FOMO 追高)。
+; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
+InpUseLooseEntry=true
+InpLooseMaxDistATR=1.20
 
 ; --- 监控 ---
 InpPushNotify=true
