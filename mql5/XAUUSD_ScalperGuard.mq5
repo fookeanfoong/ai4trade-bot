@@ -25,8 +25,11 @@
 // 编译时间戳 + 版本号。MT5 加载的是 .ex5 不是 .mq5 —— 只更新源码而没按 F7,
 // 跑的就还是旧二进制。这一行让日志直接说清楚当前跑的是哪个 build,
 // 不用再靠"报错文案对不对得上"去猜。
+// 注意:MQL5 没有 C/C++ 的 __TIME__ 宏,而 __DATE__ 是 **datetime 类型**不是字符串,
+// 所以 `__DATE__ " " __TIME__` 这种 C 写法在 MQL5 里是语法错误。
+// MQL5 里带时间的编译戳只有 __DATETIME__,而且要用 TimeToString 转成文字。
 #define SG_VERSION "2.0"
-#define SG_BUILD   __DATE__ " " __TIME__
+#define SG_BUILD   __DATETIME__
 
 #include <Trade\Trade.mqh>
 #include <Trade\PositionInfo.mqh>
@@ -2309,7 +2312,8 @@ int OnInit()
    double slAtMinLot2 = (mppd > 0 && lotMin > 0) ? risk2 / (lotMin * mppd) : 0.0;
 
    // 最小手数不能用 %.2f 打 —— 微型品种是 0.001，会显示成 0.00
-   LogLine("VERSION", StringFormat("ScalperGuard v%s | 编译于 %s", SG_VERSION, SG_BUILD));
+   LogLine("VERSION", StringFormat("ScalperGuard v%s | 编译于 %s", SG_VERSION,
+           TimeToString(SG_BUILD, TIME_DATE | TIME_MINUTES)));
    LogLine("INIT", StringFormat(
       "%s | 账户 %s | 余额 $%.2f | 杠杆 1:%d | 最小手数 %s | 每手每$1波动=$%.2f | 最小手保证金 $%.2f | "
       "1%%风险($%.2f)对应最大止损 $%.2f/盎司；2%%风险($%.2f)对应 $%.2f/盎司",
