@@ -186,6 +186,16 @@ InpAllowHedge=false
 InpUseLooseEntry=true
 InpLooseMaxDistATR=1.20
 
+; --- 方向判定与冲突处理（本轮最关键的一项）---
+; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
+; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
+; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
+; 1 = H1 定方向,M5 只影响评分不否决
+InpDirectionMode=1
+; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
+; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
+InpConflictAsVeto=false
+
 ; --- 监控 ---
 InpPushNotify=true
 InpWriteStatusJson=true

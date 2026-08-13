@@ -92,6 +92,19 @@ input double   InpRiskPctB           = 1.5;     // B 级(5-6分)风险上限 %
 input double   InpRiskPctA           = 3.0;     // A 级(7-8分)风险上限 %
 input double   InpRiskPctAPlus       = 5.0;     // A+级(9-10分)风险上限 %
 
+input group "=== 方向判定与冲突处理 ==="
+// 实测拦路的是 "趋势不一致 HTF=1 LTF=-1" —— 两个周期方向明确但相反。
+// 那正是**回调**的定义,而入场 B 就叫"趋势回调",它等的就是这一刻。
+// 原逻辑要求两周期同向,等于回调一发生就把自己的回调入场毙掉 ——
+// 「市场结构冲突」「动量冲突」两道同理:回调时它们必然冲突。
+//   0 = 两周期必须同向（原行为，最严）
+//   1 = H1 定方向，M5 只影响评分不否决（推荐：回调入场才可能触发）
+//   2 = 任一周期有方向即可
+input int      InpDirectionMode      = 0;
+// true  = 结构/动量与方向冲突时**拒绝交易**（原行为）
+// false = 冲突不否决，只记录进成交备注，由 10 分制评分去反映质量差异
+input bool     InpConflictAsVeto     = true;
+
 input group "=== V2 多周期 ==="
 input ENUM_TIMEFRAMES InpMTF         = PERIOD_M15;  // 中周期（找交易区域）
 input bool     InpRequireMtfAgree    = false;   // M15 结构必须与方向一致才给分以外，还否决
@@ -1398,14 +1411,30 @@ Signal BuildSignal(double atr, int minScore)
    int mom  = Momentum();
    double adx = Buf(hAdxL, 0, 1);
 
-   // 多空信号冲突 -> NO TRADE
+   // --- 方向判定 ---
    int dir = 0;
-   if(htf > 0 && ltf > 0) dir =  1;
-   else if(htf < 0 && ltf < 0) dir = -1;
-   else { NoTrade(StringFormat("趋势不一致 HTF=%d LTF=%d", htf, ltf)); return sg; }
+   if(InpDirectionMode == 1)
+      dir = htf;                                   // H1 定方向，M5 交给评分
+   else if(InpDirectionMode == 2)
+      dir = (htf != 0) ? htf : ltf;                // 任一周期有方向即可
+   else
+   {
+      if(htf > 0 && ltf > 0) dir =  1;             // 原行为：必须同向
+      else if(htf < 0 && ltf < 0) dir = -1;
+   }
+   if(dir == 0)
+   { NoTrade(StringFormat("趋势不一致 HTF=%d LTF=%d（模式%d）", htf, ltf, InpDirectionMode)); return sg; }
 
-   if(strc != 0 && strc != dir) { NoTrade("市场结构与趋势冲突"); return sg; }
-   if(mom  != 0 && mom  != dir) { NoTrade("动量与趋势冲突");     return sg; }
+   // --- 冲突：否决 还是 只记录 ---
+   // 回调行情里结构与动量必然与大方向冲突。把它们当否决条件,等于永远做不了回调。
+   // 关掉否决后冲突不消失,只是改为记录 —— 事后能按"有无冲突"分组比期望值。
+   string conflicts = "";
+   if(strc != 0 && strc != dir) conflicts += "结构冲突 ";
+   if(mom  != 0 && mom  != dir) conflicts += "动量冲突 ";
+   if(ltf  != 0 && ltf  != dir) conflicts += "M5反向 ";
+   if(InpConflictAsVeto && StringLen(conflicts) > 0)
+   { NoTrade(StringFormat("与方向冲突：%s", conflicts)); return sg; }
+
    if(adx < InpAdxMin)          { NoTrade(StringFormat("ADX %.1f < %.1f，横盘", adx, InpAdxMin)); return sg; }
 
    // 评分（满分 7）
@@ -1541,7 +1570,7 @@ Signal BuildSignal(double atr, int minScore)
    sg.tp1   = Px(tp1);
    sg.tp2   = Px(tp2);
    sg.rr    = rr;
-   sg.note  = trigNote;
+   sg.note  = trigNote + (StringLen(conflicts) > 0 ? " | 冲突:" + conflicts : " | 无冲突");
    return sg;
 }
 
