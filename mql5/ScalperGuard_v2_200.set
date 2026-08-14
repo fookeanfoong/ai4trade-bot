@@ -107,7 +107,11 @@ InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
 InpTrailATRMult=1.0
 InpFadeExitMinR=0.45
-InpLevelExitMinR=0.70
+; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
+; 而计划 RR 均值 1.67 —— 只拿到计划的 48%。原因是该出场把任何 M5 微型摆动点
+; 都当关键位,趋势里条件恒真。抬门槛 + 只认机构参考位。
+InpLevelExitMinR=1.20
+InpLevelExitKeyOnly=true
 
 ; --- 新闻过滤：保留 ---
 ; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的

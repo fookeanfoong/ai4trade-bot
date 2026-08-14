@@ -210,6 +210,13 @@ input bool     InpExitOnMomentumFade = true;    // 动量衰竭提前离场
 // 调低 = 更早落袋、持仓更短、胜率更高但每笔更小。
 input double   InpFadeExitMinR       = 0.45;    // 动量衰竭离场的最低盈利(R)
 input double   InpLevelExitMinR      = 0.70;    // 逼近关键位落袋的最低盈利(R)
+// 实盘数据暴露的问题:11/18 笔出场是"逼近关键位提前平仓",R 倍数密集落在
+// 0.70~0.82(也就是阈值本身),而计划 RR 均值 1.67 —— 实际只拿到计划目标的 48%。
+// 原因:这个出场调的是 NearestResistance(cur, 0.0, ...),minDist 传 0,
+// 于是**任何 M5 微型摆动点**都算"关键位"。趋势里价格上方永远有一个,
+// 条件几乎恒真 —— 盈利一到 0.70R 就立刻被平掉,等于给每一笔赢家封了顶。
+// 我给止盈定位加了 InpLevelIgnoreR 去噪,却在出场这条路径上漏了同一件事。
+input bool     InpLevelExitKeyOnly   = false;   // 该出场只认机构参考位，不认 M5 微型摆动点
 
 input group "=== 新闻过滤 ==="
 input bool     InpUseNewsFilter      = true;    // 启用经济日历过滤
@@ -367,12 +374,21 @@ void LogLine(string tag, string msg)
 {
    if(InpVerboseLog)
    {
-      int h = FileOpen(g_logFile, FILE_READ|FILE_WRITE|FILE_CSV|FILE_ANSI, ',');
-      if(h != INVALID_HANDLE)
+      // FILE_ANSI 会按系统代码页写中文(实测导出的是 GBK),换台机器就乱码。
+      // 和 status.json 一样自己转 UTF-8 按二进制追加。
+      string line = StringFormat("%s,%s,%s\r\n",
+                                 TimeToString(TimeCurrent(), TIME_DATE|TIME_SECONDS), tag, msg);
+      uchar bytes[];
+      int n = StringToCharArray(line, bytes, 0, -1, CP_UTF8);
+      if(n > 1)
       {
-         FileSeek(h, 0, SEEK_END);
-         FileWrite(h, TimeToString(TimeCurrent(), TIME_DATE|TIME_SECONDS), tag, msg);
-         FileClose(h);
+         int h = FileOpen(g_logFile, FILE_READ|FILE_WRITE|FILE_BIN);
+         if(h != INVALID_HANDLE)
+         {
+            FileSeek(h, 0, SEEK_END);
+            FileWriteArray(h, bytes, 0, n - 1);      // 去掉结尾的 0
+            FileClose(h);
+         }
       }
    }
    Print("[", tag, "] ", msg);
@@ -1961,13 +1977,20 @@ void ManagePositions(double atr)
       if(rMult >= InpLevelExitMinR)
       {
          double lv = 0.0;
-         bool found = isBuy ? NearestResistance(cur, 0.0, lv) : NearestSupport(cur, 0.0, lv);
+         string kn = "";
+         bool found;
+         if(InpLevelExitKeyOnly)
+            // 只认前日高低 / 亚洲区间 / 整数关口 —— 那些才是真会引发反应的位置
+            found = isBuy ? KeyLevelAbove(cur, 0.0, lv, kn) : KeyLevelBelow(cur, 0.0, lv, kn);
+         else
+            found = isBuy ? NearestResistance(cur, 0.0, lv) : NearestSupport(cur, 0.0, lv);
          if(found)
          {
             bool near = isBuy ? ((lv - cur) < 0.20 * atr) : ((cur - lv) < 0.20 * atr);
             if(near)
             {
-               LogLine("EXIT", StringFormat("#%I64u 逼近关键位 %.2f，%.2fR 提前平仓", tk, lv, rMult));
+               LogLine("EXIT", StringFormat("#%I64u 逼近%s %.2f，%.2fR 提前平仓",
+                       tk, StringLen(kn) > 0 ? kn : "关键位", lv, rMult));
                trade.PositionClose(tk);
             }
          }
