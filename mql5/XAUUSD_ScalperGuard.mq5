@@ -609,7 +609,7 @@ void CloseAll(string reason)
       double pnl = pos.Profit() + pos.Swap();
       if(trade.PositionClose(tk))
       {
-         LogLine("CLOSE", StringFormat("#%I64u 平仓：%s", tk, reason));
+         LogLine("CLOSE", StringFormat("#%I64u 平仓 盈亏 $%.2f：%s", tk, pnl, reason));
          Push(StringFormat("平仓 #%I64u  盈亏 $%.2f  (%s)", tk, pnl, reason));
       }
       else
@@ -1768,11 +1768,12 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
       return;
    }
 
-   LogLine("OPEN", StringFormat("%s %.2f 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
-           sg.dir > 0 ? "BUY" : "SELL", lot, sg.entry, sg.sl, slDist, sg.tp2, sg.rr, sg.score,
+   ulong openTicket = trade.ResultOrder();   // 对冲账户下,开仓订单号即持仓号
+   LogLine("OPEN", StringFormat("#%I64u %s %.2f 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
+           openTicket, sg.dir > 0 ? "BUY" : "SELL", lot, sg.entry, sg.sl, slDist, sg.tp2, sg.rr, sg.score,
            lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.note,
            ds.trades + 1, InpMaxTradesPerDay, ds.total) + targetNote);
-   LogLine("QUALITY", StringFormat("#开仓时行情质量：%s", g_quality));
+   LogLine("QUALITY", StringFormat("#%I64u 开仓时行情质量：%s", openTicket, g_quality));
 
    Push(StringFormat("开仓 %s %s手 @%.2f | SL %.2f | TP %.2f | 风险 $%.2f (%.2f%%) | 分数 %d | %s",
         sg.dir > 0 ? "BUY" : "SELL", DoubleToString(lot, VolDigits()), sg.entry, sg.sl, sg.tp2,
