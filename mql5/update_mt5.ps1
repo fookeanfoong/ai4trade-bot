@@ -22,6 +22,7 @@ $Files = @{
     "ScalperGuard_aggressive.set" = "Presets"
     "ScalperGuard_scalp.set"      = "Presets"
     "ScalperGuard_v2_200.set"     = "Presets"
+    "ScalperGuard_sim200.set"     = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
