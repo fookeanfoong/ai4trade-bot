@@ -72,6 +72,10 @@ input group "=== 固定金额目标（下注前就知道赚多少）==="
 //    OnInit 会把这三个数和保本胜率一起算给你看。
 input double   InpTargetProfitUSD    = 0.0;     // 每笔目标盈利($)，0=关闭，用 R 倍数止盈
 input double   InpRiskCapUSD         = 0.0;     // 每笔风险硬上限($)，0=只用风险%
+// >0 时所有百分比都以这个数为基准,而不是终端里的真实余额。
+// 用途:在 $10,000 演示账户上原样模拟 $200 的风险敞口,同时保留 A+/A/B 分级。
+// 保证金检查不受影响 —— 那是券商的真实约束。
+input double   InpVirtualBalanceUSD  = 0.0;     // 虚拟本金($)，0=用真实余额
 
 input group "=== 交易时段 / 点差 / 流动性 ==="
 input int      InpSessionStartHour   = 8;       // 交易时段开始（服务器时间，小时）
@@ -471,6 +475,24 @@ double Buf(int handle, int buffer, int shift)
 }
 
 //==================================================================
+// 虚拟本金：在大账户上模拟小账户
+//==================================================================
+// 决定风险敞口的从来不是终端里显示的余额,而是**每笔冒多少钱**。
+// InpVirtualBalanceUSD > 0 时,所有按百分比算的东西(单笔风险、日内限额、
+// 组合风险上限)都以这个数为基准 —— 于是仓位大小、最小手数约束、熔断节奏
+// 都和真的那么大的账户一致,而分级(A+/A/B 各自的风险%)完整保留。
+//
+// 这比"用一个 InpRiskCapUSD 一刀切"好:后者把所有等级压成同一个金额,
+// 等于把 V2 规格的分级体系废掉。
+//
+// **不影响保证金检查** —— 那是券商的真实约束,仍然用真实账户数据。
+double EffectiveBalance()
+{
+   if(InpVirtualBalanceUSD > 0.0) return InpVirtualBalanceUSD;
+   return AccountInfoDouble(ACCOUNT_BALANCE);
+}
+
+//==================================================================
 // 日内限额：百分比优先
 //==================================================================
 // 规格 §21/§23 的 +$50 / -$30 是按 $200 账户写的。直接搬到别的余额上会失真,
@@ -478,25 +500,25 @@ double Buf(int handle, int buffer, int shift)
 double DailyTargetUSD()
 {
    if(InpDailyTargetPct > 0.0)
-      return AccountInfoDouble(ACCOUNT_BALANCE) * InpDailyTargetPct / 100.0;
+      return EffectiveBalance() * InpDailyTargetPct / 100.0;
    return InpDailyProfitTarget;
 }
 double DailyMaxLossUSD()
 {
    if(InpDailyMaxLossPct > 0.0)
-      return AccountInfoDouble(ACCOUNT_BALANCE) * InpDailyMaxLossPct / 100.0;
+      return EffectiveBalance() * InpDailyMaxLossPct / 100.0;
    return InpDailyMaxLoss;
 }
 double ConservativeAtUSD()
 {
    if(InpConservativeAtPct > 0.0)
-      return AccountInfoDouble(ACCOUNT_BALANCE) * InpConservativeAtPct / 100.0;
+      return EffectiveBalance() * InpConservativeAtPct / 100.0;
    return InpConservativeAt;
 }
 double ReducedAtUSD()
 {
    if(InpReducedAtPct > 0.0)
-      return AccountInfoDouble(ACCOUNT_BALANCE) * InpReducedAtPct / 100.0;
+      return EffectiveBalance() * InpReducedAtPct / 100.0;
    return InpReducedAt;
 }
 
@@ -1669,7 +1691,7 @@ double EscalateRiskForMinLot(double slDist, double riskPct, DayStats &ds, string
 
    double mppd   = MoneyPerLotPerDollar();
    double lotMin = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
-   double bal    = AccountInfoDouble(ACCOUNT_BALANCE);
+   double bal    = EffectiveBalance();
    if(mppd <= 0.0 || lotMin <= 0.0 || bal <= 0.0 || slDist <= 0.0) return riskPct;
 
    double needMoney = lotMin * slDist * mppd;          // 最小手在这个止损下的风险
@@ -1736,7 +1758,7 @@ void SuggestFinerGoldSymbol()
 //==================================================================
 void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
 {
-   double balance   = AccountInfoDouble(ACCOUNT_BALANCE);
+   double balance   = EffectiveBalance();
    double riskMoney = balance * riskPct / 100.0;
    double slDist    = MathAbs(sg.entry - sg.sl);
 
@@ -2674,10 +2696,10 @@ void OnTick()
 
          // 规格 §30：所有持仓的在险金额合计不得超过净值的 InpMaxCombinedRiskPct
          // OpenRiskUSD() 把已移到保本之外的仓位按 0 计 —— 那些确实不再有风险敞口。
-         double eq        = AccountInfoDouble(ACCOUNT_EQUITY);
+         double eq        = EffectiveBalance();   // 组合风险上限同样按虚拟本金算
          double openRisk  = OpenRiskUSD();
          double budget    = eq * InpMaxCombinedRiskPct / 100.0 - openRisk;
-         double thisRisk  = AccountInfoDouble(ACCOUNT_BALANCE) * riskPct / 100.0;
+         double thisRisk  = EffectiveBalance() * riskPct / 100.0;
          if(budget <= 0.0)
          {
             NoTrade(StringFormat("组合风险已用尽：在险 $%.2f 已达净值的 %.1f%%",
@@ -2688,7 +2710,7 @@ void OnTick()
          if(thisRisk > budget)
          {
             double before = riskPct;
-            riskPct = budget / AccountInfoDouble(ACCOUNT_BALANCE) * 100.0;
+            riskPct = budget / EffectiveBalance() * 100.0;
             LogLine("RISK", StringFormat(
                "组合风险剩余 $%.2f（已在险 $%.2f / 上限 %.1f%%），本笔风险 %.2f%% -> %.2f%%",
                budget, openRisk, InpMaxCombinedRiskPct, before, riskPct));
@@ -2709,11 +2731,11 @@ void OnTick()
 
    // 单笔风险不得让当日亏损突破 -15：剩余亏损额度更小时，按额度缩仓
    double remainingLoss = DailyMaxLossUSD() + ds.total; // ds.total 为负时额度变小
-   double riskMoney     = AccountInfoDouble(ACCOUNT_BALANCE) * riskPct / 100.0;
+   double riskMoney     = EffectiveBalance() * riskPct / 100.0;
    if(remainingLoss < riskMoney)
    {
       if(remainingLoss <= 0.30) { NoTrade("当日剩余亏损额度不足，不开新仓"); Panel(ds, "额度不足"); return; }
-      riskPct = remainingLoss / AccountInfoDouble(ACCOUNT_BALANCE) * 100.0;
+      riskPct = remainingLoss / EffectiveBalance() * 100.0;
       LogLine("RISK", StringFormat("剩余亏损额度 $%.2f，本笔风险下调至 %.2f%%", remainingLoss, riskPct));
    }
 
