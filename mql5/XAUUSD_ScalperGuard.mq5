@@ -228,6 +228,11 @@ input int      InpNewsBeforeMin      = 30;      // 数据公布前 N 分钟禁�
 input int      InpNewsAfterMin       = 20;      // 数据公布后 N 分钟禁止开仓
 input bool     InpNewsHighOnly       = true;    // 仅过滤高重要性事件
 input string   InpManualNewsTimes    = "";      // 手动黑名单时间 "HH:MM,HH:MM"（服务器时间）
+// 原新闻过滤只挡**新开仓** —— 它在 OnTick 的 IsNewBar 分支里,而 ManagePositions
+// 更早就跑完了。也就是说已经持有的仓位会毫无保护地穿过 FOMC/CPI 这种事件:
+// 那一下若跳空 $30,止损会被直接跨过,实际成交远差于挂单价。
+// >0 时:事件前这么多分钟主动清仓离场,不赌跳空方向。
+input int      InpFlatBeforeNewsMin  = 0;       // 重大数据前 N 分钟强制清仓（0=关闭）
 
 input group "=== 加仓（默认关闭）==="
 input bool     InpAllowAddOn         = false;   // 允许加仓（必须满足全部条件）
@@ -760,17 +765,14 @@ bool ManualNewsBlocked()
    return false;
 }
 
-bool NewsBlocked(string &why)
+// 在 [now-afterMin, now+beforeMin] 窗口内是否存在高影响事件。
+// 抽出来是为了让「挡新仓」和「事件前清仓」用同一套判断、不同的窗口。
+bool NewsInWindow(int beforeMin, int afterMin, string &why)
 {
-   if(!InpUseNewsFilter) return false;
+   if(MQLInfoInteger(MQL_TESTER)) return false;      // 日历在策略测试器中不可用
 
-   if(ManualNewsBlocked()) { why = "手动新闻黑名单时间窗口内"; return true; }
-
-   // 经济日历在策略测试器中不可用
-   if(MQLInfoInteger(MQL_TESTER)) return false;
-
-   datetime from = TimeCurrent() - InpNewsAfterMin  * 60;
-   datetime to   = TimeCurrent() + InpNewsBeforeMin * 60;
+   datetime from = TimeCurrent() - afterMin  * 60;
+   datetime to   = TimeCurrent() + beforeMin * 60;
 
    string curr[3] = {"USD", "EUR", "XAU"};
    for(int c = 0; c < 3; c++)
@@ -783,11 +785,32 @@ bool NewsBlocked(string &why)
          if(!CalendarEventById(vals[i].event_id, ev)) continue;
          if(InpNewsHighOnly && ev.importance != CALENDAR_IMPORTANCE_HIGH) continue;
          if(!InpNewsHighOnly && ev.importance == CALENDAR_IMPORTANCE_NONE) continue;
-         why = StringFormat("重大数据窗口：%s (%s) @ %s", ev.name, curr[c],
+         why = StringFormat("%s (%s) @ %s", ev.name, curr[c],
                             TimeToString(vals[i].time, TIME_MINUTES));
          return true;
       }
    }
+   return false;
+}
+
+bool NewsBlocked(string &why)
+{
+   if(!InpUseNewsFilter) return false;
+   if(ManualNewsBlocked()) { why = "手动新闻黑名单时间窗口内"; return true; }
+   string ev = "";
+   if(NewsInWindow(InpNewsBeforeMin, InpNewsAfterMin, ev))
+   { why = "重大数据窗口：" + ev; return true; }
+   return false;
+}
+
+// 事件前清仓。每个 tick 判断(不等新K线),因为要赶在事件之前而不是之后。
+// 手动黑名单同样触发 —— 日历可能取不到数据,这是兜底。
+bool NewsFlattenDue(string &why)
+{
+   if(InpFlatBeforeNewsMin <= 0) return false;
+   if(ManualNewsBlocked()) { why = "手动黑名单时间窗口"; return true; }
+   string ev = "";
+   if(NewsInWindow(InpFlatBeforeNewsMin, 0, ev)) { why = ev; return true; }
    return false;
 }
 
@@ -2554,6 +2577,18 @@ void OnTick()
    //--------------------------------------------------------------
    // 2) 持仓管理（每 tick）
    //--------------------------------------------------------------
+   // --- 重大数据前清仓（规格 §26）---
+   // 必须放在 ManagePositions **之前**、且不受 IsNewBar 限制:
+   // 要赶在事件发生前离场,晚一根 M5 就没意义了。
+   {
+      string nwhy = "";
+      if(NewsFlattenDue(nwhy) && HasOpenPosition())
+      {
+         CloseAll(StringFormat("重大数据前 %d 分钟清仓：%s", InpFlatBeforeNewsMin, nwhy));
+         Push(StringFormat("⚠️ 重大数据临近（%s），已清仓离场", nwhy));
+      }
+   }
+
    ManagePositions(atr);
 
    //--------------------------------------------------------------
