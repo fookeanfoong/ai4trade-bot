@@ -1,20 +1,25 @@
 ; ============================================================================
-; XAUUSD ScalperGuard —— V2 $200 Demo 激进档
+; XAUUSD ScalperGuard —— FOMC / 重大数据日专用（由 sim200 派生）
 ;
-; 对应用户 V2.0 规格。与 aggressive 档的差别只在**与余额挂钩的项**:
-; 日内限额已全部改为百分比,所以这一档其实和 aggressive 数值相同 ——
-; 保留独立文件是为了标明"这是照 V2 规格跑的那一档",便于事后区分样本来源。
+; 依据 reports/gold_fomc.md 的实测(GC=F 两年,16 个 FOMC 决议日):
 ;
-; 规格 §21/§23 换算($200 账户):
-;     目标 +25% = +$50   日亏上限 -15% = -$30
-;     保守档 +10% = +$20  收紧档 +15% = +$30
-; 换成 $10,000 账户时这些百分比自动变成 +$2500 / -$1500,不必手改。
+;   决议当天整日波幅只有平常的 1.39 倍 —— 不算夸张。
+;   但**决议那一小时是 2.82 倍**、发布会那一小时 2.63 倍,
+;   之后 20:00 UTC 仍有 1.81 倍、23:00 UTC 还有 1.56 倍。
+;   -> 冲击集中在决议时点,且余波持续约 5 小时,不是 20 分钟。
 ;
-; ⚠️ 风险上限已抬到 5%(规格 §14/§29 要求 A+ 档 5%)。这是 OnInit 里的硬上限,
-;    任何路径(分级、小账户救济、未来的远程指令)都不得越过。
+;   方向:FOMC 日收涨 44%(7/16),普通日 55%。**没有可靠的方向性偏差** ——
+;   "加息=金价跌"在这 16 个样本上不成立。所以本档不做方向预设,只做风险控制。
 ;
-; 只在 DEMO 上用。
+;   另一个实测细节:决议前 4 小时波幅只有平常的 0.70~0.77 倍(市场屏息等待)。
+;   那段时间行情最没意思,却正好通过 ATR 过滤 —— 容易开出一堆低质量单然后
+;   被决议一把打穿。这正是要提前清仓的原因。
+;
+; 2026-09-16 时间(服务器 UTC+3):决议 21:00,发布会 21:30。
+;
+; 用法:9/16 当天开盘前载入本档;9/17 换回 sim200。
 ; ============================================================================
+
 
 ; --- 安全闸门：保持只跑 Demo ---
 InpAllowLiveAccount=false
@@ -23,14 +28,14 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpRiskPctDefault=0.5
+InpRiskPctDefault=1.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
-InpRiskPctMax=1.0
-InpDailyProfitTarget=2500.0
-InpDailyMaxLoss=750.0
-InpConservativeAt=1000.0
-InpReducedAt=1500.0
+InpRiskPctMax=5.0
+InpDailyProfitTarget=50.0
+InpDailyMaxLoss=30.0
+InpConservativeAt=20.0
+InpReducedAt=30.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
 InpMaxTradesPerDay=20
@@ -145,9 +150,10 @@ InpSweepMaxPenetration=1.50
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
+; 分级交给百分比,不再用一刀切的美元上限
 InpRiskCapUSD=0.0
-; 0 = 用真实余额算百分比(见 sim200 档)
-InpVirtualBalanceUSD=0.0
+; 所有百分比以 $200 为基准,而不是终端里的真实余额
+InpVirtualBalanceUSD=200.0
 
 ; --- V2 评分与分级（规格 §28/§29）---
 ; 风险由 setup 质量给,不由"想赚多少"给。C 级(<5分)一律 NO TRADE。
@@ -157,9 +163,9 @@ InpUseV2Scoring=true
 InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
-InpRiskPctB=0.5
-InpRiskPctA=0.8
-InpRiskPctAPlus=1.0
+InpRiskPctB=1.5
+InpRiskPctA=3.0
+InpRiskPctAPlus=5.0
 
 ; --- V2 结构位移 ---
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
@@ -178,7 +184,7 @@ InpVolHighSizeMult=0.60
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
 InpDailyTargetPct=25.0
-InpDailyMaxLossPct=2.0
+InpDailyMaxLossPct=15.0
 InpConservativeAtPct=10.0
 InpReducedAtPct=15.0
 
@@ -209,14 +215,13 @@ InpDirectionMode=1
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 
-; --- 新闻事件窗口（fomc 档会覆盖这几项）---
-; 全部列全,否则从 fomc 档切回来时这几项会残留 —— .set 只覆盖它列出的项。
-InpNewsBeforeMin=30
-InpNewsAfterMin=20
-InpManualNewsTimes=
-; >0 = 重大数据前 N 分钟强制清仓。原新闻过滤只挡新开仓,已持仓会毫无保护
-; 穿过事件 —— 跳空时止损不保证成交价。平时 0,事件日用 fomc 档。
-InpFlatBeforeNewsMin=0
+InpFlatBeforeNewsMin=45
+
+InpNewsBeforeMin=45
+
+InpNewsAfterMin=180
+
+InpManualNewsTimes=21:00
 
 ; --- 监控 ---
 InpPushNotify=true

@@ -216,6 +216,15 @@ InpDirectionMode=1
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 
+; --- 新闻事件窗口（fomc 档会覆盖这几项）---
+; 全部列全,否则从 fomc 档切回来时这几项会残留 —— .set 只覆盖它列出的项。
+InpNewsBeforeMin=30
+InpNewsAfterMin=20
+InpManualNewsTimes=
+; >0 = 重大数据前 N 分钟强制清仓。原新闻过滤只挡新开仓,已持仓会毫无保护
+; 穿过事件 —— 跳空时止损不保证成交价。平时 0,事件日用 fomc 档。
+InpFlatBeforeNewsMin=0
+
 ; --- 监控 ---
 InpPushNotify=true
 InpWriteStatusJson=true
