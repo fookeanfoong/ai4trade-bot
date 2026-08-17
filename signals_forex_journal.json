@@ -20,11 +20,11 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 4,
-      "state": "filled",
+      "state": "won",
       "fill_time": "2026-08-14T17:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-17T07:00:00Z",
+      "exit_price": 1.16078,
+      "r_multiple": 1.5,
       "actual": null
     },
     {
@@ -47,11 +47,11 @@
         "MACD柱连续两根走高": false
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "won",
       "fill_time": "2026-08-14T17:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-17T07:00:00Z",
+      "exit_price": 1.16078,
+      "r_multiple": 1.5,
       "actual": null
     },
     {
