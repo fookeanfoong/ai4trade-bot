@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T16:36:23+00:00",
+  "updated_at": "2026-08-19T17:30:14+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,19 +11,19 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-08-19T16:00:00Z",
-      "price": 1.16741,
+      "last_candle_time": "2026-08-19T17:00:00Z",
+      "price": 1.16673,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "震荡区间",
       "bias": "中性",
       "ema_stack": "EMA20>EMA50>EMA200(多头排列)",
       "indicators": {
-        "rsi14": 90.3,
-        "macd": "金叉 / 柱=0.000844",
-        "ema20": 1.16205,
-        "ema50": 1.15991,
-        "ema200": 1.15681,
+        "rsi14": 84.0,
+        "macd": "金叉 / 柱=0.000749",
+        "ema20": 1.16248,
+        "ema50": 1.16017,
+        "ema200": 1.15693,
         "atr14_pips": 10.6,
         "rsi_bearish_divergence": false
       },
@@ -52,9 +52,9 @@
             "RSI>55": true,
             "无顶背离": true,
             "EMA20>EMA50且站上EMA20": true,
-            "MACD柱连续两根走高": true
+            "MACD柱连续两根走高": false
           },
-          "confirmed": 4,
+          "confirmed": 3,
           "invalidation": "突破后 H1 收回 1.16809 下方 = 假突破,撤单转看方案B",
           "units": 800,
           "notional_usd": 934.22,
@@ -83,10 +83,10 @@
           "confirmations": {
             "阻力区拒绝K线": false,
             "RSI顶背离(必需)": false,
-            "MACD柱缩短": false,
+            "MACD柱缩短": true,
             "阻力区被触及>=2次": false
           },
-          "confirmed": 0,
+          "confirmed": 1,
           "invalidation": "H1 收盘站上 1.16841 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 400,
