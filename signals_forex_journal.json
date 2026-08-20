@@ -209,7 +209,7 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 4,
-      "state": "pending",
+      "state": "expired",
       "fill_time": null,
       "exit_time": null,
       "exit_price": null,
