@@ -315,8 +315,8 @@
         "阻力区被触及>=2次": true
       },
       "confirmed": 3,
-      "state": "pending",
-      "fill_time": null,
+      "state": "filled",
+      "fill_time": "2026-08-20T04:00:00Z",
       "exit_time": null,
       "exit_price": null,
       "r_multiple": null,
