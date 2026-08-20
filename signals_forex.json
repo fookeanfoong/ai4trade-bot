@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T21:32:29+00:00",
+  "updated_at": "2026-08-20T22:32:25+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,25 +11,25 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-08-20T21:00:00Z",
-      "price": 1.16809,
+      "last_candle_time": "2026-08-20T22:00:00Z",
+      "price": 1.16863,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "震荡区间",
       "bias": "中性",
       "ema_stack": "EMA20>EMA50>EMA200(多头排列)",
       "indicators": {
-        "rsi14": 54.2,
-        "macd": "死叉 / 柱=-0.000377",
-        "ema20": 1.16803,
-        "ema50": 1.16573,
-        "ema200": 1.15962,
-        "atr14_pips": 9.4,
+        "rsi14": 58.0,
+        "macd": "死叉 / 柱=-0.000314",
+        "ema20": 1.16809,
+        "ema50": 1.16585,
+        "ema200": 1.15971,
+        "atr14_pips": 9.2,
         "rsi_bearish_divergence": true
       },
       "levels": {
         "resistance": 1.17137,
-        "support": 1.15287,
+        "support": 1.15354,
         "zone_touches": 1
       },
       "plans": [
@@ -49,12 +49,12 @@
           "size_factor": 1.0,
           "confirmations": {
             "H1收盘破阻力": false,
-            "RSI>55": false,
+            "RSI>55": true,
             "无顶背离": false,
             "EMA20>EMA50且站上EMA20": true,
             "MACD柱连续两根走高": true
           },
-          "confirmed": 2,
+          "confirmed": 3,
           "invalidation": "突破后 H1 收回 1.17137 下方 = 假突破,撤单转看方案B",
           "units": 800,
           "notional_usd": 936.87,
