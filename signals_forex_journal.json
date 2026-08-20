@@ -289,11 +289,11 @@
         "阻力区被触及>=2次": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T03:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-20T09:00:00Z",
+      "exit_price": 1.17085,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -315,11 +315,11 @@
         "阻力区被触及>=2次": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T04:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-20T09:00:00Z",
+      "exit_price": 1.17086,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -385,6 +385,33 @@
       "entry": 1.16835,
       "stop": 1.16585,
       "tp1": 1.1721,
+      "stop_pips": 25.0,
+      "rr1": 1.5,
+      "mt5_lots": 0.0,
+      "confirmations": {
+        "H1收盘破阻力": true,
+        "RSI>55": true,
+        "无顶背离": false,
+        "EMA20>EMA50且站上EMA20": true,
+        "MACD柱连续两根走高": true
+      },
+      "confirmed": 3,
+      "state": "pending",
+      "fill_time": null,
+      "exit_time": null,
+      "exit_price": null,
+      "r_multiple": null,
+      "actual": null
+    },
+    {
+      "id": "EUR_USD|方案A · 顺势做多(突破回踩)|2026-08-20T09:00:00Z",
+      "instrument": "EUR_USD",
+      "plan": "方案A · 顺势做多(突破回踩)",
+      "direction": "long",
+      "signal_time": "2026-08-20T09:00:00Z",
+      "entry": 1.16834,
+      "stop": 1.16584,
+      "tp1": 1.17209,
       "stop_pips": 25.0,
       "rr1": 1.5,
       "mt5_lots": 0.0,
