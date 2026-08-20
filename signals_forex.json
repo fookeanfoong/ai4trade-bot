@@ -1,30 +1,30 @@
 {
-  "updated_at": "2026-08-20T01:34:38+00:00",
+  "updated_at": "2026-08-20T03:00:53+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
   "risk_pct": 1.0,
   "risk_usd": 2.0,
   "blackouts": [],
-  "decision": "wait",
-  "actionable_count": 0,
+  "decision": "enter",
+  "actionable_count": 1,
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-08-20T01:00:00Z",
-      "price": 1.16836,
+      "last_candle_time": "2026-08-20T02:00:00Z",
+      "price": 1.16781,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "震荡区间",
       "bias": "中性",
       "ema_stack": "EMA20>EMA50>EMA200(多头排列)",
       "indicators": {
-        "rsi14": 80.4,
-        "macd": "金叉 / 柱=7.3e-05",
-        "ema20": 1.1655,
-        "ema50": 1.1623,
-        "ema200": 1.15774,
-        "atr14_pips": 9.5,
+        "rsi14": 77.4,
+        "macd": "死叉 / 柱=-3.9e-05",
+        "ema20": 1.16569,
+        "ema50": 1.1625,
+        "ema200": 1.15783,
+        "atr14_pips": 9.6,
         "rsi_bearish_divergence": true
       },
       "levels": {
@@ -70,7 +70,7 @@
           "name": "方案B · 逆势做空(双顶拒绝)",
           "direction": "short",
           "trigger": "价格上探 1.16835–1.16863 后 H1 收盘失败(长上影/吞没)",
-          "triggered": false,
+          "triggered": true,
           "entry": 1.16835,
           "stop": 1.17085,
           "tp1": 1.1646,
@@ -81,7 +81,7 @@
           "risk_usd": 1.0,
           "size_factor": 0.5,
           "confirmations": {
-            "阻力区拒绝K线": false,
+            "阻力区拒绝K线": true,
             "RSI顶背离(必需)": true,
             "MACD柱缩短": true,
             "阻力区被触及>=2次": true
@@ -97,7 +97,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "armed"
+          "status": "triggered"
         }
       ]
     }
