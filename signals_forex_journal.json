@@ -456,6 +456,33 @@
       "exit_price": null,
       "r_multiple": null,
       "actual": null
+    },
+    {
+      "id": "EUR_USD|方案A · 顺势做多(突破回踩)|2026-08-20T11:00:00Z",
+      "instrument": "EUR_USD",
+      "plan": "方案A · 顺势做多(突破回踩)",
+      "direction": "long",
+      "signal_time": "2026-08-20T11:00:00Z",
+      "entry": 1.16833,
+      "stop": 1.16583,
+      "tp1": 1.17208,
+      "stop_pips": 25.0,
+      "rr1": 1.5,
+      "mt5_lots": 0.0,
+      "confirmations": {
+        "H1收盘破阻力": true,
+        "RSI>55": true,
+        "无顶背离": false,
+        "EMA20>EMA50且站上EMA20": true,
+        "MACD柱连续两根走高": false
+      },
+      "confirmed": 2,
+      "state": "pending",
+      "fill_time": null,
+      "exit_time": null,
+      "exit_price": null,
+      "r_multiple": null,
+      "actual": null
     }
   ]
 }
