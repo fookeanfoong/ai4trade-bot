@@ -182,7 +182,7 @@
         "MACD柱连续两根走高": false
       },
       "confirmed": 3,
-      "state": "pending",
+      "state": "expired",
       "fill_time": null,
       "exit_time": null,
       "exit_price": null,
@@ -369,8 +369,8 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "pending",
-      "fill_time": null,
+      "state": "filled",
+      "fill_time": "2026-08-20T12:00:00Z",
       "exit_time": null,
       "exit_price": null,
       "r_multiple": null,
@@ -396,8 +396,8 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "pending",
-      "fill_time": null,
+      "state": "filled",
+      "fill_time": "2026-08-20T12:00:00Z",
       "exit_time": null,
       "exit_price": null,
       "r_multiple": null,
@@ -423,8 +423,8 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "pending",
-      "fill_time": null,
+      "state": "filled",
+      "fill_time": "2026-08-20T12:00:00Z",
       "exit_time": null,
       "exit_price": null,
       "r_multiple": null,
@@ -450,8 +450,8 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "pending",
-      "fill_time": null,
+      "state": "filled",
+      "fill_time": "2026-08-20T12:00:00Z",
       "exit_time": null,
       "exit_price": null,
       "r_multiple": null,
@@ -477,8 +477,8 @@
         "MACD柱连续两根走高": false
       },
       "confirmed": 2,
-      "state": "pending",
-      "fill_time": null,
+      "state": "filled",
+      "fill_time": "2026-08-20T12:00:00Z",
       "exit_time": null,
       "exit_price": null,
       "r_multiple": null,
