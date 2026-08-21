@@ -1781,6 +1781,16 @@ void SuggestFinerGoldSymbol()
 //==================================================================
 void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
 {
+   // 先查两道开关。不查的话每个信号都会走完全部计算再被 10027 打回,
+   // 日志里只剩一行看不出所以然的"下单失败",真正的原因(哪个开关关着)看不见。
+   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED))
+   {
+      NoTrade(StringFormat("算法交易未开启：终端开关=%s，本EA开关=%s —— 开仓会以 10027 失败",
+              TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) ? "开" : "**关**",
+              MQLInfoInteger(MQL_TRADE_ALLOWED)          ? "开" : "**关**"));
+      return;
+   }
+
    double balance   = EffectiveBalance();
    double riskMoney = balance * riskPct / 100.0;
    double slDist    = MathAbs(sg.entry - sg.sl);
@@ -1825,13 +1835,22 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
 
    if(!ok)
    {
-      LogLine("ERROR", StringFormat("下单失败 %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+      uint rc = trade.ResultRetcode();
+      string hint = "";
+      if(rc == 10027) hint = " —— 算法交易开关被关闭。工具栏 Algo Trading(Ctrl+E) 与"
+                             " 图表右键->智能交易系统->属性->常用->允许算法交易，两处都要开。";
+      else if(rc == 10014) hint = StringFormat(" —— 手数非法。本次 %.3f，品种最小 %.3f 步长 %.3f。",
+                                  lot, SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN),
+                                  SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP));
+      else if(rc == 10016) hint = " —— 止损/止盈距离不合法(太贴近现价)。";
+      else if(rc == 10019) hint = " —— 保证金不足。";
+      LogLine("ERROR", StringFormat("下单失败 %d %s%s", rc, trade.ResultRetcodeDescription(), hint));
       return;
    }
 
    ulong openTicket = trade.ResultOrder();   // 对冲账户下,开仓订单号即持仓号
-   LogLine("OPEN", StringFormat("#%I64u %s %.2f 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
-           openTicket, sg.dir > 0 ? "BUY" : "SELL", lot, sg.entry, sg.sl, slDist, sg.tp2, sg.rr, sg.score,
+   LogLine("OPEN", StringFormat("#%I64u %s %s 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
+           openTicket, sg.dir > 0 ? "BUY" : "SELL", DoubleToString(lot, VolDigits()), sg.entry, sg.sl, slDist, sg.tp2, sg.rr, sg.score,
            lot * slDist * MoneyPerLotPerDollar(), riskPct, sg.note,
            ds.trades + 1, InpMaxTradesPerDay, ds.total) + targetNote);
    LogLine("QUALITY", StringFormat("#%I64u 开仓时行情质量：%s", openTicket, g_quality));
@@ -2215,13 +2234,17 @@ void Panel(DayStats &ds, string status)
       "当日笔数: %d / %d   连亏: %d\n"
       "模式: %s\n"
       "点差: %.2f  ATR: %.2f\n"
+      "算法交易: 终端%s / 本EA%s\n"
       "状态: %s\n",
       AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_DEMO ? "DEMO" : "REAL",
       _Symbol, bal, (int)AccountInfoInteger(ACCOUNT_LEVERAGE),
       ds.total, ds.realized, ds.floating,
       DailyTargetUSD(), DailyMaxLossUSD(),
       ds.trades, InpMaxTradesPerDay, ds.consecLoss,
-      mode, SpreadUSD(), Buf(hAtrL, 0, 1), status);
+      mode, SpreadUSD(), Buf(hAtrL, 0, 1),
+      TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) ? "开" : "关!",
+      MQLInfoInteger(MQL_TRADE_ALLOWED)          ? "开" : "关!",
+      status);
    Comment(txt);
 }
 
@@ -2370,6 +2393,17 @@ int OnInit()
       Alert("账户不允许 EA 自动交易。");
       return INIT_FAILED;
    }
+
+   // MT5 有**两道**算法交易开关,任一关闭都会让每一次 OrderSend 以
+   // 10027 (auto trading disabled by client) 失败 —— 而且是静默失败:
+   // EA 照常运行、照常出信号,只是单子一张也发不出去。
+   // 原来只查了账户级权限,查不到这两道,所以只能等下单时才发现。
+   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED))
+      Alert("⚠️ 终端的【算法交易】按钮是关的（工具栏 Algo Trading / Ctrl+E）。"
+            "现在开仓会全部以 10027 失败。");
+   if(!MQLInfoInteger(MQL_TRADE_ALLOWED))
+      Alert("⚠️ 本 EA 的【允许算法交易】没有勾选（图表右键 -> 智能交易系统 -> 属性 -> 常用）。"
+            "现在开仓会全部以 10027 失败。");
 
    hEmaFastH = iMA(_Symbol, InpHTF, InpEmaFastHTF, 0, MODE_EMA, PRICE_CLOSE);
    hEmaSlowH = iMA(_Symbol, InpHTF, InpEmaSlowHTF, 0, MODE_EMA, PRICE_CLOSE);
