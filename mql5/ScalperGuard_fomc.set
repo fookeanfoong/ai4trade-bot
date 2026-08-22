@@ -227,3 +227,5 @@ InpManualNewsTimes=21:00
 InpPushNotify=true
 InpWriteStatusJson=true
 InpVerboseLog=true
+
+InpTesterQuiet=true

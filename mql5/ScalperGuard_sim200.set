@@ -227,3 +227,5 @@ InpFlatBeforeNewsMin=0
 InpPushNotify=true
 InpWriteStatusJson=true
 InpVerboseLog=true
+
+InpTesterQuiet=true

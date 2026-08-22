@@ -1,18 +1,30 @@
 ; ============================================================================
-; XAUUSD ScalperGuard —— 数据采集档（激进）
+; XAUUSD ScalperGuard —— 策略测试器专用（回测 / 参数优化）
 ;
-; 目的不是赚钱，是**先把成交样本跑出来**。没有样本就无从判断哪一环该改。
-; 只在 DEMO 上用。
+; 和 sim200 档的**交易规则完全一致**（同样的分级、同样的风险百分比、同样的
+; 熔断），只改了三件与"环境"有关的事：
 ;
-; 用法：EA 属性对话框 -> 输入参数 -> 右下角「载入」-> 选本文件 -> 确定。
-; 退回保守档：同一个对话框点「重置」，即恢复代码里的默认值。
+;   1. InpVirtualBalanceUSD=0
+;      回测里初始入金是你在测试器"存款"栏里填的数（填 200）。
+;      再叠一层虚拟本金等于把本金算两遍，权益曲线和回撤全部失真。
 ;
-; 基准余额 $10,000（日内上限按余额比例设，与 $200 账户的 +$50/-$15 同口径）。
-; 换了余额记得重算：目标 = 余额×25%，上限 = 余额×7.5%。
+;   2. 监控设施全关（InpVerboseLog / InpWriteStatusJson / InpPushNotify=false，
+;      InpTesterQuiet=true）
+;      实盘那套每笔写 CSV、每 30 秒扫全历史、写 status.json 的东西，
+;      在回测里是纯开销 —— 优化跑批时能把几分钟拖成几小时。
 ;
-; ⚠️ 这一档放宽的是**过滤器**，不是安全底线。以下四条没有动，也不要动：
-;      每单必带止损、止损只能往盈利方向移、禁止亏损加仓/马丁、真实账户闸门。
+;   3. 其余原样不动 —— 回测要测的是策略，不是另一套策略。
+;
+; ⚠️ 回测测不到的三件事（看结果时必须记住）：
+;   · 新闻过滤：MT5 测试器里经济日历不可用，InpManualNewsTimes 又是空的，
+;     所以回测中新闻过滤**完全没生效**。实盘会比回测**少开一些单**。
+;   · 点差：测试器用的是历史点差（真实ticks模式）或固定点差（其它模式）。
+;     黄金在数据前后点差会瞬间放大数倍，回测普遍低估这块成本。
+;   · 滑点：测试器默认理想成交。实盘的止损滑点只会让结果更差。
+;   回测结果是**乐观上界**。
 ; ============================================================================
+
+
 
 ; --- 安全闸门：保持只跑 Demo ---
 InpAllowLiveAccount=false
@@ -21,14 +33,14 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpRiskPctDefault=0.5
+InpRiskPctDefault=1.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
-InpRiskPctMax=1.0
-InpDailyProfitTarget=2500.0
-InpDailyMaxLoss=750.0
-InpConservativeAt=1000.0
-InpReducedAt=1500.0
+InpRiskPctMax=5.0
+InpDailyProfitTarget=50.0
+InpDailyMaxLoss=30.0
+InpConservativeAt=20.0
+InpReducedAt=30.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
 InpMaxTradesPerDay=20
@@ -143,8 +155,9 @@ InpSweepMaxPenetration=1.50
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
+; 分级交给百分比,不再用一刀切的美元上限
 InpRiskCapUSD=0.0
-; 0 = 用真实余额算百分比(见 sim200 档)
+; 所有百分比以 $200 为基准,而不是终端里的真实余额
 InpVirtualBalanceUSD=0.0
 
 ; --- V2 评分与分级（规格 §28/§29）---
@@ -155,9 +168,9 @@ InpUseV2Scoring=true
 InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
-InpRiskPctB=0.5
-InpRiskPctA=0.8
-InpRiskPctAPlus=1.0
+InpRiskPctB=1.5
+InpRiskPctA=3.0
+InpRiskPctAPlus=5.0
 
 ; --- V2 结构位移 ---
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
@@ -176,7 +189,7 @@ InpVolHighSizeMult=0.60
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
 InpDailyTargetPct=25.0
-InpDailyMaxLossPct=2.0
+InpDailyMaxLossPct=15.0
 InpConservativeAtPct=10.0
 InpReducedAtPct=15.0
 
@@ -217,8 +230,8 @@ InpManualNewsTimes=
 InpFlatBeforeNewsMin=0
 
 ; --- 监控 ---
-InpPushNotify=true
-InpWriteStatusJson=true
-InpVerboseLog=true
+InpPushNotify=false
+InpWriteStatusJson=false
+InpVerboseLog=false
 
 InpTesterQuiet=true

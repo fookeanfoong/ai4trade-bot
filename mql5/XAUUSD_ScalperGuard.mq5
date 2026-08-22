@@ -263,11 +263,22 @@ input group "=== 监控 ==="
 input bool     InpPushNotify        = true;    // 关键事件推送到手机（需在 工具->选项->通知 填 MetaQuotes ID）
 input bool     InpWriteStatusJson   = true;    // 每 30 秒把状态快照写入 Files\XAUUSD_ScalperGuard_status.json
 
+// 策略测试器里,实盘那套监控设施(每笔写 CSV、每 30 秒扫全历史做统计、写 status.json)
+// 全是纯开销:2 年 M5 回测会产生几千笔成交,ReportTradeStats 每 30 个模拟秒扫一次
+// **全部历史** —— 复杂度 O(总时长 × 成交数),优化跑批时能把几分钟的活拖成几小时。
+// 默认在测试器里关掉这些;想在单次回测里留 CSV 供事后分析,把这项设为 false。
+input bool     InpTesterQuiet       = true;    // 回测/优化时静默监控设施（强烈建议保持 true）
+
 //==================================================================
 // 全局
 //==================================================================
 CTrade        trade;
 CPositionInfo pos;
+
+// 运行环境。OnInit 里赋值一次,后面到处要用。
+bool g_tester = false;      // 在策略测试器里(单次回测 或 优化)
+bool g_optim  = false;      // 在参数优化里(此时连 Print/Comment 都是浪费)
+bool g_quiet  = false;      // 静默监控设施 = g_tester && InpTesterQuiet
 
 int hEmaFastH, hEmaSlowH;      // HTF EMA
 int hEmaFastL, hEmaSlowL;      // LTF EMA
@@ -381,7 +392,7 @@ datetime DayStart(datetime t)
 
 void LogLine(string tag, string msg)
 {
-   if(InpVerboseLog)
+   if(InpVerboseLog && !g_quiet)
    {
       // FILE_ANSI 会按系统代码页写中文(实测导出的是 GBK),换台机器就乱码。
       // 和 status.json 一样自己转 UTF-8 按二进制追加。
@@ -400,7 +411,8 @@ void LogLine(string tag, string msg)
          }
       }
    }
-   Print("[", tag, "] ", msg);
+   // 优化跑批时 MT5 本就压制 agent 日志,这里再省一层字符串开销。
+   if(!g_optim) Print("[", tag, "] ", msg);
 }
 
 int ReasonBucket(string w)
@@ -1902,6 +1914,21 @@ double InitialR(ulong ticket, double fallback)
    return fallback;
 }
 
+// 测试器专用:抹掉上一次回测残留的 SG_ 全局变量。
+// 全局变量是**终端级**的,不随回测结束而消失;而每次回测的订单号都从 1 重新开始。
+// 于是上一轮的 SG_R_1(初始止损距离)会被这一轮的 1 号单读到 —— R 倍数算错、
+// 保本/追踪/部分止盈全部踩偏,而且只在回测里发生,实盘查不出来。
+void PurgeFlags()
+{
+   int n = GlobalVariablesTotal();
+   for(int i = n - 1; i >= 0; i--)
+   {
+      string nm = GlobalVariableName(i);
+      if(StringFind(nm, "SG_P_") == 0 || StringFind(nm, "SG_R_") == 0)
+         GlobalVariableDel(nm);
+   }
+}
+
 // 清理已平仓位留下的标记
 void CleanFlags()
 {
@@ -2130,6 +2157,10 @@ long g_lastStatsAt = 0;
 
 void ReportTradeStats(int everyN)
 {
+   // 这个函数每次都要 HistorySelect(0, ...) 拉**全部**历史再遍历。
+   // 实盘每 30 秒扫几十笔没关系;回测里成交数会长到几千笔,而"每 30 秒"
+   // 是模拟时间 —— 2 年就是 200 万次调用。必须在测试器里关掉。
+   if(g_quiet) return;
    if(!HistorySelect(0, TimeCurrent() + 3600)) return;
 
    ulong  pid[]; double pnl[]; datetime tm[];
@@ -2245,7 +2276,7 @@ void Panel(DayStats &ds, string status)
       TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) ? "开" : "关!",
       MQLInfoInteger(MQL_TRADE_ALLOWED)          ? "开" : "关!",
       status);
-   Comment(txt);
+   if(!g_optim) Comment(txt);      // 优化时没人看,Comment 每次都要刷图表
 }
 
 //==================================================================
@@ -2288,7 +2319,7 @@ bool WriteUtf8(string fname, string content)
 // 推到云端的接口，读的都是同一份结构，EA 这边不需要再改。
 void PublishStatus(DayStats &ds, string status)
 {
-   if(!InpWriteStatusJson) return;
+   if(!InpWriteStatusJson || g_quiet) return;
 
    string mode = "normal";
    if(ds.total >= ReducedAtUSD())           mode = "reduced";
@@ -2362,9 +2393,17 @@ void PublishStatus(DayStats &ds, string status)
 //==================================================================
 int OnInit()
 {
+   // --- 运行环境 ---
+   g_tester = (bool)MQLInfoInteger(MQL_TESTER);
+   g_optim  = (bool)MQLInfoInteger(MQL_OPTIMIZATION);
+   g_quiet  = (g_tester && InpTesterQuiet);
+
    // --- Demo 闸门 ---
    long tmode = AccountInfoInteger(ACCOUNT_TRADE_MODE);
-   bool isDemo = (tmode == ACCOUNT_TRADE_MODE_DEMO || tmode == ACCOUNT_TRADE_MODE_CONTEST);
+   // 策略测试器一律放行:里面没有真钱,而某些经纪商的测试账户 ACCOUNT_TRADE_MODE
+   // 并不报 DEMO,不放行就等于永远做不了回测。
+   bool isDemo = (tmode == ACCOUNT_TRADE_MODE_DEMO ||
+                  tmode == ACCOUNT_TRADE_MODE_CONTEST || g_tester);
    if(!isDemo && !InpAllowLiveAccount)
    {
       Alert("XAUUSD_ScalperGuard: 检测到真实账户。默认只允许 Demo 运行。"
@@ -2420,6 +2459,9 @@ int OnInit()
       Print("指标句柄创建失败");
       return INIT_FAILED;
    }
+
+   // 回测开始前清干净上一轮残留的标记(说明见 PurgeFlags)
+   if(g_tester) PurgeFlags();
 
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetAsyncMode(false);

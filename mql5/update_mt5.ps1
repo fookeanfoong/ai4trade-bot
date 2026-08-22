@@ -24,6 +24,7 @@ $Files = @{
     "ScalperGuard_v2_200.set"     = "Presets"
     "ScalperGuard_sim200.set"     = "Presets"
     "ScalperGuard_fomc.set"       = "Presets"
+    "ScalperGuard_backtest.set"   = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
@@ -31,7 +32,8 @@ $MustHave = @(
     '__DATETIME__',            # 编译戳（旧版是 C 写法的 __TIME__，MQL5 不认）
     'InpAllowMultiPosition',   # 多仓
     'InpUseLooseEntry',        # 宽松入场 路径D
-    'InpSlMaxATRMult'          # 止损上限跟随 ATR
+    'InpSlMaxATRMult',         # 止损上限跟随 ATR
+    'InpTesterQuiet'           # 策略测试器静默（回测支持）
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误
