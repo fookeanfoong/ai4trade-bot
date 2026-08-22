@@ -1,224 +1,223 @@
 {
-  "fetched_at": "2026-08-22T16:30:04+00:00",
+  "fetched_at": "2026-08-22T17:25:18+00:00",
   "high_impact_events": [
     "联储/FOMC",
     "欧央行",
     "美国CPI",
     "澳联储",
-    "非农就业",
-    "零售销售"
+    "非农就业"
   ],
   "blackout_recommended": true,
   "items": [
     {
       "title": "Westpac sees the Dollar Index lower and has two other trade ideas - investingLive",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQT0RJSEN2TU9YRXc5MTdMZ2Q0Z2lVbTNEei05WXROM2c0MFdLS1FWd1ZtRUI4QlJuYi1aS1ZKTUdoRFFqaUVRbVVlNGw3UERSMEhZMm93MGoyaE9CYWZqTEF6NDMzZW1JVERfRzdjSjg5amNYWm5MOWJ1N2hmNkdiUWtnOGVsSFZkSHNYMEFIRVJqSnoyVnY5SXRzWG16YlE?oc=5",
-      "age_h": 5.4,
+      "age_h": 6.3,
       "when": "2026-08-22T11:04:23+00:00"
-    },
-    {
-      "title": "US Dollar Softens as Pro-Risk Sentiment Gains Traction: ING Analysis - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOU1pLVHowSVJScmdaNzBrdEJ5c0tYenlUMzRHRGtxRWlhNmk4cE9JTUtURHJoUWw1RWtXR3d4SFZ4aVpSZlZHSi10TjlHbnZtV2tkdld2TklETDFHQlRFbnViTk4wZTQxQk81SUtwRTBfaUVIMHc4ZnoxQ0gyaUs5S3hqTFY?oc=5",
-      "age_h": 16.9,
-      "when": "2026-08-21T23:37:38+00:00"
     },
     {
       "title": "US Dollar Weekly Forecast: The Bond Market Emerges as the Dollar’s Newest Adversary - CryptoRank",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNU2JleEpCNkZiajdIdFFlMGk1WVlLNU1hNnlfdktMZkxBQlpVREFCY0F4ZWctOG0tb0loUGNzS2JxM19EQlZHZVp1TUt3NjI0c2RvMC12cHNGZXR6MHVPY2s0bTJoUHp4VXM4SWJqTUczYXBMb1RUZkdHampJMzkyQV9mTnYyR0tZ?oc=5",
-      "age_h": 18.3,
+      "age_h": 19.3,
       "when": "2026-08-21T22:09:51+00:00"
+    },
+    {
+      "title": "US Dollar Faces Jackson Hole Volatility, TD Securities Warns - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPVVByLVdYWUtUX1pDT2Rjdjk1ZzMwQjN2akZKOWNYblhPSmp5bHJiang1SFN0YlNaOVowQ0pQN0NGV0ZqbzJGRW0tX05yQm4zbEQ1WE1lTGJWdGNTcHZmUkxYREVuX0hTQUhjZy1oUDFlbVJUeXVIN09CclMwbzBLc1o5WGVuU1lJcnRyYnRR?oc=5",
+      "age_h": 23.9,
+      "when": "2026-08-21T17:32:40+00:00"
     },
     {
       "title": "US Dollar Weekly Forecast: The Bond Market Emerges As The Dollar's Newest Adversary - Bitcoin World",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBYUTZxd2tSU2tKU3VjS2o5SGpEdjRPajdmRHZsLVJkQlpvazZxME5VR283WW9wUHlCVVlPUzNuNDVMSDFKWXpGc040ZW5IMnl0RTVDMzQyZW9sUW1kWFZNLVlIUVR4NV9qNnBUX1VFR0c4aER0ajlpOUtSWQ?oc=5",
-      "age_h": 21.8,
+      "age_h": 22.8,
       "when": "2026-08-21T18:40:11+00:00"
     },
     {
       "title": "US Dollar Slammed, USD/JPY Sinks on Treasury Buybacks - FOREX.com",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOejdpYUk1VEJsY2MxUXdjaVViYVJ1TFZsTzlPc0d5NGxKdThTV2ZET2dqRWdjN2dwSHFsaTdZa0JwcE1ubWFwNktNaEtaQkZkdDd3d3RaWEItSzFsYURfVnRkTXZQb0ZaOXRLMU11ZTBBR1JhWTBZQzBvbUFmUkZhSXQ0N0dJMHJPcDZKeU9wSFFZTGNCZHpSbGRyeld6RGo2?oc=5",
-      "age_h": 23.6,
-      "when": "2026-08-21T16:54:40+00:00"
+      "age_h": 16.7,
+      "when": "2026-08-22T00:41:39+00:00"
     },
     {
       "title": "US Fed Meeting March 2026: When & Where To Watch Jerome Powell Speech LIVE Today; FOMC Decision Time in India - Goodreturns",
       "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQckdzVXlielcxcFpHTXpIX3I0OXUwN0VaR3kxNVpuV0xsVHRGLUxLbmNWRWY2ZVZjZVdJZmN0UDZiTlRaeVRjR3ppQ1hlWWMwZnZrb0Yxc0gzWnBMOGtPVWhSUG10aER1dkhtTVFlR183aldaVHp1WmFYTkwwNFI4c3I3bmdldnpMQkVObndkTmtEZDF3a0xuR1NBbnZBLThwSWMzSXZiNHpGdUNOSGxtWnBfVkJJOHhUYnBMWDhWSmlZUk9ScEZmd2VsMFE4UXRyekN2M05GaXRFdDBD?oc=5",
-      "age_h": 2.7,
+      "age_h": 3.6,
       "when": "2026-08-22T13:50:02+00:00"
-    },
-    {
-      "title": "What to Look Out for in Economic Data This Week (August 24-28) - Kiplinger",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1MeVNwMVVnVmhvRWo4b0N4WkhCRXQxTVRtb2ZmTWhCSmd4eERsN3Nfdllwejg0eG5ueFFCRUdPTzVUaXh4dEFZaWJqN3FFZnlFWTBlZ2ZvVkFFRzVScTR3TXRhZGl6MHp2RUF1clppVDRvR1lveC1FaXNCeXQ?oc=5",
-      "age_h": 24.0,
-      "when": "2026-08-21T16:32:09+00:00"
     },
     {
       "title": "A Warning from Markets to the US Treasury - Robin J Brooks | Substack",
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9LRUJxWWVlY1dKamtoVWVSb3AyTV9aRjVyTHJzYVdNQzU3WVpIc3NiQ3RyM2ZRZVdha1Q4M21hZlVIYnc4bFBXYVBDZlM0TjE5d3l4Skh4N3pzcXZ1WGtXbHhobVFTbVRSdUJsLWpkdjlZSXNoNFhZ?oc=5",
-      "age_h": 7.5,
+      "age_h": 8.4,
       "when": "2026-08-22T09:01:54+00:00"
     },
     {
-      "title": "Jackson Hole 2026: What to Watch When Warsh Steps to the Podium Friday - Tech Times",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQcXJZY0FjUDJZUnZtdWpaWnYzT3lxc1l2dGNTNkxKNWtWZms1bGl4NHhUamJDa0RSZ0V2TDJoa00zZTFSeGhQN1dBdllKSWVUNUxmZkFnRDd3NndnaGNsc3ZQQWtFTGpKOF90bFotVENRSFk0djhlRnEtOFZzMV83aWpyMFhOZUhlNmpnRmwtNzBVbzFlcmV5Mi1LRXZqRkJHTDRZRnRzRzlYSHdNSEFRVEYycXc?oc=5",
-      "age_h": 21.9,
-      "when": "2026-08-21T18:38:01+00:00"
+      "title": "US Dollar Faces Jackson Hole Volatility, TD Securities Warns - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPVVByLVdYWUtUX1pDT2Rjdjk1ZzMwQjN2akZKOWNYblhPSmp5bHJiang1SFN0YlNaOVowQ0pQN0NGV0ZqbzJGRW0tX05yQm4zbEQ1WE1lTGJWdGNTcHZmUkxYREVuX0hTQUhjZy1oUDFlbVJUeXVIN09CclMwbzBLc1o5WGVuU1lJcnRyYnRR?oc=5",
+      "age_h": 23.9,
+      "when": "2026-08-21T17:32:40+00:00"
     },
     {
       "title": "The Federal Reserve’s Independence Is an Illusion - SchiffGold.com",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPVk4ybl9mdG1EeXNEbUNPcU85a1ZOcTNaYzJHWjY2R182NGw2SGg0NEJ4eE9IRm4tVmtKZl9PRXNRSk5YZTgyc3lHMGZIYm1SUDZwbE0wSFhTSktUSGh2UXZWTU1vMFFwemJjd1lmMExxdnhjejBidmNiTm5CampET01KLVFKcWZFMTRUOFpwNklmeVpYQmg5MmtR?oc=5",
-      "age_h": 17.9,
+      "age_h": 18.8,
       "when": "2026-08-21T22:36:47+00:00"
+    },
+    {
+      "title": "Why Is HOOD’s Stock Falling Today? Robinhood CFO Says The Quarter Was ‘Strange’ But The Retail Is Healthy - Stocktwits",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPNUYyQWRLakJ2Z2gxbjlkcjdQUFhjTGRudEktVzdEcXVRc2RWc2p6bGNiU1VhMm1sTkRjOXZNU0RZU0JDZENhczd5bFFNYk1naGxhcXNrWHJueTdicGFWRGYwNzNEaFBEUllhdWhZUmY3NmdIdmRwMTBzRFVyUzdjLS1wQmE5dERsUEVYS24zNTFSaGNDRlNCWk1PZl95ajVVcWtrTkdzZHdXV1RhUkt1NmZRa044YVNIYmZkTE50dFBOVmFWWk5qMA?oc=5",
+      "age_h": 19.5,
+      "when": "2026-08-21T21:56:29+00:00"
     },
     {
       "title": "Austria Inflation Rises to 2.7% in July, Beating Forecasts - CryptoRank",
       "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBSYVpjSzk2QXJQN3lKODJzQkVEaGRYb2RXd2R3Rkk5d2VMSGV2X1NqSmxabG1namhqdDNqN0FHWnZKNnpVX1BaUWE0YThRUnZPak40QXF3NUQwVTU1cE5rNGsyeUlzTHR3UWxjaFF2Q0Iwbkk?oc=5",
-      "age_h": 4.8,
+      "age_h": 5.7,
       "when": "2026-08-22T11:43:59+00:00"
-    },
-    {
-      "title": "What Europe’s Extreme Weather Means for Its Stocks and Economy - Morningstar",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOV2lfaUdIcnVPTGx4QVlid0pvelRtZUJjWjBKTkdCLUVzaWJYejJHQTlMalhVYnFtMC0xZWpSb0xsWGhrQlZwazdTb0w5THo1dk5VQU9LaV8wRU1CMm1aLVJndlRNT3pSOXRYQVZwMnVlcWRGS291YUY0Y2tab1B6eEFlRFNUOVUwaUlleVdKbWlyTU0?oc=5",
-      "age_h": 22.0,
-      "when": "2026-08-21T18:29:12+00:00"
     },
     {
       "title": "How banks fund themselves affects the reach of ECB rate decisions, study finds - Cyprus Mail",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQjFvOGM1aDhwTF94WGlnTGxiVlNObVhTMVBYX1V1M0diaGNyVUdKc0JwQndkQXEzeGpHTnc1NDIyWFl0X1dfZUZrYnBaak54czFrMGFxX2Vielh1bzZseS1DTmZyZDVpZXZBQ0MtRUN6dHFjbzhTblFxVkJhd3VLRHRtQkV3TDNiUGxPRW9PWDhQeVZfVElBUGhDSkRKTzRMQnNxalRXcmRacThjNGZBRzN3?oc=5",
-      "age_h": 11.0,
+      "age_h": 11.9,
       "when": "2026-08-22T05:30:00+00:00"
     },
     {
-      "title": "Euro Gains Support from PMI Strength Against US Dollar, Says BBH - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOeW8zcDU1OTUxRnlWR3JGSU84cmlrNVRzNTBCblZhZHpQMWFpX0x6SzhVZ2Nya0FXVVJNNzlWMnQzYjEwSE9Da2E4WnU5ekFUT29SNHRFbDdFdU90cm1fd3RhNVNqaURzb3diZFlQT0pPWGp4TUNvelB3TUVfajAzSlZsQQ?oc=5",
-      "age_h": 21.4,
-      "when": "2026-08-21T19:08:04+00:00"
+      "title": "Eurozone Manufacturing PMI Unexpectedly Climbs to 52.8 in August, Signaling Renewed Expansion - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOdk1NODV0VWtqUkx0SHd5bDdGQXFRYnJBRkJWekRoaWVQNHVNUXlzblYzNk9RdURMendKVm9Ya1VjZk43OC1iUVRCenNYbWdkbG05djVpaEZ2Ul9kTVA1a3FUamdJLUhPYWM4dk9BeEJoUjFPaDVvbnNmYXh6V0Z6VlN3?oc=5",
+      "age_h": 12.8,
+      "when": "2026-08-22T04:38:56+00:00"
     },
     {
-      "title": "ECB Unveils New Banknote Designs With a Defiant Message: Cash Is Here to Stay - Guidance Downgrade Alert - vinanet.vn",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxObHZQdWhpZk5wRXNrUmZfTTZLb3hKTzhnVVJfbVNpNFhKVjRjbGdYcU9xNzd1T2NJeFdpclotbWlGRG5ZVU93YmJEdGhnbDRwR1hRLTdGN3gzZlNmX09MMy1ESVJyMFZabU9ZLXR6cFV1RjAtX3g0aGZWd1BFcVBzcW9RRGJKblNNSDRNWHRoNDJock5ZUFl1dmVVNnlnamc1SXJmTkRjaWR3OUFFc1RjdFFualZJdGtpaVE?oc=5",
-      "age_h": 17.6,
-      "when": "2026-08-21T22:55:04+00:00"
+      "title": "Euro area manufacturing gains momentum as services activity stalls, Commerzbank says - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQS1BkandScERiZVRkYlZLMkZfaVBDc0NFVkwzNGtMeklZT2Q0WnozT2RfZlNfaEl2WVEzNEo3UmowcS1kbTQzdTlOVnVIcDYzVWVJT0FnaTRfdEJPMDl2MUY5NkY5bGt2SFhrMWhrNWd5N0VuNDVKd0FwaEhoclRONFdKSGJJdzU4MUE?oc=5",
+      "age_h": 23.7,
+      "when": "2026-08-21T17:44:10+00:00"
+    },
+    {
+      "title": "Euro Area PMIs Point To Resilient Growth, Nomura Says - Bitcoin World",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5fQkZmRl91M0hvb1ZnSVQ4VVFNREVhVll6STFORWtRZkdIcUdCYl9YNWtRNkcwcFhBNEtxTklrMFVBMDdMc1VXLWZLeGNObFoyZG9CRXF0eEx1V2RoMlBMZkJyR24xQW1tWXdWZTVVaUUxSWxD?oc=5",
+      "age_h": 20.1,
+      "when": "2026-08-21T21:20:11+00:00"
     },
     {
       "title": "British Pound Outlook: GBP/USD, GBP/AUD Face UK Jobs Test - FOREX.com",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUDNna012MzdhU2JRaG4xT2pJbHFVa2R6bC1fdzZMcnBzeVlHZm9STWJ2LS1IOVM0U1FYY1hzTEtIakpnQWJlOTdZNnlRemFGRDhjTklMWVJYVFdYYWV6NWdMbVYzQkZMTk01NnpTOFUzQjJZdXFvUGxIbVlJT1pWNGdUSUsyVzlvVk1EY3dqUGJ0M1oxSUFEdWVEai11T1VHTHFNQQ?oc=5",
-      "age_h": 5.4,
+      "age_h": 6.3,
       "when": "2026-08-22T11:06:56+00:00"
     },
     {
       "title": "Pound Steady as UK Inflation Ticks Up as Expected, Core Pressures Remain - CryptoRank",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1sekZ4YXFfQ0VGdjAzWDk5RUtDcXdvdE85bFN3TEVDVmNHRDdheWY3cy1QNUR4MV9aekZpcTYxVHREX2VweXFkdmpSSDhsYktLZHBWbmJrTmRKSmhvUFVEQ1F3a3V0Wk5aZGs5MDk2Sjh0bXJyUl9iaGpBdw?oc=5",
-      "age_h": 4.8,
+      "age_h": 5.7,
       "when": "2026-08-22T11:44:00+00:00"
     },
     {
       "title": "Official exchange rates on selected date | Bank of Russia - Центральный Банк России",
       "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YcldQcEpOMEd0OGVlTzFTZnlKM2lYZ1JxQ2FvLUVUMDI2WnQ0bnk2SzlEV01pb2RKNW40WVJTTzNUTTdDeFJmSDFJN3pnZE5tS3QtakRR?oc=5",
-      "age_h": 7.8,
+      "age_h": 8.7,
       "when": "2026-08-22T08:44:01+00:00"
     },
     {
       "title": "Sterling Net Shorts Ease as CFTC Data Signals Reduced Bearish Positioning Ahead of Bank Meetings - VT Markets",
       "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQTFRfLTc1SjVHZm53eXpUdkllS2RjczFfbTdNYmRfSFhhQ1htbzJIR0Y3Ym54bGpjcDQ3cUNBTFR4eDhIM2VmS2hyc2YyX2QtUnhVdV90aV9HaUJQbW5yZnRGa0tDeDRmYk4zeDFobkluUVlsYXlkc3l4QWQ3eXdHRFk4djhRUjFnWkJuNEdOYjMzcmczVVFuVTdtLVpGOGJLcjl0NEZ3a1VLRFhnT0hyb2gxM19KbHU1bENDRHdvQm9nZkRuMUpTUU5kZ1dlXzlhUVUyWl84dG5BQQ?oc=5",
-      "age_h": 6.2,
+      "age_h": 7.2,
       "when": "2026-08-22T10:15:51+00:00"
     },
     {
       "title": "Pound to Dollar Forecast: US Bond Concerns Drive GBP Above 1.3670 - CurrencyNews.co.uk",
       "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPeE1iRjlzQ0MxQ0JZR2Q5VS1teVZhd2pQZlFrY3JiZnB2cmgtdUt3bTFGWWpEWTZwU1M5d1BRc2czRld5TWxSX09tYmpoRlM0NnlQTDVRUS1SN1hVQ1VCeG1XZjBpQVl3cjBBZ1FsWFhkS21XYXVYM3JsNlR4VWZva21MRkNLcGEzMXM1T1h6eE1VZHNSM0FuU3ZMR2RVS2dYSXJkZXI5VHRQTXVPdG1PcVpIWElsbE9ISHl4RzJ1RFNTUQ?oc=5",
-      "age_h": 19.0,
+      "age_h": 19.9,
       "when": "2026-08-21T21:31:02+00:00"
     },
     {
       "title": "AUD/USD Forecast: CPI, RBA Policy and U.S. Dollar Weakness in Focus - FXEmpire",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNSEFLVHBsZGxrYUtnWkQ4ODlxWjRaTERWc3ZDT2c0SENjSldpcWpzUno1ZjB6UFVRMTAya1lEY3dpUmVFRnZuT1lTSVhLUERmZVpFWWNGQlg3bWxXMTNEa1RibDRveGY3SmItWnZuYjFCVnhMVVVFU3I5bkd3UEhwcHhwNWpmNW9DMWM5cVpOeVhvR3dhU3gzS01CYXN1UmRkMXZTSUFqakRhd2Fab0I2eVptS2NhZw?oc=5",
-      "age_h": 21.2,
+      "age_h": 22.1,
       "when": "2026-08-21T19:18:00+00:00"
     },
     {
       "title": "AUD/USD Price Forecast: Bulls Target YTD High After Breakout - CryptoRank",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxONXpHb3FoRmlCNnZpX3RackYwc29mdjNZN0xtUEpMeHYyenNOS0pDXzJ6WHNsQ2pLaDAzV0djNHdaUWlVZ0p3MVc3RndFX3ZtSHlDOTUtcTZ3MUdfNUVHLXJGcThicGV6YXd1azlRQVBsLU9FOENfRFUzczRvNGdkMUhVRnktc0YtemdfVlFweFF3QmIwd2hBY1ZIT2Nvdw?oc=5",
-      "age_h": 12.9,
+      "age_h": 13.8,
       "when": "2026-08-22T03:34:41+00:00"
     },
     {
       "title": "Australian Dollar Slips As Weak Jobs Data Revives Rate Cut Bets - Bitcoin World",
       "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE16NHZ2UUJnTXBhSUVub2wyYWJtVHBVazVwbVBNNE1iZ3czZm0zb19zWUQxMlBTcll6SExLR3VIRFh3U0I4dkxMZFhrZGgzX202RTh3bUVrRnZaaGNkeTVXT0U4eFBMbXA2R0g3Tw?oc=5",
-      "age_h": 7.9,
+      "age_h": 8.8,
       "when": "2026-08-22T08:35:11+00:00"
     },
     {
       "title": "'We're not ruling that out': rate rises off the cards ... but for how long? - The Canberra Times",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPcnJxLXBpMnVxT0staHBfRFpNUTdEZWRyRGRNZk9nTmpWbkF0VWxneU5HSl9ocjhIZ3VpaFpUUUNOY0FtRXpweDBnc2s1LVBPdXVabDhQZThJWWF1ZWFYWXZJOThvaGthQmRjeTJ1d3pfMDJUZ21FVGI1X3dOeGpXQ3NFd1hwQWpEV2hyLThFMThxTzdMN2x3Q3E0LWxuTVM5Ym9tbExRSVhOYW1DODdrdQ?oc=5",
-      "age_h": 11.4,
+      "age_h": 12.3,
       "when": "2026-08-22T05:07:36+00:00"
     },
     {
       "title": "FX Market Analysis: Central bank policy & currency trends (Aug 17-21, 2026) - marketpulse.com",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNQm5yYjNiMV9xOUJxckhnN3NRUUVqYTRrYVEybUo1TTFuUnRSaWdOb2JaOXAxOThhX25Ubl9TNFpuM05wMGg2RHN3R0EtaWdHMHIwY3RuSnlMdTQ0MXd5WnFlV09WQWNIcEtrT2JfUFhCc3AxU2V4WmlFcDVOSjJXU29GS3BldWRoeXVvMGN0OWdrZw?oc=5",
-      "age_h": 16.2,
+      "age_h": 17.1,
       "when": "2026-08-22T00:18:00+00:00"
     },
     {
       "title": "S&P 500 Forecast: SPX rises after no surprises from US CPI data - FOREX.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUWZiUlVsZnk0aDF0WXRyaVN1Y2JDeUVpTzJSMDFacUpEa3Vkb3dlY3hHOFJfVVhmT280eW1KMEt3eVVGb25OLTV1V1pzWU40ZWhKRFVMbjZRdFpCSzBLQUpOMFpIUDRkQUdsRHphQklveE16M0steDNVdjIyUXpqSzdHSnp0UTNHNU1YRzBHVnpyVGF2b2I3Z3FwTHFzZlJYd2pzQmtUX1EyLWVFUl9Fbg?oc=5",
-      "age_h": 8.3,
+      "age_h": 9.2,
       "when": "2026-08-22T08:10:56+00:00"
     },
     {
       "title": "Morning Bid: Hot spots sizzle, CPI looms By Reuters - Investing.com",
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNa1J4dmhSUjFFZUpCakIzaVNscVdMTDBaRmsyWF9jWG5OWmJDR3RwU0JGX3hVVHZNemdHYnBRM1FFd0Z2bHV5VGhqT2pOQ3lmQXJaLXZqbXlsbDBiTEQ5S1Q0WjN0UzNjQnZQTjdmWVhMTzBEYjFGek4xRGQyR3FKdDZPRF9GamVpbWFYdUd6Tjl1aHBK?oc=5",
-      "age_h": 2.2,
+      "age_h": 3.1,
       "when": "2026-08-22T14:17:08+00:00"
-    },
-    {
-      "title": "What to Look Out for in Economic Data This Week (August 24-28) - Kiplinger",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1MeVNwMVVnVmhvRWo4b0N4WkhCRXQxTVRtb2ZmTWhCSmd4eERsN3Nfdllwejg0eG5ueFFCRUdPTzVUaXh4dEFZaWJqN3FFZnlFWTBlZ2ZvVkFFRzVScTR3TXRhZGl6MHp2RUF1clppVDRvR1lveC1FaXNCeXQ?oc=5",
-      "age_h": 24.0,
-      "when": "2026-08-21T16:32:09+00:00"
     },
     {
       "title": "America’s Inflation Cools Off in July; Gas Prices Jump by 25% - Voronoi",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOTDhIZzN4ellFdEJlOW9YZHZzelVYdTNCdVRpRlFFaEc4elFsT0pNYkhkZEk3SG5kX3hONjNXejVzNnByYTFGQ0ZpSGFnTW5KeHJ1QjZHS0d5S3ROSEdLMDRtREVZb21peTN4TkhSelNVRnlyejFUQ1FaWmdkRS1IZ1VCS0d3UzZFS2JtTlFlWVVuYks2N19uRkdOa1pIMzQ?oc=5",
-      "age_h": 13.3,
+      "age_h": 14.3,
       "when": "2026-08-22T03:09:39+00:00"
     },
     {
       "title": "Nasdaq, S&P 500 Futures Fall Ahead Of CPI Data, Oracle Earnings: Why SMCI, TSM, CRWV, YYGH Are Keeping Traders Engaged Today - Stocktwits",
       "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNQ1JtdDk3b0E2NE5CcUgxRnJsUlBydllyZmZkVUNvdkJmbDR5UU9kMVljb040dXdzZ1FuRnpvZnZ5ZHQ4Qmw2T0xXY1VwekRVeHlqaFJ0VDAxVGhRb0ZlN0pmVTg5YmF2QU54cTc0OHpReTZZSDJ2TnZlWk52ZGhJV2ZoYjM4OHRLVmhlRm94Y0dONnFhNTRiS1BrV1N3UVN4d2JPQkZYX1RsS0VTbi12QXdHOWQ3Rkt5OTFLRV9HSlFvQUY5bnF3dlZzODJjS3R0VEFvUXIwS2tya2VMYmJaamtQOUZwdTk3aF9iaHdBT0c?oc=5",
-      "age_h": 8.1,
+      "age_h": 9.0,
       "when": "2026-08-22T08:25:00+00:00"
+    },
+    {
+      "title": "What inflation data actually tells us - The Daily Star",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNajRqTktPMGM4aW9QZ3BIVllRR2tJRVI2Q0Z0dGo3c25OTmdPeTJSWWU3ZnI3X0FZLXRKellsS1ZjbWlna2k3elo5czVhSUhPdm8tZ1RoUm5RRi1RYXBCa0xOTjdOam1XU1pxVWZMbzF3MzJsVV9XUUxNWFk1eUFIeWkxbTF3MXpZbDZfUzJGSjFncHYtbTFSTVR3cTI?oc=5",
+      "age_h": 2.7,
+      "when": "2026-08-22T14:40:41+00:00"
     },
     {
       "title": "State-Level Employment Situation: July 2026 - Eye On Housing",
       "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQVAxTVQ5XzYyckhMaTd1RlhiQlpMT0hIeUY0M2lTUHpmdGV1TFY1MmN4SE4xQkR1UHA2bmZReGhsQlVDZWcwanRiN1FwUThSQ2dZMTg5a2FOclFsUzhVclZBTnhVeXVpRVpqd2Y0YUlIX1o1VmZ4SDhCNTdLMm81ME13?oc=5",
-      "age_h": 18.2,
+      "age_h": 19.2,
       "when": "2026-08-21T22:15:39+00:00"
     },
     {
       "title": "July Jobs Report Delivers Mixed Signals as Payrolls Unexpectedly Decline - Earnings Sentiment Score - vinanet.vn",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNQno0QTROY2p5SHBPT1NSckVDQ1dtVXVmTzJTa0pITFZwUWNndnZOMWtLSnRDZ29TRXdPNTNhOHV3a0JMWGVOdDZpck1DSWNRVHU0MG1FSHkzMzhMdkE5ZVg4Tkh4dTF6QnRWWmNzd3NzZE5sSUhJbVF4dGhDU1NfSXJ5cG9BY0pFZW85Rjl0STdtdnZyWU1UeXhEZzlYdkNvdk9BWlh2UEhkaTdReTNaMXlCaWU?oc=5",
-      "age_h": 5.4,
+      "age_h": 6.3,
       "when": "2026-08-22T11:04:41+00:00"
+    },
+    {
+      "title": "Dow Jones (DJIA) Today: Blue-Chip Average Falls 0.11% to 53,975.98 as Tech Weakness Offsets Energy Strength - BBN Times",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPUmhJRW5YQW9jV2RIM3VNRzd5SWRHREFSOWJnVmN0eHJSaHhGWGNyb0NqOFFxMzNIN2FaYmNQSzJmZGpSTTNaNEpqX0l4VGNRc0k2N25tNGJvWVd3MF96QTRKaWhtd3VZUDRNVFdjYjVDZGNFVWFrbGVvdEdHT3dxSWJSbkRJeFp2YVZxdGthd2I5YkFEblJ0T2xZNThRQmtNRXB2Mm1qcGo1Q1BNTDRuYzlyT1dheTN4SW5PMUlKMm10Mjl5dHpzTFYtblNsalZWMkgxejZsS3VRNFU?oc=5",
+      "age_h": 3.2,
+      "when": "2026-08-22T14:15:05+00:00"
+    },
+    {
+      "title": "Forex Today: US Dollar Slips as Treasury Boosts Long-Term Bond Purchases - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNWXdvbnJvaUJJcFNNZTYwYk1PcjJnaTBlbnI4dWJWN2dUVHAxd0lKbGlMeTdQS01Jc0JVUzdhWXVzQTA3bFpQTjJVdU4xQ1JjZUUxbHVVTHVzZHlnd0tzRlNPSmhnRFdZcFI2TmFHcGFXVVNMeE1yQWg0SE1hamJlV3E0QQ?oc=5",
+      "age_h": 7.1,
+      "when": "2026-08-22T10:19:23+00:00"
     },
     {
       "title": "Toronto Stock Exchange Today: TSX Composite Closes at Fresh Record High Near 36,458 on Surging Oil Prices - BBN Times",
       "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOYjBJUFBheHFiaVJwMU5LZjJEQXViM0VScFYwYjVkN1AxSzcyRU1Ka0NYY0h4ZEo3b1FKOTZ1QktXZDdjTE5KV0F6UW1FTE5BdVJjb1ZWNkVia29sVnR6U1BLNzRoTVZVMGpxQ0s3Yk54Q1RzZ0lWTGJSNTdtX1lkT01qMkFGSFpDaU85Mnl3d0dDaWdxY3JXbU96SHRCMS1xM0Z3eW5MRWtVeW5fRnJoZ0JJMUNKTzBaOHVOOEQzWVpOV1VxWkFYRFMySWhmMjd5ak5qWU9xek1Ea04x?oc=5",
-      "age_h": 8.0,
+      "age_h": 9.0,
       "when": "2026-08-22T08:27:33+00:00"
-    },
-    {
-      "title": "Pound Dips as UK Retail Sales Disappoint, US Services Sector Outperforms - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNbll1QTB2WDY0ZTNmMlhleElEUTJmS3llZENfQndHa093aG5QY2xHeVRiVzdUTlBTQVkycXExVzNiY01HMUgtUk1xNVdRbWpRdE5OeDBmU1VjZmhwaE5pZ0Q1OXhvb0RzVUtsTXEwaDFtWnIzLUhTaHI0OEpsdWNWNnBfZFg5emJobUdvSTZjWWk?oc=5",
-      "age_h": 18.0,
-      "when": "2026-08-21T22:31:05+00:00"
-    },
-    {
-      "title": "July Jobs Report Preview: Payrolls Expected to Rise by 83,000 as Unemployment Holds at 4.2% - Earnings Growth Analysis - vinanet.vn",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOOXlIRGs0VTJ1V3RXOXlNX2hjb3VxdVdWbFZVWU91bUlZZmk3TVBTZUtEMDgwdnpJUkoyUWM3akowUTgtY2lHYVNpMzNMa0J0R1AySFFiN2xqQkZUTGhUNUxqbmkzRWdWZ012aTJJeV9LOTlLN1dvc1oxR3djSUQ4THE0VXdzb19yVktqRFBId2Vkek45a3pmUXZ1TVAxTkIxZ21wZHVXUnhQR1A0SndEbEZBcXlvZ2pGc21OU1lIVS11ZXg1RFdUeg?oc=5",
-      "age_h": 23.9,
-      "when": "2026-08-21T16:34:22+00:00"
     }
   ],
   "errors": []
