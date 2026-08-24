@@ -29,6 +29,12 @@
 ;   日目标 50% = $100    日亏上限 50% = $100（两边对称）
 ;   每日上限 80 笔       连亏 8 笔停手 / 连亏 5 笔进观察模式
 ;
+; ---- 停滞离场 ----
+;   有利润($2 净额)且最近 10 分钟高低差 < ATR × 0.80 -> 落袋。
+;   k=0.80 不是拍的：reports/gold_stall.md 实测 10 分钟窗口的 10% 分位就是 0.80。
+;   （第一版我拍了 0.60，实测命中率 0.0% —— 那是死代码，不是保守。）
+;   只砍"不走了"的单子；还在创有利极值的不动，所以趋势单不受影响。
+;
 ; ⚠️ M1 触发 = 信号数量大增，其中噪音也大增。这一档没有被回测验证过，
 ;    先小量观察，重点看日志里 [OPEN] 的多空比例：如果仍然几乎全是 BUY，
 ;    那问题不在"慢"，在方向判定，得另外查。
@@ -141,7 +147,7 @@ InpLevelExitMinR=1.20
 InpLevelExitKeyOnly=true
 InpExitOnStall=true
 InpStallMinutes=10
-InpStallRangeATR=0.60
+InpStallRangeATR=0.80
 InpStallMinUSD=2.0
 InpStallMinR=0.50
 InpStallNeedNoNewExtreme=true
