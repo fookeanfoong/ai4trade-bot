@@ -25,6 +25,7 @@ $Files = @{
     "ScalperGuard_sim200.set"     = "Presets"
     "ScalperGuard_fomc.set"       = "Presets"
     "ScalperGuard_backtest.set"   = "Presets"
+    "ScalperGuard_old200.set"     = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
