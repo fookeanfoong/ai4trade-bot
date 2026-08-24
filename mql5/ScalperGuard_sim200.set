@@ -1,30 +1,39 @@
 ; ============================================================================
-; XAUUSD ScalperGuard —— $200 本金 · 固定金额快速离场（激进档）
+; XAUUSD ScalperGuard —— $200 本金 · 快进场激进档
 ;
 ; 用 InpVirtualBalanceUSD=200：所有按百分比算的东西都以 $200 为基准，
 ; 而不是终端里的真实余额。保证金检查不受影响 —— 那是券商的真实约束。
 ;
-; ---- 这一档的核心：每笔净赚 $2 就立刻走 ----
-;   InpQuickProfitUSD=2.0   净盈亏（点差已扣、含隔夜利息与手续费）摸到 $2 立刻市价平仓
-;   InpRiskCapUSD=2.0       每笔风险硬上限 $2 —— **必须配套**，否则就是陷阱
+; ---- 核心：把"进场太慢"拆成两件事，分别修 ----
 ;
-; 为什么风险也要压到 $2：赚固定金额时，盈亏比 = 目标 ÷ 风险。
-;     赚 $2 / 亏 $10（A+ 级 5%）= RR 1:0.2 -> 保本胜率 83%
-;     赚 $2 / 亏 $2            = RR 1:1   -> 保本胜率 50%
-; 所以这一档**故意放弃了 A+/A/B 的风险分级**（RiskCapUSD 把三档压平）。
-; 这和分级档的取舍正好相反，理由很简单：出场是固定金额时，给好信号加大仓位
-; 只会让盈亏比更差 —— 赢的还是 $2，亏的变多。分级在这里是反作用。
+; 1) 慢在**等K线收盘**。原来触发根是 M5：一个形态最长要等 5 分钟才被确认，
+;    行情早走完了。这一档 InpEntryTF=1（M1），确认延迟降到 1 分钟，快 5 倍。
+;    ⚠️ 换掉的只是"扣扳机的那根K线"。方向仍由 H1 EMA 决定，ATR / ADX /
+;       市场结构 / 关键位 全部还在 M5 和 H1 上算 —— 不是把策略搬到 M1。
+;    止损也跟着 M1 结构走（否则会出现"M1 进场却背 M5 宽止损"的错配），
+;    过窄时由 InpSlMinUSD=1.20 和券商最小距离兜底。
+;
+; 2) 慢在**过滤太严**。逐条放宽，做多做空对称：
+;      InpDirectionMode  1 -> 2    H1 无方向时退而用 M5，不再整段时间不出手
+;      InpAdxMin        12 -> 8    ADX 门槛；黄金震荡段 ADX 常年在 10 附近
+;      InpTriggerTolATR 0.60->0.90 回踩容差；不必精确摸到位才算数
+;      InpBarCloseStrength 0.45->0.30  确认K线收盘强度
+;      InpWickRejectPct 0.70->0.85 影线否决更难触发（M1 影线占比天然更大）
+;      InpSweepMinPenetration 0.10->0.05  M1 的刺穿本来就浅
+;
+; ---- 出场：回到 R 倍数 ----
+;   固定金额快速离场已关闭（InpQuickProfitUSD=0 / InpRiskCapUSD=0），
+;   A+/A/B 的风险分级恢复：$3 / $6 / $10。
 ;
 ; ---- 日内节奏 ----
-;   日目标 50% = $100   日亏上限 50% = $100   （两边对称）
-;   每日上限 80 笔      —— $100 ÷ $2 = 需要 50 笔净赢，20 笔的旧上限根本摸不到
-;   连亏 12 笔停手 / 连亏 6 笔进观察模式
-;                       —— RR 1:1 下连亏 5 笔很常见，旧的 5 笔阈值会天天误停
+;   日目标 50% = $100    日亏上限 50% = $100（两边对称）
+;   每日上限 80 笔       连亏 8 笔停手 / 连亏 5 笔进观察模式
 ;
-; ⚠️ 这一档能不能赚钱，**完全取决于胜率能否稳定超过 50%**，
-;    因为盈亏比被钉死在 1:1，赔率这条路已经堵死了。
-;    EA 启动时会在日志 [QUICK] 里把 RR 和保本胜率算给你看。
+; ⚠️ M1 触发 = 信号数量大增，其中噪音也大增。这一档没有被回测验证过，
+;    先小量观察，重点看日志里 [OPEN] 的多空比例：如果仍然几乎全是 BUY，
+;    那问题不在"慢"，在方向判定，得另外查。
 ; ============================================================================
+
 
 
 
@@ -46,8 +55,8 @@ InpReducedAt=30.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
 InpMaxTradesPerDay=80
-InpStopAfterConsecLoss=12
-InpObserveAfterConsecLoss=6
+InpStopAfterConsecLoss=8
+InpObserveAfterConsecLoss=5
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
 InpSessionStartHour=0
@@ -75,15 +84,16 @@ InpHtfRequireSlope=false
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=4
-InpAdxMin=12.0
+InpEntryTF=1
+InpAdxMin=8.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
-InpTriggerTolATR=0.60
-InpBarCloseStrength=0.45
-InpWickRejectPct=0.70
+InpTriggerTolATR=0.90
+InpBarCloseStrength=0.30
+InpWickRejectPct=0.85
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
 ; 实测出现过 RR=0.04 的拒绝 —— M5 上贴着入场价的小摆动高点被当成硬顶。
@@ -146,7 +156,7 @@ InpAsiaEndHour=10
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
-InpSweepMinPenetration=0.10
+InpSweepMinPenetration=0.05
 InpSweepMaxPenetration=1.50
 
 ; --- 固定金额目标（默认关闭）---
@@ -158,8 +168,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 ; 分级交给百分比,不再用一刀切的美元上限
-InpRiskCapUSD=2.0
-InpQuickProfitUSD=2.0
+InpRiskCapUSD=0.0
+InpQuickProfitUSD=0.0
 ; 所有百分比以 $200 为基准,而不是终端里的真实余额
 InpVirtualBalanceUSD=200.0
 
@@ -218,7 +228,7 @@ InpLooseMaxDistATR=1.20
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 1 = H1 定方向,M5 只影响评分不否决
-InpDirectionMode=1
+InpDirectionMode=2
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false

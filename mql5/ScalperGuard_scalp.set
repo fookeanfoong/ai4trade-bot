@@ -66,6 +66,7 @@ InpHtfRequireSlope=false
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=4
+InpEntryTF=0
 InpAdxMin=12.0
 ; TP2 只有 1.0R,RR 门槛必须同步降到它以下,否则信号会全卡在"风险回报不足"
 InpMinRR=0.8

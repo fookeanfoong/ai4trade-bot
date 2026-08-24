@@ -61,6 +61,7 @@ InpHtfRequireSlope=false
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=4
+InpEntryTF=0
 InpAdxMin=12.0
 InpMinRR=1.0
 InpBreakoutLookback=20

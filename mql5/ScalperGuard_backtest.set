@@ -44,8 +44,8 @@ InpReducedAt=30.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
 InpMaxTradesPerDay=80
-InpStopAfterConsecLoss=12
-InpObserveAfterConsecLoss=6
+InpStopAfterConsecLoss=8
+InpObserveAfterConsecLoss=5
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
 InpSessionStartHour=0
@@ -73,15 +73,16 @@ InpHtfRequireSlope=false
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=4
-InpAdxMin=12.0
+InpEntryTF=1
+InpAdxMin=8.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
-InpTriggerTolATR=0.60
-InpBarCloseStrength=0.45
-InpWickRejectPct=0.70
+InpTriggerTolATR=0.90
+InpBarCloseStrength=0.30
+InpWickRejectPct=0.85
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
 ; 实测出现过 RR=0.04 的拒绝 —— M5 上贴着入场价的小摆动高点被当成硬顶。
@@ -144,7 +145,7 @@ InpAsiaEndHour=10
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
-InpSweepMinPenetration=0.10
+InpSweepMinPenetration=0.05
 InpSweepMaxPenetration=1.50
 
 ; --- 固定金额目标（默认关闭）---
@@ -156,8 +157,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 ; 分级交给百分比,不再用一刀切的美元上限
-InpRiskCapUSD=2.0
-InpQuickProfitUSD=2.0
+InpRiskCapUSD=0.0
+InpQuickProfitUSD=0.0
 ; 所有百分比以 $200 为基准,而不是终端里的真实余额
 InpVirtualBalanceUSD=0.0
 
@@ -216,7 +217,7 @@ InpLooseMaxDistATR=1.20
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 1 = H1 定方向,M5 只影响评分不否决
-InpDirectionMode=1
+InpDirectionMode=2
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false

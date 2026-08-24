@@ -148,6 +148,14 @@ input double   InpVolHighSizeMult    = 0.60;    // High 档仓位乘数
 input group "=== 信号 / 结构 ==="
 input ENUM_TIMEFRAMES InpHTF         = PERIOD_H1;  // 高时间周期（趋势）
 input ENUM_TIMEFRAMES InpLTF         = PERIOD_M5;  // 交易时间周期
+
+// 触发周期:只管"扣扳机的那根K线",不管方向。
+// 趋势(EMA/ADX)、波动(ATR)、市场结构、关键位 —— 全部仍然在 InpLTF/InpHTF 上算,
+// 换的只是"等哪根K线收盘才算数"和"回踩/影线看哪根"。
+// InpLTF=M5 时,一个形态最长要等 5 分钟才被确认;设成 M1 就是 1 分钟。
+// 代价是触发根的噪音更大 —— 结构止损会变窄,由 InpSlMinUSD 那道下限兜底。
+// PERIOD_CURRENT(0) = 跟随 InpLTF,即保持原行为。
+input ENUM_TIMEFRAMES InpEntryTF     = PERIOD_CURRENT;  // 触发周期，0=跟随 InpLTF
 input int      InpEmaFastHTF         = 50;      // HTF 快线 EMA
 input int      InpEmaSlowHTF         = 200;     // HTF 慢线 EMA
 input int      InpEmaFastLTF         = 20;      // LTF 快线 EMA
@@ -293,6 +301,8 @@ CPositionInfo pos;
 bool g_tester = false;      // 在策略测试器里(单次回测 或 优化)
 bool g_optim  = false;      // 在参数优化里(此时连 Print/Comment 都是浪费)
 bool g_quiet  = false;      // 静默监控设施 = g_tester && InpTesterQuiet
+
+ENUM_TIMEFRAMES g_entryTF = PERIOD_M5;   // 实际生效的触发周期，OnInit 里定
 
 int hEmaFastH, hEmaSlowH;      // HTF EMA
 int hEmaFastL, hEmaSlowL;      // LTF EMA
@@ -1013,10 +1023,10 @@ bool SweepEntry(int dir, double atr, double &refLevel, string &note)
 {
    if(!InpUseSweepEntry || !InpUseKeyLevels) return false;
 
-   double h1 = iHigh (_Symbol, InpLTF, 1);
-   double l1 = iLow  (_Symbol, InpLTF, 1);
-   double c1 = iClose(_Symbol, InpLTF, 1);
-   double o1 = iOpen (_Symbol, InpLTF, 1);
+   double h1 = iHigh (_Symbol, g_entryTF, 1);
+   double l1 = iLow  (_Symbol, g_entryTF, 1);
+   double c1 = iClose(_Symbol, g_entryTF, 1);
+   double o1 = iOpen (_Symbol, g_entryTF, 1);
    double minPen = InpSweepMinPenetration * atr;
    double maxPen = InpSweepMaxPenetration * atr;
 
@@ -1202,9 +1212,9 @@ bool FakeBreakoutAgainst(int dir, double level)
 {
    for(int i = 1; i <= InpBreakoutLookback; i++)
    {
-      double h = iHigh(_Symbol, InpLTF, i);
-      double l = iLow (_Symbol, InpLTF, i);
-      double c = iClose(_Symbol, InpLTF, i);
+      double h = iHigh(_Symbol, g_entryTF, i);
+      double l = iLow (_Symbol, g_entryTF, i);
+      double c = iClose(_Symbol, g_entryTF, i);
       if(dir > 0 && h > level && c < level) return true;   // 上破失败
       if(dir < 0 && l < level && c > level) return true;   // 下破失败
    }
@@ -1214,10 +1224,10 @@ bool FakeBreakoutAgainst(int dir, double level)
 // 长影线拒绝（做多时上影线过长 = 抛压）
 bool WickRejection(int dir, int shift)
 {
-   double o = iOpen (_Symbol, InpLTF, shift);
-   double h = iHigh (_Symbol, InpLTF, shift);
-   double l = iLow  (_Symbol, InpLTF, shift);
-   double c = iClose(_Symbol, InpLTF, shift);
+   double o = iOpen (_Symbol, g_entryTF, shift);
+   double h = iHigh (_Symbol, g_entryTF, shift);
+   double l = iLow  (_Symbol, g_entryTF, shift);
+   double c = iClose(_Symbol, g_entryTF, shift);
    double rng = h - l;
    if(rng <= 0.0) return false;
    if(dir > 0) return ((h - MathMax(o, c)) / rng) > InpWickRejectPct;
@@ -1229,13 +1239,13 @@ bool WickRejection(int dir, int shift)
 bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
 {
    double swH, swL; int sH, sL;
-   bool okH = FindSwingHigh(InpLTF, 1, InpStructureLookback, InpSwingStrength, swH, sH);
-   bool okL = FindSwingLow (InpLTF, 1, InpStructureLookback, InpSwingStrength, swL, sL);
+   bool okH = FindSwingHigh(g_entryTF, 1, InpStructureLookback, InpSwingStrength, swH, sH);
+   bool okL = FindSwingLow (g_entryTF, 1, InpStructureLookback, InpSwingStrength, swL, sL);
 
-   double c1 = iClose(_Symbol, InpLTF, 1);
-   double o1 = iOpen (_Symbol, InpLTF, 1);
-   double h1 = iHigh (_Symbol, InpLTF, 1);
-   double l1 = iLow  (_Symbol, InpLTF, 1);
+   double c1 = iClose(_Symbol, g_entryTF, 1);
+   double o1 = iOpen (_Symbol, g_entryTF, 1);
+   double h1 = iHigh (_Symbol, g_entryTF, 1);
+   double l1 = iLow  (_Symbol, g_entryTF, 1);
    double ema20 = Buf(hEmaFastL, 0, 1);
    double tol   = InpTriggerTolATR * atr;
 
@@ -1247,7 +1257,7 @@ bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
       // A) 有效突破 + 回踩确认
       bool broke = false;
       for(int i = 1; i <= InpBreakoutLookback; i++)
-         if(iClose(_Symbol, InpLTF, i) > swH + 0.10 * atr) { broke = true; break; }
+         if(iClose(_Symbol, g_entryTF, i) > swH + 0.10 * atr) { broke = true; break; }
       if(broke && l1 <= swH + tol && c1 > swH && c1 > o1)
       {
          if(FakeBreakoutAgainst(1, swH)) { note = "上破后出现假突破迹象"; return false; }
@@ -1276,7 +1286,7 @@ bool EntryTrigger(int dir, double atr, double &refLevel, string &note)
 
       bool broke = false;
       for(int i = 1; i <= InpBreakoutLookback; i++)
-         if(iClose(_Symbol, InpLTF, i) < swL - 0.10 * atr) { broke = true; break; }
+         if(iClose(_Symbol, g_entryTF, i) < swL - 0.10 * atr) { broke = true; break; }
       if(broke && h1 >= swL - tol && c1 < swL && c1 < o1)
       {
          if(FakeBreakoutAgainst(-1, swL)) { note = "下破后出现假突破迹象"; return false; }
@@ -1463,8 +1473,8 @@ bool LooseEntry(int dir, double atr, string &note)
 {
    if(!InpUseLooseEntry) return false;
 
-   double c1 = iClose(_Symbol, InpLTF, 1);
-   double o1 = iOpen (_Symbol, InpLTF, 1);
+   double c1 = iClose(_Symbol, g_entryTF, 1);
+   double o1 = iOpen (_Symbol, g_entryTF, 1);
    double ema = Buf(hEmaFastL, 0, 1);
    if(ema <= 0.0 || atr <= 0.0) return false;
 
@@ -1557,14 +1567,16 @@ Signal BuildSignal(double atr, int minScore)
    double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
    double entry = (dir > 0) ? ask : bid;
 
+   // 止损跟着**触发根**走 —— 触发在 M1 就用 M1 的结构，否则会出现
+   // "M1 进场却背着 M5 的宽止损"这种前后不一致的仓位。
    double swH, swL; int sH, sL;
-   bool okH = FindSwingHigh(InpLTF, 1, InpStructureLookback, InpSwingStrength, swH, sH);
-   bool okL = FindSwingLow (InpLTF, 1, InpStructureLookback, InpSwingStrength, swL, sL);
+   bool okH = FindSwingHigh(g_entryTF, 1, InpStructureLookback, InpSwingStrength, swH, sH);
+   bool okL = FindSwingLow (g_entryTF, 1, InpStructureLookback, InpSwingStrength, swL, sL);
    if(!okH || !okL) { NoTrade("找不到有效 swing 结构"); return sg; }
 
    double sl;
-   if(dir > 0) sl = MathMin(swL, iLow(_Symbol, InpLTF, 1)) - InpSlAtrMult * atr * 0.5;
-   else        sl = MathMax(swH, iHigh(_Symbol, InpLTF, 1)) + InpSlAtrMult * atr * 0.5;
+   if(dir > 0) sl = MathMin(swL, iLow(_Symbol, g_entryTF, 1)) - InpSlAtrMult * atr * 0.5;
+   else        sl = MathMax(swH, iHigh(_Symbol, g_entryTF, 1)) + InpSlAtrMult * atr * 0.5;
 
    double slDist = MathAbs(entry - sl);
    // 结构止损过近 -> 用 ATR 兜底；过远 -> 放弃（不是缩止损，而是不做）
@@ -2460,6 +2472,7 @@ int OnInit()
    g_tester = (bool)MQLInfoInteger(MQL_TESTER);
    g_optim  = (bool)MQLInfoInteger(MQL_OPTIMIZATION);
    g_quiet  = (g_tester && InpTesterQuiet);
+   g_entryTF = (InpEntryTF == PERIOD_CURRENT) ? InpLTF : InpEntryTF;
 
    // --- Demo 闸门 ---
    long tmode = AccountInfoInteger(ACCOUNT_TRADE_MODE);
@@ -2595,6 +2608,21 @@ int OnInit()
          InpRiskPctMax, slAtMinLot2, 4.0 / (InpRiskPctMax / 100.0)));
 
    SuggestFinerGoldSymbol();
+
+   // --- 触发周期 ---
+   {
+      int secLtf = PeriodSeconds(InpLTF), secEnt = PeriodSeconds(g_entryTF);
+      LogLine("ENTRY", StringFormat(
+         "触发周期 %s（趋势/结构/ATR 仍在 %s）—— 一个形态最长等 %d 秒被确认，"
+         "相对 %s 快 %.1f 倍。",
+         EnumToString(g_entryTF), EnumToString(InpLTF), secEnt,
+         EnumToString(InpLTF), secEnt > 0 ? (double)secLtf / secEnt : 1.0));
+      if(secEnt > secLtf)
+         LogLine("WARN", StringFormat(
+            "触发周期 %s **比** 交易周期 %s 还慢，进场只会更迟钝。"
+            "想更快就把 InpEntryTF 设成比 %s 更小的周期。",
+            EnumToString(g_entryTF), EnumToString(InpLTF), EnumToString(InpLTF)));
+   }
 
    // --- 快速离场的自检:盈亏比、保本胜率、以及**日目标够不够得着** ---
    if(InpQuickProfitUSD > 0.0)
@@ -2765,7 +2793,7 @@ void OnTick()
    //--------------------------------------------------------------
    // 3) 只在新 K 线上找入场
    //--------------------------------------------------------------
-   if(!IsNewBar(InpLTF)) return;
+   if(!IsNewBar(g_entryTF)) return;
 
    // --- 多仓闸门（规格 §30）---
    // 加仓 = 往同一笔上追;多仓 = 各自独立的 setup + 各自独立的止损。
