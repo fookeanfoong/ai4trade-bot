@@ -145,13 +145,16 @@ def main():
             mark = " ← 几乎不会触发"
         out.append(f"| {n} | {tot} | **{pct:.1f}%** | ${avg:.2f} |{mark}")
 
-    # 第二张表：反过来问 —— 每个窗口要多大的 k 才落到 ~25% 命中率
-    out.append("\n## 每个窗口对应的 k（让命中率落在 ~25%）\n")
-    out.append("这张表比上一张更实用：**k 不能跨窗口通用**。窗口越长，"
-               "价格自然走得越远，同一个 k 就会越难命中。想换窗口长度，"
-               "k 必须跟着换 —— 直接从这里查。\n")
-    out.append("| 窗口(分钟) | 建议 k | 对应命中率 |")
-    out.append("|---|---|---|")
+    # 第二张表：反过来问 —— 每个窗口要多大的 k 才落到给定的命中率
+    out.append("\n## 查表：窗口长度 -> k\n")
+    out.append("**k 不能跨窗口通用。** 窗口越长价格自然走得越远，"
+               "同一个 k 就会越难命中 —— 换窗口就必须换 k，直接从这里查。\n")
+    out.append("下面每一列是「每次检查的命中率」。但真正决定这条规则凶不凶的，"
+               "是**持仓期间累计触发的概率**：EA 每个 tick 都在查，"
+               "只要有过一个瞬间满足就会平仓。所以按每次 5% 挑，"
+               "在一笔持有半小时的单子上也已经很容易触发了。\n")
+    out.append("| 窗口(分钟) | k @ 5% | k @ 10% | k @ 25% | 平均波幅/ATR |")
+    out.append("|---|---|---|---|---|")
     for n in WINDOWS:
         wins = []
         for i in range(n, len(m1)):
@@ -167,8 +170,9 @@ def main():
         if len(wins) < 30:
             continue
         wins.sort()
-        q = wins[int(0.25 * len(wins))]          # 25 分位数就是那个 k
-        out.append(f"| {n} | **{q:.2f}** | 25% |")
+        q = lambda f: wins[int(f * len(wins))]
+        out.append(f"| {n} | **{q(0.05):.2f}** | **{q(0.10):.2f}** | {q(0.25):.2f} | "
+                   f"{sum(wins)/len(wins):.2f} |")
 
     out.append("\n## 怎么读这张表\n")
     out.append("命中率就是「这条规则平均多久生效一次」的直接度量：\n")
