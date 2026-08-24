@@ -95,6 +95,13 @@ jobs:
         continue-on-error: true
         run: python gold_session_profile.py --interval 1h --range 2y --server-offset 3
 
+      # 停滞离场的窗口长度该设多少 —— 用真实分钟K线量命中率，别拍脑袋。
+      # "黄金一分钟没动"是常态还是信号？这一步直接给数。
+      - name: Stall — 停滞窗口命中率实测
+        if: github.event.schedule != '0 6 * * 1-5'
+        continue-on-error: true
+        run: python gold_stall_profile.py --symbol GC=F --k 0.25
+
       - name: Commit backtest report
         if: always()
         run: |

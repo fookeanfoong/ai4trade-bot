@@ -139,6 +139,12 @@ InpFadeExitMinR=0.45
 ; 都当关键位,趋势里条件恒真。抬门槛 + 只认机构参考位。
 InpLevelExitMinR=1.20
 InpLevelExitKeyOnly=true
+InpExitOnStall=true
+InpStallMinutes=10
+InpStallRangeATR=0.60
+InpStallMinUSD=2.0
+InpStallMinR=0.50
+InpStallNeedNoNewExtreme=true
 
 ; --- 新闻过滤：保留 ---
 ; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的

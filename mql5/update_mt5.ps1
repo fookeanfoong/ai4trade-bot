@@ -34,7 +34,8 @@ $MustHave = @(
     'InpUseLooseEntry',        # 宽松入场 路径D
     'InpSlMaxATRMult',         # 止损上限跟随 ATR
     'InpTesterQuiet',          # 策略测试器静默（回测支持）
-    'InpEntryTF'               # 触发周期（进场延迟）
+    'InpEntryTF',              # 触发周期（进场延迟）
+    'InpExitOnStall'           # 停滞离场
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

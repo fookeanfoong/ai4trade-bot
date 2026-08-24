@@ -125,6 +125,12 @@ InpFadeExitMinR=0.25
 ; 门槛抬高 + 只认机构参考位,别让 M5 微型摆动点封住每一笔赢家。
 InpLevelExitMinR=0.90
 InpLevelExitKeyOnly=true
+InpExitOnStall=false
+InpStallMinutes=10
+InpStallRangeATR=0.25
+InpStallMinUSD=0.0
+InpStallMinR=0.50
+InpStallNeedNoNewExtreme=true
 
 ; --- 新闻过滤：保留 ---
 ; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的

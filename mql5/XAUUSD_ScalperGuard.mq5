@@ -244,6 +244,26 @@ input double   InpLevelExitMinR      = 0.70;    // 逼近关键位落袋的最�
 // 我给止盈定位加了 InpLevelIgnoreR 去噪,却在出场这条路径上漏了同一件事。
 input bool     InpLevelExitKeyOnly   = false;   // 该出场只认机构参考位，不认 M5 微型摆动点
 
+// 停滞离场:有利润、但价格在一个很窄的区间里来回磨,不上不下 —— 落袋。
+//
+// 和"固定金额到点就走"的关键区别:这条是**有条件的**。趋势还在走的单子不受影响,
+// 只砍掉那些已经不再往前走的。所以它压缩的是持仓时间,不是盈亏比。
+//
+// 两个门槛缺一不可:
+//   1) 利润门槛 —— InpStallMinUSD>0 用净美元(点差/手续费已扣),否则用 R 倍数
+//   2) 停滞判定 —— 最近 InpStallMinutes 分钟的最高最低差 < ATR × InpStallRangeATR
+//
+// ⚠️ 窗口别设太短。黄金"一分钟没动"是**常态不是信号**:M1 的正常波幅本就只有
+//    日 ATR 的几十分之一,1 分钟窗口几乎必然命中,那就退化成"到点就走"了。
+//    默认 10 分钟。改之前先看 reports/gold_stall.md 里的实测命中率。
+input group "=== 停滞离场（有利润但走不动了）==="
+input bool     InpExitOnStall        = false;   // 启用停滞离场
+input int      InpStallMinutes       = 10;      // 停滞观察窗口（分钟）
+input double   InpStallRangeATR      = 0.25;    // 窗口内高低差 < ATR × 该值 = 停滞
+input double   InpStallMinUSD        = 0.0;     // 利润门槛($，净额)，0=改用下面的 R 门槛
+input double   InpStallMinR          = 0.50;    // 利润门槛(R)，InpStallMinUSD=0 时生效
+input bool     InpStallNeedNoNewExtreme = true; // 最新一根仍在创有利极值时，不算停滞
+
 input group "=== 新闻过滤 ==="
 input bool     InpUseNewsFilter      = true;    // 启用经济日历过滤
 input int      InpNewsBeforeMin      = 30;      // 数据公布前 N 分钟禁止开仓
@@ -1973,6 +1993,38 @@ void CleanFlags()
 }
 
 //==================================================================
+// 停滞判定：最近 N 分钟价格是不是在一个很窄的区间里磨
+//==================================================================
+// 用 M1 数一根一分钟，和"分钟"这个口径一一对应，不受 InpLTF/InpEntryTF 影响。
+// 拿不到完整数据时返回 false —— 数据不足时**不猜**，宁可不平仓。
+bool PriceStalled(int dir, double atr, int minutes, double &rangeOut)
+{
+   rangeOut = 0.0;
+   if(minutes <= 0 || atr <= 0.0) return false;
+
+   double hi = -DBL_MAX, lo = DBL_MAX;
+   int hiIdx = -1, loIdx = -1;
+   for(int i = 1; i <= minutes; i++)
+   {
+      double h = iHigh(_Symbol, PERIOD_M1, i);
+      double l = iLow (_Symbol, PERIOD_M1, i);
+      if(h <= 0.0 || l <= 0.0) return false;
+      if(h > hi) { hi = h; hiIdx = i; }
+      if(l < lo) { lo = l; loIdx = i; }
+   }
+   rangeOut = hi - lo;
+   if(rangeOut >= InpStallRangeATR * atr) return false;
+
+   // 最新那根还在往我有利的方向创极值 = 还在走，别急着砍
+   if(InpStallNeedNoNewExtreme)
+   {
+      if(dir > 0 && hiIdx == 1) return false;
+      if(dir < 0 && loIdx == 1) return false;
+   }
+   return true;
+}
+
+//==================================================================
 // 持仓的**净**盈亏（口径说明见 InpQuickProfitUSD 那段注释）
 //==================================================================
 // 调用前必须已经 pos.Select*() 选中该仓位。
@@ -2136,6 +2188,36 @@ void ManagePositions(double atr)
             LogLine("EXIT", StringFormat("#%I64u 动量衰竭/反向信号，%.2fR 主动锁利", tk, rMult));
             trade.PositionClose(tk);
             continue;
+         }
+      }
+
+      // --- 有利润但走不动了 -> 落袋 ---
+      // 放在动量衰竭之后：那条管"掉头往回走"，这条管"根本不走了"，互补不重叠。
+      if(InpExitOnStall)
+      {
+         bool   profitOk = false;
+         double netUSD   = 0.0;
+         if(InpStallMinUSD > 0.0)
+         {
+            netUSD   = PositionNetUSD();          // 点差/隔夜/手续费都已扣
+            profitOk = (netUSD >= InpStallMinUSD);
+         }
+         else
+            profitOk = (rMult >= InpStallMinR);
+
+         double rng = 0.0;
+         if(profitOk && PriceStalled(isBuy ? 1 : -1, atr, InpStallMinutes, rng))
+         {
+            if(trade.PositionClose(tk))
+            {
+               LogLine("STALL", StringFormat(
+                  "#%I64u %d 分钟仅波动 $%.2f（< ATR %.2f × %.2f），%.2fR / 净 $%.2f 落袋",
+                  tk, InpStallMinutes, rng, atr, InpStallRangeATR, rMult,
+                  InpStallMinUSD > 0.0 ? netUSD : PositionNetUSD()));
+               continue;
+            }
+            LogLine("ERROR", StringFormat("#%I64u 停滞离场失败 %d %s",
+                    tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
          }
       }
 
