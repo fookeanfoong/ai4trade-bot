@@ -72,17 +72,17 @@ InpHtfRequireSlope=false
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=4
+InpMinScore=3
 InpEntryTF=1
-InpAdxMin=8.0
+InpAdxMin=5.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
-InpTriggerTolATR=0.90
-InpBarCloseStrength=0.30
-InpWickRejectPct=0.85
+InpTriggerTolATR=1.30
+InpBarCloseStrength=0.20
+InpWickRejectPct=0.92
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
 ; 实测出现过 RR=0.04 的拒绝 —— M5 上贴着入场价的小摆动高点被当成硬顶。
@@ -100,7 +100,7 @@ InpSlMinUSD=1.20
 InpSlMaxUSD=15.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=3.0
+InpSlMaxATRMult=4.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -176,7 +176,7 @@ InpVirtualBalanceUSD=0.0
 InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=4
+InpScoreMinB=3
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=1.5
@@ -209,8 +209,8 @@ InpReducedAtPct=40.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=3
-InpMaxCombinedRiskPct=10.0
+InpMaxPositions=5
+InpMaxCombinedRiskPct=15.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
 InpAllowHedge=false
 
@@ -219,7 +219,7 @@ InpAllowHedge=false
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
 InpUseLooseEntry=true
-InpLooseMaxDistATR=1.20
+InpLooseMaxDistATR=3.00
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
 ; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
