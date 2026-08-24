@@ -43,9 +43,9 @@ InpConservativeAt=20.0
 InpReducedAt=30.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
-InpMaxTradesPerDay=20
-InpStopAfterConsecLoss=5
-InpObserveAfterConsecLoss=3
+InpMaxTradesPerDay=80
+InpStopAfterConsecLoss=12
+InpObserveAfterConsecLoss=6
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
 InpSessionStartHour=0
@@ -156,7 +156,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 ; 分级交给百分比,不再用一刀切的美元上限
-InpRiskCapUSD=0.0
+InpRiskCapUSD=2.0
+InpQuickProfitUSD=2.0
 ; 所有百分比以 $200 为基准,而不是终端里的真实余额
 InpVirtualBalanceUSD=0.0
 
@@ -188,10 +189,10 @@ InpVolHighSizeMult=0.60
 
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
-InpDailyTargetPct=25.0
-InpDailyMaxLossPct=15.0
-InpConservativeAtPct=10.0
-InpReducedAtPct=15.0
+InpDailyTargetPct=50.0
+InpDailyMaxLossPct=50.0
+InpConservativeAtPct=30.0
+InpReducedAtPct=40.0
 
 ; --- 多仓并行（规格 §30）---
 ; 加仓 = 往同一笔盈利单上追;多仓 = 各自独立的 setup + 各自独立止损。

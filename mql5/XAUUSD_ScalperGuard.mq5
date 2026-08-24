@@ -72,6 +72,20 @@ input group "=== 固定金额目标（下注前就知道赚多少）==="
 //    OnInit 会把这三个数和保本胜率一起算给你看。
 input double   InpTargetProfitUSD    = 0.0;     // 每笔目标盈利($)，0=关闭，用 R 倍数止盈
 input double   InpRiskCapUSD         = 0.0;     // 每笔风险硬上限($)，0=只用风险%
+
+// InpQuickProfitUSD > 0 时:只要这笔仓位的**净盈亏**摸到这个金额,立刻市价平掉,
+// 不等 TP、不等 R 倍数、不等追踪止损。
+// "净"的口径(下面 PositionNetUSD 就是按这个算的):
+//     POSITION_PROFIT —— 买单按 BID / 卖单按 ASK 计价,**点差已经扣在里面**
+//   + POSITION_SWAP   —— 隔夜利息
+//   + 该仓位已产生的 commission × 2 —— ×2 是给平仓那一笔留出手续费
+// 所以设 1.5 的意思就是"到手 $1.5",不是"毛赚 $1.5"。
+//
+// ⚠️ 这东西会**大幅压低盈亏比**,必须配 InpRiskCapUSD 一起用:
+//    赚 $1.5 / 亏 $10  = RR 1:0.15 -> 保本胜率 87%
+//    赚 $1.5 / 亏 $1.5 = RR 1:1    -> 保本胜率 50%
+//    OnInit 会把这两个数和保本胜率一起算给你看。
+input double   InpQuickProfitUSD     = 0.0;     // 净赚到这个金额($)立刻平仓，0=关闭
 // >0 时所有百分比都以这个数为基准,而不是终端里的真实余额。
 // 用途:在 $10,000 演示账户上原样模拟 $200 的风险敞口,同时保留 A+/A/B 分级。
 // 保证金检查不受影响 —— 那是券商的真实约束。
@@ -1599,7 +1613,9 @@ Signal BuildSignal(double atr, int minScore)
    double rr = (tp2 - entry) * dir / MathMax(slDist, _Point);
    // 固定金额目标模式下不查 RR:止盈由金额决定,RR 只是它的**结果**,
    // 拿结果去否决前提会把所有信号挡光。风险由 InpRiskCapUSD 控,不靠 RR 门槛。
-   if(InpTargetProfitUSD <= 0.0 && rr < InpMinRR)
+   // 出场若是固定金额（挂在目标价 或 净盈利到点就走），"到下一个关键位有多远"
+   // 这个 RR 就不再是我们实际拿到的盈亏比了，拿它当门槛只会白挡信号。
+   if(InpTargetProfitUSD <= 0.0 && InpQuickProfitUSD <= 0.0 && rr < InpMinRR)
    {
       NoTrade(StringFormat("风险回报不足 RR=%.2f < %.2f（前方关键位太近）", rr, InpMinRR));
       return sg;
@@ -1945,6 +1961,31 @@ void CleanFlags()
 }
 
 //==================================================================
+// 持仓的**净**盈亏（口径说明见 InpQuickProfitUSD 那段注释）
+//==================================================================
+// 调用前必须已经 pos.Select*() 选中该仓位。
+double PositionNetUSD()
+{
+   double net = pos.Profit() + pos.Swap();
+
+   // 手续费要翻历史,比读浮动盈亏贵得多。放在这里是因为调用点已经做了粗筛
+   // （毛利没摸到目标就不会走到这一步），所以每 tick 的常态开销仍是两次读取。
+   double comm = 0.0;
+   if(HistorySelectByPosition((ulong)pos.Identifier()))
+   {
+      int nd = HistoryDealsTotal();
+      for(int j = 0; j < nd; j++)
+      {
+         ulong dt = HistoryDealGetTicket(j);
+         if(dt != 0) comm += HistoryDealGetDouble(dt, DEAL_COMMISSION);
+      }
+   }
+   // comm 是负数。此刻历史里只有开仓那一笔,平仓那一笔还没发生 ——
+   // 按往返对称估算,×2。点差型账户(commission=0)下这一项恒为 0,不影响。
+   return net + comm * 2.0;
+}
+
+//==================================================================
 // 持仓管理
 //==================================================================
 void ManagePositions(double atr)
@@ -1976,6 +2017,28 @@ void ManagePositions(double atr)
       if(R <= 0.0) continue;
       double moved = isBuy ? (cur - open) : (open - cur);
       double rMult = moved / R;
+
+      // --- 固定金额快速离场：净赚到目标就立刻走 ---
+      // 放在所有离场判断的最前面 —— 它的语义就是"到了就走",不该被保本、
+      // 追踪、部分止盈这些先改一遍状态。
+      // 先用毛利粗筛：没摸到目标就连手续费都不用去翻历史。
+      if(InpQuickProfitUSD > 0.0 && (pos.Profit() + pos.Swap()) >= InpQuickProfitUSD)
+      {
+         double netUSD = PositionNetUSD();
+         if(netUSD >= InpQuickProfitUSD)
+         {
+            if(trade.PositionClose(tk))
+            {
+               LogLine("QUICK", StringFormat(
+                       "#%I64u 净盈利 $%.2f >= 目标 $%.2f，立刻平仓（%.2fR）",
+                       tk, netUSD, InpQuickProfitUSD, rMult));
+            }
+            else
+               LogLine("ERROR", StringFormat("#%I64u 快速离场失败 %d %s",
+                       tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+            continue;
+         }
+      }
 
       // --- 最长持仓时间（短线不拖单）---
       datetime openTime = (datetime)pos.Time();
@@ -2533,6 +2596,38 @@ int OnInit()
 
    SuggestFinerGoldSymbol();
 
+   // --- 快速离场的自检:盈亏比、保本胜率、以及**日目标够不够得着** ---
+   if(InpQuickProfitUSD > 0.0)
+   {
+      double effRisk = risk1;
+      if(InpRiskCapUSD > 0.0) effRisk = MathMin(effRisk, InpRiskCapUSD);
+      double rr = (effRisk > 0.0) ? InpQuickProfitUSD / effRisk : 0.0;
+      double be = (rr > 0.0) ? 100.0 / (1.0 + rr) : 100.0;
+      LogLine("QUICK", StringFormat(
+         "净赚 $%.2f 立刻平仓 | 每笔实际风险 $%.2f | RR 1:%.2f | 保本胜率需 %.1f%%",
+         InpQuickProfitUSD, effRisk, rr, be));
+
+      if(rr < 0.8)
+         LogLine("WARN", StringFormat(
+            "赚 $%.2f / 亏 $%.2f = RR 1:%.2f —— 保本胜率要 %.1f%%。"
+            "把 InpRiskCapUSD 设成 $%.2f 可得 RR 1:1。",
+            InpQuickProfitUSD, effRisk, rr, be, InpQuickProfitUSD));
+
+      // 这条是最容易被忽略、也最致命的一条:
+      // 每笔只赚固定金额时,一天能赚到的**上限**就是 笔数 × 每笔金额。
+      // 如果这个上限低于日目标,日目标永远触发不了 —— 于是每天唯一会生效的
+      // 熔断就只剩"日亏上限"。小赢封顶、大亏照收,账户只会单向往下走。
+      double maxDay = InpMaxTradesPerDay * InpQuickProfitUSD;
+      double tgt    = DailyTargetUSD();
+      if(tgt > 0.0 && maxDay < tgt)
+         LogLine("WARN", StringFormat(
+            "日目标 $%.2f 摸不到：每笔只赚 $%.2f × 每日上限 %d 笔 = 最多 $%.2f。"
+            "日目标会永远失效，每天只有日亏上限 $%.2f 会触发 —— 小赢封顶、大亏照收。"
+            "要么把 InpMaxTradesPerDay 提到 %d 以上，要么把日目标降到 $%.2f 以下。",
+            tgt, InpQuickProfitUSD, InpMaxTradesPerDay, maxDay, DailyMaxLossUSD(),
+            (int)MathCeil(tgt / InpQuickProfitUSD), maxDay));
+   }
+
    // --- 固定金额目标的自检:把目标、风险、RR、保本胜率一次算清 ---
    if(InpTargetProfitUSD > 0.0)
    {
@@ -2752,7 +2847,7 @@ void OnTick()
    Signal sg = BuildSignal(atr, minScore);
    if(sg.dir == 0) { Panel(ds, g_lastNoTradeReason); return; }
    // 同上:固定金额目标模式下 RR 是结果不是前提,保守/收紧档的 RR 要求不适用
-   if(InpTargetProfitUSD <= 0.0 && sg.rr < minRRreq)
+   if(InpTargetProfitUSD <= 0.0 && InpQuickProfitUSD <= 0.0 && sg.rr < minRRreq)
    {
       NoTrade(StringFormat("当前模式要求 RR >= %.2f，实际 %.2f", minRRreq, sg.rr));
       Panel(ds, "RR 不达标");
