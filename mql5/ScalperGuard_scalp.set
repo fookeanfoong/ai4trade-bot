@@ -113,6 +113,9 @@ InpTP1_R=0.5
 InpTP2_R=1.0
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.10
+InpBreakEvenR=0.0
+InpGiveBackPct=0.0
+InpGiveBackMinR=0.60
 InpTrailATRMult=0.6
 
 ; 最长持仓 45 分钟 = 9 根 M5。拖不动就走,不占着仓位等

@@ -256,6 +256,19 @@ input bool     InpLevelExitKeyOnly   = false;   // 该出场只认机构参考�
 // ⚠️ 窗口别设太短。黄金"一分钟没动"是**常态不是信号**:M1 的正常波幅本就只有
 //    日 ATR 的几十分之一,1 分钟窗口几乎必然命中,那就退化成"到点就走"了。
 //    默认 10 分钟。改之前先看 reports/gold_stall.md 里的实测命中率。
+// 保本时机。原来保本和 TP1 绑在一起(都在 InpTP1_R)，这带来一个很贵的后果：
+// 一笔走到 +0.9R 然后掉头，止损从没动过 —— 结果是 **-1.0R 全额亏损**。
+// 明明赚着的单子最后亏钱，绝大多数是这么来的：一次 1.9R 的净摆动。
+// InpBreakEvenR 把保本从 TP1 里拆出来，可以远早于 TP1 触发。
+// 0 = 跟随 InpTP1_R（旧行为）。
+input double   InpBreakEvenR         = 0.0;     // 达到该 R 即移保本，0=跟随 InpTP1_R
+
+// 回吐上限：曾经赚到过 InpGiveBackMinR，就不许把利润全吐回去。
+// 和保本的区别 —— 保本守的是**入场价**，回吐守的是**曾经到过的最高点**。
+// 一笔冲到 +1.5R 再退回 +0.1R，保本管不着(还在盈利)，回吐上限会在 +0.9R 就收手。
+input double   InpGiveBackPct        = 0.0;     // 从最高盈利回吐超过该%即平仓，0=关闭
+input double   InpGiveBackMinR       = 0.60;    // 最高盈利需先达到该 R，回吐上限才生效
+
 input group "=== 停滞离场（有利润但走不动了）==="
 input bool     InpExitOnStall        = false;   // 启用停滞离场
 input int      InpStallMinutes       = 10;      // 停滞观察窗口（分钟）
@@ -1945,6 +1958,16 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
 //------------------------------------------------------------------
 string PartialKey(ulong ticket){ return StringFormat("SG_P_%I64u", ticket); }
 string RKey      (ulong ticket){ return StringFormat("SG_R_%I64u", ticket); }
+string MKey      (ulong ticket){ return StringFormat("SG_M_%I64u", ticket); }
+
+// 该仓位见过的最高盈利(R)。只增不减 —— 回吐上限要守的就是这个数。
+double PeakR(ulong ticket, double curR)
+{
+   string k = MKey(ticket);
+   double best = GlobalVariableCheck(k) ? GlobalVariableGet(k) : 0.0;
+   if(curR > best) { best = curR; GlobalVariableSet(k, best); }
+   return best;
+}
 
 bool PartialDone(ulong ticket){ return GlobalVariableCheck(PartialKey(ticket)); }
 void MarkPartialDone(ulong ticket){ GlobalVariableSet(PartialKey(ticket), 1.0); }
@@ -1972,7 +1995,8 @@ void PurgeFlags()
    for(int i = n - 1; i >= 0; i--)
    {
       string nm = GlobalVariableName(i);
-      if(StringFind(nm, "SG_P_") == 0 || StringFind(nm, "SG_R_") == 0)
+      if(StringFind(nm, "SG_P_") == 0 || StringFind(nm, "SG_R_") == 0 ||
+         StringFind(nm, "SG_M_") == 0)
          GlobalVariableDel(nm);
    }
 }
@@ -1986,7 +2010,8 @@ void CleanFlags()
       string nm = GlobalVariableName(i);
       bool isP = (StringFind(nm, "SG_P_") == 0);
       bool isR = (StringFind(nm, "SG_R_") == 0);
-      if(!isP && !isR) continue;
+      bool isM = (StringFind(nm, "SG_M_") == 0);
+      if(!isP && !isR && !isM) continue;
       ulong tk = (ulong)StringToInteger(StringSubstr(nm, 5));
       if(!PositionSelectByTicket(tk)) GlobalVariableDel(nm);
    }
@@ -2082,6 +2107,28 @@ void ManagePositions(double atr)
       double moved = isBuy ? (cur - open) : (open - cur);
       double rMult = moved / R;
 
+      // --- 回吐上限：曾经赚到过，就不许全吐回去 ---
+      // 守的是**曾经到过的最高点**，不是入场价 —— 保本管不到"从 +1.5R 退回 +0.1R"
+      // 这种情况(全程都还在盈利)，回吐上限管得到。放最前面：它是最紧的一道。
+      double peakR = PeakR(tk, rMult);
+      if(InpGiveBackPct > 0.0 && peakR >= InpGiveBackMinR)
+      {
+         double keep = peakR * (1.0 - InpGiveBackPct / 100.0);
+         if(rMult <= keep)
+         {
+            if(trade.PositionClose(tk))
+            {
+               LogLine("GIVEBACK", StringFormat(
+                  "#%I64u 最高到过 %.2fR，现回落到 %.2fR（回吐 %.0f%% >= 上限 %.0f%%），落袋",
+                  tk, peakR, rMult, peakR > 0.0 ? 100.0 * (peakR - rMult) / peakR : 0.0,
+                  InpGiveBackPct));
+               continue;
+            }
+            LogLine("ERROR", StringFormat("#%I64u 回吐离场失败 %d %s",
+                    tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+         }
+      }
+
       // --- 固定金额快速离场：净赚到目标就立刻走 ---
       // 放在所有离场判断的最前面 —— 它的语义就是"到了就走",不该被保本、
       // 追踪、部分止盈这些先改一遍状态。
@@ -2126,20 +2173,28 @@ void ManagePositions(double atr)
       bool partialDone = PartialDone(tk);
       double lotMin  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
 
-      if(rMult >= InpTP1_R)
+      // --- 保本：独立于 TP1，可以早得多 ---
+      // 缓冲至少要盖住点差，否则"保本"出场仍然是净亏 —— 买单按 BID 结算，
+      // 止损就摆在入场价的话，你还要再吐一个点差出去。
+      double beR = (InpBreakEvenR > 0.0) ? InpBreakEvenR : InpTP1_R;
+      if(rMult >= beR)
       {
-         // 先保本（只往盈利方向移动）
-         double be = isBuy ? open + InpBreakevenBufferATR * atr : open - InpBreakevenBufferATR * atr;
+         double beBuf = MathMax(InpBreakevenBufferATR * atr, SpreadUSD());
+         double be = isBuy ? open + beBuf : open - beBuf;
          bool needBE = isBuy ? (sl < be) : (sl > be);
          if(needBE && MathAbs(cur - be) > StopsLevelUSD() + _Point)
          {
             if(trade.PositionModify(tk, Px(be), tp))
             {
                sl = Px(be);        // 同步本地值，否则下面的追踪会拿旧止损比较，可能反而放宽
-               LogLine("MANAGE", StringFormat("#%I64u 达到 %.2fR，止损移至保本 %.2f", tk, rMult, be));
+               LogLine("MANAGE", StringFormat("#%I64u 达到 %.2fR，止损移至保本 %.2f（缓冲 $%.2f，含点差）",
+                       tk, rMult, be, beBuf));
             }
          }
+      }
 
+      if(rMult >= InpTP1_R)
+      {
          // 部分止盈（手数够才做，不够就整体交给追踪止损）
          if(!partialDone)
          {

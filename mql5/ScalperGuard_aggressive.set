@@ -109,6 +109,9 @@ InpTP1_R=1.0
 InpTP2_R=1.8
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
+InpBreakEvenR=0.0
+InpGiveBackPct=0.0
+InpGiveBackMinR=0.60
 InpTrailATRMult=1.0
 InpFadeExitMinR=0.45
 ; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
