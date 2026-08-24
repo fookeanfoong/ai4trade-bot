@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T20:35:34+00:00",
+  "updated_at": "2026-08-24T21:33:58+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,7 +11,7 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-08-24T20:00:00Z",
+      "last_candle_time": "2026-08-24T21:00:00Z",
       "price": 1.16673,
       "spread_pips": null,
       "min_stop_pips": 25.0,
@@ -20,10 +20,10 @@
       "ema_stack": "均线缠绕(无排列)",
       "indicators": {
         "rsi14": 41.7,
-        "macd": "死叉 / 柱=-1.5e-05",
-        "ema20": 1.16721,
-        "ema50": 1.16746,
-        "ema200": 1.16291,
+        "macd": "金叉 / 柱=5e-06",
+        "ema20": 1.16716,
+        "ema50": 1.16743,
+        "ema200": 1.16295,
         "atr14_pips": 7.2,
         "rsi_bearish_divergence": true
       },
