@@ -35,7 +35,8 @@ $MustHave = @(
     'InpSlMaxATRMult',         # 止损上限跟随 ATR
     'InpTesterQuiet',          # 策略测试器静默（回测支持）
     'InpEntryTF',              # 触发周期（进场延迟）
-    'InpExitOnStall'           # 停滞离场
+    'InpExitOnStall',          # 停滞离场
+    'g_dirSell'                # 面板多空计数（方向闸门诊断）
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

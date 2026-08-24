@@ -116,8 +116,20 @@ input group "=== 方向判定与冲突处理 ==="
 // 原逻辑要求两周期同向,等于回调一发生就把自己的回调入场毙掉 ——
 // 「市场结构冲突」「动量冲突」两道同理:回调时它们必然冲突。
 //   0 = 两周期必须同向（原行为，最严）
-//   1 = H1 定方向，M5 只影响评分不否决（推荐：回调入场才可能触发）
-//   2 = 任一周期有方向即可
+//   1 = H1 定方向，M5 只影响评分不否决（回调入场才可能触发）
+//   2 = 任一周期有方向即可（H1 有方向就听 H1，H1 中性才听 M5）
+//   3 = M5 定方向，H1 只进评分不定方向
+//
+// ⚠️ 模式 2 有一个不显眼的陷阱：它只在 **H1 完全中性** 时才轮到 M5。
+//    而 InpHtfRequireCloseSide / InpHtfRequireSlope 都关掉之后，HtfTrend()
+//    退化成纯粹的 "H1 EMA50 vs EMA200"，在一段趋势行情里能连续几周不翻面 ——
+//    H1 永远不中性，M5 永远轮不到，方向恒定为一边。
+//    结果就是：模式 2 名义上"任一周期有方向即可"，实际等同模式 1。
+//    要真的两个方向都做，用模式 3；或者把上面那两个 H1 开关打开，
+//    让 H1 在动能转弱时回到中性。
+//
+// 模式 3 下逆着 H1 的单子不会被特殊对待，但也不需要 ——
+// 10 分制的 trend 维度自然会少给 1~2 分，等级降下来风险上限也跟着降。
 input int      InpDirectionMode      = 0;
 // true  = 结构/动量与方向冲突时**拒绝交易**（原行为）
 // false = 冲突不否决，只记录进成交备注，由 10 分制评分去反映质量差异
@@ -336,6 +348,11 @@ bool g_optim  = false;      // 在参数优化里(此时连 Print/Comment 都是
 bool g_quiet  = false;      // 静默监控设施 = g_tester && InpTesterQuiet
 
 ENUM_TIMEFRAMES g_entryTF = PERIOD_M5;   // 实际生效的触发周期，OnInit 里定
+
+// 多空计数（本次挂载以来）。100% 单边是最容易被忽略的故障 —— 它不报错，
+// 只是让你以为"策略就是这样"。摆到面板上，一眼就能看出方向闸门是不是卡死了。
+int g_dirBuy = 0, g_dirSell = 0;      // 方向判定为多/空的次数
+int g_opnBuy = 0, g_opnSell = 0;      // 实际开出的多/空单数
 
 int hEmaFastH, hEmaSlowH;      // HTF EMA
 int hEmaFastL, hEmaSlowL;      // LTF EMA
@@ -1546,7 +1563,9 @@ Signal BuildSignal(double atr, int minScore)
    if(InpDirectionMode == 1)
       dir = htf;                                   // H1 定方向，M5 交给评分
    else if(InpDirectionMode == 2)
-      dir = (htf != 0) ? htf : ltf;                // 任一周期有方向即可
+      dir = (htf != 0) ? htf : ltf;                // H1 有方向听 H1，H1 中性才听 M5
+   else if(InpDirectionMode == 3)
+      dir = ltf;                                   // M5 定方向，H1 只进评分
    else
    {
       if(htf > 0 && ltf > 0) dir =  1;             // 原行为：必须同向
@@ -1554,6 +1573,7 @@ Signal BuildSignal(double atr, int minScore)
    }
    if(dir == 0)
    { NoTrade(StringFormat("趋势不一致 HTF=%d LTF=%d（模式%d）", htf, ltf, InpDirectionMode)); return sg; }
+   if(dir > 0) g_dirBuy++; else g_dirSell++;
 
    // --- 冲突：否决 还是 只记录 ---
    // 回调行情里结构与动量必然与大方向冲突。把它们当否决条件,等于永远做不了回调。
@@ -1920,6 +1940,8 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
       LogLine("ERROR", StringFormat("下单失败 %d %s%s", rc, trade.ResultRetcodeDescription(), hint));
       return;
    }
+
+   if(sg.dir > 0) g_opnBuy++; else g_opnSell++;
 
    ulong openTicket = trade.ResultOrder();   // 对冲账户下,开仓订单号即持仓号
    LogLine("OPEN", StringFormat("#%I64u %s %s 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
@@ -2478,6 +2500,7 @@ void Panel(DayStats &ds, string status)
       "模式: %s\n"
       "点差: %.2f  ATR: %.2f\n"
       "算法交易: 终端%s / 本EA%s\n"
+      "方向(挂载以来): 判多 %d / 判空 %d  |  开多 %d / 开空 %d\n"
       "状态: %s\n",
       AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_DEMO ? "DEMO" : "REAL",
       _Symbol, bal, (int)AccountInfoInteger(ACCOUNT_LEVERAGE),
@@ -2487,6 +2510,7 @@ void Panel(DayStats &ds, string status)
       mode, SpreadUSD(), Buf(hAtrL, 0, 1),
       TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) ? "开" : "关!",
       MQLInfoInteger(MQL_TRADE_ALLOWED)          ? "开" : "关!",
+      g_dirBuy, g_dirSell, g_opnBuy, g_opnSell,
       status);
    if(!g_optim) Comment(txt);      // 优化时没人看,Comment 每次都要刷图表
 }
