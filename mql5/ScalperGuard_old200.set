@@ -133,6 +133,29 @@
 ;   唯一的例外是行情跳空直接穿过 $3，那种情况由 InpBreakEvenUSD=2.0 兜底
 ;   （到过 $2 就把止损推到保本，不会再变成亏损）。
 ;
+;   ---- 08-25 实测：133 笔净 -$61.56，问题是赢单被砍在半路 ----
+;   胜率 51.1%，看着接近平衡，但赢均 $1.03 / 亏均 $2.03 —— 盈亏比 0.51，
+;   保本胜率要 66.4%。差的不是胜率，是**赢单太小**。
+;
+;   盈利分布把话说死了：
+;       >= +$3    4 笔     <- $3 落袋几乎从没触发过
+;       +$1~+3   18 笔
+;       $0~+1    46 笔     <- 三分之二的"赢单"落在这里，点差都不够扣
+;       -$1~-3   44 笔     <- 亏单基本吃满止损
+;
+;   风险封顶 $3、目标 $3，也就是 **1R = 落袋点**。那么任何在 1R 之前
+;   动手的机制，都是在抢在落袋之前把单子砍掉。把它们全部推到落袋之后：
+;     InpPartialClosePct  50 -> 0     部分止盈正好在 1R 砍掉一半仓位
+;     InpTP1_R           1.0 -> 2.0   保本与追踪的启动点
+;     InpFadeExitMinR    1.0 -> 2.0
+;     InpGiveBackMinR    1.0 -> 2.0
+;     InpLevelExitMinR   1.2 -> 2.0
+;     InpExitOnMomentumFade true -> false
+;   改完每笔只剩两个结局：+$3 落袋 或 -$3 满止损。
+;
+;   另外：做多 93 笔胜 48.4% 净 -$56.72，做空 40 笔胜 57.5% 净 -$4.84。
+;   亏损集中在做多那一侧（当天金价整体在跌），方向模式 4 + 逆势闸门保留观察。
+;
 ;   ---- 再放宽一轮（仍然没入场）----
 ;   先修了一个我自己造的冲突：逆势闸门会把**趋势回调**一起毙掉 ——
 ;   回调的定义就是最近几根K线在往反方向走，而入场 B 等的正是这一刻。
@@ -393,21 +416,21 @@ InpMaxFakeBreakouts=5
 ; .set 只会覆盖它列出的项 —— 少列一个，从 scalp 档切回来时那一项就还留着
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
-InpExitOnMomentumFade=true
-InpTP1_R=1.0
+InpExitOnMomentumFade=false
+InpTP1_R=2.0
 InpTP2_R=1.8
-InpPartialClosePct=50.0
+InpPartialClosePct=0.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
 InpGiveBackPct=40.0
-InpGiveBackMinR=1.00
+InpGiveBackMinR=2.0
 InpTrailATRMult=1.0
-InpFadeExitMinR=1.00
+InpFadeExitMinR=2.0
 ; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
 ; 而计划 RR 均值 1.67 —— 只拿到计划的 48%。原因是该出场把任何 M5 微型摆动点
 ; 都当关键位,趋势里条件恒真。抬门槛 + 只认机构参考位。
-InpLevelExitMinR=1.20
+InpLevelExitMinR=2.0
 InpLevelExitKeyOnly=true
 InpExitOnStall=false
 InpStallMinutes=10
