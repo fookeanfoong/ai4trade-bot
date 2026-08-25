@@ -40,7 +40,8 @@ $MustHave = @(
     'InpExitOnStall',          # 停滞离场
     'g_dirSell',               # 面板多空计数（方向闸门诊断）
     'EffectiveFreeMargin',     # 保证金按虚拟本金算
-    'PriceActionDir'           # 纯K线方向（模式4）
+    'PriceActionDir',          # 纯K线方向（模式4）
+    'InpCounterMoveATR'        # 逆势闸门
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

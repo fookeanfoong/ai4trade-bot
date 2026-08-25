@@ -162,6 +162,14 @@ input bool     InpInvertSignals      = false;   // 倒转信号方向（诊断�
 // 均线交叉是**平滑后的历史**，方向永远滞后；摆动结构(HH/HL vs LH/LL)读的是
 // K线本身的高低点，转向时反应快得多，而且是价格行为本来的语言。
 // 结构都判不出方向时，退而看最近几根K线的净推进。
+// 逆势闸门：方向定完之后再看一眼最近几根K线在往哪走。
+// 摆动结构和均线一样，在**转折点上都是事后确认** —— InpSwingStrength=2 意味着
+// 新的摆动低点要等右边再出 2 根K线才成立，所以价格在底部反转的那一刻，
+// 结构读出来仍然是"更低高点+更低低点"=做空，于是一头撞进反弹里。
+// 这道闸门不预测方向，只否决一件事：**要做空，可最近几根K线正在往上走**。
+input int      InpCounterMoveBars    = 5;       // 逆势检查看最近几根K线
+input double   InpCounterMoveATR     = 0.50;    // 逆向净走幅超过 ATR×该值即否决，0=关闭
+
 input int      InpPaBars             = 6;       // 结构不明时，看最近几根K线的净推进
 input double   InpPaMinATR           = 0.30;    // 净推进需超过 ATR × 该值才算有方向
 
@@ -1674,6 +1682,24 @@ Signal BuildSignal(double atr, int minScore)
    if(dir == 0)
    { NoTrade(StringFormat("趋势不一致 HTF=%d LTF=%d（模式%d）", htf, ltf, InpDirectionMode)); return sg; }
    if(dir > 0) g_dirBuy++; else g_dirSell++;
+
+   // --- 逆势闸门：最近几根K线正在往我的反方向走，就不做 ---
+   if(InpCounterMoveATR > 0.0 && atr > 0.0)
+   {
+      int nb = MathMax(2, InpCounterMoveBars);
+      double cNow = iClose(_Symbol, g_entryTF, 1);
+      double cOld = iClose(_Symbol, g_entryTF, nb);
+      if(cNow > 0.0 && cOld > 0.0)
+      {
+         double against = (cOld - cNow) * dir;   // >0 = 这几根在往我的反方向走
+         if(against > InpCounterMoveATR * atr)
+         {
+            NoTrade(StringFormat("最近 %d 根K线逆向走了 $%.2f（%.2f×ATR），不做%s",
+                    nb, against, against / atr, dir > 0 ? "多" : "空"));
+            return sg;
+         }
+      }
+   }
 
    // --- 冲突：否决 还是 只记录 ---
    // 回调行情里结构与动量必然与大方向冲突。把它们当否决条件,等于永远做不了回调。
