@@ -156,7 +156,37 @@
 ;     硬阈值 InpCounterMoveHardATR=0.80  逆向走得够远时无条件否决
 ;                                        （一小时的反弹不会因为出现一根阴线就变成回调）
 ;
-;   ---- 08-25 实测：133 笔净 -$61.56，问题是赢单被砍在半路 ----
+;   ================================================================
+;   ★ 方向不可预测，改赌赔率（基于 1021 笔真实回测）★
+;   ================================================================
+;   backtest_signals.py 在两年真实黄金上测了 14 种方向信号（结构、EMA、
+;   突破、RSI、动量…顺做反做都测），**没有一个胜率站上 50%**。
+;   结论：黄金 1h/M5 上方向就是不可预测的，我们改了 20 多轮方向逻辑全是白费。
+;
+;   但同一份回测的赔率表指出出路：同一个信号，
+;       1:1 期望 -0.017  ->  1:2 期望 +0.027
+;   只要**止损小、让赢单跑到亏单的两倍**，49% 的方向也能转正期望。
+;   这就是黄金的本性：方向猜不准，但赢能走远、亏要砍快。
+;
+;   据此，这一档从"1:1 赚 $3 就走"彻底改成"1:2 让赢单跑"：
+;       InpQuickProfitUSD  3 -> 0      去掉 $3 落袋（那是 1:1 的枷锁）
+;       InpRiskCapUSD      3 -> 0      去掉 $3 风险封顶
+;       InpTP2_R        1.8 -> 2.0     止盈 = 2 倍止损距离
+;       InpSlMaxATRMult 3.0 -> 1.5     止损收窄，2R 才够得着
+;       InpGiveBackPct   40 -> 0       2R 之前不许回吐平仓
+;       Fade/Level/GiveBackMinR 全部 >= 2.0  一路不砍，让它跑到目标
+;       InpPartialClosePct = 0         不半路减仓
+;   方向仍用模式 4（结构+推进，回测里期望最稳的那个）。
+;
+;   现在每笔只有两个结局：+2R 止盈 或 -1R 满止损。赢是亏的两倍。
+;   胜率只要不低于 34%（1/(1+2)）就是正期望 —— 而实测方向 49%，有余量。
+;   $200 上：风险 2/3/4% = $4/$6/$8 止损，对应止盈 $8/$12/$16。
+;
+;   ⚠️ 这是第一个**有真实数据支撑**的方向。明天跑一个下午看：
+;      赢单是不是真的能跑到 2R、平均每笔期望是不是正的。
+;   ================================================================
+;
+;   ---- 08-25 实测：133 笔净 -$61.56，问题是赢单被砍在半路 ----;   ---- 08-25 实测：133 笔净 -$61.56，问题是赢单被砍在半路 ----
 ;   胜率 51.1%，看着接近平衡，但赢均 $1.03 / 亏均 $2.03 —— 盈亏比 0.51，
 ;   保本胜率要 66.4%。差的不是胜率，是**赢单太小**。
 ;
@@ -398,7 +428,7 @@ InpHtfRequireSlope=false
 InpMinScore=2
 InpEntryTF=1
 InpAdxMin=3.0
-InpMinRR=1.0
+InpMinRR=0.5
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
@@ -423,7 +453,7 @@ InpSlMinUSD=1.20
 InpSlMaxUSD=15.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=3.0
+InpSlMaxATRMult=1.5
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -441,12 +471,12 @@ InpMaxFakeBreakouts=5
 InpMaxHoldMinutes=180
 InpExitOnMomentumFade=false
 InpTP1_R=2.0
-InpTP2_R=1.8
+InpTP2_R=2.0
 InpPartialClosePct=0.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
-InpGiveBackPct=40.0
+InpGiveBackPct=0.0
 InpGiveBackMinR=2.0
 InpTrailATRMult=1.0
 InpFadeExitMinR=2.0
@@ -489,8 +519,8 @@ InpSweepMaxPenetration=1.50
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
-InpRiskCapUSD=3.0
-InpQuickProfitUSD=3.0
+InpRiskCapUSD=0.0
+InpQuickProfitUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=200.0
 

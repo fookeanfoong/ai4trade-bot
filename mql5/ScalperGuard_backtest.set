@@ -1,17 +1,9 @@
 ; ============================================================================
 ; XAUUSD ScalperGuard —— 策略测试器专用（与 old200 规则完全同步）
-;
-; 交易规则**逐字复制自 ScalperGuard_old200.set**，只改四项环境设置：
-;     InpVirtualBalanceUSD  -> 0.0    测试器的"存款"栏才是本金，填 200
-;     InpVerboseLog / InpWriteStatusJson / InpPushNotify -> false
-;
-; 测试器设置：
-;     品种 XAUUSD.sml   周期 M5   存款 200   杠杆 1:100
-;     模型「每笔即时价格基于真实价格变化」   日期至少 1 年   延迟「随机延迟」
-;
-; 跑完第一眼看两个数，不看净利：
-;     1) 做空占比 —— 应接近一半
-;     2) +$3 落袋 与 -$3 止损的笔数比 —— 盈亏比钉死 1:1，这个比值就是胜率
+;   交易规则逐字复制自 old200，只改四项环境：虚拟本金置 0、日志/推送/status 关闭。
+;   测试器：品种 XAUUSD.sml / 周期 M5 / 存款 200 / 杠杆 1:100 /
+;           模型「每笔即时价格基于真实价格变化」/ 至少 1 年 / 随机延迟。
+;   看：+2R 止盈 与 -1R 止损的笔数比，以及每笔平均 R（应为正）。
 ; ============================================================================
 InpAllowLiveAccount=false
 
@@ -61,7 +53,7 @@ InpHtfRequireSlope=false
 InpMinScore=2
 InpEntryTF=1
 InpAdxMin=3.0
-InpMinRR=1.0
+InpMinRR=0.5
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
@@ -86,7 +78,7 @@ InpSlMinUSD=1.20
 InpSlMaxUSD=15.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=3.0
+InpSlMaxATRMult=1.5
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -104,12 +96,12 @@ InpMaxFakeBreakouts=5
 InpMaxHoldMinutes=180
 InpExitOnMomentumFade=false
 InpTP1_R=2.0
-InpTP2_R=1.8
+InpTP2_R=2.0
 InpPartialClosePct=0.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
-InpGiveBackPct=40.0
+InpGiveBackPct=0.0
 InpGiveBackMinR=2.0
 InpTrailATRMult=1.0
 InpFadeExitMinR=2.0
@@ -152,8 +144,8 @@ InpSweepMaxPenetration=1.50
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
-InpRiskCapUSD=3.0
-InpQuickProfitUSD=3.0
+InpRiskCapUSD=0.0
+InpQuickProfitUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=0.0
 
