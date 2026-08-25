@@ -198,6 +198,7 @@ InpReducedAtPct=15.0
 InpAllowMultiPosition=true
 InpMaxPositions=3
 InpMaxCombinedRiskPct=10.0
+InpMaxMarginPctPerPos=35.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
 InpAllowHedge=false
 

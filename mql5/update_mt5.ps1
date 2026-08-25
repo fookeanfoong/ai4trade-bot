@@ -38,7 +38,8 @@ $MustHave = @(
     'InpTesterQuiet',          # 策略测试器静默（回测支持）
     'InpEntryTF',              # 触发周期（进场延迟）
     'InpExitOnStall',          # 停滞离场
-    'g_dirSell'                # 面板多空计数（方向闸门诊断）
+    'g_dirSell',               # 面板多空计数（方向闸门诊断）
+    'EffectiveFreeMargin'      # 保证金按虚拟本金算
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

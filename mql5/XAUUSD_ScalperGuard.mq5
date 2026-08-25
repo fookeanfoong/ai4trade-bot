@@ -592,6 +592,33 @@ double Buf(int handle, int buffer, int shift)
 // 等于把 V2 规格的分级体系废掉。
 //
 // **不影响保证金检查** —— 那是券商的真实约束,仍然用真实账户数据。
+// 可用保证金 —— 虚拟本金模式下按虚拟规模算，而不是终端里的真实余额。
+//
+// 之前保证金检查故意用真实余额，理由是"保证金是券商的硬约束"。那句话本身没错，
+// 但后果是 demo 上跑 $200 配置时保证金闸门**永远不触发**，而真的 $200 账户上
+// 它会频繁触发 —— 而且拦掉的恰好是评分最高、仓位最大的 A+ 单。
+// demo 因此系统性高估表现。既然目的是模拟真实 $200 账户，就得连这道约束一起模拟。
+//
+// 真实可用保证金仍然是硬上限：虚拟规模再大也不能超过券商实际允许的。
+double EffectiveFreeMargin()
+{
+   double real = AccountInfoDouble(ACCOUNT_MARGIN_FREE);
+   if(InpVirtualBalanceUSD <= 0.0) return real;
+
+   double used = 0.0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      if(!pos.SelectByIndex(i)) continue;
+      if(pos.Magic() != InpMagic || pos.Symbol() != _Symbol) continue;
+      double m = 0.0;
+      ENUM_ORDER_TYPE ot = (pos.PositionType() == POSITION_TYPE_BUY)
+                           ? ORDER_TYPE_BUY : ORDER_TYPE_SELL;
+      if(OrderCalcMargin(ot, _Symbol, pos.Volume(), pos.PriceOpen(), m)) used += m;
+   }
+   double v = InpVirtualBalanceUSD - used;
+   return MathMax(0.0, MathMin(v, real));
+}
+
 double EffectiveBalance()
 {
    if(InpVirtualBalanceUSD > 0.0) return InpVirtualBalanceUSD;
@@ -1799,7 +1826,7 @@ double CalcLot(double slDistUSD, double riskMoney, string &why)
    if(!OrderCalcMargin(ORDER_TYPE_BUY, _Symbol, lot, price, margin))
    { why = "保证金计算失败"; return 0.0; }
 
-   double freeMargin = AccountInfoDouble(ACCOUNT_MARGIN_FREE);
+   double freeMargin = EffectiveFreeMargin();
    double cap = freeMargin * InpMaxMarginPctPerPos / 100.0;
    if(margin > cap)
    {
@@ -2774,7 +2801,7 @@ int OnInit()
          DailyMaxLossUSD(), InpRiskPctDefault, risk1,
          DailyMaxLossUSD() / bal * 100.0, bal * 0.25, bal * 0.075));
 
-   if(margin > bal * InpMaxMarginPctPerPos / 100.0)
+   if(margin > EffectiveBalance() * InpMaxMarginPctPerPos / 100.0)
       LogLine("WARN", StringFormat(
          "最小手数 %.2f 需要保证金 $%.2f，超过账户 %.0f%% 上限（余额 $%.2f）。"
          "以当前杠杆，这个账户几乎开不了合规仓位 —— EA 会持续 NO TRADE。"
