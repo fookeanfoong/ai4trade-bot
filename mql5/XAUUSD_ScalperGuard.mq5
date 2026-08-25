@@ -384,6 +384,18 @@ input bool     InpWriteStatusJson   = true;    // 每 30 秒把状态快照写�
 // 默认在测试器里关掉这些;想在单次回测里留 CSV 供事后分析,把这项设为 false。
 input bool     InpTesterQuiet       = true;    // 回测/优化时静默监控设施（强烈建议保持 true）
 
+// 外部指令通道：读 Files\XAUUSD_ScalperGuard_cmd.txt。
+// 由外部程序（claude_watcher.py）写入，用来做**规则没覆盖到**的临时干预。
+//
+// 刻意做成能力极小的通道 —— 它只能做三件事，而且只能往"更保守"的方向：
+//     halt=1        暂停开新仓（已有持仓照常按规则管理）
+//     block_dir=-1  禁止做空      block_dir=1  禁止做多
+//     expires=...   过期时间，**必填**；过期或读不到就当没有指令
+// 它**不能**：改风险百分比、改止损、开真实账户、直接下单。
+// 这样即使外部程序出错或被人乱写，最坏结果是不交易，不是乱交易。
+input bool     InpUseCommandFile    = false;   // 启用外部指令文件
+input int      InpCommandMaxAgeMin  = 15;      // 指令文件最久允许多旧（分钟），超时即忽略
+
 //==================================================================
 // 全局
 //==================================================================
@@ -2771,6 +2783,74 @@ void PublishStatus(DayStats &ds, string status)
 }
 
 //==================================================================
+// 外部指令通道
+//==================================================================
+// 格式是每行 key=value 的纯文本 —— MQL5 没有 JSON 解析器，
+// 自己手写一个解析器是给自己找 bug，而这个通道只有三个字段，不值得。
+//
+// 示例：
+//     expires=2026.08.25 12:15:00
+//     halt=0
+//     block_dir=-1
+//     note=正在反弹，暂停做空
+string   g_cmdNote     = "";
+bool     g_cmdHalt     = false;
+int      g_cmdBlockDir = 0;        // -1 禁空 / 1 禁多 / 0 不限
+datetime g_cmdSeenAt   = 0;
+
+void ReadCommandFile()
+{
+   g_cmdHalt = false; g_cmdBlockDir = 0; g_cmdNote = "";
+   if(!InpUseCommandFile) return;
+
+   int h = FileOpen("XAUUSD_ScalperGuard_cmd.txt", FILE_READ|FILE_TXT|FILE_ANSI);
+   if(h == INVALID_HANDLE) return;
+
+   datetime expires = 0;
+   bool     halt    = false;
+   int      bdir    = 0;
+   string   note    = "";
+
+   while(!FileIsEnding(h))
+   {
+      string line = FileReadString(h);
+      StringTrimLeft(line); StringTrimRight(line);
+      if(StringLen(line) == 0 || StringGetCharacter(line, 0) == '#') continue;
+      int eq = StringFind(line, "=");
+      if(eq <= 0) continue;
+      string k = StringSubstr(line, 0, eq);
+      string v = StringSubstr(line, eq + 1);
+      StringTrimRight(k); StringTrimLeft(v);
+      if(k == "expires")        expires = StringToTime(v);
+      else if(k == "halt")      halt    = (StringToInteger(v) != 0);
+      else if(k == "block_dir") bdir    = (int)StringToInteger(v);
+      else if(k == "note")      note    = v;
+   }
+   FileClose(h);
+
+   // 过期判定：没写 expires 一律作废 —— 不允许"永久生效"的外部指令
+   if(expires <= 0 || TimeCurrent() > expires) return;
+   // 也不允许把有效期写得很远：外部程序挂掉之后，一条一年后过期的指令
+   // 会一直生效而没人知道。超过 InpCommandMaxAgeMin 的一律不认。
+   if(expires - TimeCurrent() > InpCommandMaxAgeMin * 60) return;
+
+   // 钳位：block_dir 只认 -1/0/1，别的一律当 0
+   if(bdir != -1 && bdir != 1) bdir = 0;
+
+   g_cmdHalt = halt; g_cmdBlockDir = bdir; g_cmdNote = note;
+   if(TimeCurrent() - g_cmdSeenAt > 60)
+   {
+      g_cmdSeenAt = TimeCurrent();
+      if(halt || bdir != 0)
+         LogLine("CMD", StringFormat("外部指令生效：%s%s%s（至 %s）",
+                 halt ? "暂停开仓 " : "",
+                 bdir == -1 ? "禁止做空 " : (bdir == 1 ? "禁止做多 " : ""),
+                 StringLen(note) > 0 ? "| " + note : "",
+                 TimeToString(expires, TIME_DATE|TIME_MINUTES)));
+   }
+}
+
+//==================================================================
 // OnInit
 //==================================================================
 int OnInit()
@@ -3022,6 +3102,7 @@ void OnDeinit(const int reason)
 
 void OnTimer()
 {
+   ReadCommandFile();
    CleanFlags();
    DayStats ds = GetDayStats();
    Panel(ds, g_lastNoTradeReason);
@@ -3141,6 +3222,15 @@ void OnTick()
       return;
    }
 
+   // 外部指令：只能让它**少做**，不能让它多做
+   if(g_cmdHalt)
+   {
+      NoTrade(StringFormat("外部指令：暂停开仓%s",
+              StringLen(g_cmdNote) > 0 ? "（" + g_cmdNote + "）" : ""));
+      Panel(ds, "外部指令暂停");
+      return;
+   }
+
    // 时段 / 点差 / 新闻
    string why = "";
    if(!SessionOk(why))      { NoTrade(why); Panel(ds, why); return; }
@@ -3185,6 +3275,14 @@ void OnTick()
    //--------------------------------------------------------------
    Signal sg = BuildSignal(atr, minScore);
    if(sg.dir == 0) { Panel(ds, g_lastNoTradeReason); return; }
+
+   if(g_cmdBlockDir != 0 && sg.dir == g_cmdBlockDir)
+   {
+      NoTrade(StringFormat("外部指令：禁止%s%s", sg.dir > 0 ? "做多" : "做空",
+              StringLen(g_cmdNote) > 0 ? "（" + g_cmdNote + "）" : ""));
+      Panel(ds, "外部指令禁止该方向");
+      return;
+   }
    // 同上:固定金额目标模式下 RR 是结果不是前提,保守/收紧档的 RR 要求不适用
    if(InpTargetProfitUSD <= 0.0 && InpQuickProfitUSD <= 0.0 && sg.rr < minRRreq)
    {

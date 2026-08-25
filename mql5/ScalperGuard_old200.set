@@ -505,3 +505,5 @@ InpWriteStatusJson=true
 InpVerboseLog=true
 
 InpTesterQuiet=true
+InpUseCommandFile=false
+InpCommandMaxAgeMin=15

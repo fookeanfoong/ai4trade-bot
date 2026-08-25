@@ -253,3 +253,5 @@ InpWriteStatusJson=false
 InpVerboseLog=false
 
 InpTesterQuiet=true
+InpUseCommandFile=false
+InpCommandMaxAgeMin=15
