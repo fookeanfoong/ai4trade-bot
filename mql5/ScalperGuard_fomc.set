@@ -225,6 +225,7 @@ InpDirectionMode=1
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
+InpInvertSignals=false
 
 InpFlatBeforeNewsMin=45
 

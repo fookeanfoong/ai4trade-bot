@@ -135,6 +135,21 @@ input int      InpDirectionMode      = 0;
 // false = 冲突不否决，只记录进成交备注，由 10 分制评分去反映质量差异
 input bool     InpConflictAsVeto     = true;
 
+// 信号倒转：把最终方向翻过来，止损/止盈以入场价为轴**镜像反射**。
+// 反射而不是重算，是为了让 R 距离与原信号**完全相同** —— 这样正反两次运行
+// 的 R 倍数可以逐笔直接对比，差异只来自方向本身。
+//
+// ⚠️ 这是**诊断工具，不是赚钱开关**。原因是成本在两个方向上都要付：
+//     原策略净值   = 毛期望 - 成本
+//     倒转后净值   = -毛期望 - 成本
+//   毛期望为 0（策略本身没边）时，两边都等于 -成本，**倒转照样亏**。
+//   只有当原策略的毛期望**负得比成本还多**，倒转才可能转正。
+//   换句话说：要靠倒转赚钱，你得先证明原策略是在**主动做错**，
+//   而不只是"没赚到"。
+//
+// ⚠️ 倒转后止盈是镜像出来的，不再受前方关键位限制（那个限制只对原方向成立）。
+input bool     InpInvertSignals      = false;   // 倒转信号方向（诊断用）
+
 input group "=== V2 多周期 ==="
 input ENUM_TIMEFRAMES InpMTF         = PERIOD_M15;  // 中周期（找交易区域）
 input bool     InpRequireMtfAgree    = false;   // M15 结构必须与方向一致才给分以外，还否决
@@ -1717,6 +1732,20 @@ Signal BuildSignal(double atr, int minScore)
       sg.riskCapPct = InpRiskPctMax;
    }
 
+   // --- 信号倒转（诊断）---
+   // 以入场价为轴镜像反射,R 距离原样保留,方向取反。
+   if(InpInvertSignals)
+   {
+      double e = entry;
+      sl  = 2.0 * e - sl;          // 原来在下方的止损,反射到上方(反之亦然)
+      tp1 = 2.0 * e - tp1;
+      tp2 = 2.0 * e - tp2;
+      dir = -dir;
+      trigNote += " | 【倒转】原方向 " + (dir > 0 ? "空" : "多");
+      // 面板的「判多/判空」故意**不**跟着翻 —— 它统计的是方向闸门的判断，
+      // 用来查闸门有没有卡死；倒转后实际做了哪边，看「开多/开空」那两个数。
+   }
+
    sg.dir   = dir;
    if(!InpUseV2Scoring) sg.score = score;
    sg.entry = entry;
@@ -2769,6 +2798,10 @@ int OnInit()
          InpRiskPctMax, slAtMinLot2, 4.0 / (InpRiskPctMax / 100.0)));
 
    SuggestFinerGoldSymbol();
+
+   if(InpInvertSignals)
+      LogLine("INVERT", "信号倒转已开启 —— 所有方向取反，止损/止盈以入场价镜像反射。"
+                        "这是诊断用途：成本在两个方向上都要付，毛期望为 0 时倒转照样亏。");
 
    // --- 触发周期 ---
    {
