@@ -342,11 +342,11 @@
         "MACD柱连续两根走高": false
       },
       "confirmed": 2,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T07:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-25T05:00:00Z",
+      "exit_price": 1.16586,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -369,11 +369,11 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T12:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-25T05:00:00Z",
+      "exit_price": 1.16584,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -396,11 +396,11 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T12:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-25T05:00:00Z",
+      "exit_price": 1.16585,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -423,11 +423,11 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T12:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-25T05:00:00Z",
+      "exit_price": 1.16584,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -450,11 +450,11 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T12:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-25T05:00:00Z",
+      "exit_price": 1.16584,
+      "r_multiple": -1.0,
       "actual": null
     },
     {
@@ -477,11 +477,11 @@
         "MACD柱连续两根走高": false
       },
       "confirmed": 2,
-      "state": "filled",
+      "state": "lost",
       "fill_time": "2026-08-20T12:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-08-25T05:00:00Z",
+      "exit_price": 1.16583,
+      "r_multiple": -1.0,
       "actual": null
     }
   ]
