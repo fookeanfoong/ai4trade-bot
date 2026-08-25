@@ -60,6 +60,24 @@
 ;      冒 $3/$4 时 20/15 笔就到日亏上限，连亏 30 那道到不了。
 ;      也就是说实际先触发的多半仍是**日亏 $60**。
 ;
+;   ---- 调策略：出场不对称才是亏钱的原因 ----
+;   08-25 实测：赢单金价只走 +$3.88（0.4xATR），亏单走 -$11.23（1.2xATR）。
+;   比值 0.35 -> 保本胜率要 74%。**赢单被砍太早，亏单放到满止损**，方向正好反了。
+;   两头一起收：
+;     InpFadeExitMinR   0.45 -> 1.00   动量衰竭离场不许在 1R 之前砍赢单
+;     InpGiveBackMinR   0.60 -> 1.00   回吐上限同样等到 1R 之后才开始管
+;     InpSlMaxATRMult   3.0  -> 2.0    止损上限 3xATR -> 2xATR（ATR 9.5 时 $28 -> $19）
+;   保本仍在 0.5R —— 那个是把亏损截到 0，不是砍赢单，不动。
+;
+;   ---- 出单量：像 $10k 那时一样一直有单 ----
+;     InpEntryTF        M5 -> M1      确认延迟 5 分钟 -> 1 分钟
+;     InpAdxMin          9 -> 7
+;     InpLooseMaxDistATR 1.80 -> 2.50
+;
+;   （更正一条先前写错的：08-24 那批 $0.5~0.9 的止损是**平仓时**的止损，
+;     已被保本移动过，不是开仓止损。不能据此说 M1 触发会产生垃圾止损 ——
+;     开仓止损有 InpSlMinUSD=1.20 兜底。）
+;
 ;   ---- 跑满一天：把两边的早停都挪开 ----
 ;   目的是拿到一整天的样本，所以能提前收工的闸门全部抬高：
 ;     日亏上限 30% -> 60%  ($60 -> $120)  = 30 笔 x $4，正好让连亏 30 成为先到的那道
@@ -155,8 +173,8 @@ InpHtfRequireSlope=true
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=4
-InpEntryTF=0
-InpAdxMin=9.0
+InpEntryTF=1
+InpAdxMin=7.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
@@ -182,7 +200,7 @@ InpSlMinUSD=1.20
 InpSlMaxUSD=15.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=3.0
+InpSlMaxATRMult=2.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -205,9 +223,9 @@ InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.50
 InpGiveBackPct=40.0
-InpGiveBackMinR=0.60
+InpGiveBackMinR=1.00
 InpTrailATRMult=1.0
-InpFadeExitMinR=0.45
+InpFadeExitMinR=1.00
 ; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
 ; 而计划 RR 均值 1.67 —— 只拿到计划的 48%。原因是该出场把任何 M5 微型摆动点
 ; 都当关键位,趋势里条件恒真。抬门槛 + 只认机构参考位。
@@ -301,7 +319,7 @@ InpAllowHedge=false
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
 InpUseLooseEntry=true
-InpLooseMaxDistATR=1.80
+InpLooseMaxDistATR=2.50
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
 ; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
