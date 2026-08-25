@@ -38,6 +38,12 @@
 ;     评分门槛   3         ->  4
 ;     追高保护   3.0×ATR   ->  1.2×ATR
 ;
+;   ---- 唯一一处不照抄旧档的地方 ----
+;   InpBreakEvenR=0.50 / InpGiveBackPct=40（旧档是 0 / 0）
+;   旧档保本绑在 1.0R：走到 +0.9R 再掉头 = 全额 -1.0R，一次 1.9R 的净摆动，
+;   两三笔抵消掉一整天。这两条修的是那个毛病，不改打法本身。
+;   想 100% 复刻旧档：属性页把这两个改回 0。
+;
 ;   ---- 做空是怎么加回来的 ----
 ;   原 aggressive 档结构性地做不了空，两条撞在一起：
 ;     · InpHtfRequireCloseSide / InpHtfRequireSlope 都关着，HtfTrend() 退化成
@@ -165,8 +171,8 @@ InpTP1_R=1.0
 InpTP2_R=1.8
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
-InpBreakEvenR=0.0
-InpGiveBackPct=0.0
+InpBreakEvenR=0.50
+InpGiveBackPct=40.0
 InpGiveBackMinR=0.60
 InpTrailATRMult=1.0
 InpFadeExitMinR=0.45
