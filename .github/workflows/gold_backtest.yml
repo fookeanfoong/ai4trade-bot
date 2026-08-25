@@ -97,6 +97,13 @@ jobs:
 
       # 停滞离场的窗口长度该设多少 —— 用真实分钟K线量命中率，别拍脑袋。
       # "黄金一分钟没动"是常态还是信号？这一步直接给数。
+      # 只测方向判断有没有边 —— 这是当前最该先回答的问题：
+      # 1:1 盈亏比下，方向胜率就是一切。用真实两年数据跨季度检验。
+      - name: Direction — 方向判断胜率实测
+        if: github.event.schedule != '0 6 * * 1-5'
+        continue-on-error: true
+        run: python backtest_direction.py --interval 1h --range 2y
+
       - name: Stall — 停滞窗口命中率实测
         if: github.event.schedule != '0 6 * * 1-5'
         continue-on-error: true
