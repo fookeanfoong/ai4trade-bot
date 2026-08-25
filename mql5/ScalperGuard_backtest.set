@@ -1,51 +1,51 @@
 ; ============================================================================
-; XAUUSD ScalperGuard —— 策略测试器专用（回测 / 参数优化）
+; XAUUSD ScalperGuard —— 策略测试器专用（与 old200 规则完全同步）
 ;
-; 和 sim200 档的**交易规则完全一致**（同样的分级、同样的风险百分比、同样的
-; 熔断），只改了三件与"环境"有关的事：
+; 交易规则**逐字复制自 ScalperGuard_old200.set**，只改四项环境设置：
+;     InpVirtualBalanceUSD  -> 0.0    测试器的"存款"栏才是本金，填 200。
+;                                     再叠一层虚拟本金 = 把本金算两遍。
+;     InpVerboseLog         -> false  \
+;     InpWriteStatusJson    -> false   > 实盘监控设施在回测里是纯开销
+;     InpPushNotify         -> false  /
+;   （InpTesterQuiet 保持 true，另外在代码层静默统计与文件写入。）
 ;
-;   1. InpVirtualBalanceUSD=0
-;      回测里初始入金是你在测试器"存款"栏里填的数（填 200）。
-;      再叠一层虚拟本金等于把本金算两遍，权益曲线和回撤全部失真。
+; 测试器设置：
+;     品种 XAUUSD.sml   周期 M5   存款 200   杠杆 1:100
+;     模型「每笔即时价格基于真实价格变化」（Every tick based on real ticks）
+;     日期至少 1 年   延迟选「随机延迟」
 ;
-;   2. 监控设施全关（InpVerboseLog / InpWriteStatusJson / InpPushNotify=false，
-;      InpTesterQuiet=true）
-;      实盘那套每笔写 CSV、每 30 秒扫全历史、写 status.json 的东西，
-;      在回测里是纯开销 —— 优化跑批时能把几分钟拖成几小时。
+; ⚠️ 回测测不到的三件事：
+;     · 新闻过滤 —— 测试器里经济日历不可用，本档 InpUseNewsFilter 已是 false，
+;       所以这一条在回测和实盘里行为一致，不构成偏差
+;     · 点差 —— 真实tick模式带历史点差，但数据前后点差放大的那几秒往往缺tick
+;     · 滑点 —— 测试器默认理想成交
+;   结果是**乐观上界**。
 ;
-;   3. 其余原样不动 —— 回测要测的是策略，不是另一套策略。
-;
-; ⚠️ 回测测不到的三件事（看结果时必须记住）：
-;   · 新闻过滤：MT5 测试器里经济日历不可用，InpManualNewsTimes 又是空的，
-;     所以回测中新闻过滤**完全没生效**。实盘会比回测**少开一些单**。
-;   · 点差：测试器用的是历史点差（真实ticks模式）或固定点差（其它模式）。
-;     黄金在数据前后点差会瞬间放大数倍，回测普遍低估这块成本。
-;   · 滑点：测试器默认理想成交。实盘的止损滑点只会让结果更差。
-;   回测结果是**乐观上界**。
+; 第一眼要看的不是净利，是：
+;     1) 做空占比 —— 应接近一半（方向模式 4）
+;     2) +$3 落袋 与 -$3 止损的笔数比 —— 盈亏比钉死 1:1，这个比值就是胜率
 ; ============================================================================
 
 
-
-; --- 安全闸门：保持只跑 Demo ---
 InpAllowLiveAccount=false
 
 ; --- 日内限额：按 $10,000 余额换算，否则一笔亏损就收工 ---
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpRiskPctDefault=1.0
+InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
-InpRiskPctMax=5.0
-InpDailyProfitTarget=50.0
-InpDailyMaxLoss=30.0
-InpConservativeAt=20.0
-InpReducedAt=30.0
+InpRiskPctMax=4.0
+InpDailyProfitTarget=2500.0
+InpDailyMaxLoss=750.0
+InpConservativeAt=1000.0
+InpReducedAt=1500.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
-InpMaxTradesPerDay=80
-InpStopAfterConsecLoss=20
-InpObserveAfterConsecLoss=5
+InpMaxTradesPerDay=200
+InpStopAfterConsecLoss=0
+InpObserveAfterConsecLoss=0
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
 InpSessionStartHour=0
@@ -55,7 +55,7 @@ InpFlatAllBeforeHour=23
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
 ; 0.60 / 0.25 会让亚洲盘也能过。代价明确：$0.40 点差配 $3 止损 = 每笔先付掉
 ; 13% 的风险额度。采样期接受，评估期必须把这笔成本从结果里扣回去。
-InpMaxSpreadUSD=0.80
+InpMaxSpreadUSD=1.20
 InpSpreadVsATRMax=0.25
 
 ; --- M5 趋势判定：只看均线排列，不要求收盘价站在慢线一侧 ---
@@ -72,17 +72,17 @@ InpHtfRequireSlope=false
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=3
+InpMinScore=2
 InpEntryTF=1
-InpAdxMin=5.0
+InpAdxMin=3.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
-InpTriggerTolATR=1.30
-InpBarCloseStrength=0.20
-InpWickRejectPct=0.92
+InpTriggerTolATR=1.40
+InpBarCloseStrength=0.15
+InpWickRejectPct=0.95
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
 ; 实测出现过 RR=0.04 的拒绝 —— M5 上贴着入场价的小摆动高点被当成硬顶。
@@ -90,7 +90,7 @@ InpWickRejectPct=0.92
 InpLevelIgnoreR=1.20
 
 ; --- 波动率区间：放宽两头，别在安静时段直接哑火 ---
-InpAtrMinUSD=0.40
+InpAtrMinUSD=0.15
 InpAtrMaxUSD=15.00
 
 ; --- 止损区间 ---
@@ -100,7 +100,7 @@ InpSlMinUSD=1.20
 InpSlMaxUSD=15.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=4.0
+InpSlMaxATRMult=3.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -116,33 +116,33 @@ InpMaxFakeBreakouts=5
 ; .set 只会覆盖它列出的项 —— 少列一个，从 scalp 档切回来时那一项就还留着
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
-InpExitOnMomentumFade=true
-InpTP1_R=1.0
+InpExitOnMomentumFade=false
+InpTP1_R=2.0
 InpTP2_R=1.8
-InpPartialClosePct=50.0
+InpPartialClosePct=0.0
 InpBreakevenBufferATR=0.05
-InpBreakEvenR=0.50
+InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
 InpGiveBackPct=40.0
-InpGiveBackMinR=0.60
+InpGiveBackMinR=2.0
 InpTrailATRMult=1.0
-InpFadeExitMinR=0.45
+InpFadeExitMinR=2.0
 ; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
 ; 而计划 RR 均值 1.67 —— 只拿到计划的 48%。原因是该出场把任何 M5 微型摆动点
 ; 都当关键位,趋势里条件恒真。抬门槛 + 只认机构参考位。
-InpLevelExitMinR=1.20
+InpLevelExitMinR=2.0
 InpLevelExitKeyOnly=true
 InpExitOnStall=false
 InpStallMinutes=10
-InpStallRangeATR=0.80
-InpStallMinUSD=2.0
+InpStallRangeATR=0.25
+InpStallMinUSD=0.0
 InpStallMinR=0.50
 InpStallNeedNoNewExtreme=true
 
 ; --- 新闻过滤：保留 ---
 ; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的
 ; 样本质量。采样期留着，让样本干净。
-InpUseNewsFilter=true
+InpUseNewsFilter=false
 
 ; --- 机构参考位 + 扫损反手（见 GOLD_PRO_TECHNIQUES.md）---
 ; 前日高低/亚洲区间/整数关口:客观可算,不需人工标注。
@@ -155,7 +155,7 @@ InpAsiaEndHour=10
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
-InpSweepMinPenetration=0.05
+InpSweepMinPenetration=0.02
 InpSweepMaxPenetration=1.50
 
 ; --- 固定金额目标（默认关闭）---
@@ -166,10 +166,9 @@ InpSweepMaxPenetration=1.50
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
-; 分级交给百分比,不再用一刀切的美元上限
-InpRiskCapUSD=0.0
-InpQuickProfitUSD=0.0
-; 所有百分比以 $200 为基准,而不是终端里的真实余额
+InpRiskCapUSD=3.0
+InpQuickProfitUSD=3.0
+; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=0.0
 
 ; --- V2 评分与分级（规格 §28/§29）---
@@ -177,12 +176,12 @@ InpVirtualBalanceUSD=0.0
 InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=3
+InpScoreMinB=2
 InpScoreMinA=7
 InpScoreMinAPlus=9
-InpRiskPctB=1.5
+InpRiskPctB=2.0
 InpRiskPctA=3.0
-InpRiskPctAPlus=5.0
+InpRiskPctAPlus=4.0
 
 ; --- V2 结构位移 ---
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
@@ -200,19 +199,19 @@ InpVolHighSizeMult=0.60
 
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
-InpDailyTargetPct=50.0
-InpDailyMaxLossPct=50.0
+InpDailyTargetPct=60.0
+InpDailyMaxLossPct=60.0
 InpConservativeAtPct=30.0
-InpReducedAtPct=40.0
+InpReducedAtPct=45.0
 
 ; --- 多仓并行（规格 §30）---
 ; 加仓 = 往同一笔盈利单上追;多仓 = 各自独立的 setup + 各自独立止损。
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=5
-InpMaxCombinedRiskPct=15.0
-InpMaxMarginPctPerPos=80.0
+InpMaxPositions=8
+InpMaxCombinedRiskPct=30.0
+InpMaxMarginPctPerPos=95.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
 InpAllowHedge=false
 
@@ -221,20 +220,20 @@ InpAllowHedge=false
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
 InpUseLooseEntry=true
-InpLooseMaxDistATR=3.00
+InpLooseMaxDistATR=2.50
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
 ; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 1 = H1 定方向,M5 只影响评分不否决
-InpDirectionMode=3
+InpDirectionMode=4
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
 InpCounterMoveBars=5
-InpCounterMoveATR=0.50
+InpCounterMoveATR=0.40
 InpPaBars=6
 InpPaMinATR=0.30
 
