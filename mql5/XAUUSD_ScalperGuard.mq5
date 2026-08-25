@@ -305,6 +305,16 @@ input bool     InpLevelExitKeyOnly   = false;   // 该出场只认机构参考�
 // 0 = 跟随 InpTP1_R（旧行为）。
 input double   InpBreakEvenR         = 0.0;     // 达到该 R 即移保本，0=跟随 InpTP1_R
 
+// 按**金额**触发保本。和 InpBreakEvenR 是"或"的关系，谁先到算谁。
+//
+// 为什么需要它：R 门槛在止损很宽时会失效。风险 $8 的单子，0.3R = $2.4，
+// 看着不高；但同一个 0.3R 在风险 $4 的单子上只有 $1.2。而你关心的是
+// "已经到手 $2 的单子不该再变成亏损" —— 那是个**金额**判断，不是 R 判断。
+//
+// 注意这条只**移动止损**，不平仓：赚到 $2 之后这笔单子不会再亏，但仍然能跑。
+// 想到 $2 直接落袋的话用 InpQuickProfitUSD，那是另一回事（会压死盈亏比）。
+input double   InpBreakEvenUSD       = 0.0;     // 净赚到该金额($)即移保本，0=关闭
+
 // 回吐上限：曾经赚到过 InpGiveBackMinR，就不许把利润全吐回去。
 // 和保本的区别 —— 保本守的是**入场价**，回吐守的是**曾经到过的最高点**。
 // 一笔冲到 +1.5R 再退回 +0.1R，保本管不着(还在盈利)，回吐上限会在 +0.9R 就收手。
@@ -2303,7 +2313,11 @@ void ManagePositions(double atr)
       // 缓冲至少要盖住点差，否则"保本"出场仍然是净亏 —— 买单按 BID 结算，
       // 止损就摆在入场价的话，你还要再吐一个点差出去。
       double beR = (InpBreakEvenR > 0.0) ? InpBreakEvenR : InpTP1_R;
-      if(rMult >= beR)
+      // 金额触发：先用毛利粗筛，避免每 tick 去翻手续费历史
+      bool beByUSD = (InpBreakEvenUSD > 0.0 &&
+                      (pos.Profit() + pos.Swap()) >= InpBreakEvenUSD &&
+                      PositionNetUSD() >= InpBreakEvenUSD);
+      if(rMult >= beR || beByUSD)
       {
          double beBuf = MathMax(InpBreakevenBufferATR * atr, SpreadUSD());
          double be = isBuy ? open + beBuf : open - beBuf;
@@ -2313,8 +2327,10 @@ void ManagePositions(double atr)
             if(trade.PositionModify(tk, Px(be), tp))
             {
                sl = Px(be);        // 同步本地值，否则下面的追踪会拿旧止损比较，可能反而放宽
-               LogLine("MANAGE", StringFormat("#%I64u 达到 %.2fR，止损移至保本 %.2f（缓冲 $%.2f，含点差）",
-                       tk, rMult, be, beBuf));
+               LogLine("MANAGE", StringFormat("#%I64u %s，止损移至保本 %.2f（缓冲 $%.2f，含点差）",
+                       tk, beByUSD ? StringFormat("净赚 $%.2f（%.2fR）", PositionNetUSD(), rMult)
+                                   : StringFormat("达到 %.2fR", rMult),
+                       be, beBuf));
             }
          }
       }

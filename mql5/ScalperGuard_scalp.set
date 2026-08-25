@@ -114,6 +114,7 @@ InpTP2_R=1.0
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.10
 InpBreakEvenR=0.0
+InpBreakEvenUSD=0.0
 InpGiveBackPct=0.0
 InpGiveBackMinR=0.60
 InpTrailATRMult=0.6

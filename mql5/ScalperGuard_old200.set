@@ -72,6 +72,21 @@
 ;   ⚠️ 现在质量过滤基本是关的（InpMinScore=2、InpAdxMin=0），
 ;      所以**方向判得准不准，就是这一档唯一的边**。这次改的正是那个地方。
 ;
+;   ---- "已经赚了 $2 却变成亏损" 的修法 ----
+;   实盘现象：单子到过 +$2，没落袋，最后按满止损离场。
+;   成因是我上一轮把 InpFadeExitMinR / InpGiveBackMinR 从 0.45/0.60 抬到 1.00/1.00
+;   （为了不让赢单被砍太早），结果 1R 以下完全没有任何保护动作 ——
+;   而风险 $4~$8 的单子，$2 只有 0.25~0.5R，正好落在那个真空里。
+;
+;   新增 InpBreakEvenUSD=2.0：净赚到 $2 就把止损推到保本，**只移止损不平仓**。
+;   于是"到过 $2 的单子不会再变成亏损"，同时它还能继续跑。
+;   InpBreakEvenR 一并压到 0.30，两条是"或"的关系，谁先到算谁。
+;
+;   为什么不用 InpQuickProfitUSD（到 $2 直接平仓）：
+;   风险 $4~$8 配 $2 止盈 = RR 1:0.25~0.5 -> 保本胜率要 67%~80%。
+;   那是把盈亏比压死。真想那样做就把 InpQuickProfitUSD 设成 2.0，
+;   但先看这一版的日志再决定。
+;
 ;   ---- 杠杆：真正的旋钮是 InpRiskPct，不是 InpMaxMarginPctPerPos ----
 ;   账户杠杆 1:100 是券商给的，EA 改不了。EA 能控两样：
 ;     InpMaxMarginPctPerPos —— 单仓最多占用多少可用保证金
@@ -295,7 +310,8 @@ InpTP1_R=1.0
 InpTP2_R=1.8
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
-InpBreakEvenR=0.50
+InpBreakEvenR=0.30
+InpBreakEvenUSD=2.0
 InpGiveBackPct=40.0
 InpGiveBackMinR=1.00
 InpTrailATRMult=1.0
