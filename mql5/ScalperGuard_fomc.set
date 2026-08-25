@@ -227,6 +227,8 @@ InpDirectionMode=1
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
+InpPaBars=6
+InpPaMinATR=0.30
 
 InpFlatBeforeNewsMin=45
 

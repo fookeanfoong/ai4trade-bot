@@ -260,6 +260,8 @@ InpDirectionMode=3
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
+InpPaBars=6
+InpPaMinATR=0.30
 
 ; --- 新闻事件窗口（fomc 档会覆盖这几项）---
 ; 全部列全,否则从 fomc 档切回来时这几项会残留 —— .set 只覆盖它列出的项。

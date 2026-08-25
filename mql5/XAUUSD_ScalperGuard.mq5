@@ -119,6 +119,11 @@ input group "=== 方向判定与冲突处理 ==="
 //   1 = H1 定方向，M5 只影响评分不否决（回调入场才可能触发）
 //   2 = 任一周期有方向即可（H1 有方向就听 H1，H1 中性才听 M5）
 //   3 = M5 定方向，H1 只进评分不定方向
+//   4 = **纯K线方向**：摆动结构优先，结构不明时看最近K线的净推进
+//
+// 模式 4 和 1/2/3 的区别在于**用什么读方向**：
+//   1/2/3 都是 EMA 交叉 —— 平滑后的历史，转向必然滞后
+//   4     是摆动高低点 —— K线本身的结构，价格行为的原生语言
 //
 // ⚠️ 模式 2 有一个不显眼的陷阱：它只在 **H1 完全中性** 时才轮到 M5。
 //    而 InpHtfRequireCloseSide / InpHtfRequireSlope 都关掉之后，HtfTrend()
@@ -149,6 +154,13 @@ input bool     InpConflictAsVeto     = true;
 //
 // ⚠️ 倒转后止盈是镜像出来的，不再受前方关键位限制（那个限制只对原方向成立）。
 input bool     InpInvertSignals      = false;   // 倒转信号方向（诊断用）
+
+// 模式 4 用的"纯K线方向"参数。
+// 均线交叉是**平滑后的历史**，方向永远滞后；摆动结构(HH/HL vs LH/LL)读的是
+// K线本身的高低点，转向时反应快得多，而且是价格行为本来的语言。
+// 结构都判不出方向时，退而看最近几根K线的净推进。
+input int      InpPaBars             = 6;       // 结构不明时，看最近几根K线的净推进
+input double   InpPaMinATR           = 0.30;    // 净推进需超过 ATR × 该值才算有方向
 
 input group "=== V2 多周期 ==="
 input ENUM_TIMEFRAMES InpMTF         = PERIOD_M15;  // 中周期（找交易区域）
@@ -1258,6 +1270,27 @@ int MarketStructure(ENUM_TIMEFRAMES tf)
 }
 
 // HTF 趋势
+// 纯K线方向（模式 4）：
+//   1) 触发周期的摆动结构 —— 更高高点+更高低点 = 多，反之 = 空
+//   2) 退到 InpLTF 的结构
+//   3) 两级结构都判不出来时，看最近 InpPaBars 根K线的净推进，
+//      幅度要超过 InpPaMinATR × ATR 才算数（否则是横盘噪音）
+int PriceActionDir(double atr)
+{
+   int s = MarketStructure(g_entryTF);
+   if(s != 0) return s;
+   s = MarketStructure(InpLTF);
+   if(s != 0) return s;
+
+   int n = MathMax(2, InpPaBars);
+   double c1 = iClose(_Symbol, g_entryTF, 1);
+   double cn = iClose(_Symbol, g_entryTF, n);
+   if(c1 <= 0.0 || cn <= 0.0 || atr <= 0.0) return 0;
+   double net = c1 - cn;
+   if(MathAbs(net) < InpPaMinATR * atr) return 0;
+   return (net > 0.0) ? 1 : -1;
+}
+
 int HtfTrend()
 {
    double f = Buf(hEmaFastH, 0, 1);
@@ -1608,6 +1641,8 @@ Signal BuildSignal(double atr, int minScore)
       dir = (htf != 0) ? htf : ltf;                // H1 有方向听 H1，H1 中性才听 M5
    else if(InpDirectionMode == 3)
       dir = ltf;                                   // M5 定方向，H1 只进评分
+   else if(InpDirectionMode == 4)
+      dir = PriceActionDir(atr);                   // 纯K线：摆动结构 + 净推进
    else
    {
       if(htf > 0 && ltf > 0) dir =  1;             // 原行为：必须同向
