@@ -72,6 +72,24 @@
 ;   ⚠️ 现在质量过滤基本是关的（InpMinScore=2、InpAdxMin=0），
 ;      所以**方向判得准不准，就是这一档唯一的边**。这次改的正是那个地方。
 ;
+;   ---- 杠杆：真正的旋钮是 InpRiskPct，不是 InpMaxMarginPctPerPos ----
+;   账户杠杆 1:100 是券商给的，EA 改不了。EA 能控两样：
+;     InpMaxMarginPctPerPos —— 单仓最多占用多少可用保证金
+;     InpRiskPct*           —— 单笔冒多少钱，手数由它反算
+;   实测：风险 1/1.5/2% 时保证金占用只有 $9~$93，而上限是 $160 ——
+;   保证金那道闸门几乎从不触发。所以调它没用，调风险才有用。
+;
+;     InpRiskPct B/A/A+   1.0/1.5/2.0 -> 2.0/3.0/4.0   ($4/$6/$8 每笔)
+;     InpRiskPctMax               2.0 -> 4.0
+;     InpMaxCombinedRiskPct        20% -> 30%（$60 同时在险）
+;     InpMaxMarginPctPerPos        80% -> 95%（顺手抬开，让它彻底不当瓶颈）
+;
+;   $200 上的实际杠杆（金价 4665，1 手 = 100oz）：
+;     止损 $2  -> 47~93 倍     止损 $5  -> 19~37 倍     止损 $10 -> 9~19 倍
+;   止损越窄手数越大，杠杆越高 —— M1 触发下止损普遍偏窄，所以实际会落在偏高那端。
+;
+;   ⚠️ 日亏上限 60% = $120，每笔 $4~$8 -> 15~30 笔亏光当日额度。
+;
 ;   ---- 当前档位（用户要求：改回过滤 + 看K线定方向 + 连亏熔断关掉）----
 ;   质量过滤改回来了（上一轮"最激进"那版把过滤全关，等于任何形态都开，
 ;   净值当然往下走）：
@@ -189,10 +207,10 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpRiskPctDefault=1.0
+InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
-InpRiskPctMax=2.0
+InpRiskPctMax=4.0
 InpDailyProfitTarget=2500.0
 InpDailyMaxLoss=750.0
 InpConservativeAt=1000.0
@@ -334,9 +352,9 @@ InpUseV2Scoring=true
 InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
-InpRiskPctB=1.0
-InpRiskPctA=1.5
-InpRiskPctAPlus=2.0
+InpRiskPctB=2.0
+InpRiskPctA=3.0
+InpRiskPctAPlus=4.0
 
 ; --- V2 结构位移 ---
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
@@ -365,8 +383,8 @@ InpReducedAtPct=45.0
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
 InpMaxPositions=6
-InpMaxCombinedRiskPct=20.0
-InpMaxMarginPctPerPos=80.0
+InpMaxCombinedRiskPct=30.0
+InpMaxMarginPctPerPos=95.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
 InpAllowHedge=false
 
