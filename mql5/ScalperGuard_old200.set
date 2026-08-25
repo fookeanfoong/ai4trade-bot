@@ -38,6 +38,28 @@
 ;     评分门槛   3         ->  4
 ;     追高保护   3.0×ATR   ->  1.2×ATR
 ;
+;   ---- 诊断档调整（用户要求：激进一点，看问题出在哪）----
+;   直接要求的两条：
+;     InpStopAfterConsecLoss   20 -> 30
+;     InpDailyMaxLossPct      2% -> 30%  ($4 -> $60)
+;   被迫跟着改的一条：
+;     InpMaxTradesPerDay       20 -> 60   —— 20 笔/天的上限下"连亏 30 笔"永远到不了
+;   激进一点（风险翻一倍，仍远低于 sim200 的 1.5/3/5）：
+;     InpRiskPct B/A/A+  0.5/0.8/1.0 -> 1.0/1.5/2.0   ($2/$3/$4 每笔)
+;     InpRiskPctMax             1.0 -> 2.0
+;     InpAdxMin                  12 -> 9
+;     InpLooseMaxDistATR       1.20 -> 1.80
+;     InpMaxPositions             3 -> 4
+;     InpMaxMarginPctPerPos     35% -> 80%（风险翻倍后止损窄的单子会撞保证金闸门）
+;     InpObserveAfterConsecLoss   3 -> 10（否则连亏 3 笔就挂进观察模式一直压风险）
+;
+;   没动的：M5 触发（不是 M1）、评分门槛 4、方向模式 2 + H1 附加条件（做空保留）、
+;   保本 0.5R、回吐 40%、止损上下限、组合在险 10%。
+;
+;   ⚠️ 两道闸门谁先到：每笔冒 $2 时 30 笔亏满 $60，正好和连亏门槛撞在一起；
+;      冒 $3/$4 时 20/15 笔就到日亏上限，连亏 30 那道到不了。
+;      也就是说实际先触发的多半仍是**日亏 $60**。
+;
 ;   ---- 唯一一处不照抄旧档的地方 ----
 ;   InpBreakEvenR=0.50 / InpGiveBackPct=40（旧档是 0 / 0）
 ;   旧档保本绑在 1.0R：走到 +0.9R 再掉头 = 全额 -1.0R，一次 1.9R 的净摆动，
@@ -83,19 +105,19 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpRiskPctDefault=0.5
+InpRiskPctDefault=1.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
-InpRiskPctMax=1.0
+InpRiskPctMax=2.0
 InpDailyProfitTarget=2500.0
 InpDailyMaxLoss=750.0
 InpConservativeAt=1000.0
 InpReducedAt=1500.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
-InpMaxTradesPerDay=20
-InpStopAfterConsecLoss=20
-InpObserveAfterConsecLoss=3
+InpMaxTradesPerDay=60
+InpStopAfterConsecLoss=30
+InpObserveAfterConsecLoss=10
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
 InpSessionStartHour=0
@@ -124,7 +146,7 @@ InpHtfRequireSlope=true
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=4
 InpEntryTF=0
-InpAdxMin=12.0
+InpAdxMin=9.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
@@ -228,9 +250,9 @@ InpUseV2Scoring=true
 InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
-InpRiskPctB=0.5
-InpRiskPctA=0.8
-InpRiskPctAPlus=1.0
+InpRiskPctB=1.0
+InpRiskPctA=1.5
+InpRiskPctAPlus=2.0
 
 ; --- V2 结构位移 ---
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
@@ -249,7 +271,7 @@ InpVolHighSizeMult=0.60
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
 InpDailyTargetPct=25.0
-InpDailyMaxLossPct=2.0
+InpDailyMaxLossPct=30.0
 InpConservativeAtPct=10.0
 InpReducedAtPct=15.0
 
@@ -258,9 +280,9 @@ InpReducedAtPct=15.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=3
+InpMaxPositions=4
 InpMaxCombinedRiskPct=10.0
-InpMaxMarginPctPerPos=35.0
+InpMaxMarginPctPerPos=80.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
 InpAllowHedge=false
 
@@ -269,7 +291,7 @@ InpAllowHedge=false
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
 InpUseLooseEntry=true
-InpLooseMaxDistATR=1.20
+InpLooseMaxDistATR=1.80
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
 ; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
