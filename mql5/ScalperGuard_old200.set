@@ -72,6 +72,28 @@
 ;   ⚠️ 现在质量过滤基本是关的（InpMinScore=2、InpAdxMin=0），
 ;      所以**方向判得准不准，就是这一档唯一的边**。这次改的正是那个地方。
 ;
+;   ---- 为什么关掉了提前保本（实盘打脸的一条）----
+;   实盘现象：连着几笔只赚 $0.11 / $0.17 / $0.21 / $0.24 / $0.37，
+;   而点差成本就要 $0.15 —— 等于白干。
+;
+;   成因是两条规则互相打架：
+;     InpBreakEvenUSD=2.0  赚到 $2 就把止损收到入场价附近（缓冲只有
+;                          max(0.05xATR, 点差) ≈ $0.38~$0.51）
+;     InpQuickProfitUSD=3.0 赚到 $3 才落袋
+;   于是 $2 到 $3 这一段，单子背着一个 $0.4 的止损在走，而 ATR 是 5 ——
+;   黄金随便一个回抽就打掉它。绝大多数单子在 $0.2 就被扫出去，到不了 $3。
+;
+;   结论：**出场是固定金额时，中途的保本止损是有害的。**
+;   它不保护什么（真正的止损已经在那），只是在赢单路上多加一道随机的鬼门关，
+;   把本该 +$3 的单子变成 +$0.2。
+;
+;     InpBreakEvenUSD 2.0 -> 0（关闭）
+;     InpBreakEvenR   0.30 -> 0（= 跟随 InpTP1_R = 1.0R）
+;   而 1R 恰好就是 $3 落袋那一刻（风险封顶 $3、目标 $3 = 1:1），
+;   所以保本这道实际上永远不会先于落袋触发 —— 干净。
+;
+;   现在每笔只有两个结局：+$3 落袋，或 -$3 满止损。1:1，保本胜率 50%。
+;
 ;   ---- 到手 $3 就落袋（含成本口径）----
 ;   InpQuickProfitUSD=3.0：净盈亏摸到 $3 立刻市价平仓。
 ;   "净"是真的净 —— PositionNetUSD() 用 POSITION_PROFIT（买单按 BID / 卖单按 ASK
@@ -335,8 +357,8 @@ InpTP1_R=1.0
 InpTP2_R=1.8
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
-InpBreakEvenR=0.30
-InpBreakEvenUSD=2.0
+InpBreakEvenR=0.0
+InpBreakEvenUSD=0.0
 InpGiveBackPct=40.0
 InpGiveBackMinR=1.00
 InpTrailATRMult=1.0
