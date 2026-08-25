@@ -56,8 +56,11 @@ input double   InpDailyMaxLossPct    = 0.0;     // 每日亏损上限 = 余额 %
 input double   InpConservativeAtPct  = 0.0;     // 保守模式触发 = 余额 %
 input double   InpReducedAtPct       = 0.0;     // 收紧模式触发 = 余额 %
 input int      InpMaxTradesPerDay    = 10;      // 每日最大交易笔数
-input int      InpStopAfterConsecLoss= 3;       // 连亏 N 笔 -> 当天停止
-input int      InpObserveAfterConsecLoss = 2;   // 连亏 N 笔 -> 观察模式
+// 这两个设 0（或负数）= **关闭该道熔断**。
+// 注意不能靠"设成 0"来关：判断是 consecLoss >= 阈值，阈值为 0 时恒真，
+// 会变成一开始就永久停手 —— 所以下面用 ConsecStopOn()/ConsecObserveOn() 显式判定。
+input int      InpStopAfterConsecLoss= 3;       // 连亏 N 笔 -> 当天停止（0=关闭）
+input int      InpObserveAfterConsecLoss = 2;   // 连亏 N 笔 -> 观察模式（0=关闭）
 input double   InpMaxMarginPctPerPos = 35.0;    // 单仓占用保证金上限（占可用保证金 %）
 input bool     InpUseFloatingInLimits= true;    // 日盈亏统计是否包含浮动盈亏
 input bool     InpSmallAccountEscalate = true;  // 小账户救济：最小手开不了时，把风险上调至 InpRiskPctMax
@@ -482,6 +485,16 @@ double StopsLevelUSD()
 {
    long lvl = SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
    return (double)lvl * _Point;
+}
+
+// 连亏熔断的开关判定。阈值 <=0 一律视为关闭，避免"0 = 恒真 = 永久停手"这个坑。
+bool ConsecStopOn(int consecLoss)
+{
+   return (InpStopAfterConsecLoss > 0 && consecLoss >= InpStopAfterConsecLoss);
+}
+bool ConsecObserveOn(int consecLoss)
+{
+   return (InpObserveAfterConsecLoss > 0 && consecLoss >= InpObserveAfterConsecLoss);
 }
 
 datetime DayStart(datetime t)
@@ -1893,7 +1906,7 @@ double EscalateRiskForMinLot(double slDist, double riskPct, DayStats &ds, string
 {
    note = "";
    if(!InpSmallAccountEscalate) return riskPct;
-   if(ds.consecLoss >= InpObserveAfterConsecLoss) return riskPct;   // 观察模式：不加码
+   if(ConsecObserveOn(ds.consecLoss)) return riskPct;               // 观察模式：不加码
    if(ds.total >= ConservativeAtUSD())            return riskPct;   // 已进盈利保护档
 
    double mppd   = MoneyPerLotPerDollar();
@@ -2580,7 +2593,7 @@ void Panel(DayStats &ds, string status)
    string mode = "正常";
    if(ds.total >= ReducedAtUSD())      mode = "收紧（只做最高质量）";
    else if(ds.total >= ConservativeAtUSD()) mode = "保守";
-   if(ds.consecLoss >= InpObserveAfterConsecLoss) mode += " + 观察模式";
+   if(ConsecObserveOn(ds.consecLoss)) mode += " + 观察模式";
 
    string txt = StringFormat(
       "===== XAUUSD ScalperGuard =====\n"
@@ -2651,10 +2664,10 @@ void PublishStatus(DayStats &ds, string status)
    string mode = "normal";
    if(ds.total >= ReducedAtUSD())           mode = "reduced";
    else if(ds.total >= ConservativeAtUSD()) mode = "conservative";
-   bool observing = (ds.consecLoss >= InpObserveAfterConsecLoss);
+   bool observing = ConsecObserveOn(ds.consecLoss);
    bool halted    = (ds.total >= DailyTargetUSD()) ||
                     (ds.total <= -DailyMaxLossUSD()) ||
-                    (ds.consecLoss >= InpStopAfterConsecLoss) ||
+                    ConsecStopOn(ds.consecLoss) ||
                     (ds.trades >= InpMaxTradesPerDay);
 
    string posJson = "";
@@ -3071,7 +3084,7 @@ void OnTick()
    }
 
    // 连亏保护
-   if(ds.consecLoss >= InpStopAfterConsecLoss)
+   if(ConsecStopOn(ds.consecLoss))
    {
       NoTrade(StringFormat("连亏 %d 笔 —— 当天停止交易", ds.consecLoss));
       Panel(ds, "连亏停止");
@@ -3120,7 +3133,7 @@ void OnTick()
    double riskPct  = InpRiskPctDefault;
    double minRRreq = InpMinRR;
 
-   if(ds.consecLoss >= InpObserveAfterConsecLoss) { minScore += 1; riskPct = MathMin(riskPct, 1.0); }
+   if(ConsecObserveOn(ds.consecLoss)) { minScore += 1; riskPct = MathMin(riskPct, 1.0); }
    if(ds.total >= ConservativeAtUSD())            { minScore += 1; riskPct = MathMin(riskPct, 0.75); }
    if(ds.total >= ReducedAtUSD())                 { minScore  = 7; riskPct = MathMin(riskPct, 0.5); minRRreq = 2.0; }
    if(minScore > 7) minScore = 7;
@@ -3143,7 +3156,7 @@ void OnTick()
    {
       double capped = MathMin(sg.riskCapPct, InpRiskPctMax);   // 硬上限永远压得住分级
       // 连亏观察档 / 盈利保护档只降不升 —— 分级再高也不能把这两档顶回去
-      if(ds.consecLoss >= InpObserveAfterConsecLoss) capped = MathMin(capped, 1.0);
+      if(ConsecObserveOn(ds.consecLoss)) capped = MathMin(capped, 1.0);
       if(ds.total >= ConservativeAtUSD())            capped = MathMin(capped, 0.75);
       if(ds.total >= ReducedAtUSD())                 capped = MathMin(capped, 0.5);
       riskPct = capped;
