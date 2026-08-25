@@ -104,6 +104,12 @@ jobs:
         continue-on-error: true
         run: python backtest_direction.py --interval 1h --range 2y
 
+      # 方向信号大排查：一次测清有没有任何方向依据能站上边。
+      - name: Signals — 方向信号胜率排名
+        if: github.event.schedule != '0 6 * * 1-5'
+        continue-on-error: true
+        run: python backtest_signals.py --interval 1h --range 2y
+
       - name: Stall — 停滞窗口命中率实测
         if: github.event.schedule != '0 6 * * 1-5'
         continue-on-error: true
