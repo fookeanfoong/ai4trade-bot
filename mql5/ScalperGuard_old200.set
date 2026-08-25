@@ -94,7 +94,7 @@ InpReducedAt=1500.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
 InpMaxTradesPerDay=20
-InpStopAfterConsecLoss=5
+InpStopAfterConsecLoss=20
 InpObserveAfterConsecLoss=3
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
