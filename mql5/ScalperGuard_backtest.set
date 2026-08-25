@@ -2,31 +2,17 @@
 ; XAUUSD ScalperGuard —— 策略测试器专用（与 old200 规则完全同步）
 ;
 ; 交易规则**逐字复制自 ScalperGuard_old200.set**，只改四项环境设置：
-;     InpVirtualBalanceUSD  -> 0.0    测试器的"存款"栏才是本金，填 200。
-;                                     再叠一层虚拟本金 = 把本金算两遍。
-;     InpVerboseLog         -> false  \
-;     InpWriteStatusJson    -> false   > 实盘监控设施在回测里是纯开销
-;     InpPushNotify         -> false  /
-;   （InpTesterQuiet 保持 true，另外在代码层静默统计与文件写入。）
+;     InpVirtualBalanceUSD  -> 0.0    测试器的"存款"栏才是本金，填 200
+;     InpVerboseLog / InpWriteStatusJson / InpPushNotify -> false
 ;
 ; 测试器设置：
 ;     品种 XAUUSD.sml   周期 M5   存款 200   杠杆 1:100
-;     模型「每笔即时价格基于真实价格变化」（Every tick based on real ticks）
-;     日期至少 1 年   延迟选「随机延迟」
+;     模型「每笔即时价格基于真实价格变化」   日期至少 1 年   延迟「随机延迟」
 ;
-; ⚠️ 回测测不到的三件事：
-;     · 新闻过滤 —— 测试器里经济日历不可用，本档 InpUseNewsFilter 已是 false，
-;       所以这一条在回测和实盘里行为一致，不构成偏差
-;     · 点差 —— 真实tick模式带历史点差，但数据前后点差放大的那几秒往往缺tick
-;     · 滑点 —— 测试器默认理想成交
-;   结果是**乐观上界**。
-;
-; 第一眼要看的不是净利，是：
-;     1) 做空占比 —— 应接近一半（方向模式 4）
+; 跑完第一眼看两个数，不看净利：
+;     1) 做空占比 —— 应接近一半
 ;     2) +$3 落袋 与 -$3 止损的笔数比 —— 盈亏比钉死 1:1，这个比值就是胜率
 ; ============================================================================
-
-
 InpAllowLiveAccount=false
 
 ; --- 日内限额：按 $10,000 余额换算，否则一笔亏损就收工 ---
@@ -232,8 +218,9 @@ InpDirectionMode=4
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
-InpCounterMoveBars=5
+InpCounterMoveBars=6
 InpCounterMoveATR=0.40
+InpCounterMoveHardATR=0.80
 InpPaBars=6
 InpPaMinATR=0.30
 

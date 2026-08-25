@@ -222,6 +222,7 @@ InpConflictAsVeto=false
 InpInvertSignals=false
 InpCounterMoveBars=5
 InpCounterMoveATR=0.50
+InpCounterMoveHardATR=1.00
 InpPaBars=6
 InpPaMinATR=0.30
 

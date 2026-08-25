@@ -167,10 +167,13 @@ input bool     InpInvertSignals      = false;   // 倒转信号方向（诊断�
 // 新的摆动低点要等右边再出 2 根K线才成立，所以价格在底部反转的那一刻，
 // 结构读出来仍然是"更低高点+更低低点"=做空，于是一头撞进反弹里。
 // 这道闸门不预测方向，只否决一件事：**要做空，可最近几根K线正在往上走**。
-input int      InpCounterMoveBars    = 5;       // 逆势检查看最近几根K线
-input double   InpCounterMoveATR     = 0.50;    // 逆向净走幅超过 ATR×该值即否决，0=关闭
+// 窗口用 **InpLTF（M5）** 而不是触发周期：M1 的 5 根只有 5 分钟，
+// 一波一小时的反弹在那个窗口里根本看不见 —— 实盘就是这么把空单开在反弹里的。
+input int      InpCounterMoveBars    = 5;       // 逆势检查看最近几根 LTF K线
+input double   InpCounterMoveATR     = 0.50;    // 软阈值：逆向超过 ATR×该值 且 最新一根仍在继续 -> 否决
+input double   InpCounterMoveHardATR = 1.00;    // 硬阈值：逆向超过 ATR×该值 -> 无条件否决，0=关闭
 
-input int      InpPaBars             = 6;       // 结构不明时，看最近几根K线的净推进
+input int      InpPaBars             = 6;       // 近期净推进看最近几根 LTF K线
 input double   InpPaMinATR           = 0.30;    // 净推进需超过 ATR × 该值才算有方向
 
 input group "=== V2 多周期 ==="
@@ -1320,18 +1323,30 @@ int MarketStructure(ENUM_TIMEFRAMES tf)
 //      幅度要超过 InpPaMinATR × ATR 才算数（否则是横盘噪音）
 int PriceActionDir(double atr)
 {
-   int s = MarketStructure(g_entryTF);
-   if(s != 0) return s;
-   s = MarketStructure(InpLTF);
-   if(s != 0) return s;
+   // 1) 摆动结构：更高高点+更高低点 = 多，反之 = 空
+   int st = MarketStructure(g_entryTF);
+   if(st == 0) st = MarketStructure(InpLTF);
 
+   // 2) 近期净推进：用 InpLTF（不是触发周期）。M1 的几根只有几分钟，
+   //    一波一小时的行情在那个窗口里看不见。
+   int mo = 0;
    int n = MathMax(2, InpPaBars);
-   double c1 = iClose(_Symbol, g_entryTF, 1);
-   double cn = iClose(_Symbol, g_entryTF, n);
-   if(c1 <= 0.0 || cn <= 0.0 || atr <= 0.0) return 0;
-   double net = c1 - cn;
-   if(MathAbs(net) < InpPaMinATR * atr) return 0;
-   return (net > 0.0) ? 1 : -1;
+   double c1 = iClose(_Symbol, InpLTF, 1);
+   double cn = iClose(_Symbol, InpLTF, n);
+   if(c1 > 0.0 && cn > 0.0 && atr > 0.0)
+   {
+      double net = c1 - cn;
+      if(MathAbs(net) >= InpPaMinATR * atr) mo = (net > 0.0) ? 1 : -1;
+   }
+
+   // 3) 两者分歧 -> **不做**。
+   //    这是这个函数最要紧的一条。MarketStructure 回看 InpStructureLookback(60)
+   //    根找摆动点，一波大跌之后它会在几小时里一直读"向下"，哪怕价格早已反弹回去 ——
+   //    实盘就是这么在反弹途中连开空单的。结构和近期推进对不上时，
+   //    正确答案是"看不清"，不是"听结构的"。
+   if(st != 0 && mo != 0) return (st == mo) ? st : 0;
+   if(mo != 0) return mo;      // 结构不明 -> 听近期推进
+   return st;                  // 近期没推进 -> 听结构
 }
 
 int HtfTrend()
@@ -1699,23 +1714,30 @@ Signal BuildSignal(double atr, int minScore)
    if(InpCounterMoveATR > 0.0 && atr > 0.0)
    {
       int nb = MathMax(2, InpCounterMoveBars);
-      double cNow = iClose(_Symbol, g_entryTF, 1);
-      double cOld = iClose(_Symbol, g_entryTF, nb);
+      double cNow = iClose(_Symbol, InpLTF, 1);
+      double cOld = iClose(_Symbol, InpLTF, nb);
       if(cNow > 0.0 && cOld > 0.0)
       {
          double against = (cOld - cNow) * dir;   // >0 = 这几根在往我的反方向走
 
-         // 只看"走了多远"会把**趋势回调**一起毙掉 —— 回调的定义就是最近几根
-         // 在往反方向走，而入场 B 等的正是这一刻。所以再加一个条件：
-         // 最新那根还在继续往反方向走，才算"逆势还没结束"。
-         // 最新一根已经掉头回到我这边 = 回调结束的迹象，放行。
-         double cPrev = iClose(_Symbol, g_entryTF, 2);
+         // 两级阈值。软的那级要配合"最新一根仍在继续"才否决 —— 否则会把
+         // **趋势回调**一起毙掉（回调的定义就是最近几根在往反方向走，
+         // 而入场 B 等的正是这一刻）。
+         // 但只有软的一级不够：一波反弹里 K 线红绿交替，随便一根反向的
+         // 就让它放行。所以再加一级硬阈值：逆向走得够远时，**不管最新一根
+         // 是什么颜色一律否决** —— 一小时的反弹不会因为出现一根阴线就变成回调。
+         double cPrev = iClose(_Symbol, InpLTF, 2);
          bool stillAgainst = (cPrev > 0.0) ? (((cNow - cPrev) * dir) < 0.0) : true;
 
-         if(against > InpCounterMoveATR * atr && stillAgainst)
+         bool hardBlock = (InpCounterMoveHardATR > 0.0 &&
+                           against > InpCounterMoveHardATR * atr);
+         bool softBlock = (against > InpCounterMoveATR * atr && stillAgainst);
+
+         if(hardBlock || softBlock)
          {
-            NoTrade(StringFormat("最近 %d 根K线逆向走了 $%.2f（%.2f×ATR）且仍在继续，不做%s",
-                    nb, against, against / atr, dir > 0 ? "多" : "空"));
+            NoTrade(StringFormat("最近 %d 根%s逆向走了 $%.2f（%.2f×ATR，%s），不做%s",
+                    nb, EnumToString(InpLTF), against, against / atr,
+                    hardBlock ? "超硬阈值" : "仍在继续", dir > 0 ? "多" : "空"));
             return sg;
          }
       }
