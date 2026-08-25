@@ -1704,9 +1704,17 @@ Signal BuildSignal(double atr, int minScore)
       if(cNow > 0.0 && cOld > 0.0)
       {
          double against = (cOld - cNow) * dir;   // >0 = 这几根在往我的反方向走
-         if(against > InpCounterMoveATR * atr)
+
+         // 只看"走了多远"会把**趋势回调**一起毙掉 —— 回调的定义就是最近几根
+         // 在往反方向走，而入场 B 等的正是这一刻。所以再加一个条件：
+         // 最新那根还在继续往反方向走，才算"逆势还没结束"。
+         // 最新一根已经掉头回到我这边 = 回调结束的迹象，放行。
+         double cPrev = iClose(_Symbol, g_entryTF, 2);
+         bool stillAgainst = (cPrev > 0.0) ? (((cNow - cPrev) * dir) < 0.0) : true;
+
+         if(against > InpCounterMoveATR * atr && stillAgainst)
          {
-            NoTrade(StringFormat("最近 %d 根K线逆向走了 $%.2f（%.2f×ATR），不做%s",
+            NoTrade(StringFormat("最近 %d 根K线逆向走了 $%.2f（%.2f×ATR）且仍在继续，不做%s",
                     nb, against, against / atr, dir > 0 ? "多" : "空"));
             return sg;
          }

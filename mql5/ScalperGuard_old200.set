@@ -133,6 +133,26 @@
 ;   唯一的例外是行情跳空直接穿过 $3，那种情况由 InpBreakEvenUSD=2.0 兜底
 ;   （到过 $2 就把止损推到保本，不会再变成亏损）。
 ;
+;   ---- 再放宽一轮（仍然没入场）----
+;   先修了一个我自己造的冲突：逆势闸门会把**趋势回调**一起毙掉 ——
+;   回调的定义就是最近几根K线在往反方向走，而入场 B 等的正是这一刻。
+;   代码里补了条件：只有"最新一根还在继续往反方向走"才算逆势未结束；
+;   最新一根已经掉头回到我这边 = 回调结束，放行。
+;   这条大概率就是完全没单的原因。
+;
+;   然后把入场侧闸门再放一轮（逆势闸门、$3 落袋、风险封顶、方向模式 4 全部不动）：
+;     InpMinScore / InpScoreMinB   4 -> 2
+;     InpAdxMin                    9 -> 3
+;     InpTriggerTolATR          0.90 -> 1.40
+;     InpBarCloseStrength       0.30 -> 0.15
+;     InpWickRejectPct          0.85 -> 0.95
+;     InpAtrMinUSD              0.40 -> 0.15
+;     InpMaxSpreadUSD           0.80 -> 1.20
+;     InpUseNewsFilter          true -> false
+;     InpSweepMinPenetration    0.05 -> 0.02
+;     InpSlMaxATRMult            2.0 -> 3.0   少被"结构止损过宽"拒掉
+;     InpMaxPositions              6 -> 8
+;
 ;   ---- 追高保护改回 2.50（用户要求恢复入场量）----
 ;   上一轮为了"不要追高"把它从 2.50 收到 1.20，入场量就是被这一条砍掉的 ——
 ;   它是那两笔做空发生时的配置与现在唯一的**入场侧**差别。改回 2.50。
@@ -312,7 +332,7 @@ InpFlatAllBeforeHour=23
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
 ; 0.60 / 0.25 会让亚洲盘也能过。代价明确：$0.40 点差配 $3 止损 = 每笔先付掉
 ; 13% 的风险额度。采样期接受，评估期必须把这笔成本从结果里扣回去。
-InpMaxSpreadUSD=0.80
+InpMaxSpreadUSD=1.20
 InpSpreadVsATRMax=0.25
 
 ; --- M5 趋势判定：只看均线排列，不要求收盘价站在慢线一侧 ---
@@ -329,17 +349,17 @@ InpHtfRequireSlope=false
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=4
+InpMinScore=2
 InpEntryTF=1
-InpAdxMin=9.0
+InpAdxMin=3.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
-InpTriggerTolATR=0.90
-InpBarCloseStrength=0.30
-InpWickRejectPct=0.85
+InpTriggerTolATR=1.40
+InpBarCloseStrength=0.15
+InpWickRejectPct=0.95
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
 ; 实测出现过 RR=0.04 的拒绝 —— M5 上贴着入场价的小摆动高点被当成硬顶。
@@ -347,7 +367,7 @@ InpWickRejectPct=0.85
 InpLevelIgnoreR=1.20
 
 ; --- 波动率区间：放宽两头，别在安静时段直接哑火 ---
-InpAtrMinUSD=0.40
+InpAtrMinUSD=0.15
 InpAtrMaxUSD=15.00
 
 ; --- 止损区间 ---
@@ -357,7 +377,7 @@ InpSlMinUSD=1.20
 InpSlMaxUSD=15.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=2.0
+InpSlMaxATRMult=3.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -399,7 +419,7 @@ InpStallNeedNoNewExtreme=true
 ; --- 新闻过滤：保留 ---
 ; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的
 ; 样本质量。采样期留着，让样本干净。
-InpUseNewsFilter=true
+InpUseNewsFilter=false
 
 ; --- 机构参考位 + 扫损反手（见 GOLD_PRO_TECHNIQUES.md）---
 ; 前日高低/亚洲区间/整数关口:客观可算,不需人工标注。
@@ -412,7 +432,7 @@ InpAsiaEndHour=10
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
-InpSweepMinPenetration=0.05
+InpSweepMinPenetration=0.02
 InpSweepMaxPenetration=1.50
 
 ; --- 固定金额目标（默认关闭）---
@@ -433,7 +453,7 @@ InpVirtualBalanceUSD=200.0
 InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=4
+InpScoreMinB=2
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=2.0
@@ -466,7 +486,7 @@ InpReducedAtPct=45.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=6
+InpMaxPositions=8
 InpMaxCombinedRiskPct=30.0
 InpMaxMarginPctPerPos=95.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
