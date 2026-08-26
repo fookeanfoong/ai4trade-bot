@@ -43,6 +43,12 @@ input long     InpMagic              = 20260812;// Magic Number
 input bool     InpVerboseLog         = true;    // 详细日志（写入 Files\XAUUSD_ScalperGuard_log.csv）
 
 input group "=== 资金 / 风险 ==="
+// InpFixedLot > 0 时，**不再按风险反算手数**，每笔都用这个固定手数。
+// 仍然必带止损、仍查保证金、仍守最小手/步长 —— 只是手数来源换了。
+// ⚠️ 代价：止损距离每笔不同，固定手数下**每笔冒的美元数就不一样**了，
+//    +2R/-1R 的干净结构会被打散（宽止损单亏得多、窄止损单亏得少）。
+//    所以每笔的实际风险会写进 [OPEN] 日志，自己盯着。
+input double   InpFixedLot           = 0.0;     // 固定手数（0=按风险%反算，>0=每笔都用它）
 input double   InpRiskPctDefault     = 1.0;     // 默认单笔风险 %（账户余额）
 input double   InpRiskPctMax         = 2.0;     // 单笔风险上限 %（仅最高质量信号）
 input double   InpDailyProfitTarget  = 50.0;    // 每日盈利目标 USD -> 停止交易
@@ -1917,6 +1923,31 @@ double CalcLot(double slDistUSD, double riskMoney, string &why)
 {
    double mppd = MoneyPerLotPerDollar();       // 每手每 $1 金价波动的美元盈亏
    if(mppd <= 0.0) { why = "无法获取合约规格"; return 0.0; }
+
+   double lotMinF = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+   double lotMaxF = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
+
+   // --- 固定手数：绕过风险反算，但保留手数与保证金的硬约束 ---
+   if(InpFixedLot > 0.0)
+   {
+      double flot = FloorToStep(InpFixedLot);
+      if(flot < lotMinF)
+      { why = StringFormat("固定手数 %s 低于品种最小手 %s",
+              DoubleToString(InpFixedLot, VolDigits()),
+              DoubleToString(lotMinF, VolDigits())); return 0.0; }
+      if(flot > lotMaxF) flot = lotMaxF;
+
+      // 保证金检查（和下面风险路径同一套逻辑）
+      double fmargin = 0.0;
+      double fprice  = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+      if(!OrderCalcMargin(ORDER_TYPE_BUY, _Symbol, flot, fprice, fmargin))
+      { why = "保证金计算失败"; return 0.0; }
+      double fcap = EffectiveFreeMargin() * InpMaxMarginPctPerPos / 100.0;
+      if(fmargin > fcap)
+      { why = StringFormat("固定手数 %s 需保证金 $%.2f > 上限 $%.2f",
+              DoubleToString(flot, VolDigits()), fmargin, fcap); return 0.0; }
+      return flot;
+   }
 
    // 美元硬上限:和风险%取更小的那个。设了 $10 目标却按 $100 风险开仓,
    // 是这个功能最容易出的事故。
