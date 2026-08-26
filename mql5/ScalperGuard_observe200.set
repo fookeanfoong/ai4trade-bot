@@ -63,6 +63,7 @@ InpAllowLiveAccount=false
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
 InpFixedLot=0.0
+InpProfitFloorUSD=0.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。

@@ -42,7 +42,8 @@ $MustHave = @(
     'EffectiveFreeMargin',     # 保证金按虚拟本金算
     'PriceActionDir',          # 纯K线方向（模式4）
     'InpCounterMoveATR',       # 逆势闸门
-    'InpFixedLot'              # 固定手数
+    'InpFixedLot',             # 固定手数
+    'InpProfitFloorUSD'        # 利润地板
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

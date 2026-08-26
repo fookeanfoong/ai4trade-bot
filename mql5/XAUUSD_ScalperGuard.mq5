@@ -49,6 +49,12 @@ input group "=== 资金 / 风险 ==="
 //    +2R/-1R 的干净结构会被打散（宽止损单亏得多、窄止损单亏得少）。
 //    所以每笔的实际风险会写进 [OPEN] 日志，自己盯着。
 input double   InpFixedLot           = 0.0;     // 固定手数（0=按风险%反算，>0=每笔都用它）
+
+// 利润地板：净利**到过**这个金额之后，若回落到它以下就平仓。
+// 和「到 $X 就卖」的区别 —— 它不砍上限：超过后继续涨就继续拿，只在
+// **跌回地板**时才落袋。等于给已经到手的利润设一条只升不降的底线。
+// "净"是真的净（PositionNetUSD：点差/隔夜/手续费已扣）。0=关闭。
+input double   InpProfitFloorUSD     = 0.0;     // 利润地板($)，到过后跌回它以下就平仓，0=关闭
 input double   InpRiskPctDefault     = 1.0;     // 默认单笔风险 %（账户余额）
 input double   InpRiskPctMax         = 2.0;     // 单笔风险上限 %（仅最高质量信号）
 input double   InpDailyProfitTarget  = 50.0;    // 每日盈利目标 USD -> 停止交易
@@ -2194,6 +2200,7 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
 string PartialKey(ulong ticket){ return StringFormat("SG_P_%I64u", ticket); }
 string RKey      (ulong ticket){ return StringFormat("SG_R_%I64u", ticket); }
 string MKey      (ulong ticket){ return StringFormat("SG_M_%I64u", ticket); }
+string FKey      (ulong ticket){ return StringFormat("SG_F_%I64u", ticket); }  // 利润地板已武装
 
 // 该仓位见过的最高盈利(R)。只增不减 —— 回吐上限要守的就是这个数。
 double PeakR(ulong ticket, double curR)
@@ -2231,7 +2238,7 @@ void PurgeFlags()
    {
       string nm = GlobalVariableName(i);
       if(StringFind(nm, "SG_P_") == 0 || StringFind(nm, "SG_R_") == 0 ||
-         StringFind(nm, "SG_M_") == 0)
+         StringFind(nm, "SG_M_") == 0 || StringFind(nm, "SG_F_") == 0)
          GlobalVariableDel(nm);
    }
 }
@@ -2246,7 +2253,8 @@ void CleanFlags()
       bool isP = (StringFind(nm, "SG_P_") == 0);
       bool isR = (StringFind(nm, "SG_R_") == 0);
       bool isM = (StringFind(nm, "SG_M_") == 0);
-      if(!isP && !isR && !isM) continue;
+      bool isF = (StringFind(nm, "SG_F_") == 0);
+      if(!isP && !isR && !isM && !isF) continue;
       ulong tk = (ulong)StringToInteger(StringSubstr(nm, 5));
       if(!PositionSelectByTicket(tk)) GlobalVariableDel(nm);
    }
@@ -2360,6 +2368,31 @@ void ManagePositions(double atr)
                continue;
             }
             LogLine("ERROR", StringFormat("#%I64u 回吐离场失败 %d %s",
+                    tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+         }
+      }
+
+      // --- 利润地板：到过 $X 之后跌回它以下就落袋（不砍上限）---
+      if(InpProfitFloorUSD > 0.0)
+      {
+         string fk = FKey(tk);
+         bool armed = GlobalVariableCheck(fk);
+         double grossQuick = pos.Profit() + pos.Swap();   // 先用毛利粗筛，别每 tick 翻手续费
+         if(!armed && grossQuick >= InpProfitFloorUSD)
+         {
+            if(PositionNetUSD() >= InpProfitFloorUSD)      // 净额确认到过地板
+            { GlobalVariableSet(fk, 1.0); armed = true; }
+         }
+         if(armed && PositionNetUSD() <= InpProfitFloorUSD)
+         {
+            if(trade.PositionClose(tk))
+            {
+               LogLine("FLOOR", StringFormat(
+                  "#%I64u 净利到过 $%.2f 后回落到 $%.2f，触及利润地板，落袋（%.2fR）",
+                  tk, InpProfitFloorUSD, PositionNetUSD(), rMult));
+               continue;
+            }
+            LogLine("ERROR", StringFormat("#%I64u 利润地板离场失败 %d %s",
                     tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
          }
       }
