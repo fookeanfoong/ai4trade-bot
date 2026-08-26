@@ -50,6 +50,12 @@ input group "=== 资金 / 风险 ==="
 //    所以每笔的实际风险会写进 [OPEN] 日志，自己盯着。
 input double   InpFixedLot           = 0.0;     // 固定手数（0=按风险%反算，>0=每笔都用它）
 
+// 结构止损超过上限时：true=把止损收到上限照做（止损硬锁在 InpSlMaxUSD），
+// false=放弃这笔（原行为）。高波动里结构止损常 >上限，false 会大量拒单。
+// 用固定手数 + 固定金额止损时，通常要 true —— 否则设了 $10 止损却因为
+// 结构要 $15 而一直不进场。
+input bool     InpClampWideStop      = false;   // 结构止损过宽时收到上限而不是放弃
+
 // 利润地板：净利**到过**这个金额之后，若回落到它以下就平仓。
 // 和「到 $X 就卖」的区别 —— 它不砍上限：超过后继续涨就继续拿，只在
 // **跌回地板**时才落袋。等于给已经到手的利润设一条只升不降的底线。
@@ -1822,8 +1828,18 @@ Signal BuildSignal(double atr, int minScore)
    if(InpSlMaxATRMult > 0.0) slMax = MathMax(slMax, atr * InpSlMaxATRMult);
    if(slDist > slMax)
    {
-      NoTrade(StringFormat("结构止损过宽 %.2f > %.2f USD（ATR %.2f）", slDist, slMax, atr));
-      return sg;
+      if(InpClampWideStop)
+      {
+         // 把止损收到上限照做 —— 止损硬锁在 slMax，不再因为结构宽而拒单。
+         // 代价：止损比结构位近，更容易被噪音扫到；换来的是高波动里也能入场。
+         slDist = slMax;
+         sl = (dir > 0) ? entry - slDist : entry + slDist;
+      }
+      else
+      {
+         NoTrade(StringFormat("结构止损过宽 %.2f > %.2f USD（ATR %.2f）", slDist, slMax, atr));
+         return sg;
+      }
    }
 
    // --- 目标：受前方最近的关键位限制 ---
