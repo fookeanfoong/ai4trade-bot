@@ -97,11 +97,11 @@ InpMaxFakeBreakouts=5
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
 InpExitOnMomentumFade=false
-InpTP1_R=2.0
+InpTP1_R=99.0
 InpTP2_R=2.0
 InpPartialClosePct=0.0
 InpBreakevenBufferATR=0.05
-InpBreakEvenR=1.0
+InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
 InpGiveBackPct=0.0
 InpGiveBackMinR=2.0
@@ -145,7 +145,7 @@ InpSweepMaxPenetration=1.50
 ;   风险 $10  + 目标 $10 = RR 1:1.00 -> 保本胜率 50.0%
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
-InpTargetProfitUSD=0.0
+InpTargetProfitUSD=10.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
