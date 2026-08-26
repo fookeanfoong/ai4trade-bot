@@ -1,30 +1,25 @@
 {
-  "fetched_at": "2026-08-26T06:54:47+00:00",
+  "fetched_at": "2026-08-26T06:56:29+00:00",
   "high_impact_events": [
     "欧央行",
     "英央行",
     "澳联储",
-    "美国CPI"
+    "美国CPI",
+    "非农就业"
   ],
   "blackout_recommended": true,
   "items": [
     {
-      "title": "US Dollar Index Stalls as Market Shrugs Off Hawkish Non-Voters - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPdTdiM2dYak1wWE5zZ3JPMWplaUhaMHg5QTBIZFFET1ZqVlMtUjdmbkF0RGtxVDNZcl9JVzROVUliRzE0QkNVWS0wN09JT2VKRFJ5LXNaWW9UeXJUbndCZjVPT0xJUHVlUER5cXB1LUNJR2s3dnZiaUhaa20xVmhiTlZ4NXJBa2pmYTQ3Z3h0bXRjVmZnUDNjdXZaejBwdW5zSnc?oc=5",
-      "age_h": 5.1,
-      "when": "2026-08-26T01:51:00+00:00"
+      "title": "New Zealand Dollar Hits Fresh Highs as US Dollar Remains Under Pressure - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZFV6RWM1ck9heXdfWHR5R29MSG5qN3ZkQkt4VjduRVF0SUZFaGx0bGczOWtBejlZdVNwbTNCZTcydzJpd3otMU96bE5mNmRiYzFMOVhFcGlfZ1BlMUhhazlBTHMwaGMxaFNsSDMyVjdnR0dVempvVFUxaEtzeko2cmN3?oc=5",
+      "age_h": 6.6,
+      "when": "2026-08-26T00:23:28+00:00"
     },
     {
       "title": "Forex Today: US Dollar stays on the back foot ahead of PCE - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPNzBELUpEWXZJSktvYXRCT0JESHJxczgyQXlqYjJ1QmFqcEpPSzVLUWVGVnQwQnZOZ2xucGkwQWp5Z3lIM29zVXFhN0dPYUJTbEsxNVNDRUFDaXE3QmRYbVNiSFllOUUtdzJwcVpOaHFYdWZiT3EzMkZjLXNEUFF5YWVqUHJZYUpQRVd5RnR4RC11ZGdtVlJaT3pMZWZHR2Q3eHc?oc=5",
       "age_h": 12.2,
       "when": "2026-08-25T18:43:32+00:00"
-    },
-    {
-      "title": "New Zealand Dollar Hits Fresh Highs as US Dollar Remains Under Pressure - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZFV6RWM1ck9heXdfWHR5R29MSG5qN3ZkQkt4VjduRVF0SUZFaGx0bGczOWtBejlZdVNwbTNCZTcydzJpd3otMU96bE5mNmRiYzFMOVhFcGlfZ1BlMUhhazlBTHMwaGMxaFNsSDMyVjdnR0dVempvVFUxaEtzeko2cmN3?oc=5",
-      "age_h": 6.5,
-      "when": "2026-08-26T00:23:28+00:00"
     },
     {
       "title": "US Dollar Holds Near Lows As Traders Await PCE Inflation Data - Bitcoin World",
@@ -39,9 +34,15 @@
       "when": "2026-08-25T09:08:29+00:00"
     },
     {
+      "title": "US Dollar Index Stalls As Market Shrugs Off Hawkish Non-Voters - Bitcoin World",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNNkpNSnBUc0xLdDhUS2l5aHBBX2VHRnE1VXN5OHk3bzlwaWFxZWxCaUNnTy02VURQSVdIV2UtWU5JcWdfVEJmclZlMERQblltVm1ocFlyN2M1ZFdMblFRU2FxcnJ2ZzdLTGVXQVo0R1lUT0JyOWEtU1lLeXdEZ1lCaHdRTnc5UGVZUjMzTFJDbUs?oc=5",
+      "age_h": 11.7,
+      "when": "2026-08-25T19:15:11+00:00"
+    },
+    {
       "title": "Will Fed Chair Warsh actually say anything in his big Friday speech? - marketplace.org",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUlpvVjBmNkEtR3pXNE1kQzRLOGFSSmgtLTNGXzlnRE52OU41TXJyTmlsQXhrZC1oc1B5T1JkYnZOdzA5YWdYdV9SZDBLZEJ3WktZaXAxbkNabE1RYzNCSlMyOWRWOXhXVk9tV2RCMFhlU1VDYjVKQUJYX0R6cFpQQTh2LVAzS3ZNVWVmcjlhekFBWFpzaGg0SGM4LVgzUE4xeHJvT0ZHYXJJdw?oc=5",
-      "age_h": 10.2,
+      "age_h": 10.3,
       "when": "2026-08-25T20:40:00+00:00"
     },
     {
@@ -65,13 +66,13 @@
     {
       "title": "Trump administration faces a major financial battle in the bond market - EL PAÍS English",
       "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPUkJHZlBXQm1Ydml0OEVfNXV5bTNfaEc0T203MkxINFoyTHpPajRxZHdoaDhIWWN0ZElIQ01zZ205R2dUNUtfcG1vR0ViMFVnUVZIejIyYzdtNDJQWFd2WXNoM0VvZHhoVGgzTUktbmd4ZEZlQzNadEF1RXVoMWFsY0hRYXlDTWJNdWlUdXVSd1pWT29qbDFORzFSWXIwNnl3V2x0eENIa09Oc0lnWWZCcFA4RVBxZ3kteWhMNFFBeUZhR3FqMVptclhDbEN5TnfSAeMBQVVfeXFMUDk3WWR6dl8tdG8tX1lCdkswVDVVNDRMVnhYcDZqNEVWcU1ia3hfYjBDNEdyYkZJOGZpNW4tUXpYTnNXSnM0U0hzMFg1WVpGbFJDT0s1b25WQ2xkS2RhckIweG9idWJ6V2MzRC1fWjNtMEl3dVo5Y1BDQ2VSU0tGcGU4cWV3NV9YazRYUEhiYTVUb1ZtSnRGOUJfR0dxMjlrWV9FWkVkRXFLbWk2emUxeDRwTXNwS19WLUtEVnFUZURwN3RlNUZucTI3SzRYMFBhXzRsV3Q4Z29tZ090TkFTR3hhbnM?oc=5",
-      "age_h": 17.0,
+      "age_h": 17.1,
       "when": "2026-08-25T13:51:49+00:00"
     },
     {
       "title": "ECB's Schnabel: Inflation likely to top 2% for extended period - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPTGtKNmtDQkRIM04xb005ME9vSlNJNkFvNWdwUjdYcGNPSG03UHdyVnROb3YwZ3JtVWdFMGNoM3Y4Ri0xX2dta19VTHFDUkpJaWsxNjBIQXBza2lNeTRCc0dHVXVnZFRlZHlNaFQweTRLSGFYa1dNWExwUG1fY1ROTjhXTzc1cmxYTFJ2WVRESmNaWjRmajFDZjJNVUFZd28tbDVCeQ?oc=5",
-      "age_h": 1.2,
+      "age_h": 1.3,
       "when": "2026-08-26T05:41:17+00:00"
     },
     {
@@ -83,13 +84,13 @@
     {
       "title": "Forex Economic Calendar Overview: Key Events for the Next Trading Week (31.08.2026–06.09.2026) - LiteFinance",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQUjE2amZ3amZHRV9DMjFYLUJlQ09TOFZ6eEZneS1IQmVXbm5ndVFram5SQlhuRm90dnJlOWtmUTNsY2lJTndYV1JEdEdxZmhsLWZha0MxWXBZODhsMmdxbW0xM1YwSkVFaXNNalBxQ241bC1QWmlVWWUtckttTWE3OGx4YnpUV3gteUVBa296ZnM3WEhzYmxyZXR2cElKems?oc=5",
-      "age_h": 4.5,
+      "age_h": 4.6,
       "when": "2026-08-26T02:22:10+00:00"
     },
     {
       "title": "ECB Expected To Raise Rate To 2.50% In September, Sources Say - BusinessToday Malaysia",
       "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPZ0Y5c0s3aHdOUXJDbTVDQUdkdXNzYzhMWVp2aVRIZFpvSmQzQTYxNW16S3F6TmdJXy1UeWk3MzRPTnVkUm1DQXRnNW9NR1FDZGx5aUNCeEYta3dQbGh5bHZUOTBLTWdDa3daTjVuX2ZfZW5EZHZ3REpHMFRpTmhIUUdFNUdTMkpUU210cWlSMGtCNFNCWWZHSWExcWlOTi1FU1doa3dTQQ?oc=5",
-      "age_h": 4.8,
+      "age_h": 4.9,
       "when": "2026-08-26T02:04:05+00:00"
     },
     {
@@ -105,16 +106,16 @@
       "when": "2026-08-25T11:27:45+00:00"
     },
     {
+      "title": "GBP/USD Holds Near Six-Month High as Hormuz Hopes Lift Market Sentiment - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOUjVSc3ppLUdCMXZ5cjVtZ3l3VEF5dUhMVkYtLThnRjFMb1ZZR2lCN1ptTmV5b1dPd1pUazMwQnZBckdVdTBFWGpLY3lWeWtGWU9aWlRFME1ja2pWdzRuVkp5aW9LSnc1VkV0SEFJM0E3eU9TYmFReXd4UC1iaG1XS0dXdw?oc=5",
+      "age_h": 9.7,
+      "when": "2026-08-25T21:16:15+00:00"
+    },
+    {
       "title": "British Pound edges lower but remains close to multi-month top as USD awaits US PCE - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPdmFIaEdlT1pxVTBZZURhNTlzd1YtcExRa2ZFRnctYlFpM1Zvb3FYWU42MTFjYXZEQUhodDF2aml4bkVxOEp5Sy04SjU1YmxLS1Q5WnBQQXhvUWJJNGRnQ09BOW1EQWN6T2ZVLUtzSUFGMXFla3kzVjJrYmlGemYtM01sWERrOUZxWnUyV3AzY00wQWhQZmdpYXZGdlZOVWxPdWZCb291a201Q0pvTnlxd3llTTQtZXFLWXpxVEhueHBudnI3?oc=5",
       "age_h": 2.8,
       "when": "2026-08-26T04:07:11+00:00"
-    },
-    {
-      "title": "Pound Sterling Holds Six-Month High as UK Data Calendar Empties - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQXRfbFBrYjdXbHRwdnhFNEpTZ0hJbGxiU2R6dTNGd2FXRWlJRktKcXE1NTVWMHNSU3ZfdnFpa21lYzkxaTdFcl8waktoVTlBYlQxNVNEZHN6SlRJNDR2eUpqQ3h5N3JNXzE3SHhHZW85Z0JsNnJUd0tWbnZ0RjZ0U25Ja1A?oc=5",
-      "age_h": 4.5,
-      "when": "2026-08-26T02:24:06+00:00"
     },
     {
       "title": "Pound-to-Dollar Forecast: GBP Holds near $1.36 as Iran Sanctions Raise China Risks - CurrencyNews.co.uk",
@@ -131,7 +132,7 @@
     {
       "title": "Australia inflation runs hot in July, adding to rate hike risk - The Mighty 790 KFGO",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQVnFZYUUwWVk5aVFOYzhFTHVaX3hVaTIzSTdYc1FYME5iN09KLWtTRTBjbDNicXJMU2VHdGItODg3RjVDRVNkOElHWWhiWmEtZnlLRUFncU9mNTFycWxoUEc5QUx3RzRlLUpjbUZ3MW84WEpWMXhoX0Y4SnZqSy1IQ3M1bVlnNUlPQmRlcl9ENGVycDA?oc=5",
-      "age_h": 0.5,
+      "age_h": 0.6,
       "when": "2026-08-26T06:22:30+00:00"
     },
     {
@@ -149,7 +150,7 @@
     {
       "title": "Australian inflation stays sticky at 3.5% as core pressures keep RBA on alert - Proactive Investors",
       "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOZ3JoeU8wV0RDOGhPYzBhZkZUNXJ1ZVQ3bUJjRnRzRG0tV3hQUjBfOHpfbXl0QzUtSE9VcUJfWmFTU1BxR3F4MEZNMmJFdndhMm5fX1BSdXBHb0pmc0JBMmlFcFJqWUtEWVQxdC1sdHBxNTNHdXlUN203OWItQ28tN3FTcHA1aHNXUllIVzVIa2tENEFVNHg1V0xwVmxiRDhUYnZ1ak9MYWtlUllDNmpIOUptdEpiTTg1TVM3SGhKTE5ET3hhZ0xkQWtEUmhXRk1CREI3aFN2TEd5UmV5WGxkX0pXTQ?oc=5",
-      "age_h": 4.2,
+      "age_h": 4.3,
       "when": "2026-08-26T02:41:00+00:00"
     },
     {
@@ -173,7 +174,7 @@
     {
       "title": "Aussie gains ahead of key inflation report at 11.30am AEST - Convera",
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPaF9DeDVMQ0EyWGtwOFpramJlaEpGczBpZlRZYnBkWWxrSGlRaXRsU1Ryd3JvQTRmallyNFVoR0Y5dl9JbmlRTnNKV1RfNHdKbEpUZ0pmckFyNmp0cE5QSlNGcGhhajN5Qkp0TVFqSkVfRXZPRnNwcjZ3WW5ZanJyWm1Dc1Z4Z3cxNWtZazNzWHNmekRCNmZ4RWMwdW1LV3NLYVFnZ2RxZE9rWUZFNEhTdUpNbUhzOGZiZy12VjZxVQ?oc=5",
-      "age_h": 8.8,
+      "age_h": 8.9,
       "when": "2026-08-25T22:04:36+00:00"
     },
     {
@@ -207,16 +208,16 @@
       "when": "2026-08-25T09:03:00+00:00"
     },
     {
-      "title": "US ADP Employment 4-Week Average Climbs to 11.75K in Early August - CryptoRank",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNdWgtamN0eE9oOUVIRlNkb25ORTgxTF9OM3ktb3VNUkJuVGtTSGVTX3hOcVoyMG5pWmdYR19WUTcyVVpPbFlpVHhZTnF1TURiYzBSdWJhRnhjbzBTSnlZU2dGRi1qdjVmZWd1OFhWSmxEVG1ITjAyTlozUlFoMEdlSVU5YkdnRS1SMmc?oc=5",
-      "age_h": 16.1,
-      "when": "2026-08-25T14:48:02+00:00"
-    },
-    {
       "title": "US ADP Employment 4-Week Average Climbs To 11.75K In Early August - Bitcoin World",
       "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE81LXRQVmVNbFhCUnJycDZndklmR016YnRITHJmRmxOWW5RTXJxcHpoM0RIa25fQllaZ043Zkw5enZuaml2amk5NndETlNsS1NjSm5ZMmhXNF9PcmRLd0FrMVFMeVlPTnNfVkFLQWpKczZIYzI0N0otOVlGNlM?oc=5",
-      "age_h": 18.2,
+      "age_h": 18.3,
       "when": "2026-08-25T12:40:16+00:00"
+    },
+    {
+      "title": "US Stock Futures Cautious On August 7 After Nasdaq, DJIA, S&P 500 Crashed; How US Nonfarm Payroll Will Impact? - Goodreturns",
+      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNeF8zaldTRTk3bURaZ3daUGdyVHJObGJNZ3FkX1ZDa3NQVkRVMzNWOUtlRmJ5T3lYMjlaVG1sNnJ1WktQaEZ5Y0d4WWx6Z2UwNWRFNjlpaWxRVFpIbGh4YUoycEVXYVVQYWFpc0xmRUs2T2s4THlYR2locm5JZEEyenNlb1M4SVVKVTg4eHRxS0NxSGtDS2pVMUZHbEROdkRWYWpMY2l6bW1hSFB6VDd0cEdLZFdPam9zNi1UYjJJVmdNS0VocXBrNmdaZjEtenk5LWl5dUdyWGZwWkVZNEE?oc=5",
+      "age_h": 21.3,
+      "when": "2026-08-25T09:36:32+00:00"
     }
   ],
   "errors": []
