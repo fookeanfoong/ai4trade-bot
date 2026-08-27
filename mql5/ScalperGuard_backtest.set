@@ -24,7 +24,7 @@ InpConservativeAt=1000.0
 InpReducedAt=1500.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
-InpMaxTradesPerDay=200
+InpMaxTradesPerDay=100000
 InpStopAfterConsecLoss=0
 InpObserveAfterConsecLoss=0
 
