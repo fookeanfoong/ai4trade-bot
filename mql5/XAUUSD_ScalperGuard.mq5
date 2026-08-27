@@ -187,6 +187,13 @@ input bool     InpInvertSignals      = false;   // 倒转信号方向（诊断�
 // 这道闸门不预测方向，只否决一件事：**要做空，可最近几根K线正在往上走**。
 // 窗口用 **InpLTF（M5）** 而不是触发周期：M1 的 5 根只有 5 分钟，
 // 一波一小时的反弹在那个窗口里根本看不见 —— 实盘就是这么把空单开在反弹里的。
+// 大趋势否决：只做**顺着中期趋势**的方向，逆势一律不做。
+// 连续两天实盘证明：顺趋势那半永远赚、逆趋势那半永远亏，两个方向都如此。
+// 中期趋势 = 最近 InpTrendBars 根 H1 K线的净方向（不用 EMA50/200，那太慢，
+// 抓不住一两小时的反转）。净幅要超过 InpTrendMinUSD 才算有趋势，否则两边都放行。
+input bool     InpTrendVeto          = false;   // true=逆着中期趋势的单子不做
+input int      InpTrendBars          = 4;       // 中期趋势看最近几根 H1
+input double   InpTrendMinUSD        = 5.0;     // H1 净幅超过该值($)才算有明确趋势
 input int      InpCounterMoveBars    = 5;       // 逆势检查看最近几根 LTF K线
 input double   InpCounterMoveATR     = 0.50;    // 软阈值：逆向超过 ATR×该值 且 最新一根仍在继续 -> 否决
 input double   InpCounterMoveHardATR = 1.00;    // 硬阈值：逆向超过 ATR×该值 -> 无条件否决，0=关闭
@@ -1727,6 +1734,25 @@ Signal BuildSignal(double atr, int minScore)
    if(dir == 0)
    { NoTrade(StringFormat("趋势不一致 HTF=%d LTF=%d（模式%d）", htf, ltf, InpDirectionMode)); return sg; }
    if(dir > 0) g_dirBuy++; else g_dirSell++;
+
+   // --- 大趋势否决：逆着中期趋势(最近几根 H1)就不做 ---
+   if(InpTrendVeto)
+   {
+      int n = MathMax(2, InpTrendBars);
+      double hc1 = iClose(_Symbol, PERIOD_H1, 1);
+      double hcn = iClose(_Symbol, PERIOD_H1, n);
+      if(hc1 > 0.0 && hcn > 0.0)
+      {
+         double net = hc1 - hcn;                       // >0 = 近几小时在涨
+         int ht = (MathAbs(net) >= InpTrendMinUSD) ? (net > 0 ? 1 : -1) : 0;
+         if(ht != 0 && ht != dir)
+         {
+            NoTrade(StringFormat("逆中期趋势不做：近%d根H1走$%.2f(%s) 本信号=%s",
+                    n, net, ht > 0 ? "涨" : "跌", dir > 0 ? "多" : "空"));
+            return sg;
+         }
+      }
+   }
 
    // --- 逆势闸门：最近几根K线正在往我的反方向走，就不做 ---
    if(InpCounterMoveATR > 0.0 && atr > 0.0)

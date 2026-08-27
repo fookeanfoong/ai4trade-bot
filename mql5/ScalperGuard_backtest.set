@@ -213,6 +213,9 @@ InpDirectionMode=4
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
+InpTrendVeto=true
+InpTrendBars=4
+InpTrendMinUSD=5.0
 InpCounterMoveBars=6
 InpCounterMoveATR=0.40
 InpCounterMoveHardATR=0.80
