@@ -1364,12 +1364,19 @@ int PriceActionDir(double atr)
       if(MathAbs(net) >= InpPaMinATR * atr) mo = (net > 0.0) ? 1 : -1;
    }
 
-   // 3) 两者分歧 -> **不做**。
-   //    这是这个函数最要紧的一条。MarketStructure 回看 InpStructureLookback(60)
-   //    根找摆动点，一波大跌之后它会在几小时里一直读"向下"，哪怕价格早已反弹回去 ——
-   //    实盘就是这么在反弹途中连开空单的。结构和近期推进对不上时，
-   //    正确答案是"看不清"，不是"听结构的"。
-   if(st != 0 && mo != 0) return (st == mo) ? st : 0;
+   // 3) 结构与近期推进的组合。
+   if(st != 0 && mo != 0)
+   {
+      if(st == mo) return st;             // 一致 -> 就是它
+      // 分歧 -> 听 H1 大趋势。一波大跌后 MarketStructure 会几小时一直读"向下"，
+      // 哪怕价格已反弹回去；此时若 H1 在涨、近期推进也在涨，就该跟着做多，
+      // 不必等 M5 结构慢慢翻过来（否则会像实盘那样"一直升却不买"）。
+      // H1 也没方向时才真的"看不清" -> 不做。
+      int ht = HtfTrend();
+      if(ht == mo) return mo;             // H1 站在"近期推进"这边 -> 跟推进
+      if(ht == st) return st;             // H1 站在"结构"这边 -> 跟结构
+      return 0;                           // H1 也中立 -> 看不清，不做
+   }
    if(mo != 0) return mo;      // 结构不明 -> 听近期推进
    return st;                  // 近期没推进 -> 听结构
 }
