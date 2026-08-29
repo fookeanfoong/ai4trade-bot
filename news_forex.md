@@ -1,72 +1,37 @@
-# 外汇新闻简报 — 2026-08-29 08:48 UTC
+# 外汇新闻简报 — 2026-08-29 14:16 UTC
 
-## ⛔ 今日检测到高影响事件
+## ✅ 今日未检测到高影响事件
 
-- **欧央行** — Eurozone Inflation Set to Rise as ECB Rate Hike Looms in September - Morningstar
-- **英央行** — Sterling Slips as Warsh’s Inflation Focus Lifts US Rate-Hike Bets, BoE Path Repriced - VT 
-- **澳联储** — Australian Dollar Outlook Ahead of RBA and BOJ: AUD/USD, AUD/JPY, EUR/AUD - stonex.com
-- **美国CPI** — Aussie Dollar Heads for Longest Weekly Winning Streak Since 2021 as Hot CPI Fuels RBA Rate
-- **非农就业** — U.S. Payrolls Revised Down by 79,000 Jobs - Barron's
-
-> **机器的动作:数据前后不开新仓。**
-> 20 点止损在数据发布时不是止损 —— 汇价几秒内跳数十点,
-> 成交价落在止损之外,20 点的风险会变成实际亏 50 点。
+> 常规交易时段。注意这个检测基于新闻标题,不是官方日历 ——
+> 重要数据请以 ForexFactory 或你券商的日历为准。
 
 ## 美元
 
-- (14.0h前) [US Dollar Awaits NFP as September Fed Hike Odds Hang in the Balance - stonex.com](https://news.google.com/rss/articles/CBMitgFBVV95cUxOZXlvdUlLV3Rzd3hEWGRGbWM5cjVfbm5Gc2ljMnRFWEtyQ3BzTENVYkh2SnJSa2J1Y3pjTUU2NEF4cVhvRE1IXzBZYVpWSXp1MXU2T3p2aWtHOGlmbWFMVGJIX1dFZjVFUVdHakFSbGN4dkNad0txdUF0TjdkQnFOclRGUU9iV2FjSDVYYmtPeldESWVzdkxwZ0FXeUVHYzJGU3QtdENOM21VSFgzekMwdW80enl5QQ?oc=5)
-- (13.2h前) [US Dollar Weekly Forecast: ‘Higher for Longer’ Returns, Boosting the Greenback - CryptoRank](https://news.google.com/rss/articles/CBMiiAFBVV95cUxNWEprdEs2YVNlb3EyZHUtS29GdlhrYTlMc3l2djdoa1p3Ulk3cHZhYmtXUEk2OEFqeW5Fc1JVMDRTWVJJM1lPWVdQMHhpVnY2ejNxdTE1MjhVYmxBNXVSXzFWUTRMaGJESXBselc4NEJFUDU5cTgtNXlCME9MZS1QZ2VnVHhBVnMt?oc=5)
-- (13.9h前) [FX Futures Positioning: GBP Shorts Hit Records as USD Rally Slows | COT Report - stonex.com](https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVzVxZTMxaklSWXJKbFhhVjNaU1NMbGt1dGwxcUptbFVhVUw4cTF1ZjQ2TlR2dnROQ0d6d1Fldm0yYjI4dDlGSGdnaTNqYmhHYlMtSHpYb19tYXMyRXRHLWhUM3ZzbVdWd09uZXZSNFo3T2VHY09iMGhORkx1NjB1V3JPaW0zbnpFWkRLazRGbktscUo0N3pyR05xOUZNc2JZRk9PZExVcU9KOFlXSnptUHpFQjJkMUJYQV9Ra0pjOWo?oc=5)
-- (16.8h前) [Dollar Index Gains As Warsh Signals September Rate Hike Possibility - Bitcoin World](https://news.google.com/rss/articles/CBMidEFVX3lxTE5JUW5PMUI1Z25WRUp5X041d2NWUWRwaUh6ODE4NmhxWE14Y2xHejduUVNydVhqSDV2RDhQV3ppcW16dVdqOENCakEydGFtSjFra1hfZE1rRll1WGFBYkVleExOaXR2ajVoOHdiX2tURl8zcVZU?oc=5)
-- (17.2h前) [British Pound tumbles as Warsh revives Fed hike bets - tmgm.com](https://news.google.com/rss/articles/CBMivgFBVV95cUxOX20xNDRrZHFpRS1hQkFXblptVXZWaGx6QXVuQnphU2k0WHJHZDNWSHNqNXBnb1ZSamxHZHNIZVd6Tm96anZNSGdEVXg1RlhMZTFWUGkzSFhvZWd3OHViOFV6dGUzZFEyUkliN1ZRU1hfVklGNTQ5WmphTWk5Uk1LVTM3aWJTcC1RdGhLTVBsMmdMSGtsUWdNN0lBYWRNaE5LNnZzZ3RmcjdGVGEzMkp4ZWpub2E5VUVac0lOSm5B?oc=5)
+_24 小时内无新headline_
 
 ## 美联储
 
-- (8.8h前) [Fed chair Warsh, concerned about inflation, says bank may have ‘work to do’ - The Washington Post](https://news.google.com/rss/articles/CBMinwFBVV95cUxQaDFpTWxQbW1YQ0U3M0pkd2xDc0F4UUJSYTZmTjc0VUthQ3YxLWhoa3pjU2tvaDdYVUtXNTkzQXIzb3VpaVpYOTZHREtWSllxSXJtM2ZyTWVoNDdLZHp4bmRralNuWkRiWWtXR1BaSHlEU1l1ZTk3MXVpaDNHMUN3RHVaWlY4MkJDUjNQSTQtbTRza0NxMU9JQ2tSbUdNaUU?oc=5)
-- (18.8h前) [Fed Chairman Warsh expresses concern about inflation, advocates for 'quieter' central bank - CNBC](https://news.google.com/rss/articles/CBMikAFBVV95cUxPSDgxMWMxLTZHbGRNUGgxeExaV0VyY2dqZ0ZaeVJaZTNsQ28wSldKeEpYRGN5NEpRNmV1Vjl3QWdheHFoSHFGQ3ZRSEVQQnZWd3R1OWw2dEhlQzBDS1hoanFlWlRaN0YwbVZIN2tUTE91LTRWWEI2MXBVVl9VczFCNm1LVjFFY0c5a3FCZHpFdDDSAZYBQVVfeXFMUC1lQUszSmUyc2dXV1FDVFA0QnFtWXVsLXVicFp0NDk5MVUzX01jOHhaRTBvcm1PbDRpWTFRUWZOa1I1LXNMUnJHX1pxNnlmbWdSUExuLTh6SU5qdEJJVU5vUU1FMDdpSkJMb0dvWUpDeFFjV0VoVWQtRXhpYmozS3pnc0Q4T1BjZXZ3VEpBT0JKOHV6eEpB?oc=5)
-- (10.9h前) [Inflation fight takes center stage as Warsh warns the Fed still has ‘work to do’ on rates - Los Angeles Times](https://news.google.com/rss/articles/CBMixAFBVV95cUxOc2M5LUdkTFFjYjlFbFZORUJ6WXBwaUlydVpfWXVGRDU1ZDJYWWRfZzVrNm5fOE56N3p2OUVzNElJUTZjRGstLWxOTFgzdXpVdmJ4TG41RlNNeVljZjQ1RENTRFRwTU1mV3BmX2Q4UE5sc3FHRllQOHZXQWtSUzBHVXU5aEhmbXpTb25ncnlXSGR4aXppemw3ZDUxZUtETGdYM01MUGxpMk1xdWVvc0hScHZ4Tko0N3o0b21jYmtleVFpb1Et?oc=5)
-- (18.3h前) [Warsh indicates Fed could raise rates to cool inflation - The Hill](https://news.google.com/rss/articles/CBMingFBVV95cUxOMHoyMlNQSms4ZWpONFBvV2J3X1M0VEFXSGJMejJhTU9Sa0hiUk9YN3hHXzdtMm5CVDBYOEFmWm9Nb0VQSGN5TDRfMVBvOXFUc25hQkxsUUdFVy1qb3gtR0M5eXhPR095bDBjQWY5b1JWaGpZNlg0WXV3WmRSRy01NHdPdjRBcnpJaE5IUDdNTk1kd05LS0x6SU5yS2F5d9IBowFBVV95cUxOTGVBenJqczBCVjYza19scUpyd0dkMGR2Q1AyV0pQNzlWZThDQmN4U1Z2c05LbGhEeHRJZVg4bnh3N3pZNUJhdm8xZ19HNHoweWk2b3R3SDJJQkdXZ0pBU1pOajg2ZTNLdS1MUkYwV2Jnd1gtdGhWREpWQlJMZGJqMFo3c3JkUmVBdlg3MmdOV05kbTlYM3NNakpvb0RPMkZiQ0pV?oc=5)
-- (4.8h前) [Fed chief sets the stage for interest rate increase - World Socialist Web Site](https://news.google.com/rss/articles/CBMiaEFVX3lxTFBJVzExbWlacEFKU0pNVkNuWndlcjJuVTI2MkZKeGVMcjJKR3JONFMzQ19Zd0FjZzhPemJCT0g4dldrcERpTjNST1NCckVCaFNjQUhYekh6VnpaX1F5YmVYcDQwVC1hUVdC?oc=5)
+_24 小时内无新headline_
 
 ## 欧元/欧央行
 
-- (17.8h前) [Eurozone Inflation Set to Rise as ECB Rate Hike Looms in September - Morningstar](https://news.google.com/rss/articles/CBMipAFBVV95cUxObjJBQ1BHekhHZ3pJNGFWYzFHSlRWVi1Od1hwWGdudkpvQ1FOUnRrNDVkSFllQXRKRFVEaHV0dWNRUVVDUU9fNlAyd19QN3lhVUpUdlMxSWVlUU80ZTNUSmdVLVlBZUpYZ3lYX05HbHFrSVFyX2s2OFp3RzVvMlUzbzVYdkMxRW9kbWI2QVlUeThRenFxNGpxNW1hRHFQWHVVOW9kUw?oc=5)
-- (17.7h前) [ECB’s Dolenc Sees Good Case to Hike Interest Rates in September - Bloomberg.com](https://news.google.com/rss/articles/CBMitAFBVV95cUxQTG5EN2pSQWVtTm1xZktmREdtOTJVYXNqQm93Zm14STFWakF1S2FZdGthSUtmQUNVdE12MG1BdXRnT3NuNXVnd0h5ZWlaRG5UdGhOZWUycEtHWHJUc2V4MmtaVW9TRWFnUWRzMDQ0TmE4VU1zSGwwTWtEdFVQTnJ4LVQ4U1FnVDVoRE13eVFQUEp1VHJTT2NiMnZvbk4yTlVXNXVMZ2tVVVFDTFM2cGJ3UmpCZXQ?oc=5)
-- (22.6h前) [Eurozone Businesses More Upbeat Despite Prolonged War in Middle East - WSJ](https://news.google.com/rss/articles/CBMihwFBVV95cUxQZlFrWGg1aDlXUjJ1YnB6cmd3bUE5cGFldGNRamVEZ2VuQWZTTUVRNUNacjhTejdkVUtOcUtueUEzYzhGVWxqeV9Mb0JTWjJQOS1fYzRvTWhhOGNGakhqeENpNXlGYTlWWG1pTGp5eXo4QzgxcG1YMHBhOEg4M05jRzJvZ3g2Y0E?oc=5)
-- (8.9h前) [ECB’s Kocher: Europe’s Economy Shows Momentum, But Price Stability at Risk - CryptoRank](https://news.google.com/rss/articles/CBMikgFBVV95cUxOLWlqaHctc2hrYTNFQUlwd0NhbTJjbU5ycElZSVc0WjBHNndISlRVTlVuaUpBaERqMXpyME13ZzRBU283bjlrMlY4LW5kSnFmQ0NlY2R2VGdmUjNfRDBjQ2MtanJkSG5IS2ktTnljYkJyN0trTWtSYWVGNlhmYjFaYlBDd0Y2b1pnTFRSNFM2T1NkQQ?oc=5)
-- (8.7h前) [ECB Outlook: Will Lending Keep September Hike Alive? - equiti.com](https://news.google.com/rss/articles/CBMipwJBVV95cUxPLUFlSTAwN0pwTTA1Xy1yUVJPTVNXeUh3amRPZFEwSVNDLWpnTUtGQmFCaF93VHppX2lWVDRESDAxQ1BZYmFVSFllWER0WEdHb0daeXRyWXNNNjVmY2RaSVlBNjF5bU1IZFQ3b050bHV0bG5rSDNoQnpjQzRFanhOVHhYZkFiNUc1Q2JTY29acllrTHZMNENENVdzRmJzdmNVeUJiSlh6dWJ0ZWRDRTBrRXlsVGVRLUhfMUNmamhvQnNiNGtkQWo5TmtNWHFxT1FjUklIM2V6MUFDTlNQMDJjOHZPM1E3R1ViRnU4ZTlwVUVXWm9NLVRncDIySzRaUW1zRjQ3TW12eHg2NWZKaVhEN1ZsWlZVd3BsZ25UWk9JdjluYmRvZW53?oc=5)
+_24 小时内无新headline_
 
 ## 英镑/英央行
 
-- (22.0h前) [Sterling heads for weekly loss, focus on Jackson Hole symposium - Reuters](https://news.google.com/rss/articles/CBMiogFBVV95cUxOS1lROHdUNE9wa3IzRFEwdTl6a3VKcG9OdERNMkhYbXM2TjZ3a2NYT0M1Z0lzN2ZrWWVOdnNiMGFYTHZvaDhycndTeFZZbjNPT204MzZlUkxmcVA1ajBUR0hCX0lxdnVxbDhBY0VfZUV5VVExTkdiUW9hd2JaSWVIRGtaMkRNYlNqcXhPNkFTVS1BREJyMUxfNFJob1VjSHh2V0E?oc=5)
-- (15.3h前) [Pound Sterling Price News and Forecast: GBP/USD tumbles as Warsh revives Fed hike bets - FXStreet](https://news.google.com/rss/articles/CBMixwFBVV95cUxPRmg4MHRkSVFPdjV2bmUwOTZMb2ZrSHJUN0M5OVRDWjVUQ01yWnBlM2EyYlJSTlhjdU1FTzBCLWtaa2JXM09aOXA1cmJwNUk4VXlfRnNaeUdyT2Fidy1ZZFFabmx1bHlOcGhQcHNfNlEwbzF3VEVaOWVMS1VrWko5Qlg1TmJMaEh4bE5RWnk3YndaOXNxMDJkZ3hpRTBiZGI4ZGtQZkIxWEJEZnlVeHFWckpiYTNEd3NZS1ZvaWJ2dFdCSFpYdHdJ?oc=5)
-- (16.4h前) [MUFG: Energy-Driven Inflation Risks Could Keep British Pound Supported Against US Dollar - CryptoRank](https://news.google.com/rss/articles/CBMiiwFBVV95cUxOdzVLbWh5UTlPOEhjNXZQdVF4dWJUYW5OTWNyWHBNZnNqTl8xeFRZcFotMzItLXpwRGNwZWlfejQ0SVA1VV96bHhDeWptc1RocVRCbFItbE1YdWJVVWdPR3ctMDFuc19hMHJDZThFRlozci1WLUxqamdrNy0tUGtPYVQtNnlVa1pxQkZR?oc=5)
-- (4.9h前) [Sterling Slips as Warsh’s Inflation Focus Lifts US Rate-Hike Bets, BoE Path Repriced - VT Markets](https://news.google.com/rss/articles/CBMixwFBVV95cUxORE1zQ01PdndLZHZKT0tjMUR2VndacmFvM2ROb2FZQkFMRXlUNERZWC1sOVZCRldLcGFJWkIyXzVrNDg1bjlmOUNmVkcwOHV5d2ZJVXM1YkxyYzUzTURSQldqTlUzWVE5dl9wcXpjZFdXdkQ4SmNDb3lSVUdEQU1EZ25FcUF5SkpHbjB6REpFcm5Sa1I2a2VUU1NCRTRIUlE4Szc3QjA3WmJpbFhoRGZjMkU5WlN5NGlCb3ZrMFQzYTdQUEtLOE9N?oc=5)
-- (10.2h前) [Bank of England Internal Divisions Deepen Ahead of September Decision; Governor Downplays Inflation but Markets Bet on Rate Hike - finance.biggo.com](https://news.google.com/rss/articles/CBMidkFVX3lxTE5hRGgyZF9JclE5RkQtZ3RHUElTWkpwRWlUYlVMWmhrSEpwODFuOWMtT0tzeC1NNGs3eFJkTi1CalpjTXlRbTl3aEtVdXFmdk1HclBYZ2xvMldkQjl0TFVKNmZuQmhtYzVqMmVWZGJnV3RRdHQ3cmc?oc=5)
+_24 小时内无新headline_
 
 ## 澳元/澳联储
 
-- (13.8h前) [Australian Dollar Outlook Ahead of RBA and BOJ: AUD/USD, AUD/JPY, EUR/AUD - stonex.com](https://news.google.com/rss/articles/CBMiugFBVV95cUxNLVVxVjN1b29hVXVZems3dTZRUkxTT1Q1Q0kxV2JQd2VhTm43RmZReWpmWWFJNGN4T0g2ZGxhRW4wNlJUeVM5bnZyeEVsV3d6ZzJiUkxuaDdjaXpzMVgySk5zLWpaVDdSLWgzUVFCNkF2OUZKdGlPWWJDMXBuZFZLZ3prRGVvdkk2V05zVS1fbmNENnF1UHdFa0dkY055RnRnOGlxNEVocWs0VTJrZXhaVDUxWTI1RmpKRUE?oc=5)
-- (18.7h前) [Aussie Dollar Heads for Longest Weekly Winning Streak Since 2021 as Hot CPI Fuels RBA Rate Bets - CryptoRank](https://news.google.com/rss/articles/CBMiigFBVV95cUxPTkxaRThSUXVMbVdqdmhLb0JTa3lLTG44U255ZkVpV2FGNEE4MmZJTURVMVZTeVNjNlczQ29KQzB1bHhMNGxRdXBKQ2o1Qy1DNzVJRWRLRFg0OUhqSkdhZmlOVUU3dVZHSzdJT1E0OWk3NzF5cGlBWkx5LUJzbm0yMmVKekNlQ0V6X2c?oc=5)
-- (16.4h前) [Australian Dollar retreats from highs as Warsh’s hawkish message lifts US Dollar - tmgm.com](https://news.google.com/rss/articles/CBMi3gFBVV95cUxPMFlsOW5XNzNJNDdjbG9NcGtpOFM4bUNmWC1PbWlDeHpLc2VyX2MtTlJtVnVZUEhhNmYwMFF1RGt5S3kwNHlsbVVyYmJFVlBjSzFFNHB5R3lvZmlTVEwxS0l3a3pzRDVXcy1rVENWdFVmVzZpUEkyVmI5czRTYWcyR0pna0hEZGRBX1dFazAxWVd1QjhJUFgxQjN5VklxdVhpYnVLUHRPb19SMnl6RnNpblAtSENVZ0QwczI0cjFCV01STFJObE56bEJhQ3dZWm9aZm9ZNDNqd1JrZTh5SkE?oc=5)
-- (8.6h前) [Major banks backflip on RBA rate call - News.com.au](https://news.google.com/rss/articles/CBMijgJBVV95cUxQR2RvOFYxVFdIUlR6c2tDZnh3ZFJTNGxmNC1RZnNMYzRKSGtLeVJTSXBraEQyaDFwNDdVRFZsdnN0MkhrWV9FRGRySzBJYnZjdXd2LWk0Ynp4VnVBZ3BGN09wSlVNQ1RYeW4tUGhkdmVQbFBVeFZHcTY0WFlmMGduN3lwUEQ2X0RTTVhrNDI1NnJmWGh2TXFfRS1jYXFXNU5tQU9KMGhoSnJOVjNlLURMMXpEZWgyYkRZUE9DZVJEVURrRVlzeHZDbjVHbVREY1NDNE9tT2ZQR2VnRW54YWJJa0Qtal9PRHBNQ0c4TkhzbjRMRkppS3d2b2tXaEpnUGVKWkRWMHVBSWlLUHhzRFHSAZMCQVVfeXFMUEhiRlRaczVPM2FQd0FJVUZ3UVRQbHdJSmttQ1dCN0Q1Y21PQXpFbzZaUC1yY0lyM01TeHByTEhObWlFMjRmcmFVZklIRjZORUtkTEl4S2daT090UndZbm1KY3RwR3ZZUzh2VnI0NDlvcG9faW5FVGFtV3pDWWdZak93WkMyRktSbGIzT080S3hUSjhOeE5YLVN2RlNtdXVlZW1ZMlAycFlPa25ObE5BVDBpUk5hQUtmT1k3LUFXVXZ3OXFmdkJDUGs5ZlBTUmFOcUxWR1dRU2hLc3M2TEhmSzAtZW51WEtVZmlrQmQySkZHUWxpdkdRMzdSU2ZGQmQzYzlHejMwalF0aWFPYmprblc5Unc?oc=5)
-- (9.6h前) [Aussie Dollar Set For Strong Week As Hot Inflation Boosts RBA Hike Bets - Bitcoin World](https://news.google.com/rss/articles/CBMiiAFBVV95cUxQSmJONTNZYngzQ2pVdVBnMzBiYThhdVdtY3Izb0psaG43NE9zNVEyOHhVWGdTN3NNOW1Kc2VwaWVCaGdzXzJsQWNlbmZXTjZad1BwempYT1cwNno2V20tNC1KTGZOT2JSdnRZLXRCNDJEa1RNdGF2a2RSSkFFTDBCY184OXlOQUlM?oc=5)
+_24 小时内无新headline_
 
 ## 通胀数据
 
-- (12.4h前) [CPI Report: Annual Inflation Rate Comes In At 3.5% In June, Lower Than Expected As Energy Prices Ease - Stocktwits](https://news.google.com/rss/articles/CBMiqgFBVV95cUxNc0NxVkRlY2VMOVdDdDFmZmYwSFNnWWJSTXBuNmM5ZXlMVHhrcXpJbmJyYkwwVFFfX2s3OS1ENTBISnJqWUxQR185aTg0Vi1OYlhFLTN6V1g4STV1X1N6TmFxT3ljQ2tXTE1UckNBYlNfM2tNelYtREhpMXVDWUxiTkZjVVNfSG5PUDhwR09WLUFqYjU5MDl5RjRJMmF6eUtxcmtWOGJpc0lBQQ?oc=5)
-- (11.2h前) [Warsh Sounds Hawkish, but Will There Be a September Rate Hike? - Morningstar](https://news.google.com/rss/articles/CBMilAFBVV95cUxOSDd2dFBiYU5qMjEzMTVNVEtlbUhrNWZvajVqdk1lYjZtTDVzem1vRThDMUFTSTMtVmNTeW9ZeHBoc0hGcnlDamZ0SFNvR3RuTUpkSTBqQmVjWnM1bnhKUDg1S1ZxT195SkxlcENORHppeDJSWEM1ME1BeW9yVVhia0k4ZFRaUjZLUHJfN3Myd2E4Zmpi?oc=5)
-- (14.6h前) [USD/JPY Weekly Outlook: Yen shorts cleansed as US inflation takes over - stonex.com](https://news.google.com/rss/articles/CBMiuAFBVV95cUxQd2dtRTUzYWZublVtcHZpZGFCZW43dm5hZnJNZDVXMEozWjRfQ1JtUXBxTnV2QW9aV1RDbEVadXpKd25HcFFfdTZRaW1Sa3AzWXJjcDJiTVR1cGJHWmtnRU1hY1BOUmRQcVBXSWpyeDF0NXdHWUF3V21xNk9FbThMdUlRWWJfdG1TdElFS2lBR0pkLTdtWGpNeFlQTURadHhfVk44NWI5MF9OeHIyUFd0WHA1VUdvN08y?oc=5)
-- (19.9h前) [Oil Prices Settle Slightly Higher as Optimism Around US Inflation Data Outweighs OPEC Supply Concerns - EnergyNow.com](https://news.google.com/rss/articles/CBMizAFBVV95cUxOaU5kZ1JwUVprenZfUUdIeHRMMlVXM3I3LUFFWl93cEZTVGI4OVg4MUVqVTRBSmpaT1U3SGdsMFA2RGdmclZNTDJMSVhyenJYX1J6VTFzMEhMbkFFMGhENFlEQ1NqWUZlVDdjbEt3Mmd2MThHTUdMRHhKWWU0RU9sR1N5U1k2Q3J3SklVNU1SM3RtekpPa19kMFRWbEZVU0p3STFQbklDeGJscTh2TnotazdJY0NEbjlhNURLZU5OZ2syZy1fS1dNd3BXYzg?oc=5)
-- (17.5h前) [US Job Growth Marked Down 79,000 In Preliminary Estimate - Forex Factory](https://news.google.com/rss/articles/CBMikgFBVV95cUxPbWkzejZRamNweEJSS3hZUGxKU3gwaWJfLTRSdXlnNi1Pdmx0bHkxLW96dUVVcDAxQTFRTW5ZelFvSnZaeDB1a1FVdGc2S29aNEg4eWhXRlVhUEcyZ1UxTG5DY1AxTl9zZnRHdklHRVUxektqVnBURTN6UEt2WXNKVWtuTkdsdE52NVZWUGpRRVZyd9IBlwFBVV95cUxOWHMzdlpFYUFnTFctMlFYeG0zRHNNQ1lEY3UtS1AxTFNPOFpKbDZsQ29jUVBqdE9oN2plcVEtUGxSMU9QdkFFRUFHR25udUs5cG5KdVhKQTBaQkQtOGJ0N3kxNWdaaUtoU0ZKeWtDckRjU094a3FteFhYeFEyYUdOaXVQM1kzUVlaUHYxWFdOSGdZcVB0RmZR?oc=5)
+_24 小时内无新headline_
 
 ## 就业数据
 
-- (18.2h前) [U.S. Payrolls Revised Down by 79,000 Jobs - Barron's](https://news.google.com/rss/articles/CBMifEFVX3lxTE55NDRfWlNpVzROekdzbktqdlB4V0RXWnYyd0tIQ3d1UXhXTWp2cHk3c2lLOGh2ZzFURkhWblZLMUdwZVZoTWd3Y3ZVbVR2bWp6dUM5SjltN2FnekFDb3R1QkpDZEV3c0Z3RHNLQnFPeU05NFlRQjVmQ2JyZms?oc=5)
-- (4.9h前) [Markets Focus on US August Jobs Report as Payrolls Seen Rebounding, Unemployment Ticks Higher - VT Markets](https://news.google.com/rss/articles/CBMi1AFBVV95cUxNQVNOVmc0ejhFeGlGVjl1YVY2V1pGcXZKVlZRVGM1VFVVS1kxOUNtVnRPM3lQZmFOd1Yxd2pnTEdRRU5MOUR5NzRwV1MweEdTUV9ZNERmeVctUmlVcEZmWWwzb1RqZ3Z0QTlBQkdVblg3cTFGMktnVW9aTFhVcXU1UmtVTXRpVG9KOFhHTG9jb0JPNF9GRHAzWlZSdHhkUjdfVGFyaXpyQVFjTHQ2eXB5anFKTnNYVVBhTGxFVGhWdWlZSGZieFFOWmdRY1UxSE9BUHJueg?oc=5)
-- (18.2h前) [Breaking: Nonfarm Payrolls benchmark revision to lower US employment by 79,000 through March 2026 - FXStreet](https://news.google.com/rss/articles/CBMirAFBVV95cUxOaXFhaHRBTlhDYm1LUUV6OTRoQVotQWVRQUptRGlIUkE4ZTBhRl9WNkZ1YncwY1M4STBUcE95WU9lcDVZdjZIeTI1bUJNOWFJWTJjOHN3N0FFaVV5WkplUzRPSEc3NHVxbmp3ZTRocnRBNzh2MnJ4Z3V2Q04xUXBIelRkdVdVN1oyUEUwT0lWOXNjZXJJcWlJSFJEdDBpYUJzZnYxWHdGMlg4NGNk?oc=5)
-- (13.9h前) [Markets Brace for a Busy Week: US Labor Market Data in Focus - CryptoRank](https://news.google.com/rss/articles/CBMickFVX3lxTE5zNGxaVTlLQzdwX09Rc3ZPLUl4cUkzUmJVTkEyLTBfNzUwQUhMUE5xUWM1ZjZaZzBxcDJUT05EQkxEUTljb1FsVDAzWl9rRGtkYnVaNEoycTRrUlBkYmJpS0ZzMnVPMk93Q2o1ZVRiM2FWdw?oc=5)
-- (21.1h前) [The Week Ahead: US JOLTS and jobs report, Broadcom earnings - CMC Markets](https://news.google.com/rss/articles/CBMirAFBVV95cUxPX205OWdWd2lRYU1EbUQwZE9lQnhDTmVRRnlBTnlNaFYxNi1ja0xzVVFidE9YUDAtNGNhRjNwQ1phdk4zcV9yUXU4d1dGUWZsOHRla0FmX1NRa1dFbktQSE1QbUNOc0JfdVotZE0wc01heV9PbkVCaXhfNHN4eHNvSUtKb3NTQUxtX1JHMlBaSE1HbDJkazRKUGp0bmd6dTBES3lSZnJqaTk4ZFBO?oc=5)
+_24 小时内无新headline_
 
 ---
 
@@ -82,3 +47,5 @@
 
 **分工是故意的**:机器负责能被验证的部分(什么时候别交易),
 人负责不能被验证的部分(方向判断)。
+
+> 取数失败:美元: HTTP Error 503: Service Unavailable；美联储: HTTP Error 503: Service Unavailable；欧元/欧央行: HTTP Error 503: Service Unavailable；英镑/英央行: HTTP Error 503: Service Unavailable；澳元/澳联储: HTTP Error 503: Service Unavailable；通胀数据: HTTP Error 503: Service Unavailable；就业数据: HTTP Error 503: Service Unavailable
