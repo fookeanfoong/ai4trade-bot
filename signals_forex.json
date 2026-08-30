@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-08-30T19:12:35+00:00",
+  "updated_at": "2026-08-30T22:34:05+00:00",
   "granularity": "H1",
-  "market_open": false,
+  "market_open": true,
   "equity_usd": 200.0,
   "risk_pct": 1.0,
   "risk_usd": 2.0,
@@ -64,7 +64,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00800 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $2.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "wait_market_closed"
+          "status": "armed"
         },
         {
           "name": "方案B · 逆势做空(双顶拒绝)",
@@ -97,7 +97,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "wait_market_closed"
+          "status": "armed"
         }
       ]
     }
