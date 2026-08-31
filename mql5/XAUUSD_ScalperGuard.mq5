@@ -1759,28 +1759,30 @@ bool VwapEntry(double atr, int &dirOut, string &note)
    if(vwap <= 0.0 || atr <= 0.0) { note = "VWAP 数据不足"; return false; }
 
    double c1 = iClose(_Symbol, InpLTF, 1);
-   double l1 = iLow  (_Symbol, InpLTF, 1);
-   double h1 = iHigh (_Symbol, InpLTF, 1);
    double o1 = iOpen (_Symbol, InpLTF, 1);
+   double c2 = iClose(_Symbol, InpLTF, 2);
    double tol = InpVwapTouchATR * atr;
 
    int bias = (c1 > vwap) ? 1 : -1;
    dirOut = bias;
 
+   double dist = MathAbs(c1 - vwap);              // 收盘价离 VWAP 多远
+   bool   near = (dist <= tol);                   // 在触及带内 = 一次回踩
+
    if(bias > 0)
    {
-      // 上方偏多：本根下影回踩到 VWAP 附近（低点触及带内），收盘拉回 VWAP 之上，且阳线
-      bool touched = (l1 <= vwap + tol) && (l1 >= vwap - tol * 2.0);
-      if(touched && c1 > vwap && c1 > o1)
-      { note = StringFormat("VWAP回踩做多（VWAP %.2f，低点 %.2f）", vwap, l1); return true; }
+      // 偏多：价在 VWAP 上方、离得够近（刚回踩过来），且这根在往上走（不阴）
+      bool resume = (c1 >= o1) || (c1 > c2);
+      if(near && resume)
+      { note = StringFormat("VWAP回踩做多（VWAP %.2f 价 %.2f 距 %.2f）", vwap, c1, dist); return true; }
    }
    else
    {
-      bool touched = (h1 >= vwap - tol) && (h1 <= vwap + tol * 2.0);
-      if(touched && c1 < vwap && c1 < o1)
-      { note = StringFormat("VWAP回踩做空（VWAP %.2f，高点 %.2f）", vwap, h1); return true; }
+      bool resume = (c1 <= o1) || (c1 < c2);
+      if(near && resume)
+      { note = StringFormat("VWAP回踩做空（VWAP %.2f 价 %.2f 距 %.2f）", vwap, c1, dist); return true; }
    }
-   note = StringFormat("未回踩 VWAP（价 %.2f VWAP %.2f）", c1, vwap);
+   note = StringFormat("离 VWAP 太远（价 %.2f VWAP %.2f 距 %.2f > 带 %.2f）", c1, vwap, dist, tol);
    return false;
 }
 
