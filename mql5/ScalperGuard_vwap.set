@@ -456,7 +456,7 @@ InpAllowLiveAccount=false
 InpFixedLot=0.01
 InpClampWideStop=true
 InpEntryMode=1
-InpVwapTouchATR=0.90
+InpVwapTouchATR=2.50
 InpEntryCooldownSec=0
 InpProfitFloorUSD=8.0
 InpRiskPctDefault=2.0
@@ -658,12 +658,12 @@ InpDirectionMode=4
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
-InpTrendVeto=true
+InpTrendVeto=false
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=6
-InpCounterMoveATR=0.40
-InpCounterMoveHardATR=0.80
+InpCounterMoveATR=0.0
+InpCounterMoveHardATR=0.0
 InpPaBars=6
 InpPaMinATR=0.30
 
