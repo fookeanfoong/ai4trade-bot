@@ -1,9 +1,13 @@
 ; ============================================================================
-; ScalperGuard_vwap —— 换下单策略：VWAP 回踩（专业机构基准，黄金回测 PF 1.76）。
-;   和 old200 完全一样，只把 InpEntryMode 从 0(看K线) 改成 1(VWAP)。
-;   方向：价在当日 VWAP 上方=偏多、下方=偏空。
-;   入场：回踩到 VWAP 附近再往偏向方向拉起（机构在成本线上进场）。
-;   止盈$13/止损$10/地板$8/固定0.01手/趋势过滤 全部照旧不变。
+; ScalperGuard_vwap —— VWAP 入场 + 震荡期"快进快出"。
+;   入场沿用 VWAP：价在当日 VWAP 上方=偏多、下方=偏空（InpEntryMode=1）。
+;   出场改成快进快出（专业震荡期打法：小赚就跑、止损也小、靠高胜率）：
+;     净赚 $5 立刻市价平（InpQuickProfitUSD=5），不等 R 倍数/追踪。
+;     止损收到 $5（InpSlMaxUSD 10->5），RR≈1:1、保本胜率 50%。
+;     关掉 $13 目标(InpTargetProfitUSD=0) 和 $8 地板(InpProfitFloorUSD=0)。
+;   参考：黄金约 60~70% 时间在震荡，机构做法是吃小段、快出、靠命中率
+;   （VWAP/布林 2SD 回归约 73% 在 3~5 根内回中轴）。方向逻辑不变。
+;   固定 0.01 手 / 其余设定全部照旧。
 ; ============================================================================
 ; ============================================================================
 ; XAUUSD ScalperGuard —— 旧 aggressive 打法，本金缩到 $200
@@ -458,7 +462,7 @@ InpClampWideStop=true
 InpEntryMode=1
 InpVwapTouchATR=0.0
 InpEntryCooldownSec=0
-InpProfitFloorUSD=8.0
+InpProfitFloorUSD=0.0
 InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -523,7 +527,7 @@ InpAtrMaxUSD=15.00
 InpSlMinUSD=1.20
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
-InpSlMaxUSD=10.0
+InpSlMaxUSD=5.0
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -591,9 +595,9 @@ InpSweepMaxPenetration=1.50
 ;   风险 $10  + 目标 $10 = RR 1:1.00 -> 保本胜率 50.0%
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
-InpTargetProfitUSD=13.0
+InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
-InpQuickProfitUSD=0.0
+InpQuickProfitUSD=5.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=200.0
 
