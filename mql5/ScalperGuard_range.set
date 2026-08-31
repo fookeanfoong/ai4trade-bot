@@ -1,5 +1,7 @@
 ;  ============================================================================
 ; ScalperGuard_range —— 震荡区间"低买高卖 / 假突破反转"(照搬视频策略)。
+; 额外：利润地板 $4.5(InpProfitFloorUSD=4.5) —— 浮盈到过$4.5后跌回$4.5就跑，
+; （和之前 $8 地板同机制，只改成 $4.5）。
 ;   基于 old200，只改方向和出场逻辑；volume(0.01)、交易次数、日内最大止亏 三项照旧不动。
 ;
 ;   视频核心(11个字)：低买高卖、不追单、做"刮头皮"。
@@ -468,7 +470,7 @@ InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
-InpProfitFloorUSD=0.0
+InpProfitFloorUSD=4.5
 InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
