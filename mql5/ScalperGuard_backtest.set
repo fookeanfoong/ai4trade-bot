@@ -13,6 +13,8 @@ InpAllowLiveAccount=false
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
 InpFixedLot=0.01
 InpClampWideStop=true
+InpEntryMode=0
+InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
 InpProfitFloorUSD=8.0
 InpRiskPctDefault=2.0

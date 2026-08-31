@@ -1,6 +1,9 @@
 ; ============================================================================
-; ScalperGuard_cool30 —— 和 old200 完全一样，只把入场冷却从 300 秒(5分)改成 30 秒。
-;   用途：和 old200 对比，看短冷却(多做几单)还是长冷却(避免簇状堆叠)更好。
+; ScalperGuard_vwap —— 换下单策略：VWAP 回踩（专业机构基准，黄金回测 PF 1.76）。
+;   和 old200 完全一样，只把 InpEntryMode 从 0(看K线) 改成 1(VWAP)。
+;   方向：价在当日 VWAP 上方=偏多、下方=偏空。
+;   入场：回踩到 VWAP 附近再往偏向方向拉起（机构在成本线上进场）。
+;   止盈$13/止损$10/地板$8/固定0.01手/趋势过滤 全部照旧不变。
 ; ============================================================================
 ; ============================================================================
 ; XAUUSD ScalperGuard —— 旧 aggressive 打法，本金缩到 $200
@@ -452,9 +455,9 @@ InpAllowLiveAccount=false
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
 InpFixedLot=0.01
 InpClampWideStop=true
-InpEntryMode=0
+InpEntryMode=1
 InpVwapTouchATR=0.50
-InpEntryCooldownSec=30
+InpEntryCooldownSec=0
 InpProfitFloorUSD=8.0
 InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,

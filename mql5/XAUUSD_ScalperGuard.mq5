@@ -56,6 +56,15 @@ input double   InpFixedLot           = 0.0;     // 固定手数（0=按风险%�
 // 结构要 $15 而一直不进场。
 input bool     InpClampWideStop      = false;   // 结构止损过宽时收到上限而不是放弃
 
+// 下单策略选择：
+//   0 = 看K线（摆动结构 + 突破/回踩，原逻辑）
+//   1 = VWAP 回踩（专业机构基准；黄金真实回测 PF 1.76 的那套）
+//       方向：价格在当日 VWAP 上方=偏多、下方=偏空。
+//       入场：回踩到 VWAP 附近再往偏向方向拉起（机构在成本线上进场）。
+// 其余（止盈止损、手数、趋势过滤等）两种模式共用，不受影响。
+input int      InpEntryMode          = 0;       // 0=看K线 1=VWAP回踩
+input double   InpVwapTouchATR       = 0.50;    // 回踩到 VWAP 多近算"触及"（× ATR）
+
 // 入场冷却：开一单后至少隔这么多**秒**才允许开下一单。
 // M1 触发能每分钟开单，会在同一个点位连开好几张一样的单（同价位、同止损），
 // 一反转就一起爆 —— 等于一个坏主意下了好几次。冷却把这种簇状开仓压掉。0=关。
@@ -1717,6 +1726,64 @@ bool LooseEntry(int dir, double atr, string &note)
 //==================================================================
 // 构建信号
 //==================================================================
+// 当日 VWAP（成交量加权平均价）：从服务器当日 00:00 累计到现在。
+// 典型价 (H+L+C)/3 用 tick 成交量加权。机构拿它当"公允成本线"。
+double SessionVWAP()
+{
+   datetime ds = DayStart(TimeCurrent());
+   double pv = 0.0, vv = 0.0;
+   int maxN = 24 * 60 / (PeriodSeconds(InpLTF) / 60);   // 当日最多多少根 InpLTF
+   for(int i = 1; i <= maxN + 5; i++)
+   {
+      datetime bt = iTime(_Symbol, InpLTF, i);
+      if(bt == 0 || bt < ds) break;                      // 跨到昨天就停
+      double h = iHigh(_Symbol, InpLTF, i);
+      double l = iLow (_Symbol, InpLTF, i);
+      double c = iClose(_Symbol, InpLTF, i);
+      double v = (double)iVolume(_Symbol, InpLTF, i);    // tick 成交量
+      if(h <= 0.0 || v <= 0.0) continue;
+      double tp = (h + l + c) / 3.0;
+      pv += tp * v; vv += v;
+   }
+   return (vv > 0.0) ? pv / vv : 0.0;
+}
+
+// VWAP 回踩入场：定方向 + 判触发，一次给出。
+//   偏向：收盘价在 VWAP 上方=多、下方=空。
+//   触发：最近一根**回踩到 VWAP 附近**（触及带内），且收盘仍在偏向一侧
+//         （= 踩了成本线又被守住 -> 机构进场）。
+bool VwapEntry(double atr, int &dirOut, string &note)
+{
+   dirOut = 0;
+   double vwap = SessionVWAP();
+   if(vwap <= 0.0 || atr <= 0.0) { note = "VWAP 数据不足"; return false; }
+
+   double c1 = iClose(_Symbol, InpLTF, 1);
+   double l1 = iLow  (_Symbol, InpLTF, 1);
+   double h1 = iHigh (_Symbol, InpLTF, 1);
+   double o1 = iOpen (_Symbol, InpLTF, 1);
+   double tol = InpVwapTouchATR * atr;
+
+   int bias = (c1 > vwap) ? 1 : -1;
+   dirOut = bias;
+
+   if(bias > 0)
+   {
+      // 上方偏多：本根下影回踩到 VWAP 附近（低点触及带内），收盘拉回 VWAP 之上，且阳线
+      bool touched = (l1 <= vwap + tol) && (l1 >= vwap - tol * 2.0);
+      if(touched && c1 > vwap && c1 > o1)
+      { note = StringFormat("VWAP回踩做多（VWAP %.2f，低点 %.2f）", vwap, l1); return true; }
+   }
+   else
+   {
+      bool touched = (h1 >= vwap - tol) && (h1 <= vwap + tol * 2.0);
+      if(touched && c1 < vwap && c1 < o1)
+      { note = StringFormat("VWAP回踩做空（VWAP %.2f，高点 %.2f）", vwap, h1); return true; }
+   }
+   note = StringFormat("未回踩 VWAP（价 %.2f VWAP %.2f）", c1, vwap);
+   return false;
+}
+
 Signal BuildSignal(double atr, int minScore)
 {
    Signal sg;
@@ -1729,9 +1796,18 @@ Signal BuildSignal(double atr, int minScore)
    int mom  = Momentum();
    double adx = Buf(hAdxL, 0, 1);
 
+   // VWAP 模式先算好方向与触发，供下面复用（其余流程完全共享：趋势过滤、SL/TP…）
+   int    vwapDir  = 0;
+   bool   vwapTrig = false;
+   string vwapNote = "";
+   if(InpEntryMode == 1)
+      vwapTrig = VwapEntry(atr, vwapDir, vwapNote);
+
    // --- 方向判定 ---
    int dir = 0;
-   if(InpDirectionMode == 1)
+   if(InpEntryMode == 1)
+      dir = vwapDir;                               // VWAP：偏向价在 VWAP 哪一侧
+   else if(InpDirectionMode == 1)
       dir = htf;                                   // H1 定方向，M5 交给评分
    else if(InpDirectionMode == 2)
       dir = (htf != 0) ? htf : ltf;                // H1 有方向听 H1，H1 中性才听 M5
@@ -1820,14 +1896,20 @@ Signal BuildSignal(double atr, int minScore)
    if(mom == dir)  score++;                       // 4 动量
    if(adx >= InpAdxMin + 6.0) score++;            // 5 趋势强度
    double refLevel = 0.0; string trigNote = "";
-   bool trig = EntryTrigger(dir, atr, refLevel, trigNote);
-   // 入场 C：突破回踩/趋势回调都没触发时，再看有没有关键位被扫损后收回。
-   // 放在最后是因为它是**补充**路径，不该抢掉前两条的判定。
-   bool fromSweep = false;
-   if(!trig) { trig = SweepEntry(dir, atr, refLevel, trigNote); fromSweep = trig; }
-   // 路径 D 放在最后:只有前三条形态都没出现时才用它兜底
-   if(!trig) trig = LooseEntry(dir, atr, trigNote);
-   if(trig) score += 2;                           // 6-7 触发（突破回踩 / 回调确认 / 扫损反手）
+   bool trig; bool fromSweep = false;
+   if(InpEntryMode == 1)
+   {
+      trig = vwapTrig; trigNote = vwapNote;        // VWAP 回踩就是触发
+   }
+   else
+   {
+      trig = EntryTrigger(dir, atr, refLevel, trigNote);
+      // 入场 C：突破回踩/趋势回调都没触发时，再看有没有关键位被扫损后收回。
+      if(!trig) { trig = SweepEntry(dir, atr, refLevel, trigNote); fromSweep = trig; }
+      // 路径 D 放在最后:只有前三条形态都没出现时才用它兜底
+      if(!trig) trig = LooseEntry(dir, atr, trigNote);
+   }
+   if(trig) score += 2;                           // 6-7 触发
 
    if(!trig)
    {
