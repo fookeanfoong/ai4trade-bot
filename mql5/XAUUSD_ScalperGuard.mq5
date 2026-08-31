@@ -3279,6 +3279,15 @@ int OnInit()
    {
       double effRisk = risk1;                                  // 按默认风险% 算出的美元风险
       if(InpRiskCapUSD > 0.0) effRisk = MathMin(effRisk, InpRiskCapUSD);
+      // 固定手数时，真实风险 = 手数 × 止损距离 × 每手每$盈亏，而不是"余额×风险%"。
+      // 不修正的话这里会用"真实余额×2%"算出一个荒唐的大数（如 $235），
+      // RR 变成 1:0.06 吓人一跳，其实每笔只冒 ~$10。
+      if(InpFixedLot > 0.0 && mppd > 0.0)
+      {
+         double slUsd = InpSlMaxUSD;                            // 固定手数下止损普遍锁在上限附近
+         if(InpSlMaxATRMult > 0.0) slUsd = MathMax(slUsd, Buf(hAtrL,0,1) * InpSlMaxATRMult);
+         effRisk = InpFixedLot * slUsd * mppd;
+      }
       double rr   = (effRisk > 0.0) ? InpTargetProfitUSD / effRisk : 0.0;
       double be   = (rr > 0.0) ? 100.0 / (1.0 + rr) : 100.0;    // 不含成本的保本胜率
       LogLine("TARGET", StringFormat(
