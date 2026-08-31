@@ -56,10 +56,10 @@ input double   InpFixedLot           = 0.0;     // 固定手数（0=按风险%�
 // 结构要 $15 而一直不进场。
 input bool     InpClampWideStop      = false;   // 结构止损过宽时收到上限而不是放弃
 
-// 入场冷却：开一单后至少隔这么多分钟才允许开下一单。
+// 入场冷却：开一单后至少隔这么多**秒**才允许开下一单。
 // M1 触发能每分钟开单，会在同一个点位连开好几张一样的单（同价位、同止损），
 // 一反转就一起爆 —— 等于一个坏主意下了好几次。冷却把这种簇状开仓压掉。0=关。
-input int      InpEntryCooldownMin   = 0;       // 两次开仓之间的最短间隔（分钟），0=关
+input int      InpEntryCooldownSec   = 0;       // 两次开仓之间的最短间隔（秒），0=关
 
 // 利润地板：净利**到过**这个金额之后，若回落到它以下就平仓。
 // 和「到 $X 就卖」的区别 —— 它不砍上限：超过后继续涨就继续拿，只在
@@ -3552,11 +3552,11 @@ void OnTick()
    }
 
    // --- 入场冷却：上一单开出后 N 分钟内不再开新单 ---
-   if(InpEntryCooldownMin > 0 && g_lastEntryTime > 0 &&
-      (TimeCurrent() - g_lastEntryTime) < InpEntryCooldownMin * 60)
+   if(InpEntryCooldownSec > 0 && g_lastEntryTime > 0 &&
+      (TimeCurrent() - g_lastEntryTime) < InpEntryCooldownSec)
    {
-      NoTrade(StringFormat("入场冷却中：距上一单 %d 秒 < %d 分钟",
-              (int)(TimeCurrent() - g_lastEntryTime), InpEntryCooldownMin));
+      NoTrade(StringFormat("入场冷却中：距上一单 %d 秒 < %d 秒",
+              (int)(TimeCurrent() - g_lastEntryTime), InpEntryCooldownSec));
       Panel(ds, "入场冷却");
       return;
    }
