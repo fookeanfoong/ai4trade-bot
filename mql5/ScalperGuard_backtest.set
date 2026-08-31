@@ -184,7 +184,7 @@ InpVolHighSizeMult=0.60
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
 InpDailyTargetPct=60.0
-InpDailyMaxLossPct=60.0
+InpDailyMaxLossPct=100000.0
 InpConservativeAtPct=30.0
 InpReducedAtPct=45.0
 
