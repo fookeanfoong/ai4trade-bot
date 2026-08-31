@@ -29,6 +29,7 @@ $Files = @{
     "ScalperGuard_observe200.set" = "Presets"
     "ScalperGuard_cool30.set"     = "Presets"
     "ScalperGuard_vwap.set"       = "Presets"
+    "ScalperGuard_invert.set"     = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
