@@ -45,7 +45,8 @@ $MustHave = @(
     'InpFixedLot',             # 固定手数
     'InpProfitFloorUSD',       # 利润地板
     'InpClampWideStop',        # 结构止损过宽时收到上限
-    'InpTrendVeto'             # 逆中期趋势不做
+    'InpTrendVeto',            # 逆中期趋势不做
+    'InpEntryCooldownMin'      # 入场冷却
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

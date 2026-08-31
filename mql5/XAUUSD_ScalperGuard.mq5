@@ -56,6 +56,11 @@ input double   InpFixedLot           = 0.0;     // 固定手数（0=按风险%�
 // 结构要 $15 而一直不进场。
 input bool     InpClampWideStop      = false;   // 结构止损过宽时收到上限而不是放弃
 
+// 入场冷却：开一单后至少隔这么多分钟才允许开下一单。
+// M1 触发能每分钟开单，会在同一个点位连开好几张一样的单（同价位、同止损），
+// 一反转就一起爆 —— 等于一个坏主意下了好几次。冷却把这种簇状开仓压掉。0=关。
+input int      InpEntryCooldownMin   = 0;       // 两次开仓之间的最短间隔（分钟），0=关
+
 // 利润地板：净利**到过**这个金额之后，若回落到它以下就平仓。
 // 和「到 $X 就卖」的区别 —— 它不砍上限：超过后继续涨就继续拿，只在
 // **跌回地板**时才落袋。等于给已经到手的利润设一条只升不降的底线。
@@ -448,6 +453,7 @@ int hAtrL, hRsiL, hAdxL;       // LTF 指标
 
 datetime g_lastBarTime   = 0;
 datetime g_dayStart      = 0;
+datetime g_lastEntryTime = 0;      // 上一次开仓时间，用于入场冷却
 string   g_lastNoTradeReason = "";
 datetime g_lastReasonLog = 0;
 string   g_logFile       = "XAUUSD_ScalperGuard_log.csv";
@@ -2210,6 +2216,7 @@ void OpenTrade(Signal &sg, double riskPct, DayStats &ds)
    }
 
    if(sg.dir > 0) g_opnBuy++; else g_opnSell++;
+   g_lastEntryTime = TimeCurrent();          // 记录开仓时间，供入场冷却用
 
    ulong openTicket = trade.ResultOrder();   // 对冲账户下,开仓订单号即持仓号
    LogLine("OPEN", StringFormat("#%I64u %s %s 手 @ %.2f | SL %.2f (%.2f USD) | TP %.2f | RR %.2f | 分数 %d | 风险 $%.2f (%.1f%%) | %s | 当日 %d/%d 笔，盈亏 $%.2f",
@@ -3542,6 +3549,16 @@ void OnTick()
          Momentum() == sg.dir ? "Strong" : "Normal",
          atr, VolRegimeName(vol), sg.entry, sg.sl, sg.tp2, sg.rr,
          sg.grade, sg.score, riskPct, sg.note));
+   }
+
+   // --- 入场冷却：上一单开出后 N 分钟内不再开新单 ---
+   if(InpEntryCooldownMin > 0 && g_lastEntryTime > 0 &&
+      (TimeCurrent() - g_lastEntryTime) < InpEntryCooldownMin * 60)
+   {
+      NoTrade(StringFormat("入场冷却中：距上一单 %d 秒 < %d 分钟",
+              (int)(TimeCurrent() - g_lastEntryTime), InpEntryCooldownMin));
+      Panel(ds, "入场冷却");
+      return;
    }
 
    OpenTrade(sg, riskPct, ds);
