@@ -1765,10 +1765,14 @@ bool VwapEntry(double atr, int &dirOut, string &note)
    dirOut = bias;
 
    double dist = MathAbs(c1 - vwap);              // 收盘价离 VWAP 多远
-   if(dist <= tol)                                // 在触及带内 -> 顺偏向做，不再要求"往回走"
+   // InpVwapTouchATR <= 0 = 不限距离：只用 VWAP 定方向，每根都顺偏向做（频繁）。
+   // > 0 = 只在回踩到 VWAP 附近才做（少而精）。趋势日价格不回线，>0 会很少进。
+   bool ok = (InpVwapTouchATR <= 0.0) ? true : (dist <= tol);
+   if(ok)
    {
-      note = StringFormat("VWAP入场做%s（VWAP %.2f 价 %.2f 距 %.2f 带 %.2f）",
-                          bias > 0 ? "多" : "空", vwap, c1, dist, tol);
+      note = StringFormat("VWAP做%s（VWAP %.2f 价 %.2f 距 %.2f%s）",
+                          bias > 0 ? "多" : "空", vwap, c1, dist,
+                          InpVwapTouchATR <= 0.0 ? " 只定方向" : StringFormat(" 带 %.2f", tol));
       return true;
    }
    note = StringFormat("离 VWAP 太远（价 %.2f VWAP %.2f 距 %.2f > 带 %.2f）", c1, vwap, dist, tol);
