@@ -259,7 +259,7 @@ InpMaxPositions=2
 InpMaxCombinedRiskPct=10.0
 InpMaxMarginPctPerPos=80.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
-InpAllowHedge=false
+InpAllowHedge=true
 
 ; --- 宽松入场 路径D（采样用）---
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
