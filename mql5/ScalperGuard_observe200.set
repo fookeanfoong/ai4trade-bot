@@ -187,7 +187,7 @@ InpStallNeedNoNewExtreme=true
 ; --- 新闻过滤：保留 ---
 ; 数据前后 30/20 分钟本来就没多少交易时间，但那几分钟的滑点能毁掉一整天的
 ; 样本质量。采样期留着，让样本干净。
-InpUseNewsFilter=true
+InpUseNewsFilter=false
 
 ; --- 机构参考位 + 扫损反手（见 GOLD_PRO_TECHNIQUES.md）---
 ; 前日高低/亚洲区间/整数关口:客观可算,不需人工标注。
@@ -282,8 +282,8 @@ InpTrendVeto=false
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=5
-InpCounterMoveATR=0.50
-InpCounterMoveHardATR=1.00
+InpCounterMoveATR=0.0
+InpCounterMoveHardATR=0.0
 InpPaBars=6
 InpPaMinATR=0.30
 
