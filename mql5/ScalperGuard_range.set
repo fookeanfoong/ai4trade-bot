@@ -13,6 +13,7 @@
 ;     4) 止损放到最近的极值点(EA本就把止损摆在swing结构极值+ATR缓冲=视频的"宽损")，
 ;        止损硬封 $8(InpSlMaxUSD=8、InpSlMaxATRMult=0)——每笔最多亏$8。
 ;     5) 固定美元止盈 $17(InpTargetProfitUSD=17，到价挂单必成交)，最多同时4单。
+;        冲不到 $17 时的兜底：利润地板 $8(InpProfitFloorUSD=8)——到过$8跌回$8就卖。
 ;        "刮头皮/吃点就跑"= 见势不妙靠保本/追踪先撤，跑到2R才算满仓利润。
 ;   注意：这是逆势fade，只在真震荡里成立；一旦走出单边趋势(真突破)会连续吃损，
 ;        靠 1:2 赔率把胜率要求压到 34% 撑住。趋势日请切回 old200。
@@ -470,7 +471,7 @@ InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
-InpProfitFloorUSD=0.0
+InpProfitFloorUSD=8.0
 InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
