@@ -1,4 +1,14 @@
 ; ============================================================================
+; ScalperGuard_observe200 —— 顺势频繁双向scalper(下午趋势场用，range 的对手盘)。
+;   背景：range(fade)早上震荡赚、下午单边被趟平(4张多单接飞刀)。所以这条改成
+;   **顺势不fade**：顺上一根K线颜色立即双向进(InpDirectionMode=5)，每根都进，
+;   下午趋势跟着走而不是对着干。InpInvertSignals=false。
+;   volume 0.03。安全出场(作者选)：结构止损~1×ATR(封顶$8价距+$20净亏硬刹)，
+;   赢单1R先落一半+移保本、余下跑1.5R；动量衰竭/回吐/关键位 多道保护照旧。
+;   放开阻挡连续交易的闸门：连亏停手/观察模式/日内止亏/日笔数 全放开(100000)。
+;   用法：下午/趋势日跑 observe(顺势)，早上/震荡日跑 range(fade)。
+; ============================================================================
+; ============================================================================
 ; XAUUSD ScalperGuard —— $200 观察档（小仓 + 高频，为了攒样本）
 ;
 ; 目的很具体：**在不把账户打穿的前提下，尽快攒够可分析的成交笔数。**
@@ -62,8 +72,8 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpFixedLot=0.0
-InpClampWideStop=false
+InpFixedLot=0.03
+InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
@@ -78,9 +88,9 @@ InpConservativeAt=1000.0
 InpReducedAt=1500.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
-InpMaxTradesPerDay=80
-InpStopAfterConsecLoss=20
-InpObserveAfterConsecLoss=6
+InpMaxTradesPerDay=100000
+InpStopAfterConsecLoss=100000
+InpObserveAfterConsecLoss=100000
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
 InpSessionStartHour=0
@@ -107,9 +117,9 @@ InpHtfRequireSlope=true
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=3
+InpMinScore=1
 InpEntryTF=1
-InpAdxMin=5.0
+InpAdxMin=2.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
@@ -129,13 +139,13 @@ InpAtrMinUSD=0.40
 InpAtrMaxUSD=15.00
 
 ; --- 止损区间 ---
-InpSlMinUSD=1.20
+InpSlMinUSD=0.50
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
-InpSlMaxUSD=15.00
+InpSlMaxUSD=8.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=3.0
+InpSlMaxATRMult=1.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -153,7 +163,7 @@ InpMaxFakeBreakouts=5
 InpMaxHoldMinutes=180
 InpExitOnMomentumFade=true
 InpTP1_R=1.0
-InpTP2_R=1.8
+InpTP2_R=1.5
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.50
@@ -203,16 +213,16 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=0.0
-InpQuickLossUSD=0.0
+InpQuickLossUSD=20.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=200.0
 
 ; --- V2 评分与分级（规格 §28/§29）---
 ; 风险由 setup 质量给,不由"想赚多少"给。C 级(<5分)一律 NO TRADE。
-InpUseV2Scoring=true
+InpUseV2Scoring=false
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=3
+InpScoreMinB=1
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=0.5
@@ -236,7 +246,7 @@ InpVolHighSizeMult=0.60
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
 InpDailyTargetPct=50.0
-InpDailyMaxLossPct=10.0
+InpDailyMaxLossPct=100000.0
 InpConservativeAtPct=25.0
 InpReducedAtPct=35.0
 
@@ -255,7 +265,7 @@ InpAllowHedge=false
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=true
+InpUseLooseEntry=false
 InpLooseMaxDistATR=3.00
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
@@ -263,7 +273,7 @@ InpLooseMaxDistATR=3.00
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 1 = H1 定方向,M5 只影响评分不否决
-InpDirectionMode=3
+InpDirectionMode=5
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false

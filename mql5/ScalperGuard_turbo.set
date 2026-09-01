@@ -1,7 +1,7 @@
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
 ;   上一根K线收阳=立即做多、收阴=立即做空(InpDirectionMode=5)，每根都进。
-;   volume 0.03；净赚 $3 立刻走(InpQuickProfitUSD=3)、净亏 $2 立刻走(InpQuickLossUSD=2)。
+;   volume 0.03；触发周期 M1(每分钟都进=一直进场)；净赚 $2 走、净亏 $1.5 走(更快)。
 ;   另带真实止损单兜底(InpSlMaxUSD=1.0 价距≈$3/0.03手，防跳空)，与$2软离场取先到。
 ;   过滤全关：V2评分/ADX/评分门槛/趋势否决/逆势闸门/连亏停手/观察模式 全部关。
 ;   交易次数、日内止亏放开(100000)，让它一天尽量多跑，纯看"顺K线"方向能不能赚。
@@ -76,7 +76,7 @@ InpHtfRequireSlope=false
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
-InpEntryTF=0
+InpEntryTF=1
 InpAdxMin=0.0
 InpMinRR=0.5
 InpBreakoutLookback=20
@@ -170,8 +170,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
-InpQuickProfitUSD=3.0
-InpQuickLossUSD=2.0
+InpQuickProfitUSD=2.0
+InpQuickLossUSD=1.5
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=0.0
 
