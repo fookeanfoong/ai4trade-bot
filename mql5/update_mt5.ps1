@@ -31,6 +31,7 @@ $Files = @{
     "ScalperGuard_vwap.set"       = "Presets"
     "ScalperGuard_invert.set"     = "Presets"
     "ScalperGuard_range.set"      = "Presets"
+    "ScalperGuard_turbo.set"      = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
@@ -51,7 +52,9 @@ $MustHave = @(
     'InpClampWideStop',        # 结构止损过宽时收到上限
     'InpTrendVeto',            # 逆中期趋势不做
     'InpEntryCooldownSec',     # 入场冷却（秒）
-    'InpEntryMode'             # 下单策略（0看K线/1 VWAP）
+    'InpEntryMode',            # 下单策略（0看K线/1 VWAP）
+    'LastCandleDir',           # 纯K线颜色方向（模式5，激进）
+    'InpQuickLossUSD'          # 净亏固定美元即离场
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

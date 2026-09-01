@@ -121,6 +121,9 @@ input double   InpRiskCapUSD         = 0.0;     // 每笔风险硬上限($)，0=
 //    赚 $1.5 / 亏 $1.5 = RR 1:1    -> 保本胜率 50%
 //    OnInit 会把这两个数和保本胜率一起算给你看。
 input double   InpQuickProfitUSD     = 0.0;     // 净赚到这个金额($)立刻平仓，0=关闭
+// 对称于 InpQuickProfitUSD：净**亏**到这个金额就立刻市价平（和手数无关，锁死每笔美元亏损）。
+// 注意这只是"到价即走"的软离场；每笔仍另带一道真实止损单(InpSlMaxUSD)兜底，二者取先到。
+input double   InpQuickLossUSD       = 0.0;     // 净亏到这个金额($)立刻平仓，0=关闭
 // >0 时所有百分比都以这个数为基准,而不是终端里的真实余额。
 // 用途:在 $10,000 演示账户上原样模拟 $200 的风险敞口,同时保留 A+/A/B 分级。
 // 保证金检查不受影响 —— 那是券商的真实约束。
@@ -1361,6 +1364,17 @@ int MarketStructure(ENUM_TIMEFRAMES tf)
 //   2) 退到 InpLTF 的结构
 //   3) 两级结构都判不出来时，看最近 InpPaBars 根K线的净推进，
 //      幅度要超过 InpPaMinATR × ATR 才算数（否则是横盘噪音）
+// 纯K线颜色方向（模式5）：上一根 收>开=多(买上)，收<开=空(买下)。用触发周期。
+// 极其激进：不看结构/趋势/动量，只顺上一根K线颜色立即入场。
+int LastCandleDir()
+{
+   double o = iOpen (_Symbol, g_entryTF, 1);
+   double c = iClose(_Symbol, g_entryTF, 1);
+   if(c > o) return  1;
+   if(c < o) return -1;
+   return 0;   // 十字星：本根不做
+}
+
 int PriceActionDir(double atr)
 {
    // 1) 摆动结构：更高高点+更高低点 = 多，反之 = 空
@@ -1810,6 +1824,8 @@ Signal BuildSignal(double atr, int minScore)
       dir = ltf;                                   // M5 定方向，H1 只进评分
    else if(InpDirectionMode == 4)
       dir = PriceActionDir(atr);                   // 纯K线：摆动结构 + 净推进
+   else if(InpDirectionMode == 5)
+      dir = LastCandleDir();                        // 纯K线颜色：顺上一根立即入场（激进）
    else
    {
       if(htf > 0 && ltf > 0) dir =  1;             // 原行为：必须同向
@@ -1895,6 +1911,10 @@ Signal BuildSignal(double atr, int minScore)
    if(InpEntryMode == 1)
    {
       trig = vwapTrig; trigNote = vwapNote;        // VWAP 回踩就是触发
+   }
+   else if(InpDirectionMode == 5)
+   {
+      trig = true; trigNote = "模式5：顺上一根K线颜色立即入场";   // 每根都触发
    }
    else
    {
@@ -2547,6 +2567,24 @@ void ManagePositions(double atr)
             }
             else
                LogLine("ERROR", StringFormat("#%I64u 快速离场失败 %d %s",
+                       tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+            continue;
+         }
+      }
+
+      // --- 固定金额快速止损：净亏到目标就立刻走（对称于 QuickProfit）---
+      // 真实止损单仍在，这只是更早一步的软离场，二者取先到。
+      if(InpQuickLossUSD > 0.0 && (pos.Profit() + pos.Swap()) <= -InpQuickLossUSD)
+      {
+         double netUSD = PositionNetUSD();
+         if(netUSD <= -InpQuickLossUSD)
+         {
+            if(trade.PositionClose(tk))
+               LogLine("QUICKLOSS", StringFormat(
+                       "#%I64u 净亏损 $%.2f <= -$%.2f，立刻平仓（%.2fR）",
+                       tk, netUSD, InpQuickLossUSD, rMult));
+            else
+               LogLine("ERROR", StringFormat("#%I64u 快速止损失败 %d %s",
                        tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
             continue;
          }
