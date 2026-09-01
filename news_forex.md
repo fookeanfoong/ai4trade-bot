@@ -1,71 +1,37 @@
-# 外汇新闻简报 — 2026-09-01 20:50 UTC
+# 外汇新闻简报 — 2026-09-01 23:10 UTC
 
-## ⛔ 今日检测到高影响事件
+## ✅ 今日未检测到高影响事件
 
-- **非农就业** — Fed Chair's Remarks Drive Rate Hike Expectations; Non-Farm Payrolls Data Marks Key Window 
-- **欧央行** — ECB says energy-led inflation spike justifies June rate hike - Reuters
-- **澳联储** — Australian Dollar Outlook: AUD/USD Faces RBA-Fed Rate Tug-of-War - FOREX.com
-- **美国CPI** — Economic calendar: US JOLTS and ISM Manufacturing in focus 🗽 What will Eurozone CPI show? 
-
-> **机器的动作:数据前后不开新仓。**
-> 20 点止损在数据发布时不是止损 —— 汇价几秒内跳数十点,
-> 成交价落在止损之外,20 点的风险会变成实际亏 50 点。
+> 常规交易时段。注意这个检测基于新闻标题,不是官方日历 ——
+> 重要数据请以 ForexFactory 或你券商的日历为准。
 
 ## 美元
 
-- (2.3h前) [US Dollar Technical Forecast: DXY Breakout Failure Threatens the Yearly Uptrend - FOREX.com](https://news.google.com/rss/articles/CBMizwFBVV95cUxPd3IyUlZKdV9KNUU1aHJiNnZPMHRDUlFaaTk2NFhGODlJdFdIbXExdzV0S0JBbVc0dEdHMnNzNkdZR0Y5cjJsZERCZHgyc240TVRtWDZFNDhid0FfcDhBdmRJTm9IVUJkVjFqVUFoeUljY0kxeUxTRWxKWkJCNm1XWWlnZ1pLNVVuTlB4RjJ5czJEVVc0LWNHSEhrVEl4bGRaOXRacFZmV3M1dVpxS0NtYUoyTW1tbW5pVHhDVzdJS0NTZ0U4ZGZUa1BiVUZ6Sjg?oc=5)
-- (8.0h前) [US Dollar Index Forecast: DXY Targets 99.75 Confluence as Fed Bets and Iran Risks Collide - CryptoRank](https://news.google.com/rss/articles/CBMiggFBVV95cUxNR3h4c0JYOGlBd1JRV2s5Y0RzM2NjTmpUaWMxalJpcGVJbzlMclZ0RGRUTl9KdEJweXdkR2ZVbmdsMnpibXdwMUh6a01ENW56T2Y3UmtfZzBlS05teGs4WDdtcWZTWV9lczlKY0NZeTczWGppV01PZzROTWNGMUY5Smt3?oc=5)
-- (3.7h前) [Forex Today: Enter the US labour market - FXStreet](https://news.google.com/rss/articles/CBMiiAFBVV95cUxNS011dUdlQmpNZGtzRzNxVW54Rk9yUWNNbmJ0NXJWbFdIdzJtTHItRTZ5X2JXQ3BuTWo4S1lRVWRfSmJGaVV2aGpva1hRYmRLanZXd0xGQ1dOdU9xejBidzI5UnhDV3dmSzBBVWVkY3hKbURHTzRlRWRyLWdkeW9xUnp1ZXFqcmZo?oc=5)
-- (2.0h前) [Forex Seasonality – September 2026: Can EUR/USD Extend its Gains to Three Straight Months? - City Index UK](https://news.google.com/rss/articles/CBMi0wFBVV95cUxPZHR2MS1NUHJfVURFRGY0TDhOblU3Ty1fSU9wN1gtc1ZSM3BDX1hpcVI2ZkJZTmEzdGNIYW94Q2t2ZWJzeGdVNVl4NndvSWlkelNnUFFiM3dzQmJIRHN2TGw0UHhIelVTUWRHUnI1dDUtQnM2eEI4NkhTUHZRYWZjTFBCRXVJa3Jvdmd3VmRHc3VGVUFTaUNPckhCb0kzc2pwWGZ5VGpJWVd1VzN1MHBjUS1hNG5BNGdmTk5CR0tfWk5IZzIyMUZoa2ZUblhOc1BZTDY0?oc=5)
-- (14.6h前) [US Dollar Price Forecast: DXY Eyes 99.58 as Jobs Week Tests Hawkish Fed; Eyes on EUR/USD and GBP/USD - FXEmpire](https://news.google.com/rss/articles/CBMi4wFBVV95cUxQbEFlaU9lMDlmT3RtUGV3aGNlLUFaQ0s2dmpldUNoN1gwTmpWdVRiNEFBZzFpU1hURUpqdWcxQVh2bEE2bEQxQjZlblV4YWNDOWRqT2c5X3dzalFnODdjTnBOSFJ0dVVWOTJOQ0NHc3V0Qzd3UGZ2NFByWm9MNDhuSEZVbXJqNU9iN0phVUZXTmhIN0tzRzJ4el9oS0d4YWxIaTZaNm45UFBJNVlZZ0J1OXN6WkhQZzB0dHE1UjZxNXdXakI2cnRUbUdEcTQtVGpWZDR1MncyeFdjblI1ZlFEVjNISQ?oc=5)
+_24 小时内无新headline_
 
 ## 美联储
 
-- (9.7h前) [Fed Chair's Remarks Drive Rate Hike Expectations; Non-Farm Payrolls Data Marks Key Window This Week - Moomoo](https://news.google.com/rss/articles/CBMioAFBVV95cUxNM2xCemoyR1NHZGZZc2tIS1QtZXNxdDhOY0UzcnFRci1jVlNsVWxUT2FCb3l0Qy1ZRmhkMGh5YjhnVXgwSmJIRS1lRmFzRjVUa1haX3VidFNxU2VMcEk0TmVJR1FWb1RvRHlNQkh0VUNjRzNyVk9wUms5NDBQclRQQjZybUsySmRld3F2LURTUVdzdGtHeFMzYlQwZjZ6WFls?oc=5)
-- (4.8h前) [Editorial: Jackson Hole and the forces shaping today’s rate call - thepost.co.nz](https://news.google.com/rss/articles/CBMimAFBVV95cUxQaERsYV94MGxjaDVBeG9zc1JqdnVLaFdYN1RLVWF6eTBabi1hNUR4Y04xbUtsTnpXelNiTnhKcVJneHdrQTVWQUkwa2VGVkZyalFhX1RjY0hmcUZ2cnh1T0RfUURQakt6eDdDNk9aWExDU1FBaFgxeTJHc3RNdVZiUjdvZktCSUJid0pMemZaS2ZHYVRUb19VbQ?oc=5)
-- (7.4h前) [Another Fed Member Strikes a Hawkish Tone, Says He Will Support a Rate Hike If Inflation Remains Sticky - International Business Times](https://news.google.com/rss/articles/CBMiwAFBVV95cUxOMm1mM29SdnFrVUF4S21TaWpZNjItb0NPUkVMX0NwSjlVczR2bmN5WmhobExpV0xJNXdQTG8yYXJMSXAxZmdvb3BWRU04QW1VdW9taUNzU2FuZzkwa1JtdXlhd3B6cGc4Yy1DTGhPOUlkRlZBZGZUdUpQcnJkWnYtbGV4a1VXT0NFNF9Rd1dLSE1SazNzNGZCT3JnVjR5M1VrZ0hYQ2wtalNRYUxsbDYyeTBhTFhudEpCY0hPT01JNVU?oc=5)
-- (7.6h前) [Kevin Warsh Revives September Rate Hike Bets as Fed Markets Test His Inflation Resolve - Межа. Новини України.](https://news.google.com/rss/articles/CBMiaEFVX3lxTFByVUxxNnA4MkdmeURSY1hUR094TkNnbGRhLXRyUVpzS3BRVElkZC1EYWhDYTNuY0dJTzJBSzBWM1hkVU9OVjBvR1VPV2VreVJvWmNLUWU5ck8wV01RRDlhZXdjOF95UTl5?oc=5)
-- (15.2h前) [The Latest: SCOTUS allows Trump’s White House ballroom construction to continue - The Washington Post](https://news.google.com/rss/articles/CBMi1AFBVV95cUxNN3U1eENPcHZhcm8wUnV4RmZnZXVOMUpUN2ZYc0MzWVhCT1p2bE0xc3hjM0lBcWtybkNjME45dzNTMmJwTGhYNGlhQ2hwazVRZmZBQXRmaENqWTdzWkpSSlJWaFFiNVhUOGEtNzZKaGtFOG91eGJScmVDTklJazQ5OEdweVl0ck9NMFB3anVWOUIzUGJUdkVGUkJGTzNYanRhdGFCYXVIT2NWczBCZmViRHNxN0l6Y0M1WkVuSUpMZTl2MFdGNkp1T1JhTVE2SUpQaTFaTw?oc=5)
+_24 小时内无新headline_
 
 ## 欧元/欧央行
 
-- (11.8h前) [ECB says energy-led inflation spike justifies June rate hike - Reuters](https://news.google.com/rss/articles/CBMiswFBVV95cUxPRl9yZEpic3Ita2NjeVVHZ0ZVOFVwXzZtbXNXRWp4eS00WUxNNWlSRVZBU3dzekpUZ1BPMTFkV1I4UmJvWDhzQV9mMnV5T1V3R1dMWnUxMzFpRDlla0ZGNGhHYzhHTEJxZ0dFa25DeWVYZjVrS2xjaWIxRW05VmxpdUVMblZkdWxkRWd6TkNkSkdWYzhuSVUwaHFycERxdEJsbGZPLVViV0ZfVTFYTU1OOFkwTQ?oc=5)
-- (9.3h前) [Eurozone Inflation Rises to 3.3%, Boosting Case for ECB Interest Rate Hike - Morningstar](https://news.google.com/rss/articles/CBMirgFBVV95cUxNQkx1eUt5TGNGOFZUMmZDRDVXM0RGVjRCZkZGaGNXT3lfY1ctNk1aUTRfRXZJWm1HaVEwZTVkYXdJOFp6dGJPYXpVeTl4QkFPRlJlbzBPbHR1Mk9WTmg4czUxVE9kNVpOaTUxWTNBd2c2MjVvb0NmSEx5azdDRGk2SThEU2dUZTJlV3A5czBsYl8tcU5oOXk3TER6UGdyeWowOXFrdy0zdExCMUdtU3c?oc=5)
-- (7.1h前) [ECB’s September Hike Won’t Be Enough, Simkus Tells Econostream - Bloomberg.com](https://news.google.com/rss/articles/CBMisgFBVV95cUxNWHc5ZmZhSGtRbi15OXdyQk95ZEgtbXRFZTZpTE1KUkRaZjZ0c0FnbHAwR0Y5b2hHdlFQVmoteFRpdjlveG9KMUVTd1p2MUl6N3BkVHFMWmNfenhHYm9KZ3EzVGZYeWJKY2habVFGcnRtNlRRT2w0YkFPa0hlZEZ6Q0lYUDUtNGlUUDVPQllNall4MllmSGJZb011bGtEejJMZ2cyYzlqVWtzZERGOHRYV1F3?oc=5)
-- (6.1h前) [Energy Prices Push Euro Zone Inflation Above 3% Inflation Again. Interest Rate Hikes Could Follow. - International Business Times](https://news.google.com/rss/articles/CBMixgFBVV95cUxNeXVydTYwNGNJWkpoTjBOMjVRRENvWUwyQ25pNndHT2t5a0NBamZQUEVMQ2Y0aFNnWWdZdFdvUGR2TXUweEZvZG9OeGFCUHM1WkdkSWxuUXRUVmJaLTFRR0xld21iVnczSTl0Y3hYUjlTNnlfbDRKU1lWdzY0X1Z5NlpnMVM3d3BtcFlGRDlqX3FvQnpWMnh6WXlBTDFKTWFuelIwSTdTam5IZ2ZMaHV3d1Q3TkVwMjFvWGNFZGEzeU5waHk2eUE?oc=5)
-- (6.7h前) [Eurozone Inflation Reaches 3.3% as Energy Costs Complicate ECB Decision - EU Today](https://news.google.com/rss/articles/CBMiZEFVX3lxTE1PVkZkOXg5cHRDcE53aVhrZ19mWE5PMko0S3VrdzV2ZlVxSW4xSzBDNkplVG1jaEQtenA4SUNRM2NCNFprMVFKR05iRnBrQzRuMmVCcUJkOE0wRGNkbTRnT2tiYlI?oc=5)
+_24 小时内无新headline_
 
 ## 英镑/英央行
 
-- (4.6h前) [British Pound stalls as mixed US data keeps Fed hawkish bets alive - tmgm.com](https://news.google.com/rss/articles/CBMizAFBVV95cUxQXzVTcTUtbHd6VlU5WkxPLV9qVE5taTlqRWNNcVMxMUxjSDJBeUJZZnpqYy1WcWhjWWlKeXo2TkRBdC1ySVA0NFp3SWg3T1FLU0FYVDh5bnh5UUF0RG9KZWZUY2w5UTVnN3ppZTBCZ0NKZzA1eWJRangwbG5jYjdPN0o4UFBmVWliVGQtUXB1TnlSN2hwZXBvLUJ1TnNHeDJhSmgta2FuRUZSdGMzWldwYnpmLW5JOWV2WGFJTDlyaWdNMXp2SmgySWwzWFk?oc=5)
-- (8.3h前) [Pound slips despite jump in gilt yields as investors favour dollar - Reuters](https://news.google.com/rss/articles/CBMiqAFBVV95cUxPR00zM3I3SkdpS0xxM1lld1hMMk1LYUFJNkFvclpvZGIwZTZRX2RzakM1Q3Nkc1BzOUtIZlBVdGlqRkhiWHMyYmMyMXlucFY3WFIxSWtFeFI5UnhwZ0FuX1BIcVp1WGN4RmkxVGYwSDh1a0FvRXUyWjNvR1F3T3JpX3lxRWN0RC1ITkptbkplMk1qYjVkbnotWTFEVEVtTHU5LVlSYUtHYS0?oc=5)
-- (7.7h前) [Official exchange rates on selected date | Bank of Russia - Центральный Банк России](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YcldQcEpOMEd0OGVlTzFTZnlKM2lYZ1JxQ2FvLUVUMDI2WnQ0bnk2SzlEV01pb2RKNW40WVJTTzNUTTdDeFJmSDFJN3pnZE5tS3QtakRR?oc=5)
-- (9.7h前) [Pound Sterling Edges Higher as UK Fiscal Woes and Rate Gap Weigh on Yen - CryptoRank](https://news.google.com/rss/articles/CBMiiAFBVV95cUxQYXVyeXV3c01sYmlGbHNWYTFJUG9PX0l1eGdVbV9KS2ZWV21jN1pJTk1aZS1rM281Sm1HczFMbnoyWkROcGFMLURhZDZXaGp1ZFBZOXV1Wm9sOTRhYXRXeFpUNnlHbE5ycWU3MDJMa1lSdlppUlhMX3VuR3J3OVZkSkl5bU0tNzJr?oc=5)
-- (12.0h前) [UK Net Lending to Individuals (Jul MM) 6.3B vs. Exp. 9.2B (Prev. 9.5B) - Newsquawk](https://news.google.com/rss/articles/CBMinAFBVV95cUxQZDhibWlOVEFyNkZjekFQeEktaE9yV3ZUUlhYcWltUkQ0YlVXR1EyZFNidHVPMUFoN2FRdHBNVEtndkZkLUp5WWpCNzRkNGkxQmlCUUhkX1BacEZUMk1CR0JOaV8wTlNNYm9wdzhoUXRlc0xWVWYxQ1Z6Q3ZvMTR5eW1sdm9zNVVyTnlqWGhYTHhLXzk5SVNKb01OMWU?oc=5)
+_24 小时内无新headline_
 
 ## 澳元/澳联储
 
-- (11.5h前) [Australian Dollar Outlook: AUD/USD Faces RBA-Fed Rate Tug-of-War - FOREX.com](https://news.google.com/rss/articles/CBMirwFBVV95cUxOc0tZRk1GUVQwaEUzX3JMTE1VYlhhRlZCdlc4VXM1Q2EzNnc4V1pUUGFJQ3FXRHVGaEtNNHowa2YzMG1BWEFKTjZURmdLckhpY01INmJVM0tSR2lXQkxENEdCb2UzRUJ4eEszNEY0ejdkVUNuWXVpWmdqemZsVjdWTDhYckZZbWlMNWZSN284TUgtLVdDNlNhZzh1Q1JvbDB3ejVoc1RIdlVGdEJMenBR?oc=5)
-- (5.1h前) [Australian Dollar trades cautiously as Fed and RBA rate hike bets clash - FXStreet](https://news.google.com/rss/articles/CBMitAFBVV95cUxOamo2NExuQWdPTV9vOXVjWGlxVDR0WlNNckdHblRCeG04WHBqVUtmX2FJTXlES2I4MTVzUkxUMlBnRHJvc3o3MHF2ZEtfZUNzeTA3ZVJzbElJMkc2VzJPb0ZPNFNpclFzbk04djk3SE5JbE9HRUFMMkRXMEtvOU11WTVjUTQwQlFIRnk4LV9FZlN4QkRlbmhBMGxubnNManhNZkZXclA4LTUtTFhhRUxYR0RSTG8?oc=5)
-- (7.2h前) [AUD/USD Forecast: Rising 20-Day EMA Points to Further Upside - CryptoRank](https://news.google.com/rss/articles/CBMifEFVX3lxTE11VGloR3psOWpRTmdfV0dndlRHMlF2dUN0djNTZi0zbzg2SXc1clBKNkdpcDhyb3p1a2R4WnpIWUlkTGNzWW1wZFNlejNYN2ZrMWs3Szl2T3JEaTdQY2pkNjlMZFZRTW1DbWo5MmdtTThuOFhITm1tVEo3VkQ?oc=5)
-- (17.0h前) [Australian, New Zealand dollars pause near multi-month peaks as bond selloff deepens - The Business Times](https://news.google.com/rss/articles/CBMi4AFBVV95cUxQS2xXN0hIMmVGQ0VLU0MxalB1UUFYYnZBVW1QZm5faFktMU5xSlhoSXA4WkpKdlZ0RWs4enhSQ2FMVTB6dmVhYWFNSUcwYVl5dlV3TmxaOHJSNGJlMDc3M0ZQWjFldjk1RUhSMEVTcXFSZWRFSjkxSTA1Q1piZlBKVENoYWZwZW8zNEtlUXRMbHBNckNOZ3Yyektsc2N2ZlU3VzNCdjBtemR0SGdJVnVKa2dhQ2VwdTVVNV85dnp4bFdPT25EUHNIMTBPNFlBVEZzQWFQc216TDJNUEhsQnJCQQ?oc=5)
-- (20.8h前) [RBA ban just weeks away to usher in new payment era for Aussie consumers: 'Pressure on cash' - Yahoo Finance Australia](https://news.google.com/rss/articles/CBMi1AFBVV95cUxPZTlZbDM0UGlmX01TazlXTEtnSXk4ZW0yTU1QdjdjazVtaUVhUFRlUmFRSkgzeE1wbXNkYWlkVXF6cDhqV2Q0eWltRUlwVW96R29YOWdJMkR2T1FuTWpNV0FncEI2dEFHYy1HMGNtYTJlYVZLbThWZEZ0RmZ5ZkpvQUlKQ1luaGFqNUJYYU41OENsN2dJaGRoV052c0cwZF9qaS1neWtVM251UHJTYjBjN3FtTVBPRm5LVHVuX0tGY3l1RGVJNUNZYm1CcGlRYzBkZ2p3TA?oc=5)
+_24 小时内无新headline_
 
 ## 通胀数据
 
-- (13.7h前) [Economic calendar: US JOLTS and ISM Manufacturing in focus 🗽 What will Eurozone CPI show? - XTB.com](https://news.google.com/rss/articles/CBMi2wFBVV95cUxPdElkMXIwUlcwczlzUlFmZHBtZWhvRGMwWEVGNGhfQjZOY2d4MmZtY0lmd0ZCcVNmQ3FLd0lobHhERWdBc09MZ0ctS1Yzb202ZDkyNThqcnJxQm5XVUcwdXdLNlNWMGZEd0IwcTZwblluS1Q0Y19pZDZ2MHh5VzAxOHc3WDFtdFlwQ050ZTUtcUF4V0NpOXJjTFR6V2Qtb2ozcDNFY09MclFGRmVMWDJsV1JBX1I0SnZVVmR3eFIwVDZBbkt2LW9Uc2lhTm1zVVZ6R0I2NU5hbllUdk0?oc=5)
-- (7.2h前) [US Market Outlook: Rising crude oil prices fuel inflation fears, intensifying selling pressure on bonds. Tesla's August European registration figures were mixed, driven by France and Denmark. Vistra Energy surged on reports of a power supply contract with Goo - Moomoo](https://news.google.com/rss/articles/CBMirwFBVV95cUxPbUs1cDNJQU1pdWdXVlJYaU5lQWp4c1B5RDUzRnJRMXJWOTZEZG03VmN0OC1TUnBaZWlQQ1pGdFQxSllEOUJQZ0g2OE5rcUQ3T3llLVZGLWFkb0xvY2h1bHY1c2dmWjNScVZ0N1I2ekRaM1ktQkk2NndRcXpvUzBvSUczVXNWY01nX1JUWmlseC1iYWlVVWx5R3A0TllBdWxKZDBxYkNkMC1BM2duRzJB?oc=5)
-- (16.4h前) [USD/JPY Near 160, Dow Rally Pauses Below Record High - stonex.com](https://news.google.com/rss/articles/CBMioAFBVV95cUxOdk93SVljVkk0YXBJM2YtcXVjZS1XLUJ4UFQycm9xazEtd1VLSEtqYTJEbmEtTllDOXMwUUh1YndSSHBhcVY4N01RTWtaWl9EcFJrYXlaeHQzcmE5Y0FIcDRRdnktRUhqeVl1V05rS2wzUzBpMGpJS2hxOG00anBRaTcyaWlVZHk5bGlwRC1KNS1XS2dGS0FIT2w2NWMzbjFF?oc=5)
-- (9.8h前) [US Dollar Index Price Forecast: DXY eyes 99.75 confluence hurdle amid Fed bets, Iran risks - mitrade.com](https://news.google.com/rss/articles/CBMikwFBVV95cUxNSEZpRi02R2kzd0gySFFGY2dBenN1dm9LSk16cFg4SEUza0hvd1QzbWJaNVdkTm9DWDhoNW9KX2VNY3RIRkpXV3M4LVpRekNmZkRiX3o5Zm0zVVF5OWR1cktqOHBfTW1IN2RqR1NVR1YwbzZiMkFNMkdTY1dac3JJNWtpazFHUzVaQTNydURrYnZQWlE?oc=5)
-- (11.5h前) [Australian Dollar Outlook: AUD/USD Faces RBA-Fed Rate Tug-of-War - FOREX.com](https://news.google.com/rss/articles/CBMirwFBVV95cUxOc0tZRk1GUVQwaEUzX3JMTE1VYlhhRlZCdlc4VXM1Q2EzNnc4V1pUUGFJQ3FXRHVGaEtNNHowa2YzMG1BWEFKTjZURmdLckhpY01INmJVM0tSR2lXQkxENEdCb2UzRUJ4eEszNEY0ejdkVUNuWXVpWmdqemZsVjdWTDhYckZZbWlMNWZSN284TUgtLVdDNlNhZzh1Q1JvbDB3ejVoc1RIdlVGdEJMenBR?oc=5)
+_24 小时内无新headline_
 
 ## 就业数据
 
-- (5.1h前) [US Treasury Yields Continue to Hit New Highs, Philadelphia Semiconductor Index Drops Over 2% as US Stocks Face Triple Pressure in September - TradingKey](https://news.google.com/rss/articles/CBMi4gFBVV95cUxQeGNmR2NENUNjc3N6bjM3LUNXM1ZfRXUzVDhSNkRsUlBXU1ZMTlN5NmNBUkRhbG9tZC01NEVaT29HaExLb2FqYTVGQTdoUjhMREdaM2piUUd1bHlaWHh1eW40R1ZoNXFuMjZ1RExxN3YxVEM2bm5pb0NwWGVsYngyanMtUlJ2dWcxSFRyQldFaS05WGJHMGZBQ0NrdTNZUWc1MFB4dVBsNldSQ2JKSGJ5RDF1cG9oaW5fQWZtUTVlTW5GT1FWN1VPNTB3OE9leGRqSU93V0NkYWhfUUVRTzQwenln?oc=5)
-- (20.5h前) [US Dollar: Jobs Data to Test Hawkish Fed Repricing, BNY Warns - CryptoRank](https://news.google.com/rss/articles/CBMikgFBVV95cUxNRF9pTmxVNnNUenMzWVdYa0JRQ1FMS09wOVQwanpQSmowMlFUbUkxUzBtQWpmakRJZzVQeDZUNVV5eFlHY1hWS2Jsd3RVVWFFRWVFbDVkRUJQRko0djg1Z3F4OWtRWDB5cXVHaTJaUU9JbVc3amJxM2lNZjBhdTNDLU9Zem1Tc2pJZU10bndDWU43QQ?oc=5)
-- (13.3h前) [Gold prices fell amid anticipation of US employment data - صوت الإمارات](https://news.google.com/rss/articles/CBMisgFBVV95cUxQU0FUWWp1d29aSDI0cVZ4eTVRNEk0MVRSNV9rNGhKa0lIWFl4NlFEUm9fWUpXYjZkT3dhRUZOc2RoXzNMYVFtdXptcnVMNHZicjBGcmhFNlhmSmZKTFhkYi1SNHlaU2UzNlNTNUtaVVFaRzY0OVFjWnl2dm43VWNubEs2NTRMNVhrSkZnYjR6TE1qNGlUd3dZRGRDcllXRl85ZFk3X0o1aXlhUDluOFcxcWFn?oc=5)
-- (15.0h前) [XRP Drops Below $1.4 as Market Focuses on Non-Farm Payrolls: Can It Rebound? - TradingKey](https://news.google.com/rss/articles/CBMivAFBVV95cUxNeE9PZnhPQkY2MVRXSDZOTy1CT09RYzRzUDZFUXFxRlNBMFVlR0tTNlJOREtodF9Qa25pbm9PTXNpVVZUdmYwX0tFUVd1eGVZN1Bvc0tRa3BKQTU1Wjg5eDJSdWtKeGxrbm1IVFQzaFJZZnVLd2pIdTJ0Yk9LTjRCWENkYXFTbkRhYkFJOVVFdlJ0Sk5vRTQ3VXFJRHZrV3oydDA0S3dwSWZ5Qk5JTTY0QnVwTWxWV1dUZVRfaQ?oc=5)
-- (17.5h前) [Gold falls to two-week low as rising Treasury yields, dollar weigh - CNBC](https://news.google.com/rss/articles/CBMipAFBVV95cUxQVXc3R3BkelVyQTYtM1JWdEJsMklYRlFTejhEX1JzTEg0aDA1MmNkTHZyMU1CR0M1TDN0bXVIdWliUlVNai0wSXdRSWd4d3BlY1g0SzVrMURmSnBOOXhtSzNqWWp5c2dYc0Z3aVRGS2d4cmxTSDJzeWM3bjdXM0psdXhwSHpjX3lRYm5HLUtJRHVVU3RnNUMzYk5tMTgxazNrSTY3dNIBqgFBVV95cUxNSnhkV0xaNGJoMG14RVIyRVhGUFhrT2RQTHVsQUR0YV9VZWlYcjdRRnByZmk3OHNTZUp1eGROamNHa2xnWmc2MlBhSHZmTzdVTzdNRWt1UmxpZVpieXoyRDZUdVFvY00wRUtJSjM5YmY3RnZYMHFvQm1sdG52MDl6dFhrR2lEU21SRDdFNTYybnFuVDhBVTQ1Nm9KZUE5bHdGUEptWkozdFlyUQ?oc=5)
+_24 小时内无新headline_
 
 ---
 
@@ -81,3 +47,5 @@
 
 **分工是故意的**:机器负责能被验证的部分(什么时候别交易),
 人负责不能被验证的部分(方向判断)。
+
+> 取数失败:美元: HTTP Error 503: Service Unavailable；美联储: HTTP Error 503: Service Unavailable；欧元/欧央行: HTTP Error 503: Service Unavailable；英镑/英央行: HTTP Error 503: Service Unavailable；澳元/澳联储: HTTP Error 503: Service Unavailable；通胀数据: HTTP Error 503: Service Unavailable；就业数据: HTTP Error 503: Service Unavailable
