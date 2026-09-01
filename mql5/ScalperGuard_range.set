@@ -11,8 +11,8 @@
 ;     3) 关掉趋势否决和反向移动拦截，否则fade会被自己挡住
 ;        (InpTrendVeto=false、InpCounterMoveATR/HardATR=0)。
 ;     4) 止损放到最近的极值点(EA本就把止损摆在swing结构极值+ATR缓冲=视频的"宽损")，
-;        止损硬封 $7(InpSlMaxUSD=7、InpSlMaxATRMult=0)——每笔最多亏$7、止盈2R约$14。
-;     5) 固定盈亏比 1:2(InpTP2_R=2.0)，关掉$目标/地板，用R倍数干净跑到1:2。
+;        止损硬封 $8(InpSlMaxUSD=8、InpSlMaxATRMult=0)——每笔最多亏$8。
+;     5) 固定美元止盈 $17(InpTargetProfitUSD=17，到价挂单必成交)，最多同时4单。
 ;        "刮头皮/吃点就跑"= 见势不妙靠保本/追踪先撤，跑到2R才算满仓利润。
 ;   注意：这是逆势fade，只在真震荡里成立；一旦走出单边趋势(真突破)会连续吃损，
 ;        靠 1:2 赔率把胜率要求压到 34% 撑住。趋势日请切回 old200。
@@ -535,7 +535,7 @@ InpAtrMaxUSD=15.00
 InpSlMinUSD=1.20
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
-InpSlMaxUSD=7.0
+InpSlMaxUSD=8.0
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -603,7 +603,7 @@ InpSweepMaxPenetration=1.50
 ;   风险 $10  + 目标 $10 = RR 1:1.00 -> 保本胜率 50.0%
 ;   风险 $5   + 目标 $10 = RR 1:2.00 -> 保本胜率 33.3%
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
-InpTargetProfitUSD=0.0
+InpTargetProfitUSD=17.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=0.0
 InpQuickLossUSD=0.0
