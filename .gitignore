@@ -9,6 +9,7 @@ moomoo.log
 gold_journal.json
 reports/gold_health.md
 reports/gold_alert.txt
+reports/monitor_task.log
 preset.json
 
 # Node / web build artifacts — installed fresh per session, never committed
