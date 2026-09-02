@@ -1,9 +1,9 @@
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
 ;   上一根K线收阳=立即做多、收阴=立即做空(InpDirectionMode=5)，每根都进。
-;   volume 0.2(6点那套参数，仅手数从0.3改0.2)；进场看新闻+贴关键位($10网格,0.8×ATR)+顺K线(mode5,M1)。
-;   出场：净赚 $40 走；冲不到、到过 $17 回落就 $17 落袋；净亏 $100 止损。最多5单。
-;   注：SlMaxUSD3.5在0.2手=硬止损~$70，会先于$100净亏触发(0.2手下$100约=金价$5)。
+;   volume 0.1；照 16:xx 那批的打法：R倍数出场——结构止损(封顶SlMaxUSD3.5≈金价$3.5)、
+;   止盈1.8R(InpTP2_R=1.8≈$6)，动量衰竭提前锁小利(ExitOnMomentumFade)。关掉$40/$17/$100。
+;   进场：mode5顺K线(M1)+看新闻，关键位闸已关(RequireKeyLevelATR=0)让它自由进场。最多5单。
 ;   另带真实止损单兜底(InpSlMaxUSD=1.0 价距≈$3/0.03手，防跳空)，与$2软离场取先到。
 ;   过滤全关：V2评分/ADX/评分门槛/趋势否决/逆势闸门/连亏停手/观察模式 全部关。
 ;   交易次数、日内止亏放开(100000)，让它一天尽量多跑，纯看"顺K线"方向能不能赚。
@@ -32,12 +32,12 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpFixedLot=0.2
+InpFixedLot=0.1
 InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
-InpProfitFloorUSD=17.0
+InpProfitFloorUSD=0.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -157,7 +157,7 @@ InpUseRoundNumbers=true
 InpRoundStep=10.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=0.8
+InpRequireKeyLevelATR=0.0
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
@@ -173,8 +173,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
-InpQuickProfitUSD=40.0
-InpQuickLossUSD=100.0
+InpQuickProfitUSD=0.0
+InpQuickLossUSD=0.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
