@@ -161,14 +161,14 @@ InpMaxFakeBreakouts=5
 ; .set 只会覆盖它列出的项 —— 少列一个，从 scalp 档切回来时那一项就还留着
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
-InpExitOnMomentumFade=true
+InpExitOnMomentumFade=false
 InpTP1_R=1.0
 InpTP2_R=1.5
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.50
 InpBreakEvenUSD=0.0
-InpGiveBackPct=40.0
+InpGiveBackPct=0.0
 InpGiveBackMinR=0.60
 InpTrailATRMult=1.0
 InpFadeExitMinR=0.45
