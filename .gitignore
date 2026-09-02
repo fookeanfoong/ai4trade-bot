@@ -5,6 +5,12 @@ KILL_SWITCH.txt
 moomoo_trader_state.json
 moomoo.log
 
+# MT5 监测器的本地运行产物(在你自己电脑上生成,不入库)
+gold_journal.json
+reports/gold_health.md
+reports/gold_alert.txt
+preset.json
+
 # Node / web build artifacts — installed fresh per session, never committed
 node_modules/
 .next/

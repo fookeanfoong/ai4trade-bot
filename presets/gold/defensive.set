@@ -1,0 +1,38 @@
+; GoldScalper —— 防守 preset(不是「更好的 edge」,是「亏得更慢、成本高就不做」)
+;
+; 诚实说明:没有任何参数能凭空造出黄金上的 edge(回测各配置基本都在 0 附近甚至为负)。
+; 这个 preset 做的只有两件确定有用的事:
+;   1. 把每笔风险从 1% 降到 0.5% —— 同样一段坏运气,回撤和爆仓概率都减半
+;   2. 收紧成本过滤(点差门槛更严)—— 黄金小账户唯一确定会遇到的敌人是成本
+; 适合在健康监测报 RETHINK(edge 还没被证明够大)时用,给你更多样本、更小代价。
+; 它买的是时间和生存,不是收益。
+InpRiskPercent=0.5
+InpMaxRiskPercent=1.0
+InpDailyLossPct=3.0
+InpMaxPositions=1
+InpFixedLots=0.0
+InpMaxSpreadUSD=0.35
+InpMinStopSpreadX=10.0
+InpSlippagePoints=15
+InpTimeframe=15
+InpFastEMA=20
+InpSlowEMA=50
+InpTrendEMA=200
+InpRSIPeriod=14
+InpRSIBuyMax=70.0
+InpRSISellMin=30.0
+InpATRPeriod=14
+InpFixedStopUSD=4.0
+InpATRStopMult=1.2
+InpRewardRisk=2.0
+InpSwingLookback=100
+InpSwingWing=2
+InpUseBreakeven=true
+InpUseTrailing=true
+InpTrailATRMult=1.0
+InpUseSession=true
+InpSessionStartHour=8
+InpSessionEndHour=18
+InpFridayEarlyStop=true
+InpMagic=20260809
+InpAlerts=true

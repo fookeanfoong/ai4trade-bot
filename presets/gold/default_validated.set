@@ -1,0 +1,35 @@
+; GoldScalper —— 默认(样本外验证)preset
+; M15 · 固定$3止损 · RR1:2 · 每笔风险 1%
+; 这是 reports/gold_backtest.md 里唯一「前半段选参、后半段只跑一次」仍为正的配置
+; (训练 41.4%/+0.098R,验证 40.5%/+0.091R)。也就是 EA 的出厂默认值。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxPositions=1
+InpFixedLots=0.0
+InpMaxSpreadUSD=0.50
+InpMinStopSpreadX=8.0
+InpSlippagePoints=20
+InpTimeframe=15
+InpFastEMA=20
+InpSlowEMA=50
+InpTrendEMA=200
+InpRSIPeriod=14
+InpRSIBuyMax=70.0
+InpRSISellMin=30.0
+InpATRPeriod=14
+InpFixedStopUSD=3.0
+InpATRStopMult=1.2
+InpRewardRisk=2.0
+InpSwingLookback=100
+InpSwingWing=2
+InpUseBreakeven=true
+InpUseTrailing=true
+InpTrailATRMult=1.0
+InpUseSession=true
+InpSessionStartHour=7
+InpSessionEndHour=20
+InpFridayEarlyStop=true
+InpMagic=20260809
+InpAlerts=true
