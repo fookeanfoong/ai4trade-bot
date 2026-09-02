@@ -1,7 +1,8 @@
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
 ;   上一根K线收阳=立即做多、收阴=立即做空(InpDirectionMode=5)，每根都进。
-;   volume 0.1；稳版：结构方向(mode4)+ADX>=10+只顺H1趋势+贴关键位0.6+看新闻；只1单、快出。
+;   volume 0.1；稳版入场判断：结构方向(mode4)+只顺H1趋势+ADX>=10+贴关键位0.6+避新闻，
+;   且必须真形态(突破回踩/趋势回调/扫损反手,关掉宽松兜底)+质量评分>=4级(非C)。只1单、快出。
 ;   出场：净赚 $13 走；冲不到、到过 $6 回落就 $6 落袋；净亏 $13 止损(硬~$15兜底)。赔率1:1,保本50%。
 ;   另带真实止损单兜底(InpSlMaxUSD=1.0 价距≈$3/0.03手，防跳空)，与$2软离场取先到。
 ;   过滤全关：V2评分/ADX/评分门槛/趋势否决/逆势闸门/连亏停手/观察模式 全部关。
@@ -76,7 +77,7 @@ InpHtfRequireSlope=false
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=1
+InpMinScore=4
 InpEntryTF=1
 InpAdxMin=10.0
 InpMinRR=0.5
@@ -181,10 +182,10 @@ InpVirtualBalanceUSD=0.0
 
 ; --- V2 评分与分级（规格 §28/§29）---
 ; 风险由 setup 质量给,不由"想赚多少"给。C 级(<5分)一律 NO TRADE。
-InpUseV2Scoring=false
+InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=1
+InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=0.5
@@ -227,7 +228,7 @@ InpAllowHedge=true
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=true
+InpUseLooseEntry=false
 InpLooseMaxDistATR=1.20
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
