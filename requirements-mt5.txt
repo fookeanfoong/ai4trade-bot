@@ -1,3 +1,0 @@
-# MT5 监测器(mt5_bridge.py)的依赖 —— 只在装了 MetaTrader 5 的 Windows 上装
-# 用法: pip install -r requirements-mt5.txt
-MetaTrader5
