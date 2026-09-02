@@ -1,8 +1,8 @@
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
 ;   上一根K线收阳=立即做多、收阴=立即做空(InpDirectionMode=5)，每根都进。
-;   volume 0.1；大胆(mode5每根顺势进)+小心(只顺H1趋势TrendVeto+贴关键位0.6+看新闻)；快进快出。
-;   出场：净赚 $13 走；冲不到、到过 $6 回落就 $6 落袋；净亏 $20 止损(硬~$22兜底)。只开1单。
+;   volume 0.1；稳版：结构方向(mode4)+ADX>=10+只顺H1趋势+贴关键位0.6+看新闻；只1单、快出。
+;   出场：净赚 $13 走；冲不到、到过 $6 回落就 $6 落袋；净亏 $13 止损(硬~$15兜底)。赔率1:1,保本50%。
 ;   另带真实止损单兜底(InpSlMaxUSD=1.0 价距≈$3/0.03手，防跳空)，与$2软离场取先到。
 ;   过滤全关：V2评分/ADX/评分门槛/趋势否决/逆势闸门/连亏停手/观察模式 全部关。
 ;   交易次数、日内止亏放开(100000)，让它一天尽量多跑，纯看"顺K线"方向能不能赚。
@@ -78,7 +78,7 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=0.0
+InpAdxMin=10.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -101,7 +101,7 @@ InpAtrMaxUSD=15.00
 InpSlMinUSD=0.20
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
-InpSlMaxUSD=2.20
+InpSlMaxUSD=1.50
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -173,7 +173,7 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=13.0
-InpQuickLossUSD=20.0
+InpQuickLossUSD=13.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -227,7 +227,7 @@ InpAllowHedge=true
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=false
+InpUseLooseEntry=true
 InpLooseMaxDistATR=1.20
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
@@ -235,7 +235,7 @@ InpLooseMaxDistATR=1.20
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 1 = H1 定方向,M5 只影响评分不否决
-InpDirectionMode=5
+InpDirectionMode=4
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
