@@ -1,9 +1,9 @@
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
 ;   上一根K线收阳=立即做多、收阴=立即做空(InpDirectionMode=5)，每根都进。
-;   volume 0.2、5分钟分析一次(入场已放宽:宽松入场开/关键位0.9/ADX7)(EntryTF=M5)；稳版入场判断：结构方向(mode4)+只顺H1趋势+ADX>=10
-;   +贴关键位0.6+避新闻，且必须真形态(突破回踩/趋势回调/扫损反手)+质量评分>=4级。只1单。
-;   出场：净赚 $30 走；到过 $15 回落就 $15 落袋；净亏 $25 止损(SlMaxUSD1.3在0.2手=硬~$26)。赔率30:25=1.2,保本45%。
+;   volume 0.2(6点那套参数，仅手数从0.3改0.2)；进场看新闻+贴关键位($10网格,0.8×ATR)+顺K线(mode5,M1)。
+;   出场：净赚 $40 走；冲不到、到过 $17 回落就 $17 落袋；净亏 $100 止损。最多5单。
+;   注：SlMaxUSD3.5在0.2手=硬止损~$70，会先于$100净亏触发(0.2手下$100约=金价$5)。
 ;   另带真实止损单兜底(InpSlMaxUSD=1.0 价距≈$3/0.03手，防跳空)，与$2软离场取先到。
 ;   过滤全关：V2评分/ADX/评分门槛/趋势否决/逆势闸门/连亏停手/观察模式 全部关。
 ;   交易次数、日内止亏放开(100000)，让它一天尽量多跑，纯看"顺K线"方向能不能赚。
@@ -37,7 +37,7 @@ InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
-InpProfitFloorUSD=15.0
+InpProfitFloorUSD=17.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -77,9 +77,9 @@ InpHtfRequireSlope=false
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=4
-InpEntryTF=0
-InpAdxMin=7.0
+InpMinScore=1
+InpEntryTF=1
+InpAdxMin=0.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -102,7 +102,7 @@ InpAtrMaxUSD=15.00
 InpSlMinUSD=0.20
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
-InpSlMaxUSD=1.30
+InpSlMaxUSD=3.50
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -157,7 +157,7 @@ InpUseRoundNumbers=true
 InpRoundStep=10.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=0.9
+InpRequireKeyLevelATR=0.8
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
@@ -173,8 +173,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
-InpQuickProfitUSD=30.0
-InpQuickLossUSD=25.0
+InpQuickProfitUSD=40.0
+InpQuickLossUSD=100.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -182,10 +182,10 @@ InpVirtualBalanceUSD=0.0
 
 ; --- V2 评分与分级（规格 §28/§29）---
 ; 风险由 setup 质量给,不由"想赚多少"给。C 级(<5分)一律 NO TRADE。
-InpUseV2Scoring=true
+InpUseV2Scoring=false
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=4
+InpScoreMinB=1
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=0.5
@@ -218,7 +218,7 @@ InpReducedAtPct=15.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=1
+InpMaxPositions=5
 InpMaxCombinedRiskPct=10.0
 InpMaxMarginPctPerPos=35.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
@@ -228,7 +228,7 @@ InpAllowHedge=true
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=true
+InpUseLooseEntry=false
 InpLooseMaxDistATR=1.20
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
@@ -236,14 +236,14 @@ InpLooseMaxDistATR=1.20
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 1 = H1 定方向,M5 只影响评分不否决
-InpDirectionMode=4
+InpDirectionMode=5
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
-InpTrendVeto=true
+InpTrendVeto=false
 InpTrendBars=4
-InpTrendMinUSD=30.0
+InpTrendMinUSD=5.0
 InpCounterMoveBars=5
 InpCounterMoveATR=0.0
 InpCounterMoveHardATR=0.0
