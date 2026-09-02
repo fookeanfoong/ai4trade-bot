@@ -3,7 +3,7 @@
 ;   背景：range(fade)早上震荡赚、下午单边被趟平(4张多单接飞刀)。所以这条改成
 ;   **顺势不fade**：看摆动结构+近期净推进定方向(InpDirectionMode=4，比单根K线稳)，双向进、宽松入场保证频次，
 ;   下午趋势跟着走而不是对着干。InpInvertSignals=false。
-;   volume 0.01、最多2单。安全出场：结构止损~1×ATR封顶$8(0.01手=亏$8；$20净亏硬刹只兜跳空)，
+;   volume 0.02、最多3单。⚠️止损$8是金价距离，0.02手=亏$16；0.45R动量衰竭快出≈赚$7(留着)。
 ;   赢单1R先落一半+移保本、余下跑1.5R；动量衰竭/回吐/关键位 多道保护照旧。
 ;   放开阻挡连续交易的闸门：连亏停手/观察模式/日内止亏/日笔数 全放开(100000)。
 ;   用法：下午/趋势日跑 observe(顺势)，早上/震荡日跑 range(fade)。
@@ -72,7 +72,7 @@ InpAllowLiveAccount=false
 ; --- A 档：日亏上限 $200，单笔风险随之降到 0.5% ---
 ; $9934 的 2% ≈ $199。单笔 $50 -> 能扛 4 笔亏损才收工(原 1.5% 只能扛 1.3 笔)。
 ; 仓位变小不影响统计性质:R 倍数与手数无关,同样的钱能跑出 3 倍的样本量。
-InpFixedLot=0.01
+InpFixedLot=0.02
 InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
@@ -161,7 +161,7 @@ InpMaxFakeBreakouts=5
 ; .set 只会覆盖它列出的项 —— 少列一个，从 scalp 档切回来时那一项就还留着
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
-InpExitOnMomentumFade=false
+InpExitOnMomentumFade=true
 InpTP1_R=1.0
 InpTP2_R=1.5
 InpPartialClosePct=50.0
@@ -255,7 +255,7 @@ InpReducedAtPct=35.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=2
+InpMaxPositions=3
 InpMaxCombinedRiskPct=10.0
 InpMaxMarginPctPerPos=80.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
