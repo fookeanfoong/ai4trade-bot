@@ -1,8 +1,8 @@
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
 ;   上一根K线收阳=立即做多、收阴=立即做空(InpDirectionMode=5)，每根都进。
-;   volume 0.1；进场看新闻+贴关键位($10网格,0.8×ATR)+顺K线(mode5)；快进快出。
-;   出场：净赚 $13 走；冲不到、到过 $6 回落就 $6 落袋；净亏 $33 止损(硬~$35兜底)。最多5单。
+;   volume 0.1；大胆(mode5每根顺势进)+小心(只顺H1趋势TrendVeto+贴关键位0.6+看新闻)；快进快出。
+;   出场：净赚 $13 走；冲不到、到过 $6 回落就 $6 落袋；净亏 $20 止损(硬~$22兜底)。只开1单。
 ;   另带真实止损单兜底(InpSlMaxUSD=1.0 价距≈$3/0.03手，防跳空)，与$2软离场取先到。
 ;   过滤全关：V2评分/ADX/评分门槛/趋势否决/逆势闸门/连亏停手/观察模式 全部关。
 ;   交易次数、日内止亏放开(100000)，让它一天尽量多跑，纯看"顺K线"方向能不能赚。
@@ -101,7 +101,7 @@ InpAtrMaxUSD=15.00
 InpSlMinUSD=0.20
 ; 实测出现过 "结构止损过宽 10.01 > 8.00" 的拒绝。ATR 3.38 时摆动点本来就可能
 ; 离入场 10 美元。$10,000 账户下 1% = $100,$10 止损只需 0.1 手,风险完全够用。
-InpSlMaxUSD=3.50
+InpSlMaxUSD=2.20
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -156,7 +156,7 @@ InpUseRoundNumbers=true
 InpRoundStep=10.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=0.8
+InpRequireKeyLevelATR=0.6
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
@@ -173,7 +173,7 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=13.0
-InpQuickLossUSD=33.0
+InpQuickLossUSD=20.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -217,7 +217,7 @@ InpReducedAtPct=15.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=5
+InpMaxPositions=1
 InpMaxCombinedRiskPct=10.0
 InpMaxMarginPctPerPos=35.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
@@ -240,7 +240,7 @@ InpDirectionMode=5
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
-InpTrendVeto=false
+InpTrendVeto=true
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=5
