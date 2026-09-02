@@ -119,7 +119,7 @@ InpHtfRequireSlope=true
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=2.0
+InpAdxMin=12.0
 InpMinRR=1.0
 InpBreakoutLookback=20
 
@@ -166,7 +166,7 @@ InpTP1_R=1.0
 InpTP2_R=1.5
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
-InpBreakEvenR=0.50
+InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
 InpGiveBackPct=0.0
 InpGiveBackMinR=0.60
@@ -214,7 +214,7 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=0.0
-InpQuickLossUSD=20.0
+InpQuickLossUSD=8.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=200.0
 
