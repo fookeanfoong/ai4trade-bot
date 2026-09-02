@@ -194,10 +194,10 @@ InpUseNewsFilter=false
 ; 亚洲盘窗口用**服务器时间**:UTC+3 下 UTC 00:00-07:00 = 服务器 03:00-10:00。
 InpUseKeyLevels=true
 InpUseRoundNumbers=true
-InpRoundStep=50.0
+InpRoundStep=10.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=0.5
+InpRequireKeyLevelATR=0.8
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
