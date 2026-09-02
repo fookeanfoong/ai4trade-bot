@@ -1,14 +1,13 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
 call monitor_config.bat
-echo 正在读取 MT5 黄金 EA 的成交,判断策略健康 ...
-echo (确保 MT5 已打开并登录,否则会提示连不上)
+echo Reading MT5 Gold EA trades and checking strategy health ...
+echo (Make sure MT5 is open and logged in.)
 echo.
 python mt5_bridge.py
 echo.
 echo ------------------------------------------------------------
-echo  详细报告: reports\gold_health.md
-echo  需要动作时的提醒: reports\gold_alert.txt
+echo  Report : reports\gold_health.md
+echo  Alert  : reports\gold_alert.txt
 echo ------------------------------------------------------------
 pause
