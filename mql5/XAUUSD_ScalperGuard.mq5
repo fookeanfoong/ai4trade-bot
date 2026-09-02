@@ -297,6 +297,9 @@ input double   InpRoundStep          = 50.0;    // 整数关口间距（$4400/$4
 // 对应服务器 03:00-10:00。换经纪商要重算。
 input int      InpAsiaStartHour      = 3;       // 亚洲盘开始（服务器时间）
 input int      InpAsiaEndHour        = 10;      // 亚洲盘结束（服务器时间）
+// 专业做法：只在**关键位附近**下手，不在箱体中间瞎进。>0 时，价格离最近的关键位
+// （前日高低 / 亚洲区间 / 整数关口）超过 该值×ATR 就不做。0=关闭（原行为，任意位置都可）。
+input double   InpRequireKeyLevelATR  = 0.0;    // 只在离关键位这么近(×ATR)才进场，0=关闭
 
 input group "=== 入场 C：流动性扫损后反手 ==="
 // 这是专业圈引用最多、且**唯一能机械定义**的那个技巧:价格先刺穿一条众所周知的
@@ -1898,6 +1901,22 @@ Signal BuildSignal(double atr, int minScore)
    { NoTrade(StringFormat("与方向冲突：%s", conflicts)); return sg; }
 
    if(adx < InpAdxMin)          { NoTrade(StringFormat("ADX %.1f < %.1f，横盘", adx, InpAdxMin)); return sg; }
+
+   // --- 专业做法闸门：只在关键位附近进场（前日高低 / 亚洲区间 / 整数关口）---
+   if(InpRequireKeyLevelATR > 0.0 && atr > 0.0)
+   {
+      double px = (SymbolInfoDouble(_Symbol, SYMBOL_ASK) + SymbolInfoDouble(_Symbol, SYMBOL_BID)) * 0.5;
+      double la = 0.0, lb = 0.0; string na = "", nb = "";
+      double dA = KeyLevelAbove(px, 0.0, la, na) ? (la - px) : 1.0e9;   // 上方最近关键位（阻力）
+      double dB = KeyLevelBelow(px, 0.0, lb, nb) ? (px - lb) : 1.0e9;   // 下方最近关键位（支撑）
+      double dMin = MathMin(dA, dB);
+      if(dMin > InpRequireKeyLevelATR * atr)
+      {
+         NoTrade(StringFormat("离关键位太远 $%.2f > %.2f×ATR（最近 上%s/下%s），不做",
+                 dMin, InpRequireKeyLevelATR, StringLen(na) ? na : "-", StringLen(nb) ? nb : "-"));
+         return sg;
+      }
+   }
 
    // 评分（满分 7）
    int score = 0;

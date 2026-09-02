@@ -582,6 +582,7 @@ InpUseRoundNumbers=true
 InpRoundStep=50.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
+InpRequireKeyLevelATR=0.0
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true

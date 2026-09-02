@@ -54,7 +54,8 @@ $MustHave = @(
     'InpEntryCooldownSec',     # 入场冷却（秒）
     'InpEntryMode',            # 下单策略（0看K线/1 VWAP）
     'LastCandleDir',           # 纯K线颜色方向（模式5，激进）
-    'InpQuickLossUSD'          # 净亏固定美元即离场
+    'InpQuickLossUSD',         # 净亏固定美元即离场
+    'InpRequireKeyLevelATR'    # 只在关键位附近才进场
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误
