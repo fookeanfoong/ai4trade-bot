@@ -1,43 +1,38 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
 echo ============================================================
-echo    黄金 EA 监测器  --  一键安装
+echo    Gold EA Monitor  --  Install
 echo ============================================================
 echo.
-
 python --version >nul 2>&1
 if errorlevel 1 (
-  echo [错误] 没找到 Python。
-  echo   请先到 https://www.python.org 下载并安装 Python 3.11 或更新版本,
-  echo   安装时务必勾选 "Add Python to PATH"。装完后重新双击这个文件。
+  echo [ERROR] Python not found.
+  echo   Install Python 3.11+ from https://www.python.org
+  echo   During install, TICK "Add Python to PATH", then run this again.
   echo.
   pause
   exit /b 1
 )
-for /f "delims=" %%v in ('python --version') do echo 找到 %%v
+for /f "delims=" %%v in ('python --version') do echo Found %%v
 echo.
-
-echo [1/2] 升级 pip ...
+echo [1/2] Upgrading pip ...
 python -m pip install --upgrade pip
 echo.
-
-echo [2/2] 安装 MetaTrader5 库 ...
+echo [2/2] Installing MetaTrader5 library ...
 python -m pip install -r requirements-mt5.txt
 if errorlevel 1 (
   echo.
-  echo [错误] 安装失败。把上面的报错截图发我看看。
+  echo [ERROR] Install failed. Screenshot the messages above and send to me.
   pause
   exit /b 1
 )
-
 echo.
 echo ============================================================
-echo    [完成] 装好了!接下来:
-echo      1. 打开 MT5,登录账户,把黄金 EA 挂在 XAUUSD 图表上
-echo         (工具-选项-EA交易 里勾"允许算法交易")
-echo      2. 双击  run_monitor.bat  试跑一次
-echo      3. 想让它自动定时跑:右键 schedule_monitor.bat
-echo         选"以管理员身份运行"
+echo    [DONE] Installed. Next:
+echo      1. Open MT5, log in, attach the Gold EA to an XAUUSD chart
+echo         (Tools - Options - Expert Advisors - Allow Algo Trading)
+echo      2. Double-click  run_monitor.bat  to test
+echo      3. To auto-schedule: right-click schedule_monitor.bat
+echo         and choose "Run as administrator"
 echo ============================================================
 pause

@@ -1,6 +1,6 @@
 @echo off
-REM 计划任务专用:静默运行(不弹窗、不 pause),日志写进 reports\monitor_task.log
-REM 这个文件由 schedule_monitor.bat 注册的定时任务调用,一般不用手动双击。
+REM Scheduled-task runner: silent, no pause. Called by schedule_monitor.bat.
+REM Not meant to be double-clicked by hand.
 cd /d "%~dp0"
 call monitor_config.bat
 if not exist reports mkdir reports
