@@ -172,6 +172,8 @@ InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=0.0
 InpQuickLossUSD=0.0
+InpBasketTargetUSD=0.0
+InpBasketMaxLossUSD=0.0
 ; 所有百分比以 $200 为基准,而不是终端里的真实余额
 InpVirtualBalanceUSD=200.0
 

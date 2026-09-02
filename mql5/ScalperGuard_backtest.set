@@ -154,6 +154,8 @@ InpTargetProfitUSD=13.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=0.0
 InpQuickLossUSD=0.0
+InpBasketTargetUSD=0.0
+InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=0.0
 

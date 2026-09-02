@@ -32,6 +32,7 @@ $Files = @{
     "ScalperGuard_invert.set"     = "Presets"
     "ScalperGuard_range.set"      = "Presets"
     "ScalperGuard_turbo.set"      = "Presets"
+    "ScalperGuard_basket.set"     = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
@@ -55,7 +56,9 @@ $MustHave = @(
     'InpEntryMode',            # 下单策略（0看K线/1 VWAP）
     'LastCandleDir',           # 纯K线颜色方向（模式5，激进）
     'InpQuickLossUSD',         # 净亏固定美元即离场
-    'InpRequireKeyLevelATR'    # 只在关键位附近才进场
+    'InpRequireKeyLevelATR',   # 只在关键位附近才进场
+    'InpBasketTargetUSD',      # 篮子出场：组合浮盈全平
+    'BasketNetUSD'             # 组合浮动加总
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误

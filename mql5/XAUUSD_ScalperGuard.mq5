@@ -124,6 +124,10 @@ input double   InpQuickProfitUSD     = 0.0;     // 净赚到这个金额($)立�
 // 对称于 InpQuickProfitUSD：净**亏**到这个金额就立刻市价平（和手数无关，锁死每笔美元亏损）。
 // 注意这只是"到价即走"的软离场；每笔仍另带一道真实止损单(InpSlMaxUSD)兜底，二者取先到。
 input double   InpQuickLossUSD       = 0.0;     // 净亏到这个金额($)立刻平仓，0=关闭
+// 篮子出场：把**所有持仓**的浮动净盈亏(profit+swap)加总，到目标全平/到上限全平。
+// 平完不停止交易，下一 tick 满足条件可重新进场。适合多单一起管的打法。
+input double   InpBasketTargetUSD    = 0.0;     // 组合浮盈到这个$就全平，0=关闭
+input double   InpBasketMaxLossUSD   = 0.0;     // 组合浮亏到这个$就全平，0=关闭
 // >0 时所有百分比都以这个数为基准,而不是终端里的真实余额。
 // 用途:在 $10,000 演示账户上原样模拟 $200 的风险敞口,同时保留 A+/A/B 分级。
 // 保证金检查不受影响 —— 那是券商的真实约束。
@@ -890,6 +894,19 @@ void CloseAll(string reason)
       else
          LogLine("ERROR", StringFormat("#%I64u 平仓失败 %d %s", tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    }
+}
+
+// 所有本 EA 持仓的浮动净盈亏加总（profit+swap，口径同日内浮动统计）
+double BasketNetUSD()
+{
+   double s = 0.0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      if(!pos.SelectByIndex(i)) continue;
+      if(pos.Magic() != InpMagic || pos.Symbol() != _Symbol) continue;
+      s += pos.Profit() + pos.Swap();
+   }
+   return s;
 }
 
 //==================================================================
@@ -3425,6 +3442,26 @@ void OnTick()
       for(int r = 0; r < RB_N; r++) g_rbHit[r] = 0;
       LogLine("DAY", StringFormat("新交易日 %s，余额 $%.2f",
               TimeToString(g_dayStart, TIME_DATE), AccountInfoDouble(ACCOUNT_BALANCE)));
+   }
+
+   //--------------------------------------------------------------
+   // 0) 篮子出场：组合浮盈/浮亏触线就全平（不停止交易，下一 tick 可重进）
+   //--------------------------------------------------------------
+   if((InpBasketTargetUSD > 0.0 || InpBasketMaxLossUSD > 0.0) && HasOpenPosition())
+   {
+      double basket = BasketNetUSD();
+      if(InpBasketTargetUSD > 0.0 && basket >= InpBasketTargetUSD)
+      {
+         CloseAll(StringFormat("篮子止盈：组合浮盈 $%.2f >= $%.2f", basket, InpBasketTargetUSD));
+         Panel(ds, "篮子止盈，全平");
+         return;
+      }
+      if(InpBasketMaxLossUSD > 0.0 && basket <= -InpBasketMaxLossUSD)
+      {
+         CloseAll(StringFormat("篮子止损：组合浮亏 $%.2f <= -$%.2f", basket, InpBasketMaxLossUSD));
+         Panel(ds, "篮子止损，全平");
+         return;
+      }
    }
 
    //--------------------------------------------------------------
