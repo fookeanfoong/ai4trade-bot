@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-02T20:50:07+00:00",
+  "updated_at": "2026-09-02T23:10:17+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,20 +11,20 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-09-02T20:00:00Z",
-      "price": 1.15929,
+      "last_candle_time": "2026-09-02T23:00:00Z",
+      "price": 1.15888,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "震荡区间",
       "bias": "中性",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 52.3,
-        "macd": "金叉 / 柱=0.000156",
-        "ema20": 1.15893,
-        "ema50": 1.15954,
-        "ema200": 1.16226,
-        "atr14_pips": 7.4,
+        "rsi14": 49.1,
+        "macd": "金叉 / 柱=0.000125",
+        "ema20": 1.15888,
+        "ema50": 1.15952,
+        "ema200": 1.16225,
+        "atr14_pips": 7.3,
         "rsi_bearish_divergence": false
       },
       "levels": {
@@ -87,7 +87,7 @@
             "阻力区被触及>=2次": true
           },
           "confirmed": 2,
-          "invalidation": "H1 收盘站上 1.16654 = 认错离场,翻回方案A",
+          "invalidation": "H1 收盘站上 1.16653 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 399,
           "notional_usd": 465.27,
