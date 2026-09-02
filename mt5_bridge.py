@@ -28,8 +28,8 @@
 
     MT5_LOGIN / MT5_PASSWORD / MT5_SERVER   显式登录(默认用终端已登录的账户)
     MT5_TERMINAL_PATH                        terminal64.exe 路径(默认自动找)
-    GOLD_MAGIC        EA 的 magic(默认 20260809)
-    GOLD_SYMBOLS      逗号分隔的黄金品种名(默认 XAUUSD,XAUUSD.,GOLD —— 按你券商的叫法加)
+    GOLD_MAGIC        EA 的 magic(默认 20260809);设 0 = 不按 magic 过滤,统计所有黄金成交
+    GOLD_SYMBOLS      只统计这些品种(逗号分隔,大小写不敏感);不设=自动识别含 xau/gold 的品种
     NOMINAL_STOP_USD  读不到订单止损时的兜底止损金额(默认 3.0,和 EA 默认一致)
     TELEGRAM_TOKEN / TELEGRAM_CHAT_ID        配了就把提醒推到手机 Telegram(免费)
 
@@ -48,10 +48,22 @@ import gold_health
 
 JOURNAL = os.environ.get("GOLD_JOURNAL_FILE", "gold_journal.json")
 ALERT_FILE = os.environ.get("GOLD_ALERT_FILE", "reports/gold_alert.txt")
+# magic:默认只统计 GoldScalper EA(20260809)下的单。设 GOLD_MAGIC=0 = 不按 magic 过滤,
+# 统计所有黄金成交(手动单、别的 EA 都算)。
 MAGIC = int(os.environ.get("GOLD_MAGIC", "20260809"))
-SYMBOLS = [s.strip() for s in os.environ.get(
-    "GOLD_SYMBOLS", "XAUUSD,XAUUSD.,XAUUSD.r,GOLD,GOLD.").split(",") if s.strip()]
+# 品种:默认自动识别任何含 "xau" 或 "gold" 的品种(兼容各家券商命名,如 xauusd.sml / XAUUSD / GOLD)。
+# 想只统计特定品种就设 GOLD_SYMBOLS=xauusd.sml(逗号分隔多个,大小写不敏感)。
+_SYMBOLS_ENV = os.environ.get("GOLD_SYMBOLS", "").strip()
+SYMBOLS = [s.strip().lower() for s in _SYMBOLS_ENV.split(",") if s.strip()] if _SYMBOLS_ENV else None
 NOMINAL_STOP_USD = float(os.environ.get("NOMINAL_STOP_USD", "3.0"))
+
+
+def is_gold(symbol: str) -> bool:
+    """判断一个品种是不是黄金。默认按 xau/gold 子串;设了 GOLD_SYMBOLS 就按精确名单。"""
+    s = (symbol or "").lower()
+    if SYMBOLS is not None:
+        return s in SYMBOLS
+    return "xau" in s or "gold" in s
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -111,9 +123,9 @@ def read_mt5_trades(days: int):
     # 按 position_id 归拢开仓/平仓 deal
     pos = {}
     for d in deals:
-        if d.magic != MAGIC:
+        if MAGIC and d.magic != MAGIC:
             continue
-        if SYMBOLS and d.symbol not in SYMBOLS:
+        if not is_gold(d.symbol):
             continue
         p = pos.setdefault(d.position_id, {"symbol": d.symbol, "in": None,
                                            "out_profit": 0.0, "out_time": None,
@@ -165,7 +177,13 @@ def read_mt5_trades(days: int):
 
     mt5.shutdown()
     entries.sort(key=lambda e: e["exit_time"])
-    print(f"[mt5] 读到 {len(entries)} 笔已平仓的黄金 EA 成交(magic {MAGIC})")
+    magic_desc = f"magic {MAGIC}" if MAGIC else "所有 magic"
+    print(f"[mt5] 读到 {len(entries)} 笔已平仓的黄金成交({magic_desc},近 {days} 天)")
+    if not entries:
+        print("[mt5] 提示:读到 0 笔。可能原因——")
+        print("      1) 这些黄金单不是 GoldScalper EA 下的 → 设环境变量 GOLD_MAGIC=0 再跑,统计所有黄金成交")
+        print("      2) 最近还没有已平仓的黄金单(未平仓的不计入)")
+        print("      3) 品种名不含 xau/gold → 设 GOLD_SYMBOLS=你的品种名")
     return entries
 
 
