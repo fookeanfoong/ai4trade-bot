@@ -80,7 +80,7 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=0
-InpAdxMin=15.0
+InpAdxMin=10.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
