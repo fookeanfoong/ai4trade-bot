@@ -86,7 +86,7 @@ InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
-InpTriggerTolATR=0.60
+InpTriggerTolATR=0.80
 InpBarCloseStrength=0.45
 InpWickRejectPct=0.70
 
@@ -249,7 +249,7 @@ InpCounterMoveBars=5
 InpCounterMoveATR=0.0
 InpCounterMoveHardATR=0.0
 InpPaBars=6
-InpPaMinATR=0.30
+InpPaMinATR=0.22
 
 ; --- 新闻事件窗口（fomc 档会覆盖这几项）---
 ; 全部列全,否则从 fomc 档切回来时这几项会残留 —— .set 只覆盖它列出的项。
