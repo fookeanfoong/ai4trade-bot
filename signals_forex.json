@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-07T03:54:04+00:00",
+  "updated_at": "2026-09-07T09:10:38+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,20 +11,20 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-09-07T03:00:00Z",
-      "price": 1.16131,
+      "last_candle_time": "2026-09-07T09:00:00Z",
+      "price": 1.16266,
       "spread_pips": null,
       "min_stop_pips": 25.0,
-      "structure": "收敛区间 (LH/HL)",
-      "bias": "中性 — 等突破",
+      "structure": "震荡区间",
+      "bias": "中性",
       "ema_stack": "均线缠绕(无排列)",
       "indicators": {
-        "rsi14": 43.9,
-        "macd": "死叉 / 柱=-7.7e-05",
-        "ema20": 1.16187,
-        "ema50": 1.16171,
-        "ema200": 1.1624,
-        "atr14_pips": 7.0,
+        "rsi14": 57.4,
+        "macd": "金叉 / 柱=0.000113",
+        "ema20": 1.16204,
+        "ema50": 1.16181,
+        "ema200": 1.16249,
+        "atr14_pips": 7.2,
         "rsi_bearish_divergence": false
       },
       "levels": {
@@ -49,12 +49,12 @@
           "size_factor": 1.0,
           "confirmations": {
             "H1收盘破阻力": false,
-            "RSI>55": false,
+            "RSI>55": true,
             "无顶背离": true,
-            "EMA20>EMA50且站上EMA20": false,
-            "MACD柱连续两根走高": false
+            "EMA20>EMA50且站上EMA20": true,
+            "MACD柱连续两根走高": true
           },
-          "confirmed": 1,
+          "confirmed": 4,
           "invalidation": "突破后 H1 收回 1.16442 下方 = 假突破,撤单转看方案B",
           "units": 800,
           "notional_usd": 931.36,
@@ -83,10 +83,10 @@
           "confirmations": {
             "阻力区拒绝K线": false,
             "RSI顶背离(必需)": false,
-            "MACD柱缩短": true,
+            "MACD柱缩短": false,
             "阻力区被触及>=2次": false
           },
-          "confirmed": 1,
+          "confirmed": 0,
           "invalidation": "H1 收盘站上 1.16463 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 399,
