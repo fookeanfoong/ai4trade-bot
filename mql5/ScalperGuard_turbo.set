@@ -136,10 +136,10 @@ InpFadeExitMinR=0.45
 ; 都当关键位,趋势里条件恒真。抬门槛 + 只认机构参考位。
 InpLevelExitMinR=1.20
 InpLevelExitKeyOnly=true
-InpExitOnStall=false
+InpExitOnStall=true
 InpStallMinutes=10
 InpStallRangeATR=0.25
-InpStallMinUSD=0.0
+InpStallMinUSD=4.0
 InpStallMinR=0.50
 InpStallNeedNoNewExtreme=true
 
