@@ -41,7 +41,9 @@ InpFixedLot=0.02
 InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
-InpEntryCooldownSec=0
+; 进场冷却 90 秒：3 个仓分开在不同信号点开，方向各自独立(可多可空)，
+; 而不是一个强信号上瞬间叠 3 个同向。配 InpAllowHedge=true 才能真正混方向。
+InpEntryCooldownSec=90
 InpProfitFloorUSD=4.7
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
