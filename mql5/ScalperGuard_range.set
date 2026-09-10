@@ -165,7 +165,8 @@ InpUseRoundNumbers=true
 InpRoundStep=10.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=0.8
+; 0 = 关掉关键位闸。吃连续段时价格常在整数关口中间,要求贴关键位会把整条腿挡在门外。
+InpRequireKeyLevelATR=0.0
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
@@ -209,7 +210,9 @@ InpRequireMtfAgree=false
 
 ; --- V2 波动率分档（规格 §13）---
 ; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
-InpUseVolRegime=true
+; false = 关掉波动率分档否决。连续段=ATR 冲高,原逻辑判 Extreme(>2.4×均值)直接停手,
+; 等于把最该做的快腿全挡掉。这套要的就是高波动趋势,不能被它否决。
+InpUseVolRegime=false
 InpAtrAvgPeriod=96
 InpVolHighMult=1.60
 InpVolExtremeMult=2.40
