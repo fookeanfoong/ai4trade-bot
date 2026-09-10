@@ -43,6 +43,21 @@ for 20+ signals before wiring execution. Why OANDA and not any MT5 broker: OANDA
 sizes in *units* (1 minimum), so a 1% risk on $200 is actually expressible — at a
 0.01-lot minimum it is not. See **[SETUP_FOREX.md](SETUP_FOREX.md)**.
 
+## Gold read/signal (GC=F, signals only)
+
+`generate_signals_gold.py` takes the **same GoldScalper rules already backtested**
+in `backtest_gold.py` (EMA20/50/200 trend + breakout/pullback, RSI/MACD confirm)
+and runs them on the latest `GC=F` bars to output a current **long / short / wait**
+read with entry, stop, target and a modest confidence — into `signals_gold.json`
+and `signals_gold.md`. Defaults to the only config that survived out-of-sample
+validation: **M15 · $3 stop · RR 1:2** (see `gold_health.py`).
+
+It runs on the `gold` workflow a few times each weekday (premarket + intraday),
+and **stands down to `wait` on any CPI/NFP/FOMC day** it detects in `news_gold.json`.
+It **does not place orders** — it is a disciplined read, not a predictor. The
+validated edge is razor-thin (+0.091R), so the "confidence" is signal *strength*,
+not a win rate. Direction is still your call.
+
 ## One-time deploy (~5 min)
 
 1. Create a **new GitHub repo** (private is fine), e.g. `ai4trade-bot`.

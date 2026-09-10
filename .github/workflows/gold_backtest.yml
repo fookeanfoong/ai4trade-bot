@@ -9,7 +9,9 @@ name: gold
 on:
   schedule:
     - cron: "20 6 * * 1"      # 每周一:重跑回测与参数研究
-    - cron: "0 6 * * 1-5"     # 工作日每天:开盘前的新闻简报 + 事件封锁检测
+    - cron: "0 6 * * 1-5"     # 工作日盘前:新闻简报 + 事件封锁检测 + 读盘信号
+    - cron: "0 13 * * 1-5"    # 工作日 ~美股开盘(EDT 9am):盘中读盘信号刷新
+    - cron: "0 17 * * 1-5"    # 工作日 ~伦敦/纽约重叠时段:再刷新一次
   workflow_dispatch:
 
 concurrency:
@@ -28,15 +30,21 @@ jobs:
         with:
           python-version: "3.12"
 
-      # 每天都跑:开盘前的新闻简报 + 高影响事件检测。
+      # 每次都跑:开盘前的新闻简报 + 高影响事件检测。
       # 机器只从这里取「今天该不该停手」,方向判断留给人。
       - name: 黄金新闻简报 + 事件封锁检测
         continue-on-error: true
         run: python news_gold.py
 
-      # 回测/研究比较重,只在周一那次跑。
+      # 每次都跑:实时读盘信号(复用 backtest_gold 的回测规则)。
+      # 必须在 news_gold.py 之后,才能读到当天最新的事件封锁状态。
+      - name: 黄金读盘信号 -> signals_gold.json / .md
+        continue-on-error: true
+        run: python generate_signals_gold.py
+
+      # 回测/研究比较重,只在周一那次(或手动触发)跑,盘中刷新不重复跑。
       - name: Backtest — 固定紧止损(参考口径) vs ATR止损
-        if: github.event.schedule != '0 6 * * 1-5' 
+        if: github.event.schedule == '20 6 * * 1' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         run: |
           set -e
@@ -75,7 +83,7 @@ jobs:
           run_one "\$200 · ATR止损(对照组)"                  200 0   1.5
 
       - name: Research — 周期 × 止损 网格,带样本外验证
-        if: github.event.schedule != '0 6 * * 1-5'
+        if: github.event.schedule == '20 6 * * 1' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         env:
           GOLD_EQUITY: "200"
