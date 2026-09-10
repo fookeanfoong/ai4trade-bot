@@ -1,8 +1,10 @@
 ; ============================================================================
 ; ScalperGuard_range —— 与 turbo 同款打法，手数 0.02、开仓 3 单。
 ;   入场/方向/关键位/日限 全部和 turbo 一致。
-;   出场：单笔止损固定 \$20(SlMin=SlMax=金价10、QuickLoss=\$20)、止盈\$9.3/保底\$4.7；
-;   另加篮子止盈：3 单浮盈加总到 \$20 就全平(InpBasketTargetUSD=20)。
+;   打法=趋势跟踪吃「连涨→连跌」连续段：小止损 \$20，让赢单跟着腿跑。
+;   出场链：1R(\$20)部分止盈+移保本 -> 1.5×ATR 追踪(只收紧) -> 动量/结构掉头即锁利
+;   (ExitOnMomentumFade，专治上腿转下腿) -> 回吐 35%(先到 1.5R)兜底 -> 远端 TP2=4R 封顶。
+;   拆掉了快进快出三闸(QuickProfit/保底/篮子全平)——那些正好把连续段的大头砍掉。
 ; ============================================================================
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
@@ -44,7 +46,7 @@ InpVwapTouchATR=0.50
 ; 进场冷却 90 秒：3 个仓分开在不同信号点开，方向各自独立(可多可空)，
 ; 而不是一个强信号上瞬间叠 3 个同向。配 InpAllowHedge=true 才能真正混方向。
 InpEntryCooldownSec=90
-InpProfitFloorUSD=4.7
+InpProfitFloorUSD=0.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -128,15 +130,15 @@ InpMaxFakeBreakouts=5
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
 InpExitOnMomentumFade=true
-InpTP1_R=99.0
-InpTP2_R=1.8
+InpTP1_R=1.0
+InpTP2_R=4.0
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
-InpGiveBackPct=0.0
-InpGiveBackMinR=0.60
-InpTrailATRMult=1.0
+InpGiveBackPct=35.0
+InpGiveBackMinR=1.5
+InpTrailATRMult=1.5
 InpFadeExitMinR=0.45
 ; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
 ; 而计划 RR 均值 1.67 —— 只拿到计划的 48%。原因是该出场把任何 M5 微型摆动点
@@ -179,10 +181,10 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
-InpQuickProfitUSD=9.3
+; 快进快出闸全关：让赢单跟着连续段跑，别在 $9.3/篮子$20 就砍掉。
+InpQuickProfitUSD=0.0
 InpQuickLossUSD=20.0
-; 篮子出场：3 单浮盈加总到 $20 就全平（组合止盈）。
-InpBasketTargetUSD=20.0
+InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=1000.0
