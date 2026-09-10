@@ -1,7 +1,7 @@
 ; ============================================================================
 ; ScalperGuard_range —— 与 turbo 同款打法，手数 0.02、开仓 3 单。
 ;   入场/方向/关键位/日限 全部和 turbo 一致。
-;   出场：单笔止损固定 \$50(SlMin=SlMax=金价25、QuickLoss=\$50)、止盈\$9.3/保底\$4.7；
+;   出场：单笔止损固定 \$20(SlMin=SlMax=金价10、QuickLoss=\$20)、止盈\$9.3/保底\$4.7；
 ;   另加篮子止盈：3 单浮盈加总到 \$20 就全平(InpBasketTargetUSD=20)。
 ; ============================================================================
 ; ============================================================================
@@ -106,9 +106,9 @@ InpAtrMinUSD=0.40
 InpAtrMaxUSD=15.00
 
 ; --- 止损区间 ---
-; 固定 $50 止损：0.02 手上 $1 金价=$2 盈亏，$50 止损=金价 $25 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=25.00
-InpSlMaxUSD=25.10
+; 固定 $20 止损：0.02 手上 $1 金价=$2 盈亏，$20 止损=金价 $10 距离。SlMin=SlMax 钉死。
+InpSlMinUSD=10.00
+InpSlMaxUSD=10.10
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -180,7 +180,7 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 InpQuickProfitUSD=9.3
-InpQuickLossUSD=50.0
+InpQuickLossUSD=20.0
 ; 篮子出场：3 单浮盈加总到 $20 就全平（组合止盈）。
 InpBasketTargetUSD=20.0
 InpBasketMaxLossUSD=0.0
