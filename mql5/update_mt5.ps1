@@ -2,7 +2,7 @@
 #  XAUUSD ScalperGuard —— 一键更新到 MT5
 #
 #  用法（PowerShell，普通权限即可）：
-#      iwr -useb "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/claude/gold-mt5-auto-trading-lr5tju/mql5/update_mt5.ps1" | iex
+#      iwr -useb "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/scalperguard-live/mql5/update_mt5.ps1" | iex
 #
 #  ⚠️ 跑之前先把 MetaEditor 里打开的 XAUUSD_ScalperGuard.mq5 **关掉**（标签页的 X）。
 #     MetaEditor 会把文件缓存在编辑器缓冲区里，磁盘上换了新文件它也未必重新加载，
@@ -16,7 +16,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$Base  = "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/claude/gold-mt5-auto-trading-lr5tju/mql5"
+$Base  = "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/scalperguard-live/mql5"
 $Files = @{
     "XAUUSD_ScalperGuard.mq5"     = "Experts"
     "ScalperGuard_aggressive.set" = "Presets"
