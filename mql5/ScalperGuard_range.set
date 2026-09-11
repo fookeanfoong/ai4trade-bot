@@ -186,7 +186,8 @@ InpRiskCapUSD=0.0
 InpQuickProfitUSD=2.0
 InpQuickLossUSD=20.0
 InpBasketTargetUSD=0.0
-InpBasketMaxLossUSD=0.0
+; 篮子止损：3 单浮亏加总到 -$25 就全平。与单笔 -$20 止损并存，谁先到谁触发。
+InpBasketMaxLossUSD=25.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
 InpVirtualBalanceUSD=1000.0
 
