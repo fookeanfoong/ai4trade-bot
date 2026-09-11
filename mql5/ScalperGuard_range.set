@@ -106,9 +106,9 @@ InpAtrMinUSD=0.40
 InpAtrMaxUSD=15.00
 
 ; --- 止损区间 ---
-; 固定 $20 止损：0.02 手上 $1 金价=$2 盈亏，$20 止损=金价 $10 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=10.00
-InpSlMaxUSD=10.10
+; 固定 $30 止损：0.02 手上 $1 金价=$2 盈亏，$30 止损=金价 $15 距离。SlMin=SlMax 钉死。
+InpSlMinUSD=15.00
+InpSlMaxUSD=15.10
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -182,7 +182,7 @@ InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $2 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
 InpQuickProfitUSD=2.0
-InpQuickLossUSD=20.0
+InpQuickLossUSD=30.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -228,7 +228,7 @@ InpReducedAtPct=15.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=3
+InpMaxPositions=5
 InpMaxCombinedRiskPct=10.0
 InpMaxMarginPctPerPos=35.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
