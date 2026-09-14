@@ -222,8 +222,8 @@ InpVolHighSizeMult=0.60
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
 InpDailyTargetPct=100000.0
 InpDailyMaxLossPct=100000.0
-InpConservativeAtPct=10.0
-InpReducedAtPct=15.0
+InpConservativeAtPct=100000.0
+InpReducedAtPct=100000.0
 
 ; --- 多仓并行（规格 §30）---
 ; 加仓 = 往同一笔盈利单上追;多仓 = 各自独立的 setup + 各自独立止损。
@@ -241,7 +241,7 @@ InpAllowHedge=true
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
 InpUseLooseEntry=true
-InpLooseMaxDistATR=1.50
+InpLooseMaxDistATR=4.00
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
 ; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
