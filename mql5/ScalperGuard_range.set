@@ -1,9 +1,9 @@
 ; ============================================================================
 ; ScalperGuard_range —— 与 turbo 同款打法，手数 0.02、开仓 3 单。
 ;   入场/方向/关键位/日限 全部和 turbo 一致。
-;   打法=极速剥头皮·看走势快进:方向按结构+推进(DirectionMode=4,走势判向)+宽松入场(顺势收盘就进)，冷却 0，
-;   净赚 \$2 立刻平(QuickProfitUSD=2)。波动率/关键位/新闻 三闸全关，不挑位置也不躲数据。
-;   单笔止损 \$50(金价50, 0.01手)，止盈 \$1.5，日亏 \$100 封顶。⚠️ \$1.5 赢配 \$50 亏=保本胜率需 97%，一笔满止损吃 33 笔。
+;   打法=走势顺势·让赢单跑:方向按结构+推进(DirectionMode=4)+宽松入场，冷却 0，波动率/关键位/新闻三闸全关。
+;   出场=修好赔率:拆掉$1.5止盈盖子，1R部分止盈+移保本 -> 1.5×ATR追踪 -> TP2=2R，动量掉头锁利。
+;   小止损:结构止损跟1.5×ATR(0.01手≈$8-12)。0.01手、3单、日亏$100封顶。1:2下保本胜率仅需34%。
 ; ============================================================================
 ; ============================================================================
 ; ScalperGuard_turbo —— 极激进"顺K线立即进、快进快出"(demo 测试用)。
@@ -109,11 +109,11 @@ InpAtrMaxUSD=40.00
 
 ; --- 止损区间 ---
 ; 固定 $50 止损：0.01 手上 $1 金价=$1 盈亏，$50 止损=金价 $50 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=50.00
-InpSlMaxUSD=50.10
+InpSlMinUSD=1.20
+InpSlMaxUSD=12.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=0.0
+InpSlMaxATRMult=1.5
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -130,15 +130,15 @@ InpMaxFakeBreakouts=5
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
 InpExitOnMomentumFade=true
-InpTP1_R=99.0
-InpTP2_R=1.8
+InpTP1_R=1.0
+InpTP2_R=2.0
 InpPartialClosePct=50.0
 InpBreakevenBufferATR=0.05
 InpBreakEvenR=0.0
 InpBreakEvenUSD=0.0
 InpGiveBackPct=0.0
 InpGiveBackMinR=0.60
-InpTrailATRMult=1.0
+InpTrailATRMult=1.5
 InpFadeExitMinR=0.45
 ; 实测:11/18 笔出场是"逼近关键位提前平仓",R 密集落在 0.70~0.82(阈值本身),
 ; 而计划 RR 均值 1.67 —— 只拿到计划的 48%。原因是该出场把任何 M5 微型摆动点
@@ -183,8 +183,8 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
-InpQuickProfitUSD=1.5
-InpQuickLossUSD=50.0
+InpQuickProfitUSD=0.0
+InpQuickLossUSD=0.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
