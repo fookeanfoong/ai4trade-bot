@@ -183,7 +183,7 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
-InpQuickProfitUSD=0.0
+InpQuickProfitUSD=1.5
 InpQuickLossUSD=0.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
