@@ -231,7 +231,7 @@ InpReducedAtPct=15.0
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
 InpMaxPositions=3
-InpMaxCombinedRiskPct=1000.0
+InpMaxCombinedRiskPct=10.0
 InpMaxMarginPctPerPos=35.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
 InpAllowHedge=true
