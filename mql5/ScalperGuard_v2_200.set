@@ -62,26 +62,26 @@ InpFlatAllBeforeHour=23
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
 ; 0.60 / 0.25 会让亚洲盘也能过。代价明确：$0.40 点差配 $3 止损 = 每笔先付掉
 ; 13% 的风险额度。采样期接受，评估期必须把这笔成本从结果里扣回去。
-InpMaxSpreadUSD=0.35
-InpSpreadVsATRMax=0.12
+InpMaxSpreadUSD=0.60
+InpSpreadVsATRMax=0.20
 
 ; --- M5 趋势判定：只看均线排列，不要求收盘价站在慢线一侧 ---
 ; 实测拦路的是 "趋势不一致 HTF=1 LTF=0"：EMA20>EMA50(结构仍多头)但收盘跌破
 ; EMA50 时 LtfTrend 返回 0。而那正是入场 B(趋势回调)想要的位置 —— 等于这个
 ; 策略的回调入场被它自己的趋势过滤挡住了。
-InpLtfRequireCloseSide=true
+InpLtfRequireCloseSide=false
 ; H1 原本要三条同时成立:快线>慢线、收盘>快线、快线仍在同向移动。
 ; 实测拦路的是 "趋势不一致 HTF=0" —— 缺任何一条 H1 就判无趋势,信号在第一步被毙。
 ; 采样期只保留"快线>慢线"这一条,后两条关掉。
 InpHtfRequireCloseSide=true
-InpHtfRequireSlope=true
+InpHtfRequireSlope=false
 
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=7
+InpMinScore=4
 InpEntryTF=0
-InpAdxMin=25.0
+InpAdxMin=18.0
 InpMinRR=1.5
 InpBreakoutLookback=20
 
@@ -115,8 +115,8 @@ InpSlMaxATRMult=0.0
 ; 直接删掉这个闸门的话，这个问题永远没有答案。
 InpUseMarketQuality=true
 InpMinRangeATR=2.5
-InpMaxSmallBodyPct=50.0
-InpMaxFakeBreakouts=2
+InpMaxSmallBodyPct=65.0
+InpMaxFakeBreakouts=4
 
 ; --- 持仓管理：维持原样，这些不是"过滤器"，是出场逻辑 ---
 ; 这里把出场参数**全部列全**（哪怕等于代码默认值）。
@@ -159,7 +159,7 @@ InpUseRoundNumbers=true
 InpRoundStep=50.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=0.5
+InpRequireKeyLevelATR=1.5
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
@@ -187,8 +187,8 @@ InpVirtualBalanceUSD=80.0
 InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=7
-InpScoreMinA=8
+InpScoreMinB=5
+InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=0.5
 InpRiskPctA=0.8
@@ -198,7 +198,7 @@ InpRiskPctAPlus=1.0
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
 InpUseBOS=true
 InpBosBufferATR=0.05
-InpRequireMtfAgree=true
+InpRequireMtfAgree=false
 
 ; --- V2 波动率分档（规格 §13）---
 ; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
@@ -241,9 +241,9 @@ InpLooseMaxDistATR=1.20
 InpDirectionMode=1
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
-InpConflictAsVeto=true
+InpConflictAsVeto=false
 InpInvertSignals=false
-InpTrendVeto=true
+InpTrendVeto=false
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=5
