@@ -73,15 +73,15 @@ InpLtfRequireCloseSide=false
 ; H1 原本要三条同时成立:快线>慢线、收盘>快线、快线仍在同向移动。
 ; 实测拦路的是 "趋势不一致 HTF=0" —— 缺任何一条 H1 就判无趋势,信号在第一步被毙。
 ; 采样期只保留"快线>慢线"这一条,后两条关掉。
-InpHtfRequireCloseSide=true
+InpHtfRequireCloseSide=false
 InpHtfRequireSlope=false
 
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
-InpMinScore=4
+InpMinScore=3
 InpEntryTF=0
-InpAdxMin=18.0
+InpAdxMin=12.0
 InpMinRR=1.5
 InpBreakoutLookback=20
 
@@ -113,7 +113,7 @@ InpSlMaxATRMult=0.0
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
 ; 「在高频假突破/横盘的行情里做的单，表现是不是真的更差」。
 ; 直接删掉这个闸门的话，这个问题永远没有答案。
-InpUseMarketQuality=true
+InpUseMarketQuality=false
 InpMinRangeATR=2.5
 InpMaxSmallBodyPct=65.0
 InpMaxFakeBreakouts=4
@@ -161,7 +161,7 @@ InpUseRoundNumbers=true
 InpRoundStep=50.0
 InpAsiaStartHour=3
 InpAsiaEndHour=10
-InpRequireKeyLevelATR=1.5
+InpRequireKeyLevelATR=0.0
 ; 刺穿深度的上下限是关键:没有上限的话,任何真突破都会被误判成扫损,
 ; 然后就在趋势反方向反复接刀。
 InpUseSweepEntry=true
@@ -189,7 +189,7 @@ InpVirtualBalanceUSD=80.0
 InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=5
+InpScoreMinB=3
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=0.5
@@ -204,7 +204,7 @@ InpRequireMtfAgree=false
 
 ; --- V2 波动率分档（规格 §13）---
 ; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
-InpUseVolRegime=true
+InpUseVolRegime=false
 InpAtrAvgPeriod=96
 InpVolHighMult=1.60
 InpVolExtremeMult=2.40
