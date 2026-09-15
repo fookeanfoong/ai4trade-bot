@@ -333,6 +333,10 @@ input double   InpPartialClosePct    = 50.0;    // TP1 平仓比例 %
 input double   InpBreakevenBufferATR = 0.05;    // 保本止损缓冲（ATR 倍数）
 input double   InpTrailATRMult       = 1.0;     // TP1 后 ATR 追踪止损系数
 input int      InpMaxHoldMinutes     = 120;     // 单笔最长持仓分钟数（短线）
+// 亏损方向的时间离场：净亏达到 InpLossCutUSD 且持仓已超过 InpLossCutMinutes 分钟仍不回本，
+// 就提前平掉（比硬止损早）。0 = 关。用来砍「卡在半路一直亏着、迟迟不到硬止损」的死单。
+input double   InpLossCutUSD         = 0.0;     // 净亏达到该$(且超时)即提前离场，0=关
+input int      InpLossCutMinutes     = 10;      // 配合 InpLossCutUSD 的持仓分钟门槛
 input bool     InpExitOnMomentumFade = true;    // 动量衰竭提前离场
 // 这两个门槛原先写死在 ManagePositions 里,是「快进快出」最直接的两个旋钮:
 // 调低 = 更早落袋、持仓更短、胜率更高但每笔更小。
@@ -2633,6 +2637,25 @@ void ManagePositions(double atr)
          LogLine("EXIT", StringFormat("#%I64u 超过最长持仓 %d 分钟，%.2fR 离场", tk, InpMaxHoldMinutes, rMult));
          trade.PositionClose(tk);
          continue;
+      }
+
+      // --- 亏损方向的时间离场：亏着一段时间还不回来就提前砍（比硬止损早）---
+      // 毛利粗筛避免每 tick 翻手续费历史；过门槛再用净额确认。
+      if(InpLossCutUSD > 0.0 && (TimeCurrent() - openTime) >= InpLossCutMinutes * 60
+         && (pos.Profit() + pos.Swap()) <= -InpLossCutUSD)
+      {
+         double nlUSD = PositionNetUSD();
+         if(nlUSD <= -InpLossCutUSD)
+         {
+            if(trade.PositionClose(tk))
+               LogLine("LOSSCUT", StringFormat(
+                       "#%I64u 净亏 $%.2f、持仓超 %d 分钟仍不回，提前离场（%.2fR）",
+                       tk, nlUSD, InpLossCutMinutes, rMult));
+            else
+               LogLine("ERROR", StringFormat("#%I64u 亏损时间离场失败 %d %s",
+                       tk, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+            continue;
+         }
       }
 
       // --- 收盘前清仓 ---

@@ -128,6 +128,8 @@ InpTrailATRMult=0.6
 
 ; 最长持仓 45 分钟 = 9 根 M5。拖不动就走,不占着仓位等
 InpMaxHoldMinutes=45
+InpLossCutUSD=0.0
+InpLossCutMinutes=10
 
 ; 提前离场的两个门槛同步下调:动量一转就跑、贴近关键位就落袋
 InpExitOnMomentumFade=true
