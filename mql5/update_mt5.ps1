@@ -35,6 +35,7 @@ $Files = @{
     "ScalperGuard_basket.set"     = "Presets"
     "ScalperGuard_turbofx.set"    = "Presets"
     "ScalperGuard_micro.set"      = "Presets"
+    "ScalperGuard_rangefx.set"    = "Presets"
 }
 
 # 新版必须包含 / 必须不包含的标记。命中即证明拿到的是修好之后的版本。
