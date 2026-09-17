@@ -47,8 +47,8 @@ InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 ; 冷却 0 秒：随看随进，顺当前K线方向立刻开仓（配 DirectionMode=5）。
-InpEntryCooldownSec=0
-InpProfitFloorUSD=1.0
+InpEntryCooldownSec=30
+InpProfitFloorUSD=0.8
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -64,14 +64,14 @@ InpStopAfterConsecLoss=100000
 InpObserveAfterConsecLoss=100000
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
-InpSessionStartHour=0
-InpSessionEndHour=23
-InpFlatAllBeforeHour=23
+InpSessionStartHour=10
+InpSessionEndHour=20
+InpFlatAllBeforeHour=20
 
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
 ; 0.60 / 0.25 会让亚洲盘也能过。代价明确：$0.40 点差配 $3 止损 = 每笔先付掉
 ; 13% 的风险额度。采样期接受，评估期必须把这笔成本从结果里扣回去。
-InpMaxSpreadUSD=0.00060
+InpMaxSpreadUSD=0.00025
 InpSpreadVsATRMax=0.50
 
 ; --- M5 趋势判定：只看均线排列，不要求收盘价站在慢线一侧 ---
@@ -106,15 +106,15 @@ InpWickRejectPct=0.70
 InpLevelIgnoreR=1.20
 
 ; --- 波动率区间：放宽两头，别在安静时段直接哑火 ---
-InpAtrMinUSD=0.00020
+InpAtrMinUSD=0.00010
 ; ATR 上限抬到 40：今天金价 ATR 冲到 16.9，原 15 上限判"波动异常"挡住进场。
 ; 要最容易进场就别设太低。40 基本覆盖极端行情，仍留一道防天文级跳空的兜底。
-InpAtrMaxUSD=0.02000
+InpAtrMaxUSD=0.01000
 
 ; --- 止损区间 ---
 ; 固定 $50 止损：0.01 手上 $1 金价=$1 盈亏，$50 止损=金价 $50 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=0.01040
-InpSlMaxUSD=0.01060
+InpSlMinUSD=0.00080
+InpSlMaxUSD=0.00082
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -133,7 +133,7 @@ InpMaxFakeBreakouts=5
 ; .set 只会覆盖它列出的项 —— 少列一个，从 scalp 档切回来时那一项就还留着
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
-InpLossCutUSD=10.0
+InpLossCutUSD=0.0
 InpLossCutMinutes=10
 InpExitOnMomentumFade=true
 InpTP1_R=1.0
@@ -161,7 +161,7 @@ InpStallNeedNoNewExtreme=true
 ; --- 新闻过滤：保留 ---
 ; false = 关掉新闻窗口拦截，数据时段也照进(要最容易进场)。⚠️代价:数据出炉那几秒
 ; 点差爆开、滑点可能穿过 $20 止损，实亏 > $20。
-InpUseNewsFilter=false
+InpUseNewsFilter=true
 
 ; --- 机构参考位 + 扫损反手（见 GOLD_PRO_TECHNIQUES.md）---
 ; 前日高低/亚洲区间/整数关口:客观可算,不需人工标注。
@@ -190,7 +190,7 @@ InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
 InpQuickProfitUSD=1.5
-InpQuickLossUSD=25.0
+InpQuickLossUSD=2.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -226,8 +226,8 @@ InpVolHighSizeMult=0.60
 
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
-InpDailyTargetPct=140.0
-InpDailyMaxLossPct=100000.0
+InpDailyTargetPct=100.0
+InpDailyMaxLossPct=50.0
 InpConservativeAtPct=100000.0
 InpReducedAtPct=100000.0
 
@@ -236,7 +236,7 @@ InpReducedAtPct=100000.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=3
+InpMaxPositions=2
 InpMaxCombinedRiskPct=1000.0
 InpMaxMarginPctPerPos=35.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
