@@ -45,7 +45,7 @@ InpEntryMode=0
 InpVwapTouchATR=0.50
 ; 冷却 0 秒：随看随进，顺当前K线方向立刻开仓（配 DirectionMode=5）。
 InpEntryCooldownSec=60
-InpProfitFloorUSD=3.0
+InpProfitFloorUSD=0.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -79,7 +79,7 @@ InpLtfRequireCloseSide=false
 ; H1 原本要三条同时成立:快线>慢线、收盘>快线、快线仍在同向移动。
 ; 实测拦路的是 "趋势不一致 HTF=0" —— 缺任何一条 H1 就判无趋势,信号在第一步被毙。
 ; 采样期只保留"快线>慢线"这一条,后两条关掉。
-InpHtfRequireCloseSide=true
+InpHtfRequireCloseSide=false
 InpHtfRequireSlope=false
 
 ; --- 信号门槛 ---
@@ -87,14 +87,14 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=15.0
+InpAdxMin=10.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
 InpTriggerTolATR=0.60
-InpBarCloseStrength=0.60
+InpBarCloseStrength=0.55
 InpWickRejectPct=0.70
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
@@ -110,11 +110,11 @@ InpAtrMaxUSD=40.00
 
 ; --- 止损区间 ---
 ; 固定 $50 止损：0.01 手上 $1 金价=$1 盈亏，$50 止损=金价 $50 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=2.50
-InpSlMaxUSD=2.60
+InpSlMinUSD=3.00
+InpSlMaxUSD=6.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
-InpSlMaxATRMult=0.0
+InpSlMaxATRMult=1.0
 
 ; --- 市场质量闸门：不否决，但照样计算并随每笔成交记录 ---
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
@@ -186,8 +186,8 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
-InpQuickProfitUSD=4.0
-InpQuickLossUSD=10.0
+InpQuickProfitUSD=0.0
+InpQuickLossUSD=24.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -243,8 +243,8 @@ InpAllowHedge=true
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=false
-InpLooseMaxDistATR=4.00
+InpUseLooseEntry=true
+InpLooseMaxDistATR=2.5
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
 ; 实测拦路 "趋势不一致 HTF=1 LTF=-1" —— 两周期方向明确但相反,那正是**回调**。
