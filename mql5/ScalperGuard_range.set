@@ -44,8 +44,8 @@ InpClampWideStop=true
 InpEntryMode=0
 InpVwapTouchATR=0.50
 ; 冷却 0 秒：随看随进，顺当前K线方向立刻开仓（配 DirectionMode=5）。
-InpEntryCooldownSec=0
-InpProfitFloorUSD=0.5
+InpEntryCooldownSec=60
+InpProfitFloorUSD=0.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -87,7 +87,7 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=0.0
+InpAdxMin=15.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -110,8 +110,8 @@ InpAtrMaxUSD=40.00
 
 ; --- 止损区间 ---
 ; 固定 $50 止损：0.01 手上 $1 金价=$1 盈亏，$50 止损=金价 $50 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=12.50
-InpSlMaxUSD=12.60
+InpSlMinUSD=20.00
+InpSlMaxUSD=20.10
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
@@ -158,7 +158,7 @@ InpStallNeedNoNewExtreme=true
 ; --- 新闻过滤：保留 ---
 ; false = 关掉新闻窗口拦截，数据时段也照进(要最容易进场)。⚠️代价:数据出炉那几秒
 ; 点差爆开、滑点可能穿过 $20 止损，实亏 > $20。
-InpUseNewsFilter=false
+InpUseNewsFilter=true
 
 ; --- 机构参考位 + 扫损反手（见 GOLD_PRO_TECHNIQUES.md）---
 ; 前日高低/亚洲区间/整数关口:客观可算,不需人工标注。
@@ -186,8 +186,8 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
-InpQuickProfitUSD=1.0
-InpQuickLossUSD=25.0
+InpQuickProfitUSD=0.0
+InpQuickLossUSD=20.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -243,7 +243,7 @@ InpAllowHedge=true
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=true
+InpUseLooseEntry=false
 InpLooseMaxDistATR=4.00
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
@@ -251,12 +251,12 @@ InpLooseMaxDistATR=4.00
 ; 而入场 B 就叫"趋势回调",它等的就是这一刻。要求两周期同向 = 把自己的回调
 ; 入场毙掉;「结构冲突」「动量冲突」同理,回调时必然冲突。
 ; 5 = 单根K线颜色：上根收阳买/收阴卖，每根都强制触发=进场最多(要最容易进场就用这个)。
-InpDirectionMode=5
+InpDirectionMode=4
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
-InpTrendVeto=false
+InpTrendVeto=true
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=5
