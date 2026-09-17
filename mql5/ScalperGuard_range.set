@@ -110,8 +110,8 @@ InpAtrMaxUSD=40.00
 
 ; --- 止损区间 ---
 ; 固定 $50 止损：0.01 手上 $1 金价=$1 盈亏，$50 止损=金价 $50 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=3.12
-InpSlMaxUSD=3.15
+InpSlMinUSD=12.50
+InpSlMaxUSD=12.60
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=0.0
