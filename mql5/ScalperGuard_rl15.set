@@ -56,7 +56,7 @@ InpConservativeAt=1000.0
 InpReducedAt=1500.0
 
 ; --- 放宽停手条件：采样期要的是笔数 ---
-InpMaxTradesPerDay=8
+InpMaxTradesPerDay=20
 InpStopAfterConsecLoss=100000
 InpObserveAfterConsecLoss=100000
 
@@ -110,8 +110,8 @@ InpAtrMaxUSD=40.00
 
 ; --- 止损区间 ---
 ; 固定 $50 止损：0.01 手上 $1 金价=$1 盈亏，$50 止损=金价 $50 距离。SlMin=SlMax 钉死。
-InpSlMinUSD=3.00
-InpSlMaxUSD=5.00
+InpSlMinUSD=2.50
+InpSlMaxUSD=4.00
 ; 实测 ATR 从 3.38 涨到 7.04 后出现 "结构止损过宽 17.83 > 15.00" —— 固定上限
 ; 是按低波动定的,必须跟着 ATR 走。3×ATR 在 ATR=7 时是 21,接得住。
 InpSlMaxATRMult=1.0
@@ -130,7 +130,7 @@ InpMaxFakeBreakouts=12
 ; .set 只会覆盖它列出的项 —— 少列一个，从 scalp 档切回来时那一项就还留着
 ; 快出的值，A/B 对比直接被污染。两档必须互为完整快照。
 InpMaxHoldMinutes=180
-InpLossCutUSD=12.0
+InpLossCutUSD=0.0
 InpLossCutMinutes=20
 InpExitOnMomentumFade=false
 InpTP1_R=1.0
@@ -187,7 +187,7 @@ InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
 InpQuickProfitUSD=0.0
-InpQuickLossUSD=18.0
+InpQuickLossUSD=13.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -223,8 +223,8 @@ InpVolHighSizeMult=0.60
 
 ; --- V2 日内限额改百分比（规格 §21/§23）---
 ; 规格的 +$50/-$30 是按 $200 写的。用百分比后同一份规格在任何余额上语义一致。
-InpDailyTargetPct=60.0
-InpDailyMaxLossPct=40.0
+InpDailyTargetPct=200.0
+InpDailyMaxLossPct=25.0
 InpConservativeAtPct=100000.0
 InpReducedAtPct=100000.0
 
