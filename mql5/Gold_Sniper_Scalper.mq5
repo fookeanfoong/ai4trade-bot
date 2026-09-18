@@ -62,7 +62,7 @@ input int  Input_LondonOpenHour      = 7;
 input int  Input_NYCloseHour         = 18;                            
 
 input group "════════ SİNYAL VE GİRİŞ ALGORİTMASI ════════"
-input bool   Input_UseRsiFilter         = true;                       // Giriş tutarlılığı için RSI filtresini kullan (Önerilen)
+input bool   Input_UseRsiFilter         = false;                       // Giriş tutarlılığı için RSI filtresini kullan (Önerilen)
 input bool   Input_UseDynamicRsi        = true;                       // DİNAMİK RSI: Sakin piyasada (ADX < 25) sınırları esnetir, ralli anında daraltır
 input double Input_RSIOverbought        = 70.0;                       // Güçlü trendde (ADX >= 25) SELL için azami RSI sınırı
 input double Input_RSIOversold          = 30.0;                       // Güçlü trendde (ADX >= 25) BUY için asgari RSI sınırı
