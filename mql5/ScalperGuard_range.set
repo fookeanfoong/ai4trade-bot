@@ -120,7 +120,7 @@ InpSlMaxATRMult=0.75
 ; 这是这一档里最重要的一行。关掉否决 = 拿到样本；保留记录 = 事后能回答
 ; 「在高频假突破/横盘的行情里做的单，表现是不是真的更差」。
 ; 直接删掉这个闸门的话，这个问题永远没有答案。
-InpUseMarketQuality=true
+InpUseMarketQuality=false
 InpMinRangeATR=2.5
 InpMaxSmallBodyPct=70.0
 InpMaxFakeBreakouts=5
@@ -256,7 +256,7 @@ InpDirectionMode=1
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
 InpInvertSignals=false
-InpTrendVeto=true
+InpTrendVeto=false
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=5
