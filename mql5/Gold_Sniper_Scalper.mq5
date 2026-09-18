@@ -26,27 +26,27 @@ string Input_BotTitle = "Turkmen Gold Scalper v16.30";
 
 input group "════════ HACİM VE PORTFÖY AYARLARI ════════"
 input ENUM_TIMEFRAMES      Input_SignalTF          = PERIOD_M5;
-input bool                 Input_UseAutoLot        = true;            // Dinamik Hacim: Bakiye büyüdükçe lot oranını otomatik ayarlar
+input bool                 Input_UseAutoLot        = false;            // Dinamik Hacim: Bakiye büyüdükçe lot oranını otomatik ayarlar
 input double               Input_AutoLotStep_USD   = 60.0;            // Her 60$ bakiye artışında başlangıç lotunu 0.01 artırır
-input double               Input_InitialLot        = 0.01;            // Dinamik Hacim kapalıyken kullanılacak sabit başlangıç lotu
+input double               Input_InitialLot        = 0.02;            // Dinamik Hacim kapalıyken kullanılacak sabit başlangıç lotu
 input ENUM_LOT_PROGRESSION Input_LotProgression    = PROGRESSION_MULT; // Kademeli lot artış modeli (Çarpanlı)
 input double               Input_LotMultiplier     = 1.6;             // Kademe lot çarpanı (1.6x)
-input int                  Input_GridStepPoints    = 150;             // İki kademe arasındaki asgari mesafe (150 Puan = $1.50)
+input int                  Input_GridStepPoints    = 1500;             // İki kademe arasındaki asgari mesafe (150 Puan = $1.50)
 input int                  Input_MaxGridLevels     = 8;               // Tek bir yönde açılabilecek maksimum kademe sayısı (Maks 8)
 
 input group "════════ HEDEF VE LİMİT AYARLARI ════════"
 input bool   Input_UseMultiTP           = true;                       // Kademeli Kâr Al: İlk girişte 1 yerine 3 işlem açıp sırayla kapatır
-input int    Input_MultiTP_StepPoints   = 30;                         // Kademeli TP Adımı: Her işlem arasındaki hedef farkı (Örn: 40, 70, 100 puan)
+input int    Input_MultiTP_StepPoints   = 300;                         // Kademeli TP Adımı: Her işlem arasındaki hedef farkı (Örn: 40, 70, 100 puan)
 input bool   Input_UseSmartTrailing     = true;                       // AKILLI TP TAKİP: 40 puanı aşınca fiyat fırlarsa kârı izler, geri dönerse kapatır
-input int    Input_TrailActivationPoints= 40;                         // Takip etmenin başlayacağı asgari kâr puanı
-input int    Input_TrailStepPoints      = 15;                         // Geri çekilme toleransı (Puan bazında. En yüksek kârdan bu kadar düşerse kapatır)
-input int    Input_BasketTP_Points      = 40;                         // Sepet maliyet ortalamasından kaç puan yukarıda kapatılacağı (MultiTP kapalıyken etkin)
-input double Input_DailyProfitLimit_USD = 999999.0;                   // Günlük hedeflenen kâr limiti
+input int    Input_TrailActivationPoints= 400;                         // Takip etmenin başlayacağı asgari kâr puanı
+input int    Input_TrailStepPoints      = 150;                         // Geri çekilme toleransı (Puan bazında. En yüksek kârdan bu kadar düşerse kapatır)
+input int    Input_BasketTP_Points      = 400;                         // Sepet maliyet ortalamasından kaç puan yukarıda kapatılacağı (MultiTP kapalıyken etkin)
+input double Input_DailyProfitLimit_USD = 25.0;                   // Günlük hedeflenen kâr limiti
 input bool   Input_UseBasketTrailing    = false;                      
 input double Input_BasketTrailFloor     = 0.20;
 
 input group "════════ VOLATİLİTE VE TREND FİLTRELERİ ════════"
-input bool   Input_UseDynamicAtrStep    = true;                       // Piyasa oynaklığına göre kademe aralıklarını dinamik genişletir
+input bool   Input_UseDynamicAtrStep    = false;                       // Piyasa oynaklığına göre kademe aralıklarını dinamik genişletir
 input double Input_AtrStepMultiplier    = 1.2;                        
 input bool   Input_UseAdxFirstEntryFilter = false;                     // İlk giriş işleminde ADX trend gücü filtresini kullan
 input bool   Input_UseAdxGridBlockFilter  = true;                      // Aşırı trend hareketlerinde yeni kademe eklemeyi durdurur (Önerilen)
@@ -76,15 +76,15 @@ input bool   Input_UseMacroFilter       = false;
 
 input group "════════ RİSK YÖNETİMİ VE SINIRLAR ════════"
 input bool   Input_UseBasketSL_USD      = true;                       // Akıllı Sigorta: Dolar bazlı sepet zarar durdurmayı aktif et
-input double Input_BasketSL_USD         = 5.00;                       // Sepet Zarar Durdur (USD): Sepet toplam zararı bu miktara ulaştığında kapatılır
+input double Input_BasketSL_USD         = 10.00;                       // Sepet Zarar Durdur (USD): Sepet toplam zararı bu miktara ulaştığında kapatılır
 input int    Input_MaxBasketTimeMinutes   = 240;
 input double Input_MinMarginLevelPct      = 100.0;                    // Yeni işlem açılması için gerekli asgari marjin seviyesi (%)
 input double Input_MaxDrawdownPercent     = 95.0;                     // Maksimum hesap sermaye kaybı koruma sınırı (%)
 input double Input_HardLotCap             = 5.00;                     // Sistem tarafından açılabilecek en yüksek lot sınırı
 input int    Input_MinGridIntervalSeconds = 10;
 input ulong  Input_MagicNumber            = 55555;
-input int    Input_SlippagePoints         = 50;
-input int    Input_MaxSpreadPoints        = 45;
+input int    Input_SlippagePoints         = 500;
+input int    Input_MaxSpreadPoints        = 450;
 
 //═══════════════════════════════════════════════════════════════════
 //  GLOBAL DEĞİŞKENLER
