@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T23:27:08+00:00",
+  "updated_at": "2026-09-18T04:03:50+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,37 +11,37 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-09-17T23:00:00Z",
-      "price": 1.14811,
+      "last_candle_time": "2026-09-18T04:00:00Z",
+      "price": 1.14929,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "震荡区间",
       "bias": "中性",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 45.0,
-        "macd": "金叉 / 柱=0.000204",
-        "ema20": 1.14835,
-        "ema50": 1.15003,
-        "ema200": 1.15563,
-        "atr14_pips": 7.8,
+        "rsi14": 55.9,
+        "macd": "金叉 / 柱=0.000247",
+        "ema20": 1.14847,
+        "ema50": 1.14971,
+        "ema200": 1.15521,
+        "atr14_pips": 7.1,
         "rsi_bearish_divergence": false
       },
       "levels": {
-        "resistance": 1.16212,
+        "resistance": 1.16184,
         "support": 1.146,
-        "zone_touches": 1
+        "zone_touches": 2
       },
       "plans": [
         {
           "name": "方案A · 顺势做多(突破回踩)",
           "direction": "long",
-          "trigger": "H1 收盘 > 1.16232",
+          "trigger": "H1 收盘 > 1.16204",
           "triggered": false,
-          "entry": 1.16188,
-          "stop": 1.15938,
-          "tp1": 1.16563,
-          "tp2": 1.16938,
+          "entry": 1.16163,
+          "stop": 1.15913,
+          "tp1": 1.16538,
+          "tp2": 1.16913,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -49,15 +49,15 @@
           "size_factor": 1.0,
           "confirmations": {
             "H1收盘破阻力": false,
-            "RSI>55": false,
+            "RSI>55": true,
             "无顶背离": true,
             "EMA20>EMA50且站上EMA20": false,
-            "MACD柱连续两根走高": false
+            "MACD柱连续两根走高": true
           },
-          "confirmed": 1,
-          "invalidation": "突破后 H1 收回 1.16212 下方 = 假突破,撤单转看方案B",
+          "confirmed": 3,
+          "invalidation": "突破后 H1 收回 1.16184 下方 = 假突破,撤单转看方案B",
           "units": 800,
-          "notional_usd": 929.5,
+          "notional_usd": 929.3,
           "leverage": 4.6,
           "actual_risk_usd": 2.0,
           "mt5_lots": 0.0,
@@ -69,12 +69,12 @@
         {
           "name": "方案B · 逆势做空(双顶拒绝)",
           "direction": "short",
-          "trigger": "价格上探 1.16188–1.16212 后 H1 收盘失败(长上影/吞没)",
+          "trigger": "价格上探 1.16163–1.16184 后 H1 收盘失败(长上影/吞没)",
           "triggered": false,
-          "entry": 1.16188,
-          "stop": 1.16438,
-          "tp1": 1.15813,
-          "tp2": 1.15438,
+          "entry": 1.16163,
+          "stop": 1.16413,
+          "tp1": 1.15788,
+          "tp2": 1.15413,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -83,20 +83,20 @@
           "confirmations": {
             "阻力区拒绝K线": false,
             "RSI顶背离(必需)": false,
-            "MACD柱缩短": true,
-            "阻力区被触及>=2次": false
+            "MACD柱缩短": false,
+            "阻力区被触及>=2次": true
           },
           "confirmed": 1,
-          "invalidation": "H1 收盘站上 1.16235 = 认错离场,翻回方案A",
+          "invalidation": "H1 收盘站上 1.16206 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
-          "units": 400,
-          "notional_usd": 464.75,
+          "units": 399,
+          "notional_usd": 463.49,
           "leverage": 2.3,
           "actual_risk_usd": 1.0,
           "mt5_lots": 0.0,
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
-          "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
+          "mt5_note": "算出来是 0.00399 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
           "status": "blocked_no_divergence"
         }
       ]
