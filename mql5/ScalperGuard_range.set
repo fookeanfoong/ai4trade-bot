@@ -121,9 +121,9 @@ InpSlMaxATRMult=0.75
 ; 「在高频假突破/横盘的行情里做的单，表现是不是真的更差」。
 ; 直接删掉这个闸门的话，这个问题永远没有答案。
 InpUseMarketQuality=false
-InpMinRangeATR=2.5
+InpMinRangeATR=1.5
 InpMaxSmallBodyPct=70.0
-InpMaxFakeBreakouts=5
+InpMaxFakeBreakouts=12
 
 ; --- 持仓管理：维持原样，这些不是"过滤器"，是出场逻辑 ---
 ; 这里把出场参数**全部列全**（哪怕等于代码默认值）。
