@@ -8,6 +8,11 @@
 2. 改完再说：结论是什么、改了哪几个参数、代价是什么。**报告在前，长篇论证不要**。
 3. 用户已多次表示不需要反复确认，也不需要每次重复同样的风险提示。
    同一条警告说过一次就够了（例如追高的代价、盈亏比与保本胜率的关系）。
+4. **每次改完推送后，必须在回复末尾直接附上 Windows 更新命令**（用户用的是
+   Windows，管这条叫「shell」）。不用等他要，也不用换 content window 后忘掉：
+   ```
+   irm "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/scalperguard-live/mql5/update_mt5.ps1" | iex
+   ```
 
 唯一例外（这两条要问）：
 - 把 `InpAllowLiveAccount` 改成 true（真实账户）
