@@ -32,6 +32,7 @@ FILES=(
   "ScalperGuard_turbofx.set|Presets"
   "ScalperGuard_micro.set|Presets"
   "ScalperGuard_rangefx.set|Presets"
+  "ScalperGuard_rl15.set|Presets"
 )
 
 # --- 找 MQL5 目录 ------------------------------------------------------------
