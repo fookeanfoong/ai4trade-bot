@@ -28,7 +28,7 @@ input int    MaxDailyTrades         = 10;       // Maximum trades per day
 
 input group "=== XAUUSD Specific Settings ==="
 input double MinATR_Points          = 100.0;    // Minimum ATR for Gold (points)
-input double MaxSpreadPoints        = 50.0;     // Maximum spread (points)
+input double MaxSpreadPoints        = 450.0;    // Maximum spread (points) — 3位小数金价点差~200-450,原50会恒挡
 input double ATR_SL_Multiplier      = 2.0;      // Stop Loss ATR multiplier
 input double ATR_TP_Multiplier      = 3.0;      // Take Profit ATR multiplier
 
@@ -478,39 +478,55 @@ private:
    }
    
    double RiskLot(double riskPercent, double atr) {
+      // FIX: 原公式量纲错误(atr*point*10)会算出~100手。
+      // 正确做法:每手亏损 = 止损价距 / tickSize * tickValue。
       double riskAmount = m_account.Balance() * riskPercent / 100.0;
-      double lot = riskAmount / (atr * m_symbol.Point() * 10.0);
-      lot = NormalizeDouble(lot, 2);
-      if(lot < 0.01) lot = 0.01;
-      if(lot > 100.0) lot = 100.0;
-      return lot;
+      double slDist     = atr * ATR_SL_Multiplier;                 // 止损价距(价格单位)
+      double tickVal    = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_VALUE);
+      double tickSize   = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_SIZE);
+      double lossPerLot = (tickSize > 0.0) ? (slDist / tickSize) * tickVal : slDist * 100.0;
+      double lot        = (lossPerLot > 0.0) ? riskAmount / lossPerLot : 0.01;
+      double step       = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
+      double minLot     = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+      double maxLot     = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
+      if(step > 0.0) lot = MathFloor(lot / step) * step;
+      if(lot < minLot) lot = minLot;
+      if(lot > maxLot) lot = maxLot;
+      return NormalizeDouble(lot, 2);
    }
    
    void ApplyBreakEven(CPositionTracker &pos) {
       if(!UseBreakEven || pos.breakEvenSet) return;
-      double beTrigger = m_currentATR * BE_TriggerATR;
+      // FIX: 原来拿 Profit()(美元) 跟 ATR(价格) 比,量纲不对。改成比价格距离。
+      double beTrigger = m_currentATR * BE_TriggerATR;              // 价格距离
       if(m_position.SelectByTicket(pos.ticket)) {
-         if(m_position.Profit() >= beTrigger) {
-            double entry = m_position.OpenPrice();
+         double entry = m_position.OpenPrice();
+         double move  = (m_position.PositionType() == POSITION_TYPE_BUY)
+                        ? m_symbol.Bid() - entry
+                        : entry - m_symbol.Ask();
+         if(move >= beTrigger) {
             m_trade.PositionModify(pos.ticket, entry, m_position.TakeProfit());
             pos.breakEvenSet = true;
          }
       }
    }
-   
+
    void ManageTrailingStop(CPositionTracker &pos) {
-      if(!UseTrailingStop || pos.trailingActive) return;
+      // FIX: 去掉 trailingActive 早退(否则第一次挪完就不再跟了),并按价格距离判断。
+      if(!UseTrailingStop) return;
       if(m_position.SelectByTicket(pos.ticket)) {
-         double profit = m_position.Profit();
-         double trailStart = m_currentATR * Trail_StartATR;
-         if(profit >= trailStart) {
-            if(m_position.PositionType() == POSITION_TYPE_BUY) {
+         double entry      = m_position.OpenPrice();
+         double trailStart = m_currentATR * Trail_StartATR;         // 价格距离
+         if(m_position.PositionType() == POSITION_TYPE_BUY) {
+            if(m_symbol.Bid() - entry >= trailStart) {
                double newSL = m_symbol.Bid() - (m_currentATR * Trail_StepATR);
                if(newSL > m_position.StopLoss() || m_position.StopLoss() == 0) {
                   m_trade.PositionModify(pos.ticket, newSL, m_position.TakeProfit());
                   pos.trailingActive = true;
                }
-            } else {
+            }
+         } else {
+            if(entry - m_symbol.Ask() >= trailStart) {
                double newSL = m_symbol.Ask() + (m_currentATR * Trail_StepATR);
                if(newSL < m_position.StopLoss() || m_position.StopLoss() == 0) {
                   m_trade.PositionModify(pos.ticket, newSL, m_position.TakeProfit());
@@ -590,7 +606,7 @@ public:
                i--;
                continue;
             }
-            if(m_position.StopLoss() == 0 && m_position.Profit() > 0) ApplyBreakEven(*pos);
+            ApplyBreakEven(*pos);   // FIX: 原条件要求 SL==0,但开仓就带了SL,导致保本永不触发
             ManageTrailingStop(*pos);
          }
       }
