@@ -87,14 +87,14 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=10.0
+InpAdxMin=18.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
 InpTriggerTolATR=0.60
-InpBarCloseStrength=0.52
+InpBarCloseStrength=0.60
 InpWickRejectPct=0.70
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
