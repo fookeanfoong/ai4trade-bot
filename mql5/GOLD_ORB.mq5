@@ -14,7 +14,7 @@
 //|  默认 SL=4000点($4) / TP=12000点($12) = 1:3,已按3位小数校准。      |
 //+------------------------------------------------------------------+
 #property copyright "GOLD_ORB single-file port"
-#property version   "1.10"
+#property version   "1.20"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -153,6 +153,51 @@ void OpenTrade(bool isBuy)
 }
 
 //+------------------------------------------------------------------+
+// 从历史 H1 K线重建"今天"的区间状态(高/低/是否定案)。
+// 这样不管 EA 几点挂上去,都能回看当天开盘K线,当天就能工作。
+void BuildTodayRange()
+{
+   g_haveRange=false; g_rangeFinal=false; g_consol=0;
+
+   // 找今天开盘 K线(hour==InpStartHour)在已收盘K线里的位移
+   int openShift=-1;
+   for(int s=1; s<72; s++)
+   {
+      datetime t=iTime(_Symbol,PERIOD_H1,s);
+      if(t==0) break;
+      MqlDateTime dt; TimeToStruct(t,dt);
+      MqlDateTime m=dt; m.hour=0; m.min=0; m.sec=0;
+      if(StructToTime(m)<g_dayStart) break;   // 已经到昨天,今天没这根就退出
+      if(dt.hour==InpStartHour){ openShift=s; break; }
+   }
+   if(openShift<0) return;                      // 今天的开盘K线还没出现
+
+   g_rangeHigh=iHigh(_Symbol,PERIOD_H1,openShift);
+   g_rangeLow =iLow (_Symbol,PERIOD_H1,openShift);
+   g_haveRange=true;
+
+   // 从开盘K线的下一根按时间顺序重放到最近一根已收盘K线
+   for(int s=openShift-1; s>=1; s--)
+   {
+      double c=iClose(_Symbol,PERIOD_H1,s);
+      double h=iHigh (_Symbol,PERIOD_H1,s);
+      double l=iLow  (_Symbol,PERIOD_H1,s);
+      if(g_rangeFinal) continue;               // 定案后不再动区间(突破留给下面判信号)
+      if(c>g_rangeHigh || c<g_rangeLow)
+      {
+         if(h>g_rangeHigh) g_rangeHigh=h;
+         if(l<g_rangeLow ) g_rangeLow =l;
+         g_consol=0;
+      }
+      else
+      {
+         g_consol++;
+         if(g_consol>=InpCandleComposition) g_rangeFinal=true;
+      }
+   }
+}
+
+//+------------------------------------------------------------------+
 void OnTick()
 {
    ManageTrail();
@@ -167,47 +212,17 @@ void OnTick()
    datetime todayStart=StructToTime(d0);
    if(todayStart!=g_dayStart) DayReset(todayStart);
 
-   // 上一根已收盘 H1 K线
-   double pHigh=iHigh(_Symbol,PERIOD_H1,1);
-   double pLow =iLow (_Symbol,PERIOD_H1,1);
-   double pOpen=iOpen(_Symbol,PERIOD_H1,1);
-   double pClose=iClose(_Symbol,PERIOD_H1,1);
-   MqlDateTime pt_; TimeToStruct(iTime(_Symbol,PERIOD_H1,1),pt_);
+   // 每根新 H1 K线从历史重建当天区间(幂等,挂晚了也能补上)
+   BuildTodayRange();
+   if(!g_haveRange || !g_rangeFinal) return;
 
-   // 1) 开盘首根 -> 初始区间
-   if(!g_haveRange)
-   {
-      if(pt_.hour==InpStartHour)
-      {
-         g_rangeHigh=pHigh; g_rangeLow=pLow;
-         g_haveRange=true; g_consol=0; g_rangeFinal=false;
-         PrintFormat("[GOLD_ORB] 初始区间 高=%.3f 低=%.3f",g_rangeHigh,g_rangeLow);
-      }
-      return;
-   }
-
-   // 2) 区间未定案:盘整则计数,创新高/新低则扩区间并重置计数
-   if(!g_rangeFinal)
-   {
-      if(pClose>g_rangeHigh || pClose<g_rangeLow)
-      {
-         if(pHigh>g_rangeHigh) g_rangeHigh=pHigh;
-         if(pLow <g_rangeLow ) g_rangeLow =pLow;
-         g_consol=0;
-      }
-      else
-      {
-         g_consol++;
-         if(g_consol>=InpCandleComposition) g_rangeFinal=true;
-      }
-      return;
-   }
-
-   // 3) 区间已定案:突破/跌破 -> 信号
+   // 区间已定案:看最近一根已收盘 K线是否突破/跌破 -> 信号
    if(g_tradesToday>=InpMaxTradePerDay) return;
    double spread=(SymbolInfoDouble(_Symbol,SYMBOL_ASK)-SymbolInfoDouble(_Symbol,SYMBOL_BID))/_Point;
    if(spread>InpMaxSpreadPoints) return;
 
+   double pOpen =iOpen (_Symbol,PERIOD_H1,1);
+   double pClose=iClose(_Symbol,PERIOD_H1,1);
    bool bull=(pClose>pOpen);
    bool bear=(pClose<pOpen);
    if(InpLong && !g_longDone && bull && pClose>g_rangeHigh)
