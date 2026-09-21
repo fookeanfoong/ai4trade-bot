@@ -133,38 +133,81 @@ def _back(minutes: int) -> int:
     return max(1, round(minutes / BAR_MIN))
 
 
-def analyze(bare: str) -> dict:
-    """Fetch 5m bars for one symbol and return price + technical indicators."""
+# --- data source: Yahoo (default) or Binance spot klines -------------------
+DATA_SOURCE = os.environ.get("CRYPTO_DATA_SOURCE", "yahoo").lower()
+# Public Binance market-data host. data-api.binance.vision serves spot klines /
+# tickers with no key and is reachable wherever testnet.binance.vision is, so it
+# fits the local Binance book — and unlike Yahoo it carries REAL volume on
+# sub-hour bars. (Yahoo returns null volume on 5m crypto, i.e. "vol× None", which
+# blocks every volume-gated scalp entry.) The runner turns this on with
+# CRYPTO_DATA_SOURCE=binance for the Binance book.
+BINANCE_DATA_BASE = os.environ.get("BINANCE_DATA_BASE", "https://data-api.binance.vision")
+BINANCE_DATA_QUOTE = os.environ.get("CRYPTO_QUOTE", "USDT").upper()
+
+
+def _http_json(url: str):
+    req = urlrequest.Request(url, headers={"User-Agent": BROWSER_UA,
+                                           "Accept": "application/json"})
+    with urlrequest.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def _yahoo_bars(bare: str):
+    """(bars, last, prev) from Yahoo. bars = [(o,h,l,c,v), ...], oldest→newest."""
     url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{yahoo_symbol(bare)}"
            f"?range={RANGE}&interval={INTERVAL}")
-    req = urlrequest.Request(url, headers={
-        "User-Agent": BROWSER_UA,
-        "Accept": "application/json",
-    })
-    with urlrequest.urlopen(req, timeout=30) as resp:
-        payload = json.loads(resp.read().decode("utf-8"))
-    result = payload["chart"]["result"][0]
+    result = _http_json(url)["chart"]["result"][0]
     meta = result.get("meta", {})
     q = result["indicators"]["quote"][0]
-
-    # Aligned OHLCV, dropping bars with a null close (gaps).
     bars = []
     for o, h, l, c, v in zip(q.get("open", []), q.get("high", []),
                              q.get("low", []), q.get("close", []),
                              q.get("volume", [])):
-        if c is None:
+        if c is None:                      # drop gap bars (null close)
             continue
         bars.append((o, h, l, c, v or 0))
+    closes = [b[3] for b in bars]
+    last = meta.get("regularMarketPrice") or (closes[-1] if closes else None)
+    prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+    return bars, last, prev
+
+
+def _binance_bars(bare: str):
+    """(bars, last, prev) from Binance spot klines — REAL exchange volume, which
+    Yahoo omits on sub-hour crypto bars. Public data host, no key needed."""
+    pair = f"{bare.upper()}{BINANCE_DATA_QUOTE}"
+    kl = _http_json(f"{BINANCE_DATA_BASE}/api/v3/klines"
+                    f"?symbol={pair}&interval={INTERVAL}&limit=200")
+    # kline = [openTime, open, high, low, close, volume, closeTime, ...]
+    bars = [(float(k[1]), float(k[2]), float(k[3]), float(k[4]), float(k[5]))
+            for k in kl]
+    last = bars[-1][3] if bars else None
+    prev = last
+    try:                                   # 24h ticker: last price + ~24h-ago open
+        t = _http_json(f"{BINANCE_DATA_BASE}/api/v3/ticker/24hr?symbol={pair}")
+        last = float(t.get("lastPrice") or last)
+        prev = float(t.get("openPrice") or prev)
+    except Exception:
+        pass
+    return bars, last, prev
+
+
+def _fetch_bars(bare: str):
+    if DATA_SOURCE in ("binance", "binance_spot", "binance-spot"):
+        return _binance_bars(bare)
+    return _yahoo_bars(bare)
+
+
+def analyze(bare: str) -> dict:
+    """Fetch bars for one symbol (Yahoo or Binance) + technical indicators."""
+    bars, last, prev = _fetch_bars(bare)
 
     closes = [b[3] for b in bars]
     highs = [b[1] for b in bars if b[1] is not None]
     lows = [b[2] for b in bars if b[2] is not None]
     vols = [b[4] for b in bars]
-
-    last = meta.get("regularMarketPrice")
     if last is None and closes:
         last = closes[-1]
-    prev = meta.get("chartPreviousClose") or meta.get("previousClose")
 
     out = {
         "symbol": bare,

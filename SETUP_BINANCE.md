@@ -159,6 +159,7 @@ python run_binance_local.py            # 循环跑,Ctrl+C 停
 | `python-binance not installed` | 没装依赖。`pip install -r requirements-binance.txt`。 |
 | `Timestamp for this request ...` | 电脑时钟不准。程序已自动对齐服务器时间;若仍报错,同步一下系统时间。 |
 | `notional ... below Binance min` | 单子太小(低于交易所最小金额)。调大 `BOOK_EQUITY` 或减少同时持仓数。 |
+| 一直不进场 / `vol× None` | 多数时候**是正常的**——只在合格 setup 出现才进,中性行情就空着。Binance 盘已默认从交易所拉数据(有真实成交量);若仍长期 `vol× None`,多半是连不上 `data-api.binance.vision`。 |
 | 连不上 / 余额消失 | 测试网被币安重置了。回 testnet.binance.vision 重新生成 key,删掉 `binance_baseline.json`。 |
 
 ---

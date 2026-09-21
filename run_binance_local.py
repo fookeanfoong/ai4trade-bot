@@ -88,9 +88,13 @@ BOOK_ENV = {
     "MAX_TARGET_MOVE_PCT": "0.035",
 }
 # Entry gates that must be set on the SIGNAL step (a different process).
+# CRYPTO_DATA_SOURCE=binance pulls candles from Binance (real volume even on 5m);
+# Yahoo returns null volume on sub-hour crypto bars, which blocks every scalp
+# entry. Override to "yahoo" in the env if you ever want the old source back.
 SIGNAL_ENV = {"ALLOW_FLAT_TREND": "yes", "CRYPTO_SYMBOLS": BOOK_ENV["CRYPTO_SYMBOLS"],
               "CRYPTO_INTERVAL": BOOK_ENV["CRYPTO_INTERVAL"],
-              "CRYPTO_RANGE": BOOK_ENV["CRYPTO_RANGE"]}
+              "CRYPTO_RANGE": BOOK_ENV["CRYPTO_RANGE"],
+              "CRYPTO_DATA_SOURCE": os.environ.get("CRYPTO_DATA_SOURCE", "binance")}
 
 
 def _run(script: str, extra_env: dict, *args: str, quiet_ok: bool = False) -> int:
