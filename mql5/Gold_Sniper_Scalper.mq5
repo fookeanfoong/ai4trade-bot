@@ -28,7 +28,7 @@ input group "════════ HACİM VE PORTFÖY AYARLARI ════�
 input ENUM_TIMEFRAMES      Input_SignalTF          = PERIOD_M5;
 input bool                 Input_UseAutoLot        = false;            // Dinamik Hacim: Bakiye büyüdükçe lot oranını otomatik ayarlar
 input double               Input_AutoLotStep_USD   = 60.0;            // Her 60$ bakiye artışında başlangıç lotunu 0.01 artırır
-input double               Input_InitialLot        = 0.02;            // Dinamik Hacim kapalıyken kullanılacak sabit başlangıç lotu
+input double               Input_InitialLot        = 0.03;            // Dinamik Hacim kapalıyken kullanılacak sabit başlangıç lotu
 input ENUM_LOT_PROGRESSION Input_LotProgression    = PROGRESSION_MULT; // Kademeli lot artış modeli (Çarpanlı)
 input double               Input_LotMultiplier     = 1.6;             // Kademe lot çarpanı (1.6x)
 input int                  Input_GridStepPoints    = 1500;             // İki kademe arasındaki asgari mesafe (150 Puan = $1.50)
@@ -41,7 +41,7 @@ input bool   Input_UseSmartTrailing     = true;                       // AKILLI 
 input int    Input_TrailActivationPoints= 400;                         // Takip etmenin başlayacağı asgari kâr puanı
 input int    Input_TrailStepPoints      = 150;                         // Geri çekilme toleransı (Puan bazında. En yüksek kârdan bu kadar düşerse kapatır)
 input int    Input_BasketTP_Points      = 400;                         // Sepet maliyet ortalamasından kaç puan yukarıda kapatılacağı (MultiTP kapalıyken etkin)
-input double Input_DailyProfitLimit_USD = 25.0;                   // Günlük hedeflenen kâr limiti
+input double Input_DailyProfitLimit_USD = 100.0;                   // Günlük hedeflenen kâr limiti
 input bool   Input_UseBasketTrailing    = false;                      
 input double Input_BasketTrailFloor     = 0.20;
 
@@ -76,7 +76,7 @@ input bool   Input_UseMacroFilter       = false;
 
 input group "════════ RİSK YÖNETİMİ VE SINIRLAR ════════"
 input bool   Input_UseBasketSL_USD      = true;                       // Akıllı Sigorta: Dolar bazlı sepet zarar durdurmayı aktif et
-input double Input_BasketSL_USD         = 10.00;                       // Sepet Zarar Durdur (USD): Sepet toplam zararı bu miktara ulaştığında kapatılır
+input double Input_BasketSL_USD         = 15.00;                       // Sepet Zarar Durdur (USD): Sepet toplam zararı bu miktara ulaştığında kapatılır
 input int    Input_MaxBasketTimeMinutes   = 240;
 input double Input_MinMarginLevelPct      = 100.0;                    // Yeni işlem açılması için gerekli asgari marjin seviyesi (%)
 input double Input_MaxDrawdownPercent     = 95.0;                     // Maksimum hesap sermaye kaybı koruma sınırı (%)
