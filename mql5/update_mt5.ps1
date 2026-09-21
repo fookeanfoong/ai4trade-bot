@@ -22,6 +22,7 @@ $Files = @{
     "Gold_Sniper_Scalper.mq5"     = "Experts"
     "Ultimate_ICT_Gold_Scalper_v3.0.mq5" = "Experts"
     "GOLD_ORB.mq5"                = "Experts"
+    "MonkeyAttack_GoldPivot.mq5"  = "Experts"
     "ScalperGuard_aggressive.set" = "Presets"
     "ScalperGuard_scalp.set"      = "Presets"
     "ScalperGuard_v2_200.set"     = "Presets"
