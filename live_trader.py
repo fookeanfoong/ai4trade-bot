@@ -217,7 +217,7 @@ def get_broker():
 # ----------------------------- state ---------------------------------------
 def load_state() -> dict:
     if STATE_FILE.exists():
-        st = json.loads(STATE_FILE.read_text())
+        st = json.loads(STATE_FILE.read_text(encoding="utf-8"))
         # Migrate the old single-"position" schema -> multi "positions" dict.
         if "positions" not in st:
             positions = {}
@@ -237,7 +237,7 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
-    STATE_FILE.write_text(json.dumps(state, indent=2))
+    STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def is_weekday_ny() -> bool:
@@ -251,7 +251,7 @@ def is_weekday_ny() -> bool:
 # ------------------------- signals + quotes --------------------------------
 def load_signals_doc() -> dict:
     try:
-        return json.loads(SIGNALS_FILE.read_text())
+        return json.loads(SIGNALS_FILE.read_text(encoding="utf-8"))
     except Exception as e:
         print(f"signals.json unreadable: {e}", file=sys.stderr)
         return {}
@@ -367,7 +367,7 @@ def signal_still_valid(ticker: str, side: str, signals: list) -> bool:
 
 def quotes_map() -> dict:
     try:
-        return json.loads(QUOTES_FILE.read_text()).get("quotes", {})
+        return json.loads(QUOTES_FILE.read_text(encoding="utf-8")).get("quotes", {})
     except Exception:
         return {}
 
@@ -857,7 +857,7 @@ def write_report(state, actions, acct, describe) -> None:
         lines.append("  - FLAT")
     lines += [f"- Closed trades logged: {closed}", "", "## Actions this run", ""]
     lines += [f"- {a}" for a in actions] if actions else ["- (no actionable signal / waiting)"]
-    (REPORTS_DIR / f"{today}.md").write_text("\n".join(lines) + "\n")
+    (REPORTS_DIR / f"{today}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 # ------------------------------- modes -------------------------------------

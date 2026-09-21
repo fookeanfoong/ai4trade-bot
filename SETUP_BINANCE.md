@@ -28,6 +28,8 @@
 
 ## 一、拿 Binance 测试网 API key(约 2 分钟)
 
+> ⚠️ **一定要在 `testnet.binance.vision` 这个网站建 key。** 不要用 `demo.binance.com`(那是币安另一套"模拟交易",key 在这里不认,会报 `-2015 Invalid API-key`),也不要用你真账户 binance.com 的 key。这三者是**三个不同的系统**。
+
 1. 打开 **https://testnet.binance.vision/**(这是币安**现货测试网**,不是真交易所)。
 2. 点 **Log In with GitHub**,用你的 GitHub 账号登录。
 3. 登录后点 **Generate HMAC_SHA256 Key**。
@@ -129,6 +131,7 @@ python run_binance_local.py            # 循环跑,Ctrl+C 停
 
 | 现象 | 多半原因 / 解决 |
 |------|----------------|
+| `APIError(code=-2015): Invalid API-key ...` | key 建错地方了。必须用 **testnet.binance.vision** 的 key,别用 demo.binance.com 或真账户的 key;并确认 key 开了「Spot 现货交易」权限、没设错 IP 白名单。 |
 | `Missing BINANCE_API_KEY ...` | key 没设。检查 `binance_keys.bat` 填了没、`run_binance.bat` 有没有 `call` 到它。 |
 | `python-binance not installed` | 没装依赖。`pip install -r requirements-binance.txt`。 |
 | `Timestamp for this request ...` | 电脑时钟不准。程序已自动对齐服务器时间;若仍报错,同步一下系统时间。 |

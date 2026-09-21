@@ -206,7 +206,18 @@ class BinanceBroker:
             return 0.0
 
     def account(self) -> dict:
-        a = self.client.get_account()
+        try:
+            a = self.client.get_account()
+        except BinanceAPIException as e:
+            if getattr(e, "code", None) == -2015:
+                where = "testnet.binance.vision" if self.paper else "binance.com"
+                raise BrokerError(
+                    "Binance rejected the API key (-2015). When BINANCE_PAPER=true "
+                    f"the key MUST be created at https://{where} — a key from "
+                    "demo.binance.com or from your real account will not work here. "
+                    "Also enable Spot trading on the key, and if you set an IP "
+                    "whitelist make sure it includes this computer.")
+            raise BrokerError(f"get_account failed: {e}")
         free_q = 0.0
         total_q = 0.0
         mv = 0.0

@@ -263,7 +263,7 @@ def main() -> int:
             print(f"{sym}: FAILED {e}", file=sys.stderr)
 
     out = {"fetched_at": now, "interval": INTERVAL, "quotes": quotes, "errors": errors}
-    QUOTES_JSON.write_text(json.dumps(out, indent=2))
+    QUOTES_JSON.write_text(json.dumps(out, indent=2), encoding="utf-8")
 
     lines = [
         f"# Crypto Technicals ({INTERVAL}) — {now}",
@@ -289,7 +289,7 @@ def main() -> int:
     if errors:
         lines += ["", "## Errors", ""]
         lines += [f"- {s}: {e}" for s, e in errors.items()]
-    QUOTES_MD.write_text("\n".join(lines) + "\n")
+    QUOTES_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     print(f"Wrote {len(quotes)} crypto technicals at {now}")
     for sym in WATCHLIST:
