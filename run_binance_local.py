@@ -38,14 +38,31 @@ PY = sys.executable
 # with the Binance-specific bits changed: BROKER, testnet flag, cheaper fees
 # (spot taker 0.10%/side vs Alpaca 0.25%), a separate state file/report dir, and
 # a universe narrowed to ETH (+BTC as the market-regime reference).
+# Pick what to trade and how fast entirely from binance_keys.bat (no re-download):
+#   set CRYPTO_SYMBOLS=BTC        -> trade BTC instead of ETH (BTC stays the regime ref)
+#   set SCALP_MODE=fast           -> "快进快出" preset (see below)
+# SCALP_MODE=fast flips: 5-minute bars, a 5-minute cycle, a shorter minimum hold,
+# and take-the-target exits instead of riding winners. Any single knob you set
+# explicitly in the env still wins over the preset. Honest note: this repo's own
+# backtest found faster bars mostly add noise + fees and did WORSE than 1h — fine
+# to try on testnet, but it is not a free upgrade.
+FAST = os.environ.get("SCALP_MODE", "").lower() in ("fast", "scalp", "quick", "kuai")
+
+
+def _cfg(key: str, normal: str, fast: str) -> str:
+    """Explicit env var wins; otherwise the fast-preset value when SCALP_MODE=fast,
+    else the normal default."""
+    return os.environ.get(key, fast if FAST else normal)
+
+
 BOOK_ENV = {
     "BROKER": "binance",
     "BINANCE_PAPER": os.environ.get("BINANCE_PAPER", "true"),   # testnet by default
     "MARKET_24_7": "yes",
     "CRYPTO_SYMBOLS": os.environ.get("CRYPTO_SYMBOLS", "BTC,ETH"),
     "REGIME_SYMBOLS": "BTC",
-    "CRYPTO_INTERVAL": os.environ.get("CRYPTO_INTERVAL", "1h"),
-    "CRYPTO_RANGE": os.environ.get("CRYPTO_RANGE", "1mo"),
+    "CRYPTO_INTERVAL": _cfg("CRYPTO_INTERVAL", "1h", "5m"),
+    "CRYPTO_RANGE": _cfg("CRYPTO_RANGE", "1mo", "5d"),
     "DISABLE_SIGNAL_EXIT": "yes",
     "SIGNALS_FILE": "signals_crypto.json",
     "QUOTES_FILE": "quotes_crypto.json",
@@ -56,18 +73,18 @@ BOOK_ENV = {
     "BASE_SLICES": "1",
     "LEVERAGE_CAP": "1.0",             # spot is cash-only, no leverage
     "ALLOW_FRACTIONAL": "yes",
-    "MAX_POSITIONS": "1",             # demo: one name (ETH) at a time
+    "MAX_POSITIONS": os.environ.get("MAX_POSITIONS", "1"),   # one name at a time
     "ENABLE_SHORT": "no",             # spot cannot short
     "NET_PROFIT_MODE": "yes",
     "FEE_RATE": os.environ.get("FEE_RATE", "0.0010"),   # Binance spot taker/side
     "NET_TARGET_MIN_USD": "0.50",
     "NET_TARGET_MAX_USD": "1.00",
-    "RUN_WINNERS": "yes",
+    "RUN_WINNERS": _cfg("RUN_WINNERS", "yes", "no"),   # fast = take target, don't ride
     "TRAIL_GIVEBACK_PCT": "0.006",
     "VOL_SPAN_LO": "0.015",
     "VOL_SPAN_HI": "0.050",
     "MIN_RR_NET": "1.0",
-    "MIN_HOLD_MIN": "20",
+    "MIN_HOLD_MIN": _cfg("MIN_HOLD_MIN", "20", "5"),
     "MAX_TARGET_MOVE_PCT": "0.035",
 }
 # Entry gates that must be set on the SIGNAL step (a different process).
@@ -116,7 +133,7 @@ def _mode_label(dry: bool) -> str:
 def one_cycle(dry: bool, flatten: bool) -> None:
     stamp = time.strftime("%Y-%m-%d %H:%M:%S")
     print(f"\n=== cycle @ {stamp} ({_mode_label(dry)}) ===")
-    # 1) real-market technicals for ETH (+BTC regime)
+    # 1) real-market technicals for the traded symbols (+BTC regime)
     _run("quotes_crypto.py", SIGNAL_ENV, quiet_ok=True)
     # 2) crash-news sentinel (free, best-effort)
     _run("news_crypto.py", SIGNAL_ENV, quiet_ok=True)
@@ -136,16 +153,18 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true", help="run logic, place NO orders")
     ap.add_argument("--flatten", action="store_true", help="close every open position this cycle")
     ap.add_argument("--interval", type=float,
-                    default=float(os.environ.get("BINANCE_INTERVAL_MIN", "15")),
-                    help="minutes between cycles (default 15)")
+                    default=float(os.environ.get("BINANCE_INTERVAL_MIN", "5" if FAST else "15")),
+                    help="minutes between cycles (default 15, or 5 in SCALP_MODE=fast)")
     args = ap.parse_args()
 
     env = "DRY-RUN" if args.dry_run else (
         "TESTNET (fake money)" if BOOK_ENV["BINANCE_PAPER"].lower() != "false" else "LIVE (REAL money)")
     print("Binance local runner — PC on = it trades, close this window = it stops.")
     print(f"  mode      : {env}")
-    print(f"  universe  : {BOOK_ENV['CRYPTO_SYMBOLS']} (trading ETH; BTC = regime ref)")
-    print(f"  book      : ${BOOK_ENV['BOOK_EQUITY']} | interval {args.interval:g} min | {BOOK_ENV['CRYPTO_INTERVAL']} bars")
+    print(f"  universe  : {BOOK_ENV['CRYPTO_SYMBOLS']}  (regime ref: {BOOK_ENV['REGIME_SYMBOLS']})")
+    print(f"  style     : {'FAST scalp — 5m bars, take-target exits' if FAST else 'normal — 1h bars, ride winners'}")
+    print(f"  book      : ${BOOK_ENV['BOOK_EQUITY']} | cycle {args.interval:g} min | "
+          f"{BOOK_ENV['CRYPTO_INTERVAL']} bars | min-hold {BOOK_ENV['MIN_HOLD_MIN']}m")
     if not args.dry_run and not (os.environ.get("BINANCE_API_KEY") and os.environ.get("BINANCE_API_SECRET")):
         print("\n  ⚠  BINANCE_API_KEY / BINANCE_API_SECRET are not set. Set them "
               "(run_binance.bat / binance_keys.bat on Windows) or use --dry-run.")
