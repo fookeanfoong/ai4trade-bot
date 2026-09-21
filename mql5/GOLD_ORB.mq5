@@ -22,7 +22,7 @@
 input group "=== 时段 ==="
 input int    InpStartHour          = 1;       // 开盘时(服务器时间)——黄金约1点开盘
 input group "=== ORB 参数 ==="
-input int    InpCandleComposition  = 3;       // 区间定案需要盘整的K线数
+input int    InpCandleComposition  = 2;       // 区间定案需要盘整的K线数(降到2=更早能进场)
 input int    InpMaxTradePerDay     = 2;       // 每日最多开仓数
 input bool   InpLong               = true;    // 允许做多
 input bool   InpShort              = true;    // 允许做空
