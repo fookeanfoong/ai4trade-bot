@@ -32,10 +32,10 @@ input double               Input_InitialLot        = 0.03;            // Dinamik
 input ENUM_LOT_PROGRESSION Input_LotProgression    = PROGRESSION_MULT; // Kademeli lot artış modeli (Çarpanlı)
 input double               Input_LotMultiplier     = 1.6;             // Kademe lot çarpanı (1.6x)
 input int                  Input_GridStepPoints    = 1500;             // İki kademe arasındaki asgari mesafe (150 Puan = $1.50)
-input int                  Input_MaxGridLevels     = 8;               // Tek bir yönde açılabilecek maksimum kademe sayısı (Maks 8)
+input int                  Input_MaxGridLevels     = 2;               // Tek bir yönde açılabilecek maksimum kademe sayısı (Maks 8)
 
 input group "════════ HEDEF VE LİMİT AYARLARI ════════"
-input bool   Input_UseMultiTP           = true;                       // Kademeli Kâr Al: İlk girişte 1 yerine 3 işlem açıp sırayla kapatır
+input bool   Input_UseMultiTP           = false;                       // Kademeli Kâr Al: İlk girişte 1 yerine 3 işlem açıp sırayla kapatır
 input int    Input_MultiTP_StepPoints   = 300;                         // Kademeli TP Adımı: Her işlem arasındaki hedef farkı (Örn: 40, 70, 100 puan)
 input bool   Input_UseSmartTrailing     = true;                       // AKILLI TP TAKİP: 40 puanı aşınca fiyat fırlarsa kârı izler, geri dönerse kapatır
 input int    Input_TrailActivationPoints= 400;                         // Takip etmenin başlayacağı asgari kâr puanı
@@ -72,7 +72,7 @@ input double Input_AdxTrendThreshold    = 25.0;                       // Trend v
 input int    Input_RSIPeriod            = 14;
 input int    Input_EMAFastPeriod        = 13;                               
 input int    Input_EMASlowPeriod        = 34;                               
-input bool   Input_UseMacroFilter       = false;                            
+input bool   Input_UseMacroFilter       = true;                            
 
 input group "════════ RİSK YÖNETİMİ VE SINIRLAR ════════"
 input bool   Input_UseBasketSL_USD      = true;                       // Akıllı Sigorta: Dolar bazlı sepet zarar durdurmayı aktif et
