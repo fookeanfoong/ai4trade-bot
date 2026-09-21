@@ -87,14 +87,14 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=5
-InpAdxMin=18.0
+InpAdxMin=22.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
 InpTriggerTolATR=0.60
-InpBarCloseStrength=0.60
+InpBarCloseStrength=0.66
 InpWickRejectPct=0.70
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
@@ -255,7 +255,7 @@ InpDirectionMode=1
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
 InpConflictAsVeto=false
-InpInvertSignals=true
+InpInvertSignals=false
 InpTrendVeto=false
 InpTrendBars=4
 InpTrendMinUSD=5.0
