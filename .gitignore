@@ -12,6 +12,13 @@ reports/gold_alert.txt
 reports/monitor_task.log
 preset.json
 
+# Binance local book — runs on YOUR PC, so these stay local (and the key file
+# must NEVER be committed).
+binance_keys.bat
+binance_baseline.json
+live_trader_binance_state.json
+reports/live_trader_binance/
+
 # Node / web build artifacts — installed fresh per session, never committed
 node_modules/
 .next/

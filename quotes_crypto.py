@@ -32,8 +32,12 @@ ROOT = Path(__file__).resolve().parent
 QUOTES_JSON = ROOT / "quotes_crypto.json"
 QUOTES_MD = ROOT / "quotes_crypto.md"
 
-# Liquid majors — scalping needs tight spreads / real volume.
-WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK"]
+# Liquid majors — scalping needs tight spreads / real volume. Override with
+# CRYPTO_SYMBOLS="BTC,ETH" to narrow the universe (e.g. the Binance testnet demo,
+# which trades ETH and keeps BTC only as the market-regime reference).
+_DEFAULT_WATCHLIST = ["BTC", "ETH", "SOL", "XRP", "DOGE", "ADA", "AVAX", "LINK"]
+WATCHLIST = [s.strip().upper() for s in os.environ.get("CRYPTO_SYMBOLS", "").split(",")
+             if s.strip()] or _DEFAULT_WATCHLIST
 
 # Timeframe is env-driven. The 60-day backtest was clear that 5m is mostly
 # noise: on 1h bars the same logic lost 44% less and win rate went 10% -> 45%.

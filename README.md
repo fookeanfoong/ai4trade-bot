@@ -31,6 +31,21 @@ the 5-minute timeframe (RSI / Bollinger Bands / volume / support-resistance),
 alongside this stock bot. It shares the same execution engine and Alpaca account
 without touching the stock state. See **[SETUP_CRYPTO.md](SETUP_CRYPTO.md)**.
 
+## Binance book (ETH, runs on YOUR PC)
+
+The same crypto engine, but pointed at **Binance spot** and run **locally** instead
+of in the cloud: while the runner window is open it trades, and when your PC is off
+nothing trades. Starts on the **Spot Testnet** (fake money). Long-only, no leverage,
+one name (ETH) by default. Selected with `BROKER=binance`; the adapter lives in
+`broker_binance.py` and the local loop in `run_binance_local.py`.
+
+Unlike the cloud books, exits here are software-managed only while the runner is up,
+so an open position isn't protected once you close the window — flatten before
+shutting down (`python run_binance_local.py --flatten --once`). See
+**[SETUP_BINANCE.md](SETUP_BINANCE.md)** for the step-by-step (get a testnet key →
+install → run), and the note there on adding an exchange-side resting stop before
+going to real money.
+
 ## Forex module (EUR/USD, signals only)
 
 A third, fully separate book: **OANDA + EUR/USD H4**, sized for a **$200** account.

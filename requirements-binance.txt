@@ -1,0 +1,5 @@
+# Binance SPOT adapter deps. Install where the trader RUNS (your PC), not in CI —
+# the Binance book is meant to run locally ("PC on = trades"), not on GitHub.
+#   pip install -r requirements-binance.txt
+python-binance>=1.0.19
+pytz>=2023.3

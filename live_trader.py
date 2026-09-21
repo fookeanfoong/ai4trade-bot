@@ -153,7 +153,8 @@ MARKET_24_7 = os.environ.get("MARKET_24_7", "false").lower() in ("yes", "true")
 # (BTC/ETH) and the entry is refused.
 _frac = os.environ.get("ALLOW_FRACTIONAL")
 ALLOW_FRACTIONAL = ((_frac.lower() in ("yes", "true")) if _frac is not None
-                    else BROKER_NAME in ("alpaca", "alpaca_crypto", "alpaca-crypto", "crypto"))
+                    else BROKER_NAME in ("alpaca", "alpaca_crypto", "alpaca-crypto",
+                                         "crypto", "binance", "binance_spot", "binance-spot"))
 
 
 def price_decimals(x: float) -> int:
@@ -204,6 +205,11 @@ def get_broker():
                                           describe_config, ALPACA_AVAILABLE)
         return (AlpacaCryptoBroker() if ALPACA_AVAILABLE else None,
                 ALPACA_AVAILABLE, describe_config, BrokerError)
+    if BROKER_NAME in ("binance", "binance_spot", "binance-spot"):
+        from broker_binance import (BinanceBroker, BrokerError,
+                                    describe_config, BINANCE_AVAILABLE)
+        return (BinanceBroker() if BINANCE_AVAILABLE else None,
+                BINANCE_AVAILABLE, describe_config, BrokerError)
     from broker_alpaca import AlpacaBroker, BrokerError, describe_config, ALPACA_AVAILABLE
     return (AlpacaBroker() if ALPACA_AVAILABLE else None, ALPACA_AVAILABLE, describe_config, BrokerError)
 
