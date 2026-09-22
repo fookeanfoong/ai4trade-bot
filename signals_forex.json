@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T11:13:13+00:00",
+  "updated_at": "2026-09-22T14:31:59+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,21 +11,21 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-09-22T11:00:00Z",
-      "price": 1.14666,
+      "last_candle_time": "2026-09-22T14:00:00Z",
+      "price": 1.14534,
       "spread_pips": null,
       "min_stop_pips": 25.0,
-      "structure": "震荡区间",
-      "bias": "中性",
+      "structure": "下降趋势 (LH/LL)",
+      "bias": "偏空",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 46.0,
-        "macd": "死叉 / 柱=-6e-06",
-        "ema20": 1.14702,
-        "ema50": 1.14761,
-        "ema200": 1.15218,
-        "atr14_pips": 9.3,
-        "rsi_bearish_divergence": true
+        "rsi14": 37.7,
+        "macd": "死叉 / 柱=-0.000117",
+        "ema20": 1.14666,
+        "ema50": 1.14739,
+        "ema200": 1.15199,
+        "atr14_pips": 9.2,
+        "rsi_bearish_divergence": false
       },
       "levels": {
         "resistance": 1.15594,
@@ -50,9 +50,9 @@
           "confirmations": {
             "H1收盘破阻力": false,
             "RSI>55": false,
-            "无顶背离": false,
+            "无顶背离": true,
             "EMA20>EMA50且站上EMA20": false,
-            "MACD柱连续两根走高": true
+            "MACD柱连续两根走高": false
           },
           "confirmed": 1,
           "invalidation": "突破后 H1 收回 1.15594 下方 = 假突破,撤单转看方案B",
@@ -82,8 +82,8 @@
           "size_factor": 0.5,
           "confirmations": {
             "阻力区拒绝K线": false,
-            "RSI顶背离(必需)": true,
-            "MACD柱缩短": false,
+            "RSI顶背离(必需)": false,
+            "MACD柱缩短": true,
             "阻力区被触及>=2次": false
           },
           "confirmed": 1,
@@ -97,7 +97,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00399 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "armed"
+          "status": "blocked_no_divergence"
         }
       ]
     }
