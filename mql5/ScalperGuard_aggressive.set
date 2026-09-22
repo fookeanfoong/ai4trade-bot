@@ -79,7 +79,7 @@ InpLtfRequireCloseSide=false
 ; H1 原本要三条同时成立:快线>慢线、收盘>快线、快线仍在同向移动。
 ; 实测拦路的是 "趋势不一致 HTF=0" —— 缺任何一条 H1 就判无趋势,信号在第一步被毙。
 ; 采样期只保留"快线>慢线"这一条,后两条关掉。
-InpHtfRequireCloseSide=false
+InpHtfRequireCloseSide=true
 InpHtfRequireSlope=false
 
 ; --- 信号门槛 ---
@@ -87,7 +87,7 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=18.0
+InpAdxMin=21.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -260,8 +260,8 @@ InpTrendVeto=true
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=6
-InpCounterMoveATR=0.6
-InpCounterMoveHardATR=1.2
+InpCounterMoveATR=0.4
+InpCounterMoveHardATR=0.8
 InpPaBars=6
 InpPaMinATR=0.30
 
