@@ -87,7 +87,7 @@ InpHtfRequireSlope=false
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=21.0
+InpAdxMin=17.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -260,8 +260,8 @@ InpTrendVeto=true
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=6
-InpCounterMoveATR=0.4
-InpCounterMoveHardATR=0.8
+InpCounterMoveATR=0.5
+InpCounterMoveHardATR=1.0
 InpPaBars=6
 InpPaMinATR=0.30
 
