@@ -61,8 +61,8 @@ InpStopAfterConsecLoss=100000
 InpObserveAfterConsecLoss=2
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
-InpSessionStartHour=8
-InpSessionEndHour=22
+InpSessionStartHour=0
+InpSessionEndHour=23
 InpFlatAllBeforeHour=23
 
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
