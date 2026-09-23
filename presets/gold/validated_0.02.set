@@ -1,0 +1,36 @@
+; GoldScalper —— 固定 0.02 手版(基于 default_validated)
+; M15 · 固定$3止损 · RR1:2 · 固定 0.02 手(= 2oz,金价每动 $1 盈亏 $2)
+; 每笔最多亏 $3 × 2 = $6。参数与 default_validated 完全相同,只把手数固定为 0.02。
+; 这是仓库里唯一在「前半段选参、后半段只跑一次」验证里两边都为正的黄金配置
+; (reports/gold_research.md;样本不大,训练/验证各约 27~70 笔,仍需模拟盘前向确认)。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxPositions=1
+InpFixedLots=0.02
+InpMaxSpreadUSD=0.50
+InpMinStopSpreadX=8.0
+InpSlippagePoints=20
+InpTimeframe=15
+InpFastEMA=20
+InpSlowEMA=50
+InpTrendEMA=200
+InpRSIPeriod=14
+InpRSIBuyMax=70.0
+InpRSISellMin=30.0
+InpATRPeriod=14
+InpFixedStopUSD=3.0
+InpATRStopMult=1.2
+InpRewardRisk=2.0
+InpSwingLookback=100
+InpSwingWing=2
+InpUseBreakeven=true
+InpUseTrailing=true
+InpTrailATRMult=1.0
+InpUseSession=true
+InpSessionStartHour=7
+InpSessionEndHour=20
+InpFridayEarlyStop=true
+InpMagic=20260809
+InpAlerts=true
