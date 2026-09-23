@@ -17,8 +17,10 @@
 //|  红线（写死，不留开关）：每单必带硬止损；止损只朝盈利方向移动。     |
 //+------------------------------------------------------------------+
 #property copyright "GoldAIScalper - open synthesis"
-#property version   "1.00"
+#property version   "1.10"
 #property strict
+//  v1.10  按实战风控文档补强：点差闸改美元制(ECN/RAW才划算)、重大数据黑窗、
+//         布林带防追高、可选时段黑窗(美盘洗盘)。红线不变:每单硬止损、绝不马丁/网格。
 
 #include <Trade/Trade.mqh>
 
@@ -26,7 +28,7 @@
 input group "=== 基础 ==="
 input double InpFixedLot        = 0.01;        // 固定手数
 input long   InpMagic           = 20260926;    // 魔术号(独立)
-input int    InpMaxSpreadPoints  = 500;        // 点差上限(点),超过不开仓
+input double InpMaxSpreadUSD     = 0.25;        // 点差上限($),剥头皮命门:超过不开仓(需ECN/RAW账户)
 
 input group "=== 周期 ==="
 input ENUM_TIMEFRAMES InpSignalTF = PERIOD_M5; // 信号周期(剥头皮主周期)
@@ -46,6 +48,22 @@ input int    InpAtrPeriod   = 14;              // ATR 周期
 input group "=== 共识分门槛 ==="
 input double InpMinScore    = 65.0;            // 共识分门槛(0-100),越高越少越准
 input int    InpMomBars     = 3;               // 动量推进回看K线数
+
+input group "=== 布林带防追高(超买超卖) ==="
+input bool   InpUseBollinger = true;           // 价格冲出布林轨还追单就否决
+input int    InpBandsPeriod  = 20;             // 布林周期
+input double InpBandsDev     = 2.0;            // 布林标准差
+input double InpBandChaseATR = 0.15;           // 超出轨道>该×ATR即判"追高/追空",否决
+
+input group "=== 重大数据黑窗(手动填时间,避开CPI/非农/利率) ==="
+input string InpManualNewsTimes = "";          // 半角逗号分隔,如 2026.09.24 20:30,2026.09.25 02:00 (服务器时间)
+input int    InpNewsBeforeMin   = 15;          // 数据前 N 分钟停开新单
+input int    InpNewsAfterMin    = 15;          // 数据后 N 分钟停开新单
+
+input group "=== 可选时段黑窗(美盘开盘洗盘等) ==="
+input bool   InpUseBlackout   = false;         // 启用时段黑窗
+input int    InpBlackoutStart  = 15;           // 黑窗开始小时(服务器时间)
+input int    InpBlackoutEnd    = 17;           // 黑窗结束小时
 
 input group "=== 波动率闸门(避开死盘/暴动) ==="
 input double InpAtrMinUSD   = 0.80;            // ATR 下限($),太安静不做
@@ -77,7 +95,7 @@ input bool   InpVerbose     = true;            // 详细日志
 //====================== 全局 ======================
 CTrade  trade;
 int     hEmaFast=INVALID_HANDLE, hEmaSlow=INVALID_HANDLE, hEmaTrend=INVALID_HANDLE;
-int     hRsi=INVALID_HANDLE, hAtr=INVALID_HANDLE;
+int     hRsi=INVALID_HANDLE, hAtr=INVALID_HANDLE, hBands=INVALID_HANDLE;
 datetime g_lastBar=0;
 int      g_dayIdx=-1;
 int      g_tradesToday=0;
@@ -100,9 +118,10 @@ int OnInit()
    hEmaTrend = iMA(_Symbol, InpTrendTF,  InpEmaTrend,0, MODE_EMA, PRICE_CLOSE);
    hRsi      = iRSI(_Symbol, InpSignalTF, InpRsiPeriod, PRICE_CLOSE);
    hAtr      = iATR(_Symbol, InpSignalTF, InpAtrPeriod);
+   hBands    = iBands(_Symbol, InpSignalTF, InpBandsPeriod, 0, InpBandsDev, PRICE_CLOSE);
 
    if(hEmaFast==INVALID_HANDLE || hEmaSlow==INVALID_HANDLE || hEmaTrend==INVALID_HANDLE ||
-      hRsi==INVALID_HANDLE || hAtr==INVALID_HANDLE)
+      hRsi==INVALID_HANDLE || hAtr==INVALID_HANDLE || hBands==INVALID_HANDLE)
    {
       Print("[GoldAIScalper] 指标句柄创建失败");
       return(INIT_FAILED);
@@ -121,6 +140,15 @@ void OnDeinit(const int reason)
    if(hEmaTrend!=INVALID_HANDLE) IndicatorRelease(hEmaTrend);
    if(hRsi!=INVALID_HANDLE) IndicatorRelease(hRsi);
    if(hAtr!=INVALID_HANDLE) IndicatorRelease(hAtr);
+   if(hBands!=INVALID_HANDLE) IndicatorRelease(hBands);
+}
+
+//+------------------------------------------------------------------+
+double BufN(int handle, int bufIdx, int shift)
+{
+   double v[];
+   if(CopyBuffer(handle, bufIdx, shift, 1, v) != 1) return(0.0);
+   return(v[0]);
 }
 
 //+------------------------------------------------------------------+
@@ -235,8 +263,55 @@ bool InSession()
 
 bool SpreadOK()
 {
-   double sp=(SymbolInfoDouble(_Symbol,SYMBOL_ASK)-SymbolInfoDouble(_Symbol,SYMBOL_BID))/_Point;
-   return (sp<=InpMaxSpreadPoints);
+   double sp=SymbolInfoDouble(_Symbol,SYMBOL_ASK)-SymbolInfoDouble(_Symbol,SYMBOL_BID); // 金价点差直接=美元
+   return (sp<=InpMaxSpreadUSD);
+}
+
+//+------------------------------------------------------------------+
+//| 时段黑窗(如美盘开盘洗盘)                                          |
+//+------------------------------------------------------------------+
+bool InBlackoutHour()
+{
+   if(!InpUseBlackout) return false;
+   MqlDateTime t; TimeToStruct(TimeCurrent(), t);
+   if(InpBlackoutStart<=InpBlackoutEnd) return (t.hour>=InpBlackoutStart && t.hour<InpBlackoutEnd);
+   return (t.hour>=InpBlackoutStart || t.hour<InpBlackoutEnd);
+}
+
+//+------------------------------------------------------------------+
+//| 重大数据黑窗:手动填时间,前后各留缓冲                             |
+//+------------------------------------------------------------------+
+bool InNewsBlackout()
+{
+   if(StringLen(InpManualNewsTimes)==0) return false;
+   datetime now=TimeCurrent();
+   string parts[];
+   int n=StringSplit(InpManualNewsTimes, ',', parts);
+   for(int i=0;i<n;i++)
+   {
+      string s=parts[i];
+      StringTrimLeft(s); StringTrimRight(s);
+      if(StringLen(s)==0) continue;
+      datetime evt=StringToTime(s);
+      if(evt<=0) continue;
+      if(now >= evt-InpNewsBeforeMin*60 && now <= evt+InpNewsAfterMin*60) return true;
+   }
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| 布林带防追高:方向已冲出对应轨道 > 阈值就判追单,否决               |
+//+------------------------------------------------------------------+
+bool IsOverextended(int dir, double atr)
+{
+   if(!InpUseBollinger || atr<=0) return false;
+   double upper=BufN(hBands, 1, 1);   // 缓冲1=上轨
+   double lower=BufN(hBands, 2, 1);   // 缓冲2=下轨
+   double c1=iClose(_Symbol, InpSignalTF, 1);
+   if(upper==0 || lower==0 || c1==0) return false;
+   if(dir>0 && c1 > upper + InpBandChaseATR*atr) return true;   // 追多冲破上轨
+   if(dir<0 && c1 < lower - InpBandChaseATR*atr) return true;   // 追空跌破下轨
+   return false;
 }
 
 //+------------------------------------------------------------------+
@@ -382,7 +457,9 @@ void OnTick()
 
    // 过滤
    if(!InSession())  return;
-   if(!SpreadOK())   return;
+   if(InBlackoutHour()) { if(InpVerbose) Print("[NO-TRADE] 时段黑窗"); return; }
+   if(InNewsBlackout()) { if(InpVerbose) Print("[NO-TRADE] 重大数据黑窗"); return; }
+   if(!SpreadOK())   { if(InpVerbose) PrintFormat("[NO-TRADE] 点差过大 > $%.2f", InpMaxSpreadUSD); return; }
    if(atr<InpAtrMinUSD || atr>InpAtrMaxUSD) return;
 
    // 共识分
@@ -391,6 +468,13 @@ void OnTick()
    if(dir==0 || score<InpMinScore)
    {
       if(InpVerbose) PrintFormat("[NO-TRADE] %s (门槛%.0f)", detail, InpMinScore);
+      return;
+   }
+
+   // 布林带防追高:分够但价格已冲出轨道,不追
+   if(IsOverextended(dir, atr))
+   {
+      if(InpVerbose) PrintFormat("[NO-TRADE] 追%s被否:价格已冲出布林%s轨", dir>0?"多":"空", dir>0?"上":"下");
       return;
    }
 
