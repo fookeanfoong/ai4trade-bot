@@ -89,14 +89,14 @@ InpHtfRequireSlope=true
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=33.0
+InpAdxMin=30.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
 ; --- 入场触发灵敏度(实测最常见的拒绝原因就是"无有效突破/回踩触发")---
 ; tol 放宽 = 回踩不必那么精准就算数;收盘位置与影线要求同步放松。
 InpTriggerTolATR=0.60
-InpBarCloseStrength=0.85
+InpBarCloseStrength=0.80
 InpWickRejectPct=0.70
 
 ; --- 关键位压缩止盈:忽略近于 1.2R 的关键位 ---
@@ -187,8 +187,8 @@ InpSweepMaxPenetration=1.50
 ; 想用就把两个一起改,OnInit 会把 RR 和保本胜率算给你看。
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
-; 净赚 $1.2 立刻平仓（与手数无关，锁死每笔美元收益）。亏损侧维持 LossCutUSD=5。
-InpQuickProfitUSD=1.2
+; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
+InpQuickProfitUSD=0.0
 InpQuickLossUSD=12.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
@@ -256,14 +256,14 @@ InpLooseMaxDistATR=2.0
 InpDirectionMode=4
 ; false = 冲突不否决,只写进成交备注,由 10 分制评分反映质量差异。
 ; 事后可按"有无冲突"分组比期望值 —— 若带冲突的单确实更差,再改回 true。
-InpConflictAsVeto=true
+InpConflictAsVeto=false
 InpInvertSignals=false
 InpTrendVeto=true
 InpTrendBars=4
 InpTrendMinUSD=5.0
 InpCounterMoveBars=6
-InpCounterMoveATR=0.3
-InpCounterMoveHardATR=0.7
+InpCounterMoveATR=0.4
+InpCounterMoveHardATR=0.8
 InpPaBars=6
 InpPaMinATR=0.30
 
