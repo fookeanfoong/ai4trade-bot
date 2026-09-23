@@ -1,0 +1,38 @@
+; ============================================================================
+; GMarket_small —— 对冲马丁「改小」保守档（账户约 $7,000）
+;   相对风洞默认(按~$10k调)的改动，只动 7 个：起手/封顶减半、少一层、
+;   浮亏止损 1000->300(≈4%)、补周亏熔断 300、周盈落袋 200->100、保本缓冲 30->10。
+;   满爬单向敞口: 0.01(底)+0.02+0.03(封顶) = 0.06 手 ≈ $6/每$1金价 (默认是 0.22 手)。
+;   ⚠️ 本 EA 的单子不带券商端 SL/TP，靠 MaxLoss 浮亏全平 + 周熔断出场 —— 这两条别关。
+; ============================================================================
+InpFirstLots=0.01
+InpStep=0.7
+InpMartinInterval=1.0
+InpFilter=0.1
+InpOrderTime=0
+InpRetrySeconds=1800
+InpIsPaused=false
+InpMartinEnabled=true
+InpIgnoreMagicNumber=false
+InpMaxLoss=300
+InpMaxMartinLevel=2
+InpMaxAtrPct=1.5
+InpMaxBollDeviation=9999.0
+InpMartinBreakevenProfit=10
+InpMartinExitProfit=0
+InpLogicalBreakeven=true
+InpBreakevenResetLadder=true
+InpNewsFilterEnabled=false
+InpNewsBeforeMinutes=60
+InpNewsAfterMinutes=60
+InpNewsHighImportance=true
+InpNewsMediumImportance=false
+InpMagicNumber=999
+InpWeekProfitLock=100
+InpWeekLossHalt=300
+InpSoftCloseHours=12
+InpMartinLotCap=0.03
+InpCutCooldownHours=24
+InpWeekResetOnBoot=true
+InpWeekResetGuardSecs=300
+InpWeekStartDelayHours=0.0
