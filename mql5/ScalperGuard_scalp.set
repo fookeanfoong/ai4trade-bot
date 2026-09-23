@@ -200,7 +200,7 @@ InpVirtualBalanceUSD=20.0
 InpUseV2Scoring=true
 ; 采样期降到 4:10 分制是新加的一道闸门,非扫损路径的流动性维度本就拿不满,
 ; 门槛留在 5 会把大量合格 setup 判成 C 级。等有样本了再按实测分数分布调回来。
-InpScoreMinB=1
+InpScoreMinB=4
 InpScoreMinA=7
 InpScoreMinAPlus=9
 InpRiskPctB=0.5
@@ -211,7 +211,7 @@ InpRiskPctAPlus=1.0
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
 InpUseBOS=true
 InpBosBufferATR=0.05
-InpRequireMtfAgree=false
+InpRequireMtfAgree=true
 
 ; --- V2 波动率分档（规格 §13）---
 ; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
@@ -245,7 +245,7 @@ InpAllowHedge=true
 ; "无有效突破/回踩触发"长期是第一大拒绝原因。这条路径只要求顺势收盘 +
 ; 价格没过度偏离快线(防 FOMO 追高)。
 ; ⚠️ 它一定会拉低平均质量。单独标记路径,事后按路径分组比期望值,亏就关掉。
-InpUseLooseEntry=true
+InpUseLooseEntry=false
 InpLooseMaxDistATR=2.0
 
 ; --- 方向判定与冲突处理（本轮最关键的一项）---
