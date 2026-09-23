@@ -68,6 +68,17 @@ GRID = dict(
     depth=[0.8, 1.2],
     be=[1.0, 0.0],
 )
+# 第 2 轮:第 1 轮训练期全部为负。看训练期诊断后只改两件事(有交易逻辑,不是乱试):
+#   side  : 2024-26 黄金是大牛市,逆势做空可能是主要亏损来源 -> 试"只做多"
+#   stop  : 第 1 轮 61% 的单子打止损,止损离回调低点太近 -> 试"放宽到结构外 0.5ATR、最小 1ATR"
+# 注意:第 2 轮是在看过第 1 轮验证结果之后设计的,证据强度弱于第 1 轮,最终要靠模拟盘前向验证。
+GRID2 = dict(
+    side=["both", "long"],
+    stop=["tight", "wide"],
+    rr=[1.5, 2.0],
+    entry=["stop", "market"],
+)
+STOPS = {"tight": dict(sl_buf=0.2, min_stop_atr=0.5), "wide": dict(sl_buf=0.5, min_stop_atr=1.0)}
 
 
 # ------------------------------------------------------------------ 数据
@@ -261,6 +272,8 @@ def run(bars, ind, sec, P, lo_i, hi_i):
         if not s:
             continue
         d, sl, ext = s
+        if P.get("side") == "long" and d < 0:
+            continue
         a = ind["atr"][i]
         if P["entry"] == "stop":
             lvl = ext + P["trig_buf"] * a * d
@@ -411,6 +424,39 @@ def main():
           f"→ 验证期 {va.get('n',0)} 笔,期望 {va.get('exp','—')}R —— " +
           ("✅ **训练、验证两边都为正**" if ok else "❌ **验证没过**:这组规则在没见过的行情上不赚钱,不应上实盘"), ""]
 
+    # ---- 诊断(只看训练期):亏在哪个方向
+    diag = run(bars, ind, sec, P, warm, cut)
+    L += ["## 第 1 轮诊断(只看训练期)", "",
+          "| 方向 | 笔数 | 胜率 | 期望R | PF | 最大回撤R | 每周笔数 |", "|---|---|---|---|---|---|---|",
+          fmt_row("做多", stats([t for t in diag if t["dir"] > 0], d_tr)),
+          fmt_row("做空", stats([t for t in diag if t["dir"] < 0], d_tr)), ""]
+
+    # ---- 第 2 轮
+    L += ["## 第 2 轮:只做多? 放宽结构止损?(回调深度 1.0ATR · 1R 保本)", "",
+          "> 第 2 轮是看过第 1 轮验证结果后设计的,即使两边都为正,证据也弱于一次命中。",
+          "> 真正的裁判是模拟盘前向跑 30 笔以上。", "",
+          "| 方向 | 止损 | RR | 进场 | 训练笔数 | 训练胜率 | 训练期望R | 验证笔数 | 验证胜率 | 验证期望R | 验证PF |",
+          "|---|---|---|---|---|---|---|---|---|---|---|"]
+    rows2 = []
+    for combo in itertools.product(*GRID2.values()):
+        q = dict(zip(GRID2.keys(), combo))
+        P2 = dict(base, depth=1.0, be=1.0, **STOPS[q["stop"]], **q)
+        tr2 = stats(run(bars, ind, sec, P2, warm, cut), d_tr)
+        va2 = stats(run(bars, ind, sec, P2, cut, len(bars)), d_va)
+        rows2.append((P2, tr2, va2))
+    rows2.sort(key=lambda x: -(x[1].get("exp", -9) if x[1].get("n", 0) >= MIN_TRADES else -9))
+    for P2, tr2, va2 in rows2:
+        g = lambda s, k: s.get(k, "—") if s.get("n", 0) else "—"
+        L.append(f"| {'只多' if P2['side']=='long' else '多空'} | {'宽' if P2['stop']=='wide' else '紧'} | {P2['rr']} | "
+                 f"{P2['entry']} | {tr2['n']} | {g(tr2,'wr')} | {g(tr2,'exp')} | {va2['n']} | {g(va2,'wr')} | "
+                 f"{g(va2,'exp')} | {g(va2,'pf')} |")
+    P, tr, va = next((r for r in rows2 if r[1].get("n", 0) >= MIN_TRADES), rows2[0])
+    ok = tr.get("n", 0) >= MIN_TRADES and va.get("n", 0) >= 20 and tr.get("exp", -1) > 0 and va.get("exp", -1) > 0
+    L += ["", f"**第 2 轮按训练期挑出**:{'只做多' if P['side']=='long' else '多空都做'} · "
+              f"{'宽' if P['stop']=='wide' else '紧'}止损 · RR={P['rr']} · 进场={P['entry']}",
+          f"→ 验证期 {va.get('n',0)} 笔,期望 {va.get('exp','—')}R —— " +
+          ("✅ **训练、验证两边都为正**" if ok else "❌ **验证没过**"), ""]
+
     full = run(bars, ind, sec, P, warm, len(bars))
     d_full = (bars[-1]["t"] - bars[warm]["t"]) / 86400
     sf = stats(full, d_full)
@@ -452,7 +498,7 @@ def main():
         f.write("\n".join(L) + "\n")
     with open(OUT_JSON, "w") as f:
         json.dump({"generated": now, "synthetic": a.synthetic, "passed": ok,
-                   "params": {k: P[k] for k in GRID}, "train": tr, "valid": va, "full": sf,
+                   "params": {k: P[k] for k in ("entry", "rr", "depth", "be", "side", "stop", "sl_buf", "min_stop_atr") if k in P}, "train": tr, "valid": va, "full": sf,
                    "monte_carlo": mc, "cross": cross}, f, ensure_ascii=False, indent=1)
     print("\n".join(L))
     return 0
