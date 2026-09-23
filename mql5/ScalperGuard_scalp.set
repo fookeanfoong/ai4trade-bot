@@ -46,7 +46,7 @@ InpVwapTouchATR=0.50
 ; 冷却 0 秒：随看随进，顺当前K线方向立刻开仓（配 DirectionMode=5）。
 InpEntryCooldownSec=0
 InpMinHoldSeconds=0
-InpReentryCooldownSec=0
+InpReentryCooldownSec=60
 InpProfitFloorUSD=1.2
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
@@ -82,7 +82,7 @@ InpLtfRequireCloseSide=false
 ; 实测拦路的是 "趋势不一致 HTF=0" —— 缺任何一条 H1 就判无趋势,信号在第一步被毙。
 ; 采样期只保留"快线>慢线"这一条,后两条关掉。
 InpHtfRequireCloseSide=true
-InpHtfRequireSlope=false
+InpHtfRequireSlope=true
 
 ; --- 信号门槛 ---
 ; InpMinScore=4 实际等于关掉评分过滤：触发本身占 2 分，而 HTF/LTF 同向是
@@ -235,7 +235,7 @@ InpReducedAtPct=100000.0
 ; 真正该守的不是"只能一笔",而是**总在险金额上限**。
 ; 已移到保本之外的仓位按 0 计入在险 —— 那些确实没有敞口了。
 InpAllowMultiPosition=true
-InpMaxPositions=3
+InpMaxPositions=1
 InpMaxCombinedRiskPct=1000.0
 InpMaxMarginPctPerPos=100.0
 ; 规格 §31:反向开仓是在掩盖错误,不是管理风险。保持禁止。
