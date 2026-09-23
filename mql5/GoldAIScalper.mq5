@@ -93,7 +93,7 @@ input int    InpSessEnd     = 22;              // 结束小时(纽约盘尾)
 input group "=== 风控 ==="
 input int    InpMaxPositions      = 1;         // 同时最多持仓
 input int    InpMaxTradesPerDay   = 12;        // 每日最多开仓
-input int    InpStopAfterConsecLoss = 3;       // 连亏 N 笔当日停手
+input int    InpStopAfterConsecLoss = 0;       // 连亏 N 笔当日停手(0=关)
 input double InpDailyMaxLossUSD   = 40.0;      // 当日浮亏+已实现亏到该值停手(0=关)
 
 input group "=== 监控 ==="
