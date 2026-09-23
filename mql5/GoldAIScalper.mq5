@@ -30,7 +30,7 @@
 input group "=== 基础 ==="
 input double InpFixedLot        = 0.01;        // 固定手数
 input long   InpMagic           = 20260926;    // 魔术号(独立)
-input double InpMaxSpreadUSD     = 0.30;        // 点差上限($),剥头皮命门:超过不开仓。Exness标准档~0.15-0.25;RAW零点差档可收紧到0.15
+input double InpMaxSpreadUSD     = 0.35;        // 点差上限($)。Exness标准档实测~0.26(浮动),用0.35;换Pro/Raw点差~0.10时收紧到0.15
 
 input group "=== 周期 ==="
 input ENUM_TIMEFRAMES InpSignalTF = PERIOD_M5; // 信号周期(剥头皮主周期)
