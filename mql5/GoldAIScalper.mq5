@@ -21,6 +21,8 @@
 #property strict
 //  v1.10  按实战风控文档补强：点差闸改美元制(ECN/RAW才划算)、重大数据黑窗、
 //         布林带防追高、可选时段黑窗(美盘洗盘)。红线不变:每单硬止损、绝不马丁/网格。
+//  v1.20  真·快进快出:固定小额止盈/止损($)可覆盖 ATR、超时强平(绝不恋仓)。
+//         默认走剥头皮档:止损$0.8 止盈$1.3(≈1:1.6)、最长持仓15分钟。
 
 #include <Trade/Trade.mqh>
 
@@ -69,7 +71,12 @@ input group "=== 波动率闸门(避开死盘/暴动) ==="
 input double InpAtrMinUSD   = 0.80;            // ATR 下限($),太安静不做
 input double InpAtrMaxUSD   = 20.0;            // ATR 上限($),太乱不做
 
-input group "=== 出场 ==="
+input group "=== 快进快出(剥头皮出场) ==="
+input double InpFixedSlUSD  = 0.80;            // 固定止损距离($),剥头皮小止损;0=改用 ATR×倍数
+input double InpFixedTpUSD  = 1.30;            // 固定止盈距离($),吃一口就跑;0=改用 RR×止损
+input int    InpMaxHoldMin  = 15;              // 超过 N 分钟强制平仓(绝不恋仓);0=关
+
+input group "=== 出场(ATR 备用:上面两个填 0 时才生效) ==="
 input double InpSlAtrMult   = 1.2;             // 止损 = N×ATR
 input double InpTpRR        = 1.8;             // 止盈 = RR×止损距离
 input bool   InpUseBreakeven = true;           // 到 1R 移保本
@@ -315,15 +322,19 @@ bool IsOverextended(int dir, double atr)
 }
 
 //+------------------------------------------------------------------+
+// 有效止损距离:优先固定美元,否则 ATR×倍数
+double EffSlDist(double atr) { return (InpFixedSlUSD>0.0)? InpFixedSlUSD : InpSlAtrMult*atr; }
+
 void OpenTrade(int dir, double atr, double score, string detail)
 {
    double ask=SymbolInfoDouble(_Symbol,SYMBOL_ASK);
    double bid=SymbolInfoDouble(_Symbol,SYMBOL_BID);
    double price = (dir>0)? ask : bid;
-   double slDist = InpSlAtrMult*atr;
-   if(slDist<=0) return;
+   double slDist = EffSlDist(atr);
+   double tpDist = (InpFixedTpUSD>0.0)? InpFixedTpUSD : InpTpRR*slDist;
+   if(slDist<=0 || tpDist<=0) return;
    double sl = (dir>0)? price-slDist : price+slDist;
-   double tp = (dir>0)? price+InpTpRR*slDist : price-InpTpRR*slDist;
+   double tp = (dir>0)? price+tpDist : price-tpDist;
    sl=NormalizeDouble(sl,_Digits); tp=NormalizeDouble(tp,_Digits);
 
    // 券商最小止损距离
@@ -364,7 +375,20 @@ void ManagePositions(double atr)
       double tp  =PositionGetDouble(POSITION_TP);
       double bid =SymbolInfoDouble(_Symbol,SYMBOL_BID);
       double ask =SymbolInfoDouble(_Symbol,SYMBOL_ASK);
-      double rDist=InpSlAtrMult*atr;
+
+      // 超时强平:剥头皮绝不恋仓,拖过 N 分钟无论盈亏直接平
+      if(InpMaxHoldMin>0)
+      {
+         datetime opened=(datetime)PositionGetInteger(POSITION_TIME);
+         if(opened>0 && (TimeCurrent()-opened) >= InpMaxHoldMin*60)
+         {
+            trade.PositionClose(tk);
+            if(InpVerbose) PrintFormat("[EXIT] 超时强平 #%I64u (持仓>%d分钟)", tk, InpMaxHoldMin);
+            continue;
+         }
+      }
+
+      double rDist=EffSlDist(atr);
       if(rDist<=0) continue;
 
       if(type==POSITION_TYPE_BUY)
