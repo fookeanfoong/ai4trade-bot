@@ -75,9 +75,10 @@ input double InpBELockR          = 0.1;    // 保本时多锁几 R(覆盖点差)
 input int    InpMaxHoldHours     = 24;     // 持仓超过几小时就平(0=关闭)
 
 input group "=== 纪律 ==="
-input int    InpMaxTradesPerDay  = 2;
-input int    InpMaxLossesPerDay  = 1;      // 当天亏几笔就收工
+input int    InpMaxTradesPerDay  = 2;      // 每天最多几笔(0=不限)
+input int    InpMaxLossesPerDay  = 1;      // 当天亏几笔就收工(0=不限)
 input double InpMaxSpreadUSD     = 0.50;   // 点差超过就不下单($)
+input bool   InpUseSession       = true;   // false=24小时都可以开单
 input int    InpSessionStartUTC  = 7;      // 只在 UTC 这个时段内开新单(伦敦+纽约上午)
 input int    InpSessionEndUTC    = 17;
 input int    InpTesterGMTOffset  = 3;      // 仅策略测试器用:服务器时区(OANDA 夏令=3,冬令=2)
@@ -159,6 +160,8 @@ int UTCHour()
 
 bool InSession()
   {
+   if(!InpUseSession)
+      return(true);
    int h = UTCHour();
    if(InpSessionStartUTC <= InpSessionEndUTC)
       return(h >= InpSessionStartUTC && h < InpSessionEndUTC);
@@ -448,7 +451,11 @@ void OnTick()
       return;
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED))
       return;
-   if(!sess || opened >= InpMaxTradesPerDay || losses >= InpMaxLossesPerDay)
+   if(!sess)
+      return;
+   if(InpMaxTradesPerDay > 0 && opened >= InpMaxTradesPerDay)
+      return;
+   if(InpMaxLossesPerDay > 0 && losses >= InpMaxLossesPerDay)
       return;
 
    double sl, ext, atr;

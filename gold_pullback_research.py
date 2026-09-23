@@ -477,6 +477,27 @@ def main():
     else:
         mc = {}
 
+    # ---- 合成配置:去掉纪律(每日笔数/亏损收工/时段)会怎样
+    NO_DISC = dict(max_trades_day=999, max_losses_day=999, sess_start=0, sess_end=24)
+    combos = [
+        ("选定配置(有纪律)", dict(P)),
+        ("选定配置 · 去掉纪律", dict(P, **NO_DISC)),
+        ("多空都做 · 去掉纪律", dict(P, side="both", **NO_DISC)),
+        ("突破挂单进场 · 去掉纪律", dict(P, entry="stop", **NO_DISC)),
+    ]
+    L += ["## 合成配置对比:去掉纪律(每天笔数上限 / 亏一笔收工 / 交易时段)", "",
+          "| 配置 | 区间 | 笔数 | 胜率 | 期望R | PF | 最大回撤R | 每周笔数 |",
+          "|---|---|---|---|---|---|---|---|"]
+    merged = {}
+    for tag, Pc in combos:
+        rows_c = {}
+        for part, lo_i, hi_i, dd_ in (("训练", warm, cut, d_tr), ("验证", cut, len(bars), d_va),
+                                      ("全部", warm, len(bars), d_full)):
+            rows_c[part] = stats(run(bars, ind, sec, Pc, lo_i, hi_i), dd_)
+            L.append(fmt_row(f"{tag} | {part}", rows_c[part]))
+        merged[tag] = rows_c
+    L.append("")
+
     cross = {}
     for name in ("M30", "M15"):
         if name not in data:
@@ -499,7 +520,7 @@ def main():
     with open(OUT_JSON, "w") as f:
         json.dump({"generated": now, "synthetic": a.synthetic, "passed": ok,
                    "params": {k: P[k] for k in ("entry", "rr", "depth", "be", "side", "stop", "sl_buf", "min_stop_atr") if k in P}, "train": tr, "valid": va, "full": sf,
-                   "monte_carlo": mc, "cross": cross}, f, ensure_ascii=False, indent=1)
+                   "monte_carlo": mc, "cross": cross, "merged": merged}, f, ensure_ascii=False, indent=1)
     print("\n".join(L))
     return 0
 
