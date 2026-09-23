@@ -9,17 +9,19 @@
 //    3) 回调末端出现"拒绝K线"(长下影 pin bar / 吞没)才算确认
 //    4) 在确认K线的高点上方挂突破单:价格自己走回原方向才成交,不对就不进
 //    5) 止损放在回调低点下方(结构失效位),止盈按 RR,到 1R 移保本
-//    6) 一天最多 2 笔,亏一笔当天收工;超过 24 小时没走完就平掉
+//    6) 超过 24 小时没走完就平掉
+//    (每日笔数上限 / 亏一笔收工 / 交易时段 都做成了可选,默认关 —— 研究显示它们砍掉的多是好单)
 //
 //  规则与 gold_pullback_research.py 一一对应,改一边就要改另一边。
 //
 //  ── 研究结果(reports/gold_pullback.md,GC=F H1 两年,实话) ─────────
-//  两轮共 40 组参数,**训练期(2024-11~2025-12)没有一组是正期望**。
-//  默认值 = 第 2 轮按训练期挑出的:只做多 · 结构外 0.5ATR 宽止损 · RR 2 · 1R 保本。
-//  它在训练期 -0.03R/笔(基本打平),在最近 9 个月 +0.44R/笔(只有 16 笔)。
-//  => 这不是经过验证的 edge,是"最近行情顺手"。**只在模拟账户上前向测试**,
-//     跑满 30 笔、期望仍为正,再考虑实盘。
-//  0.02 手下止损中位数约 $19 金价 = 风险约 $38/笔;InpMaxRiskUSD 会跳过超过上限的单。
+//  带纪律的两轮 40 组参数,训练期(2024-11~2025-12)没有一组是正期望。
+//  去掉纪律(不限笔数 / 不因亏损收工 / 24 小时)后,默认这组:
+//    只做多 · 突破确认K线高点进场 · 结构外 0.5ATR 宽止损 · RR 2 · 1R 保本
+//    训练 65 笔 +0.12R/笔 · 验证 25 笔 +0.08R/笔 —— 两边都为正,但样本小,
+//    而且这是看过多轮结果后才挑的,证据偏弱。先在模拟盘跑满 30 笔再谈实盘。
+//  0.02 手下止损中位数约 $19 金价 = 风险约 $38/笔;InpMaxRiskUSD 会跳过超过上限的单
+//  (回测没有这条上限,设 0 = 与回测一致)。
 //
 //  每笔单子进场时止损止盈都跟单一起提交给服务器 ——
 //  EA 停了、终端关了,止损依然在券商那边。无马丁、无网格、无加仓。
@@ -35,7 +37,7 @@
 //--- 参数 ----------------------------------------------------------
 input group "=== 仓位 ==="
 input double InpLots             = 0.02;   // 固定手数
-input double InpMaxRiskUSD       = 40.0;   // 单笔最大亏损($),止损算出来超过就不做(0=不限)
+input double InpMaxRiskUSD       = 60.0;   // 单笔最大亏损($),止损算出来超过就不做(0=不限)
 
 input group "=== 周期 ==="
 input ENUM_TIMEFRAMES InpTimeframe = PERIOD_H1;   // 执行周期(找回调K线)
@@ -63,7 +65,7 @@ input double InpWickMin          = 0.4;    // pin bar 影线至少占全长 40%
 input double InpMaxRangeATR      = 2.0;    // 确认K线太大(新闻K)不追
 
 input group "=== 进场与出场 ==="
-input bool   InpUseStopEntry     = false;  // true=高点上方挂突破单 false=确认K线收盘后市价进
+input bool   InpUseStopEntry     = true;   // true=高点上方挂突破单 false=确认K线收盘后市价进
 input double InpTrigBufATR       = 0.05;   // 突破单离确认K线高/低点的距离(ATR)
 input int    InpPendingBars      = 2;      // 挂单几根K线内不成交就撤
 input double InpSLBufATR         = 0.5;    // 止损放在回调低点外这么多 ATR
@@ -75,10 +77,10 @@ input double InpBELockR          = 0.1;    // 保本时多锁几 R(覆盖点差)
 input int    InpMaxHoldHours     = 24;     // 持仓超过几小时就平(0=关闭)
 
 input group "=== 纪律 ==="
-input int    InpMaxTradesPerDay  = 2;      // 每天最多几笔(0=不限)
-input int    InpMaxLossesPerDay  = 1;      // 当天亏几笔就收工(0=不限)
+input int    InpMaxTradesPerDay  = 0;      // 每天最多几笔(0=不限)
+input int    InpMaxLossesPerDay  = 0;      // 当天亏几笔就收工(0=不限)
 input double InpMaxSpreadUSD     = 0.50;   // 点差超过就不下单($)
-input bool   InpUseSession       = true;   // false=24小时都可以开单
+input bool   InpUseSession       = false;  // false=24小时都可以开单
 input int    InpSessionStartUTC  = 7;      // 只在 UTC 这个时段内开新单(伦敦+纽约上午)
 input int    InpSessionEndUTC    = 17;
 input int    InpTesterGMTOffset  = 3;      // 仅策略测试器用:服务器时区(OANDA 夏令=3,冬令=2)

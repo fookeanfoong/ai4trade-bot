@@ -1,0 +1,48 @@
+; GoldPullback —— 合成版 · 0.02 手 · 去掉纪律
+; H1 找回调K线 + H4 定方向 · 只做多 · 在确认K线高点上方挂突破单(价格走回原方向才成交)
+; 止损在回调低点外 0.5ATR(最小 1ATR)· RR1:2 · 到 1R 移保本 · 最多持仓 24 小时
+; 不限每日笔数、不因亏损收工、24 小时都可开单
+; 回测(reports/gold_pullback.md,GC=F H1 两年):训练 65 笔 +0.12R/笔,验证 25 笔 +0.08R/笔。
+;   两边为正,但样本小、是多轮比较后挑的 —— 先模拟盘跑满 30 笔再谈实盘。
+; 保留的保护:止损止盈随单提交、点差 > $0.50 不下单、单笔风险 > $60 跳过(设 0 = 与回测一致)
+InpLots=0.02
+InpMaxRiskUSD=60.0
+InpTimeframe=16385
+InpTrendTF=16388
+InpAllowBuy=true
+InpAllowSell=false
+InpHTFFastEMA=50
+InpHTFSlowEMA=200
+InpFastEMA=20
+InpMidEMA=50
+InpATRPeriod=14
+InpPullbackDepthATR=1.0
+InpSwingLookback=12
+InpPullbackBars=3
+InpTouchBufATR=0.1
+InpZoneBelowATR=0.5
+InpMinCounterBars=2
+InpCounterLook=4
+InpClosePos=0.6
+InpWickMin=0.4
+InpMaxRangeATR=2.0
+InpUseStopEntry=true
+InpTrigBufATR=0.05
+InpPendingBars=2
+InpSLBufATR=0.5
+InpMinStopATR=1.0
+InpMaxStopATR=2.5
+InpRewardRisk=2.0
+InpBreakevenR=1.0
+InpBELockR=0.1
+InpMaxHoldHours=24
+InpMaxTradesPerDay=0
+InpMaxLossesPerDay=0
+InpMaxSpreadUSD=0.50
+InpUseSession=false
+InpSessionStartUTC=7
+InpSessionEndUTC=17
+InpTesterGMTOffset=3
+InpSlippagePoints=30
+InpMagic=20260924
+InpAlerts=true
