@@ -122,7 +122,9 @@ def prepare(bars, sec, htf_sec, P):
     hc = [b["c"] for b in htf]
     hf, hs = B.ema_series(hc, P["htf_fast"]), B.ema_series(hc, P["htf_slow"])
     # 每根执行K线对应"已经收盘"的最后一根大周期K线
+    hatr = B.atr_series(htf, P["atr_p"])
     trend = [0] * len(bars)
+    sep = [0.0] * len(bars)     # 大周期 EMA 分离度(以大周期 ATR 计):小 = 横盘
     j = -1
     for i, b in enumerate(bars):
         close_i = b["t"] + sec
@@ -133,7 +135,10 @@ def prepare(bars, sec, htf_sec, P):
                 trend[i] = 1
             elif hf[j] < hs[j] and hf[j] < hf[j - 3]:
                 trend[i] = -1
+            if hatr[j]:
+                sep[i] = abs(hf[j] - hs[j]) / hatr[j]
     ind["trend"] = trend
+    ind["sep"] = sep
     return ind
 
 
@@ -144,7 +149,7 @@ def signal(bars, ind, i, P, depth):
     if a is None or a <= 0 or i < P["swing_lb"] + P["bear_look"] + 2:
         return None
     d = ind["trend"][i]
-    if d == 0:
+    if d == 0 or ind["sep"][i] < P.get("htf_sep", 0.0):
         return None
     b, pb = bars[i], bars[i - 1]
     ef, em = ind["ef"][i], ind["em"][i]
@@ -498,6 +503,71 @@ def main():
         merged[tag] = rows_c
     L.append("")
 
+    # ---- 第 3 轮:参数稳健性(range 设定) + 横盘过滤
+    # 每个参数在默认值附近试几档。**只用训练期**挑:
+    #   平滑分 = 该档和左右相邻档的训练期望的平均 -> 选"一片高原"的中间,不选孤立尖峰
+    # 按参数逐个做(坐标下降,一遍),然后验证期只看不挑。
+    SENS = [
+        ("htf_sep", "横盘过滤:大周期EMA分离 ≥ N×ATR", [0.0, 0.5, 1.0, 1.5, 2.0]),
+        ("depth", "回调深度(ATR)", [0.6, 0.8, 1.0, 1.2, 1.5]),
+        ("max_range_atr", "确认K线最大长度(ATR)", [1.5, 2.0, 2.5, 3.0]),
+        ("zone_below", "可跌破EMA50幅度(ATR)", [0.3, 0.5, 0.8]),
+        ("touch_buf", "碰EMA20容差(ATR)", [0.0, 0.1, 0.25]),
+        ("sl_buf", "止损在结构外(ATR)", [0.3, 0.5, 0.7]),
+        ("min_stop_atr", "最小止损(ATR)", [0.75, 1.0, 1.25]),
+        ("max_stop_atr", "最大止损(ATR),超过放弃", [1.5, 2.0, 2.5, 3.0]),
+        ("rr", "盈亏比 RR", [1.5, 2.0, 2.5]),
+        ("be", "保本触发(R)", [0.75, 1.0, 1.5]),
+        ("max_hold_hours", "最长持仓(小时)", [12, 24, 48]),
+    ]
+    P3 = dict(P, entry="stop", **NO_DISC)
+    L += ["## 第 3 轮:range 设定稳健性 + 横盘过滤", "",
+          "每个参数在默认值附近试几档,其它参数不动。**只用训练期**挑值:",
+          "取「这一档 + 左右相邻档」训练期望的平均(平滑分),选高原的中间,不选孤立尖峰。",
+          "验证期只看不挑。⭐ = 选中的值。", ""]
+    sens_out = {}
+    for key, label, vals in SENS:
+        res = []
+        for v in vals:
+            Pv = dict(P3, **{key: v})
+            tr_ = stats(run(bars, ind, sec, Pv, warm, cut), d_tr)
+            va_ = stats(run(bars, ind, sec, Pv, cut, len(bars)), d_va)
+            res.append((v, tr_, va_))
+        ex = [r[1].get("exp", -1) if r[1].get("n", 0) >= MIN_TRADES else -1 for r in res]
+        smooth = [sum(ex[max(0, k - 1):k + 2]) / len(ex[max(0, k - 1):k + 2]) for k in range(len(ex))]
+        pick = max(range(len(vals)), key=lambda k: (smooth[k], -abs(k - len(vals) // 2)))
+        P3[key] = vals[pick]
+        sens_out[key] = {"picked": vals[pick],
+                         "rows": [{"v": v, "train": t, "valid": w} for v, t, w in res]}
+        L += [f"**{label}**", "",
+              "| 值 | 训练笔数 | 训练期望R | 平滑分 | 验证笔数 | 验证期望R |", "|---|---|---|---|---|---|"]
+        for k, (v, t, w) in enumerate(res):
+            L.append(f"| {v}{' ⭐' if k == pick else ''} | {t.get('n', 0)} | {t.get('exp', '—')} | "
+                     f"{smooth[k]:+.3f} | {w.get('n', 0)} | {w.get('exp', '—')} |")
+        L.append("")
+
+    tr3 = stats(run(bars, ind, sec, P3, warm, cut), d_tr)
+    va3 = stats(run(bars, ind, sec, P3, cut, len(bars)), d_va)
+    full3 = run(bars, ind, sec, P3, warm, len(bars))
+    sf3 = stats(full3, d_full)
+    ok3 = tr3.get("n", 0) >= MIN_TRADES and va3.get("n", 0) >= 15 and tr3.get("exp", -1) > 0 and va3.get("exp", -1) > 0
+    L += ["### 第 3 轮最终配置", "",
+          "| 区间 | 笔数 | 胜率 | 期望R | PF | 最大回撤R | 每周笔数 |", "|---|---|---|---|---|---|---|",
+          fmt_row("训练", tr3), fmt_row("验证", va3), fmt_row("全部", sf3), "",
+          ("✅ 训练、验证两边为正" if ok3 else "❌ 验证没过"), ""]
+    mc3 = {}
+    if sf3.get("n"):
+        mc3 = monte_carlo([t["r"] for t in full3])
+        L += [f"- 0.02 手合计盈亏 **${sf3['usd']}** · 最大回撤 ${sf3['dd_usd']} · 最长连亏 {sf3['streak']} 笔",
+              f"- 止损中位数 ${sf3['stop_med']}(≈ ${round(sf3['stop_med']*OZ_PER_TRADE, 2)}/笔),"
+              f"90% 分位 ${sf3['stop_p90']}(≈ ${round(sf3['stop_p90']*OZ_PER_TRADE, 2)})",
+              f"- 出场:{sf3['why']}",
+              f"- 蒙特卡洛(100 笔):亏钱概率 **{mc3['p_loss']}%** · 最大回撤中位 {mc3['dd_p50']}R · "
+              f"最差 5% **{mc3['dd_p95']}R**", ""]
+    final = {k: P3[k] for k in ("entry", "rr", "depth", "be", "side", "sl_buf", "min_stop_atr", "max_stop_atr",
+                                 "max_range_atr", "zone_below", "touch_buf", "htf_sep", "max_hold_hours")}
+    L += ["```", "最终参数: " + json.dumps(final, ensure_ascii=False), "```", ""]
+
     cross = {}
     for name in ("M30", "M15"):
         if name not in data:
@@ -520,7 +590,8 @@ def main():
     with open(OUT_JSON, "w") as f:
         json.dump({"generated": now, "synthetic": a.synthetic, "passed": ok,
                    "params": {k: P[k] for k in ("entry", "rr", "depth", "be", "side", "stop", "sl_buf", "min_stop_atr") if k in P}, "train": tr, "valid": va, "full": sf,
-                   "monte_carlo": mc, "cross": cross, "merged": merged}, f, ensure_ascii=False, indent=1)
+                   "monte_carlo": mc, "cross": cross, "merged": merged,
+                   "round3": {"final": final, "train": tr3, "valid": va3, "full": sf3, "passed": ok3, "monte_carlo": mc3, "sens": sens_out}}, f, ensure_ascii=False, indent=1)
     print("\n".join(L))
     return 0
 
