@@ -463,6 +463,8 @@ InpClampWideStop=true
 InpEntryMode=1
 InpVwapTouchATR=0.0
 InpEntryCooldownSec=0
+InpMinHoldSeconds=0
+InpReentryCooldownSec=0
 InpProfitFloorUSD=0.0
 InpRiskPctDefault=2.0
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,

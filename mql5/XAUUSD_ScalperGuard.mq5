@@ -69,6 +69,10 @@ input double   InpVwapTouchATR       = 0.50;    // 回踩到 VWAP 多近算"触�
 // M1 触发能每分钟开单，会在同一个点位连开好几张一样的单（同价位、同止损），
 // 一反转就一起爆 —— 等于一个坏主意下了好几次。冷却把这种簇状开仓压掉。0=关。
 input int      InpEntryCooldownSec   = 0;       // 两次开仓之间的最短间隔（秒），0=关
+// 最短持仓：开仓后这么多**秒**内，EA 不主动离场（硬止损/止盈仍在券商侧生效）。0=关。
+input int      InpMinHoldSeconds     = 0;       // 开仓后至少持有几秒才允许EA离场，0=关
+// 离场冷却：任一持仓平掉后，这么多**秒**内不开新单（从平仓那刻算）。0=关。
+input int      InpReentryCooldownSec = 0;       // 平仓后再开仓的最短等待（秒），0=关
 
 // 利润地板：净利**到过**这个金额之后，若回落到它以下就平仓。
 // 和「到 $X 就卖」的区别 —— 它不砍上限：超过后继续涨就继续拿，只在
@@ -477,6 +481,8 @@ int hAtrL, hRsiL, hAdxL;       // LTF 指标
 datetime g_lastBarTime   = 0;
 datetime g_dayStart      = 0;
 datetime g_lastEntryTime = 0;      // 上一次开仓时间，用于入场冷却
+datetime g_lastCloseTime = 0;      // 上一次平仓时间，用于离场冷却
+int      g_prevMyPos     = 0;      // 上一 tick 自己的持仓数，用于探测平仓
 string   g_lastNoTradeReason = "";
 datetime g_lastReasonLog = 0;
 string   g_logFile       = "XAUUSD_ScalperGuard_log.csv";
@@ -2537,6 +2543,10 @@ void ManagePositions(double atr)
          continue;
       }
 
+      // 最短持仓：开仓后 N 秒内 EA 不主动离场（硬止损/止盈仍在券商侧兜底）
+      if(InpMinHoldSeconds > 0 && (TimeCurrent() - (datetime)pos.Time()) < InpMinHoldSeconds)
+         continue;
+
       // 初始 R 只在第一次记录，之后止损怎么移都不影响 R 的基准
       double R = InitialR(tk, MathAbs(open - sl));
       if(R <= 0.0) continue;
@@ -2803,6 +2813,16 @@ void ManagePositions(double atr)
          }
       }
    }
+
+   // 探测平仓：本轮结束后自己的持仓数比上次少 -> 有单平掉了，记下时刻（供离场冷却）
+   int myNow = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      if(!pos.SelectByIndex(i)) continue;
+      if(pos.Magic() == InpMagic && pos.Symbol() == _Symbol) myNow++;
+   }
+   if(myNow < g_prevMyPos) g_lastCloseTime = TimeCurrent();
+   g_prevMyPos = myNow;
 }
 
 //==================================================================
@@ -3761,6 +3781,16 @@ void OnTick()
       NoTrade(StringFormat("入场冷却中：距上一单 %d 秒 < %d 秒",
               (int)(TimeCurrent() - g_lastEntryTime), InpEntryCooldownSec));
       Panel(ds, "入场冷却");
+      return;
+   }
+
+   // --- 离场冷却：上一单平掉后 N 秒内不再开新单 ---
+   if(InpReentryCooldownSec > 0 && g_lastCloseTime > 0 &&
+      (TimeCurrent() - g_lastCloseTime) < InpReentryCooldownSec)
+   {
+      NoTrade(StringFormat("离场冷却中：距上次平仓 %d 秒 < %d 秒",
+              (int)(TimeCurrent() - g_lastCloseTime), InpReentryCooldownSec));
+      Panel(ds, "离场冷却");
       return;
    }
 
