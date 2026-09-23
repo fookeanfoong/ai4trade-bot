@@ -1,0 +1,113 @@
+{
+ "generated": "2026-09-23T05:48+00:00",
+ "synthetic": false,
+ "passed": false,
+ "params": {
+  "entry": "market",
+  "rr": 1.5,
+  "depth": 1.2,
+  "be": 0.0
+ },
+ "train": {
+  "n": 44,
+  "wr": 38.6,
+  "exp": -0.065,
+  "sum_r": -2.8,
+  "pf": 0.9,
+  "dd_r": 6.2,
+  "streak": 5,
+  "usd": -462.64,
+  "dd_usd": 462.64,
+  "per_week": 0.8,
+  "stop_med": 12.89,
+  "stop_p90": 39.5,
+  "why": {
+   "SL": 27,
+   "TP": 16,
+   "TIME": 1
+  }
+ },
+ "valid": {
+  "n": 38,
+  "wr": 34.2,
+  "exp": -0.111,
+  "sum_r": -4.2,
+  "pf": 0.82,
+  "dd_r": 6.3,
+  "streak": 7,
+  "usd": -161.88,
+  "dd_usd": 444.4,
+  "per_week": 0.9,
+  "stop_med": 26.67,
+  "stop_p90": 50.14,
+  "why": {
+   "SL": 23,
+   "TP": 13,
+   "TIME": 2
+  }
+ },
+ "full": {
+  "n": 82,
+  "wr": 36.6,
+  "exp": -0.086,
+  "sum_r": -7.0,
+  "pf": 0.86,
+  "dd_r": 8.5,
+  "streak": 7,
+  "usd": -624.52,
+  "dd_usd": 735.92,
+  "per_week": 0.85,
+  "stop_med": 21.0,
+  "stop_p90": 47.38,
+  "why": {
+   "SL": 50,
+   "TP": 29,
+   "TIME": 3
+  }
+ },
+ "monte_carlo": {
+  "p_loss": 75.9,
+  "final_p5": -27.2,
+  "final_p50": -8.7,
+  "dd_p50": 17.0,
+  "dd_p95": 31.7
+ },
+ "cross": {
+  "M30": {
+   "n": 14,
+   "wr": 28.6,
+   "exp": -0.299,
+   "sum_r": -4.2,
+   "pf": 0.59,
+   "dd_r": 6.6,
+   "streak": 6,
+   "usd": -51.84,
+   "dd_usd": 168.16,
+   "per_week": 1.74,
+   "stop_med": 16.27,
+   "stop_p90": 18.02,
+   "why": {
+    "SL": 10,
+    "TP": 4
+   }
+  },
+  "M15": {
+   "n": 20,
+   "wr": 35.0,
+   "exp": -0.14,
+   "sum_r": -2.8,
+   "pf": 0.79,
+   "dd_r": 4.7,
+   "streak": 4,
+   "usd": -67.24,
+   "dd_usd": 152.36,
+   "per_week": 2.46,
+   "stop_med": 13.39,
+   "stop_p90": 23.69,
+   "why": {
+    "TP": 7,
+    "SL": 13
+   }
+  }
+ }
+}
