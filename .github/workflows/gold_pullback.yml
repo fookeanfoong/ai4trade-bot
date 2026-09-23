@@ -1,0 +1,42 @@
+name: gold-pullback
+
+# 「顺势回调K线」黄金策略研究:真实行情(Yahoo GC=F)+ 样本外验证 + 蒙特卡洛。
+# Claude 的沙箱取不到 Yahoo,真实数字只能在 Actions 上产生。
+on:
+  push:
+    paths:
+      - gold_pullback_research.py
+      - .github/workflows/gold_pullback.yml
+  schedule:
+    - cron: "40 6 * * 1"      # 每周一重跑,看 edge 还在不在
+  workflow_dispatch:
+
+concurrency:
+  group: gold-pullback
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Research — 回调K线策略
+        run: python gold_pullback_research.py
+      - name: Commit report
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add reports/gold_pullback.md reports/gold_pullback.json
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "gold pullback research $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase origin ${GITHUB_REF_NAME}
+            git push
+          fi
