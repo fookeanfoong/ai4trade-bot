@@ -10,7 +10,7 @@
 | `default_validated.set` | M15 · $3止损 · RR1:2 · 风险1% | 默认。样本外验证里唯一勉强为正的配置。 |
 | `defensive.set` | 风险0.5% · 成本过滤更严 · $4止损 | 监测器报 `RETHINK` 时:edge 还没证明够大,用它亏得更慢、继续攒样本。 |
 | `validated_0.02.set` | 同 default_validated,**固定 0.02 手** · 每笔最多亏 $6 | 想固定手数时用。验证证据跟 default_validated 一样(两边为正,样本不大)。 |
-| `pullback_all_0.02.set` | **GoldPullback EA** 合成版 · H1 回调K线 · 只做多 · 突破确认进场 · 0.02 手 · 不设纪律 | 训练 +0.12R / 验证 +0.08R(`reports/gold_pullback.md`),样本小,先模拟盘跑满 30 笔。 |
+| `pullback_all_0.02.set` | **GoldPullback EA** 合成稳健版 · H1 回调K线 · 只做多 · 横盘不做 · 突破确认进场 · RR2.5 · 0.02 手 · 不设纪律 | 训练 +0.35R / 验证 +0.10R(`reports/gold_pullback.md` 第 3 轮),先模拟盘跑满 30 笔。 |
 
 ## 监测器的结论对应什么动作
 

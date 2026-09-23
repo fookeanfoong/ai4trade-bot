@@ -1,9 +1,9 @@
-; GoldPullback —— 合成版 · 0.02 手 · 去掉纪律
-; H1 找回调K线 + H4 定方向 · 只做多 · 在确认K线高点上方挂突破单(价格走回原方向才成交)
-; 止损在回调低点外 0.5ATR(最小 1ATR)· RR1:2 · 到 1R 移保本 · 最多持仓 24 小时
-; 不限每日笔数、不因亏损收工、24 小时都可开单
-; 回测(reports/gold_pullback.md,GC=F H1 两年):训练 65 笔 +0.12R/笔,验证 25 笔 +0.08R/笔。
-;   两边为正,但样本小、是多轮比较后挑的 —— 先模拟盘跑满 30 笔再谈实盘。
+; GoldPullback —— 合成版 · 0.02 手 · 去掉纪律 · range 设定稳健版(第 3 轮)
+; H1 找回调K线 + H4 定方向 · 只做多 · 大周期均线缠在一起(横盘)不做
+; 在确认K线高点上方挂突破单 · 止损在回调低点外 0.5ATR · RR1:2.5 · 0.75R 移保本 · 12 小时平
+; 每个 range 参数都在附近几档里选"高原中间"(只看训练期),不选孤立尖峰
+; 回测(reports/gold_pullback.md,GC=F H1 两年):训练 65 笔 +0.35R/笔,验证 31 笔 +0.10R/笔,最长连亏 4 笔
+;   训练的提升大多来自调参本身,验证只从 +0.08 到 +0.10 —— 先模拟盘跑满 30 笔再谈实盘
 ; 保留的保护:止损止盈随单提交、点差 > $0.50 不下单、单笔风险 > $60 跳过(设 0 = 与回测一致)
 InpLots=0.02
 InpMaxRiskUSD=60.0
@@ -13,29 +13,30 @@ InpAllowBuy=true
 InpAllowSell=false
 InpHTFFastEMA=50
 InpHTFSlowEMA=200
+InpRangeFilterATR=0.5
 InpFastEMA=20
 InpMidEMA=50
 InpATRPeriod=14
 InpPullbackDepthATR=1.0
 InpSwingLookback=12
 InpPullbackBars=3
-InpTouchBufATR=0.1
-InpZoneBelowATR=0.5
+InpTouchBufATR=0.25
+InpZoneBelowATR=0.3
 InpMinCounterBars=2
 InpCounterLook=4
 InpClosePos=0.6
 InpWickMin=0.4
-InpMaxRangeATR=2.0
+InpMaxRangeATR=2.5
 InpUseStopEntry=true
 InpTrigBufATR=0.05
 InpPendingBars=2
 InpSLBufATR=0.5
 InpMinStopATR=1.0
 InpMaxStopATR=2.5
-InpRewardRisk=2.0
-InpBreakevenR=1.0
+InpRewardRisk=2.5
+InpBreakevenR=0.75
 InpBELockR=0.1
-InpMaxHoldHours=24
+InpMaxHoldHours=12
 InpMaxTradesPerDay=0
 InpMaxLossesPerDay=0
 InpMaxSpreadUSD=0.50

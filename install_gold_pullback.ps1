@@ -21,18 +21,19 @@ $ea = @'
 //    3) 回调末端出现"拒绝K线"(长下影 pin bar / 吞没)才算确认
 //    4) 在确认K线的高点上方挂突破单:价格自己走回原方向才成交,不对就不进
 //    5) 止损放在回调低点下方(结构失效位),止盈按 RR,到 1R 移保本
-//    6) 超过 24 小时没走完就平掉
+//    6) 大周期均线缠在一起(横盘)不做;超过 12 小时没走完就平掉
 //    (每日笔数上限 / 亏一笔收工 / 交易时段 都做成了可选,默认关 —— 研究显示它们砍掉的多是好单)
 //
 //  规则与 gold_pullback_research.py 一一对应,改一边就要改另一边。
 //
 //  ── 研究结果(reports/gold_pullback.md,GC=F H1 两年,实话) ─────────
 //  带纪律的两轮 40 组参数,训练期(2024-11~2025-12)没有一组是正期望。
-//  去掉纪律(不限笔数 / 不因亏损收工 / 24 小时)后,默认这组:
-//    只做多 · 突破确认K线高点进场 · 结构外 0.5ATR 宽止损 · RR 2 · 1R 保本
-//    训练 65 笔 +0.12R/笔 · 验证 25 笔 +0.08R/笔 —— 两边都为正,但样本小,
-//    而且这是看过多轮结果后才挑的,证据偏弱。先在模拟盘跑满 30 笔再谈实盘。
-//  0.02 手下止损中位数约 $19 金价 = 风险约 $38/笔;InpMaxRiskUSD 会跳过超过上限的单
+//  去掉纪律(不限笔数 / 不因亏损收工 / 24 小时)后,再做第 3 轮 range 稳健性:
+//  每个参数在附近试几档,只用训练期、选"高原中间"的值(不选孤立尖峰),加横盘过滤。默认这组:
+//    只做多 · 突破确认K线高点进场 · 结构外 0.5ATR 止损 · RR 2.5 · 0.75R 保本 · 12 小时平
+//    训练 65 笔 +0.35R/笔 · 验证 31 笔 +0.10R/笔 · 最长连亏 4 笔 —— 两边为正,
+//    训练的提升大多是调参本身带来的,验证只从 +0.08 到 +0.10。先模拟盘跑满 30 笔。
+//  0.02 手下止损中位数约 $24 金价 = 风险约 $48/笔;InpMaxRiskUSD 会跳过超过上限的单
 //  (回测没有这条上限,设 0 = 与回测一致)。
 //
 //  每笔单子进场时止损止盈都跟单一起提交给服务器 ——
@@ -60,6 +61,7 @@ input bool   InpAllowBuy         = true;   // 允许做多
 input bool   InpAllowSell        = false;  // 允许做空(研究里空单样本太少,默认关)
 input int    InpHTFFastEMA       = 50;
 input int    InpHTFSlowEMA       = 200;
+input double InpRangeFilterATR   = 0.5;    // 横盘过滤:大周期 EMA50 与 EMA200 至少分开 N×大周期ATR(0=关)
 
 input group "=== 回调K线 ==="
 input int    InpFastEMA          = 20;     // 价值区上沿
@@ -68,13 +70,13 @@ input int    InpATRPeriod        = 14;
 input double InpPullbackDepthATR = 1.0;    // 回调深度至少几个 ATR(过滤横盘)
 input int    InpSwingLookback    = 12;     // 在前几根里找波段高/低点
 input int    InpPullbackBars     = 3;      // 回调低点取最近几根
-input double InpTouchBufATR      = 0.1;    // 回调要碰到 EMA20 ± 这么多 ATR
-input double InpZoneBelowATR     = 0.5;    // 不能跌破 EMA50 超过这么多 ATR
+input double InpTouchBufATR      = 0.25;   // 回调要碰到 EMA20 ± 这么多 ATR
+input double InpZoneBelowATR     = 0.3;    // 不能跌破 EMA50 超过这么多 ATR
 input int    InpMinCounterBars   = 2;      // 前 N 根里至少几根是逆向K线(真回调)
 input int    InpCounterLook      = 4;
 input double InpClosePos         = 0.6;    // 确认K线收在全长的 60% 以上位置
 input double InpWickMin          = 0.4;    // pin bar 影线至少占全长 40%
-input double InpMaxRangeATR      = 2.0;    // 确认K线太大(新闻K)不追
+input double InpMaxRangeATR      = 2.5;    // 确认K线太大(新闻K)不追
 
 input group "=== 进场与出场 ==="
 input bool   InpUseStopEntry     = true;   // true=高点上方挂突破单 false=确认K线收盘后市价进
@@ -83,10 +85,10 @@ input int    InpPendingBars      = 2;      // 挂单几根K线内不成交就撤
 input double InpSLBufATR         = 0.5;    // 止损放在回调低点外这么多 ATR
 input double InpMinStopATR       = 1.0;    // 止损最小距离(ATR)
 input double InpMaxStopATR       = 2.5;    // 止损超过这么多 ATR 就放弃这笔
-input double InpRewardRisk       = 2.0;    // 止盈 = 止损距离 × RR
-input double InpBreakevenR       = 1.0;    // 浮盈到几 R 移保本(0=关闭)
+input double InpRewardRisk       = 2.5;    // 止盈 = 止损距离 × RR
+input double InpBreakevenR       = 0.75;   // 浮盈到几 R 移保本(0=关闭)
 input double InpBELockR          = 0.1;    // 保本时多锁几 R(覆盖点差)
-input int    InpMaxHoldHours     = 24;     // 持仓超过几小时就平(0=关闭)
+input int    InpMaxHoldHours     = 12;     // 持仓超过几小时就平(0=关闭)
 
 input group "=== 纪律 ==="
 input int    InpMaxTradesPerDay  = 0;      // 每天最多几笔(0=不限)
@@ -105,7 +107,7 @@ input bool   InpAlerts           = true;
 //--- 全局 ----------------------------------------------------------
 CTrade   trade;
 int      hFast = INVALID_HANDLE, hMid = INVALID_HANDLE, hATR = INVALID_HANDLE;
-int      hHTFFast = INVALID_HANDLE, hHTFSlow = INVALID_HANDLE;
+int      hHTFFast = INVALID_HANDLE, hHTFSlow = INVALID_HANDLE, hHTFATR = INVALID_HANDLE;
 datetime g_lastBar = 0;
 
 //+------------------------------------------------------------------+
@@ -127,8 +129,9 @@ int OnInit()
    hATR     = iATR(_Symbol, InpTimeframe, InpATRPeriod);
    hHTFFast = iMA(_Symbol, InpTrendTF, InpHTFFastEMA, 0, MODE_EMA, PRICE_CLOSE);
    hHTFSlow = iMA(_Symbol, InpTrendTF, InpHTFSlowEMA, 0, MODE_EMA, PRICE_CLOSE);
+   hHTFATR  = iATR(_Symbol, InpTrendTF, InpATRPeriod);
    if(hFast == INVALID_HANDLE || hMid == INVALID_HANDLE || hATR == INVALID_HANDLE ||
-      hHTFFast == INVALID_HANDLE || hHTFSlow == INVALID_HANDLE)
+      hHTFFast == INVALID_HANDLE || hHTFSlow == INVALID_HANDLE || hHTFATR == INVALID_HANDLE)
      {
       Print("指标句柄创建失败");
       return(INIT_FAILED);
@@ -152,6 +155,7 @@ void OnDeinit(const int reason)
    if(hATR     != INVALID_HANDLE) IndicatorRelease(hATR);
    if(hHTFFast != INVALID_HANDLE) IndicatorRelease(hHTFFast);
    if(hHTFSlow != INVALID_HANDLE) IndicatorRelease(hHTFSlow);
+   if(hHTFATR  != INVALID_HANDLE) IndicatorRelease(hHTFATR);
    Comment("");
   }
 
@@ -210,7 +214,7 @@ string Alert2(const string msg)
    return(msg);
   }
 
-// 大周期方向:+1 多 / -1 空 / 0 不明(只用已收盘K线)
+// 大周期方向:+1 多 / -1 空 / 0 不明或横盘(只用已收盘K线)
 int TrendDir()
   {
    double f[], s[];
@@ -218,6 +222,12 @@ int TrendDir()
    ArraySetAsSeries(s, true);
    if(CopyBuffer(hHTFFast, 0, 1, 4, f) != 4 || CopyBuffer(hHTFSlow, 0, 1, 1, s) != 1)
       return(0);
+   if(InpRangeFilterATR > 0)
+     {
+      double a = Buf1(hHTFATR, 1);
+      if(a == EMPTY_VALUE || a <= 0 || MathAbs(f[0] - s[0]) < InpRangeFilterATR * a)
+         return(0);   // 两条均线缠在一起 = 横盘,不做
+     }
    if(f[0] > s[0] && f[0] > f[3])
       return(1);
    if(f[0] < s[0] && f[0] < f[3])
@@ -455,7 +465,7 @@ void OnTick()
    bool   sess   = InSession();
    Comment(StringFormat("GoldPullback %s  执行%s / 方向%s\n大周期方向: %s\n时段(UTC %02d-%02d): %s  点差 $%.2f\n今日 %d 笔 / 亏 %d 笔 / 盈亏 %.2f\n%s",
                         _Symbol, EnumToString(InpTimeframe), EnumToString(InpTrendTF),
-                        tdir > 0 ? "多头 ↑" : (tdir < 0 ? "空头 ↓" : "不明,不做"),
+                        tdir > 0 ? "多头 ↑" : (tdir < 0 ? "空头 ↓" : "不明/横盘,不做"),
                         InpSessionStartUTC, InpSessionEndUTC, sess ? "开" : "关", spread,
                         opened, losses, pnl,
                         hasPos ? "持仓中" : (hasPend ? "挂单等突破" : "等回调K线")));
@@ -539,12 +549,12 @@ void OnTick()
 '@
 
 $preset = @'
-; GoldPullback —— 合成版 · 0.02 手 · 去掉纪律
-; H1 找回调K线 + H4 定方向 · 只做多 · 在确认K线高点上方挂突破单(价格走回原方向才成交)
-; 止损在回调低点外 0.5ATR(最小 1ATR)· RR1:2 · 到 1R 移保本 · 最多持仓 24 小时
-; 不限每日笔数、不因亏损收工、24 小时都可开单
-; 回测(reports/gold_pullback.md,GC=F H1 两年):训练 65 笔 +0.12R/笔,验证 25 笔 +0.08R/笔。
-;   两边为正,但样本小、是多轮比较后挑的 —— 先模拟盘跑满 30 笔再谈实盘。
+; GoldPullback —— 合成版 · 0.02 手 · 去掉纪律 · range 设定稳健版(第 3 轮)
+; H1 找回调K线 + H4 定方向 · 只做多 · 大周期均线缠在一起(横盘)不做
+; 在确认K线高点上方挂突破单 · 止损在回调低点外 0.5ATR · RR1:2.5 · 0.75R 移保本 · 12 小时平
+; 每个 range 参数都在附近几档里选"高原中间"(只看训练期),不选孤立尖峰
+; 回测(reports/gold_pullback.md,GC=F H1 两年):训练 65 笔 +0.35R/笔,验证 31 笔 +0.10R/笔,最长连亏 4 笔
+;   训练的提升大多来自调参本身,验证只从 +0.08 到 +0.10 —— 先模拟盘跑满 30 笔再谈实盘
 ; 保留的保护:止损止盈随单提交、点差 > $0.50 不下单、单笔风险 > $60 跳过(设 0 = 与回测一致)
 InpLots=0.02
 InpMaxRiskUSD=60.0
@@ -554,29 +564,30 @@ InpAllowBuy=true
 InpAllowSell=false
 InpHTFFastEMA=50
 InpHTFSlowEMA=200
+InpRangeFilterATR=0.5
 InpFastEMA=20
 InpMidEMA=50
 InpATRPeriod=14
 InpPullbackDepthATR=1.0
 InpSwingLookback=12
 InpPullbackBars=3
-InpTouchBufATR=0.1
-InpZoneBelowATR=0.5
+InpTouchBufATR=0.25
+InpZoneBelowATR=0.3
 InpMinCounterBars=2
 InpCounterLook=4
 InpClosePos=0.6
 InpWickMin=0.4
-InpMaxRangeATR=2.0
+InpMaxRangeATR=2.5
 InpUseStopEntry=true
 InpTrigBufATR=0.05
 InpPendingBars=2
 InpSLBufATR=0.5
 InpMinStopATR=1.0
 InpMaxStopATR=2.5
-InpRewardRisk=2.0
-InpBreakevenR=1.0
+InpRewardRisk=2.5
+InpBreakevenR=0.75
 InpBELockR=0.1
-InpMaxHoldHours=24
+InpMaxHoldHours=12
 InpMaxTradesPerDay=0
 InpMaxLossesPerDay=0
 InpMaxSpreadUSD=0.50
