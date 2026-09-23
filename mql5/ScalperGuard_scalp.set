@@ -46,7 +46,7 @@ InpVwapTouchATR=0.50
 ; 冷却 0 秒：随看随进，顺当前K线方向立刻开仓（配 DirectionMode=5）。
 InpEntryCooldownSec=0
 InpMinHoldSeconds=0
-InpReentryCooldownSec=60
+InpReentryCooldownSec=0
 InpProfitFloorUSD=0.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
