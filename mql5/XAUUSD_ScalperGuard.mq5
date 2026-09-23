@@ -182,6 +182,9 @@ input group "=== 方向判定与冲突处理 ==="
 // 模式 3 下逆着 H1 的单子不会被特殊对待，但也不需要 ——
 // 10 分制的 trend 维度自然会少给 1~2 分，等级降下来风险上限也跟着降。
 input int      InpDirectionMode      = 0;
+// true  = 多空都做（原行为）
+// false = **只做多（只买升）**：任何最终方向为空的信号一律跳过，所有闸门只围绕"该不该买升"起作用
+input bool     InpAllowShort         = true;
 // true  = 结构/动量与方向冲突时**拒绝交易**（原行为）
 // false = 冲突不否决，只记录进成交备注，由 10 分制评分去反映质量差异
 input bool     InpConflictAsVeto     = true;
@@ -1864,6 +1867,10 @@ Signal BuildSignal(double atr, int minScore)
    if(dir == 0)
    { NoTrade(StringFormat("趋势不一致 HTF=%d LTF=%d（模式%d）", htf, ltf, InpDirectionMode)); return sg; }
    if(dir > 0) g_dirBuy++; else g_dirSell++;
+
+   // --- 只做多（只买升）：任何方向为空的信号一律跳过 ---
+   if(dir < 0 && !InpAllowShort)
+   { NoTrade("只做多：本信号=空，不做"); return sg; }
 
    // --- 大趋势否决：逆着中期趋势(最近几根 H1)就不做 ---
    if(InpTrendVeto)

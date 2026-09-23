@@ -69,7 +69,8 @@ $MustHave = @(
     'InpBasketTargetUSD',      # 篮子出场：组合浮盈全平
     'BasketNetUSD',            # 组合浮动加总
     'InpLossCutUSD',           # 亏损方向的时间离场（亏着超时提前砍）
-    'InpReentryCooldownSec'    # 平仓后再开仓的最短等待（秒）
+    'InpReentryCooldownSec',   # 平仓后再开仓的最短等待（秒）
+    'InpAllowShort'            # 只做多开关（false=只买升，空单跳过）
 )
 $MustNotHave = @(
     'double targetNote'        # 旧版的类型笔误
