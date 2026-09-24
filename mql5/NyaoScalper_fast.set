@@ -1,0 +1,70 @@
+; ============================================================================
+; NyaoScalper_fast —— NyaoScalper 的【快进快出】档 (XM Ultra Low / GOLD#)
+;   其余全同 NyaoScalper(行情识别/防追高/关键位/时段/新闻/日止盈都保留),
+;   只把出场改小改快 + 门槛略低多进 + 换 magic 可与主档并行:
+;     止损 0.6×ATR / 止盈 1:1.2 / 0.5R起追踪(0.8×ATR) / 门槛4.0
+;   赔率仍 1:1.2(正),不是小赢大亏。volume 0.01, magic 20260929。
+; ============================================================================
+InpFixedLot=0.01
+InpMagic=20260929
+InpMaxPositions=3
+InpSignalTF=1
+InpEmaFast=12
+InpEmaSlow=26
+InpSlopeLookback=3
+InpRsiPeriod=14
+InpAtrPeriod=14
+InpAvgAtrPeriod=50
+InpBodyAvgBars=10
+InpPeakLookback=5
+InpMinSignalScore=4.0
+InpSmoothCandles=1
+InpMinVolRatio=0.65
+InpNewBarOnly=true
+InpWTrendAlign=1.5
+InpWTrendSlope=1.5
+InpWRsiSweet=1.0
+InpWRsiBreak=0.5
+InpWBody=1.5
+InpWChopHigh=2.0
+InpWVolExpand=1.0
+InpWPeakBreak=1.0
+InpAtrMinUSD=0.60
+InpAtrMaxUSD=20.0
+InpUseRegime=true
+InpRegimeBars=20
+InpTrendER=0.45
+InpRangeER=0.28
+InpRangeEdge=0.35
+InpUseSmartLevels=true
+InpSpikeBars=5
+InpMaxSpikeATR=2.5
+InpKeyGuardATR=0.30
+InpRoundStep=10.0
+InpAsiaStartHour=3
+InpAsiaEndHour=10
+InpMaxSpreadUSD=0.35
+InpMaxSpreadATRRatio=0.20
+InpRRAtrMult=0.6
+InpRiskReward=1.2
+InpUseBreakeven=true
+InpBeBufferATR=0.05
+InpUseTrail=true
+InpTrailAtrMult=0.8
+InpTrailStartR=0.5
+InpUseSession=true
+InpSessStart=10
+InpSessEnd=23
+InpNewsTimes=
+InpNewsBeforeMin=30
+InpNewsAfterMin=30
+InpMaxTradesPerDay=100000
+InpDailyTargetUSD=100.0
+InpDailyMaxLossUSD=0.0
+InpMaxBasketLossPct=6.0
+InpMinEquityUSD=0.0
+InpConfidenceLot=false
+InpConfidenceMult=1.5
+InpMaxLot=0.05
+InpDashboard=true
+InpVerbose=true
