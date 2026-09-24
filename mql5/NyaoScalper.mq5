@@ -73,7 +73,7 @@ input int    InpAsiaStartHour  = 3;            // 亚洲盘起(服务器时间,�
 input int    InpAsiaEndHour    = 10;           // 亚洲盘止
 
 input group "=== 点差闸 ==="
-input double InpMaxSpreadUSD     = 0.30;       // 点差上限($)
+input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
 input double InpMaxSpreadATRRatio = 0.20;      // 点差/ATR 上限(0=关);两条都要过
 
 input group "=== 出场:R:R(ATR) ==="
