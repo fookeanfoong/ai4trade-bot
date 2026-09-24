@@ -47,7 +47,7 @@ InpVwapTouchATR=0.50
 InpEntryCooldownSec=60
 InpMinHoldSeconds=0
 InpReentryCooldownSec=0
-InpProfitFloorUSD=1.2
+InpProfitFloorUSD=2.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -188,7 +188,7 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
-InpQuickProfitUSD=5.0
+InpQuickProfitUSD=10.0
 InpQuickLossUSD=5.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
