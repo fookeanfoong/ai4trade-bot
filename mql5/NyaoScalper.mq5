@@ -58,7 +58,7 @@ input double InpAtrMaxUSD   = 20.0;            // ATR 上限($),太乱不做
 
 input group "=== 行情自适应(最近N分钟识别趋势/震荡) ==="
 input bool   InpUseRegime   = true;            // 开:按当前行情自动切进场打法
-input int    InpRegimeBars  = 30;              // 回看K线数(M1=30分钟)
+input int    InpRegimeBars  = 20;              // 回看K线数(M1=30分钟)
 input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
 input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
