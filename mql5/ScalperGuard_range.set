@@ -47,7 +47,7 @@ InpVwapTouchATR=0.50
 InpEntryCooldownSec=60
 InpMinHoldSeconds=0
 InpReentryCooldownSec=0
-InpProfitFloorUSD=0.0
+InpProfitFloorUSD=1.2
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -63,8 +63,8 @@ InpStopAfterConsecLoss=100000
 InpObserveAfterConsecLoss=2
 
 ; --- 时段：全天开放（原 8-21 是按 GMT+0 写的，全开就不用先解决时区问题）---
-InpSessionStartHour=8
-InpSessionEndHour=22
+InpSessionStartHour=0
+InpSessionEndHour=23
 InpFlatAllBeforeHour=23
 
 ; --- 点差：这是你当前的直接拦路虎（实测 0.40，原上限 0.35）---
@@ -89,7 +89,7 @@ InpHtfRequireSlope=true
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=30.0
+InpAdxMin=25.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -188,8 +188,8 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $1.5 立刻平仓（极速剥头皮，与手数无关，锁死每笔美元收益）。
-InpQuickProfitUSD=0.0
-InpQuickLossUSD=12.0
+InpQuickProfitUSD=5.0
+InpQuickLossUSD=5.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
@@ -211,7 +211,7 @@ InpRiskPctAPlus=1.0
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
 InpUseBOS=true
 InpBosBufferATR=0.05
-InpRequireMtfAgree=true
+InpRequireMtfAgree=false
 
 ; --- V2 波动率分档（规格 §13）---
 ; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
