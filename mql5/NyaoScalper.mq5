@@ -57,8 +57,8 @@ input double InpAtrMinUSD   = 0.60;            // ATR 下限($),太安静不做
 input double InpAtrMaxUSD   = 20.0;            // ATR 上限($),太乱不做
 
 input group "=== 点差闸 ==="
-input double InpMaxSpreadUSD     = 0.30;       // 点差上限($)
-input double InpMaxSpreadATRRatio = 0.20;      // 点差/ATR 上限(0=关);两条都要过
+input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
+input double InpMaxSpreadATRRatio = 0.25;      // 点差/ATR 上限(0=关);两条都要过
 
 input group "=== 出场:R:R(ATR) ==="
 input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR
