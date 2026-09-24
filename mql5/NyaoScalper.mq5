@@ -37,8 +37,8 @@ input int    InpBodyAvgBars = 10;              // 平均实体/范围回看
 input int    InpPeakLookback = 5;              // 局部高低点回看(突破)
 
 input group "=== 信号分门槛/平滑 ==="
-input double InpMinSignalScore = 4.5;          // 进场门槛(0-10)
-input int    InpSmoothCandles  = 2;            // 平滑:平均最近 N 根已收盘的分
+input double InpMinSignalScore = 3.5;          // 进场门槛(0-10)
+input int    InpSmoothCandles  = 1;            // 平滑:平均最近 N 根已收盘的分
 input double InpMinVolRatio     = 0.60;        // 死盘闸:ATR/均ATR 低于此则信号归零
 input bool   InpNewBarOnly      = true;        // 只在新K线收盘评估进场(不重绘)
 
@@ -58,10 +58,10 @@ input double InpAtrMaxUSD   = 20.0;            // ATR 上限($),太乱不做
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.30;       // 点差上限($)
-input double InpMaxSpreadATRRatio = 0.10;      // 点差/ATR 上限(0=关);两条都要过
+input double InpMaxSpreadATRRatio = 0.20;      // 点差/ATR 上限(0=关);两条都要过
 
 input group "=== 出场:R:R(ATR) ==="
-input double InpRRAtrMult   = 1.5;             // 止损 = N×ATR
+input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR
 input double InpRiskReward   = 1.5;            // 止盈 = 止损×该比
 
 input group "=== 出场:追踪/保本 ==="
@@ -69,7 +69,7 @@ input bool   InpUseBreakeven = true;           // 到 1R 移保本
 input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
 input double InpTrailAtrMult = 1.2;            // 追踪跟价 N×ATR
-input double InpTrailStartR  = 1.0;            // 盈利达 N×R 才启动追踪
+input double InpTrailStartR  = 0.8;            // 盈利达 N×R 才启动追踪
 
 input group "=== 时段(服务器时间,避开亚洲薄盘) ==="
 input bool   InpUseSession  = true;            // 启用时段过滤
