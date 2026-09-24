@@ -56,6 +56,13 @@ input group "=== 波动率闸门 ==="
 input double InpAtrMinUSD   = 0.60;            // ATR 下限($),太安静不做
 input double InpAtrMaxUSD   = 20.0;            // ATR 上限($),太乱不做
 
+input group "=== 行情自适应(最近N分钟识别趋势/震荡) ==="
+input bool   InpUseRegime   = true;            // 开:按当前行情自动切进场打法
+input int    InpRegimeBars  = 30;              // 回看K线数(M1=30分钟)
+input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
+input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
+input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
+
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.30;       // 点差上限($)
 input double InpMaxSpreadATRRatio = 0.20;      // 点差/ATR 上限(0=关);两条都要过
@@ -105,6 +112,7 @@ double   g_dayStartEquity=0.0;
 bool     g_dayHalted=false, g_basketPaused=false;
 double   g_scoreHist[];       // 最近若干根的带符号信号分(+多/-空)
 double   g_lastBuy=0, g_lastSell=0, g_lastSmoothed=0;   // 面板用
+int      g_regime=0; double g_regER=0.0;               // 行情识别:1趋势/-1震荡/0过渡
 
 //+------------------------------------------------------------------+
 int OnInit()
@@ -308,6 +316,34 @@ bool InNewsBlackout()
    return false;
 }
 
+//+------------------------------------------------------------------+
+//| 行情识别:效率比(Kaufman ER)分趋势/震荡 + 区间位置                 |
+//|  返回 1=趋势 / -1=震荡 / 0=过渡; trendDir=近N根净方向; rangePos  |
+//|  = 当前价在近N根高低区间的位置(0=底,1=顶)。这是"看当前",不预测。 |
+//+------------------------------------------------------------------+
+int RegimeDetect(int &trendDir, double &rangePos, double &erOut)
+{
+   int n=MathMax(5,InpRegimeBars);
+   double c1=iClose(_Symbol,InpSignalTF,1);
+   double cn=iClose(_Symbol,InpSignalTF,1+n);
+   trendDir=0; rangePos=0.5; erOut=0.0;
+   if(c1<=0||cn<=0) return 0;
+   double net=MathAbs(c1-cn);
+   double sum=0.0;
+   for(int s=1;s<=n;s++){ double a=iClose(_Symbol,InpSignalTF,s), b=iClose(_Symbol,InpSignalTF,s+1);
+      if(a>0&&b>0) sum+=MathAbs(a-b); }
+   double er=(sum>0.0)? net/sum : 0.0;
+   erOut=er;
+   trendDir=(c1>cn)?1:((c1<cn)?-1:0);
+   int hi=iHighest(_Symbol,InpSignalTF,MODE_HIGH,n,1);
+   int lo=iLowest (_Symbol,InpSignalTF,MODE_LOW ,n,1);
+   double h=iHigh(_Symbol,InpSignalTF,hi), l=iLow(_Symbol,InpSignalTF,lo);
+   rangePos=(h>l)? (c1-l)/(h-l) : 0.5;
+   if(er>=InpTrendER) return 1;    // 趋势
+   if(er<=InpRangeER) return -1;   // 震荡
+   return 0;                        // 过渡
+}
+
 bool SpreadOK(double atr)
 {
    double sp=SymbolInfoDouble(_Symbol,SYMBOL_ASK)-SymbolInfoDouble(_Symbol,SYMBOL_BID);
@@ -393,6 +429,7 @@ void ShowDashboard(double atr)
    string s="===== NyaoScalper =====\n";
    s+=StringFormat("多分 %.2f | 空分 %.2f | 平滑 %.2f (门槛%.1f)\n", g_lastBuy, g_lastSell, g_lastSmoothed, InpMinSignalScore);
    s+=StringFormat("ATR %.2f | 点差 %.2f\n", atr, SymbolInfoDouble(_Symbol,SYMBOL_ASK)-SymbolInfoDouble(_Symbol,SYMBOL_BID));
+   if(InpUseRegime){ string rn=(g_regime==1?"趋势(只顺势)":(g_regime==-1?"震荡(高抛低吸)":"过渡")); s+=StringFormat("行情 %s ER%.2f\n", rn, g_regER); }
    s+=StringFormat("持仓 %d/%d | 今日 %d/%d 笔\n", CountMyPositions(), InpMaxPositions, g_tradesToday, InpMaxTradesPerDay);
    s+=StringFormat("权益 %.2f | 当日 %.2f | 浮动 %.2f\n", eq, eq-g_dayStartEquity, MyFloatingPL());
    s+=(g_dayHalted?"状态: 当日停手\n":(g_basketPaused?"状态: 篮子暂停\n":"状态: 运行中\n"));
@@ -445,6 +482,34 @@ void OnTick()
       if(InpVerbose) PrintFormat("[NO-TRADE] 分%.2f<%.1f (多%.2f 空%.2f)", score, InpMinSignalScore, g_lastBuy, g_lastSell);
       return;
    }
+
+   // --- 行情自适应:按当前是趋势还是震荡,限制进场 ---
+   if(InpUseRegime)
+   {
+      int tdir; double rpos, er;
+      int reg=RegimeDetect(tdir, rpos, er);
+      g_regime=reg; g_regER=er;
+      if(reg==1)   // 趋势行情:只顺近N根方向做,禁逆势(治"趋势里接刀")
+      {
+         if(tdir!=0 && dir!=tdir){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 趋势行情(ER%.2f)只顺%s,本信号逆势", er, tdir>0?"多":"空");
+            return;
+         }
+      }
+      else if(reg==-1)   // 震荡行情:高抛低吸,多单只在下沿/空单只在上沿
+      {
+         if(dir>0 && rpos>InpRangeEdge){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 震荡行情(ER%.2f)多单不在下沿(位置%.2f)", er, rpos);
+            return;
+         }
+         if(dir<0 && rpos<(1.0-InpRangeEdge)){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 震荡行情(ER%.2f)空单不在上沿(位置%.2f)", er, rpos);
+            return;
+         }
+      }
+      // reg==0 过渡:正常放行
+   }
+
    OpenTrade(dir, atr, score);
 }
 //+------------------------------------------------------------------+
