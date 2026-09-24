@@ -1,0 +1,59 @@
+; ============================================================================
+; NyaoScalper_scalp —— 快进快出剥头皮 preset (XM Ultra Low / GOLD#)
+;   硬规则(不可破): 数据前后30分钟不做 / 只做伦敦+纽约(避开亚洲薄盘) /
+;   ATR太低不做 / 硬日回撤+篮子止损。volume 0.01。
+;   点差按 XM Ultra Low(~$0.28) 设: 美元闸0.30 + 点差/ATR比0.20。
+;   时段按'点差最低时开始': XM服务器=UTC+3, 10:00=伦敦开盘起点差收窄,
+;   跑到23:00纽约盘尾; 00-10(亚洲)点差宽不做。
+;   出场快进快出: 止损1.0×ATR, 止盈1:1.5, 0.7R起追踪, 到1R移保本。
+; ============================================================================
+InpFixedLot=0.01
+InpMagic=20260928
+InpMaxPositions=3
+InpSignalTF=1
+InpEmaFast=12
+InpEmaSlow=26
+InpSlopeLookback=3
+InpRsiPeriod=14
+InpAtrPeriod=14
+InpAvgAtrPeriod=50
+InpBodyAvgBars=10
+InpPeakLookback=5
+InpMinSignalScore=3.5
+InpSmoothCandles=1
+InpMinVolRatio=0.60
+InpNewBarOnly=true
+InpWTrendAlign=1.5
+InpWTrendSlope=1.5
+InpWRsiSweet=1.0
+InpWRsiBreak=0.5
+InpWBody=1.5
+InpWChopHigh=2.0
+InpWVolExpand=1.0
+InpWPeakBreak=1.0
+InpAtrMinUSD=0.60
+InpAtrMaxUSD=20.0
+InpMaxSpreadUSD=0.30
+InpMaxSpreadATRRatio=0.20
+InpRRAtrMult=1.0
+InpRiskReward=1.5
+InpUseBreakeven=true
+InpBeBufferATR=0.05
+InpUseTrail=true
+InpTrailAtrMult=1.0
+InpTrailStartR=0.7
+InpUseSession=true
+InpSessStart=10
+InpSessEnd=23
+InpNewsTimes=
+InpNewsBeforeMin=30
+InpNewsAfterMin=30
+InpMaxTradesPerDay=40
+InpDailyMaxLossUSD=15.0
+InpMaxBasketLossPct=6.0
+InpMinEquityUSD=0.0
+InpConfidenceLot=false
+InpConfidenceMult=1.5
+InpMaxLot=0.05
+InpDashboard=true
+InpVerbose=true

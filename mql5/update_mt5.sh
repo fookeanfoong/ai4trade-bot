@@ -22,6 +22,7 @@ FILES=(
   "GMarket.mq5|Experts"
   "GoldAIScalper.mq5|Experts"
   "NyaoScalper.mq5|Experts"
+  "NyaoScalper_scalp.set|Presets"
   "GMarket_small.set|Presets"
   "ScalperGuard_aggressive.set|Presets"
   "ScalperGuard_scalp.set|Presets"
