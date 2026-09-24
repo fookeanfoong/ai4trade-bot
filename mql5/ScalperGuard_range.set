@@ -89,7 +89,7 @@ InpHtfRequireSlope=true
 ; 出信号的前提、必得 2 分，所以任何有效信号的分数天然 >= 4。
 InpMinScore=1
 InpEntryTF=1
-InpAdxMin=25.0
+InpAdxMin=28.0
 InpMinRR=0.5
 InpBreakoutLookback=20
 
@@ -211,7 +211,7 @@ InpRiskPctAPlus=1.0
 ; ⚠️ BOS/CHoCH 用的是代码里写死的机械定义,不是权威定义。见文件头注释。
 InpUseBOS=true
 InpBosBufferATR=0.05
-InpRequireMtfAgree=false
+InpRequireMtfAgree=true
 
 ; --- V2 波动率分档（规格 §13）---
 ; 用 ATR/自身均值 的比值,不用绝对数 —— 金价从 $2000 到 $4400,绝对 ATR 早就变了。
