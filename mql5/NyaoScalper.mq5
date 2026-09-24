@@ -63,6 +63,15 @@ input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(�
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
 input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
 
+input group "=== 黄金历史特征:防追高/贴关键位反转 ==="
+input bool   InpUseSmartLevels = true;         // 开:冲高后不追 + 贴关键位不追
+input int    InpSpikeBars      = 5;            // 近N根算冲刺幅度
+input double InpMaxSpikeATR    = 2.5;          // 近N根同向已冲>此×ATR就不追(黄金冲后常回调)
+input double InpKeyGuardATR    = 0.30;         // 距关键位<此×ATR不朝其方向追(阻力不追多/支撑不追空)
+input double InpRoundStep      = 10.0;         // 整数关口步长($):黄金在整关常停/反转
+input int    InpAsiaStartHour  = 3;            // 亚洲盘起(服务器时间,算亚洲区间高低)
+input int    InpAsiaEndHour    = 10;           // 亚洲盘止
+
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.30;       // 点差上限($)
 input double InpMaxSpreadATRRatio = 0.20;      // 点差/ATR 上限(0=关);两条都要过
@@ -344,6 +353,46 @@ int RegimeDetect(int &trendDir, double &rangePos, double &erOut)
    return 0;                        // 过渡
 }
 
+//+------------------------------------------------------------------+
+//| 关键位:前日高低 / 亚洲区间高低 / 整数关口                         |
+//+------------------------------------------------------------------+
+void AsiaHL(double &ah, double &al)
+{
+   ah=0; al=0;
+   MqlDateTime now; TimeToStruct(TimeCurrent(),now);
+   MqlDateTime d0=now; d0.hour=0; d0.min=0; d0.sec=0;
+   datetime dayStart=StructToTime(d0);
+   for(int s=1;s<1440;s++){
+      datetime t=iTime(_Symbol,InpSignalTF,s); if(t==0||t<dayStart) break;
+      MqlDateTime tt; TimeToStruct(t,tt);
+      if(tt.hour>=InpAsiaStartHour && tt.hour<InpAsiaEndHour){
+         double hh=iHigh(_Symbol,InpSignalTF,s), ll=iLow(_Symbol,InpSignalTF,s);
+         if(ah==0||hh>ah) ah=hh;
+         if(al==0||ll<al) al=ll;
+      }
+   }
+}
+double NearestResistance(double price)
+{
+   double pdh=iHigh(_Symbol,PERIOD_D1,1);
+   double ah,al; AsiaHL(ah,al);
+   double ru=MathCeil(price/InpRoundStep)*InpRoundStep; if(ru<=price) ru+=InpRoundStep;
+   double cand[3]; cand[0]=pdh; cand[1]=ah; cand[2]=ru;
+   double best=0;
+   for(int i=0;i<3;i++){ double c=cand[i]; if(c>price && (best==0||c<best)) best=c; }
+   return best;
+}
+double NearestSupport(double price)
+{
+   double pdl=iLow(_Symbol,PERIOD_D1,1);
+   double ah,al; AsiaHL(ah,al);
+   double rd=MathFloor(price/InpRoundStep)*InpRoundStep; if(rd>=price) rd-=InpRoundStep;
+   double cand[3]; cand[0]=pdl; cand[1]=al; cand[2]=rd;
+   double best=0;
+   for(int i=0;i<3;i++){ double c=cand[i]; if(c>0 && c<price && (best==0||c>best)) best=c; }
+   return best;
+}
+
 bool SpreadOK(double atr)
 {
    double sp=SymbolInfoDouble(_Symbol,SYMBOL_ASK)-SymbolInfoDouble(_Symbol,SYMBOL_BID);
@@ -508,6 +557,29 @@ void OnTick()
          }
       }
       // reg==0 过渡:正常放行
+   }
+
+   // --- 黄金历史特征:防追高 + 贴关键位不追 ---
+   if(InpUseSmartLevels && atr>0)
+   {
+      double c1=iClose(_Symbol,InpSignalTF,1);
+      double cS=iClose(_Symbol,InpSignalTF,1+MathMax(2,InpSpikeBars));
+      // 1) 冲高/杀跌后不追:近N根同向已冲 > 阈值
+      if(c1>0 && cS>0){
+         double spike=c1-cS;
+         if(MathAbs(spike) > InpMaxSpikeATR*atr && ((spike>0&&dir>0)||(spike<0&&dir<0))){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 近%d根已同向冲$%.2f(>%.1f×ATR),不追%s", InpSpikeBars, spike, InpMaxSpikeATR, dir>0?"多":"空");
+            return;
+         }
+      }
+      // 2) 贴关键位不朝其方向追(阻力不追多/支撑不追空)
+      double px=(SymbolInfoDouble(_Symbol,SYMBOL_ASK)+SymbolInfoDouble(_Symbol,SYMBOL_BID))*0.5;
+      if(dir>0){ double res=NearestResistance(px);
+         if(res>0 && (res-px) < InpKeyGuardATR*atr){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 贴阻力%.2f(距%.2f)不追多", res, res-px); return; } }
+      if(dir<0){ double sup=NearestSupport(px);
+         if(sup>0 && (px-sup) < InpKeyGuardATR*atr){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 贴支撑%.2f(距%.2f)不追空", sup, px-sup); return; } }
    }
 
    OpenTrade(dir, atr, score);
