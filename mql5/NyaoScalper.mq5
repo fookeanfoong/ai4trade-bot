@@ -37,8 +37,8 @@ input int    InpBodyAvgBars = 10;              // 平均实体/范围回看
 input int    InpPeakLookback = 5;              // 局部高低点回看(突破)
 
 input group "=== 信号分门槛/平滑 ==="
-input double InpMinSignalScore = 5.0;          // 进场门槛(0-10)
-input int    InpSmoothCandles  = 2;            // 平滑:平均最近 N 根已收盘的分
+input double InpMinSignalScore = 4.5;          // 进场门槛(0-10)
+input int    InpSmoothCandles  = 1;            // 平滑:平均最近 N 根已收盘的分
 input double InpMinVolRatio     = 0.65;        // 死盘闸:ATR/均ATR 低于此则信号归零
 input bool   InpNewBarOnly      = true;        // 只在新K线收盘评估进场(不重绘)
 
