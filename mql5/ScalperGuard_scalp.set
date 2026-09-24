@@ -47,7 +47,7 @@ InpVwapTouchATR=0.50
 InpEntryCooldownSec=0
 InpMinHoldSeconds=0
 InpReentryCooldownSec=0
-InpProfitFloorUSD=0.0
+InpProfitFloorUSD=3.0
 InpRiskPctDefault=0.5
 ; 硬上限跟着降到 1.0 —— 让"任何路径都不得超过"这句话反映真实意图,
 ; 而不是留一个谁也够不到的 5%。
@@ -188,8 +188,8 @@ InpSweepMaxPenetration=1.50
 InpTargetProfitUSD=0.0
 InpRiskCapUSD=0.0
 ; 净赚 $5 才止盈落袋；配 ProfitFloorUSD=1.2:到过高点回落就锁 $1.2 保底。
-InpQuickProfitUSD=0.5
-InpQuickLossUSD=10.0
+InpQuickProfitUSD=6.0
+InpQuickLossUSD=3.0
 InpBasketTargetUSD=0.0
 InpBasketMaxLossUSD=0.0
 ; 0 = 用真实余额算百分比(见 sim200 档)
