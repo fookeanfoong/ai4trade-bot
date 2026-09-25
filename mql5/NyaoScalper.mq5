@@ -62,7 +62,7 @@ input int    InpRegimeBars  = 20;              // 回看K线数(M1=20分钟)
 input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
 input double InpNoTradeER   = 0.15;            // 效率比<此=极窄震荡(假突破满天飞),整段不做(0=关)
-input bool   InpRequireMicroAgree = true;      // 还要求最近几根微趋势同向(别在反弹绿K做空/回调红K做多)
+input bool   InpRequireMicroAgree = false;      // 还要求最近几根微趋势同向(别在反弹绿K做空/回调红K做多)
 input int    InpMicroBars   = 3;               // 微趋势回看K线数
 input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
 
@@ -75,7 +75,7 @@ input double InpRoundStep      = 10.0;         // 整数关口步长($):黄金�
 input int    InpAsiaStartHour  = 3;            // 亚洲盘起(服务器时间,算亚洲区间高低)
 input int    InpAsiaEndHour    = 10;           // 亚洲盘止
 input int    InpExtremeBars    = 15;           // 近N根极值(算扫损区)
-input double InpNoChaseExtremeATR = 0.30;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
+input double InpNoChaseExtremeATR = 0.0;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
