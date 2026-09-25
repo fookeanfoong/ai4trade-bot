@@ -72,6 +72,8 @@ input double InpKeyGuardATR    = 0.30;         // 距关键位<此×ATR不朝其
 input double InpRoundStep      = 10.0;         // 整数关口步长($):黄金在整关常停/反转
 input int    InpAsiaStartHour  = 3;            // 亚洲盘起(服务器时间,算亚洲区间高低)
 input int    InpAsiaEndHour    = 10;           // 亚洲盘止
+input int    InpExtremeBars    = 15;           // 近N根极值(算扫损区)
+input double InpNoChaseExtremeATR = 0.30;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
@@ -599,6 +601,17 @@ void OnTick()
       if(dir<0){ double sup=NearestSupport(px);
          if(sup>0 && (px-sup) < InpKeyGuardATR*atr){
             if(InpVerbose) PrintFormat("[NO-TRADE] 贴支撑%.2f(距%.2f)不追空", sup, px-sup); return; } }
+
+      // 3) 防扫损反转:顺势单别贴着近N根极值做(新低处别追空/新高处别追多),等回调再进
+      if(InpNoChaseExtremeATR>0){
+         int loI=iLowest (_Symbol,InpSignalTF,MODE_LOW ,InpExtremeBars,1);
+         int hiI=iHighest(_Symbol,InpSignalTF,MODE_HIGH,InpExtremeBars,1);
+         double lowN=iLow(_Symbol,InpSignalTF,loI), highN=iHigh(_Symbol,InpSignalTF,hiI);
+         if(dir<0 && lowN>0 && (px-lowN) < InpNoChaseExtremeATR*atr){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 空单贴近%d根新低%.2f(距%.2f),防扫损反转,等回调", InpExtremeBars, lowN, px-lowN); return; }
+         if(dir>0 && highN>0 && (highN-px) < InpNoChaseExtremeATR*atr){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 多单贴近%d根新高%.2f(距%.2f),防扫损反转,等回调", InpExtremeBars, highN, highN-px); return; }
+      }
    }
 
    OpenTrade(dir, atr, score);
