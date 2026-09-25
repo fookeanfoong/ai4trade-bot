@@ -547,10 +547,10 @@ void OnTick()
       int tdir; double rpos, er;
       int reg=RegimeDetect(tdir, rpos, er);
       g_regime=reg; g_regER=er;
-      if(reg==1)   // 趋势行情:只顺近N根方向做,禁逆势(治"趋势里接刀")
+      if(reg>=0)   // 趋势 或 过渡:都只顺近N根净方向做,禁逆势(治"逆势接刀",过渡区也管)
       {
          if(tdir!=0 && dir!=tdir){
-            if(InpVerbose) PrintFormat("[NO-TRADE] 趋势行情(ER%.2f)只顺%s,本信号逆势", er, tdir>0?"多":"空");
+            if(InpVerbose) PrintFormat("[NO-TRADE] %s(ER%.2f)只顺%s,本信号逆势", reg==1?"趋势":"过渡", er, tdir>0?"多":"空");
             return;
          }
       }
