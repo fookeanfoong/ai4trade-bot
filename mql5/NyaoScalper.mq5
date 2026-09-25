@@ -62,6 +62,8 @@ input int    InpRegimeBars  = 20;              // 回看K线数(M1=20分钟)
 input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
 input double InpNoTradeER   = 0.15;            // 效率比<此=极窄震荡(假突破满天飞),整段不做(0=关)
+input bool   InpRequireMicroAgree = true;      // 还要求最近几根微趋势同向(别在反弹绿K做空/回调红K做多)
+input int    InpMicroBars   = 3;               // 微趋势回看K线数
 input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
 
 input group "=== 黄金历史特征:防追高/贴关键位反转 ==="
@@ -578,6 +580,19 @@ void OnTick()
          }
       }
       // reg==0 过渡:正常放行
+   }
+
+   // --- 微趋势同向:最近几根也得顺交易方向,别在反弹/回调的反向K上进 ---
+   if(InpRequireMicroAgree)
+   {
+      double cm=iClose(_Symbol,InpSignalTF,1), cmN=iClose(_Symbol,InpSignalTF,1+MathMax(1,InpMicroBars));
+      if(cm>0 && cmN>0){
+         int micro=(cm>cmN)?1:((cm<cmN)?-1:0);
+         if(micro!=0 && dir!=micro){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 近%d根微趋势%s,本信号%s逆向,不做", InpMicroBars, micro>0?"涨":"跌", dir>0?"多":"空");
+            return;
+         }
+      }
    }
 
    // --- 黄金历史特征:防追高 + 贴关键位不追 ---
