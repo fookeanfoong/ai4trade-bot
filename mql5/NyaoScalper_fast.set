@@ -45,6 +45,7 @@ InpAsiaStartHour=3
 InpAsiaEndHour=10
 InpMaxSpreadUSD=0.35
 InpMaxSpreadATRRatio=0.25
+InpFixedSlUSD=10.0
 InpRRAtrMult=0.6
 InpRiskReward=1.2
 InpUseBreakeven=true

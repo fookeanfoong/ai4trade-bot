@@ -76,8 +76,9 @@ input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
 input double InpMaxSpreadATRRatio = 0.25;      // 点差/ATR 上限(0=关);两条都要过
 
-input group "=== 出场:R:R(ATR) ==="
-input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR
+input group "=== 出场:R:R ==="
+input double InpFixedSlUSD  = 10.0;            // 固定止损距离($),>0 覆盖ATR;0=用下面 ATR×倍数
+input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR (仅 InpFixedSlUSD=0 时生效)
 input double InpRiskReward   = 1.5;            // 止盈 = 止损×该比
 
 input group "=== 出场:追踪/保本 ==="
@@ -403,6 +404,9 @@ bool SpreadOK(double atr)
 }
 
 //+------------------------------------------------------------------+
+// 有效止损距离:优先固定美元,否则 ATR×倍数
+double EffSl(double atr){ return (InpFixedSlUSD>0.0)? InpFixedSlUSD : InpRRAtrMult*atr; }
+
 void OpenTrade(int dir, double atr, double score)
 {
    double lot=InpFixedLot;
@@ -410,7 +414,7 @@ void OpenTrade(int dir, double atr, double score)
 
    double ask=SymbolInfoDouble(_Symbol,SYMBOL_ASK), bid=SymbolInfoDouble(_Symbol,SYMBOL_BID);
    double price=(dir>0)?ask:bid;
-   double slDist=InpRRAtrMult*atr; if(slDist<=0) return;
+   double slDist=EffSl(atr); if(slDist<=0) return;
    double tpDist=slDist*InpRiskReward;
    double sl=(dir>0)?price-slDist:price+slDist;
    double tp=(dir>0)?price+tpDist:price-tpDist;
@@ -441,7 +445,7 @@ void ManagePositions(double atr)
       double open=PositionGetDouble(POSITION_PRICE_OPEN);
       double sl=PositionGetDouble(POSITION_SL), tp=PositionGetDouble(POSITION_TP);
       double bid=SymbolInfoDouble(_Symbol,SYMBOL_BID), ask=SymbolInfoDouble(_Symbol,SYMBOL_ASK);
-      double rDist=InpRRAtrMult*atr; if(rDist<=0) continue;
+      double rDist=EffSl(atr); if(rDist<=0) continue;
 
       if(type==POSITION_TYPE_BUY){
          double prof=bid-open;
