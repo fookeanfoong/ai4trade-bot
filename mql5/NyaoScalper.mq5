@@ -61,6 +61,7 @@ input bool   InpUseRegime   = true;            // 开:按当前行情自动切�
 input int    InpRegimeBars  = 20;              // 回看K线数(M1=20分钟)
 input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
+input double InpNoTradeER   = 0.15;            // 效率比<此=极窄震荡(假突破满天飞),整段不做(0=关)
 input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
 
 input group "=== 黄金历史特征:防追高/贴关键位反转 ==="
@@ -551,6 +552,11 @@ void OnTick()
       int tdir; double rpos, er;
       int reg=RegimeDetect(tdir, rpos, er);
       g_regime=reg; g_regER=er;
+      // 极窄震荡:效率比过低=纯来回磨,假突破占多,整段不做
+      if(InpNoTradeER>0 && er<InpNoTradeER){
+         if(InpVerbose) PrintFormat("[NO-TRADE] 极窄震荡 ER%.2f<%.2f(假突破多),不做", er, InpNoTradeER);
+         return;
+      }
       if(reg>=0)   // 趋势 或 过渡:都只顺近N根净方向做,禁逆势(治"逆势接刀",过渡区也管)
       {
          if(tdir!=0 && dir!=tdir){

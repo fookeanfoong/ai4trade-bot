@@ -35,6 +35,7 @@ InpUseRegime=true
 InpRegimeBars=20
 InpTrendER=0.45
 InpRangeER=0.28
+InpNoTradeER=0.15
 InpRangeEdge=0.35
 InpUseSmartLevels=true
 InpSpikeBars=5
