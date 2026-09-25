@@ -21,7 +21,7 @@
 input group "=== 基础 ==="
 input double InpFixedLot        = 0.01;        // 固定手数
 input long   InpMagic           = 20260927;    // 魔术号(独立)
-input int    InpMaxPositions     = 3;          // 同时最多持仓
+input int    InpMaxPositions     = 1;          // 同时最多持仓
 
 input group "=== 周期 ==="
 input ENUM_TIMEFRAMES InpSignalTF = PERIOD_M1; // 信号周期(剥头皮:M1/M5)

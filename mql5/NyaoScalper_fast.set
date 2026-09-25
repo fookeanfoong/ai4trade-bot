@@ -7,7 +7,7 @@
 ; ============================================================================
 InpFixedLot=0.01
 InpMagic=20260929
-InpMaxPositions=3
+InpMaxPositions=1
 InpSignalTF=1
 InpEmaFast=12
 InpEmaSlow=26
