@@ -105,7 +105,7 @@ input int    InpNewsAfterMin  = 30;            // 数据后 N 分钟停
 
 input group "=== 风控 ==="
 input int    InpMaxTradesPerDay   = 100000;        // 每日最多开仓
-input double InpDailyTargetUSD    = 0.0;     // 当日(相对开盘权益)赚到该值全平收工(0=关)
+input double InpDailyTargetUSD    = 100.0;     // 当日(相对开盘权益)赚到该值全平收工(0=关)
 input double InpDailyMaxLossUSD   = 0.0;       // 当日(相对开盘权益)亏到该值停手(0=关)
 input double InpMaxBasketLossPct  = 8.0;       // 组合浮亏超权益该% 全平并暂停(0=关)
 input double InpMinEquityUSD      = 0.0;       // 权益跌破该值硬停(0=关)
