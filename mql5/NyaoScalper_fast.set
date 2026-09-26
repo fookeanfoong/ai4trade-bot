@@ -53,6 +53,7 @@ InpMaxSpreadATRRatio=0.25
 InpFixedSlUSD=10.0
 InpRRAtrMult=0.6
 InpRiskReward=1.2
+InpBreakevenUSD=3.0
 InpUseBreakeven=true
 InpBeBufferATR=0.05
 InpUseTrail=true

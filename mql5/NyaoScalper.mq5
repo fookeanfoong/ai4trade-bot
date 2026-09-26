@@ -87,7 +87,8 @@ input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR (仅 InpFixedS
 input double InpRiskReward   = 1.5;            // 止盈 = 止损×该比
 
 input group "=== 出场:追踪/保本 ==="
-input bool   InpUseBreakeven = true;           // 到 1R 移保本
+input double InpBreakevenUSD = 3.0;            // 浅保本:浮盈到此($)就把止损拉到入场(治"先赚后回落变亏";0=关)
+input bool   InpUseBreakeven = true;           // 到 1R 移保本(大额)
 input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
 input double InpTrailAtrMult = 1.2;            // 追踪跟价 N×ATR
@@ -454,10 +455,13 @@ void ManagePositions(double atr)
 
       if(type==POSITION_TYPE_BUY){
          double prof=bid-open;
+         // 浅保本:浮盈一到小额就把止损拉到入场(治"先赚后回落变亏")
+         if(InpBreakevenUSD>0 && prof>=InpBreakevenUSD){ double be=NormalizeDouble(open+InpBeBufferATR*atr,_Digits); if(be>sl){trade.PositionModify(tk,be,tp); sl=be;} }
          if(InpUseBreakeven && prof>=rDist){ double be=NormalizeDouble(open+InpBeBufferATR*atr,_Digits); if(be>sl){trade.PositionModify(tk,be,tp); sl=be;} }
          if(InpUseTrail && prof>=InpTrailStartR*rDist){ double n=NormalizeDouble(bid-InpTrailAtrMult*atr,_Digits); if(n>sl) trade.PositionModify(tk,n,tp); }
       } else if(type==POSITION_TYPE_SELL){
          double prof=open-ask;
+         if(InpBreakevenUSD>0 && prof>=InpBreakevenUSD){ double be=NormalizeDouble(open-InpBeBufferATR*atr,_Digits); if(sl==0.0||be<sl){trade.PositionModify(tk,be,tp); sl=be;} }
          if(InpUseBreakeven && prof>=rDist){ double be=NormalizeDouble(open-InpBeBufferATR*atr,_Digits); if(sl==0.0||be<sl){trade.PositionModify(tk,be,tp); sl=be;} }
          if(InpUseTrail && prof>=InpTrailStartR*rDist){ double n=NormalizeDouble(ask+InpTrailAtrMult*atr,_Digits); if(sl==0.0||n<sl) trade.PositionModify(tk,n,tp); }
       }
