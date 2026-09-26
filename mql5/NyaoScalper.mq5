@@ -87,12 +87,14 @@ input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR (仅 InpFixedS
 input double InpRiskReward   = 1.5;            // 止盈 = 止损×该比
 
 input group "=== 出场:追踪/保本 ==="
-input double InpBreakevenUSD = 3.0;            // 浅保本:浮盈到此($)就把止损拉到入场(治"先赚后回落变亏";0=关)
+input double InpBreakevenUSD = 0.0;            // 浅保本:浮盈到此($)就把止损拉到入场(治"先赚后回落变亏";0=关)
 input bool   InpUseBreakeven = true;           // 到 1R 移保本(大额)
 input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
 input double InpTrailAtrMult = 1.2;            // 追踪跟价 N×ATR
 input double InpTrailStartR  = 0.8;            // 盈利达 N×R 才启动追踪
+input int    InpProfitStallMin = 5;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
+input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮盈($)
 
 input group "=== 时段(服务器时间,避开亚洲薄盘) ==="
 input bool   InpUseSession  = true;            // 启用时段过滤
@@ -451,6 +453,18 @@ void ManagePositions(double atr)
       double open=PositionGetDouble(POSITION_PRICE_OPEN);
       double sl=PositionGetDouble(POSITION_SL), tp=PositionGetDouble(POSITION_TP);
       double bid=SymbolInfoDouble(_Symbol,SYMBOL_BID), ask=SymbolInfoDouble(_Symbol,SYMBOL_ASK);
+
+      // 浮盈停滞离场:在盈利中、持仓超过N分钟还没到止盈,就把这点利润落袋(趁反转前跑)
+      if(InpProfitStallMin>0){
+         double pl=PositionGetDouble(POSITION_PROFIT)+PositionGetDouble(POSITION_SWAP);
+         datetime opened=(datetime)PositionGetInteger(POSITION_TIME);
+         if(pl>=InpProfitStallMinUSD && opened>0 && (TimeCurrent()-opened)>=InpProfitStallMin*60){
+            trade.PositionClose(tk);
+            if(InpVerbose) PrintFormat("[EXIT] 浮盈停滞:+$%.2f 持仓>%d分钟未到止盈,落袋", pl, InpProfitStallMin);
+            continue;
+         }
+      }
+
       double rDist=EffSl(atr); if(rDist<=0) continue;
 
       if(type==POSITION_TYPE_BUY){
