@@ -98,8 +98,8 @@ input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮
 
 input group "=== 时段(服务器时间,避开亚洲薄盘) ==="
 input bool   InpUseSession  = true;            // 启用时段过滤
-input int    InpSessStart   = 8;               // 开始小时(约伦敦盘)
-input int    InpSessEnd     = 22;              // 结束小时(纽约盘尾)
+input int    InpSessStart   = 11;               // 开始小时(约伦敦盘)
+input int    InpSessEnd     = 19;              // 结束小时(纽约盘尾)
 
 input group "=== 重大数据黑窗(手动填,前后各停) ==="
 input string InpNewsTimes   = "";              // 逗号分隔,如 2026.09.25 20:30 (服务器时间)
