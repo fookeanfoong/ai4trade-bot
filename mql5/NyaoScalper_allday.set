@@ -1,9 +1,8 @@
 ; ============================================================================
-; NyaoScalper_allday —— +154那套配置，但全天跑（不限时段）
-;   用途: 对比早上 vs 下午的盈利。参数与 NyaoScalper_scalp(+154) 完全相同,
-;   唯一区别: InpUseSession=false(0-23全天) + InpMagic=20260930(独立筛报告)。
-;   硬规则仍在: 数据前后30分钟不做 / ATR太低不做 / 每笔带止损。
-;   出场: 止损金价$10, 止盈1:1.5(约$15), 0.7R起追踪, 1R移保本, 无利润地板。
+; NyaoScalper_allday —— 照"现在的nyao"(fast档)设定, 但全天跑 + 加保底$2
+;   与 fast 完全相同(门槛4.0/止损$10/止盈1:1.2/0.5R起追踪0.8×ATR/防追闸门全开),
+;   只三处不同: InpUseSession=false(全天) + InpBreakevenUSD=2.0(浮盈+$2移保本)
+;   + InpMagic=20260930(独立编号,报告单独筛)。volume 0.01。
 ; ============================================================================
 InpFixedLot=0.01
 InpMagic=20260930
@@ -17,7 +16,7 @@ InpAtrPeriod=14
 InpAvgAtrPeriod=50
 InpBodyAvgBars=10
 InpPeakLookback=5
-InpMinSignalScore=4.5
+InpMinSignalScore=4.0
 InpSmoothCandles=1
 InpMinVolRatio=0.65
 InpNewBarOnly=true
@@ -53,14 +52,14 @@ InpExhaustATR=4.0
 InpMaxSpreadUSD=0.35
 InpMaxSpreadATRRatio=0.25
 InpFixedSlUSD=10.0
-InpRRAtrMult=1.0
-InpRiskReward=1.5
+InpRRAtrMult=0.6
+InpRiskReward=1.2
 InpBreakevenUSD=2.0
 InpUseBreakeven=true
 InpBeBufferATR=0.05
 InpUseTrail=true
-InpTrailAtrMult=1.0
-InpTrailStartR=0.7
+InpTrailAtrMult=0.8
+InpTrailStartR=0.5
 InpProfitStallMin=0
 InpProfitStallMinUSD=1.0
 InpUseSession=false
