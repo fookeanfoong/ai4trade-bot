@@ -76,6 +76,8 @@ input int    InpAsiaStartHour  = 3;            // 亚洲盘起(服务器时间,�
 input int    InpAsiaEndHour    = 10;           // 亚洲盘止
 input int    InpExtremeBars    = 15;           // 近N根极值(算扫损区)
 input double InpNoChaseExtremeATR = 1.0;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
+input int    InpExhaustBars    = 30;           // 耗尽窗口:看最近N根的累计走幅(比spike/极值都长)
+input double InpExhaustATR     = 4.0;          // 最近N根已朝本单方向走>此×ATR判为过头,跳过等回调(ADR耗尽;0=关)
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
@@ -644,6 +646,17 @@ void OnTick()
             if(InpVerbose) PrintFormat("[NO-TRADE] 空单贴近%d根新低%.2f(距%.2f),防扫损反转,等回调", InpExtremeBars, lowN, px-lowN); return; }
          if(dir>0 && highN>0 && (highN-px) < InpNoChaseExtremeATR*atr){
             if(InpVerbose) PrintFormat("[NO-TRADE] 多单贴近%d根新高%.2f(距%.2f),防扫损反转,等回调", InpExtremeBars, highN, highN-px); return; }
+      }
+
+      // 4) ADR耗尽:更长窗口已朝本单方向大幅走过,判为过头,别再顺着追(等回调/反转)
+      //    覆盖"大跌后追空/大涨后追多"——比5根spike和15根极值都长,专抓已走完一大段的行情
+      if(InpExhaustATR>0 && InpExhaustBars>0){
+         double cE=iClose(_Symbol,InpSignalTF,1+InpExhaustBars);
+         if(cE>0){
+            double runM=c1-cE;                       // 最近 InpExhaustBars 根的累计走幅
+            if((runM*dir) > InpExhaustATR*atr){       // 已朝本单方向走 > 阈值
+               if(InpVerbose) PrintFormat("[NO-TRADE] 近%d根已朝%s走$%.2f(>%.1f×ATR),过头不追,等回调", InpExhaustBars, dir>0?"多":"空", MathAbs(runM), InpExhaustATR); return; }
+         }
       }
    }
 
