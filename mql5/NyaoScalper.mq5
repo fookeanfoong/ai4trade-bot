@@ -93,7 +93,7 @@ input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
 input double InpTrailAtrMult = 1.2;            // 追踪跟价 N×ATR
 input double InpTrailStartR  = 0.8;            // 盈利达 N×R 才启动追踪
-input int    InpProfitStallMin = 5;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
+input int    InpProfitStallMin = 0;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
 input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮盈($)
 
 input group "=== 时段(服务器时间,避开亚洲薄盘) ==="
