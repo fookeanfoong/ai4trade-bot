@@ -75,7 +75,7 @@ input double InpRoundStep      = 10.0;         // 整数关口步长($):黄金�
 input int    InpAsiaStartHour  = 3;            // 亚洲盘起(服务器时间,算亚洲区间高低)
 input int    InpAsiaEndHour    = 10;           // 亚洲盘止
 input int    InpExtremeBars    = 15;           // 近N根极值(算扫损区)
-input double InpNoChaseExtremeATR = 0.0;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
+input double InpNoChaseExtremeATR = 0.8;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
