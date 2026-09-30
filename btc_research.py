@@ -19,6 +19,8 @@ BTC 剥头皮入场,跟你自己已有的逻辑放在同一把尺子上量:
   - 影线惩罚:信号 K 线的反向影线 > 实体 1.5 倍就不做(NyaoScalper 的 wick penalty)
   - 崩盘/暴涨保护:距 4 小时高点跌超 3% 不开多、距低点涨超 3% 不开空
     (来自你加密版的 crash circuit breaker)
+  - 时段:只在 UTC 06~20(伦敦+纽约,BTC 流动性最好的时段)开仓
+  - 冷却:亏损平仓后停 3 根 K 线
   - 时间止损:持有超过 MAX_HOLD 根就按收盘平掉 —— 「快进快出」写成规则
 
 结果按 **R**(1R = 初始止损距离)计,已扣点差,所以和账户大小无关。
@@ -57,6 +59,8 @@ MAX_SPREAD_ATR = 0.25
 WICK_BODY_MAX = 1.5
 CRASH_PCT = 3.0
 MAX_HOLD = 12
+COOLDOWN = 3                     # 亏损平仓后冷却几根
+SESSION_UTC = (6, 20)            # ≈ EA 默认 9~23 服务器时间(XM 夏令 GMT+3)
 BE_AT_R = 1.0
 TRAIL_ATR = 1.0
 
@@ -64,6 +68,7 @@ TRAIL_ATR = 1.0
 USE_VWAP = True
 USE_DEAD = True
 USE_WICK = True
+USE_SESSION = True
 
 
 # ------------------------------- 指标 ---------------------------------------
@@ -158,6 +163,11 @@ def signal(bars, ind, i, module, spread):
         return 0
     if spread > atr * MAX_SPREAD_ATR:
         return 0
+    if USE_SESSION:
+        # EA 在新 K 线开盘时判断,所以看的是下一根的开盘时刻
+        hr = bars[i + 1]["t"] // 3600 % 24
+        if not (SESSION_UTC[0] <= hr < SESSION_UTC[1]):
+            return 0
 
     ef, es, et = ind["ef"][i], ind["es"][i], ind["et"][i]
     vw = ind["vwap"][i]
@@ -218,6 +228,7 @@ def run(bars, module, stop_atr, rr, spread, ind=None):
     start = max(TREND, 102 + 4, 60, ind["n4h"] or 0)
     pos = None
     rs = []
+    cool = -1                               # 亏损后到这个下标之前不开新仓
     for i in range(start, len(bars) - 1):
         nb = bars[i + 1]
         if pos:
@@ -234,6 +245,8 @@ def run(bars, module, stop_atr, rr, spread, ind=None):
                 px = nb["c"]
             if px is not None:
                 rs.append(((px - pos["entry"]) * d - spread) / pos["r"])
+                if rs[-1] < 0:
+                    cool = i + 1 + COOLDOWN
                 pos = None
                 continue
             # 保本 + 追踪:用这根 K 线的收盘更新,从下一根开始生效
@@ -246,6 +259,8 @@ def run(bars, module, stop_atr, rr, spread, ind=None):
                     pos["sl"] = new
             continue
 
+        if i < cool:
+            continue
         d = signal(bars, ind, i, module, spread)
         if d == 0:
             continue
@@ -259,6 +274,8 @@ def run(bars, module, stop_atr, rr, spread, ind=None):
         if hit_sl or hit_tp:
             px = pos["sl"] if hit_sl else pos["tp"]
             rs.append(((px - entry) * d - spread) / dist)
+            if rs[-1] < 0:
+                cool = i + 1 + COOLDOWN
             pos = None
     return rs
 
@@ -352,13 +369,12 @@ def main():
         L.append("")
 
     # ---- 通过者:点差敏感度 + 过滤器消融 --------------------------------
-    global USE_VWAP, USE_DEAD, USE_WICK
     if survivors:
         L += ["## 通过者的压力测试", "",
               "同一组参数,点差放大/缩小,以及逐个关掉过滤器 —— 看结论是否依赖某个假设。",
               "(全样本,不再切分。)", "",
-              "| 配置 | 点差$15 | 点差$30 | 点差$60 | 去掉VWAP | 去掉死市过滤 | 去掉影线过滤 |",
-              "|---|---|---|---|---|---|---|"]
+              "| 配置 | 点差$15 | 点差$30 | 点差$60 | 去掉VWAP | 去掉死市过滤 | 去掉影线过滤 | 去掉时段 |",
+              "|---|---|---|---|---|---|---|---|"]
         for name, module, st, rr, _, _ in survivors:
             bars = cache[name]
             ind = prepare(bars)
@@ -366,7 +382,7 @@ def main():
             for sp in (15.0, 30.0, 60.0):
                 s = stats(run(bars, module, st, rr, sp, ind))
                 cells.append(f"{s['n']}笔 {s['exp']}R")
-            for flag in ("USE_VWAP", "USE_DEAD", "USE_WICK"):
+            for flag in ("USE_VWAP", "USE_DEAD", "USE_WICK", "USE_SESSION"):
                 globals()[flag] = False
                 s = stats(run(bars, module, st, rr, SPREAD, ind))
                 globals()[flag] = True
