@@ -58,7 +58,7 @@ input double InpAtrMaxUSD   = 20.0;            // ATR 上限($),太乱不做
 
 input group "=== 行情自适应(最近N分钟识别趋势/震荡) ==="
 input bool   InpUseRegime   = true;            // 开:按当前行情自动切进场打法
-input int    InpRegimeBars  = 20;              // 回看K线数(M1=20分钟)
+input int    InpRegimeBars  = 15;              // 回看K线数(M1=15分钟)
 input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
 input double InpNoTradeER   = 0.15;            // 效率比<此=极窄震荡(假突破满天飞),整段不做(0=关)
@@ -79,7 +79,7 @@ input double InpNoChaseExtremeATR = 1.0;      // 顺势单距近N根极值<此×
 input int    InpExhaustBars    = 30;           // 耗尽窗口:看最近N根的累计走幅(比spike/极值都长)
 input double InpExhaustATR     = 4.0;          // 最近N根已朝本单方向走>此×ATR判为过头,跳过等回调(ADR耗尽;0=关)
 input int    InpSwingBars      = 20;           // 摆动点回看:找最近N根的摆动低/高点
-input double InpSwingExhaustATR = 6.0;         // 距最近摆动低/高点已涨/跌>此×ATR不追(防V反弹追顶,不受净位移抵消;0=关)
+input double InpSwingExhaustATR = 0.0;         // 距最近摆动低/高点已涨/跌>此×ATR不追(防V反弹追顶,不受净位移抵消;0=关)
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
@@ -95,8 +95,8 @@ input double InpBreakevenUSD = 0.0;            // 浅保本:浮盈到此($)就�
 input bool   InpUseBreakeven = true;           // 到 1R 移保本(大额)
 input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
-input double InpTrailAtrMult = 1.2;            // 追踪跟价 N×ATR
-input double InpTrailStartR  = 0.8;            // 盈利达 N×R 才启动追踪
+input double InpTrailAtrMult = 1.0;            // 追踪跟价 N×ATR
+input double InpTrailStartR  = 0.7;            // 盈利达 N×R 才启动追踪
 input int    InpProfitStallMin = 0;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
 input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮盈($)
 
