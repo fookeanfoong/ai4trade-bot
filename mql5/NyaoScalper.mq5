@@ -96,7 +96,7 @@ input bool   InpUseBreakeven = true;           // 到 1R 移保本(大额)
 input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
 input double InpTrailAtrMult = 1.0;            // 追踪跟价 N×ATR
-input double InpTrailStartR  = 0.7;            // 盈利达 N×R 才启动追踪
+input double InpTrailStartR  = 0.2;            // 盈利达 N×R 才启动追踪
 input int    InpProfitStallMin = 0;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
 input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮盈($)
 
