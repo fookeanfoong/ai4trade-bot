@@ -1,0 +1,48 @@
+name: btc
+
+# BTC 快进快出策略研究(BTCScalper EA 的 Python 复刻),带样本外验证。
+# 和 gold 一样跑在 Actions 上 —— 这里能拿到 Yahoo 的真实 BTC 行情,Claude 的沙箱拿不到。
+on:
+  push:
+    paths:
+      - "btc_research.py"
+      - ".github/workflows/btc_research.yml"
+  schedule:
+    - cron: "40 6 * * 1"      # 每周一重跑,看结论是否还成立
+  workflow_dispatch:
+
+concurrency:
+  group: btc-research
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Research — 入场 × 止损 × RR 网格,带样本外验证
+        continue-on-error: true
+        env:
+          BTC_SPREAD: "30"
+        run: python btc_research.py
+
+      - name: Commit research report
+        if: always()
+        run: |
+          git config user.name  "ai4trade-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add reports/btc_research.md || true
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "btc research $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase origin ${GITHUB_REF_NAME} || true
+            git push
+          fi
