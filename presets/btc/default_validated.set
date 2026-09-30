@@ -1,0 +1,51 @@
+; BTCScalper —— 默认(样本外验证)preset = EA 出厂值
+; H1 · 只开趋势回踩 · 止损 1.5×ATR · RR1:1.5 · 时段过滤 · 每笔风险 1% · 时间止损 12 根(12 小时)
+; reports/btc_research.md 里 48 组中通过验证的 3 组之一,也是验证期期望最高的一组
+; (训练 158笔/53.8%/+0.207R,验证 122笔/50.0%/+0.078R)。优势很薄,去掉时段过滤就归零。
+; ⚠️ 回测没算隔夜利息;H1 的单最长拿 12 小时,会跨过 XM 的结算时间。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxPositions=1
+InpMaxTradesPerDay=20
+InpCooldownBars=3
+InpFixedLots=0.0
+InpMaxSpreadUSD=40.0
+InpMaxSpreadATRPct=25.0
+InpMinStopSpreadX=4.0
+InpSlippagePoints=500
+InpTimeframe=16385
+InpUsePullback=true
+InpUseBreakout=false
+InpUseMeanRev=false
+InpFastEMA=9
+InpSlowEMA=21
+InpTrendEMA=100
+InpUseVWAP=true
+InpRSIPeriod=14
+InpRSILongMin=40.0
+InpRSILongMax=70.0
+InpRSIShortMin=30.0
+InpRSIShortMax=60.0
+InpBBPeriod=20
+InpBBDev=2.0
+InpATRPeriod=14
+InpATRStopMult=1.5
+InpRewardRisk=1.5
+InpSwingLookback=100
+InpSwingWing=2
+InpDeadMarketRatio=0.7
+InpWickBodyMax=1.5
+InpCrashPct=3.0
+InpUseBreakeven=true
+InpUseTrailing=true
+InpTrailATRMult=1.0
+InpMaxHoldBars=12
+InpUseSession=true
+InpSessionStartHour=9
+InpSessionEndHour=23
+InpTradeWeekend=true
+InpWeekendRiskMult=0.5
+InpMagic=20260930
+InpAlerts=true

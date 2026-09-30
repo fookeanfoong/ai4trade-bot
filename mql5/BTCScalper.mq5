@@ -59,9 +59,13 @@ input int    InpSlippagePoints   = 500;    // 允许滑点(point)
 
 //--- 策略 ----------------------------------------------------------
 input group "=== 策略 ==="
-input ENUM_TIMEFRAMES InpTimeframe = PERIOD_M5;  // 工作周期
+// ⬇ 默认值来自样本外验证(reports/btc_research.md):48 组里只有
+//   H1 + 趋势回踩 + 时段过滤 两边为正(验证 122 笔 / 50% / +0.078R)。
+//   M5/M15 的真·快进快出全部为负 —— M5 上 $30 点差 ≈ ATR 的 40%。
+//   要跑 M5 请加载 presets/btc/m5_fast.set,但那套没有通过验证。
+input ENUM_TIMEFRAMES InpTimeframe = PERIOD_H1;  // 工作周期
 input bool   InpUsePullback      = true;   // 入场 A:趋势回踩
-input bool   InpUseBreakout      = true;   // 入场 B:结构突破
+input bool   InpUseBreakout      = false;  // 入场 B:结构突破(回测各周期均为负,默认关)
 input bool   InpUseMeanRev       = false;  // 入场 C:布林带反转(默认关)
 input int    InpFastEMA          = 9;
 input int    InpSlowEMA          = 21;
@@ -75,7 +79,7 @@ input double InpRSIShortMax      = 60.0;
 input int    InpBBPeriod         = 20;     // 反转模块用
 input double InpBBDev            = 2.0;
 input int    InpATRPeriod        = 14;
-input double InpATRStopMult      = 1.0;    // 止损 = ATR × 这个倍数
+input double InpATRStopMult      = 1.5;    // 止损 = ATR × 这个倍数
 input double InpRewardRisk       = 1.5;    // 止盈 = 止损 × 这个倍数
 input int    InpSwingLookback    = 100;
 input int    InpSwingWing        = 2;

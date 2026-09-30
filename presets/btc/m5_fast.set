@@ -1,0 +1,49 @@
+; BTCScalper —— M5 快进快出 preset(❌ 没有通过样本外验证)
+; M5 · 回踩+突破 · 止损 1.0×ATR · RR1:1.5 · 时间止损 12 根(1 小时)
+; 回测:训练/验证两段全为负(验证 -0.2 ~ -0.4R)。主要原因:$30 点差 ≈ M5 ATR 的 40%。
+; 只在你的 XM 账户点差明显更低(比如 < $10)时才值得挂模拟盘观察。
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxPositions=1
+InpMaxTradesPerDay=20
+InpCooldownBars=3
+InpFixedLots=0.0
+InpMaxSpreadUSD=40.0
+InpMaxSpreadATRPct=25.0
+InpMinStopSpreadX=4.0
+InpSlippagePoints=500
+InpTimeframe=5
+InpUsePullback=true
+InpUseBreakout=true
+InpUseMeanRev=false
+InpFastEMA=9
+InpSlowEMA=21
+InpTrendEMA=100
+InpUseVWAP=true
+InpRSIPeriod=14
+InpRSILongMin=40.0
+InpRSILongMax=70.0
+InpRSIShortMin=30.0
+InpRSIShortMax=60.0
+InpBBPeriod=20
+InpBBDev=2.0
+InpATRPeriod=14
+InpATRStopMult=1.0
+InpRewardRisk=1.5
+InpSwingLookback=100
+InpSwingWing=2
+InpDeadMarketRatio=0.7
+InpWickBodyMax=1.5
+InpCrashPct=3.0
+InpUseBreakeven=true
+InpUseTrailing=true
+InpTrailATRMult=1.0
+InpMaxHoldBars=12
+InpUseSession=true
+InpSessionStartHour=9
+InpSessionEndHour=23
+InpTradeWeekend=true
+InpWeekendRiskMult=0.5
+InpMagic=20260930
+InpAlerts=true
