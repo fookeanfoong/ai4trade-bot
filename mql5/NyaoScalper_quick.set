@@ -6,7 +6,7 @@
 ;   进场: 门槛4.0 + 防追闸门全保留 + 死盘跳过; 出场纯 TP/SL(关追踪/保本)。
 ;   magic 20260931 独立筛报告。
 ; ============================================================================
-InpFixedLot=0.02
+InpFixedLot=0.01
 InpMagic=20260931
 InpMaxPositions=2
 InpSignalTF=1
@@ -33,7 +33,7 @@ InpWPeakBreak=1.0
 InpAtrMinUSD=0.60
 InpAtrMaxUSD=20.0
 InpUseRegime=true
-InpRegimeBars=20
+InpRegimeBars=8
 InpTrendER=0.45
 InpRangeER=0.28
 InpNoTradeER=0.15
@@ -55,15 +55,15 @@ InpSwingBars=20
 InpSwingExhaustATR=0.0
 InpMaxSpreadUSD=0.25
 InpMaxSpreadATRRatio=0.25
-InpFixedSlUSD=2.5
+InpFixedSlUSD=10.0
 InpRRAtrMult=0.6
-InpRiskReward=0.2
-InpBreakevenUSD=0.0
-InpUseBreakeven=false
+InpRiskReward=0.5
+InpBreakevenUSD=3.0
+InpUseBreakeven=true
 InpBeBufferATR=0.05
-InpUseTrail=false
+InpUseTrail=true
 InpTrailAtrMult=0.8
-InpTrailStartR=0.5
+InpTrailStartR=0.1
 InpProfitStallMin=0
 InpProfitStallMinUSD=1.0
 InpUseSession=true
