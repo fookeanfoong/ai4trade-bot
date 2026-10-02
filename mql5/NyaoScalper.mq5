@@ -99,6 +99,8 @@ input double InpTrailAtrMult = 1.0;            // 追踪跟价 N×ATR
 input double InpTrailStartR  = 0.1;            // 盈利达 N×R 才启动追踪
 input int    InpProfitStallMin = 0;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
 input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮盈($)
+input int    InpRescueAfterMin  = 0;           // 亏损逃生:持仓超N分钟(多半已亏一阵),一转正就立刻平(0=关)
+input double InpRescueProfitUSD = 0.3;         // 逃生离场的最低浮盈($,需>点差才算真转正)
 
 input group "=== 时段(服务器时间,避开亚洲薄盘) ==="
 input bool   InpUseSession  = true;            // 启用时段过滤
@@ -465,6 +467,17 @@ void ManagePositions(double atr)
          if(pl>=InpProfitStallMinUSD && opened>0 && (TimeCurrent()-opened)>=InpProfitStallMin*60){
             trade.PositionClose(tk);
             if(InpVerbose) PrintFormat("[EXIT] 浮盈停滞:+$%.2f 持仓>%d分钟未到止盈,落袋", pl, InpProfitStallMin);
+            continue;
+         }
+      }
+
+      // 亏损逃生:持仓超过N分钟(多半已在水下磨了一阵),一旦反弹转正就立刻落袋,别等它再翻负
+      if(InpRescueAfterMin>0){
+         double pl=PositionGetDouble(POSITION_PROFIT)+PositionGetDouble(POSITION_SWAP);
+         datetime opened=(datetime)PositionGetInteger(POSITION_TIME);
+         if(pl>=InpRescueProfitUSD && opened>0 && (TimeCurrent()-opened)>=InpRescueAfterMin*60){
+            trade.PositionClose(tk);
+            if(InpVerbose) PrintFormat("[RESCUE] 持仓>%d分钟终于转正+$%.2f,趁反弹落袋离场", InpRescueAfterMin, pl);
             continue;
          }
       }
