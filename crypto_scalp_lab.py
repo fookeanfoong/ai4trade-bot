@@ -314,6 +314,90 @@ def build_supertrend(I, p):
     return sig, exitL, exitS, 36
 
 
+# ---- 1 分钟快进快出(M1)候选 -------------------------------------------------
+def build_m1_ribbon(I, p):
+    """EMA 8>13>21>34 排列 + 阳线收在所有 EMA 之上;收盘跌回 EMA8 下方离场。"""
+    B = I.B
+    o, c = B["o"], B["c"]
+    e8, e13, e21, e34, a = I.ema(8), I.ema(13), I.ema(21), I.ema(34), I.atr()
+    n = len(c)
+    sig = [None] * n
+    for i in range(60, n):
+        if e8[i] > e13[i] > e21[i] > e34[i] and c[i] > o[i] and c[i] > e8[i] and o[i] <= e8[i]:
+            stop = (c[i] - e34[i] + a[i] * 0.2) if p["stop"] == "ema34" else swing_stop(B, i, 1, 3, a[i] * 0.2)
+            sig[i] = (1, stop, p["rr"])
+        elif e8[i] < e13[i] < e21[i] < e34[i] and c[i] < o[i] and c[i] < e8[i] and o[i] >= e8[i]:
+            stop = (e34[i] - c[i] + a[i] * 0.2) if p["stop"] == "ema34" else swing_stop(B, i, -1, 3, a[i] * 0.2)
+            sig[i] = (-1, stop, p["rr"])
+    exitL = [c[j] < e8[j] for j in range(n)]
+    exitS = [c[j] > e8[j] for j in range(n)]
+    return sig, exitL, exitS, 15
+
+
+def build_m1_bb_rsi4(I, p):
+    """RSI(4) 极值 + 收盘跌出布林(20,2)后收回带内;回中轨离场,止损放在最近 3 根极值外。"""
+    B = I.B
+    c = B["c"]
+    mid, sd, r4, a = I.sma(20), I.std(20), I.rsi(4), I.atr()
+    n = len(c)
+    lo_th, hi_th = p["th"], 100 - p["th"]
+    sig = [None] * n
+    for i in range(30, n):
+        lo1, lo0 = mid[i - 1] - 2 * sd[i - 1], mid[i] - 2 * sd[i]
+        hi1, hi0 = mid[i - 1] + 2 * sd[i - 1], mid[i] + 2 * sd[i]
+        if c[i - 1] < lo1 and c[i] > lo0 and r4[i - 1] < lo_th:
+            sig[i] = (1, swing_stop(B, i, 1, 3, a[i] * p["buf"]), None)
+        elif c[i - 1] > hi1 and c[i] < hi0 and r4[i - 1] > hi_th:
+            sig[i] = (-1, swing_stop(B, i, -1, 3, a[i] * p["buf"]), None)
+    exitL = [c[j] >= mid[j] for j in range(n)]
+    exitS = [c[j] <= mid[j] for j in range(n)]
+    return sig, exitL, exitS, 10
+
+
+def build_m1_vwap_fade(I, p):
+    """价格偏离 VWAP 超过 k 个标准差 + 出现反向K线 → 反向做,回到 VWAP 离场。"""
+    B = I.B
+    o, c = B["o"], B["c"]
+    vw, a = I.vwap(), I.atr()
+    dev = [c[i] - vw[i] for i in range(len(c))]
+    sd = I.get(("devstd", 60), lambda: rolling_std(dev, 60))
+    n = len(c)
+    k = p["k"]
+    sig = [None] * n
+    for i in range(120, n):
+        if sd[i] <= 0:
+            continue
+        if dev[i] < -k * sd[i] and c[i] > o[i]:
+            sig[i] = (1, a[i] * p["sl"], None)
+        elif dev[i] > k * sd[i] and c[i] < o[i]:
+            sig[i] = (-1, a[i] * p["sl"], None)
+    exitL = [c[j] >= vw[j] for j in range(n)]
+    exitS = [c[j] <= vw[j] for j in range(n)]
+    return sig, exitL, exitS, 15
+
+
+def build_m1_spike_fade(I, p):
+    """插针反转:K 线全长 >= m×ATR、成交量 >= 2×均量、影线占全长 >= 60% → 顺影线反方向进;止损在针尖外。"""
+    B = I.B
+    o, h, l, c, v = B["o"], B["h"], B["l"], B["c"], B["v"]
+    a = I.atr()
+    vavg = I.get(("vavg", 20), lambda: [sum(v[max(0, i - 20):i]) / max(1, min(i, 20)) for i in range(len(v))])
+    n = len(c)
+    sig = [None] * n
+    for i in range(30, n):
+        rng = h[i] - l[i]
+        if rng < p["m"] * a[i - 1] or v[i] < 2.0 * vavg[i] or rng <= 0:
+            continue
+        lower, upper = min(o[i], c[i]) - l[i], h[i] - max(o[i], c[i])
+        buf = a[i - 1] * 0.1
+        if lower >= 0.6 * rng:
+            sig[i] = (1, c[i] - l[i] + buf, p["rr"])
+        elif upper >= 0.6 * rng:
+            sig[i] = (-1, h[i] - c[i] + buf, p["rr"])
+    f = [False] * n
+    return sig, f, f, 10
+
+
 STRATEGIES = {
     "emamacd": ("当前 EA:EMA20/50+MACD+回踩形态+放量(基线)", build_emamacd, [
         {"rr": 1.5, "maxb": 48}, {"rr": 1.0, "maxb": 24}, {"rr": 2.0, "maxb": 48}]),
@@ -332,6 +416,14 @@ STRATEGIES = {
     "supertrend": ("Supertrend 翻色 + EMA200 顺势,反向翻色离场", build_supertrend, [
         {"p": 7, "m": 2.0, "rr": None}, {"p": 7, "m": 2.0, "rr": 2.0},
         {"p": 10, "m": 3.0, "rr": None}, {"p": 10, "m": 3.0, "rr": 2.0}]),
+    "m1_ribbon": ("M1 EMA带(8/13/21/34)顺势,阳线站上全部 EMA,跌回 EMA8 离场", build_m1_ribbon, [
+        {"stop": st, "rr": rr} for st in ("swing", "ema34") for rr in (1.0, 1.5, 2.0)]),
+    "m1_bb_rsi4": ("M1 RSI(4)+布林带外收回,回中轨离场", build_m1_bb_rsi4, [
+        {"th": th, "buf": b} for th in (10, 20) for b in (0.2, 0.5, 1.0)]),
+    "m1_vwap_fade": ("M1 VWAP 偏离 k 个标准差反向,回 VWAP 离场", build_m1_vwap_fade, [
+        {"k": k, "sl": sl} for k in (2.0, 2.5, 3.0) for sl in (1.5, 3.0)]),
+    "m1_spike_fade": ("M1 插针反转(放量长影线,止损在针尖外)", build_m1_spike_fade, [
+        {"m": m, "rr": rr} for m in (2.0, 3.0) for rr in (0.7, 1.0, 1.5)]),
 }
 
 
@@ -414,15 +506,15 @@ def main():
     ap.add_argument("--months", type=int, default=12)
     ap.add_argument("--csv")
     ap.add_argument("--spread-pct", type=float, default=0.04)
-    ap.add_argument("--interval", default="5m", choices=["5m", "15m", "1h"],
+    ap.add_argument("--interval", default="5m", choices=["1m", "5m", "15m", "1h"],
                     help="K 线周期。周期越长止损越宽,点差占比越小")
     ap.add_argument("--max-stop-pct", type=float, default=None,
-                    help="止损超过价格的 %% 就不做(默认 5m=2, 15m=3, 1h=5)")
+                    help="止损超过价格的 %% 就不做(默认 1m=1, 5m=2, 15m=3, 1h=5)")
     ap.add_argument("--only", help="只跑这些策略(逗号分隔)")
     ap.add_argument("--out", default="reports/crypto_scalp_lab.md")
     args = ap.parse_args()
     global MAX_STOP_PCT
-    MAX_STOP_PCT = args.max_stop_pct or {"5m": 2.0, "15m": 3.0, "1h": 5.0}[args.interval]
+    MAX_STOP_PCT = args.max_stop_pct or {"1m": 1.0, "5m": 2.0, "15m": 3.0, "1h": 5.0}[args.interval]
 
     data = {}
     if args.csv:
@@ -434,7 +526,7 @@ def main():
             if s:
                 data[s] = base.fetch_binance(s, args.months, args.interval)
         ms = base.month_list(args.months)
-        tf = {"5m": "M5", "15m": "M15", "1h": "H1"}[args.interval]
+        tf = {"1m": "M1", "5m": "M5", "15m": "M15", "1h": "H1"}[args.interval]
         label = f"币安现货 {tf} · {ms[0][0]}-{ms[0][1]:02d} ~ {ms[-1][0]}-{ms[-1][1]:02d}"
     data = {k: v for k, v in data.items() if len(v["t"]) > base.WARMUP + 500}
     if not data:
@@ -467,7 +559,7 @@ def main():
         p, s_is, s_oos, trs = best
         # 成本敏感度:同一组参数,换点差再跑 OOS(快进快出的生死线)
         cost_rows = []
-        for sp in (0.02, 0.04, 0.08):
+        for sp in (0.01, 0.02, 0.04, 0.08):
             tr2 = sorted([x for s in data for x in simulate(data[s], build(inds[s], p), sp) if x[0] >= cut])
             cost_rows.append((sp, st(tr2)))
         by_sym = {s: st([x for x in v if x[0] >= cut]) for s, v in trs.items()}

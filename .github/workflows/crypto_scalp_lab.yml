@@ -36,6 +36,13 @@ jobs:
       - name: Strategy lab — H1, 24 months, IS/OOS
         continue-on-error: true
         run: python crypto_scalp_lab.py --interval 1h --months 24 --spread-pct 0.04 --out reports/crypto_scalp_lab_1h.md
+      - name: Strategy lab — M1 quick in/out, ETH first, 12 months, IS/OOS
+        continue-on-error: true
+        run: >
+          python crypto_scalp_lab.py --interval 1m --months 12 --spread-pct 0.04
+          --symbols ETHUSDT,BTCUSDT,SOLUSDT
+          --only m1_ribbon,m1_bb_rsi4,m1_vwap_fade,m1_spike_fade,rsi2,bb_rsi,ema3_srsi
+          --out reports/crypto_scalp_lab_1m.md
       - name: Commit report
         if: always()
         run: |
