@@ -26,6 +26,7 @@ FILES=(
   "NyaoScalper_fast.set|Presets"
   "NyaoScalper_allday.set|Presets"
   "NyaoScalper_quick.set|Presets"
+  "NyaoScalper_turbo.set|Presets"
   "GMarket_small.set|Presets"
   "ScalperGuard_aggressive.set|Presets"
   "ScalperGuard_scalp.set|Presets"
