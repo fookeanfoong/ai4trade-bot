@@ -17,12 +17,16 @@
 //|  红线（写死，不留开关）：每单必带硬止损；止损只朝盈利方向移动。     |
 //+------------------------------------------------------------------+
 #property copyright "GoldAIScalper - open synthesis"
-#property version   "1.10"
+#property version   "1.30"
 #property strict
 //  v1.10  按实战风控文档补强：点差闸改美元制(ECN/RAW才划算)、重大数据黑窗、
 //         布林带防追高、可选时段黑窗(美盘洗盘)。红线不变:每单硬止损、绝不马丁/网格。
 //  v1.20  真·快进快出:固定小额止盈/止损($)可覆盖 ATR、超时强平(绝不恋仓)。
 //         默认走剥头皮档:止损$0.8 止盈$1.3(≈1:1.6)、最长持仓15分钟。
+//  v1.30  落地「随机指标+布林中轨确认」主力策略(用户规则框架):
+//         多 = 超卖区 %K 金叉 %D + 收盘站上布林中轨;空 = 超买区死叉 + 收盘跌破中轨。
+//         可选「触及对侧布林轨离场」当止盈,百分比止损(~0.1%)。默认开启主力策略;
+//         关掉则退回原共识打分。红线不变:每单硬止损、止损只朝盈利移动、绝不马丁/网格。
 
 #include <Trade/Trade.mqh>
 
@@ -47,7 +51,17 @@ input double InpRsiSellHi   = 50.0;            // 空头 RSI 上界
 input double InpRsiSellLo   = 28.0;            // 空头 RSI 下界
 input int    InpAtrPeriod   = 14;              // ATR 周期
 
-input group "=== 共识分门槛 ==="
+input group "=== 主力策略:随机指标+布林中轨确认 ==="
+input bool   InpUseStochBand = true;           // 开=用随机+布林中轨规则(主力);关=退回共识打分
+input int    InpStochK       = 14;             // 随机指标 %K 周期
+input int    InpStochD       = 3;              // 随机指标 %D 周期(信号线)
+input int    InpStochSlow    = 3;              // 随机指标减速(slowing)
+input double InpStochOversold   = 25.0;        // 超卖线(多:在此线下方金叉才算)
+input double InpStochOverbought = 75.0;        // 超买线(空:在此线上方死叉才算)
+input bool   InpExitOppBand  = true;           // 触及对侧布林轨即离场(当动态止盈)
+input double InpSlPctOfPrice = 0.0;            // 百分比止损(金价×%),如0.1=~0.1%;0=用下面的美元/ATR止损
+
+input group "=== 共识分门槛(仅主力策略关闭时生效) ==="
 input double InpMinScore    = 65.0;            // 共识分门槛(0-100),越高越少越准
 input int    InpMomBars     = 3;               // 动量推进回看K线数
 
@@ -103,6 +117,7 @@ input bool   InpVerbose     = true;            // 详细日志
 CTrade  trade;
 int     hEmaFast=INVALID_HANDLE, hEmaSlow=INVALID_HANDLE, hEmaTrend=INVALID_HANDLE;
 int     hRsi=INVALID_HANDLE, hAtr=INVALID_HANDLE, hBands=INVALID_HANDLE;
+int     hStoch=INVALID_HANDLE;
 datetime g_lastBar=0;
 int      g_dayIdx=-1;
 int      g_tradesToday=0;
@@ -126,17 +141,20 @@ int OnInit()
    hRsi      = iRSI(_Symbol, InpSignalTF, InpRsiPeriod, PRICE_CLOSE);
    hAtr      = iATR(_Symbol, InpSignalTF, InpAtrPeriod);
    hBands    = iBands(_Symbol, InpSignalTF, InpBandsPeriod, 0, InpBandsDev, PRICE_CLOSE);
+   hStoch    = iStochastic(_Symbol, InpSignalTF, InpStochK, InpStochD, InpStochSlow, MODE_SMA, STO_LOWHIGH);
 
    if(hEmaFast==INVALID_HANDLE || hEmaSlow==INVALID_HANDLE || hEmaTrend==INVALID_HANDLE ||
-      hRsi==INVALID_HANDLE || hAtr==INVALID_HANDLE || hBands==INVALID_HANDLE)
+      hRsi==INVALID_HANDLE || hAtr==INVALID_HANDLE || hBands==INVALID_HANDLE ||
+      hStoch==INVALID_HANDLE)
    {
       Print("[GoldAIScalper] 指标句柄创建失败");
       return(INIT_FAILED);
    }
 
    g_dayStartEquity = AccountInfoDouble(ACCOUNT_EQUITY);
-   PrintFormat("[GoldAIScalper] init | magic=%I64d | lot=%.2f | signalTF=%s | minScore=%.0f",
-               InpMagic, InpFixedLot, EnumToString(InpSignalTF), InpMinScore);
+   PrintFormat("[GoldAIScalper] init | magic=%I64d | lot=%.2f | signalTF=%s | 策略=%s",
+               InpMagic, InpFixedLot, EnumToString(InpSignalTF),
+               InpUseStochBand? "随机+布林中轨(主力)" : StringFormat("共识打分(门槛%.0f)", InpMinScore));
    return(INIT_SUCCEEDED);
 }
 
@@ -148,6 +166,7 @@ void OnDeinit(const int reason)
    if(hRsi!=INVALID_HANDLE) IndicatorRelease(hRsi);
    if(hAtr!=INVALID_HANDLE) IndicatorRelease(hAtr);
    if(hBands!=INVALID_HANDLE) IndicatorRelease(hBands);
+   if(hStoch!=INVALID_HANDLE) IndicatorRelease(hStoch);
 }
 
 //+------------------------------------------------------------------+
@@ -260,6 +279,41 @@ int ConsensusScore(double atr, double &scoreOut, string &detail)
 }
 
 //+------------------------------------------------------------------+
+//| 主力策略:随机指标 %K/%D 交叉 + 布林中轨确认                       |
+//|   多 = 超卖区 %K 上穿 %D 且收盘站上布林中轨                        |
+//|   空 = 超买区 %K 下穿 %D 且收盘跌破布林中轨                        |
+//|   用已收盘K线(shift 1/2)判断,杜绝重绘。返回 +1/-1/0。            |
+//+------------------------------------------------------------------+
+int StochBandSignal(string &detail)
+{
+   double k1=BufN(hStoch,0,1), d1=BufN(hStoch,1,1);   // 已收盘这根
+   double k2=BufN(hStoch,0,2), d2=BufN(hStoch,1,2);   // 前一根
+   double mid=BufN(hBands,0,1);                        // 布林中轨(基线=缓冲0)
+   double c1=iClose(_Symbol, InpSignalTF, 1);
+   if((k1==0 && d1==0) || (k2==0 && d2==0)) { detail="随机指标数据不足"; return 0; }
+   if(mid==0 || c1==0) { detail="布林中轨数据不足"; return 0; }
+
+   bool goldCross = (k2<=d2 && k1>d1);   // 金叉
+   bool deadCross = (k2>=d2 && k1<d1);   // 死叉
+
+   // 多:金叉发生在超卖区(前一根 %K 在超卖线下) + 收盘站上中轨
+   if(goldCross && k2<=InpStochOversold && c1>mid)
+   {
+      detail=StringFormat("多:超卖金叉 K%.1f>D%.1f 收%.3f>中轨%.3f", k1,d1,c1,mid);
+      return 1;
+   }
+   // 空:死叉发生在超买区(前一根 %K 在超买线上) + 收盘跌破中轨
+   if(deadCross && k2>=InpStochOverbought && c1<mid)
+   {
+      detail=StringFormat("空:超买死叉 K%.1f<D%.1f 收%.3f<中轨%.3f", k1,d1,c1,mid);
+      return -1;
+   }
+
+   detail=StringFormat("随机 K%.1f D%.1f 中轨%.3f 收%.3f 无信号", k1,d1,mid,c1);
+   return 0;
+}
+
+//+------------------------------------------------------------------+
 bool InSession()
 {
    if(!InpUseSession) return true;
@@ -322,8 +376,16 @@ bool IsOverextended(int dir, double atr)
 }
 
 //+------------------------------------------------------------------+
-// 有效止损距离:优先固定美元,否则 ATR×倍数
-double EffSlDist(double atr) { return (InpFixedSlUSD>0.0)? InpFixedSlUSD : InpSlAtrMult*atr; }
+// 有效止损距离:优先百分比(金价×%),其次固定美元,否则 ATR×倍数
+double EffSlDist(double atr)
+{
+   if(InpSlPctOfPrice>0.0)
+   {
+      double px=SymbolInfoDouble(_Symbol,SYMBOL_BID);
+      if(px>0) return InpSlPctOfPrice/100.0*px;
+   }
+   return (InpFixedSlUSD>0.0)? InpFixedSlUSD : InpSlAtrMult*atr;
+}
 
 void OpenTrade(int dir, double atr, double score, string detail)
 {
@@ -384,6 +446,24 @@ void ManagePositions(double atr)
          {
             trade.PositionClose(tk);
             if(InpVerbose) PrintFormat("[EXIT] 超时强平 #%I64u (持仓>%d分钟)", tk, InpMaxHoldMin);
+            continue;
+         }
+      }
+
+      // 主力策略动态止盈:价格摸到对侧布林轨即落袋
+      if(InpUseStochBand && InpExitOppBand)
+      {
+         double upper=BufN(hBands,1,1), lower=BufN(hBands,2,1);
+         if(type==POSITION_TYPE_BUY && upper>0 && bid>=upper)
+         {
+            trade.PositionClose(tk);
+            if(InpVerbose) PrintFormat("[EXIT] 触及布林上轨离场 #%I64u @%.3f (上轨%.3f)", tk, bid, upper);
+            continue;
+         }
+         if(type==POSITION_TYPE_SELL && lower>0 && ask<=lower)
+         {
+            trade.PositionClose(tk);
+            if(InpVerbose) PrintFormat("[EXIT] 触及布林下轨离场 #%I64u @%.3f (下轨%.3f)", tk, ask, lower);
             continue;
          }
       }
@@ -486,16 +566,30 @@ void OnTick()
    if(!SpreadOK())   { if(InpVerbose) PrintFormat("[NO-TRADE] 点差过大 > $%.2f", InpMaxSpreadUSD); return; }
    if(atr<InpAtrMinUSD || atr>InpAtrMaxUSD) return;
 
-   // 共识分
+   // 入场信号:主力=随机+布林中轨规则;关掉则退回共识打分
    double score=0.0; string detail="";
-   int dir=ConsensusScore(atr, score, detail);
-   if(dir==0 || score<InpMinScore)
+   int dir=0;
+   if(InpUseStochBand)
    {
-      if(InpVerbose) PrintFormat("[NO-TRADE] %s (门槛%.0f)", detail, InpMinScore);
-      return;
+      dir=StochBandSignal(detail);
+      if(dir==0)
+      {
+         if(InpVerbose) PrintFormat("[NO-TRADE] %s", detail);
+         return;
+      }
+      score=100.0;   // 规则触发即满分,沿用日志格式
+   }
+   else
+   {
+      dir=ConsensusScore(atr, score, detail);
+      if(dir==0 || score<InpMinScore)
+      {
+         if(InpVerbose) PrintFormat("[NO-TRADE] %s (门槛%.0f)", detail, InpMinScore);
+         return;
+      }
    }
 
-   // 布林带防追高:分够但价格已冲出轨道,不追
+   // 布林带防追高:信号够但价格已冲出轨道,不追
    if(IsOverextended(dir, atr))
    {
       if(InpVerbose) PrintFormat("[NO-TRADE] 追%s被否:价格已冲出布林%s轨", dir>0?"多":"空", dir>0?"上":"下");
