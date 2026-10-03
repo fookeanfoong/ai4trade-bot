@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-02T20:32:18+00:00",
+  "updated_at": "2026-10-03T00:18:34+00:00",
   "granularity": "H1",
-  "market_open": true,
+  "market_open": false,
   "equity_usd": 200.0,
   "risk_pct": 1.0,
   "risk_usd": 2.0,
@@ -12,19 +12,19 @@
     {
       "instrument": "EUR_USD",
       "last_candle_time": "2026-10-02T20:00:00Z",
-      "price": 1.12575,
+      "price": 1.12562,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "上升趋势 (HH/HL)",
       "bias": "偏多",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 47.6,
-        "macd": "金叉 / 柱=0.000196",
-        "ema20": 1.12597,
-        "ema50": 1.1277,
+        "rsi14": 47.1,
+        "macd": "金叉 / 柱=0.000188",
+        "ema20": 1.12596,
+        "ema50": 1.12769,
         "ema200": 1.13514,
-        "atr14_pips": 14.4,
+        "atr14_pips": 14.5,
         "rsi_bearish_divergence": false
       },
       "levels": {
@@ -64,7 +64,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00800 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $2.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "armed"
+          "status": "wait_market_closed"
         },
         {
           "name": "方案B · 逆势做空(双顶拒绝)",
@@ -87,7 +87,7 @@
             "阻力区被触及>=2次": true
           },
           "confirmed": 2,
-          "invalidation": "H1 收盘站上 1.1399 = 认错离场,翻回方案A",
+          "invalidation": "H1 收盘站上 1.13991 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 400,
           "notional_usd": 455.62,
@@ -97,7 +97,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "blocked_no_divergence"
+          "status": "wait_market_closed"
         }
       ]
     }
