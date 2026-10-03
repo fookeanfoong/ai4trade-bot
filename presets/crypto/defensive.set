@@ -1,0 +1,44 @@
+; CryptoEmaMacdScalper —— 防守 preset
+; 风险 0.5% · 当日熔断 2% · 放量要求 2x · 点差/止损过滤更严 · 新闻前后各 60 分钟
+; 用在:模拟盘刚起步、监测器报 RETHINK、或行情剧烈(大新闻周)时。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpWhitelist=BTC,ETH,SOL,XRP,BNB,DOGE,ADA,TRX,AVAX,LINK
+InpTimeframe=5
+InpRiskPercent=0.5
+InpMaxRiskPercent=2.0
+InpDailyLossPct=2.0
+InpMaxStopPct=1.0
+InpMinStopSpreadX=5.0
+InpSLBufferPct=0.05
+InpSlippagePoints=50
+InpFastEMA=20
+InpSlowEMA=50
+InpMacdFast=12
+InpMacdSlow=26
+InpMacdSignal=9
+InpEmaCrossLookback=12
+InpMacdCrossLookback=3
+InpTouchTolPct=0.10
+InpWickRatio=2.0
+InpVolAvgBars=20
+InpVolMult=2.0
+InpUseRealVolume=false
+InpSwingLookback=10
+InpTP1R=1.5
+InpTP2R=2.0
+InpSingleTPR=1.5
+InpTrailEMA20=true
+InpTrendBars=5
+InpChopLookback=36
+InpMaxCrossesInChop=1
+InpMinAvgVolume=0
+InpMaxSpreadPct=0.04
+InpUseCalendar=true
+InpCalendarCurrencies=USD
+InpNewsBeforeMin=60
+InpNewsAfterMin=60
+InpManualNews=
+InpOneTradePerCross=true
+InpMagic=20261003
+InpAlerts=true
+InpShowPanel=true

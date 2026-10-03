@@ -11,6 +11,10 @@ reports/gold_health.md
 reports/gold_alert.txt
 reports/monitor_task.log
 preset.json
+crypto_journal.json
+reports/crypto_health.md
+reports/crypto_alert.txt
+reports/crypto_monitor_task.log
 
 # Node / web build artifacts — installed fresh per session, never committed
 node_modules/

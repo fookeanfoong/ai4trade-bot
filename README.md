@@ -31,6 +31,13 @@ the 5-minute timeframe (RSI / Bollinger Bands / volume / support-resistance),
 alongside this stock bot. It shares the same execution engine and Alpaca account
 without touching the stock state. See **[SETUP_CRYPTO.md](SETUP_CRYPTO.md)**.
 
+## Crypto MT5 EA (M5 EMA + MACD scalper)
+
+`mql5/CryptoEmaMacdScalper.mq5` — an MT5 Expert Advisor for BTC/ETH/SOL and other top-10
+coins on M5: EMA20/50 cross + MACD cross + pullback candle + volume, all four required.
+One-click install with `install_crypto_ea.bat`, presets in `presets/crypto/`. Not yet
+backtested — demo first. See **[SETUP_CRYPTO_MT5.md](SETUP_CRYPTO_MT5.md)**.
+
 ## Forex module (EUR/USD, signals only)
 
 A third, fully separate book: **OANDA + EUR/USD H4**, sized for a **$200** account.

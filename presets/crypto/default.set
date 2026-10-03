@@ -1,0 +1,44 @@
+; CryptoEmaMacdScalper —— 默认 preset(= EA 出厂参数,严格按系统规则)
+; M5 · EMA20/50 · MACD(12,26,9) · 放量1.5x · 1.5R/2R · 每笔风险 1%
+; 注意:尚未回测验证。先回测 + 模拟盘。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpWhitelist=BTC,ETH,SOL,XRP,BNB,DOGE,ADA,TRX,AVAX,LINK
+InpTimeframe=5
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxStopPct=1.5
+InpMinStopSpreadX=3.0
+InpSLBufferPct=0.05
+InpSlippagePoints=50
+InpFastEMA=20
+InpSlowEMA=50
+InpMacdFast=12
+InpMacdSlow=26
+InpMacdSignal=9
+InpEmaCrossLookback=12
+InpMacdCrossLookback=3
+InpTouchTolPct=0.10
+InpWickRatio=2.0
+InpVolAvgBars=20
+InpVolMult=1.5
+InpUseRealVolume=false
+InpSwingLookback=10
+InpTP1R=1.5
+InpTP2R=2.0
+InpSingleTPR=1.5
+InpTrailEMA20=true
+InpTrendBars=5
+InpChopLookback=36
+InpMaxCrossesInChop=1
+InpMinAvgVolume=0
+InpMaxSpreadPct=0.06
+InpUseCalendar=true
+InpCalendarCurrencies=USD
+InpNewsBeforeMin=30
+InpNewsAfterMin=30
+InpManualNews=
+InpOneTradePerCross=true
+InpMagic=20261003
+InpAlerts=true
+InpShowPanel=true

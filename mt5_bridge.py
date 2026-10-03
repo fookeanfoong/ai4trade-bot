@@ -29,7 +29,8 @@
     MT5_LOGIN / MT5_PASSWORD / MT5_SERVER   显式登录(默认用终端已登录的账户)
     MT5_TERMINAL_PATH                        terminal64.exe 路径(默认自动找)
     GOLD_MAGIC        EA 的 magic(默认 20260809);设 0 = 不按 magic 过滤,统计所有黄金成交
-    GOLD_SYMBOLS      只统计这些品种(逗号分隔,大小写不敏感);不设=自动识别含 xau/gold 的品种
+    GOLD_SYMBOLS      只统计这些品种(逗号分隔,大小写不敏感);不设=自动识别含 xau/gold 的品种;
+                      设 * = 不按品种过滤,只按 magic(给 CryptoEmaMacdScalper 用,见 run_crypto_monitor.bat)
     NOMINAL_STOP_USD  读不到订单止损时的兜底止损金额(默认 3.0,和 EA 默认一致)
     TELEGRAM_TOKEN / TELEGRAM_CHAT_ID        配了就把提醒推到手机 Telegram(免费)
 
@@ -62,7 +63,7 @@ def is_gold(symbol: str) -> bool:
     """判断一个品种是不是黄金。默认按 xau/gold 子串;设了 GOLD_SYMBOLS 就按精确名单。"""
     s = (symbol or "").lower()
     if SYMBOLS is not None:
-        return s in SYMBOLS
+        return "*" in SYMBOLS or s in SYMBOLS
     return "xau" in s or "gold" in s
 
 
