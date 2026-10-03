@@ -1,5 +1,7 @@
 # ============================================================================
-#  CryptoEmaMacdScalper(BTC/ETH/SOL M5 EMA+MACD 剥头皮)—— 一键安装/更新到 MT5
+#  加密货币 EA —— 一键安装/更新到 MT5
+#    CryptoEmaMacdScalper  M5 EMA+MACD 剥头皮(回测为负,仅观察用)
+#    Crypto3EmaStochRsi    H1 3EMA+StochRSI(策略实验室里唯一样本内外都为正的)
 #
 #  用法(PowerShell,普通权限即可):
 #      irm "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/claude/epic-hawking-tl5tac/mql5/update_crypto_mt5.ps1" | iex
@@ -21,6 +23,8 @@ $Files = [ordered]@{
     "mql5/CryptoEmaMacdScalper.mq5"    = @("Experts", "CryptoEmaMacdScalper.mq5")
     "presets/crypto/default.set"       = @("Presets", "CryptoEmaMacd_default.set")
     "presets/crypto/defensive.set"     = @("Presets", "CryptoEmaMacd_defensive.set")
+    "mql5/Crypto3EmaStochRsi.mq5"      = @("Experts", "Crypto3EmaStochRsi.mq5")
+    "presets/crypto/3ema_stochrsi_h1.set" = @("Presets", "Crypto3EmaStochRsi_h1.set")
 }
 $Main = "mql5/CryptoEmaMacdScalper.mq5"
 
@@ -84,6 +88,13 @@ foreach ($r in $roots) {
             if ($size -lt 100) { throw "只有 $size 字节,不像有效文件" }
             $txt = [System.IO.File]::ReadAllText($tmp, [System.Text.Encoding]::UTF8)
 
+            if ($src -eq "mql5/Crypto3EmaStochRsi.mq5") {
+                foreach ($m in @('__DATETIME__', 'ManageTimeStop', 'InpOversold', 'iBarShift')) {
+                    if ($txt -notmatch [regex]::Escape($m)) { throw "校验失败:缺少标记 '$m'(下到的可能是旧版)" }
+                }
+                $ex5b = Join-Path $dir "Crypto3EmaStochRsi.ex5"
+                if (Test-Path $ex5b) { Remove-Item -Force $ex5b -ErrorAction SilentlyContinue }
+            }
             if ($src -eq $Main) {
                 foreach ($m in $MustHave) {
                     if ($txt -notmatch [regex]::Escape($m)) { throw "校验失败:缺少标记 '$m'(下到的可能是旧版)" }
@@ -116,10 +127,13 @@ if (-not $okAll) {
 }
 
 Write-Host "文件已就位且校验通过。接下来在 MT5 / MetaEditor 里:" -ForegroundColor Cyan
-Write-Host "  1. MetaEditor 导航器 -> Experts -> 双击 CryptoEmaMacdScalper.mq5,按 F7 —— 应显示 0 errors"
-Write-Host "  2. MT5 打开 BTCUSD 图表,周期切到 M5(旧版已挂的:图表右键 -> 智能交易系统 -> 删除)"
-Write-Host "  3. 把 EA 拖上图 -> 勾【允许算法交易】-> 输入参数页【载入】选 CryptoEmaMacd_default.set -> 确定"
-Write-Host "  4. 图表左上角出现 L1~L4 / S1~S4 检查表 = 在工作"
+Write-Host "  【推荐】Crypto3EmaStochRsi(H1):"
+Write-Host "  1. MetaEditor -> Experts -> 双击 Crypto3EmaStochRsi.mq5,按 F7 —— 应显示 0 errors"
+Write-Host "  2. MT5 打开 BTCUSD 图表,周期切到 H1"
+Write-Host "  3. 把 EA 拖上图 -> 勾【允许算法交易】-> 输入参数页【载入】选 Crypto3EmaStochRsi_h1.set -> 确定"
+Write-Host "  4. 图表左上角出现 EMA/StochRSI 面板 = 在工作。H1 上平均每个币每周约 2~3 笔"
+Write-Host ""
+Write-Host "  CryptoEmaMacdScalper(M5)回测为负,要用也只放模拟盘。"
 Write-Host ""
 Write-Host "确认跑的是新版:日志里 [VERSION] 的编译时间应该是刚才那一分钟。" -ForegroundColor Yellow
 Write-Host "四个条件同时满足很少见,几小时甚至几天不开仓是正常的 —— 看左上角哪条是 [X]。" -ForegroundColor Yellow

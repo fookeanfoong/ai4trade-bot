@@ -1,0 +1,33 @@
+; Crypto3EmaStochRsi —— 默认 preset(= EA 出厂参数 = 回测验证的那一组)
+; H1 · EMA 8/14/50 · StochRSI(14,14,3,3) 超卖/超买区交叉 · 止损 3ATR · 止盈 2ATR · 24 根时间止损 · 风险 1%
+; 样本外 233 笔 +0.084R/笔,95% 区间 [-0.01,+0.18] —— 未显著,先模拟盘。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpWhitelist=BTC,ETH,SOL,XRP,BNB,DOGE,ADA,TRX,AVAX,LINK
+InpTimeframe=16385
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxStopPct=5.0
+InpMinStopSpreadX=3.0
+InpMaxSpreadPct=0.08
+InpSlippagePoints=100
+InpEma1=8
+InpEma2=14
+InpEma3=50
+InpRsiPeriod=14
+InpStochPeriod=14
+InpKSmooth=3
+InpDSmooth=3
+InpOversold=20.0
+InpOverbought=80.0
+InpAtrPeriod=14
+InpSlAtr=3.0
+InpTpAtr=2.0
+InpMaxBars=24
+InpUseCalendar=true
+InpCalendarCurrencies=USD
+InpNewsBeforeMin=30
+InpNewsAfterMin=30
+InpMagic=20261004
+InpAlerts=true
+InpShowPanel=true
