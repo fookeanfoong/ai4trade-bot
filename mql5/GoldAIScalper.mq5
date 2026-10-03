@@ -58,6 +58,7 @@ input int    InpStochD       = 3;              // 随机指标 %D 周期(信号�
 input int    InpStochSlow    = 3;              // 随机指标减速(slowing)
 input double InpStochOversold   = 25.0;        // 超卖线(多:在此线下方金叉才算)
 input double InpStochOverbought = 75.0;        // 超买线(空:在此线上方死叉才算)
+input int    InpSetupExpiryBars = 3;           // 金叉/死叉后,等收盘站稳中轨的有效窗口(K线数);1=必须同一根
 input bool   InpExitOppBand  = true;           // 触及对侧布林轨即离场(当动态止盈)
 input double InpSlPctOfPrice = 0.0;            // 百分比止损(金价×%),如0.1=~0.1%;0=用下面的美元/ATR止损
 
@@ -119,6 +120,8 @@ int     hEmaFast=INVALID_HANDLE, hEmaSlow=INVALID_HANDLE, hEmaTrend=INVALID_HAND
 int     hRsi=INVALID_HANDLE, hAtr=INVALID_HANDLE, hBands=INVALID_HANDLE;
 int     hStoch=INVALID_HANDLE;
 datetime g_lastBar=0;
+int      g_pendLong=0;    // 待触发多头setup剩余有效K线数(超卖金叉后,等收盘站上中轨)
+int      g_pendShort=0;   // 待触发空头setup剩余有效K线数
 int      g_dayIdx=-1;
 int      g_tradesToday=0;
 int      g_consecLoss=0;
@@ -296,20 +299,29 @@ int StochBandSignal(string &detail)
    bool goldCross = (k2<=d2 && k1>d1);   // 金叉
    bool deadCross = (k2>=d2 && k1<d1);   // 死叉
 
-   // 多:金叉发生在超卖区(前一根 %K 在超卖线下) + 收盘站上中轨
-   if(goldCross && k2<=InpStochOversold && c1>mid)
+   // 1) 超卖区金叉 → 记为「待开多」setup;超买区死叉 → 「待开空」。互斥。
+   if(goldCross && k2<=InpStochOversold)  { g_pendLong=InpSetupExpiryBars;  g_pendShort=0; }
+   if(deadCross && k2>=InpStochOverbought){ g_pendShort=InpSetupExpiryBars; g_pendLong=0;  }
+
+   // 2) setup 有效期内,收盘站稳中轨才真正触发(价格从底部爬回均线常要几根K线)
+   if(g_pendLong>0 && c1>mid)
    {
-      detail=StringFormat("多:超卖金叉 K%.1f>D%.1f 收%.3f>中轨%.3f", k1,d1,c1,mid);
+      g_pendLong=0;
+      detail=StringFormat("多:超卖金叉后收%.3f>中轨%.3f (K%.1f D%.1f)", c1,mid,k1,d1);
       return 1;
    }
-   // 空:死叉发生在超买区(前一根 %K 在超买线上) + 收盘跌破中轨
-   if(deadCross && k2>=InpStochOverbought && c1<mid)
+   if(g_pendShort>0 && c1<mid)
    {
-      detail=StringFormat("空:超买死叉 K%.1f<D%.1f 收%.3f<中轨%.3f", k1,d1,c1,mid);
+      g_pendShort=0;
+      detail=StringFormat("空:超买死叉后收%.3f<中轨%.3f (K%.1f D%.1f)", c1,mid,k1,d1);
       return -1;
    }
 
-   detail=StringFormat("随机 K%.1f D%.1f 中轨%.3f 收%.3f 无信号", k1,d1,mid,c1);
+   // 3) 没触发就递减有效期(本函数每根新收盘K线调用一次)
+   if(g_pendLong>0)  g_pendLong--;
+   if(g_pendShort>0) g_pendShort--;
+
+   detail=StringFormat("随机 K%.1f D%.1f 中轨%.3f 收%.3f 待多%d 待空%d", k1,d1,mid,c1,g_pendLong,g_pendShort);
    return 0;
 }
 
@@ -517,6 +529,7 @@ void UpdateDayState()
       g_tradesToday=0;
       g_consecLoss=0;
       g_dayHalted=false;
+      g_pendLong=0; g_pendShort=0;
       g_dayStartEquity=AccountInfoDouble(ACCOUNT_EQUITY);
    }
 }
