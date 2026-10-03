@@ -21,7 +21,7 @@
 input group "=== 基础 ==="
 input double InpFixedLot        = 0.01;        // 固定手数
 input long   InpMagic           = 20260927;    // 魔术号(独立)
-input int    InpMaxPositions     = 2;          // 同时最多持仓
+input int    InpMaxPositions     = 1;          // 同时最多持仓
 
 input group "=== 周期 ==="
 input ENUM_TIMEFRAMES InpSignalTF = PERIOD_M1; // 信号周期(剥头皮:M1/M5)
@@ -37,7 +37,7 @@ input int    InpBodyAvgBars = 10;              // 平均实体/范围回看
 input int    InpPeakLookback = 5;              // 局部高低点回看(突破)
 
 input group "=== 信号分门槛/平滑 ==="
-input double InpMinSignalScore = 4.5;          // 进场门槛(0-10)
+input double InpMinSignalScore = 5.0;          // 进场门槛(0-10)
 input int    InpSmoothCandles  = 1;            // 平滑:平均最近 N 根已收盘的分
 input double InpMinVolRatio     = 0.65;        // 死盘闸:ATR/均ATR 低于此则信号归零
 input bool   InpNewBarOnly      = true;        // 只在新K线收盘评估进场(不重绘)
@@ -62,9 +62,11 @@ input int    InpRegimeBars  = 15;              // 回看K线数(M1=15分钟)
 input double InpTrendER     = 0.45;            // 效率比>=此=趋势行情(只顺势做,禁逆势)
 input double InpRangeER     = 0.28;            // 效率比<=此=震荡行情(只在区间边缘做)
 input double InpNoTradeER   = 0.15;            // 效率比<此=极窄震荡(假突破满天飞),整段不做(0=关)
-input bool   InpRequireMicroAgree = false;      // 还要求最近几根微趋势同向(别在反弹绿K做空/回调红K做多)
+input bool   InpRequireMicroAgree = true;      // 还要求最近几根微趋势同向(别在反弹绿K做空/回调红K做多)
 input int    InpMicroBars   = 3;               // 微趋势回看K线数
 input double InpRangeEdge   = 0.35;            // 震荡:多单只在下沿35%内/空单只在上沿35%内
+input bool   InpUseH1Trend  = true;            // 只顺 H1 大周期趋势做(逆 H1 方向不开;最稳)
+input int    InpH1Lookback  = 6;               // H1 趋势回看小时数(近N根H1净方向)
 
 input group "=== 黄金历史特征:防追高/贴关键位反转 ==="
 input bool   InpUseSmartLevels = true;         // 开:冲高后不追 + 贴关键位不追
@@ -77,9 +79,9 @@ input int    InpAsiaEndHour    = 10;           // 亚洲盘止
 input int    InpExtremeBars    = 15;           // 近N根极值(算扫损区)
 input double InpNoChaseExtremeATR = 1.0;      // 顺势单距近N根极值<此×ATR不做(防扫损V反转,等回调;0=关)
 input int    InpExhaustBars    = 30;           // 耗尽窗口:看最近N根的累计走幅(比spike/极值都长)
-input double InpExhaustATR     = 4.0;          // 最近N根已朝本单方向走>此×ATR判为过头,跳过等回调(ADR耗尽;0=关)
+input double InpExhaustATR     = 3.0;          // 最近N根已朝本单方向走>此×ATR判为过头,跳过等回调(ADR耗尽;0=关)
 input int    InpSwingBars      = 20;           // 摆动点回看:找最近N根的摆动低/高点
-input double InpSwingExhaustATR = 0.0;         // 距最近摆动低/高点已涨/跌>此×ATR不追(防V反弹追顶,不受净位移抵消;0=关)
+input double InpSwingExhaustATR = 6.0;         // 距最近摆动低/高点已涨/跌>此×ATR不追(防V反弹追顶,不受净位移抵消;0=关)
 
 input group "=== 点差闸 ==="
 input double InpMaxSpreadUSD     = 0.35;       // 点差上限($)
@@ -91,12 +93,12 @@ input double InpRRAtrMult   = 1.0;             // 止损 = N×ATR (仅 InpFixedS
 input double InpRiskReward   = 1.5;            // 止盈 = 止损×该比
 
 input group "=== 出场:追踪/保本 ==="
-input double InpBreakevenUSD = 0.0;            // 浅保本:浮盈到此($)就把止损拉到入场(治"先赚后回落变亏";0=关)
+input double InpBreakevenUSD = 4.0;            // 浅保本:浮盈到此($)就把止损拉到入场(治"先赚后回落变亏";0=关)
 input bool   InpUseBreakeven = true;           // 到 1R 移保本(大额)
 input double InpBeBufferATR  = 0.05;           // 保本缓冲(×ATR)
 input bool   InpUseTrail    = true;            // ATR 追踪
 input double InpTrailAtrMult = 1.0;            // 追踪跟价 N×ATR
-input double InpTrailStartR  = 0.1;            // 盈利达 N×R 才启动追踪
+input double InpTrailStartR  = 0.7;            // 盈利达 N×R 才启动追踪
 input int    InpProfitStallMin = 0;            // 浮盈停滞:在盈利中且持仓超过N分钟还没到止盈就退(0=关)
 input double InpProfitStallMinUSD = 1.0;       // 触发停滞离场的最低浮盈($)
 input int    InpRescueAfterMin  = 0;           // 亏损逃生:持仓超N分钟(多半已亏一阵),一转正就立刻平(0=关)
@@ -116,7 +118,7 @@ input group "=== 风控 ==="
 input int    InpMaxTradesPerDay   = 100000;        // 每日最多开仓
 input double InpDailyTargetUSD    = 100.0;     // 当日(相对开盘权益)赚到该值全平收工(0=关)
 input double InpDailyMaxLossUSD   = 0.0;       // 当日(相对开盘权益)亏到该值停手(0=关)
-input double InpMaxBasketLossPct  = 0.0;       // 组合浮亏超权益该% 全平并暂停(0=关)
+input double InpMaxBasketLossPct  = 15.0;       // 组合浮亏超权益该% 全平并暂停(0=关)
 input double InpMinEquityUSD      = 0.0;       // 权益跌破该值硬停(0=关)
 
 input group "=== 手数增强(可选) ==="
@@ -583,6 +585,19 @@ void OnTick()
    if(dir==0 || score<InpMinSignalScore){
       if(InpVerbose) PrintFormat("[NO-TRADE] 分%.2f<%.1f (多%.2f 空%.2f)", score, InpMinSignalScore, g_lastBuy, g_lastSell);
       return;
+   }
+
+   // --- H1 大周期趋势过滤:只顺 H1 方向做,逆 H1 趋势不开(最稳) ---
+   if(InpUseH1Trend)
+   {
+      double h1now=iClose(_Symbol,PERIOD_H1,0), h1past=iClose(_Symbol,PERIOD_H1,MathMax(1,InpH1Lookback));
+      if(h1now>0 && h1past>0){
+         int h1dir=(h1now>h1past)?1:((h1now<h1past)?-1:0);
+         if(h1dir!=0 && dir!=h1dir){
+            if(InpVerbose) PrintFormat("[NO-TRADE] 逆H1趋势(%s)不做", h1dir>0?"H1涨":"H1跌");
+            return;
+         }
+      }
    }
 
    // --- 行情自适应:按当前是趋势还是震荡,限制进场 ---
