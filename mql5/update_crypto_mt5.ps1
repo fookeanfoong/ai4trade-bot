@@ -25,6 +25,7 @@ $Files = [ordered]@{
     "presets/crypto/defensive.set"     = @("Presets", "CryptoEmaMacd_defensive.set")
     "mql5/Crypto3EmaStochRsi.mq5"      = @("Experts", "Crypto3EmaStochRsi.mq5")
     "presets/crypto/3ema_stochrsi_h1.set" = @("Presets", "Crypto3EmaStochRsi_h1.set")
+    "presets/crypto/3ema_stochrsi_h1_fast.set" = @("Presets", "Crypto3EmaStochRsi_h1_fast.set")
 }
 $Main = "mql5/CryptoEmaMacdScalper.mq5"
 

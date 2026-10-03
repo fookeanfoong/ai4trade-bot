@@ -1,0 +1,33 @@
+; Crypto3EmaStochRsi —— 「快一点」preset:同一套 H1 信号,持仓最多 8 小时(默认是 24)
+; 回测样本外:269 笔,胜率 51%,+0.054R/笔(默认版 +0.084R),平均持仓 6.4 小时(默认版 12 小时)
+; SOL 样本外 +0.18R/笔。更快 = 优势变小;止盈改小(1 ATR)会让优势归零,所以只缩短时间止损。
+; 在 MT5:EA 属性 → 输入 → 加载 → 选本文件。
+InpWhitelist=BTC,ETH,SOL,XRP,BNB,DOGE,ADA,TRX,AVAX,LINK
+InpTimeframe=16385
+InpRiskPercent=1.0
+InpMaxRiskPercent=2.0
+InpDailyLossPct=4.0
+InpMaxStopPct=5.0
+InpMinStopSpreadX=3.0
+InpMaxSpreadPct=0.08
+InpSlippagePoints=100
+InpEma1=8
+InpEma2=14
+InpEma3=50
+InpRsiPeriod=14
+InpStochPeriod=14
+InpKSmooth=3
+InpDSmooth=3
+InpOversold=20.0
+InpOverbought=80.0
+InpAtrPeriod=14
+InpSlAtr=3.0
+InpTpAtr=2.0
+InpMaxBars=8
+InpUseCalendar=true
+InpCalendarCurrencies=USD
+InpNewsBeforeMin=30
+InpNewsAfterMin=30
+InpMagic=20261004
+InpAlerts=true
+InpShowPanel=true
