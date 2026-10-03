@@ -35,7 +35,9 @@ M5 周期的「EMA + MACD 动量剥头皮」EA，只做 BTC、ETH、SOL 等前 1
 |---|---|
 | `mql5/CryptoEmaMacdScalper.mq5` | EA 本体 |
 | `presets/crypto/*.set` | 参数预设 |
-| `install_crypto_ea.bat` | 一键安装 + 编译 |
+| `install_crypto_ea.bat` | 一键安装 + 编译(需要整个仓库) |
+| `install_crypto_ea.ps1` | **单文件**安装脚本(Windows PowerShell),EA 源码内嵌,不需要仓库 |
+| `install_crypto_ea.sh` | **单文件**安装脚本(Mac/Linux + Wine),EA 源码内嵌 |
 | `run_crypto_monitor.bat` | 手动运行一次监测器 |
 | `schedule_crypto_monitor.bat` | 设置每 30 分钟自动运行（任务名 `CryptoEA_Monitor`） |
 | `crypto_monitor_config.bat` | 监测器参数（magic、品种、输出文件） |
