@@ -231,7 +231,7 @@ def build_ema3_srsi(I, p):
         elif e8[i] < e14[i] < e50[i] and kx_dn and c[i] < e8[i]:
             sig[i] = (-1, a[i] * p["sl"], p["tp"] / p["sl"])
     f = [False] * n
-    return sig, f, f, 24
+    return sig, f, f, p.get("maxb", 24)
 
 
 def build_bb_rsi(I, p):
@@ -407,6 +407,10 @@ STRATEGIES = {
         {"sl": 3.0, "tp": 2.0, "zone": False}, {"sl": 1.5, "tp": 1.5, "zone": False},
         {"sl": 1.0, "tp": 1.5, "zone": False}, {"sl": 3.0, "tp": 2.0, "zone": True},
         {"sl": 1.5, "tp": 1.5, "zone": True}, {"sl": 1.0, "tp": 1.5, "zone": True}]),
+    "ema3_srsi_fast": ("3EMA+StochRSI 同信号,出场更快(小止盈 / 短时间止损)", build_ema3_srsi, [
+        {"sl": 3.0, "tp": 1.0, "zone": True, "maxb": 8}, {"sl": 3.0, "tp": 1.0, "zone": True, "maxb": 4},
+        {"sl": 1.5, "tp": 1.0, "zone": True, "maxb": 8}, {"sl": 1.5, "tp": 1.0, "zone": True, "maxb": 4},
+        {"sl": 3.0, "tp": 2.0, "zone": True, "maxb": 8}, {"sl": 2.0, "tp": 1.5, "zone": True, "maxb": 6}]),
     "bb_rsi": ("布林带(20,2)外收回 + RSI 超买超卖,回中轨离场", build_bb_rsi, [
         {"sl": s, "trend": t} for s in (1.0, 1.5, 2.0) for t in (False, True)]),
     "rsi2": ("EMA200 顺势 + RSI(2) 极值回调,收盘越过 EMA5 离场", build_rsi2, [

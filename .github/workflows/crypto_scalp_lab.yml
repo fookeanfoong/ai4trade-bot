@@ -43,6 +43,12 @@ jobs:
           --symbols ETHUSDT,BTCUSDT,SOLUSDT
           --only m1_ribbon,m1_bb_rsi4,m1_vwap_fade,m1_spike_fade,rsi2,bb_rsi,ema3_srsi
           --out reports/crypto_scalp_lab_1m.md
+      - name: Strategy lab — H1 3EMA+StochRSI faster exits, 24 months
+        continue-on-error: true
+        run: >
+          python crypto_scalp_lab.py --interval 1h --months 24 --spread-pct 0.04
+          --symbols SOLUSDT,BTCUSDT,ETHUSDT --only ema3_srsi,ema3_srsi_fast
+          --out reports/crypto_scalp_lab_1h_fast.md
       - name: Commit report
         if: always()
         run: |
