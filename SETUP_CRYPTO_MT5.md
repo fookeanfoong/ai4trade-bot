@@ -3,7 +3,19 @@
 M5 周期的「EMA + MACD 动量剥头皮」EA，只做 BTC、ETH、SOL 等前 10 大币种。规则说明见
 [`mql5/CryptoEmaMacdScalper.md`](mql5/CryptoEmaMacdScalper.md)，参数预设见 [`presets/crypto/`](presets/crypto/README.md)。
 
-## ⚡ 一键版
+## ⚡ 一行命令（推荐，和黄金一样）
+
+PowerShell 里粘贴运行（先关掉 MetaEditor 里打开的这个 EA）：
+
+```powershell
+irm "https://raw.githubusercontent.com/fookeanfoong/ai4trade-bot/claude/epic-hawking-tl5tac/mql5/update_crypto_mt5.ps1" | iex
+```
+
+然后在 MetaEditor 里按 F7 编译（应显示 0 errors）→ 挂到 BTCUSD M5 图表 → 加载 `CryptoEmaMacd_default.set`。
+
+回测报告：`reports/crypto_scalper_backtest.md`（由 GitHub Actions 用币安真实 M5 数据生成）。
+
+## ⚡ 一键版（要先下载整个仓库）
 
 先下载整个仓库（`git clone`，或在 GitHub 上点 `Code → Download ZIP` 后解压），然后：
 
@@ -35,6 +47,7 @@ M5 周期的「EMA + MACD 动量剥头皮」EA，只做 BTC、ETH、SOL 等前 1
 |---|---|
 | `mql5/CryptoEmaMacdScalper.mq5` | EA 本体 |
 | `presets/crypto/*.set` | 参数预设 |
+| `mql5/update_crypto_mt5.ps1` | **一行命令安装/更新**(见上方 irm 命令),同黄金的 update_mt5.ps1 |
 | `install_crypto_ea.bat` | 一键安装 + 编译(需要整个仓库) |
 | `install_crypto_ea.ps1` | **单文件**安装脚本(Windows PowerShell),EA 源码内嵌,不需要仓库 |
 | `install_crypto_ea.sh` | **单文件**安装脚本(Mac/Linux + Wine),EA 源码内嵌 |

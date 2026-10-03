@@ -167,6 +167,8 @@ int OnInit()
    dayStartEquity = AccountInfoDouble(ACCOUNT_EQUITY);
    dayStamp       = TodayStamp();
 
+   // 编译戳:确认跑的是刚编译的新版,不是旧 .ex5
+   PrintFormat("[VERSION] CryptoEmaMacdScalper 编译于 %s", TimeToString(__DATETIME__, TIME_DATE | TIME_SECONDS));
    PrintFormat("CryptoEmaMacdScalper 启动 | %s %s | 净值 %.2f | %s 账户 | 最小手 %.3f | 步长 %.3f",
                _Symbol, EnumToString(InpTimeframe), AccountInfoDouble(ACCOUNT_EQUITY),
                (isHedging ? "对冲" : "净额"),
