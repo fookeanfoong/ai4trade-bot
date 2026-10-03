@@ -414,9 +414,15 @@ def main():
     ap.add_argument("--months", type=int, default=12)
     ap.add_argument("--csv")
     ap.add_argument("--spread-pct", type=float, default=0.04)
+    ap.add_argument("--interval", default="5m", choices=["5m", "15m", "1h"],
+                    help="K 线周期。周期越长止损越宽,点差占比越小")
+    ap.add_argument("--max-stop-pct", type=float, default=None,
+                    help="止损超过价格的 %% 就不做(默认 5m=2, 15m=3, 1h=5)")
     ap.add_argument("--only", help="只跑这些策略(逗号分隔)")
     ap.add_argument("--out", default="reports/crypto_scalp_lab.md")
     args = ap.parse_args()
+    global MAX_STOP_PCT
+    MAX_STOP_PCT = args.max_stop_pct or {"5m": 2.0, "15m": 3.0, "1h": 5.0}[args.interval]
 
     data = {}
     if args.csv:
@@ -426,9 +432,10 @@ def main():
         for s in args.symbols.split(","):
             s = s.strip().upper()
             if s:
-                data[s] = base.fetch_binance(s, args.months)
+                data[s] = base.fetch_binance(s, args.months, args.interval)
         ms = base.month_list(args.months)
-        label = f"币安现货 M5 · {ms[0][0]}-{ms[0][1]:02d} ~ {ms[-1][0]}-{ms[-1][1]:02d}"
+        tf = {"5m": "M5", "15m": "M15", "1h": "H1"}[args.interval]
+        label = f"币安现货 {tf} · {ms[0][0]}-{ms[0][1]:02d} ~ {ms[-1][0]}-{ms[-1][1]:02d}"
     data = {k: v for k, v in data.items() if len(v["t"]) > base.WARMUP + 500}
     if not data:
         print("没有可用数据"); return 1
@@ -472,9 +479,9 @@ def main():
     L = ["# 加密货币快进快出策略实验室（真实历史行情）\n",
          f"*生成于 {dt.datetime.utcnow():%Y-%m-%dT%H:%MZ} · {label} · 品种 {', '.join(data)}*\n",
          f"样本内（选参数）：{fmt(t0)} ~ {fmt(cut)} · 样本外（只跑一次）：{fmt(cut)} ~ {fmt(t1)}\n",
-         f"> 点差 {args.spread_pct:.3f}%（多空各付一半），无手续费、无滑点。同根K线同时触及止损和止盈按**止损**计。",
+         f"> 点差 {args.spread_pct:.3f}%（多空各付一半），止损上限 {MAX_STOP_PCT:.1f}% 价格，无手续费、无滑点。同根K线同时触及止损和止盈按**止损**计。",
          "> 每个策略只在**样本内**从 ≤6 组参数里挑最好的，**样本外只跑一次**。K 线级回测是乐观上界。\n",
-         "R = 以止损距离为 1 的盈亏倍数。「持仓」= 平均持有 M5 根数（快进快出看这个）。\n",
+         "R = 以止损距离为 1 的盈亏倍数。「持仓」= 平均持有 K 线根数（快进快出看这个）。\n",
          "## 结论：谁通过了\n",
          "通过 = 样本内期望 > 0 **且** 样本外期望 > 0。只有通过的才值得加进 EA。\n",
          "| 策略 | 选中参数 | 样本内 笔/期望 | 样本外 笔/胜率/期望 | 样本外 95% 区间 | 样本外 PF | 持仓 | 通过 |",
