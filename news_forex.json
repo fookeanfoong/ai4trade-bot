@@ -1,224 +1,225 @@
 {
-  "fetched_at": "2026-10-15T07:10:47+00:00",
+  "fetched_at": "2026-10-15T11:03:57+00:00",
   "high_impact_events": [
     "美国CPI",
     "联储/FOMC",
     "欧央行",
+    "PPI",
+    "零售销售",
     "英央行",
-    "澳联储",
     "非农就业",
-    "PPI"
+    "澳联储"
   ],
   "blackout_recommended": true,
   "items": [
     {
-      "title": "US Dollar Bulls Got Everything They Wanted. Except a Rally. - FOREX.com",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPNkFlNlNMUzlOQzNlMUxvdWpvVHhibDRIbldSd1Jack8tZjFmbEhuUTVRZHpERUZid0o2SEY3Q01hMGtMUFkxZGd5VXc5SVNEZ0VBM1JLUEtSbEdQQ3JTWWNGMktIeWpQU2VsYkFPUXNzWGV6a0ZOREZOLXFDOUotSTNteXc5d2h4VjNhTEtPQWpYejVuR2Y1Zjl6SzZMSk5UcW5jWkVLaw?oc=5",
-      "age_h": 6.8,
-      "when": "2026-10-15T00:21:19+00:00"
+      "title": "US dollar strength masks growing disconnect with Treasury yields - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQVFpxTXI3cEN0ZG9xWmRxa2MtU0dZZzFwRXhTQVZXeWJwV2pyR1ZIWk1TMzFOUG5rTkhSTDlrSm1pb1BfTEJ6R2diWWVka01aMXdISjNCRWt2UGxuZ3FSQURaNTRXQlJfUVkzR2xvN1RJcDU2bVZETDYyU3JCMUhnWjBoQ2J0TGZXb2EwX0VXVVJsWURqZnhVd2J0UkNwOVNORGdydDBGMnhIOENvSmtLLQ?oc=5",
+      "age_h": 1.6,
+      "when": "2026-10-15T09:25:35+00:00"
     },
     {
       "title": "United States Dollar Index weakens to near 102.00 ahead of US CPI release - www.tmgm.com",
       "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNVDZmUDlpSUpNcmNpdW9DWTNnT05acDlSWUlqbTJ0OHdlTkRYZFh4UURSRk9VaWNwZFhDQTBXMXF3bU5xaFQ4VENtWkU0cTZFMzg1RU8yckgxN01YdnpmSl9XMC13NTYySVhYSHYxUnM0bXpqbXNLaE42NTNYVFNuc0t3NEJhcFdwbkhfTndXam9OcEE1WVlsS3FrZVZFRHl5OUdCSUxuR1RwUllKVi1WZV96cnE5eXFqcnZFZlFCVExpbS1YTk43UEVCWjdxTEJ4LVEtZlB2MEc?oc=5",
-      "age_h": 5.6,
+      "age_h": 9.5,
       "when": "2026-10-15T01:33:09+00:00"
+    },
+    {
+      "title": "US Dollar Price Forecast: DXY Eyes 102.40, Can EUR/USD and GBP/USD Break Resistance? - FXEmpire",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNTk0xZDNaal9hcUZ0R25mbkNzMHZ3TzNldF9rTWlLVzBQbnhEMG9mbk12SzJHeDlZMjczbTljck9aU0Vuclg1dEpoSDFsdl9PZFB2dEdLRTNOQTNTZHEyME9GeDlaUWdLWjNRQ3FucEVOOXdIQ2xxeHk2MWU5dV9LaXRVLW0yVTBLR2JqRnI1UnFueE5aMDJIbnhPRUhkNHRWc00xZmg4MWRSUzVkZ0JWcTdkejkweHJOMjEyOHU1SF9VSHJTbVBKUExmb3g?oc=5",
+      "age_h": 2.9,
+      "when": "2026-10-15T08:11:05+00:00"
     },
     {
       "title": "Forex Today: More US inflation alongside jobs in Oz - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxONHJ1VkVKVWpIUjhjaEI4ZUVfM2xLeGkwMXN1N3Q3c2xSbFVERnF1ZXY5eTdXdTl2U3BQdWxkbXdSNFl5My1Qckl3bEpvUi1fZ2l5blNOaUt5TmNyRE1uOENSSmlleVRwSk5BNzE0SXZTazNER3hLNGg4eFpqamJ0LUVacWNXQ3VtM1hVOGZxWC1HSUlvWTJENA?oc=5",
-      "age_h": 13.1,
+      "age_h": 17.0,
       "when": "2026-10-14T18:06:18+00:00"
     },
     {
       "title": "Ringgit opens lower vs US dollar on renewed US rate hike expectations - The Star",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTmRtNjQxVjYydDZIUVBNWXdBQlRzMWZjdnhLYThvamdyWmp3WVh2QzNsUkNQZUxGQTJJdE5xdVVUQnFWemhUdHc3eW43YlRGUFFHRTZGMG1CYXRKQ2NUblZFaW1BaGxsZERFanBBeVRZZDR5YjZJOVhONEFSSkZ4Vk03OV92YWNaSGdGX2ttLU51WGZKZUJKOWdGMDRRUUVXTEVTUWxUSEtEaWp0akNSbkJrVlVaQ0xfTTdyRkhEWTBtMndJOUh5dzVR?oc=5",
-      "age_h": 6.0,
+      "age_h": 9.9,
       "when": "2026-10-15T01:09:00+00:00"
-    },
-    {
-      "title": "US Dollar Trades Near 102 Ahead of Key CPI Release - VT Markets",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONWl5SGJmS1EwbU1KNGZza2d2MDNtS05QTEpDWXE2RWpIUE1MY0dIM1V3dTdDUFlQWTUzMXlRZFdCc0NST1hJbWhaZXAwVGxhdGpwSDZfeGt5aVJtdVRXRTR5ZXRIbzJZS2o0TjFHZWlaQjNhLWpMaHc4NTZvQmtnNkVuNllRbnlIek9LYlJ0WmRPQ0NzVTN3?oc=5",
-      "age_h": 20.7,
-      "when": "2026-10-14T10:31:34+00:00"
     },
     {
       "title": "Federal Reserve Chair Jerome Powell interest rate announcement at the New York Stock Exchange (NYSE) in New York City - The Daily News | Texas' Oldest Newspaper",
       "link": "https://news.google.com/rss/articles/CBMingJBVV95cUxNRV9pQk41VzdRc0FHdV9BVVMwSVR2eDQzdUhnang2eWxXX3JGYXJ5T0lrTTNJREpndUU4RElBZ25sZzdhdk11TUdlWkhoN0FkQ3NDRW9COW9hUUJuQWpUdzYtYXFNa29rSjZQZGVoYmYtcW16cHV2c25nWElLU3NoblIzQ3NqUDVkRC1fNHdUcjZWcGZvczY2R1psdENRaWxkdmRkdWxLd0tJcFNSTm9nQkNhLVlXWWVDMFg0ZW1aZ241UnFtQWFTaGhRQjFVODBQWXFFSUM1Wl93bkNMN3RkTGRaSVkxSWFTdzd2NzJMbmhPb3laQzVEQXBCRy1ZdjRhdXAtaTBkU3FpRU56MjZ1VGZIeXZTUU1CczJkS1p3?oc=5",
-      "age_h": 13.2,
-      "when": "2026-10-14T18:00:41+00:00"
+      "age_h": 17.0,
+      "when": "2026-10-14T18:01:45+00:00"
+    },
+    {
+      "title": "Yellen: One More Rate Hike Needed to Curb Inflation, Fading Supply Shocks to Do the Rest - Kathleen Hays Presents: Central Bank Central",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE0tcXNRMlhiTnJrUWgyRGg5SDZaOVdLNzlOeXJQV3hNeEJ5em1RS3NFZUpBWW1SZWFUR3dSX0dvb2tjaXhSRy02U2xpRXRzcWQ5YkNxM2F4aHF6M1kxLUFxeGY4TjM5WjB6V0lEVkdfWFRRQlNiNlQw?oc=5",
+      "age_h": 7.8,
+      "when": "2026-10-15T03:16:07+00:00"
     },
     {
       "title": "Lawyers for Fed’s Lisa Cook call White House hearing set up by Trump ‘biased’ - Spectrum News",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxONDBBS3k0WWY5OTVRT0EwMlJpYjFWV3VLd3kyNFRDR0p4akgtMEFpRXpNV1ZXSW9rZ3p2dVg2ZVhyMDk3RHFXMEJIOTQ0d2x4Tm4yUDZHeE5rSXR4RktDcGFhZXNRQVYxLThOdGVwZ3E2NENUcnNCV0RqdEoyNnNHRER5anZoMTlIRU1TMERsOGxZaWYxRjZEMjVCWXFfaC1GYU5KUXJjS1lOOWNMc3IyVEZGTmJ2Y2IwcXkwNWZidlZoNjVSUHdxSE5n?oc=5",
-      "age_h": 12.2,
+      "age_h": 16.1,
       "when": "2026-10-14T18:57:00+00:00"
+    },
+    {
+      "title": "October Fed rate hike odds jump to 33% after inflation report - Kalshi News",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPSnN4VFNPVmNwWXY3amdFM2E2N3hKX1d6blpXR3Y0R1YxZExoTE42N1pKV3YzZjZrS3lfRGJZUFNyaGc3QlU2VEZKWWZVQVVib3RrblZFdjJQWmFORi1hX2ZxQUZCeXJNejRJRWRkamE5VHFKczJvd3Jrbko1d0JUZ2psR3Q0MVJEbFZqME5zQQ?oc=5",
+      "age_h": 14.8,
+      "when": "2026-10-14T20:16:16+00:00"
     },
     {
       "title": "Just as markets were caught off guard by the CPI data, Waller is set to speak again: the risk of further interest rate hikes comes under renewed scrutiny after the sharp decline in U.S. stocks. - 富途牛牛",
       "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOR3lNTzQ1NlJfTDZBOGZNN1VpckwyQUFpUFpDYnlsOUR3S214SjdEcTFqMVRmcDFXUnN2cloyVGVlbUQtMm5oWE5NQ0lyd3RkcDdrODI3RjFNTTBQV0hTZk1fWkNueVBoOW10UU1yTVRzU3R6b2dISkJYcFNQRXREMkhxV2ZJLVJlYU9rY1B6RUtrVXlyTEE?oc=5",
-      "age_h": 7.9,
+      "age_h": 11.8,
       "when": "2026-10-14T23:14:58+00:00"
     },
     {
-      "title": "US Inflation 3.7%: The Level That Counts for Bitcoin - CryptoTicker",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBIUHJhdXluaEpfVDVQaWJsTGZyekRqNlNqMG9fMGZETDFxV0tHM3A0VE1ZYS10VG1lSENkWHNyY3hMR0lRamZnZWhoM1IwWFZtdnJlQnViQWloZlFWZkQ1T1NybWRGNjJ2ZHR6NDZYbVE?oc=5",
-      "age_h": 12.5,
-      "when": "2026-10-14T18:40:36+00:00"
+      "title": "Will the ECB Raise Interest Rates Again? What to Expect in 2026 and 2027 - Morningstar",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQZFBxRzU5QmJYbEdONHgzRmlpWmVXVHU4bl81a1dkZzN1Zl8wOFRuQllWbEh6YmV1dDV3X1RLZnhBNFhZUVlScDVwUHhwOENBa2NWTnNzTmFWdmlPYUp1ZG1fYzR6NmgwQzBEVmtnRTZPQnRHM0VjeTJUWmFXaVA3MGRKNXl6NEJhcWgzWi1GMW90NDFJRTlPdTg3YUNxOEl3UDZiRg?oc=5",
+      "age_h": 1.9,
+      "when": "2026-10-15T09:11:15+00:00"
     },
     {
-      "title": "Morgan Stanley profit rises on equity trading strength - Central Oregon Daily",
-      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNTnFUNmI1VzY4QnQ3dHdBOUtTRThuSENlNlpyZXY1SHowd0ZBcC1Dd0tIaF9TWjlGdjhRdGI2TGcxTk5SSUZZeS1SRUlaelhUcl9TSXJIbk1ZTk1XUmtaU25XSlhWNHl6bkFYdndVN3FjWFJyQ0h3bjRLZHdmbWdyWXp1VDg5QW1ZbGRKcG14eHRCSTdUNVVvX1VtSm8wLWpiRVdEU1hVcXBLN0FnVms0R2tFc0NENHBUNENYTWFNVWNlaWtuVU1xSHZNeGRLeWFJSzFQdnpDeFVLcmZUSm4tOHJSemtOcnR4?oc=5",
-      "age_h": 19.6,
-      "when": "2026-10-14T11:33:53+00:00"
+      "title": "Euro gains against Canadian Dollar despite ECB facing rate pause pressure - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNb19MTzVQdG1kRXlYdGZZWWJZY2JjZFo5WUFwa3VIZ2tuUjdfd1B5UmpqN01DbkNsckxRU3Q5WklQLUlxQzZJTXgwdXBFLW5wRW1PcllLbEFfNU5fTWRoNzM5ZlRvLUZUZEJmSVdERGdISkxNUVZ3bTN2WlBRYTk1eHFrLU82WXZSbWFnRk1aOHAzMDIwNjZzR0ZBblMtLUgwLW5YMm5FNURUR2NuNW1JcDZKakp2Q2s?oc=5",
+      "age_h": 2.2,
+      "when": "2026-10-15T08:49:13+00:00"
+    },
+    {
+      "title": "Nordea Pauses Buybacks Pending ECB Review, Shares Drop 5% - Global Banking & Finance Review",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNTmNpQlJFVlJXNnRzazFxMGs4UGRrcG1YVWxCYnBzVFFUd2sycXlqNEJjWmt4b0UwWWlGX3VzUTlnU2tOb1NhTXNsNTl2dHUwazhLX185OXN5VHBwVnZjZVVSQnZVVV9sY3RSN1UxakFWSGtkR2tlUThZZmk0UzVncHpldW95c19nTHFKM0dBTW1oZGZLUmo0a09OQ3N0NFJYMWZZ?oc=5",
+      "age_h": 3.4,
+      "when": "2026-10-15T07:42:02+00:00"
     },
     {
       "title": "ECB’s Dolenc says central bank may not have to do as much if markets tighten - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOMDZ4U2tYelhWTDNQcFh1cDlDWm9lakdRa2E2VlJlUktjTzBJTng1WUFwVGFIX0tjMmpSUGFiVjJIa19nUWtpaEFmenpvRW0yTXVKZ0E2X0NwRVdyX1Fxa0pQaGZ5T1NfbGxCenZleVJFeGtBYkY1U3F1RGR6WGkxdzNVbWxNNFk1bTlhbVg4YkJtZFQxNjA3VHc0TnprRWxITjVSVF9JU25LRlI2NnRCMzVlcUM2bEZhVEE?oc=5",
-      "age_h": 5.2,
+      "age_h": 9.1,
       "when": "2026-10-15T01:59:59+00:00"
     },
     {
-      "title": "The ECB Governing Council signals the possibility of further interest rate hikes. - Moomoo",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSGdBbGZLUFJSVnhYYjRLc0xvbzNjdnkyZnFTMy1wZ05sc2o3OGZCbzI1YWJYMV9La3JFVzdoaGxwQ09naXQwZW9FWmFUclAwMGlYNlpSUzVRMXlCMXdpdkdvQkVmcVBERk5nR1Uwb1o3UEx2bHAxeVRlZWpsNGgxdWs5Unkxd0F5SVFEMXJVb2hWSjJwaVNGS3l4TVZ6TDdfeHd3blFNNDU5X2tiOXlLYlZsYw?oc=5",
-      "age_h": 23.3,
-      "when": "2026-10-14T07:54:09+00:00"
+      "title": "Euro edges higher above 1.1200, traders brace for US PPI, Retail Sales data | FXStreet - شبكة تواصل الإخبارية",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBwSER1UzVna00wd1lHbGpHbU01dGVrWEFCbHV0M191dDJJaXB3ZmpqYVVXWXlIQ2NSSWhXMk15bkxfd2dldUxFd1dOLVJ0alBuRlU4?oc=5",
+      "age_h": 8.4,
+      "when": "2026-10-15T02:42:53+00:00"
     },
     {
-      "title": "EUR/USD, USD/JPY Forecast: Two trades to watch - FOREX.com",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTnE3dzFFeHFIb1dRVjNLTk81Z2hGS09LbGltdDB6WmhyR3YwU2xFR3ZPeWZrYU1BZkZTd3MtOVU3TDNXbk8tc2U1b0pGTVZvWW5BWVNESENweVBkWVBSbUpxM2xRNHRXaEt3NEtUbkhuSFdLUXozWDNYc0NudnkyRVRiQmQ0amRnY2x6NE1mR2VmM1FpYTcxS093WldWem9RU0ZEeDk4dlZKVFkyYU4yStIBsAFBVV95cUxPTnE3dzFFeHFIb1dRVjNLTk81Z2hGS09LbGltdDB6WmhyR3YwU2xFR3ZPeWZrYU1BZkZTd3MtOVU3TDNXbk8tc2U1b0pGTVZvWW5BWVNESENweVBkWVBSbUpxM2xRNHRXaEt3NEtUbkhuSFdLUXozWDNYc0NudnkyRVRiQmQ0amRnY2x6NE1mR2VmM1FpYTcxS093WldWem9RU0ZEeDk4dlZKVFkyYU4ySg?oc=5",
-      "age_h": 21.2,
-      "when": "2026-10-14T10:00:04+00:00"
-    },
-    {
-      "title": "Euro breaks to a 17-month low as US core inflation beats forecasts - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPR3E2WVU5TlgyYjVvTnNEWHM2NDdWeThPTEZTMTRoc2pRX1llR1o5MjFBejVkRzBOUi1fTnEwMDVlcEJXbHdJLUpyVlBxeUhTd3VfOTl0NEpxQ2VncWZKYzVzNVJnZEppTGpWeUgxMm1IQ2pQT3pldnpVcGs3ZFZWZkU4ZGxURjJKa01aM3V1SWZLTzJxcl9xeHZ5N3NlR09CS0hHbHJfTmVDb3E2NUE?oc=5",
-      "age_h": 8.2,
-      "when": "2026-10-14T23:00:00+00:00"
-    },
-    {
-      "title": "ECB rate outlook: Eurozone inflation, French debt and rising bond yields - www.equiti.com",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNMlU1OUVxZEZFa2MzdHZBaV9rbHBpSU1oMmoxV2FaRmNYdFBGSjVrenpFNEI3QzJQZXlOTzZsNmlRWk5POVNYVjE3TEwwM3JTeTdsckRkZGxJWkJUSWgzZTBMRHgxcE1raEw3MTJHQ3lHV3RSN19kcWo4MklnT1N5QlgtRHFFbTZmWFVFaDNyVmxhQ3g4S2V1RElna214WTc5?oc=5",
-      "age_h": 21.2,
-      "when": "2026-10-14T09:57:30+00:00"
-    },
-    {
-      "title": "BoE’s Pill says should not give impression that hike now would be the start of a series of increases - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNVktRTWdiZUNXU2o4YXNrRGJZUGxQX2NRaGNkSDVPTEdvc2c4dlMzR1ZJYkMzdXhFNXJrdDJSUk9qYkV4aU1EdWdodnUzc1UtbTlOYV9tT2FZS0hsTVUtMjZxWEpyQlItdGZpdmo5bmM1TzN5aHdndjdYNnVlVlEtb2huWWU2Y1JGYUV5dnUtbVN0bm5ZNXVpblIzUWJwVFFZZElPcnk3dWpfYTNFdHZFcktZanU1djFfN09nRVlkQ0N0dnZPenZDUURFX3Y0Vm1LUGZkV2J5SmlGUQ?oc=5",
-      "age_h": 2.8,
-      "when": "2026-10-15T04:20:32+00:00"
-    },
-    {
-      "title": "BoE Holds Rates but Three Policymakers Wanted a Hike - Equiti Global",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQLXNqRFpmemN3M010bXRYNElaTHpTSVdINnRWcFpBanltSEEyU3RJVEJMR1dudmN2QnZHTmRBckRsWFBmOU9yR1F6SFZUNGxGV3VYUVhOSGFfVzVxUDV2UVZNUk9PbUVfZUFvZUNwQUczdmlSZVJQZG1VMzhvRjZGLU9qR3dqaDdybmViTFlOVHk1T1hwRUE2M3kwbWI?oc=5",
-      "age_h": 3.7,
-      "when": "2026-10-15T03:27:25+00:00"
+      "title": "Pound Sterling Today: Stronger UK Growth Lifts Bank Of England Rate Outlook - Exchange Rates UK",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPSFdYUE9nekdfUXB5V3BudWxSeEo3UEo4Nnlxa1FjSGRjWlFqVEYtcXJXb01jbGxzOEwzbWxtbHJOSm5Ocy1SN09wMWt2VGRWWlFfOHpROGZDQzdnLW8xbGtOVnJrd0F2UjJnc1J1cGtTOG5UbEQycDhlMjRJRHlaNXM2OHJiRk9rQmExOVVIVFUzSFB5OUwyMWlZU2xYOGstVUJaMmM1a05xc05tQ0NDOUtSQzRMOUtodVJhTzVkS3YxUUJyaHppOE9lellBckk?oc=5",
+      "age_h": 2.2,
+      "when": "2026-10-15T08:50:00+00:00"
     },
     {
       "title": "Euro trims gains against British Pound after surprise UK GDP data - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNZkdvVm5LNzBpeVU1a2NFS0JSS29PT3cwaEhXamRUbFBsb2Z0OXlaMzNlbnJNSXlXOGVPSE1RM2xpU3NuWm9QV3NjTjQ0WkFvaEluZXBnZ196RDB3QWpxS1NBVGtJdWpnZU83ek16eWtGb2xWdzJ3WW1XOENUb0RraV9BbkdqcmxzZWc5V0xWVGk4djdfdkZkM0RZRU9KU3lkTnFxeWpIZy1BLV9t?oc=5",
-      "age_h": 0.6,
+      "age_h": 4.5,
       "when": "2026-10-15T06:35:29+00:00"
     },
     {
-      "title": "British Pound-to-Euro Forecast: French Debt Fears Keep EUR Rates Vulnerable - Exchange Rates UK",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOQ3dSNnZFb1Bnd25oaTJseER4elZ5Qk1mREIyM1lJTURoNHNVRlpSYXh0Z09kN2FBY3lXbm9VbVE0Vk9xN0xuTlhUZWRGeUkwSUJBXzByOURqZGRzc1ozLVNLNkpRMTZWZHVfRlRUN0EzcVR1X0FDYmVTQ01aXzh3alN4aTZwZVotRDVwbXd4am9VOGZ3anV4VjRGa2NmLWlGckVlc1NVVENSVUdkRmxRNHdXM2NmQ3hTWmJFTlYtUEJiU0VhOHAxS2w4Wm1CSXc?oc=5",
-      "age_h": 1.7,
-      "when": "2026-10-15T05:30:00+00:00"
+      "title": "BoE to hike interest rates by 25 bps to 4% in November – Reuters poll - Mitrade",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPaFplR3cydjRCbC0tdlZFUk5fcloyWUZQdXptY09xSWgzQjhoZGJmT3p1Q2JWdEtfX0ZuY1R6M2dCbTZWR3dYeERldkhjTTJiQlN3eEpmZDRFdXhIQmIyZXkwYUNyMDlYZk1mSFdhMy02ZDFuUzBOQTYxU0VOWmZMQjhPWQ?oc=5",
+      "age_h": 1.2,
+      "when": "2026-10-15T09:53:28+00:00"
     },
     {
-      "title": "GBP/USD Forecast: Hot US CPI Sends Pound Sterling Lower as Fed Hike Bets Jump - currencynews.co.uk",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPazlGZXJJTUlpd2lkMjV3WUJJbVZ2LWNKbVRfSnZxNlNaSzljNFJ4TkhxZHgzVHVmTFo2TXA5bDVnMG9odTFLckVGc2tFcm1TNUF1WVo2anM1LS1GMVZFODhka0g1TnlUaTJXSlhTaDhFLVhiQ2NLVDR4VUJyR29CX2c1d2J1UUFodDljR1IzNk1yVWY1b3dUMHlQekhNdGwyMnNBLWlIZVF0QWdTMDJTX1RBai0zMlVzMXRna0M2ZmN3cFQ1R0pLSG9LbkJ3X1pIcEE?oc=5",
-      "age_h": 12.7,
-      "when": "2026-10-14T18:31:03+00:00"
+      "title": "Britain Is Growing Without Hiring, and the Bank of England Can't Fix That With Rate Cuts - Pound Sterling Live",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSUNROGowUWM2UWxHeTRtRWJ2RTlrOV9OTEEzOElXYXNwWE9jUnhQSmxYN0ZDOGpTQkd6NEdSME1VUnE2bC1kOUh0OW56bHR0cDlrTVB5VzJmTlRfeXRQMkRza0lYNjZleTJDajlEdW1WSW5LdUdUd0k2WUE0T05yN19maWpQa3lDMmhGUFIySW9nVzFMR2Vid0U0SXhyMGxMYVdQMTBxUkgtVFZsMThvNTl6TmV1dEFUX1ZkSg?oc=5",
+      "age_h": 1.0,
+      "when": "2026-10-15T10:04:37+00:00"
     },
     {
-      "title": "The RBA keeps hiking interest rates – but are the rate rises actually working? - The Guardian",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNUlUSEg5WGVWTTg0SDh6dy1OekdEVkZrOGgyWHNhSkt6V3ZSQ2NxNG1mV1E4cjRvVFFMQlpzVkhRSkNaQUozYTNUTDh4NVd4LTZTQ2k3MDdTeGtpSUpjX1cyVkl1Ty1DX1NiS3lGaG0wYWtuXzBhTWxfUUhPUmJjQWV1X0FBQWlHeDFVbkY4aXMwWElONnJER3kzS3g0cXU2dEt3ZWtuT1JkeUJBcjAtYQ?oc=5",
-      "age_h": 11.8,
-      "when": "2026-10-14T19:19:52+00:00"
+      "title": "BoE Holds Rates but Three Policymakers Wanted a Hike - Equiti Global",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQLXNqRFpmemN3M010bXRYNElaTHpTSVdINnRWcFpBanltSEEyU3RJVEJMR1dudmN2QnZHTmRBckRsWFBmOU9yR1F6SFZUNGxGV3VYUVhOSGFfVzVxUDV2UVZNUk9PbUVfZUFvZUNwQUczdmlSZVJQZG1VMzhvRjZGLU9qR3dqaDdybmViTFlOVHk1T1hwRUE2M3kwbWI?oc=5",
+      "age_h": 7.6,
+      "when": "2026-10-15T03:27:25+00:00"
+    },
+    {
+      "title": "Australian Jobs Report Hammers Another Nail into the Coffin for RBA Hikes - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSDFlMFROdHhIZkJKM0ZzNmZEbWxtRmZscld0WHpJRDVNQjg5YWFPNGhhcDNfQzdGRDRVRjY2YkhQeUE5VTFEOVIwWGdhRE1DVjVDT3B5VWpjUVRacmYtSDZydktmbnZieE1tVndsWkFyallKYkx6Q2tBelNRS1pMdTNrQ01jRU1BNW1vd0pjc0pKY0xIWFRWOC1ScHpiSnlnT1c1dUZiYm5mNDZJUWZSazBULS1uV3dUOHZ3atIByAFBVV95cUxPdV9YZkRxbU0ycGd4NXdYVmgtNzl5bkcxSGhKcHl2VnJldnRYRVF4Xy1fdGhlRzNtblpqUXMwblRLSVAyaEZRMGViZjMzSE1OQ0lHenREQW9DNmlWYUE0SURFSHllcjNjX0tFSEUtRVJYa2hEUlY3UVhsbXZvRTZhX0ZQQUMwTXpRbnNwNWlUWFVnblVpdUozYUlvNkU0eFR0QmhLVk1HM1V1MU9rRnFSdURVWmNLM2l2SGJvV2xlREhIZ3lDcWhaMA?oc=5",
+      "age_h": 9.1,
+      "when": "2026-10-15T01:58:41+00:00"
     },
     {
       "title": "Australia sheds 39,300 jobs in September, making RBA hike a closer call - Investing.com",
       "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOMFc0VHRlUFVGMFB6LW1RblU4R0Nud1ZDemxLT05rS1VjVG9FVFNkTXVPTFlzTTJIREgxdGc5OWdtVjY5cXdpbF9yVEY1R0xsZDc2XzM0SUlYSHVyNjJqS05pRlhDcmIzRHQ5d3EzVHhncXJaU2Z3d0J1LVVIazh3ZnhCTGk3Y0IzUGdxR3BGZ09lLXowQ28wZHlLdGVnMm5TZTgyU0VHUWZCQUc1WVRVcTQ2d1ZUbWxVa3VqdHN5STNjVGRBbG1ZcmVvLUFHWWZMaGc?oc=5",
-      "age_h": 1.1,
+      "age_h": 5.0,
       "when": "2026-10-15T06:02:36+00:00"
     },
     {
-      "title": "Australian Jobs Report Hammers Another Nail into the Coffin for RBA Hikes - FOREX.com",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxORHJKZVU1NmtaZEFEYnNhOXBiVDAzV1R6eFRPcGY0VkxJYnRXM1oxOHJLQW03N0ttOUE4RVZYbDM2WTljODBzVlFwZFBiVHB3UnJSelloenhwTXFNcUNSNU1UWHhpUkt0THFPdVBBUzRudEVSaDR4a2lzXzZzbC1QaUhYMlRKOTFJOTQyQklHVG1aYl9FSmxoYjRkcnFDOTFGenZWVmdWdnBQOTU3UEpzczlFdlVCT01DUXR5a0d0VV9ISks0Vzl3etIByAFBVV95cUxORHJKZVU1NmtaZEFEYnNhOXBiVDAzV1R6eFRPcGY0VkxJYnRXM1oxOHJLQW03N0ttOUE4RVZYbDM2WTljODBzVlFwZFBiVHB3UnJSelloenhwTXFNcUNSNU1UWHhpUkt0THFPdVBBUzRudEVSaDR4a2lzXzZzbC1QaUhYMlRKOTFJOTQyQklHVG1aYl9FSmxoYjRkcnFDOTFGenZWVmdWdnBQOTU3UEpzczlFdlVCT01DUXR5a0d0VV9ISks0Vzl3eg?oc=5",
-      "age_h": 5.2,
-      "when": "2026-10-15T01:59:26+00:00"
+      "title": "AUD/NZD and AUD/USD Turn Lower as Markets Price Less Than One More RBA Hike After Jobs Shock - Action Forex",
+      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQMGNxdVJLQmYyUG5XNU9TcjQ2VEVvdWZIbmk2RWktLXEtVzQxN3NmNWVtQzJXQ2gwVFQ4Q1pZT2J3WE44WEkxUmV0bHVLcHM2bkd4eUZvYU1rZEZucDdnY1ZGd0E4Rnc0NS1TYmZ2NUJXNlFyZ1VtSnZ5R2tBblhSRmlVWkg4TFhXQ3BpMFU5QjVkOFU5a0EwdGJDblVoVXBxU0I5REc3LU9QNy1EbEpLZDJiZHNMR0pTVHhKV1RqTHduN1RTLXVrTnotMWRCZ2owWTlSdnpRUXo5ZWJiQ2ptdVRzMmxNRzRvZWwyTENIMFk?oc=5",
+      "age_h": 3.3,
+      "when": "2026-10-15T07:43:59+00:00"
+    },
+    {
+      "title": "RBA sinks $11.3b into the red after second-biggest loss on record - AFR",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQWWUyUEM4Ui1LVzVGM0xWNVF2YU9vUkRvVDNlRUVCY183b2I4QS1LWnM4am1oSEhqOEFVQ01HV0liWjZ6OXpxQWhpNmh1a2Rjcktla0xaOThBRzMzX2o1STZ3SUJzNjZ2LTJ4VE1HbnRPY01DUVBGTkZkeG9OSExuZXcyaFZGd3d3NWZZOU1wMjF6bVJMUkl5QlI3TnlScUdPNlBXQ3AwcHVkQUN0alJaWDhTNlpPUQ?oc=5",
+      "age_h": 4.6,
+      "when": "2026-10-15T06:25:00+00:00"
     },
     {
       "title": "Australian Dollar Rises Amid RBA Rate Hike Speculation - RTTNews",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQZkZleC01QzJpbUpLblIwQXBCMDZjQVVWbFZvNkhwZkQ2Z2o2OEZTX0tMaUcxeWVJeEFkdld6RlRianVaLV9kZ0VvMzJ4Z0lDVUszT0Exb081V0JiWFMtVWEyaVVCQjRpRnJmOC1fUHc4RmlNdVIyYVh2VjU3dlc3RlVhVzVKWURrdnZGOHBlT0VrdkhlNGM2VWhrNA?oc=5",
-      "age_h": 20.1,
+      "age_h": 24.0,
       "when": "2026-10-14T11:05:00+00:00"
-    },
-    {
-      "title": "Australia loses 39,300 jobs unexpectedly, easing bets on another RBA rate hike - Yahoo Finance Australia",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONXVtTXJ0RHozWkRSOFBpLWM0S0o4NlptRTVMTWhJeFlHb09xNVZab2xFdU0xSEs1cmlUNUVxb1VFa3dhdjRiOUJGU28xWktJeVRQaUNySkUwUENxWUZ1S2NxQmdUOUJoUGRaYzV2SDktTlJVc3Q2NUtRZTl3cVhBZ2F3?oc=5",
-      "age_h": 5.6,
-      "when": "2026-10-15T01:32:00+00:00"
     },
     {
       "title": "Soaring Energy Prices Push Inflation Higher - The New York Times",
       "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOVXRrRmpmSC1sM1BwYWdHVzBVbzZRemV3N04yeEdCUV85anBMemFQSXFyMUotV3FLNzdUazB3aWF4ck9fZXlYbTlfUUJUVlhJUkNyTHkyTWZ1R3JIWnJBMFlEMUxCX0VYV2x5R2w1cGF1SVpEc2pFZnJkSWhxMXFLTFEzR050dw?oc=5",
-      "age_h": 3.2,
-      "when": "2026-10-15T04:00:00+00:00"
+      "age_h": 6.7,
+      "when": "2026-10-15T04:20:00+00:00"
     },
     {
       "title": "US inflation heats up in September; Fed rate hike this month back on table - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNX3hkV3J5em1xWWY4V0hQODFTamFtU3NvdkpPRUUzMGY0TnlKaVlneXZPc0J6bFpWdDZWb2hLRkZZaHhZVElDSXNFbGNYMVVBRGR6c1RlNDA4cEhkMEcwck5VMFRtZ1QxOFJqNTkyaGJzWWFLSXp2Z0l1Z19vMDh5bGd6N1FJSkJFR2tZUXd1UWUzeVlvZi1xNTVONk00ejJ5cE0xSGY4THFsaUo0RGxPV3dpaW4tbEZseUE?oc=5",
-      "age_h": 9.4,
+      "age_h": 13.3,
       "when": "2026-10-14T21:45:35+00:00"
     },
     {
       "title": "Consumer prices rose 3.7% annually in September as gas prices skyrocket - CNBC",
       "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1IZEUyWDE5aTVyU1VTMEhhNW9LV3pZdUkwcFI4WVlIOEhHUzBmUTZGbUlWTDVfN05zdzhFTlR4RERqUHROMDJ2T3dCN2I0UDI2dmZhOTBVTVRIYVlIYjRKQ2RZcjdNQWdWTTkyV0owQU1Xekt4U2ZHUFc4NnPSAYIBQVVfeXFMT3U1UnZTdHN4U2tIM1lZcHlGRGZLUXNaYjhDTHl4bllqdzY3ek9XYl9ZdzNBaUdJQjNndF9HSm1yci15X3ZnMEdaazNzMjVTZ204TzJ1cFJEOE81bUF0RFBJWTR6RWF2YU9BWm1PMnhTVGNWVnc5bkxNWlRpT0RuU2t2Zw?oc=5",
-      "age_h": 18.7,
+      "age_h": 22.5,
       "when": "2026-10-14T12:31:19+00:00"
     },
     {
       "title": "Inflation worsened last month to 3.7% in sign that prices remain elevated as midterm elections near - AP News",
       "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdHFWOXRoc2RvT291ZElaYW5MOWYyZ01rX1I3N093NGJ4bGNxRU1JS2tLS2J5TjhHNk9WQWNfY0xyMnZvbkdoa0N1LWs2OWlGQ19tc1pCZkdJUG5qTl9mMnJJOVE4cXM3V3YweDVGRG1RNnFPeDE0U1F4NW43TjVpNzNRMVRGZkxGOXh5a25EUm1QQTdBT0YwYk5INHByWl9ILXNBQU5R?oc=5",
-      "age_h": 15.3,
+      "age_h": 19.2,
       "when": "2026-10-14T15:54:00+00:00"
     },
     {
       "title": "September CPI report shows inflation accelerated to 3.7% as energy costs soared - CBS News",
       "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1FOV9waFFyY1ktcHJ6LTMtcmRZa01rMHRnenRGZEgzcWlDazhQb3BRMEdPS3VJUWdHeTFIRlNHeThXMVMzU2N1OG10OXlFckhub3RxSVdSSWhVdXlUV0o1OEJhQ2RrTmRqd1ZpRTdLTk5tTVBJRmFvbWFCaWZ3dw?oc=5",
-      "age_h": 18.6,
+      "age_h": 22.5,
       "when": "2026-10-14T12:34:00+00:00"
     },
     {
-      "title": "Beyond Health Care: Has Labor Market Improvement Broadened In 2026? - Seeking Alpha",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNSjhia1dLcFNCNXFRWW5wSEg5aXNvUmEyX3dGYXVDM2FxNDV1OWlRS19pbVZOX3N6ajgyY0xXQkxxRkNzSWlHaXYwOGtQRVJ0UmMyaG12bmhMTnZRRjhjWTlpTWxYQnRNVDJCNVYtalJ6Nzg1QnpzNWpfUVF3V0NnOVpVMEZlN2x0YXNzelhPaEM1RGlEZU9tTGNTRkdCdzhQYlBobWdn?oc=5",
+      "title": "American International Group, Inc. (AIG) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9adUh4OVJYbmlSQWlVX1lvN3hURloxY3FrNEJzc2pSSW9tVUgzdFpuQTlpWDQxWWMxVFFsZ3I1WG80ek53dHFUcklpeUQ4XzNp?oc=5",
       "age_h": 22.7,
-      "when": "2026-10-14T08:30:00+00:00"
+      "when": "2026-10-14T12:19:58+00:00"
     },
     {
       "title": "Energy, gas costs push inflation higher. Paychecks are lagging behind - USA Today",
       "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQUURwWmlxNThWbWhsN2pqeFRaOUxrMHI5bmpTbkt5bV9rSTE2QlBWQnkxZ2ZxYkNaU1RsQVd5YndGSFprXzN1cUxZbzYtclpiLTh3X0YzSHZleVdyQ2FScGgxYWlCU2xoNndERVpnZFhuVnJqMEVVTTAzaVNTWFZxczZ0LWE1a2FyU1Fxamx2QjZVbDVNTmtnVnMwR0VIcldvSENQdEVBcjVQRjdqbzRqOHlxMy1vX1I0eU5iRHUwVWtQYmgwS0xHQkowRGhreG55cHc?oc=5",
-      "age_h": 14.1,
+      "age_h": 18.0,
       "when": "2026-10-14T17:05:00+00:00"
     },
     {
       "title": "U.S. September CPI Rises 3.7%, Accelerating for First Time in Four Months on Higher Gasoline Prices - BigGo Finance",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE02VnlWZklGRnc3OHdWNi10bXZVSDd4MHJxczRVUm1McnM1QUo0MjRsZnhMM0pMLTBfYy1vYndIaWZ4NlRSSUlXNUtsWWRfdFZrU1d0eGc2VGtmc1RTVEVadHBTUG1oYTdBY2J5cmlJRHRFSUQ5ZFE?oc=5",
-      "age_h": 16.8,
+      "age_h": 20.6,
       "when": "2026-10-14T14:25:00+00:00"
     },
     {
       "title": "Understanding the Next Inflation Test: How CPI and PPI Could Move Gold and the US Dollar - VT Markets",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOVjQ4N1lkMWREVHY5WVpYMFN2ZmliZHNXUWVlZE56blE2WnR6eWNhZWZQalNHdkp2aS1tVFBjYWZKS1FmR0I4LVJRaUxFQjNVb2VBSklrYjdVNTc0RWxBWlQzUDYyeG0wY19tai1vcU1YUFQ0ZjZUOGdHQTdtNkxuRmpHR1RQMXFyd29iNGlRcU5lbDgwcXg5SHhWQTJ1TkpGY3Q0ZmNHdlYwVkJ5MjV1UElodmdFSG4yUFBFQ2N0eC0?oc=5",
-      "age_h": 17.9,
+      "age_h": 21.8,
       "when": "2026-10-14T13:18:45+00:00"
     },
     {
       "title": "Inflation surpassed worker paychecks for third straight month - azcentral.com and The Arizona Republic",
       "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUVJMNGtvbmZZTkFUaDRNb1djajk4aHJjM1l0NGlOSmlqR3R2SlV2WWJ2SlVfc1lHZ1BNQ3pjeHJhTWVqRmRCNXh3alk2YkhtbHRST0t1cXhiS2VVelNGWElFQmliVEN2U20wMjM0WjdBQlFBaFJvdU1DRDBZSU9iYjU2Zl9NdzZ3SWJMeWdvcnlCWnZSbk1uWGxOelJQU2ZxSUxJempuX0toUllpa2ttdmZWcTFGSEJpa0ltYUZucEh6NThiZUNFcWJMeGdjb1BuTWc?oc=5",
-      "age_h": 19.6,
+      "age_h": 23.4,
       "when": "2026-10-14T11:37:00+00:00"
     }
   ],
