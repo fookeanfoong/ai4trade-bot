@@ -1,9 +1,8 @@
 {
-  "fetched_at": "2026-10-24T14:22:38+00:00",
+  "fetched_at": "2026-10-24T17:59:12+00:00",
   "high_impact_events": [
     "联储/FOMC",
     "欧央行",
-    "零售销售",
     "澳联储",
     "非农就业",
     "美国CPI"
@@ -11,195 +10,207 @@
   "blackout_recommended": true,
   "items": [
     {
-      "title": "DXY, GBP/USD, USD/CAD Weekly Technical Outlook - StoneX",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOLWJpa0IzVW1HWWN4a0JjWGVEYTMwQ05nSUtScEVFVjZXWEtBV0NYWVBXdV9jaFg1Q0dLS05YU05nMXhMalNBaXZlUG5DWmtMdmFQUW9FMC1yUjlyS2FJWG9IbGNrMk8xenBlaVd5VWFVZHZrc2VEcThvRWpFUDMtOFRrZmxSNlVEVkFqR0F3RGxNSWhWYUlZ?oc=5",
-      "age_h": 23.5,
-      "when": "2026-10-23T14:50:41+00:00"
-    },
-    {
-      "title": "GBP/USD (GBPUSD=X) live rate, chart and news - Yahoo Finance UK",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9NbzZVOXY1Z0JsbVlxU2paRTdhaDZSTFJ6RzRCLUF1ek1EcW9JeEFXUWdHem15UW0ydzAzYTNDSy1xWHNWS1d3c3lGOHdjQXZTQlN2Y1l6NDNEUQ?oc=5",
-      "age_h": 22.1,
-      "when": "2026-10-23T16:19:21+00:00"
+      "title": "US dollar strength masks growing disconnect with Treasury yields - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNX0NvWVY4NzNDTjE2ZWptQ21FNl8yZnZTSC1NX3psLU1xRDQzUjhxMEZZVjRCeEJfWVQwclB4dE4xZnpNY1BNMFJiRFlyYXZGS1RUSjlwMjNlNlB3dWZtN2NPN242UXdlTW5kSGhLQVZVa3V4dWJrUGVTQ1FjdExOSEhkQWVDMV9UVTRFUzF4MVc1UllQa052WENpNGJNQXR3ZEs2UGxqWmFLaHh3?oc=5",
+      "age_h": 8.2,
+      "when": "2026-10-24T09:44:34+00:00"
     },
     {
       "title": "USD/JPY and Nasdaq Price Outlook: Key Levels to Watch - FOREX.com",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQXzZTcnVwODZfVzIxS1lhN1RrVzdfYzZtQXdldlVJSEpZZXZXaTZsU1AwZm1zS185QXV5Uko1TnFveDEwN0hMMUJjaEJGX0JaVkNLeU1BRHNqVGdXMHA4YVFPTVdUVmNiUU5rdzVMTUdCWXRxUTlucUFjQkVLZGEyMU5kTGxaWHN3TmNWWXI4aFpnT3hyQmE1Q0JVRlk4ZzFu?oc=5",
-      "age_h": 8.7,
+      "age_h": 12.3,
       "when": "2026-10-24T05:40:28+00:00"
     },
     {
-      "title": "USD / CAD - Canadian Dollar attempting a break out - Baystreet.ca",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOekFfU1FDZXFlVUJRNzNmYWpJeTQzRjZuOGd4UmtMYjJYLXdUZjlOVUhxdDNGQW04OHhIcEVWaU1XbXA5YlF4eWY3dnNrOGkzNGJkSUdURnRpeUxsM2wzWktMcThQU051X1gxQzFMbkhSS2ZyYWlCSW9JdnQ4RHBHbmRxbXR2WXdRa3J4QlZDNlRmbU5B?oc=5",
-      "age_h": 22.6,
-      "when": "2026-10-23T15:46:02+00:00"
+      "title": "EUR/USD, GBP/USD Price Outlook: Can the Dollar Pullback Fuel a Bullish Rebound? - StoneX",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPekJmbTI0OG9YSEFiNE84NWJBd3FQd3R6MlhsY1E5N0F1US1qNnVESVV5ZjF3OXJhVWhTMzBJVnJfRF9wWXpWU2I1LUg5TDRLcTlxUWUySVFXQTRHSE1wOXFjYlY2N2ZSVlZZRW9fbURQVThlNVA3T0hNclZ2bkRvQUVmMHhJQzh4QkVGWlpyYXF4aXU4RTJkM2FtU3NaaDRwNEhnTzVFWGtwbmZZbExIWkNZS3dqOFhBc1RjMFhiOTNsdw?oc=5",
+      "age_h": 1.7,
+      "when": "2026-10-24T16:16:17+00:00"
     },
     {
-      "title": "U.S. Dollar Rebounds As Oil Prices Gain 3%: Analysis For EUR/USD, GBP/USD, USD/CAD, USD/JPY - FXEmpire",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPSmZOUmpIX2RyYjItNHN4R2o0XzRDREhGSGh3U0ZEQTJYZF9SOG5idDc4ZGxFNHk1MFZkN0JxMFN6V0VVWjFxcUhfcGV4WmYwYTNVSl9XTEluX2lFdl9HWVBwdmFYM2VBTDU2bmZwc0lvd1M3Tl8telJiYnNJX3ZvMEswVE50M3pmNE85bHNEdHRfemdrN09McFkzTDZrVkF3U0R6Y1B1MUhmZ2QwOW1XOU0yN2dWbllHb04wbC10MHhKbTlpWmE4UHFnOWcxS2k2Smc?oc=5",
-      "age_h": 21.5,
-      "when": "2026-10-23T16:51:14+00:00"
+      "title": "EUR/USD (EURUSD=X) live rate, chart and news - Yahoo Finance UK",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5MVm5mak5jUHN2V1ktajNpZjdHRjVKUlFWLTZsTWtROWp6M2xWU2xaM3Y2NHZOVDRKLXl6UkxaYmJJeVFsQ3dsWUE1Mmlsa2tCNkNZaEJseTF5Zw?oc=5",
+      "age_h": 21.7,
+      "when": "2026-10-23T20:15:53+00:00"
     },
     {
-      "title": "What to Look Out for in Economic Data This Week (October 26-30) - Kiplinger",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1MeVNwMVVnVmhvRWo4b0N4WkhCRXQxTVRtb2ZmTWhCSmd4eERsN3Nfdllwejg0eG5ueFFCRUdPTzVUaXh4dEFZaWJqN3FFZnlFWTBlZ2ZvVkFFRzVScTR3TXRhZGl6MHp2RUF1clppVDRvR1lveC1FaXNCeXQ?oc=5",
-      "age_h": 21.3,
-      "when": "2026-10-23T17:07:12+00:00"
+      "title": "EUR/USD Price Forecast: 200-week SMA offers last line of defense against deeper losses - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQWkRwMjM4cmpWTV85aTM4SkY4eHJINEZmWGhVYlhIS1I3UzBaRm80ZHdJZjJEcXJuRF92QXNMT2d5cGNVazdXSXZzQ1llekxoSUdNYjlEdDU5VTFQTUJqdi1aYjFHMG44cnpKb2k2cWh3NHV2c2pqcWpKN3dIUWFTRjh6ZV9CSGJlei15WGdhX3NoQWJva1duUkhxOEwyaFg2a1BHVGh5c3N2ZTA0Y25NWWhSUDRBMFpKX0tmcEppMkhVNE84NzhfYkNHdkFoMEd3eTJyaWZjenZaRjlmMDcwOWlhb3JMZw?oc=5",
+      "age_h": 23.0,
+      "when": "2026-10-23T19:01:19+00:00"
+    },
+    {
+      "title": "Fed Outlook: Pause in Rate Hikes in October, Potential Resumption in December - Moomoo",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZFpzLTI2aEVjSXVPY2ZzcjlLay1TUXB5VGJaRGliZWNXbHZaTlF3WUR2RXQwOTR1cUNfcWNVOUNUSDhJSFVtTjBiNWxQUEJaZXM1MHZtTGt2eHpUOVRocEJNdTczU3ZEbl9hZE56NzhjZ2tZWjAzMFV0d19rVzByMzJubUpnOWtVYURpTjA4aENGeWFFYW9VSHlncFZpQ1JOamlyR1J3RVB6dkk?oc=5",
+      "age_h": 16.4,
+      "when": "2026-10-24T01:35:47+00:00"
+    },
+    {
+      "title": "Bitcoin Price Prediction: Fed on Wednesday, $11.1 Billion Expiry on Friday, Which Date Moves the Price? - CryptoTicker",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOTlQyUTFUVTF0TWNZcVE4TFJTYkF4ZjcxV2VpUXdnQXJJUktmdWdFVk00NkpCRVZrZG5DSERNQVk0VTE1Z0JScEpvR0ZkcndFTFduTm03VnZ6NXBUVlRrRnJBZUtXWHFBbG9fR0dkQU9BaHhjR0VvZ0p3SElnSmlOSi1vcU9BUQ?oc=5",
+      "age_h": 3.5,
+      "when": "2026-10-24T14:28:27+00:00"
     },
     {
       "title": "Treasury Rates Today: October 23, 2026 - Forbes",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9yck9yOUFWR0FpdE9oMU00NGZWMVVrb25MOWxBWmRuU3Ztc1FvdGJZZlBMXzZwUnpPQVp5Mlg4UzFwX2VZTG00SUFUa3p0VVoxRFZOY2M3V2N3R1ZlLXhCdVVpWHNKd2s?oc=5",
-      "age_h": 17.9,
+      "age_h": 21.5,
       "when": "2026-10-23T20:29:00+00:00"
+    },
+    {
+      "title": "Trump Criticizes Fed Chair Warsh as Rate Hikes Threaten Stocks - SuaraGarut.ID",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBYbVdRZEIyOUU2bHpqZTYwWVhaYXhyWHBPRURoM2tfcHFJbWlld050eXlmZGFLa3lhSkVZSlJRNDZ5UWpfWFFYdzUzTGpObElrZ2ZPZm14NXpMLWo5Y3MyUVJMUGU?oc=5",
+      "age_h": 3.5,
+      "when": "2026-10-24T14:29:44+00:00"
     },
     {
       "title": "ECB Rate Decision: What to Expect on Thursday - Morningstar",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZHhPNzhScGNTVTVVcXVZQkY2QTktdzhUaHI2RGRnc1BNaE1TUE5JZEhzMDlhWm5GV0NVejhsdlZhMHFvbGIyY1NvWVptbkYxbDFDMzYyVkIxUFoza21vell0NzVNUEJsZnRsWVQ0MDJnVTFycDdCTy1na1JsRFRGaV9CcjFvOVYxWWttalJB?oc=5",
-      "age_h": 8.1,
+      "age_h": 11.7,
       "when": "2026-10-24T06:18:23+00:00"
     },
     {
       "title": "France's bond drama takes centre stage ahead of ECB rate decision - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNamJiLXRDTGVEVXFPUHRoajZ1VE1KWklmZmFKTGtsQ3FZWVVQNGpqQTFxcnVSQWFpWEpObm9uTzE4dmVQT09ibDZ3SzBZYnR2U2xFQXRQRS1EOFdjMndVNDM2di1wY2lpMGJueDNlOF8wZVViajlhcXk5NjJNRnlnOEEzQzFHdWtZd1g0bDBiVFNReTRNdDRKMXlHbEw?oc=5",
-      "age_h": 3.4,
+      "age_h": 7.0,
       "when": "2026-10-24T11:00:56+00:00"
-    },
-    {
-      "title": "Week Ahead for FX, Bonds: Decisions From Fed, Other Central Banks in Focus - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPZl9NRnpPb3laN0tSUlB6NFUwekhQWkUyNG11ck5jQmxHZUxTZl82RzJoVmlLMzlQY2JCS1BuTC1mMDlZYjdXVHFFeTgxTXJ5eGJZazZOcGdLaDg4RFhvaDNidXhySlVzRFBTUmoyeTJ4YjYtMUR2M0RYT1M2WVZSRTIxYlNQQjk2RGJmWmRTMml5MEoyV1h5bHpSQ2dFaExzZVJmU1N3djBENFhM?oc=5",
-      "age_h": 22.0,
-      "when": "2026-10-23T16:23:00+00:00"
-    },
-    {
-      "title": "Five key factors shaping the ECB’s rate decision - IDNFinancials",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNaXUxaDlGWVBHRGZaWGRmYTkzWjdBZi1kWEpYZ1JYMkN5Qk1sTDBWRi1udGZESFYzN3c0TzF3Sk5VZ3dHQU1YMmU2X28xX1RsTGh1TXJrZFpnanljZlpRTElfTUZxZVVVbU16VTluOFRrVjMwbjdRZU1BMENYYWFtdV92a2JTVzJqUlFpaUl2aDQyUQ?oc=5",
-      "age_h": 7.4,
-      "when": "2026-10-24T07:00:00+00:00"
     },
     {
       "title": "THINK Ahead: This is how bad European inflation could get this winter - ing think",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQS28xZlZaV09LRm4wWXBOdDcydzZvc2JOX0NlS2VxYUNhR0Z1dlYwcjhwdDFFMzAzMlo4LWNqQkxhVEJlNTdNaEhUVW9LREhJYldJWjBTZ1ZxZmtILUpkMGlVd1dhMW1qZzc0OG5sUV83bW5VaFBKWFFLcGkxU1NSZGJwVnlCR2VLMVRjUVFVVUNVNGhwZUEyTTdabHpTS0cxdkE?oc=5",
-      "age_h": 6.8,
+      "age_h": 10.4,
       "when": "2026-10-24T07:37:12+00:00"
     },
     {
-      "title": "GBP/USD (GBPUSD=X) live rate, chart and news - Yahoo Finance UK",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9NbzZVOXY1Z0JsbVlxU2paRTdhaDZSTFJ6RzRCLUF1ek1EcW9JeEFXUWdHem15UW0ydzAzYTNDSy1xWHNWS1d3c3lGOHdjQXZTQlN2Y1l6NDNEUQ?oc=5",
-      "age_h": 22.1,
-      "when": "2026-10-23T16:19:21+00:00"
+      "title": "Five key factors shaping the ECB’s rate decision - IDNFinancials",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNaXUxaDlGWVBHRGZaWGRmYTkzWjdBZi1kWEpYZ1JYMkN5Qk1sTDBWRi1udGZESFYzN3c0TzF3Sk5VZ3dHQU1YMmU2X28xX1RsTGh1TXJrZFpnanljZlpRTElfTUZxZVVVbU16VTluOFRrVjMwbjdRZU1BMENYYWFtdV92a2JTVzJqUlFpaUl2aDQyUQ?oc=5",
+      "age_h": 11.0,
+      "when": "2026-10-24T07:00:00+00:00"
+    },
+    {
+      "title": "EUR/USD Price Forecast: 200-week SMA offers last line of defense - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNMWFLTl9veWdnUGxYS2xDWm1TNWNsVXI5cHBWemp0LVF3X0lKVkFzQUxHUHRpMjhhYW1mb3NzZ0xoZlAwZ3FfU1pSSXdsSUlLdWt4NC1FNlh6ZC1ZdW5HUFBfUjV5bUt6bzRacVEtUlZyOHV6aWF2SHNJYTJtc0tHbmpSZmM0b2gzRzhDN3ZWanZpcXU2YnNpUkJTNzktMWRWdjV0eFpnLXViV010Q0gteWJxTTFDd1FaNXJjbjZ5SFZFcG1yeVZz?oc=5",
+      "age_h": 24.0,
+      "when": "2026-10-23T18:01:37+00:00"
     },
     {
       "title": "Official exchange rates on selected date | Bank of Russia - Центральный Банк России",
       "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YcldQcEpOMEd0OGVlTzFTZnlKM2lYZ1JxQ2FvLUVUMDI2WnQ0bnk2SzlEV01pb2RKNW40WVJTTzNUTTdDeFJmSDFJN3pnZE5tS3QtakRR?oc=5",
-      "age_h": 10.0,
+      "age_h": 13.6,
       "when": "2026-10-24T04:21:35+00:00"
     },
     {
-      "title": "Soft UK Retail Sales figures fail to deter bids for the British Pound - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOc3NaMlBMUzhGR21MX09TMHROMDVBSXhCYmlBLWF2dWJndEFOWmNMTE5Wb3lmaHBfYkxVcnVUZE9vUFlmSnJHb3ZlcTFDYS16R1BzYkpyZlJSTVJjTHVuLWdrY1FpODlHY05HYm5DSDlRc1FhOGcyTU8taFZMeFdLN056TVRrTTNoQmpZZ2hiMlVtdkQzdmJVSk1GNHZ1ak9ZcDhob2NmaTZNdE1jN3hKcl9wanl0X3FxYmdmSk1USEVFV2hIZ0VrSEFR?oc=5",
-      "age_h": 23.3,
-      "when": "2026-10-23T15:04:06+00:00"
+      "title": "GBP/USD, Gold Forecasts: Two trades to watch - StoneX",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOMEVPc2ZzZXRwVVdPNmtLNFBUQnJYSVE0RHNuRDJ4U1g1cGpJLXprMTM3bm5kOENqWFNLUEF6bjFJYWFQOGFZLUVoSjRiZkNkUGlPdnFmT0oydkVYMHh1WnFCZ2JMRTl6dGR0czJ2eFZfUGVrVktpQU5Odm96aU5uUU5xTmFxcDM4cHhiT2o1ZE1IWkRF?oc=5",
+      "age_h": 18.6,
+      "when": "2026-10-23T23:20:32+00:00"
     },
     {
       "title": "GBP/USD (GBPUSD=X) live rate, chart and news - Yahoo Finance Singapore",
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE45cXk5ODVxV3l3RWQ1Vl9aYzVSaGpNQmV0aUxPN1l6bllfNmxRR2xNcXFGVmczOEJFbnlIcThZVGtWcmJlSUZNc0lpbEJJbDJReG5VeFRWZ1g0QQ?oc=5",
-      "age_h": 5.7,
+      "age_h": 9.4,
       "when": "2026-10-24T08:38:12+00:00"
     },
     {
-      "title": "'Market-leading' ISA has 4.82% rate and Santander deal 'pays customers £250' - Liverpool Echo",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOQ21IdFU0OTIya3QwRS11bUdYMk1oWjJ5Ulp6TGZhbHhwMExfZUV5MmhxM2Jld2VvdFprNWp6ZzUyc1o3WWdqb01VcnB3RGpvSEdDdDFkZjR0aFc0VkNJX0FoRmMxbXJ4TTlxdmVja3RhM09JUk8tTFo0dDdUQnlCX0tkb3k2U2dzSmdyUFI4WmhrQdIBlwFBVV95cUxOQkZXUjU0a2hJc183Z09OLXlnZmQ3OW9zZ0FITUNLX293RW03cUZOb3VHWXFhRmtycGxNWVFGSDNSalhMN2hKdWRFNkxFRG9hcmZfdjJjQ1VOcDc5alRoTTZhM1J2clNQcDI4WVFQLW1NNEhIUnpxcUpYZlBhUWxJUENpLUVXMlhyVkRpWmpicU5raFRrWFlN?oc=5",
-      "age_h": 5.2,
-      "when": "2026-10-24T09:13:00+00:00"
+      "title": "BTC to GBP: Bitcoin Price in British Pound Sterling - CoinGecko",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5wYTZ5MWJSZUxGenlkSzlTYlRQTjUxSi1ESzlKbXh4U3FwZG5FNHBTZW9NMjNoXzZiY19IWE1oX25MVDBITmRWZkQ2Q2RQMm9SQUJmcnUxUEZOQQ?oc=5",
+      "age_h": 4.9,
+      "when": "2026-10-24T13:05:00+00:00"
+    },
+    {
+      "title": "Good news for Britons in France as GBP hits 17-month high vs EUR - connexionfrance",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQNVp5VVlyTzNjSnBWUlRMVEdQSVNvUTVLS2YySm9LUVhlcF9RQmltcTBkaHphdmdfX1o3MjV4RG1feDdJMDVnTEtCamEwcVBhbzIyajRwSWdmSzhkalVXQ1JPUlFpcXYwSWtTYkE1c0ZiZWZOMURhcmRYMXNuRTNtT0huR21SV0s4WHcwVnZKSTFZQzlDdENjYUdRMXF1dl82Qlc4cFhvcTVIRWFqZ2c?oc=5",
+      "age_h": 8.5,
+      "when": "2026-10-24T09:30:49+00:00"
     },
     {
       "title": "RBA minutes show three reasons for hike to 4.60% and leave door open to further increases - investingLive",
       "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQVDNDN3M5bHYtWlVPSjdPeTUtQmJPREhpQ29WMHYzLXlLRFJnU08zdThsNEhwT2dtME1hb0hiRHpkRjNONnJna3VrX0k5VGxXYkxtWXJhTHhwanZ6Zzl3eDNIbUc4TW9WdVJjbHVkUzJKUnJVUVhOVnRURGszZk42ZWlZcWxTa1BqNG1nYnp4b0tIZVQ2cXNOTFAwMFI4U1lXa1BhcnBJenpfRXJMQ2xUTjgzNV94X1ZFSXAxRmJ1UFlEcGJfYXVZcg?oc=5",
-      "age_h": 4.2,
+      "age_h": 7.8,
       "when": "2026-10-24T10:11:11+00:00"
     },
     {
-      "title": "Australian Dollar extends gains on RBA rate hike expectations ahead of Fed decision - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQb3NfLUlNRExPUDgyTWFpeHM5UjBCU2tlc0JjcVRLUkVNT1A2eTdSSG43NlE4RlhrMWpwWjVJcDhERFZMN25IajFWVktYLVR3bVBlbHdNRnZLdkJURzVIV0lSTmJXSTBfR2dVUFlCcmstOHp2QmdfNHIzMnh6TGZWZ21oc0VOU0paY2pSajRKTDBtajhIQ2p6bUFqd1pTR2tUZDRYLTF2ZVN5Q0w5ZGhPZjdsSlNycTZKWkx0UFNpd3VHN28w?oc=5",
-      "age_h": 22.3,
-      "when": "2026-10-23T16:06:26+00:00"
+      "title": "RBA rate hike expectations drive further Australian Dollar gains ahead of Fed decision - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNSlRPLXNnQ2JySllOTHRBcXl2SWl0WWpSLWhyVVR4bFNmRllTTkRiS252VlpLU3lIMWhnSTY4N2xOSGZLbmhoQUNfd0dsbjhXQUJ0aUF0S1JwMnJWRmZTLTNpU19ZbkI1XzdMM2c0cjZhRXlFRm5GYmRqd1ZpcWFtY2pYLXJDR2tOU1VSWC1FLVhVUVV4MnJOVkNiMmJiSU1UR2NpU2JEQ2Z2dmxCSlZYZHNYdHJyTnhLT2xjOVVZMEFDc3dNWEdBVUJUSm9CYWxrYXNHc2w4emh0VDFhWlkwNHh6OXpTSWc?oc=5",
+      "age_h": 14.0,
+      "when": "2026-10-24T03:58:54+00:00"
     },
     {
       "title": "Australian Jobs Report Hammers Another Nail into the Coffin for RBA Hikes - FOREX.com",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNWFpGdmJTTFdYcjluallWRl9IdnF1LUhMQ1F1d2RsS3M4X0x1dkZkT05uelFRWkM0cmVHbGdULWNnNWo0TF80VE1oTDlLSkVVUjlhUGNCYThBd3pqSk12SXh4dTZZWXJkVkFfZVoxZTB3RXV1SE05SHFQWUpNR2h3SE1LU3ExOTYtY1NWZlpHU20zNkxXaEVINDh4N3dOQWx0TUEtX3YwcGNuMUdxUTlpcFBiN1hiSnB2ZHNnOQ?oc=5",
-      "age_h": 16.5,
+      "age_h": 20.2,
       "when": "2026-10-23T21:50:07+00:00"
     },
     {
       "title": "Australian Dollar posts modest gains against US Dollar as markets await US flash PMI data - www.tmgm.com",
       "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQa1ZWLUxqWFYzZEZpcmM0YXVlTjNyNlpRRHBCc182eFdzMU4wUmU1UFZCRF95M29GRnhWeXhzQUpDdnd1UkdMeFlBLUFBM24wak5zWjhIYld6eFNHZHV0RHBaem5IUjd0dVdYMlVueFNSYzhFR1lwR3JEOC14SjRJcjd6aGxGZzgtTGRTZUh0OXhaUVl2UFZlQzhNMC1ySWZjRWV1Q3JpbkdsZDlYeFpubTRpb2N2RUtNV1FvLXotSlYxa1FTTTZrNkRDYkRsSGZfeWVoWWt0bw?oc=5",
-      "age_h": 17.5,
+      "age_h": 21.1,
       "when": "2026-10-23T20:53:18+00:00"
     },
     {
-      "title": "Australia's Energy Price Shock Keeps the RBA's Hike Door Wide Open - StoneX",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQMmxPcTJ5WEZneW0wbXNtakE4dnFGZmJIdi1oT0dMTDUzb2RIc3JYMzIzd2tTaVpIVEtieVdPZnVDQUhId2F4anNEbEQyeEtGdURHWDJGeVB4Uk9uRDh4WGM2SURvWVZJOWVXQmExbkxfUHpCYldYMWM3NUgtYUZaYU9JVjJQdEF6QTduaUlKOTNaTHktTU1aejNQWVRFWVlhTGFaNA?oc=5",
-      "age_h": 20.6,
-      "when": "2026-10-23T17:45:40+00:00"
+      "title": "AUD/USD Price Forecast: Bulls challenge SMA cluster, eye 0.7100 - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZWtOQTVvRTgwSFZqQlQ3YTdKdGl5NnBlNW9FTmpBb3VzR1ZuWmcwSFZEMnRNanNiUWRLVzZmY2xtdTE5OVE0dTFVckQ1MEVsTHpuN2VTLXNudTZpS0Z0dHY0VnUxNlItRjJhMHphbzBTbGFRem1KNnFvQ19KaDRyQTRaS1k3eUoxalkwZUV4cXhXRDNhLVF2Z3Vsc1Ywams3WmhnOXJn?oc=5",
+      "age_h": 18.9,
+      "when": "2026-10-23T23:07:20+00:00"
     },
     {
       "title": "Forget 3% US Inflation. It’s Heading for 4%: McGeever - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOcmJPa1BsVFFXUktudmRKOEhhWk9NR0VtWFoyckpfaEx6MUFnUkc1Ym4yckFXU29ERWd2NVlhbXB1ZlRtdTdxREE0RWprLWFsaVkwUVdUcmpxMVJJSVBwY1ZrNUFGWGJQSWgzN0hwMHhVY3dEcXdUNUgwdEM4ZTZqV1BXdGpzdw?oc=5",
-      "age_h": 15.2,
+      "age_h": 18.8,
       "when": "2026-10-23T23:12:51+00:00"
     },
     {
       "title": "Nasdaq 100 Forecast: NDX falls after hotter inflation data - StoneX",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOOTEzZTNpTUw5dGctdHJmTmd0SmhxUjhDNGNOajhmX0dFcm5ZTmd0MW9fZGhQelk2NDkzTzUwN3A3bFZmRVBpYXZydmNWcVVZVmFlV1NMM2JxUDUyMUVLRDVIMGxQRjJ0T0RDVWVZamp3Z0VheElJMVdlOExJNFlGbldqcHJnNko3VjI2Q3B5dGZ0aU5CcXZxWDE0WUItRTh6M2ltVTE5eXk?oc=5",
-      "age_h": 6.2,
+      "age_h": 9.8,
       "when": "2026-10-24T08:08:47+00:00"
-    },
-    {
-      "title": "What to Look Out for in Economic Data This Week (October 26-30) - Kiplinger",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1MeVNwMVVnVmhvRWo4b0N4WkhCRXQxTVRtb2ZmTWhCSmd4eERsN3Nfdllwejg0eG5ueFFCRUdPTzVUaXh4dEFZaWJqN3FFZnlFWTBlZ2ZvVkFFRzVScTR3TXRhZGl6MHp2RUF1clppVDRvR1lveC1FaXNCeXQ?oc=5",
-      "age_h": 21.3,
-      "when": "2026-10-23T17:07:12+00:00"
     },
     {
       "title": "US FX WRAP: DXY rises; hawkish Japan CPI report/BoJ sources; EUR hit on weak PMI data - Newsquawk",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPMElBbnNKTG9Oald2eWJZMm84MjBfeFRsb3BQWlY0TVBvNXIwcWxCMlFLQVpkZWd4bXZmNTdBOVlCenJ5YnBfYWZ0TW1yQVNsaGlWZ0VmRGVpMlVuUmpTQmZTa2diMVJsRmpTNjQ2c1FDSHlpTWVRazdCelJ6V1A5eUw0a0N3bUpKVzdhOU1UczBiNEx1YjB4MS15WmxjRHRTVnJDV3lyZ2VfeGtwcVlXcDZTOFFBR2pw?oc=5",
-      "age_h": 18.8,
+      "age_h": 22.4,
       "when": "2026-10-23T19:32:56+00:00"
     },
     {
-      "title": "Nasdaq 100 forecast: US tech stocks extend decline as AI concerns intensify - FOREX.com",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOSm5NazNweENaYWFkNXB5cTgtRGdOVTVfM3JkY0xVT2xBaGUxQ1ZONVM4Q3hWUjRTRG00a1FWVEV6SFpNU1g0dkxWaloxUjczS1lzRFJqQk1yS25xakJmcVlrcEN0Mm91bFRldDZ5MmVJSHA5X0trSjNKRTRoQ1ZGR3lQRGlubVN4c3FKTUdiVkZpUmJYTmN5Rnc2LWNaZ25kbUl4VFdYSkhhLTI5ZHB0eDk0SmRFWGh2ZGF1c0Jn?oc=5",
-      "age_h": 6.9,
-      "when": "2026-10-24T07:26:07+00:00"
+      "title": "US CPI Preview: Follow the Fed and Look Past the Hot Headline - Forex Factory",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRGc3THRzWjZveTN1cGNsMF9ydGpxYVN3R3NCRlpTSktSYmNrUHZ0Y3pTWkJyR1o0aEE5d2lzTFFsUHNIQ3RNcWdNbkZQWUlVOGxmZWJRRm90Ny1Ea3lHMXRqTVp1bXA3YjBOTmZyRWpMVVFTN0lTVTVaM2JqeEdycUNUb0VYNFHSAYwBQVVfeXFMTm0tV09VNERlY1BycHZYS1BVdDU5RXlvR1kxdlFpOFhGZlFGYXpIemtnUFNQb1FfZXo3OWh4RXl4NnJvN3dnSTFJM2VBSVJUSlRkbzN4d0pYYnpZUU5mSkJYd2l6T3pBbGtnbDFHYmJaRUdqNWJVYUFYN2pZblRkcUp6MFhsbFhOMXRIQ2o?oc=5",
+      "age_h": 17.0,
+      "when": "2026-10-24T01:01:29+00:00"
+    },
+    {
+      "title": "DAX, Gold and Bitcoin forecast: Dollar falls, yields retreat as risk appetite returns - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNcFBqcmZ2aE05S2ZKNXZiUXdxSDFEODlOT25nbVVKNGpOWDNLR2ozZkdCVHlTZ1RYS0d1T2c3eTdVX20yZURnb2dxU2ZWRktXR0prTXVUcTNSb2E0VmtBdXotVTlqUmd5Q0t5MkFaRWFSNk1ZeTJFclZjaEF1U1ktbUxpUWxobnI5S1RHN1hWUVlzNi13ZlZEbDZtekk4MS1aRU1MWERxQm92SUJfcjZIa3BOamZEX3ZQbGJ5dC1BODZxUGI0UWFxZA?oc=5",
+      "age_h": 10.6,
+      "when": "2026-10-24T07:26:01+00:00"
     },
     {
       "title": "Dow Jones Forecast: DJIA rises after weaker jobs data - StoneX",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPV2JzLWg1aVlNM3Mtc25SX05GTFFZMW9aVHJUbHJaa3dRRzhCNlRzbFZDMzhHTEp4QTNFNVMzU0lTR0F6UTd0N2Q0TDVDN1RFT2hqS2JlUjBjNTJWYnJKbVdnQnk4b1dKVTN4TUJlLTlHVjdpWG9IUTVQRDY0VkJudklXZDhaZko4NnJjX0lGTmptcEo5NWRqRkpoV1BfeTZuUmc?oc=5",
-      "age_h": 8.0,
+      "age_h": 11.6,
       "when": "2026-10-24T06:24:07+00:00"
     },
     {
-      "title": "9 News Headlines That Move Gold Prices: A Trader’s Guide - The Baltic Times",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNWHBJWmd0Z2g4am5fUW5iUERqZzVxc1JVQWc2azZUNFhYZzdtY3pMRmtjUEl3aDZuNGRONHVXS3psLUwwSFUtUWJBWkNvdDU0dkItZm5WTzkyQkFtblRmNUVCcUZRcTJNU0d5T1k5YWZfNFFjblhBVEdtaWwtTE9JaUIzSXctNGRPM21TdWhR?oc=5",
-      "age_h": 23.4,
-      "when": "2026-10-23T14:58:41+00:00"
+      "title": "Stratford's September Employment Data Released, Here's What The Numbers Reveal - Patch",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNQnRMTmh0cURKQVNzT1c2SXFNNk80TExJZGQ3dzdfbjVoZWVSemdCNnJCTkUxVXA0NE8wSlZvSGxLLS00NHhnNG1uYUxlaXc0XzE3cEs1eUpwZnZjRHlNb0NUeDh6NzBUMFh4bEc1ZFZZU3FNQ3RyTDUwMUoyckNGMDNQRFYzcVRZQnN3cWZLRDA4SjVaNFlaU0lTdnZpMzAzVDNRWEZpaVdvNFNmQmZNOdIBxwFBVV95cUxPZTkyVjJSdE1URGFGdl9ERnFmT0tnOWI4ckszQ0duN0N1U0FVZXJtLTdMRGxqLVJPYVVkeEhqbWVETEY4MFJjOHR4M2EyeVNwVkpqZkZhbzFZdjk1cWh6bnNXZ2pYWlp1aW9rX0dOZnhJYi1XSzlGZnRyRldzY1FVd19mVmlNaXFvUE1KMWdOQW9TNlpkTFFpUXpnSFR3TkRkWXhOTnl3aHhpRU1GNXpJbDFlLU9wZ0plUTR2TWZRck1lWjQ5eXIw?oc=5",
+      "age_h": 22.9,
+      "when": "2026-10-23T19:05:45+00:00"
     },
     {
-      "title": "State Employment and Unemployment — September 2026 - the Electrical Distributor magazine",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE40M1d6M3RFUjdqeTVlYVlsaDFpUUZjMFE5RXdtNmpfWnczamtmZ3FRV3cwenZ6Zkh6OHJNSDNGZlhtUFBCV195NW9ua0FqMThZSFZBanhzdGdOX251SFhyRm53VW5pakxmN1FtamZuVWFhd2VPRDJN?oc=5",
-      "age_h": 21.6,
-      "when": "2026-10-23T16:47:11+00:00"
+      "title": "Iowa Jobs and Labor Force Update – January 2026 - Common Sense Institute",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNSkI4TFJsNHJjRVRINkxKemhBejh5blF2TkNVUFdaTy1hc2NfaG1GZ0FObUtLTjVDclVidGVBbFBTZjgtOXFNVDhlMDJWYkQ5X0I3VkNsOV9wVXEzX3pqUm1VRG8yYlE5Q2Z2WGxobXhGUTlyQ2Y4amVpRFdDV2F4LXNCZGZfZXNaUnFTXzdCWHlOaHVxblZ6THhzRkVJdjljZ2NPYUN6TDZjekpvQ0ttcHVxM2xxU2c?oc=5",
+      "age_h": 12.5,
+      "when": "2026-10-24T05:26:19+00:00"
     },
     {
-      "title": "25 States Add Construction Jobs - LBM Journal",
-      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNbkc4VmtJempFVXJnRjJfdkN1ZU5DbGJmaHZCX2lUVm56SVgzamxYVnpyWkxSdUtXalFQdjR0NVdsMHFDb0Q4TTJ2V0N2c3pBWUxSWjRNZ3BrNEFISW5PMUtmQ3hvWVdGa1NzRFNvX1FoRDJBb2VjZTB6Slg3bkdmTnY1RGRuUEtIUUFFN0hQeWlnNW53alNPeUd4UFRBLUI1YXBOYVRXc0NjMEtGdVpKM2Y1SjRLYWNXR2QzN1VkcEZlYVFJZUdLczhvcTlUVDl1cDZsNA?oc=5",
-      "age_h": 21.5,
-      "when": "2026-10-23T16:55:31+00:00"
+      "title": "New Mexico adds 11,200 jobs over year, but employment dips in September - Organ Mountain News",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbEp3aWR1dUd3bmtvRG1TZWlXZUhpMmNkUHBzOS1vRE8zbFE3RDNWTm92eUE4ZFlCSHJsZU5udmQ4VXpDaWdMR2lYSzlMZjhiOFEyNGZSTG92dXVKOWljZE03dlctU1NqX2taOWx5eW1SYWtyWGtUXzlaN1JqWTNXcFdJWXItWnhSSFc0MnZCSzdqcFhIcm15OFVzNA?oc=5",
+      "age_h": 1.8,
+      "when": "2026-10-24T16:11:25+00:00"
     },
     {
       "title": "State-Level Construction Employment Posts Gains in September - Hardware Retailing",
       "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQMmxPeFpnYWxwOU9zcGxJTmlZcU4yMWtLcTREaVZuSEVMRmxlbnhkN3BpMmh0WUF1ZHBxTWlkZFRKSzNsUm4wSllRSGhqaWUwdXg0N21pYW9kWGZsZkhOZmxWdW53bGJYWjZod29jWWpzRUZEc2o0aVlrck14OUdrcUxVSU9RVVdvYnNLWjJhN0NuU0lfVHc?oc=5",
-      "age_h": 12.9,
+      "age_h": 16.5,
       "when": "2026-10-24T01:30:48+00:00"
     }
   ],
