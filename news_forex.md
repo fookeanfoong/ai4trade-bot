@@ -1,37 +1,72 @@
-# 外汇新闻简报 — 2026-10-24 23:00 UTC
+# 外汇新闻简报 — 2026-10-25 00:58 UTC
 
-## ✅ 今日未检测到高影响事件
+## ⛔ 今日检测到高影响事件
 
-> 常规交易时段。注意这个检测基于新闻标题,不是官方日历 ——
-> 重要数据请以 ForexFactory 或你券商的日历为准。
+- **联储/FOMC** — Swiss Franc weakens as focus shifts to next week’s Fed interest rate decision - www.tmgm.c
+- **欧央行** — ECB Rate Decision: What to Expect on Thursday - Morningstar
+- **澳联储** — RBA minutes show three reasons for hike to 4.60% and leave door open to further increases 
+- **美国CPI** — Gold rebounds on easing geopolitical tensions and stalls: eyes on US CPI as the next key c
+- **非农就业** — Was It a Good Jobs Report or a Bad One? - Dollars & Sense
+
+> **机器的动作:数据前后不开新仓。**
+> 20 点止损在数据发布时不是止损 —— 汇价几秒内跳数十点,
+> 成交价落在止损之外,20 点的风险会变成实际亏 50 点。
 
 ## 美元
 
-_24 小时内无新headline_
+- (15.2h前) [US dollar strength masks growing disconnect with Treasury yields - FOREX.com](https://news.google.com/rss/articles/CBMirAFBVV95cUxNX0NvWVY4NzNDTjE2ZWptQ21FNl8yZnZTSC1NX3psLU1xRDQzUjhxMEZZVjRCeEJfWVQwclB4dE4xZnpNY1BNMFJiRFlyYXZGS1RUSjlwMjNlNlB3dWZtN2NPN242UXdlTW5kSGhLQVZVa3V4dWJrUGVTQ1FjdExOSEhkQWVDMV9UVTRFUzF4MVc1UllQa052WENpNGJNQXR3ZEs2UGxqWmFLaHh3?oc=5)
+- (7.2h前) [Nasdaq, Treasury yields and dollar face a major AI sentiment test - StoneX](https://news.google.com/rss/articles/CBMisgFBVV95cUxOZlpmc3pTTnVwTkp5aS1HMXpISUhTSnBndTNiTWdzMmlkZ21QOUJsRm1CaWtidGtKVWVvV3N2cm5KTnE0NW93X2JfRUtzcjZoR1VVZWp5NzFheUEyOWFRd19vTjBCTUFVdnFaMWhaTXBBOW5rSDBRakQzNXBraTEyVklqajEyUjhaWUFIZXViVWZ3SFpkZmhfQmh1N1NQRXZjVUQyeDZyMGlaemNNdElyNGdB?oc=5)
+- (8.7h前) [EUR/USD, GBP/USD Price Outlook: Can the Dollar Pullback Fuel a Bullish Rebound? - StoneX](https://news.google.com/rss/articles/CBMiwgFBVV95cUxPekJmbTI0OG9YSEFiNE84NWJBd3FQd3R6MlhsY1E5N0F1US1qNnVESVV5ZjF3OXJhVWhTMzBJVnJfRF9wWXpWU2I1LUg5TDRLcTlxUWUySVFXQTRHSE1wOXFjYlY2N2ZSVlZZRW9fbURQVThlNVA3T0hNclZ2bkRvQUVmMHhJQzh4QkVGWlpyYXF4aXU4RTJkM2FtU3NaaDRwNEhnTzVFWGtwbmZZbExIWkNZS3dqOFhBc1RjMFhiOTNsdw?oc=5)
+- (23.1h前) [Swiss Franc weakens as focus shifts to next week’s Fed interest rate decision - www.tmgm.com](https://news.google.com/rss/articles/CBMi3wFBVV95cUxQb0dLOEg0YVFvakJ6aVpFb1BfMkN5RllQSVRkTFktbkI4YzJyTTdRb1pKc0JTRVJicDZIUjFoV2xSWlVaTm50OHQxdUR3R1FjcFZKQUg5SThwc0xFZDVTQkZiWXZSLTdMOFdBTDJUcmVxNlNrS2psb0xMeUFKNHo1a1habzBtMGRfdnVsQXpmMmI0WmpyaGtLRTc4MUxNb25vdlEtZ2c1Q2NRVFNTOHcxWTN6azVPUWxqb2RrbUx2U1BLa1Uwel94U2RCRGdhR3MwdjhYTVd2bE85X05VUjY4?oc=5)
+- (17.6h前) [USD/JPY Update: Can the Japanese Yen Sustain Its Recovery? - FOREX.com](https://news.google.com/rss/articles/CBMiogFBVV95cUxOYVNRa291S1k4Wnp3VTRJWDFiYnkzejkxLVVjdjdYSWw2M3Ffb2dYQTItYjB6cDVSWFhmSXAyYnBTWmdlMG04NDRXbUIwZHlXb2dHY1BSZkRLNHZwRDROMk41YjVwVkJOMGdFVXJDdjZYRjc3WmtJWDl2ZUkxbWpLODh2OXEza2VMMFBuVXZTWWpSeGFZdllLNkNLUldDUWRwcVE?oc=5)
 
 ## 美联储
 
-_24 小时内无新headline_
+- (22.0h前) [Fed holds interest rates steady as inflation hits 3-year high - ABC News - Breaking News, Latest News and Videos](https://news.google.com/rss/articles/CBMinwFBVV95cUxObE9meWdub2FOS2dVY0pKYUxReEZrZGJhMnIyNG9JTEJpZlhISXFXMlZGZk1kSjRPWlRPejV6aTdXSHZnWWFkeHBvZVEydk9Sa1dLallzVGtIenB2OV9yR2daTDNrb2psQW5uZ2JSYnlOMUxmYzExZ1NBT1V3OGVlaERaZ1pPaVYwTDUyNVJCR1lJUkpoRFhhMzJha09TOVXSAaQBQVVfeXFMUGc0WHV5TzVaUnlTZjZ2Y1h3RHdSSnc0LWZoTzF3Uzk4WFkyQVByY1kxNkNoeDREX3Z6TDRSOUsyMmFvbHBGUWNlWUlXZGxJZFN6RFB5NWREWWtlRXUyMXJyUUlMTXo0cmh4NlpfT1pMUklyOGJLb1F5SDdteTItMzl5NVQybXk5U2ZQWkRGYmhnU0dJZ2hoTEFjb3FLaktRcjZNbDc?oc=5)
+- (5.0h前) [Fed Set to Lead G7 Trio in Hawkish Rate Pause: Eco Week Ahead - Bloomberg.com](https://news.google.com/rss/articles/CBMisAFBVV95cUxQbFg3ZkV4QzdBaTNjLTU0N3lHTUpMWEFETVhtYU9NS2l5QlhfMU0zeV9SLTd4ZTFwbnBGUGFOa29IQ25VMmQ3aXotU1hPRkZHR0szdFQ2RzRCemE4SzNVYS1GRG5oZjh0RHVIU2FiUzJLemdEdlk3TGF3SWdKQi1ZZGk5SFNwS2ZKTU1HNzJZSk85T0tiTlU4VXVVVlVsVkE2R2VlSGIxOVd1MUpjY1U2cA?oc=5)
+- (20.4h前) [Will the Fed raise interest rates this year? Divided economists weigh in - ABC News - Breaking News, Latest News and Videos](https://news.google.com/rss/articles/CBMipAFBVV95cUxNX3NMLXhhYU1lOVVLWU9sY0k0SDUyQnEwMG9SZ1RzNHZobTIyYk9KWGJlOGhic3FKdlQ2NXlIVDF6SW1oRlNWZlY2NHlNLWlnNGoybzAwLWlkV3V1Q1ZtM21KS2FLTy02NEF6VjY4UmFNc2hYa21mRURlSkJYZWxtc1R3VmRYZFlKNUU3NzZiMkZGNGJZcG1xZUNCN0RQNkRndEVPb9IBqgFBVV95cUxOU1FSZ3pWOURaQUxBS296TzBtRFFGclJXTnpLYWwzZXU1Q01kcVZUczBxUDAwR3FaYmFZdzlXUWM2T0Q3TDVldm9nSVY4OERYRUtkdm5sdndPSU1ETU1yc3BuMEpXLTd2VFFZRTVQcWdMZFdEZ0EzYjhTS200RFBkZy1jbE01WVhVbEgyX1Z2dXc4MWxmbXd6cl9pSlp2TDRldkdkS2hwOVE0Zw?oc=5)
+- (10.5h前) [Bitcoin Price Prediction: Fed on Wednesday, $11.1 Billion Expiry on Friday, Which Date Moves the Price? - CryptoTicker](https://news.google.com/rss/articles/CBMihgFBVV95cUxOTlQyUTFUVTF0TWNZcVE4TFJTYkF4ZjcxV2VpUXdnQXJJUktmdWdFVk00NkpCRVZrZG5DSERNQVk0VTE1Z0JScEpvR0ZkcndFTFduTm03VnZ6NXBUVlRrRnJBZUtXWHFBbG9fR0dkQU9BaHhjR0VvZ0p3SElnSmlOSi1vcU9BUQ?oc=5)
+- (20.4h前) [Fed chair Jerome Powell says he will stay on central bank's board after term expires next month - ABC News - Breaking News, Latest News and Videos](https://news.google.com/rss/articles/CBMikAFBVV95cUxOVTRuNnNUUkdLNnBuVk9RQTBiS25xcTVBVVpjeFpTaDFUWjJuWFl4QjBkUnp0YkozM3ZXUXRfQ1RSTW1kU2h0OXZiU0M2MHJUQWZBdDNnWVU1am1yb1UxRWlpYWlpN1Y5VUFwd1oxUjF0UlFMeEt3SUx4UURpb1ZpYXY1c0lkYThrLUZtVlpUSWnSAZYBQVVfeXFMUEQwcFlXdjlTV3lqejM2WFFIQ25UWlhUM1FQNjIzTGtGV2ZQaElPZ2Izd0gwR2lLZ1pSdTZhWDVXMTg4d0V6RGxZdnZSak9walllOHRDOFlUT2pYSUJrdjc0NFYyekpfdjVIQUpVaDZjRGpJMlVwLXFHdFhnYzN5b2g3cWpZNkl5Ty11U29pbHllLUNLVjdR?oc=5)
 
 ## 欧元/欧央行
 
-_24 小时内无新headline_
+- (19.8h前) [ECB Rate Decision: What to Expect on Thursday - Morningstar](https://news.google.com/rss/articles/CBMijgFBVV95cUxQclBBSTNoaHJwUHBPdC10Wm93YkNUenhzZ1FROHNJYUhEWEtNUGswdG1jUG1IckQybjk0YUFTcXZvY21Va0llWHZOdTk0eUNVQnB5UmR3cG5NWW1WWGg3YXUwSFk2cUxNOHZacUpZTkdXZGwwb2tWd1h5T1N3dEpGVkNJZzdFMVBfR2l2cFd3?oc=5)
+- (14.0h前) [France's bond drama takes centre stage ahead of ECB rate decision - Yahoo Finance](https://news.google.com/rss/articles/CBMinAFBVV95cUxNamJiLXRDTGVEVXFPUHRoajZ1VE1KWklmZmFKTGtsQ3FZWVVQNGpqQTFxcnVSQWFpWEpObm9uTzE4dmVQT09ibDZ3SzBZYnR2U2xFQXRQRS1EOFdjMndVNDM2di1wY2lpMGJueDNlOF8wZVViajlhcXk5NjJNRnlnOEEzQzFHdWtZd1g0bDBiVFNReTRNdDRKMXlHbEw?oc=5)
+- (17.4h前) [THINK Ahead: This is how bad European inflation could get this winter - ING Think](https://news.google.com/rss/articles/CBMiogFBVV95cUxQS28xZlZaV09LRm4wWXBOdDcydzZvc2JOX0NlS2VxYUNhR0Z1dlYwcjhwdDFFMzAzMlo4LWNqQkxhVEJlNTdNaEhUVW9LREhJYldJWjBTZ1ZxZmtILUpkMGlVd1dhMW1qZzc0OG5sUV83bW5VaFBKWFFLcGkxU1NSZGJwVnlCR2VLMVRjUVFVVUNVNGhwZUEyTTdabHpTS0cxdkE?oc=5)
+- (18.0h前) [Five key factors shaping the ECB’s rate decision - IDNFinancials](https://news.google.com/rss/articles/CBMikgFBVV95cUxNaXUxaDlGWVBHRGZaWGRmYTkzWjdBZi1kWEpYZ1JYMkN5Qk1sTDBWRi1udGZESFYzN3c0TzF3Sk5VZ3dHQU1YMmU2X28xX1RsTGh1TXJrZFpnanljZlpRTElfTUZxZVVVbU16VTluOFRrVjMwbjdRZU1BMENYYWFtdV92a2JTVzJqUlFpaUl2aDQyUQ?oc=5)
+- (7.5h前) [German mortgage rates climb to highest since 2009 as Iran war stokes inflation fears - Yahoo Finance Singapore](https://news.google.com/rss/articles/CBMijAFBVV95cUxOX1hSQ3Y0S0o0VVVfN1ZRendIMUxaalVSdVJtaWJHb2tGWEFoTFcxbFlfSnA3dDBTVzhyd3kwNGV2UTFWa0JCUHpRQVhSZWNRdlp5alFEMXNodlVfMW1mT2t0QXRTbi1ndDB1VkdJSi1PZFVjbHdhOHZtczY4c0JkVFpTWFFpaHRmX0Uwaw?oc=5)
 
 ## 英镑/英央行
 
-_24 小时内无新headline_
+- (4.8h前) [GBP/USD, Gold Forecasts: Two trades to watch - StoneX](https://news.google.com/rss/articles/CBMilAFBVV95cUxOMEVPc2ZzZXRwVVdPNmtLNFBUQnJYSVE0RHNuRDJ4U1g1cGpJLXprMTM3bm5kOENqWFNLUEF6bjFJYWFQOGFZLUVoSjRiZkNkUGlPdnFmT0oydkVYMHh1WnFCZ2JMRTl6dGR0czJ2eFZfUGVrVktpQU5Odm96aU5uUU5xTmFxcDM4cHhiT2o1ZE1IWkRF?oc=5)
+- (7.5h前) [Official exchange rates on selected date | Bank of Russia - Центральный Банк России](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YcldQcEpOMEd0OGVlTzFTZnlKM2lYZ1JxQ2FvLUVUMDI2WnQ0bnk2SzlEV01pb2RKNW40WVJTTzNUTTdDeFJmSDFJN3pnZE5tS3QtakRR?oc=5)
+- (11.9h前) [BTC to GBP: Bitcoin Price in British Pound Sterling - CoinGecko](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5wYTZ5MWJSZUxGenlkSzlTYlRQTjUxSi1ESzlKbXh4U3FwZG5FNHBTZW9NMjNoXzZiY19IWE1oX25MVDBITmRWZkQ2Q2RQMm9SQUJmcnUxUEZOQQ?oc=5)
+- (7.6h前) [S&P 500 Forecast: SPX set for a weekly decline led lower by tech as AI worries linger - StoneX](https://news.google.com/rss/articles/CBMizwFBVV95cUxQZktHLXhFSHBWaVlnbUxVVENzb19pd1NaRkFqQndETFFpbzhBUENraThmMkp2WU1UVC1meXdROUJhVFV5UzFRYzN6WWo1MXF1OGdpRV85VnpzaWZvWFk3cmVDbUthZkRtcVEwVUlldG9OVnBpcFJES0tXN1FZY0xDUzVOX1NmOXhybFlPOHFLMXZZTUl2UG9kSGJJVjRqLWtxb0tnem5qUGkzbURXc1R5SnY1aksyLURnWkRacXVDN2ZfX2JOU2hmQmNpWGkzMGc?oc=5)
+- (9.9h前) [XRP XRP (XRP-GBP) Live Price, News, Chart and Price History - Yahoo Finance UK](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5QNlFtdUZhdTd4MXFGWjczWlJpVEpLZ05yQlVjcWRTT05EdFBLN2g5cGlLemFNX1lEVkRHMU1rb2o5WEFpcm9FRXNsd1UxazU3elpRU3FB?oc=5)
 
 ## 澳元/澳联储
 
-_24 小时内无新headline_
+- (14.8h前) [RBA minutes show three reasons for hike to 4.60% and leave door open to further increases - investingLive](https://news.google.com/rss/articles/CBMiyAFBVV95cUxQVDNDN3M5bHYtWlVPSjdPeTUtQmJPREhpQ29WMHYzLXlLRFJnU08zdThsNEhwT2dtME1hb0hiRHpkRjNONnJna3VrX0k5VGxXYkxtWXJhTHhwanZ6Zzl3eDNIbUc4TW9WdVJjbHVkUzJKUnJVUVhOVnRURGszZk42ZWlZcWxTa1BqNG1nYnp4b0tIZVQ2cXNOTFAwMFI4U1lXa1BhcnBJenpfRXJMQ2xUTjgzNV94X1ZFSXAxRmJ1UFlEcGJfYXVZcg?oc=5)
+- (21.0h前) [RBA rate hike expectations drive further Australian Dollar gains ahead of Fed decision - www.tmgm.com](https://news.google.com/rss/articles/CBMi5wFBVV95cUxNSlRPLXNnQ2JySllOTHRBcXl2SWl0WWpSLWhyVVR4bFNmRllTTkRiS252VlpLU3lIMWhnSTY4N2xOSGZLbmhoQUNfd0dsbjhXQUJ0aUF0S1JwMnJWRmZTLTNpU19ZbkI1XzdMM2c0cjZhRXlFRm5GYmRqd1ZpcWFtY2pYLXJDR2tOU1VSWC1FLVhVUVV4MnJOVkNiMmJiSU1UR2NpU2JEQ2Z2dmxCSlZYZHNYdHJyTnhLT2xjOVVZMEFDc3dNWEdBVUJUSm9CYWxrYXNHc2w4emh0VDFhWlkwNHh6OXpTSWc?oc=5)
+- (17.5h前) [AUD/USD Bulls Fight Back After Australian Jobs Shock - FOREX.com](https://news.google.com/rss/articles/CBMinAFBVV95cUxPMUhCWFY3eHJyZ2U0bTZuS2VhYWdIcGVvYWl3aFQ2ZldxMlJPUU1qX1N6eWVtTW5lNUpXakVuZjVMQmdReXpmZTZIc2U5a21yaDc2aDlvdEJjVk9EdlZycEVMN2tkNUJLcGNQNnlITU44TkFTRk5WbEsxSnVkR1RqNWVwZlBCTGswTHNyTGluYWxjTDkwM1ZaS3FQNTU?oc=5)
+- (19.1h前) [EDITORIAL: RBA warning light flashing on interest rates - The Nightly](https://news.google.com/rss/articles/CBMiogFBVV95cUxNdTdOcXhuWUZPRk1HTkd3d1dDMl83aDdtNFZYOHNjZWZVbnBSbzlobnNBMXNBMnJuQWNPQVQtVkZfVEV5dnZQMnRzLURCVHM5Y0dSdG5GamhoZk5LcDZSdTdmQWZUYmJldmVLR0hOa0lGS01tS1NpMnhFMWhqZjg1NmVDUmhNZWxQZDNSM25wc200YjRsWDBBaEllaXBEU19vd2c?oc=5)
+- (3.5h前) [Australian central banker says policy working, but inflation outlook worse - Business Recorder](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5HeUx3d1VWSC0wLUlITS1QX3lXQVE2QjVuRlRBMkFpbXZqS05GLWJiSW00NGs4aUdCX2t5T3FqeXdIMTljVlY2VVFaMmVFX1dFUU5WekR30gFWQVVfeXFMTkd5THd3VVZILTAtSUhNLVBfeVdBUTZCNW5GVEEyQWltdmpLTkYtYmJJbTQ0azhpR0Jfa3lPcWp5d0gxOWNWVjZVUVoyZUVfV0VRTlZ6RHc?oc=5)
 
 ## 通胀数据
 
-_24 小时内无新headline_
+- (8.4h前) [Nasdaq 100 Forecast: NDX falls after hotter inflation data - StoneX](https://news.google.com/rss/articles/CBMiqAFBVV95cUxOOTEzZTNpTUw5dGctdHJmTmd0SmhxUjhDNGNOajhmX0dFcm5ZTmd0MW9fZGhQelk2NDkzTzUwN3A3bFZmRVBpYXZydmNWcVVZVmFlV1NMM2JxUDUyMUVLRDVIMGxQRjJ0T0RDVWVZamp3Z0VheElJMVdlOExJNFlGbldqcHJnNko3VjI2Q3B5dGZ0aU5CcXZxWDE0WUItRTh6M2ltVTE5eXk?oc=5)
+- (1.9h前) [Gold rebounds on easing geopolitical tensions and stalls: eyes on US CPI as the next key catalyst - investingLive](https://news.google.com/rss/articles/CBMi0AFBVV95cUxOWGJLMXdIVnpCSzA1YXFpYTVIMGhkMDZUTWdTVXhQbTczM2c1dVczTkg5UWxXVmZwWTE5eUtvaUU1NWxGWDY0WDYwV0MtbXBUM3hPUldVWGlaQmdmc2JkdlU2T0hwUHFwX3pIcWlFVzhzeEVOU0JaVlBOYnNaYUpYcUNmeDBxTGhuX2pHczI4OWEzekhfT0IyX3JMYlpoTUQ2dndXclp6SllPdDVjdzJGQWMzNDJ6VGcyV1pfU00zVDMzLU9ySjN2dk5tNVJsdFJz?oc=5)
+- (4.8h前) [Canadian Dollar Short-term Outlook: USD/CAD Five-Week Rally Hits a Wall at Major Resistance - StoneX](https://news.google.com/rss/articles/CBMi1AFBVV95cUxOQjRDdm5Ic3NxZ21kN3I5NnV3V1k1Q3N1Nnd3dmJaZ3pnLWdBTFFyNWVDMEFkZGRIX0xFdjZDd3NIOVNOSzAyWEhMTGo2a29FNVZpM3I2T0lCSlJqSXdHTlAweVdCMHZOcnRPQXMwOC1LQXB5c0R2aTA1T0lzUWNxeEtvWlRJMERZYzB3N1J2TGQya05UVG9PazVCam5PY2FINWZobFYyeWdOM0FnbW82eXBuS0VFSmtlbUE1ckdERGVWV2hmU2c3QXo1YnZ2b0IzQy1tdA?oc=5)
+- (17.5h前) [DAX, Gold and Bitcoin forecast: Dollar falls, yields retreat as risk appetite returns - FOREX.com](https://news.google.com/rss/articles/CBMiyAFBVV95cUxNcFBqcmZ2aE05S2ZKNXZiUXdxSDFEODlOT25nbVVKNGpOWDNLR2ozZkdCVHlTZ1RYS0d1T2c3eTdVX20yZURnb2dxU2ZWRktXR0prTXVUcTNSb2E0VmtBdXotVTlqUmd5Q0t5MkFaRWFSNk1ZeTJFclZjaEF1U1ktbUxpUWxobnI5S1RHN1hWUVlzNi13ZlZEbDZtekk4MS1aRU1MWERxQm92SUJfcjZIa3BOamZEX3ZQbGJ5dC1BODZxUGI0UWFxZA?oc=5)
+- (23.9h前) [US CPI Preview: Follow the Fed and Look Past the Hot Headline - Forex Factory](https://news.google.com/rss/articles/CBMihwFBVV95cUxPRGc3THRzWjZveTN1cGNsMF9ydGpxYVN3R3NCRlpTSktSYmNrUHZ0Y3pTWkJyR1o0aEE5d2lzTFFsUHNIQ3RNcWdNbkZQWUlVOGxmZWJRRm90Ny1Ea3lHMXRqTVp1bXA3YjBOTmZyRWpMVVFTN0lTVTVaM2JqeEdycUNUb0VYNFHSAYwBQVVfeXFMTm0tV09VNERlY1BycHZYS1BVdDU5RXlvR1kxdlFpOFhGZlFGYXpIemtnUFNQb1FfZXo3OWh4RXl4NnJvN3dnSTFJM2VBSVJUSlRkbzN4d0pYYnpZUU5mSkJYd2l6T3pBbGtnbDFHYmJaRUdqNWJVYUFYN2pZblRkcUp6MFhsbFhOMXRIQ2o?oc=5)
 
 ## 就业数据
 
-_24 小时内无新headline_
+- (18.6h前) [Dow Jones Forecast: DJIA rises after weaker jobs data - StoneX](https://news.google.com/rss/articles/CBMiogFBVV95cUxPV2JzLWg1aVlNM3Mtc25SX05GTFFZMW9aVHJUbHJaa3dRRzhCNlRzbFZDMzhHTEp4QTNFNVMzU0lTR0F6UTd0N2Q0TDVDN1RFT2hqS2JlUjBjNTJWYnJKbVdnQnk4b1dKVTN4TUJlLTlHVjdpWG9IUTVQRDY0VkJudklXZDhaZko4NnJjX0lGTmptcEo5NWRqRkpoV1BfeTZuUmc?oc=5)
+- (8.8h前) [New Mexico adds 11,200 jobs over year, but employment dips in September - Organ Mountain News](https://news.google.com/rss/articles/CBMimwFBVV95cUxPbEp3aWR1dUd3bmtvRG1TZWlXZUhpMmNkUHBzOS1vRE8zbFE3RDNWTm92eUE4ZFlCSHJsZU5udmQ4VXpDaWdMR2lYSzlMZjhiOFEyNGZSTG92dXVKOWljZE03dlctU1NqX2taOWx5eW1SYWtyWGtUXzlaN1JqWTNXcFdJWXItWnhSSFc0MnZCSzdqcFhIcm15OFVzNA?oc=5)
+- (19.5h前) [Iowa Jobs and Labor Force Update – January 2026 - Common Sense Institute](https://news.google.com/rss/articles/CBMitwFBVV95cUxNSkI4TFJsNHJjRVRINkxKemhBejh5blF2TkNVUFdaTy1hc2NfaG1GZ0FObUtLTjVDclVidGVBbFBTZjgtOXFNVDhlMDJWYkQ5X0I3VkNsOV9wVXEzX3pqUm1VRG8yYlE5Q2Z2WGxobXhGUTlyQ2Y4amVpRFdDV2F4LXNCZGZfZXNaUnFTXzdCWHlOaHVxblZ6THhzRkVJdjljZ2NPYUN6TDZjekpvQ0ttcHVxM2xxU2c?oc=5)
+- (10.5h前) [RI Unemployment Rate Dips to 3.6% as Jobs Fall by 1,600 - Uprise RI](https://news.google.com/rss/articles/CBMinwFBVV95cUxQYVNYVGNlQzdvdmFVd0J1cUhLbUd4LWNMRzJhOE5SdGJ4TzVhdzNMRDhvcDJ6U1VVY2JONW83Tmdvb3R1TFNyQl9UZGNpeXl1R2JVaVFFdndSZEdBMTdwMWJrZU9NRWJYTXZ0R2ZaOHBZQUcwaDlZNGkyOGRwcWU0ekNfRi12WmMtdE5uOEVrQU1fbkhpTTJWNmZQdzVhQmM?oc=5)
+- (7.8h前) [Was It a Good Jobs Report or a Bad One? - Dollars & Sense](https://news.google.com/rss/articles/CBMie0FVX3lxTE9aSlVXYXZla01qZjl2Zy1RMVB1Y3RhSDc3MWFkcVBjTW03V3NyWUlBSXRnUERyOXdpcWE0R2RIX1drVGlHMkprUG5MZ0cxOXE5Umg5cDlxQmpzTmRSLU9kWkZ6ckNIamJJekdaRUZjZm9hUVVTWEtrOVJ2QQ?oc=5)
 
 ---
 
@@ -47,5 +82,3 @@ _24 小时内无新headline_
 
 **分工是故意的**:机器负责能被验证的部分(什么时候别交易),
 人负责不能被验证的部分(方向判断)。
-
-> 取数失败:美元: HTTP Error 503: Service Unavailable；美联储: HTTP Error 503: Service Unavailable；欧元/欧央行: HTTP Error 503: Service Unavailable；英镑/英央行: HTTP Error 503: Service Unavailable；澳元/澳联储: HTTP Error 503: Service Unavailable；通胀数据: HTTP Error 503: Service Unavailable；就业数据: HTTP Error 503: Service Unavailable
