@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T02:17:23+00:00",
+  "updated_at": "2026-10-29T09:40:33+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,37 +11,37 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-10-29T02:00:00Z",
-      "price": 1.11582,
+      "last_candle_time": "2026-10-29T09:00:00Z",
+      "price": 1.11346,
       "spread_pips": null,
       "min_stop_pips": 25.0,
-      "structure": "上升趋势 (HH/HL)",
-      "bias": "偏多",
+      "structure": "下降趋势 (LH/LL)",
+      "bias": "偏空",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 59.1,
-        "macd": "金叉 / 柱=0.000254",
-        "ema20": 1.11459,
-        "ema50": 1.11514,
-        "ema200": 1.11851,
-        "atr14_pips": 11.8,
-        "rsi_bearish_divergence": false
+        "rsi14": 42.0,
+        "macd": "死叉 / 柱=-0.000154",
+        "ema20": 1.11447,
+        "ema50": 1.11494,
+        "ema200": 1.11804,
+        "atr14_pips": 11.5,
+        "rsi_bearish_divergence": true
       },
       "levels": {
-        "resistance": 1.12575,
+        "resistance": 1.12334,
         "support": 1.11173,
-        "zone_touches": 1
+        "zone_touches": 2
       },
       "plans": [
         {
           "name": "方案A · 顺势做多(突破回踩)",
           "direction": "long",
-          "trigger": "H1 收盘 > 1.12595",
+          "trigger": "H1 收盘 > 1.12354",
           "triggered": false,
-          "entry": 1.12539,
-          "stop": 1.12289,
-          "tp1": 1.12914,
-          "tp2": 1.13289,
+          "entry": 1.123,
+          "stop": 1.1205,
+          "tp1": 1.12675,
+          "tp2": 1.1305,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -49,15 +49,15 @@
           "size_factor": 1.0,
           "confirmations": {
             "H1收盘破阻力": false,
-            "RSI>55": true,
-            "无顶背离": true,
+            "RSI>55": false,
+            "无顶背离": false,
             "EMA20>EMA50且站上EMA20": false,
             "MACD柱连续两根走高": false
           },
-          "confirmed": 2,
-          "invalidation": "突破后 H1 收回 1.12575 下方 = 假突破,撤单转看方案B",
+          "confirmed": 0,
+          "invalidation": "突破后 H1 收回 1.12334 下方 = 假突破,撤单转看方案B",
           "units": 800,
-          "notional_usd": 900.31,
+          "notional_usd": 898.4,
           "leverage": 4.5,
           "actual_risk_usd": 2.0,
           "mt5_lots": 0.0,
@@ -69,12 +69,12 @@
         {
           "name": "方案B · 逆势做空(双顶拒绝)",
           "direction": "short",
-          "trigger": "价格上探 1.12539–1.12575 后 H1 收盘失败(长上影/吞没)",
+          "trigger": "价格上探 1.123–1.12334 后 H1 收盘失败(长上影/吞没)",
           "triggered": false,
-          "entry": 1.12539,
-          "stop": 1.12789,
-          "tp1": 1.12164,
-          "tp2": 1.11789,
+          "entry": 1.123,
+          "stop": 1.1255,
+          "tp1": 1.11925,
+          "tp2": 1.1155,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -82,22 +82,22 @@
           "size_factor": 0.5,
           "confirmations": {
             "阻力区拒绝K线": false,
-            "RSI顶背离(必需)": false,
+            "RSI顶背离(必需)": true,
             "MACD柱缩短": true,
-            "阻力区被触及>=2次": false
+            "阻力区被触及>=2次": true
           },
-          "confirmed": 1,
-          "invalidation": "H1 收盘站上 1.1261 = 认错离场,翻回方案A",
+          "confirmed": 3,
+          "invalidation": "H1 收盘站上 1.12369 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
-          "units": 399,
-          "notional_usd": 449.03,
+          "units": 400,
+          "notional_usd": 449.2,
           "leverage": 2.2,
           "actual_risk_usd": 1.0,
           "mt5_lots": 0.0,
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
-          "mt5_note": "算出来是 0.00399 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "blocked_no_divergence"
+          "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
+          "status": "armed"
         }
       ]
     }
