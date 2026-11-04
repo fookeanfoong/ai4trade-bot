@@ -558,11 +558,11 @@
         "MACD柱连续两根走高": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "won",
       "fill_time": "2026-11-04T05:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-11-04T13:00:00Z",
+      "exit_price": 1.12733,
+      "r_multiple": 1.5,
       "actual": null
     },
     {
@@ -574,6 +574,32 @@
       "entry": 1.1259,
       "stop": 1.1284,
       "tp1": 1.12215,
+      "stop_pips": 25.0,
+      "rr1": 1.5,
+      "mt5_lots": 0.0,
+      "confirmations": {
+        "阻力区拒绝K线": true,
+        "RSI顶背离(必需)": true,
+        "MACD柱缩短": true,
+        "阻力区被触及>=2次": true
+      },
+      "confirmed": 3,
+      "state": "filled",
+      "fill_time": "2026-11-04T09:00:00Z",
+      "exit_time": null,
+      "exit_price": null,
+      "r_multiple": null,
+      "actual": null
+    },
+    {
+      "id": "EUR_USD|方案B · 逆势做空(双顶拒绝)|2026-11-04T13:00:00Z",
+      "instrument": "EUR_USD",
+      "plan": "方案B · 逆势做空(双顶拒绝)",
+      "direction": "short",
+      "signal_time": "2026-11-04T13:00:00Z",
+      "entry": 1.12589,
+      "stop": 1.12839,
+      "tp1": 1.12214,
       "stop_pips": 25.0,
       "rr1": 1.5,
       "mt5_lots": 0.0,
