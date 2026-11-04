@@ -584,11 +584,11 @@
         "阻力区被触及>=2次": true
       },
       "confirmed": 3,
-      "state": "filled",
+      "state": "won",
       "fill_time": "2026-11-04T09:00:00Z",
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "exit_time": "2026-11-04T16:00:00Z",
+      "exit_price": 1.12215,
+      "r_multiple": 1.5,
       "actual": null
     },
     {
@@ -610,11 +610,11 @@
         "阻力区被触及>=2次": true
       },
       "confirmed": 3,
-      "state": "pending",
-      "fill_time": null,
-      "exit_time": null,
-      "exit_price": null,
-      "r_multiple": null,
+      "state": "won",
+      "fill_time": "2026-11-04T14:00:00Z",
+      "exit_time": "2026-11-04T16:00:00Z",
+      "exit_price": 1.12214,
+      "r_multiple": 1.5,
       "actual": null
     }
   ]
