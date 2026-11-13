@@ -1,189 +1,192 @@
 {
-  "fetched_at": "2026-11-12T14:58:04+00:00",
+  "fetched_at": "2026-11-13T14:23:54+00:00",
   "high_impact_events": [
-    "美国CPI"
+    "PPI",
+    "联储/FOMC",
+    "美国CPI",
+    "非农就业"
   ],
   "blackout_recommended": true,
   "items": [
     {
-      "title": "Gold Price Forecast: XAU/USD remains a sell-on-rise trade amid steeper Fed hike bets - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNbkdsdUVvTzFKcjMwMERvUGFzN3lvcmVEbVBtTElueEpiX243UjdPZEdmbkZDeHVSdmJLNFd2SnFLQ1ppWU5weVd2ZmZhSnd2N1pBclZuTkIxLVNzTUpxUFlkZmpWalRKQVFUNnNVa0NXZjJsVmptbnNqblJqYWRCdU1pNkFXeks4cnppd1ljTXl0VE5KWVNNZU9tUWZOV2VkOVhzdGdqUzltRlB5WGRRRHV6blBOcF9EWkpKLWt3RV9mSTBfenR4N1hn?oc=5",
-      "age_h": 11.3,
-      "when": "2026-11-12T03:39:59+00:00"
+      "title": "Gold Price Today | Price of Gold Per Ounce | 24 Hour Spot Chart - Kitco",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBnU2dTNUduLWh4WmxVQy1ndS1jN01abVlCeTNTMnFMbFdmS1d6TnFCekxTZVlXNGtKdnNRN3plT00yZm5LQmh6Rg?oc=5",
+      "age_h": 5.6,
+      "when": "2026-11-13T08:47:51+00:00"
     },
     {
-      "title": "Gold (XAUUSD) & Silver Price Forecast: Fed Hike Bets Harden, Can Gold Hold $3,944? - FXEmpire",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQdTNiSmwzUTZUV0JzcGFHaHZUaXM5b0RaRUluaXoxZ1UzNlZhM0RFQ1psRGhnS2l3Q0xodHlKdkgzSVdMSmxZeWt0bmdjMTFsTU5Db1VaYmVCV1M1dVNQeEFmcnJKQ0RtWHdZcmphQ1dSM1BtOENvZm9ENWxLbDlyTV9vM1hVMFFnczVjQUxXXzhXSkxWLWZGblprNW9hOXJvR3FiZzlKSW4wS2JZSm9MYmM4czdvdHhxWU5RaGJCWWdzdw?oc=5",
+      "title": "META_TITLE_QUOTE - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9LRXk3WmZ5Y1MwZVR2TUhJNEJYakk2Z3ZPbHkyWklVNkdJTnB3bjBpb0ctRzhrUzNhUmstaFJfUkJ0SVZ3VmRGTVJGS3F3aG95?oc=5",
+      "age_h": 16.0,
+      "when": "2026-11-12T22:22:55+00:00"
+    },
+    {
+      "title": "Gold (XAUUSD) & Silver Price Forecast: Gold Bounces From One-Year Low, Can It Clear $3,903? - FXEmpire",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQSTNPVzUxRGtiTmFqQWNYR2t6Um9YSFNWcHJTZ2N1WW1tNWdhdjBzQUpIc3BodUotSURSbmxHNGU3dDVyTGdXak5VQVhRVTI4dDhIeWVzVS1zWFpKc25vb056dEw0TVZ1UXVGZ09tQ3VHVGVzRzJNSUhhaUpfRkJtT3ZudXVyOEFzQXpOY1FpakhYaFcySG83TE5Wa24zQzlQTXREQmZBbks3M0tqSDRWQmxHOGJfVjFxSUh6LUJXZXZtZkQ2amNTcWhUTXREQQ?oc=5",
+      "age_h": 7.0,
+      "when": "2026-11-13T07:23:12+00:00"
+    },
+    {
+      "title": "Gold Price Forecast: XAU/USD finds temporary floor near $3,850, downside risks persist - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPN2o0bGFjWHM1R19zczQzNHRzeWRsamFkNXhnNnN6c29CWVR6UjNValNiZHBJcFVqdEQ2Z0V1VlBxM1hqQVZCSjYteEhZUC1KVTYwYnc4aDFrMGRscWMtR3dEd3hnS2xGbDFCRmFuZU9wM3FMb2ZFelpHQWNsSEd5RkkxS1JPcUhOUnlzZzZBWXdST2FTUmZPWVI0YzlNb2I1UUFSRzFyRmY0TzhLWGFCeTNCNk1FaEVYdXZxc094cFdvZGJiY3QyTDRR?oc=5",
+      "age_h": 10.9,
+      "when": "2026-11-13T03:28:32+00:00"
+    },
+    {
+      "title": "Gold Price Forecast: XAU/USD Rebounds From $3,852 Ahead of PPI and Weekly Close - FXLeaders",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOWWpPZnloMXIzaUF3cUtwdkZITzhuRnY5a1VjaV9uQzN4dl9TNDZPc1RCZktZSDlhMXNfUGNJSGxIbXUyNHNkd1hKVXBDamR6a25YbXQ5MlpockpWNVdwblRaSElPdVFIZmJRX251aEJKWWIwa205bkxfeGtNXzdtWllWTGk1TXkwOTBBRFhXN2JCWjJxVWR1MUhrQThFTU1UY1JrMElOX0QtY29XaDNzUjlLN21kS1puaU9N?oc=5",
       "age_h": 7.7,
-      "when": "2026-11-12T07:13:13+00:00"
+      "when": "2026-11-13T06:40:46+00:00"
     },
     {
-      "title": "Gold price faces a key test as $4,000 breaks and weekly support beckons - investingLive",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQOHNXNmFLNHM0dkNtZ0pwdGdBVFJrUExYemMwbjEwdVA5YXdLcGxkRUloR2d0aUJ2aWRzdlpkakhicjB5ZmprRGhGeTFhbkgtU2VQelNqVHJ5NGV3X3o2MDRabXlybjVsMGliOFFud2k2M0ZSb2RlZXUza2VhOGVjZFNoMEliX20xUVBhcGJFU0NMLXdQdzdUVklkLWt2RlNlY0EteC1uZy1lbG51Smc?oc=5",
-      "age_h": 6.8,
-      "when": "2026-11-12T08:08:13+00:00"
+      "title": "Federal Reserve to Forgo Rate Decision at October 2027 Meeting - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWkZiVk1uU2k5a1RQRGUxdFBJMEcxSVhtWEJfR0s3Q3E3T185OXRrZHRZMDVsQlhTdVpIbVlfQnNPem4zbGlTMDR6elFDRlM3RzhETUhCVzlTTDJvWmtfQzctcUFhRXZsVmxpVjBQUXpXTkRUTThQNVJwQV9YX19qaTZGVGswRGF1N2d0dktsZW5DVHlFWVNENmtQaERZYm5ZTmREdm8tMzVjX3ZCQUdqbTFCbWktdw?oc=5",
+      "age_h": 13.3,
+      "when": "2026-11-13T01:04:28+00:00"
     },
     {
-      "title": "Gold closed below $4,000 again — the ETF crowd and central banks stayed, the momentum money left - Mitrade",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPb2ZiZ0ZZOFN6eG5OLXlkT0xDZU1Md3cxLTg0WEh2U3BVOEgyUUctRVJQdkRtOUxnV3NhVDc0cmswTlRsaUo1bzBIRk5TRFJNbXE4MW9CVlVRdDQ2Mi1JTnNiYk5MQy15TDRaYU9MZEJlaDRsNjdaMXBzRUVIVC03aERzTjNXZGZaVEtxVkR0dENLMlAxb1c2RzlTaUQ?oc=5",
-      "age_h": 5.2,
-      "when": "2026-11-12T09:45:56+00:00"
+      "title": "Federal Reserve tentatively finalizes fewer rate-setting meetings in 2027 - Scotsman Guide",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQNnhYWDJ3cUFGN1dvTnphbUVIcXNRT0s1cG5tdUt3RXNFQkNVb3ZMdGtQLXFDLTJZOWJQVFBUUHk5QjVaS3U1eklTaGxNQXhPdXZXSHdQcFliTWx3elJjY3hYeC1qQk1wRGtla0FiX2kwVUtRT25UQXZDRG1kZFljSzBUc2VGOEFKWVBqSmU1d0xjZ1NWeGltUVB4andXV0hoQTBFRHVwci1sUkd0X2c?oc=5",
+      "age_h": 14.2,
+      "when": "2026-11-13T00:14:38+00:00"
     },
     {
-      "title": "XAUUSD|Gold|Price:3948.160|Chg%:-36.990 - TradingKey",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXYUYtXzJ5MUQ3Q0dqanZ1VjhZcGk2emdzU2hITXhDZl84NmVweXpqeXJlcE1aNXJveVZBdks1TXctbTcyMU1iUzdSdWpmUmRpb3RSUGNQTDU1S3dXVmFKNQ?oc=5",
-      "age_h": 3.2,
-      "when": "2026-11-12T11:46:18+00:00"
+      "title": "December Fed Rate Hike: Waller’s 50bp Warning vs Hammack’s Gradual Approach - EBC Financial Group",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9KanBYamxsWm44MWdQZmtYZ3BSMFpTeEpwWllDdHJZZlJNWGswMFJMejJIRmE2M29JdUtzcjBxMllHdTAyYmszUVdkRmdQd3BGN3dPSHc5ZE8tTUJmV0t3TFNxR0JqWnV1WEp3YlRBb1ZzTDZMS05Z?oc=5",
+      "age_h": 5.9,
+      "when": "2026-11-13T08:28:00+00:00"
     },
     {
-      "title": "Treasury Yields Rise, European Bond Yields Fall - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVnlnaU1LNXJWTUZPQ2lYcHhQZkZ5VXFWVVJPXzFjQVpNWHBhb2dMXzlGNGtXS0d4aVVjTjVNSXF4Sk1OUUNkYlFkdlZ0N0YtUHNocGRMcmN5QjJoOXJ2QVBLNTV1dkcySzJ5S0hxRUg2dzVpMTExMk9WeXczaFEzZVoyNGZtS3FYWVRoSDZyTnd3bEljSGM3X29Zd1h1MW9l?oc=5",
-      "age_h": 4.9,
-      "when": "2026-11-12T10:02:00+00:00"
+      "title": "Fed overhauls 2027 calendar, cuts one rate decision | NHK WORLD-JAPAN News - NHKニュース",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE42Rl9SaElnYWEyQW5meDRoZ19aVVg0ZWxyVVllOGVubnVxLVlWNkxqN1lyblp1ZFViOVJrSzVaczJnQ3Uyal9LM202RzY5QlZ2ZXpCeXQ1cmNKV0hzVml0NXVFVQ?oc=5",
+      "age_h": 3.1,
+      "when": "2026-11-13T11:15:05+00:00"
     },
     {
-      "title": "Mortgage Rates & the Fed: Focus on Affordability, Not Headlines - HousingWire",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1ZSnhVajR5bXp0WHYwUkt5amFHdWdXVWN3REVIVEZHa202SjNGcVEwbnZPYU85UlpOOWxsV0RuVDd3bkdiZm01NFZKOWlFVEwtd0hrUDA4ZWtBdjZyWUFfcGd0eE5JVWJwZHd5eFhn?oc=5",
-      "age_h": 6.9,
-      "when": "2026-11-12T08:03:27+00:00"
+      "title": "Federal Reserve Trims Rate Decisions to Seven in 2027 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOckpTSzJfZzdTRmd4Q1prU3BPS2RRUmZ2a3VheW9tNDZVVEI2aU5hamlNZlp2SDdCbThSdENfcFpGM2pqT3Y2cWZaWHlXbE5xWEhrRjBmTDBidktsaVdoZGVlSFlBdVdsNHhXTWtvRGJkaU9OYmJtMkVKQUhDVG1jdzVtWERSaGhHZjRjQ2dR?oc=5",
+      "age_h": 14.7,
+      "when": "2026-11-12T23:40:47+00:00"
     },
     {
-      "title": "Overseas Stock Markets Today: Europe Hits Records - STL.News",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBJWHlod1g2MmkzUXNrblpmdUZ6MzlOSU9ydlZHT2JlSlVsT2oxQ1cwQ2VoZkpKdzdNRjFEa3NCbVNiWWFPR0ktREwtUnBOd3VneXM2Q3BjYm5pbEo1RjM1Z3dKOVVSLUwwX2hqeTh0aVZ4NDI4dlVDTlpn?oc=5",
-      "age_h": 1.3,
-      "when": "2026-11-12T13:39:23+00:00"
+      "title": "What’s Flashing Warning Signs for Fed in Latest US CPI Report - Advisor Perspectives",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQVWdWRU9iY3ktaUhKVlE3WVVPc0FRSGVabDVycFZmaXRURnZiZXV0OFR5dWQzSzdudG0tazZEN2ppTDEtYUhSZWYwaEF4dzJJTUVIR3JvVmtVS0VadXN1RnowaW0xSlY1YnpsOTBWcGd4RWtQV3pkY0xKNXVUb0RYMDltVFhScC00SkljQlVzc0hrZlYzbkctTHpB?oc=5",
+      "age_h": 23.6,
+      "when": "2026-11-12T14:48:45+00:00"
     },
     {
-      "title": "US Treasury Futures Retreat as Markets See More Fed Hikes - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOa2hXVmxBejZuMktqMDMzbUNTcDA3ajBFdlE0MlpZc3AyU0ZPeHl0ZjJ3b3BhT2REdlRDVmRYWS05aFVhemtkZmVacFBnWFNXQlg5QjlmREo0VEdHRFFyTXNYR1FqV1VKUlhtVlNsT1ppUDRVQ0FVUTdGTW9FTXdVWWRVN0ZZMXpMNFo1dFBtMzJ4SzNRWHJkWnBlaGZId0x6dXJXSmU0ZW5tczhnc2pUM2Rn?oc=5",
-      "age_h": 22.4,
-      "when": "2026-11-11T16:31:45+00:00"
+      "title": "Gold Falls To Over One-Year Low Below $3,900 Amid Inflation Concerns, US PPI Data Looms - TalkMarkets - Howl.Link",
+      "link": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5JMXp5OXBJUncwYXBIc1lhOFdqLTJPT3FCbk42ZDFhV0lqUFhEZ2psc0NxUGpPWDI3TUtr?oc=5",
+      "age_h": 13.6,
+      "when": "2026-11-13T00:50:00+00:00"
     },
     {
-      "title": "Will the Fed Raise Interest Rates in December 2026? What the Hot October CPI Means - BBN Times",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQemxSb0VzM2FBYTBTSmJTVjVtanpGNlJwU2VqR1VPU21HUkRTdF9vVldtTU80VElRUW1vQjFiYUNvbF9NR0Y4THJPbHc0cFZzOXRaZDZwNW42MnpraEEzOUlUbGtTU0Q3V19td2xiVUlKOWc0VVlXTlFXdE5sTXRuTjdn?oc=5",
-      "age_h": 16.1,
-      "when": "2026-11-11T22:50:18+00:00"
+      "title": "Euro Falls as US Dollar gains on inflation concerns, Fed rate hike bets - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTE81cGpBbTlkb3U5WDJ3LXhrSUJlbWJwT2RpTWoxNjZzN0FWaXlYVUh2SUlvTC1JSEszNjk2X0JCdWR0NTJacDU4LUFnNUI3dTJGWDh2YXlsMG1DTi1GUjlqMF9rZTVRY2VVUmViX3pjYkFXWjB0UWdyMUE0UjNfTEx2S1RRSGl6RVdWSUxCLUVHcG0yVDBEdklfOUlUMzBqcUhpTjM0SHVNNkp6UTNwaktUbw?oc=5",
+      "age_h": 13.2,
+      "when": "2026-11-13T01:11:54+00:00"
     },
     {
-      "title": "What’s Flashing Warning Signs for Fed in Latest US CPI Report - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORks0enhnTkV3Q2hSYVN6NXp6WUh3Q1phX2VvbzJ3M1N4Z3ZfNmdfQmhJX09HTGw5WHc0Y0Z6WHZVbHRmMm9wbGg4Tm9DQ21talBaa1JscVNuSTZDdDlLN3V3S0g0azhranRBOGZSNlNzRkRQd3lra1RQZ0VrVEU5bEt2dER4VkdlWE1COEpPSC10Z0ViOUFwSzZPVjFHVXlQSm16SWctNmlEWFQ2dFBVOF9n?oc=5",
-      "age_h": 3.5,
-      "when": "2026-11-12T11:30:00+00:00"
+      "title": "USD/CAD Consolidates After Two-Day Rally Amid Expectations of a Fed Rate Hike - KuCoin",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQV2ZNSk5fU1p3VjFpVjFxcHExT3djc05nRHAyTk1UejVYQ1ZuTzBKbEZsMWo2V0VyQVFaYThRUy1VTnRBSjVwQUl4d2ZKME1lUjdTVmJyRmcwMkg3WG1rN1hjazZDZ2k3SnhSQ2dILU5EVnRtQnR4dzROZklwNzZVWVNfRXl5WTFDQkRlb1BpUHotMFZVeHE3QXl1dVJIeUprT3Zr?oc=5",
+      "age_h": 8.6,
+      "when": "2026-11-13T05:49:42+00:00"
     },
     {
-      "title": "U.S. CPI Preview: Wall Street Anticipates Cooling Inflation, but the Fed May Remain Unmoved - Moomoo",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZ0V6NXJsRmk4NndiOU9PaUR1TUVoaU9aTTNYOC1vN0tBVWRyeVdaUU1qa2VhQUN2aHdWcGh0SHFIMy0xNzk1OVprcVFWUHNyWFQ0N3dJV2JUbTlFa3k1Mk5NNGs5MElPQjJhcU92R01CU193dndvdV9BbndRamF1WFdnS2FLWkhac25JUV82RXB3TEoyYTUwUjF1ZTRXOWgwT3ZIOEFLT0JBOGM2?oc=5",
-      "age_h": 5.5,
-      "when": "2026-11-12T09:27:57+00:00"
+      "title": "Why is the Canadian Dollar remaining steady despite lower oil prices? - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPbnRXTDVkVUotY2kxdUhmWUVJNTdUMU9WV3FEY1F2NGZQNXFYVVg4cTNHSEtIRnktLVZYM2s3R25RSExFSGtlNDdEX1R1T2RlWlNDWU5HUHk1dWx3LXBWYmVXM21SeXBjNW5DV2dEVGppMV9RZFFqbnZCc25CTzRHR2xidnlndzFPbnNsWmJRQUtZdi0wZGhHVVVETmw?oc=5",
+      "age_h": 12.2,
+      "when": "2026-11-13T02:11:55+00:00"
     },
     {
-      "title": "India October CPI inflation rises to 6.09%, food inflation accelerates to 8.94% - investingLive",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPbUdWUXJITGJ5T2NsT2VyaElRUDRNSnF0X2pkQ2k1czRRYXllY0hwNk5hdmZuZnBtYUtDNnExSXdCd052OFoyNlRHTG1SLXB1M2hqRk5fcWNnLUs3OWpMUGl1YXZ4VnJVOG1Xc0FicTdwVndLZDhMWnphMnlYZmVxcjRuLU5Ha2t1TVpiNmlfdDFhb1o4aHJQN01WWlQxUTdRRk5lUFN1N3ppYjdY?oc=5",
-      "age_h": 4.2,
-      "when": "2026-11-12T10:45:02+00:00"
+      "title": "The U.S. Labor Market Ushers in a Structural Shift as AI Reshapes Corporate Employment Logic - NAI500",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRVJDb3d3cDFLWE9sM2ExN0d1Tm1FLWd1bVRfNVFBeUpPSURDU1pZa29ZcXBZZXdCV1hTM01WNmFGMWFHb1k3dUg1T2hQN1J5cVloVTcweVRscFR5TzQ1NlFtYXZzMGFmZU8tR01na3k3bjBJN0xpekF2VDNtRHR2MV9nM2M2aEVvODJjcjRYY0M2NldUSnlBMWYyZEY1R2tuSHQyTlA0QU5ST2FTMmRqLXEzMWhwSzZYMUpmNUw0emx1UQ?oc=5",
+      "age_h": 8.2,
+      "when": "2026-11-13T06:12:07+00:00"
     },
     {
-      "title": "Gold coils for potential breakout as US CPI looms - StoneX",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNOWo3UG4waFlMRjVtTjhFTjNOOF9Ga05VdjFqN0tMUjNwVVY0VkY2bmV1blF0aWxnOHNQZk9GRTJIMXluaDhKelE0VU1lbjBvS3lqdHpNRGtfOXRicHFoLVAzTEJILS11MEgxQ3dOMnl3RjV4eXV5R1UxZ0hlQVBvNFBhSnpwM2pYbWIwQUZxZlJYdnJOTENBTDRxQmFEdw?oc=5",
-      "age_h": 21.5,
-      "when": "2026-11-11T17:28:20+00:00"
-    },
-    {
-      "title": "Bitcoin Drops Below $73K as Hot US Inflation Fuels Fed Rate Hike Fears - Altcoin Buzz",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNRUtlZUgzRFZDUDdYZjdlNzE0ZVN5UERDd0VMZnFhMVNLRDk1dWo0TTkyaklaY0R4aG9TWUZBaUFfdDJCYXlQR1U3czUyMkJGb0NQU3gxVnd3Z3QyNkZPcnpEblZvbS04eDJoOVNRbXJkOWpzOGRPT3RsZ2p4ZndnY2dUZzNmYkppRFk0RmRiMEM4TnBZMWwyVzg1UFI?oc=5",
-      "age_h": 0.1,
-      "when": "2026-11-12T14:53:38+00:00"
-    },
-    {
-      "title": "Gold Falls Below 4100 Amid Pre-NFP Selling Pressure - KuCoin",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOeC1YSjBqN3dzcHNlRGtTV3ZpbTR1ZHpMNGl1ekJiUkpNVW1BX2lhdWd3MHNMbFJxZEk5VUVwNHNzQ3JDbUtFazJPRzNnYnFhbGVZb0lGdXpJSFpaZTNEOTNzdFpFaXk4SEIzaHBCaWFNV2swU3h6TzZfUG5wajJlUDdsRE1CYlBPbG0xUlVn?oc=5",
-      "age_h": 8.3,
-      "when": "2026-11-12T06:38:45+00:00"
-    },
-    {
-      "title": "Why BrightView stock is nosediving - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQMXMxeXRFYzY5N3pWSHBBUXB5MkVrRnhiWWJnZkYtc2tHVmxRRWtDMnNnUzV4bUIzbnJfQjdnUW5XTUJ3LU5CU2dheWhjLUtWZUtsbUtnVkw4UFJNSVUzZlR5QWFnbC1Zbmo3ekFHLXp3MXpEMnFnTHBqYldGT084TXlFQTNEbmJtbjZ2aDNIYmJyLUI3SGNvWkNhYw?oc=5",
+      "title": "WRAPUP 1-US weekly jobless claims increase, but labor market remains stable - Devdiscourse",
+      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOclJyNFRSNTQ1RnB5a0s4djctR1BualJZWXJjMGhHdHdNaUhyUUVwS0ZlMGFIcGZFb2s3M0Y1RFZpYmNQOHNiTTRucnNlUjlWVVZ6bmhObUVtTFdFNkx3UVN1N1JteUc2VU1McjRZaGdfVmRPbUZBUjY3eHdMNmhMN2lnaWRXdEM3YTlLeHpQdkVhUkE5N2piYjUzeDFPOW93NTVrR1B4bjZLX1VUb253TV9mRmVTUllTOGRCS0c3UTVBalZuNUdDWG5zNlAxeVNodUEw0gHTAUFVX3lxTE5yUnI0VFI1NDVGcHlrSzh2Ny1HUG5qUllZcmMwaEd0d01pSHJRRXBLRmUwYUhwZkVvazczRjVEVmliY1A4c2JNNG5yc2VSOVZVVnpuaE5tRW1MV0U2THdRU3U3Um15RzZVTUxyNFloZ19WZE9tRkFSNjd4d0w2aEw3aWdpZFd0QzdhOUt4elB2RWFSQTk3amJiNTN4MU85b3c1NWtHUHhuNktfVVRvbndNX2ZGZVNSWVM4ZEJLRzdRNUFqVm41R0NYbnM2UDF5U2h1QTA?oc=5",
       "age_h": 23.5,
-      "when": "2026-11-11T15:30:42+00:00"
+      "when": "2026-11-12T14:54:13+00:00"
     },
     {
-      "title": "US weekly jobless claims increase, but labor market firming - Idaho Statesman",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFB0R3M3V0pfdFNPc3AzejVKTkVfaV9hS3BzejFCVkdkbHUxS1dGcE4yT0s5Zjl3UmJtWlBvYnNzRGRiQW1BQUdTbV9UTjV4aGdybGctSzJUVll0YWhmbEw3RmJLa1FvQjFiTFkybWFRajhTcWd1?oc=5",
-      "age_h": 1.3,
-      "when": "2026-11-12T13:39:00+00:00"
+      "title": "Bitcoin Falls Below $80K as Hot Jobs Report Revives Fed Hike Bets - CoinMarketCap",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQVmxZOGhUUjVZU2hfREY5T0RIUUxjd1FCVnlTUHJPYUszaFRqejZQTXUtRW92ZEdfX1NVNzB1NUo5RU4wR05YUy1YWS1EVmxSVU03eEZpS0FWVnB2U2lKQ0x1QXozTEJ0QUc3dEpoVWlHeG9tVW11SlgyUlF1TjNvTzV1dms0YnBkYzJyTndGQ0lLbEFMVnRzSG9Dcw?oc=5",
+      "age_h": 4.7,
+      "when": "2026-11-13T09:40:14+00:00"
     },
     {
-      "title": "US weekly initial jobless claims 200K vs 195K expected - investingLive",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxObEJWZDk4b1VGUkk2RkJPYjhUcVptMDhSUTR5bzludmkta3hkZDdGS2lIQ1ZYZFlwdlR2UHVfVXJqcHJhenlvT0JPUy1xYVZ6UnlJSnhaYmxERXdRWEZjc0Mxa1BhZklPWDFpeU1td2ZPcGFzOWN6Q0RlVGN4UEVwbkJNSXdxMkhZSVRLTFlDMA?oc=5",
-      "age_h": 1.5,
-      "when": "2026-11-12T13:30:12+00:00"
+      "title": "Silver Holds Steady as Strong U.S. Jobs Report Diverges from Gold’s Slide - citybuzz -",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPcnpKRmI2cjJwbEt3SjZzTTRZOWFnRnVIdHBnSEthdUxfdWNVbWRlZG1vcllYZFJfcFNsRkZfNnNiR2xXdmJZS1hWOE91M1dhNXZYVGRUREVWZVpBbFJneDFZblliaVpiLVNDUG1WakZaNzJMTmVfOFVGQ0xRSkJMSmlyOWE2RG1QS1dJMThoR0VIZXJuY2ltWlM4MWNFM3hPWjlZbkRTYzUyUQ?oc=5",
+      "age_h": 21.1,
+      "when": "2026-11-12T17:17:02+00:00"
     },
     {
-      "title": "USD/CAD Outlook: Loonie left behind as US CPI looms - StoneX",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPdHhyaFE4MGxncVVaX1Z5XzdmVlFEM1VWc3lzTTlaRHN5cWwzaHVoSUhiSWdmdE45QWFaLXZ6d3lRcElkZVhYS05mVW0tZHJfbjRKMGRrWkZ3Ny04eVdCWXdVd1QtQ3FaX09wYlBydG94X3drd0NVdF9Cd2ZqWjZwcVJOYW5Gc3pvNnBpbWlaYW5EYzRXdEJzYVlNTTd3clk?oc=5",
-      "age_h": 21.5,
-      "when": "2026-11-11T17:30:23+00:00"
+      "title": "AI layoffs in 2026 so far: 121,401 US job cuts, and the firms, jobs and regions hit - Invezz",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPQzVqeDdOYmJxMVRxT3ZjUXNJejNENGdrQjhqTFYzZnZqXzZsQnVKZWNvaGt4by1ITHZaR1cxZWN5WXFmTFpkYVpEVmh0Z0Y1djVGdWNHSE9YaTUxQ1QwdzEyZURkWkRUSU9JVmpQa1Z1eUVvNjNMQnd0U3lRNmtJMV8yeEJ0UFVMUTU1V1Vraw?oc=5",
+      "age_h": 16.3,
+      "when": "2026-11-12T22:03:56+00:00"
     },
     {
-      "title": "COMMENTARY: Dollar zooms on bets US can absorb higher rates - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdm16OE9HeTB1RzQ3Z1hSQ3VnVi1mek16Y1p4dW9JWGpHeExGTVN6NU1pUFRyeUd4SEdacFZRR0dneUh3T1U5aVBRNklHVk1CeEw2X2dCTHpJRUtTelBvYUxscHk2Uk5hM0V5OHlkYTJUS0hhY2c2QkNYcGVKUElSLXlGSEpWdWRJWUhSSGFhWV9NZWVTVXhaclljYkRzQmdIZENDdXVCZ3hoV2tVel8zbkdSeUE4NkxmMEl0eUdvNHpDQQ?oc=5",
-      "age_h": 2.3,
-      "when": "2026-11-12T12:42:03+00:00"
+      "title": "US Dollar Technical Outlook: DXY Bulls Fight to Hold Critical Support Ahead of NFP - StoneX",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdHc2TWtFc2Z4MlBnckNieHZmU1JpMEFqVHdxN2UwM3I0UTJVZUR4WkpFUTdJNktrR292eUtHOV8wLVJtMjhYWUJ1NDJDOTNkb2lnWlR1bUtuRS14U0JOQmNsbmhaNlBGWm8wbmtVUmo1b1V0d21GU0N4X3NxcDlxQzk1QVJZV19NTE5TTlNZTk5sT3NTNnl0TFhISWRkLUQ0RWw3ZFBNbkh6YUVRS2E3NU5yb29tWFRCNkpqV0p3QmQ3TE1kbFlldA?oc=5",
+      "age_h": 13.9,
+      "when": "2026-11-13T00:29:45+00:00"
     },
     {
-      "title": "US Dollar Index (DXY) trims gains after hitting 19-month highs at 103.08 - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOWEJNaDFCWnAxLUpOOV9qclpnTVpSVE1ZRnhFZ3NqTHRBY3o0Q0IzSlFvNDRwNTM0WmpiMEJTOFJwdWFEVDVwOFU3T2VrWXV2U0M4OUwwaGJuS3BVanRtZE5OVjRqQXdqd1A4M1BQN3VET2FUOXViTC1rbXNwbUYwNVVaVE1LYUQ2dzV0OElTQ19QNVhfaDU0TEVHMm1wLU5idEpwSjMxekJtdmRTcUFhN3ZB?oc=5",
-      "age_h": 4.5,
-      "when": "2026-11-12T10:25:08+00:00"
+      "title": "US Dollar Price Forecast: DXY Holds 102.88 as EUR/USD Tests 1.1056, GBP/USD Eyes 1.3200 - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNR0hGLUlDQXcyVjBnRlgzR1Z5blVuSlVlTk9iVllQLXFHblJtLWtmQkV4YXZaaFZqbVRJNGViZEYyVmw2a2Y3ZE1EWDFtMXZKTlhHSXQ4aVNmaXc2OXlSSVRFLTQ5Vncwc2FlSmVfNmdvQ1F2cUJIZ2xWNFVyX0FPOW1sWHkwY01CcjJ1amEwLTc1UzEtU3ZGMnpmSEpmUQ?oc=5",
+      "age_h": 6.9,
+      "when": "2026-11-13T07:31:00+00:00"
     },
     {
-      "title": "US Dollar Price Forecast: DXY Eyes 103.15 at 19-Month High as EUR/USD, GBP/USD Slide - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNalk0OEpPR0VkRFhTQ1lPNl91YmxHU2ItaGN6UWJTRjYxUXFwajdtTXNWODFhWlVnRkFRNGtRYlk4aEFSeHF5LVVwa1c4MGJsTVRVZmVxQnJBNXNOcUkzaGZtM2pBR3VDTm9xN1VjMktLYlNPYlc1X0gzRDFxS2VFUTJpSWE3ZHJnQXNla1VCR3BtVHZaZFo4amVyNm05UQ?oc=5",
-      "age_h": 7.1,
-      "when": "2026-11-12T07:51:28+00:00"
-    },
-    {
-      "title": "US Dollar Short-term Outlook: USD Rally on the Line as Midterms, NFP Loom - StoneX",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPWlpkblV1d3pBbTUxRHVEYjJzNUNBSHZBTkppTlAwMmpWbDhSV2xkcm1sRmlYbDVYaGNVcGFjaVEtWXpOVkFhMWtJMGZNRTl1TXR0d0F4YzlXazhyQnkxNjBqVUIwTjF2T2VYOElzeDNEcm9DblI3cWRDME9DQmZ2WWNVVFlqN18yZzJwMmxnSzhlUXg1UGlKak9sbFhSRFFjbFpfYmhRV2pmMVpaY0lWMFZpY0c4UlI2OUVB?oc=5",
-      "age_h": 18.3,
-      "when": "2026-11-11T20:40:04+00:00"
-    },
-    {
-      "title": "US Dollar Index (DXY) tops 103.00 to reach highest since April 2025 amid Fed bets and Iran risks - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQVjFVMXN0bC0teTJFT3dVNWg5clc0anZHZzdTbmwxS2tCWW9nY01HOUpWTEpjMnhvQXVGM3JMa0d3NkVyOHl3OVNXVTk4dTVhTm9sRHhFaHd3ZTBxb2xJVXZ5VXFvVmZqT2tCTHlMN3l1MDJiNHdsV29lR0Z5RWlGYmVIVXN4emxBTDNWdTRrTzRUYVlqYk94Sk1aVVFKaENKeDdJWF9Nc0czVlhDMEF1bzVKanAxNGdwdElCbktZMmxBUGlRdlExTzU2WlZGZXdUejhJOURfMlJWLU5meHZOZGRrQWJHa3FZY1E?oc=5",
-      "age_h": 10.2,
-      "when": "2026-11-12T04:45:18+00:00"
-    },
-    {
-      "title": "Gold steadies near $4,000 as traders weigh rates, geopolitics and safe-haven demand - kalkine.ca",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNdUJkSk9PdUFCMDdFVGE2ZDlJWXhHTXJzbThyN3RuS2xvV1lTNWtxY2YwOWFnT1RCM1pNVTJEaDdGQ3REUWZ5c2NMYlhYclJnbHB1YllvUzRrVG10Zjk5T3F1OXNCWGV2SXpyV2tKVndWb1c2VWxWWDZnQWo3WThxYjNCSVlfbEVBV3ZYbXM1S2pvMzI4azZnRjZlOWhhV1hwOFZ0TVphaFk2ZHljeDdXU0FEY21OWUVf?oc=5",
-      "age_h": 0.7,
-      "when": "2026-11-12T14:19:00+00:00"
-    },
-    {
-      "title": "Iran's hardline stance combined with the supertanker mine incident has intensified the supply-side dynamics in the oil market, presenting opportunities for correlated trading across gold, foreign exchange, and oil. - Moomoo",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBQbjlNN1Z2VXdxVFpCcFRPZVNmT3FodlhvR3lEMXhGZ01RX3psYXRSaFBKOF9yTldFRVhsNkx4YUZTZW9DUk9vMmVfSGxic3A3YTdrNjl3?oc=5",
-      "age_h": 2.1,
-      "when": "2026-11-12T12:51:46+00:00"
-    },
-    {
-      "title": "Gold struggles below $4,000 as Fed hike bets and Mideast risks lift USD to fresh YTD top - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPbXVFeUwyZVBoTGJhOVVwNUhjMmRuNlg2N3h0ZGNGcU1SQnJUZzlsSmdIaGhWWHRzdlRHWFVHYW9CV2sweTZYNEptNG5hNm1hQS01RDBSQ1hYZmVwNFN4VWt2Wl9DcHk1bFcxbFpVemZOYWRaTnhPV2dnODZIYTFNNTRGaExVcmFNLVJjWm9EVmtIZDlSTVViWWhfajhnV19wMHFja2NXb3dYczhxTkpaMjIzWVJRbF9hNy1YbXFnYlk2ajNOQ2NnRlY3WGpaS1k2TVhKY001bVZ5Zmw3b1lOZkJhWVlVbDYw?oc=5",
-      "age_h": 4.6,
-      "when": "2026-11-12T10:23:09+00:00"
-    },
-    {
-      "title": "Gold weakens below $3,950 as USD bulls retain control amid Fed hike bets, Iran risks - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQZXB6blZYQXlneG4zcE1BSHpobnhNMm94QkNkbHpWd0NyU0ZodmdyRE5pTExKRDA3enZyaEVCU1Rtck5iZEFDemlYWjI1N0hhaTl1dHhqbWpGc2ROaFExdFVIVGFjQ0ZHR0dha3FPUTdLZ0xaSk5faFIwYVBLMEh4RzJUTlJuS0xNaF9MRVVUTGtnRzdxc2pGSjBEWUhwUDRqT1o2ZzhMYXlTeWs1NVNjZVAxRnJvV0FtUEF2YWhHYXNDU3JuR0l2Y1pB?oc=5",
+      "title": "US Dollar Index Price Forecast: Bullish Flag breakout sets stage for fresh rally - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNeXdOUHBQOEI2aDN2MjkycGxiSUZJRnh0OERrM0M0VkRQSXBMNHN4S2RKVk5sQUpiTU9UYy1oZlVzTlQyc0lQZzdWTDJqc3VzdzFRRjNGRWEyNkJyb1hjYkgtUmJpWjV5cG83QXdtTHluR29CRlhtdVM0U3hPN2lKNHdwb2NqQkI3NHhrMUlEMldiZGJBMVpmaW5CdkhRcjZkUUtoVFEwSHdBR3MyTjBreldFelVtblh5UGFfM204dw?oc=5",
       "age_h": 6.2,
-      "when": "2026-11-12T08:47:21+00:00"
+      "when": "2026-11-13T08:10:07+00:00"
     },
     {
-      "title": "Gold and the Truth of Money: From Ancient Coinage to the Modern Dollar - Hellenic News of America",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSzB0RlRYaVRsTTZCT0pKSXdTOVNoeS12eTItVEZhVjJVNnNoektCNUhQMzNMcUtFWWpMdmtfdmEwSkdwM3k2eE1CZGU5M2JkTl93VXhVZk5ES3NMMTdHUjkyRHhMempTZWExSi04dmJQa1pkd3c2SkFsY0Z6Z19LbHFvYXlYTEdxc1FJY2d6RHp1SzJ4TktiSmhpNVV4aHJzMmNjZW5iQ2dRUQ?oc=5",
-      "age_h": 6.0,
-      "when": "2026-11-12T08:56:28+00:00"
+      "title": "US Dollar Price Forecast: DXY Holds 102.88 as EUR/USD Tests 1.1056, GBP/USD Eyes 1.3200 - FXEmpire",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNdUNyWFRvbFNGb3BvVlRqSE9tMmZwQTJUTlhneE5LMTRWZGpaYjhKRUJMZjAyWEVKc2Q3QUc5c0htbXJ6dXBhME5sMDc3ZF85TGMxcFluSl9VMmRuNEFZZlBRZmN0SUtxcXFPZkVxazluc3BQeE5iMjZwWXFmWGRIbnFmRkhEUGh5WHhkMHZoZ3gtdkdPTTZMU2RQMmJLRkVia21IRThLR3g0Y1BxNkRzeURnWGk2UWxwX1FkbFY2bVBxQ3h4Y3I3RnhCLW9ocy1Rc1E?oc=5",
+      "age_h": 6.9,
+      "when": "2026-11-13T07:31:56+00:00"
+    },
+    {
+      "title": "Bitcoin Slides Below $69K With Dollar Index At 19-Month High, Wiping Out $1.6B In Crypto Bets - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQb3lyS1VtUEFWT3N2SnJLVzFDUlJkNm1Ybm1Pai15eFhwdS1iajRRWnhubUM4RDV4THB0SWFiTFlraV9ZTFJaLWRfZTJqWmhrZWgwcHR4M1gxR1ZFRHA3RnZ5U3E4aXBKeGtmQWxxYVFPaGZ6LXQwYk94YVM2NGVheHFKTU5NdWRpNm1UMnJzY3pYQXpyMmJOay1EWGozcWozNS1QTWlNMHBmRG9xcVhnVDE2cUFMWHN1S1BwZzVlczEyNDVfdmEwOW9YcDBSOWtnV3c3UDR4ZzU2Vzl3b2ExSFRMVDNsZw?oc=5",
+      "age_h": 1.8,
+      "when": "2026-11-13T12:34:33+00:00"
+    },
+    {
+      "title": "2026 Top 40 Money Managers Report: How is the rise of commodity investments servicing pension funds? - Benefits Canada.com",
+      "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNUDVFSHRnYW9fTi1JZUxIeEtncFY0MzRKclV1VUJTYjNpNjRpcThQWXhGMVlOS0E2M0tHcnZEVlJwTjZtTkl5a0RRd3FwTzZLaEM1bEhJM29Kb1hJc3lTQk45QzJLS0ZmVGdNZE9tRWlmektzVkRvVm8wb3I3cUVGbEZSSTJkMFRpVW9JNFdKM0ktS0lLdWlIdzl5bjJZWUs4aUI0TUMxUGFnaTVUSThWYnhJcEtmWFlSeW9mM05IMUFnZHBGZnBEdmhfZEtDNm1KVFNzNy1OcEhxeWF5NzVRdUxKUmhMTS1YT1pUTWVLb3I5OGRKOEUw?oc=5",
+      "age_h": 0.4,
+      "when": "2026-11-13T13:58:52+00:00"
+    },
+    {
+      "title": "Gold Price Today | Price of Gold Per Ounce | 24 Hour Spot Chart - Kitco",
+      "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBnU2dTNUduLWh4WmxVQy1ndS1jN01abVlCeTNTMnFMbFdmS1d6TnFCekxTZVlXNGtKdnNRN3plT00yZm5LQmh6Rg?oc=5",
+      "age_h": 5.6,
+      "when": "2026-11-13T08:47:51+00:00"
+    },
+    {
+      "title": "US October PPI on Tap as Bitcoin Sinks Below $70,000, Gold Breaks $4,100 and Rate-Hike Bets Build - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1ncWgxMEV3SVRodjlIV28yMzJFNDRkT1dwLU41eUxpYk1xNExSSnBmaDVXTVlIWDJPSjhRZGRUbjBMa3F6NzBMVzdYbEpabGtZTGIxTWxmU2NiWjcxRXpiVmM3WVFMbWd4VFZZR2xfNmpCZDc5aWc?oc=5",
+      "age_h": 0.5,
+      "when": "2026-11-13T13:55:00+00:00"
+    },
+    {
+      "title": "Geopolitical complexities drive a surge in real interest rates; Federal Reserve officials collectively highlight inflation concerns, putting pressure on gold prices. - 富途牛牛",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQNFZ3ZXVlVkd5Y2dlVGNtREhMS1psWFNLSnAyNzVuVXBXNmtvcnBDWW5vSkhnTEtVVzBsS3lBSE5uTWRCNDl0NnNSRmhYT0hjbDRlSTZBTUI4LVVUN1VtNkNfMVdScHRvSEd0YmdfMzBGLV9Ta3FTYmdVbnNxSmItc1VmODFCb1dMUUlBUEZraU0yUGl4QmtHOWgzeWZfUVlfc05hdU43cDVvYUdhLWNZT1pIaw?oc=5",
+      "age_h": 4.4,
+      "when": "2026-11-13T10:00:36+00:00"
+    },
+    {
+      "title": "India Gold price today: Gold rises, according to FXStreet data - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPWVdZMlFsMm5WUnJ0UHFGUmxDWUs2MFNrV2lPc2FjMGtwTDFOWGEyeFhVUl8wcEVINkdQYkRtVm1aNVU4MVhORmkwcmJFQUVlVzhJUUdNck1kZy1HZGkzbWx2a2N5ZnpRQUVyQzF5b2dJVXR5Q1hOTEJ4b3QtbWZzdklNS1pnZjVhOExOb1QyN0VjLTZIZ0g0WWFnVjN4UlpjcXc3NWxvTzRVaWNDd0N1aFdtTmJ6U3M4dVhoRVRyNkZ1Q0Z4?oc=5",
+      "age_h": 9.5,
+      "when": "2026-11-13T04:51:00+00:00"
     }
   ],
   "errors": []
