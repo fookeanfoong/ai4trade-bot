@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-13T19:25:47+00:00",
+  "updated_at": "2026-11-14T00:47:48+00:00",
   "granularity": "H1",
-  "market_open": true,
+  "market_open": false,
   "equity_usd": 200.0,
   "risk_pct": 1.0,
   "risk_usd": 2.0,
@@ -11,20 +11,20 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-11-13T19:00:00Z",
-      "price": 1.10302,
+      "last_candle_time": "2026-11-13T21:00:00Z",
+      "price": 1.10254,
       "spread_pips": null,
       "min_stop_pips": 25.0,
       "structure": "下降趋势 (LH/LL)",
       "bias": "偏空",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 32.9,
-        "macd": "死叉 / 柱=-0.00019",
-        "ema20": 1.10505,
-        "ema50": 1.10742,
-        "ema200": 1.11373,
-        "atr14_pips": 10.7,
+        "rsi14": 30.9,
+        "macd": "死叉 / 柱=-0.000189",
+        "ema20": 1.10459,
+        "ema50": 1.10704,
+        "ema200": 1.11352,
+        "atr14_pips": 10.1,
         "rsi_bearish_divergence": true
       },
       "levels": {
@@ -38,10 +38,10 @@
           "direction": "long",
           "trigger": "H1 收盘 > 1.12557",
           "triggered": false,
-          "entry": 1.12504,
-          "stop": 1.12254,
-          "tp1": 1.12879,
-          "tp2": 1.13254,
+          "entry": 1.12506,
+          "stop": 1.12256,
+          "tp1": 1.12881,
+          "tp2": 1.13256,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -52,29 +52,29 @@
             "RSI>55": false,
             "无顶背离": false,
             "EMA20>EMA50且站上EMA20": false,
-            "MACD柱连续两根走高": false
+            "MACD柱连续两根走高": true
           },
-          "confirmed": 0,
+          "confirmed": 1,
           "invalidation": "突破后 H1 收回 1.12537 下方 = 假突破,撤单转看方案B",
           "units": 800,
-          "notional_usd": 900.03,
+          "notional_usd": 900.05,
           "leverage": 4.5,
           "actual_risk_usd": 2.0,
           "mt5_lots": 0.0,
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00800 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $2.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "armed"
+          "status": "wait_market_closed"
         },
         {
           "name": "方案B · 逆势做空(双顶拒绝)",
           "direction": "short",
-          "trigger": "价格上探 1.12504–1.12537 后 H1 收盘失败(长上影/吞没)",
+          "trigger": "价格上探 1.12506–1.12537 后 H1 收盘失败(长上影/吞没)",
           "triggered": false,
-          "entry": 1.12504,
-          "stop": 1.12754,
-          "tp1": 1.12129,
-          "tp2": 1.11754,
+          "entry": 1.12506,
+          "stop": 1.12756,
+          "tp1": 1.12131,
+          "tp2": 1.11756,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -87,7 +87,7 @@
             "阻力区被触及>=2次": false
           },
           "confirmed": 1,
-          "invalidation": "H1 收盘站上 1.12569 = 认错离场,翻回方案A",
+          "invalidation": "H1 收盘站上 1.12567 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 400,
           "notional_usd": 450.02,
@@ -97,7 +97,7 @@
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "armed"
+          "status": "wait_market_closed"
         }
       ]
     }
