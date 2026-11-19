@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T15:27:23+00:00",
+  "updated_at": "2026-11-19T17:12:14+00:00",
   "granularity": "H1",
   "market_open": true,
   "equity_usd": 200.0,
@@ -11,26 +11,26 @@
   "pairs": [
     {
       "instrument": "EUR_USD",
-      "last_candle_time": "2026-11-19T15:00:00Z",
-      "price": 1.0983,
+      "last_candle_time": "2026-11-19T17:00:00Z",
+      "price": 1.09782,
       "spread_pips": null,
       "min_stop_pips": 25.0,
-      "structure": "上升趋势 (HH/HL)",
-      "bias": "偏多",
+      "structure": "收敛区间 (LH/HL)",
+      "bias": "中性 — 等突破",
       "ema_stack": "EMA20<EMA50<EMA200(空头排列)",
       "indicators": {
-        "rsi14": 48.5,
-        "macd": "金叉 / 柱=0.00019",
-        "ema20": 1.09866,
-        "ema50": 1.09891,
-        "ema200": 1.1053,
-        "atr14_pips": 11.2,
-        "rsi_bearish_divergence": false
+        "rsi14": 45.8,
+        "macd": "死叉 / 柱=-1.3e-05",
+        "ema20": 1.09857,
+        "ema50": 1.09886,
+        "ema200": 1.10518,
+        "atr14_pips": 10.6,
+        "rsi_bearish_divergence": true
       },
       "levels": {
         "resistance": 1.10742,
         "support": 1.09577,
-        "zone_touches": 2
+        "zone_touches": 1
       },
       "plans": [
         {
@@ -38,10 +38,10 @@
           "direction": "long",
           "trigger": "H1 收盘 > 1.10762",
           "triggered": false,
-          "entry": 1.10708,
-          "stop": 1.10458,
-          "tp1": 1.11083,
-          "tp2": 1.11458,
+          "entry": 1.1071,
+          "stop": 1.1046,
+          "tp1": 1.11085,
+          "tp2": 1.1146,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -50,31 +50,31 @@
           "confirmations": {
             "H1收盘破阻力": false,
             "RSI>55": false,
-            "无顶背离": true,
+            "无顶背离": false,
             "EMA20>EMA50且站上EMA20": false,
             "MACD柱连续两根走高": false
           },
-          "confirmed": 1,
+          "confirmed": 0,
           "invalidation": "突破后 H1 收回 1.10742 下方 = 假突破,撤单转看方案B",
-          "units": 799,
-          "notional_usd": 884.56,
+          "units": 800,
+          "notional_usd": 885.68,
           "leverage": 4.4,
           "actual_risk_usd": 2.0,
           "mt5_lots": 0.0,
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
-          "mt5_note": "算出来是 0.00799 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $2.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
+          "mt5_note": "算出来是 0.00800 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $2.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
           "status": "armed"
         },
         {
           "name": "方案B · 逆势做空(双顶拒绝)",
           "direction": "short",
-          "trigger": "价格上探 1.10708–1.10742 后 H1 收盘失败(长上影/吞没)",
+          "trigger": "价格上探 1.1071–1.10742 后 H1 收盘失败(长上影/吞没)",
           "triggered": false,
-          "entry": 1.10708,
-          "stop": 1.10958,
-          "tp1": 1.10333,
-          "tp2": 1.09958,
+          "entry": 1.1071,
+          "stop": 1.1096,
+          "tp1": 1.10335,
+          "tp2": 1.0996,
           "rr1": 1.5,
           "rr2": 3.0,
           "stop_pips": 25.0,
@@ -82,22 +82,22 @@
           "size_factor": 0.5,
           "confirmations": {
             "阻力区拒绝K线": false,
-            "RSI顶背离(必需)": false,
+            "RSI顶背离(必需)": true,
             "MACD柱缩短": true,
-            "阻力区被触及>=2次": true
+            "阻力区被触及>=2次": false
           },
           "confirmed": 2,
-          "invalidation": "H1 收盘站上 1.10776 = 认错离场,翻回方案A",
+          "invalidation": "H1 收盘站上 1.10774 = 认错离场,翻回方案A",
           "mandatory_note": "没有 RSI 顶背离就不做 —— 逆势没有背离等于纯赌",
           "units": 400,
-          "notional_usd": 442.83,
+          "notional_usd": 442.84,
           "leverage": 2.2,
           "actual_risk_usd": 1.0,
           "mt5_lots": 0.0,
           "mt5_min_lot_risk_usd": 2.5,
           "mt5_min_lot_risk_pct": 1.25,
           "mt5_note": "算出来是 0.00400 手,不足 MT5 最小的 0.01 手。用 0.01 手的话实际风险 $2.5(1.25% ,计划是 $1.0)—— 在 2.0% 硬上限内,可以做,但你要知道风险被放大了",
-          "status": "blocked_no_divergence"
+          "status": "armed"
         }
       ]
     }
